@@ -143,11 +143,11 @@ class PackageView(red_thrashingtreeview.TreeView):
                 return 1
 
             if ev.button == 3:
-                def clicked_idle_cb(view, ev, select, b, t, x, y):
-                    view.emit("popup", ev, b, t, x, y)
+                def clicked_idle_cb(view, select, b, t, x, y):
+                    view.emit("popup", b, t, x, y)
 
                 gtk.idle_add(clicked_idle_cb,
-                             view, ev, select,
+                             view, select,
                              ev.button, ev.time,
                              ev.x, ev.y)
                 return 1
@@ -159,6 +159,9 @@ class PackageView(red_thrashingtreeview.TreeView):
             pkg = model.get_list_item(path[0])
             self.emit("activated", path[0], pkg)
 
+        def popup_menu_cb(view):
+            view.emit("popup", 0, 0, -1, -1)
+
         select.connect("changed",
                        selection_changed_cb,
                        self)
@@ -169,6 +172,10 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.connect("button-press-event",
                      button_clicked_for_popup_cb,
                      select)
+
+        self.connect("popup-menu",
+                     popup_menu_cb)
+                     
 
     def get_selected_packages(self):
         def selected_cb(model, path, iter, list):
@@ -197,23 +204,24 @@ class PackageView(red_thrashingtreeview.TreeView):
             red_pendingops.toggle_action(pkg)
         #print "activated %s (%d)" % (pkg["name"], i)
 
-    def do_popup(self, ev, ev_button, ev_time, ev_x, ev_y):
+    def do_popup(self, ev_button, ev_time, ev_x, ev_y):
         menu = gtk.Menu()
         menu.attach_to_widget(self, None)
 
         pkgs = self.get_selected_packages()
 
-        path_info = self.get_path_at_pos(ev_x, ev_y)
-        if path_info is None:
-            return
+        if (ev_x, ev_y) != (-1, -1):
+            path_info = self.get_path_at_pos(ev_x, ev_y)
+            if path_info is None:
+                return
 
-        path, column, cell_x, cell_y = self.get_path_at_pos(ev_x, ev_y)
-        model = self.get_model()
-        clicked_pkg = model.get_list_item(path[0])
+            path, column, cell_x, cell_y = self.get_path_at_pos(ev_x, ev_y)
+            model = self.get_model()
+            clicked_pkg = model.get_list_item(path[0])
 
-        if not clicked_pkg in pkgs:
-            pkgs = [clicked_pkg]
-            self.set_cursor(path, column)
+            if not clicked_pkg in pkgs:
+                pkgs = [clicked_pkg]
+                self.set_cursor(path, column)
 
         def set_package_action(pkgs, action):
             for pkg in pkgs:
@@ -221,7 +229,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                     red_pendingops.set_action(pkg, action)
 
         # Install
-        item = gtk.ImageMenuItem(_("Mark for Installation"))
+        item = gtk.ImageMenuItem(_("Mark for _Installation"))
         image = red_pixbuf.get_widget("to-be-installed")
         item.set_image(image)
         if not red_pendingops.can_perform_action_multiple(pkgs,
@@ -234,7 +242,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                      lambda x:set_package_action(pkgs, red_pendingops.TO_BE_INSTALLED))
 
         # Remove
-        item = gtk.ImageMenuItem(_("Mark for Removal"))
+        item = gtk.ImageMenuItem(_("Mark for _Removal"))
         image = red_pixbuf.get_widget("to-be-removed")
         item.set_image(image)
         if not red_pendingops.can_perform_action_multiple(pkgs,
@@ -247,7 +255,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                      lambda x:set_package_action(pkgs, red_pendingops.TO_BE_REMOVED))
 
         # Cancel
-        item = gtk.ImageMenuItem(_("Cancel"))
+        item = gtk.ImageMenuItem(_("_Cancel"))
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
         item.set_image(image)
@@ -265,7 +273,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         menu.append(item)
 
         # Info
-        item = gtk.ImageMenuItem(_("Information"))
+        item = gtk.ImageMenuItem(_("I_nformation"))
         image = red_pixbuf.get_widget("info")
         item.set_image(image)
         item.show_all()
@@ -521,8 +529,7 @@ gobject.signal_new("popup",
                    PackageView,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
-                   (gtk.gdk.Event.__gtype__,
-                    gobject.TYPE_INT, # button,
+                   (gobject.TYPE_INT, # button,
                     gobject.TYPE_INT, # time
                     gobject.TYPE_INT, # x coordinate
                     gobject.TYPE_INT, # y coordinate

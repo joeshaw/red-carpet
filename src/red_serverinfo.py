@@ -67,12 +67,12 @@ def view_server_info_cb(app):
         dialog_type = gtk.MESSAGE_WARNING
         messages = [_("Unable to contact the daemon.")]
 
-    dialog = gtk.MessageDialog(app, 0, dialog_type, gtk.BUTTONS_OK,
+    dialog = gtk.MessageDialog(app, 0, dialog_type, gtk.BUTTONS_CLOSE,
                                string.join(messages, "\n"))
     dialog.set_default_response(gtk.RESPONSE_OK)
     if results:
         bbox = gtk.HButtonBox()
-        dialog.vbox.add(bbox)
+        dialog.vbox.pack_start(bbox, expand=0, fill=0, padding=6)
         button = gtk.Button(_("Dump daemon info to XML file"))
         button.connect("clicked", lambda x,y:select_and_dump(y), dialog)
         bbox.add(button)

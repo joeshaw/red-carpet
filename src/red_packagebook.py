@@ -43,11 +43,12 @@ def show_package_info(pkg, parent=None):
     title = _("Package Information") + ": " + pkg["name"]
     dialog = gtk.Dialog(title, parent=parent)
     dialog.set_default_size(450, 350)
-    button = dialog.add_button(gtk.STOCK_OK, 0)
+    button = dialog.add_button(gtk.STOCK_CLOSE, 0)
     # grab_default() is not sufficient here.
     button.grab_focus()
-    dialog.vbox.add(book)
     dialog.connect("response", lambda d, code: d.destroy())
+
+    dialog.vbox.add(book)
 
     def destroy_cb(dialog, key):
         del package_infos[key]
@@ -107,10 +108,6 @@ class PackageBook(gtk.Notebook):
                 page_box  = gtk.EventBox()
                 page_box.page = page
                 page_box.initialized = 0
-                style = page_box.get_style().copy()
-                color = page_box.get_colormap().alloc_color("white")
-                style.bg[gtk.STATE_NORMAL] = color
-                page_box.set_style(style)
                 self.append_page(page_box, gtk.Label(name))
                 page_box.show()
                 # If this is the page that was being displayed before,

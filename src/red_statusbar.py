@@ -32,8 +32,7 @@ class Statusbar(gtk.HBox):
         box = gtk.HBox(0, 2)
         align.add(box)
 
-        image = red_pixbuf.get_widget("connect",
-                                      width=32, height=16)
+        image = red_pixbuf.get_widget("connect")
         box.pack_start(image, 0, 0)
 
         self.connection.show_all()
@@ -42,7 +41,7 @@ class Statusbar(gtk.HBox):
 
         self.message = gtk.Statusbar()
         self.message.show()
-        self.pack_start(self.message, 1, 1)
+        self.pack_start(self.message, expand=1, fill=1)
 
     def set_connected(self, host):
         self.tooltips.set_tip(self.connection, "Connected to " + host)

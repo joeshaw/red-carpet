@@ -76,14 +76,18 @@ class SubscriptionsWindow(gtk.Dialog):
 
     def __init__(self):
         gtk.Dialog.__init__(self, _("%s Channel Subscriptions") % red_main.red_name)
-
         self.set_default_size(500, 300)
 
         view = SubscriptionsView()
         view.show()
-        self.vbox.add(view)
 
-        button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        hbox = gtk.HBox()
+        hbox.show()
+        hbox.pack_start(view, expand=1, fill=1, padding=12)
+        
+        self.vbox.pack_start(hbox, expand=1, fill=1, padding=12)
+
+        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.grab_default()
         button.connect("clicked", lambda x:self.destroy())
 

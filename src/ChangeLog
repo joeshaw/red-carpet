@@ -1,3 +1,29 @@
+2003-05-19  Joe Shaw  <joe@ximian.com>
+
+	This commit fixes most of #43231.
+
+	* red_news.py: HIGify the layout of the news within the dialog.
+
+	* red_packagebook.py: Use the Close button instead of OK.  Don't
+	set the main page's background to white, it violates all sorts of
+	themes.
+
+	* red_packageview.py: Get rid of the event parameter to the popup
+	signal; it isn't used.  Connect to the popup-menu signal (for
+	shift-f10) and pop up the menu.  Add mnemonics for the items.
+
+	* red_prefs.py (PrefsViewPage.create_section): Added.  Does all
+	sorts of nasty layout crap with hboxes and vboxes to make it HIG
+	happy.  Returns a tuple of the toplevel widget and the widget to
+	pack content into.
+	(PrefsViewPage_General, PrefsViewPage_Cache): Get rid of the
+	frames and use bold labels and indention for HIG compliance.
+
+	* red_statusbar.py: Don't stretch the image, just use it as is.
+
+	* red_subscriptions.py: Use Close button instead of OK, add some
+	padding for HIG conformance.
+
 2003-05-15  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (which): Added.  Basically equivalent to the

@@ -177,8 +177,13 @@ class NewsWindow(gtk.Dialog):
 
         view = NewsView()
         view.show()
-        self.vbox.add(view)
 
-        button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        shim = gtk.HBox()
+        shim.pack_start(view, expand=1, fill=1, padding=12)
+        shim.show()
+
+        self.vbox.pack_start(shim, expand=1, fill=1, padding=12)
+
+        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.grab_default()
         button.connect("clicked", lambda x:self.destroy())

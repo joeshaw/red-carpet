@@ -29,7 +29,7 @@ model = None
 class PrefsViewPage(gtk.HBox):
 
     def __init__(self, parent_view, prefs):
-        gtk.HBox.__init__(self, spacing=6)
+        gtk.HBox.__init__(self)
 
         self.view = parent_view
         self.prefs = prefs
@@ -124,7 +124,26 @@ class PrefsViewPage(gtk.HBox):
         self.handled_prefs.append(name)
 
         return spin
-        
+
+    def create_section(self, name):
+        vbox = gtk.VBox(spacing=6)
+
+        # Title
+        label = gtk.Label()
+        label.set_alignment(0.0, 0.5)
+        label.set_markup("<b>%s</b>" % name)
+        vbox.pack_start(label, expand=0, fill=0)
+
+        hbox = gtk.HBox()
+        vbox.pack_start(hbox, expand=0, fill=0)
+
+        shim = gtk.Label("    ")
+        hbox.pack_start(shim, expand=0, fill=0)
+
+        content_vbox = gtk.VBox(spacing=6)
+        hbox.pack_start(content_vbox, expand=0, fill=0)
+
+        return (vbox, content_vbox)
 
 class PrefsViewPage_General(PrefsViewPage):
 
@@ -134,20 +153,21 @@ class PrefsViewPage_General(PrefsViewPage):
         self.__parent = parent
 
     def build(self):
-        vbox = gtk.VBox(spacing=6)
-        self.pack_start(vbox, padding=6)
-        
-        # Server frame
-        frame = gtk.Frame(_("Server"))
-        vbox.pack_start(frame, expand=0)
+        vbox = gtk.VBox(spacing=18)
+        self.pack_start(vbox, expand=0, fill=0, padding=12)
 
-        table = gtk.Table(rows=2, columns=2)
-        table.set_row_spacings(5)
-        frame.add(table)
+        # Server section
+        section, content = self.create_section(_("Server"))
+        vbox.pack_start(section, expand=0, fill=0)
+
+        table = gtk.Table(rows=2, columns=3)
+        table.set_row_spacings(6)
+        table.set_col_spacings(6)
+        content.pack_start(table, expand=0, fill=0)
 
         label = gtk.Label(_("Server URL:"))
         label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL, xpadding=3)
+        table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL)
 
         self.url_entry = self.create_entry("host")
 
@@ -191,76 +211,78 @@ class PrefsViewPage_General(PrefsViewPage):
         is_su = rcd_util.check_server_permission("superuser")
         self.mirrors_button.set_sensitive(is_su)
 
-        entry_button_box = gtk.HBox(0, 0)
+        entry_button_box = gtk.HBox(spacing=6)
         entry_button_box.pack_start(self.url_entry, expand=1, fill=1)
         entry_button_box.pack_start(self.mirrors_button, expand=0, fill=0)
 
-        table.attach(entry_button_box, 1, 2, 0, 1, xpadding=3)
+        table.attach(entry_button_box, 1, 2, 0, 1)
 
         self.premium_check = self.create_checkbox("enable-premium",
                                                   _("Enable Premium Services "
                                                     "(Red Carpet Express or "
                                                     "Enterprise)"))
-        table.attach(self.premium_check, 0, 2, 1, 2,
-                     xoptions=gtk.FILL, xpadding=3)
+        table.attach(self.premium_check, 0, 3, 1, 2,
+                     xoptions=gtk.FILL)
 
-        # Packages frame
-        frame = gtk.Frame(_("Packages"))
-        vbox.pack_start(frame, expand=0)
+        # Packages section
+        section, content = self.create_section(_("Packages"))
+        vbox.pack_start(section, expand=0, fill=0)
 
         table = gtk.Table(rows=2, columns=2)
-        table.set_row_spacings(5)
-        frame.add(table)
+        table.set_row_spacings(6)
+        table.set_col_spacings(6)
+        content.pack_start(table, expand=0, fill=0)
 
         self.signed_check = self.create_checkbox("require-signatures",
                                                  _("Require package "
                                                    "signatures"))
         table.attach(self.signed_check, 0, 2, 0, 1,
-                     xoptions=gtk.FILL, xpadding=3)
+                     xoptions=gtk.FILL)
 
         label = gtk.Label(_("Maximum number of packages to download at once:"))
         label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL, xpadding=3)
+        table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL)
 
         self.max_download_spin = self.create_spinbutton("max-downloads",
                                                         (0, 20))
         table.attach(self.max_download_spin, 1, 2, 1, 2,
-                     xoptions=gtk.FILL, xpadding=3)
+                     xoptions=gtk.FILL)
 
-        # Proxy frame - requires superuser
-        frame = gtk.Frame(_("Proxy"))
-        vbox.pack_start(frame, expand=0)
+        # Proxy section - requires superuser
+        section, content = self.create_section(_("Proxy"))
+        vbox.pack_start(section, expand=0, fill=0)
 
         if rcd_util.check_server_permission("superuser"):
             table = gtk.Table(rows=4, columns=2)
-            table.set_row_spacings(5)
-            frame.add(table)
+            table.set_row_spacings(6)
+            table.set_col_spacings(6)
+            content.pack_start(table, expand=0, fill=0)
 
             self.use_proxy_check = gtk.CheckButton(_("Use a proxy"))
             table.attach(self.use_proxy_check, 0, 2, 0, 1,
-                         xoptions=gtk.FILL, xpadding=3)
+                         xoptions=gtk.FILL)
 
             label = gtk.Label(_("Proxy URL:"))
             label.set_alignment(0.0, 0.5)
-            table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL, xpadding=3)
+            table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL)
 
             self.proxy_url_entry = self.create_entry("proxy-url")
-            table.attach(self.proxy_url_entry, 1, 2, 1, 2, xpadding=3)
+            table.attach(self.proxy_url_entry, 1, 2, 1, 2)
 
             label = gtk.Label(_("Username:"))
             label.set_alignment(0.0, 0.5)
-            table.attach(label, 0, 1, 2, 3, xoptions=gtk.FILL, xpadding=3) 
+            table.attach(label, 0, 1, 2, 3, xoptions=gtk.FILL) 
 
             self.proxy_username_entry = self.create_entry("proxy-username")
-            table.attach(self.proxy_username_entry, 1, 2, 2, 3, xpadding=3)
+            table.attach(self.proxy_username_entry, 1, 2, 2, 3)
 
             label = gtk.Label(_("Password:"))
             label.set_alignment(0.0, 0.5)
-            table.attach(label, 0, 1, 3, 4, xoptions=gtk.FILL, xpadding=3)
+            table.attach(label, 0, 1, 3, 4, xoptions=gtk.FILL)
 
             self.proxy_password_entry = self.create_entry("proxy-password")
             self.proxy_password_entry.set_visibility(0)
-            table.attach(self.proxy_password_entry, 1, 2, 3, 4, xpadding=3)
+            table.attach(self.proxy_password_entry, 1, 2, 3, 4)
 
             # Have to wait for the above widgets to be created.
             def use_proxy_toggled_cb(cb, p):
@@ -287,12 +309,10 @@ class PrefsViewPage_General(PrefsViewPage):
             self.use_proxy_check.set_active((self.prefs["proxy-url"]["value"] and 1) or 0)
             self.use_proxy_check.toggled()
         else:
-            hbox = gtk.HBox()
             label = gtk.Label(_("You do not have permissions to view "
                                 "proxy settings"))
             label.set_alignment(0.0, 0.5)
-            hbox.pack_start(label, padding=3)
-            frame.add(hbox)
+            content.pack_start(label, expand=0, fill=0)
 
 class PrefsViewPage_Cache(PrefsViewPage):
 
@@ -301,44 +321,41 @@ class PrefsViewPage_Cache(PrefsViewPage):
         self.__parent = parent
 
     def build(self):
-        vbox = gtk.VBox(spacing=6)
-        self.pack_start(vbox, padding=6)
+        vbox = gtk.VBox(spacing=18)
+        self.pack_start(vbox, expand=0, fill=0, padding=12)
+
+        content = gtk.VBox(spacing=6)
+        vbox.pack_start(content, expand=0, fill=0)
 
         table = gtk.Table(rows=2, columns=2)
-        table.set_row_spacings(5)
-        vbox.pack_start(table, expand=0, fill=1)
+        table.set_row_spacings(6)
+        table.set_col_spacings(6)
+        content.pack_start(table, expand=0, fill=0)
 
         self.enable_cache_check = self.create_checkbox("cache-enabled",
                                                        _("Cache downloaded "
                                                          "packages and "
                                                          "metadata"))
         table.attach(self.enable_cache_check, 0, 2, 0, 1,
-                     xoptions=gtk.FILL, xpadding=3)
+                     xoptions=gtk.FILL)
 
         label = gtk.Label(_("Location of cached data:"))
         label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL, xpadding=3)
+        table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL)
 
         self.cache_dir_entry = self.create_entry("cache-directory")
-        table.attach(self.cache_dir_entry, 1, 2, 1, 2, xpadding=3)
+        table.attach(self.cache_dir_entry, 1, 2, 1, 2)
 
-        # Expiration frame
-        frame = gtk.Frame(_("Expiration"))
-        vbox.pack_start(frame, expand=0)
-
-        # lame shim
-        hbox = gtk.HBox()
-        frame.add(hbox)
-
-        exp_vbox = gtk.VBox(spacing=5)
-        hbox.pack_start(exp_vbox, padding=3)
+        # Expiration section
+        section, content = self.create_section(_("Expiration"))
+        vbox.pack_start(section, expand=0, fill=0)
 
         self.cache_cleanup_check = self.create_checkbox("cache-cleanup-enabled",
                                                         _("Cache expires"))
-        exp_vbox.pack_start(self.cache_cleanup_check, expand=0, fill=1)
+        content.pack_start(self.cache_cleanup_check, expand=0, fill=0)
 
         hbox = gtk.HBox(spacing=6)
-        exp_vbox.pack_start(hbox)
+        content.pack_start(hbox, expand=0, fill=0)
 
         label = gtk.Label(_("Maximum age in days:"))
         label.set_alignment(0.0, 0.5)
@@ -349,7 +366,7 @@ class PrefsViewPage_Cache(PrefsViewPage):
         hbox.pack_start(self.cache_age_spin, expand=0, fill=1)
 
         hbox = gtk.HBox(spacing=6)
-        exp_vbox.pack_start(hbox)
+        content.pack_start(hbox, expand=0, fill=0)
         
         label = gtk.Label(_("Maximum size in MB:"))
         label.set_alignment(0.0, 0.5)
@@ -360,7 +377,7 @@ class PrefsViewPage_Cache(PrefsViewPage):
         hbox.pack_start(self.cache_size_spin, expand=0, fill=1)
 
         hbox = gtk.HBox(spacing=6)
-        vbox.pack_start(hbox, expand=0, fill=1)
+        vbox.pack_start(hbox, expand=0, fill=0)
         
         label = gtk.Label(_("Current cache size:"))
         label.set_alignment(0.0, 0.5)
@@ -468,7 +485,7 @@ class PrefsViewPage_Advanced(PrefsViewPage):
         col = gtk.TreeViewColumn(_("Value"), r, value=COLUMN_VALUE)
         view.append_column(col)
 
-        self.pack_start(view)
+        self.pack_start(view, expand=1, fill=1, padding=12)
 
 class PrefsView(gtk.Notebook):
 
@@ -511,8 +528,12 @@ class PrefsView(gtk.Notebook):
     def append(self, page, title):
         self.pages.append(page)
 
+        shim = gtk.VBox()
+        shim.pack_start(page, padding=12)
+        shim.show()
+
         label = gtk.Label(title)
-        gtk.Notebook.append_page(self, page, label)
+        gtk.Notebook.append_page(self, shim, label)
 
     def build(self, prefs):
         # Remove the "loading" "page".
