@@ -21,6 +21,7 @@ import gtk
 import gtk.glade
 import ximian_xmlrpclib
 import packagemodel
+import channelmodel
 
 def thrash_model(source,view):
     view.set_model(None)
@@ -70,6 +71,29 @@ def main(version):
     col = gtk.TreeViewColumn("Version",
                              gtk.CellRendererText(),
                              text=packagemodel.COLUMN_EVR)
+    view.append_column(col)
+
+    # We have to thrash the model on a sync, because there is no way
+    # for a TreeModel to emit a global "everything-or-anything-
+    # has-changed" signal.  (I've bitched about this to jrb, so
+    # hopefully it will be get fixed for gtk+ 2.2.)
+    store.connect("sync", thrash_model, view)
+
+    # Channel tree
+    store = channelmodel.ChannelModel(server)
+
+    view = xml.get_widget("channel_tree")
+    view.set_model(store)
+
+    col = gtk.TreeViewColumn("Icon",
+                             gtk.CellRendererPixbuf(),
+                             pixbuf=channelmodel.COLUMN_ICON)
+
+    view.append_column(col)
+
+    col = gtk.TreeViewColumn("Name",
+                             gtk.CellRendererText(),
+                             text=channelmodel.COLUMN_NAME)
     view.append_column(col)
 
     # We have to thrash the model on a sync, because there is no way
