@@ -1,3 +1,4 @@
+test
 red_carpetexecdir = $(bindir)
 red_carpetexec_DATA = red-carpet
 
