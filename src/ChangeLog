@@ -1,3 +1,9 @@
+2003-02-28  Jon Trowbridge  <trow@ximian.com>
+
+	* red_thrashingtreeview.py (TreeView.post_thrash_model): Always
+	autosize the treeview's columns after we thrash.  This helps keeps
+	us from ending up with badly sized, unresizable columns.
+
 2003-02-28  Tambet Ingo  <tambet@ximian.com>
 
 	* red_history.py: Uses red_listmodel and red_thrashingview for model

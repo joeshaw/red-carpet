@@ -101,6 +101,8 @@ class TreeView(gtk.TreeView):
         if self.saved_curpath:
             self.set_cursor(self.saved_curpath, self.saved_column)
 
+        gtk.idle_add(lambda x: x.columns_autosize(), self)
+
     def thrash_model(self):
         self.pre_thrash_model()
         self.post_thrash_model()
