@@ -77,6 +77,19 @@ class InstalledComponent(red_component.Component):
 
         return self.__sbox
 
+    def select_all_sensitive(self):
+        return self.array.len() > 0
+
+    def select_all(self):
+        selection = self.view.get_selection()
+        selection.select_all()
+
+    def unselect_all(self):
+        selection = self.view.get_selection()
+        selection.unselect_all()
+        # In some cases, the selection's changed signal doesn't get
+        # emitted when we unselect_all on it.  I'm not sure why.
+        self.packages_selected([])
 
 class AvailableComponent(red_component.Component):
 
@@ -132,3 +145,17 @@ class AvailableComponent(red_component.Component):
         self.__sbox.try_to_grab_focus()
 
         return self.__sbox
+
+    def select_all_sensitive(self):
+        return self.array.len() > 0
+
+    def select_all(self):
+        selection = self.view.get_selection()
+        selection.select_all()
+
+    def unselect_all(self):
+        selection = self.view.get_selection()
+        selection.unselect_all()
+        # In some cases, the selection's changed signal doesn't get
+        # emitted when we unselect_all on it.  I'm not sure why.
+        self.packages_selected([])

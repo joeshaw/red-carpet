@@ -91,6 +91,7 @@ class MenuBar(gtk.MenuBar):
         self.pending_items = []
         self.pending_items_hash = {}
         self.user_data = None
+        self.statusbar = None
 
         # Automatically construct our menu items, and refresh the items,
         # when we are realized.
@@ -101,6 +102,9 @@ class MenuBar(gtk.MenuBar):
         self.connect("realize",
                      on_realize)
 
+    def set_statusbar(self, statusbar):
+        self.statusbar = statusbar
+
     def set_user_data(self, x):
         self.user_data = x
         
@@ -109,6 +113,7 @@ class MenuBar(gtk.MenuBar):
 
 
     def add(self, path,
+            description=None,
             callback=None,
             with_dropdown_arrow=0,
             is_separator=0,
@@ -149,6 +154,7 @@ class MenuBar(gtk.MenuBar):
 
         item = {"path":path,
                 "name":name,
+                "description":description,
                 "callback":callback,
                 "with_dropdown_arrow":with_dropdown_arrow,
                 "is_separator":is_separator,
@@ -274,6 +280,17 @@ class MenuBar(gtk.MenuBar):
                         menu_item.add(hbox)
                     else:
                         menu_item = gtk.MenuItem(item_name)
+
+                if self.statusbar and item["description"]:
+                    def select_cb(mi, sb, i):
+                        sb.push(hash(mi), i["description"])
+
+                    def deselect_cb(mi, sb):
+                        sb.pop(hash(mi))
+
+                    menu_item.connect("select", select_cb,
+                                      self.statusbar, item)
+                    menu_item.connect("deselect", deselect_cb, self.statusbar)
 
                 parent_menu.append(menu_item)
                 menu_item.show_all()

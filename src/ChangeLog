@@ -1,5 +1,31 @@
 2003-06-03  Joe Shaw  <joe@ximian.com>
 
+	* red_appwindow.py (build): Set the statusbar on the menubar.
+	(assemble_menubar): Set a description property for all the menu
+	items.
+
+	* red_menubar.py (set_statusbar): Added.  Associates a statusbar
+	with a menubar.
+	(add): Take a "description" property to be displayed in the
+	statusbar.
+	(walk_tree): If the menubar has an associated statusbar and the
+	item has a description, connect to the menu item's select and
+	deselect signals and push messages onto the statusbar.  Fixes part
+	of #43231.
+
+	* red_search.py, red_software.py: Add ability to select all/none.
+	Part of #43231.
+
+	* red_statusbar.py: Import red_gettext since we have a
+	translatable string here.
+	(set_connected): Push the "Connected to foo" message onto the
+	statusbar stack.  Fixes #40468.
+
+	* red_transaction.py (TransactionComponent): Add ability to select
+	all/none.  Part of #43231.
+
+2003-06-03  Joe Shaw  <joe@ximian.com>
+
 	* red_serverproxy.py (ServerThread.run): Also re-raise xmlrpc
 	faults if RC_ALWAYS_RAISE_FAULTS is set.  Be less-encompassing
 	with the dead daemon dialog, only catching a few socket and

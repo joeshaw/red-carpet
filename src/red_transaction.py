@@ -134,6 +134,7 @@ class TransactionComponent(red_component.Component):
 
         view = red_packageview.PackageView(self.array)
         self.connect_view(view)
+        self.view = view
         
         view.append_action_column(show_action_name=1)
         view.append_name_column(show_channel_icon=1)
@@ -156,9 +157,22 @@ class TransactionComponent(red_component.Component):
 
 
     def changed_visibility(self, flag):
-
         if not flag:
             red_pendingops.clear_action_cancellations()
+
+    def select_all_sensitive(self):
+        return self.array.len() > 0
+
+    def select_all(self):
+        selection = self.view.get_selection()
+        selection.select_all()
+
+    def unselect_all(self):
+        selection = self.view.get_selection()
+        selection.unselect_all()
+        # In some cases, the selection's changed signal doesn't get
+        # emitted when we unselect_all on it.  I'm not sure why.
+        self.packages_selected([])
 
 class TransactionSimple(gtk.ScrolledWindow):
 

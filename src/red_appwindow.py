@@ -170,7 +170,7 @@ class AppWindow(gtk.Window,
         ## Toolbar
         self.toolbar = red_toolbar.Toolbar()
         self.assemble_toolbar(self.toolbar)
-        self.vbox.pack_start(self.toolbar, expand=0, fill=0)
+        self.vbox.pack_start(self.toolbar, expand=0, fill=1)
         self.toolbar.show_all()
 
         self.transient_windows = {}
@@ -245,6 +245,8 @@ class AppWindow(gtk.Window,
                          lambda x,y,z:z.set_connected(y), self.statusbar)
         self.statusbar.connect("connect", lambda x:self.connect_to_daemon())
         notifier.notify()
+
+        self.menubar.set_statusbar(self.statusbar)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
@@ -530,6 +532,7 @@ class AppWindow(gtk.Window,
         bar.add("/" + help_str)
 
         bar.add("/%s/%s" % (file_str, _("Connect...")),
+                description=_("Connect to a remote daemon"),
                 callback=lambda x:self.connect_to_daemon(),
                 pixbuf_name="connect",
                 accelerator="<Control>O")
@@ -540,6 +543,7 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("install")
 
         bar.add("/%s/%s" % (file_str, _("Install from _File...")),
+                description=_("Install a package from a local file"),
                 pixbuf=red_pixbuf.get_pixbuf("install-from-file"),
                 sensitive_fn=install_file_sensitive_fn,
                 callback=lambda x:red_installfiles.install_local(self))
@@ -549,6 +553,7 @@ class AppWindow(gtk.Window,
                    red_installfiles.can_install_remote()
 
         bar.add("/%s/%s" % (file_str, _("Install from _URL...")),
+                description=_("Install a package from a remote URL"),
                 pixbuf=red_pixbuf.get_pixbuf("install-from-url"),
                 sensitive_fn=install_url_sensitive_fn,
                 callback=lambda x:red_installfiles.install_remote(self))
@@ -566,6 +571,7 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("superuser")
 
         bar.add("/%s/%s" % (file_str, _("_Mount Directory...")),
+                description=_("Mount a directory as a channel"),
                 callback=mount_callback,
                 sensitive_fn=mount_sensitive_fn,
                 accelerator="<Control>M")
@@ -582,6 +588,7 @@ class AppWindow(gtk.Window,
                    red_mount.has_mounted_channels()
 
         bar.add("/%s/%s" % (file_str, _("U_nmount Directory...")),
+                description=_("Unmount a directory"),
                 callback=unmount_callback,
                 sensitive_fn=unmount_sensitive_fn,
                 accelerator="<Control>N")
@@ -597,12 +604,14 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("superuser")
         
         bar.add("/%s/%s" % (file_str, _("_Activate...")),
+                description=_("Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"),
                 callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow),
                 sensitive_fn=activate_sensitive_fn)
 
         bar.add("/%s/sep4" % file_str, is_separator=1)
         
         bar.add("/%s/%s" % (file_str, _("Quit")),
+                description=_("Quit Red Carpet"),
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
 
@@ -618,11 +627,13 @@ class AppWindow(gtk.Window,
             return comp.select_all_sensitive()
 
         bar.add("/%s/%s" % (edit_str, _("Select _All")),
+                description=_("Select all items"),
                 callback=lambda x:self.select_all_cb(1),
                 accelerator="<Control>a",
                 sensitive_fn=select_all_sensitive_cb)
 
         bar.add("/%s/%s" % (edit_str, _("Select _None")),
+                description=_("Deselect all items"),
                 callback=lambda x:self.select_all_cb(0),
                 sensitive_fn=select_all_sensitive_cb,
                 accelerator="<Shift><Control>A")
@@ -630,15 +641,18 @@ class AppWindow(gtk.Window,
         bar.add("/%s/sep" % edit_str, is_separator=1)
 
         bar.add("/%s/%s" % (edit_str, _("Channel _Subscriptions...")),
+                description=_("Edit your channel subscriptions"),
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
                 pixbuf=red_pixbuf.get_pixbuf("channels-16"),
                 accelerator="<Control>B")
 
         bar.add("/%s/%s" % (edit_str, _("_Preferences...")),
+                description=_("Edit your Red Carpet preferences"),
                 stock=gtk.STOCK_PREFERENCES,
                 callback=lambda x:self.open_or_raise_window(red_prefs.PrefsWindow))
 
         bar.add("/%s/%s" % (edit_str, _("_Users...")),
+                description=_("Edit user permissions for this daemon"),
                 pixbuf=red_pixbuf.get_pixbuf("users"),
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
@@ -652,20 +666,24 @@ class AppWindow(gtk.Window,
             self.sidebar.change_visibility()
 
         bar.add("/%s/%s" % (view_str, _("_Sidebar")),
+                description=_("Hide or show the Pending Actions sidebar"),
                 checked_get=checked_get_cb,
                 checked_set=checked_set_cb)
 
         bar.add("/%s/%s" % (view_str, _("_Advanced Search Options")),
+                description=_("Hide or show advanced search options"),
                 checked_get=red_searchbox.show_advanced_get,
                 checked_set=red_searchbox.show_advanced_set)
 
         bar.add("/%s/%s" % (view_str, _("_Channel Names")),
+                description=_("Hide or show channel names in package lists"),
                 checked_get=red_packageview.show_channel_names_get,
                 checked_set=red_packageview.show_channel_names_set)
 
         bar.add("/%s/sep" % view_str, is_separator=1)
 
         bar.add("/%s/%s" % (view_str, _("Package _Information...")),
+                description=_("View information about currently selected packages"),
                 pixbuf_name="info",
                 callback=lambda x:self.package_info_cb(),
                 sensitive_fn=self.info_sensitive_cb,
@@ -674,8 +692,10 @@ class AppWindow(gtk.Window,
         bar.add("/%s/sep1" % view_str, is_separator=1)
 
         bar.add("/%s/%s" % (view_str, _("_Daemon Information...")),
+                description=_("View information about this daemon"),
                 callback=red_serverinfo.view_server_info_cb)
         bar.add("/%s/%s" % (view_str, _("Red Carpet Ne_ws...")),
+                description=_("View the latest Red Carpet news"),
                 callback=lambda x:self.open_or_raise_window(red_news.NewsWindow))
 
         bar.add("/%s/sep2" % view_str, is_separator=1)
@@ -688,6 +708,7 @@ class AppWindow(gtk.Window,
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
 
         bar.add("/%s/%s" % (actions_str, _("Run _Now")),
+                description=_("Run the current transaction"),
                 image=image,
                 callback=run_transaction_cb,
                 sensitive_fn=self.sensitize_run_button,
@@ -702,6 +723,7 @@ class AppWindow(gtk.Window,
             return comp.run_sensitized()
                 
         bar.add("/%s/%s" % (actions_str, _("_Verify System Dependencies")),
+                description=_("Verify that all system dependencies are met"),
                 callback=verify_deps_cb,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
                 accelerator="<Control>D")
@@ -713,6 +735,7 @@ class AppWindow(gtk.Window,
         ##
 
         bar.add("/%s/%s" % (actions_str, _("Mark for I_nstallation")),
+                description=_("Mark this package for installation"),
                 pixbuf_name="to-be-installed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED),
                 sensitive_fn=self.install_sensitive_cb)
@@ -722,6 +745,7 @@ class AppWindow(gtk.Window,
         ##
 
         bar.add("/%s/%s" % (actions_str, _("Mark for _Removal")),
+                description=_("Mark this package for removal"),
                 pixbuf_name="to-be-removed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED),
                 sensitive_fn=self.remove_sensitive_cb)
@@ -734,6 +758,7 @@ class AppWindow(gtk.Window,
         image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
 
         bar.add("/%s/%s" % (actions_str, _("_Cancel")),
+                description=_("Cancel installation or removal mark"),
                 image=image,
                 callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION),
                 sensitive_fn=self.cancel_sensitive_cb)
@@ -748,6 +773,7 @@ class AppWindow(gtk.Window,
         image.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
 
         bar.add("/%s/%s" % (actions_str, _("Re_fresh Channel Data")),
+                description=_("Download latest channel data"),
                 image=image,
                 callback=rcd_util.refresh,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
@@ -757,11 +783,13 @@ class AppWindow(gtk.Window,
         image.set_from_stock(gtk.STOCK_HELP, gtk.ICON_SIZE_MENU)
 
         bar.add("/%s/%s" % (help_str, _("_Contents")),
+                description=_("View Red Carpet help"),
                 image=image,
                 callback=help_cb,
                 accelerator="F1")
 
         bar.add("/%s/%s" % (help_str, _("_About...")),
+                description=_("About Red Carpet"),
                 pixbuf_name="menu-about",
                 callback=lambda x:self.open_or_raise_window(red_about.About))
 
@@ -780,6 +808,7 @@ class AppWindow(gtk.Window,
                 self.componentbook.view_component(comp)
 
         self.menubar.add("/%s/%s" % (_("_View"), comp.menu_name()),
+                         description=_("Go to the '%s' page" % comp.name()),
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb,
                          accelerator=comp.accelerator())

@@ -18,6 +18,8 @@
 import gobject, gtk
 import red_pixbuf
 
+from red_gettext import _
+
 class Statusbar(gtk.HBox):
     def __init__(self):
         gobject.GObject.__init__(self)
@@ -44,7 +46,10 @@ class Statusbar(gtk.HBox):
         self.pack_start(self.message, expand=1, fill=1)
 
     def set_connected(self, host):
-        self.tooltips.set_tip(self.connection, "Connected to " + host)
+        msg = _("Connected to %s" % host)
+        self.tooltips.set_tip(self.connection, msg)
+        self.pop(hash(self)) # Pop off any old message
+        self.push(hash(self), msg)
 
     def connect_clicked(self):
         self.emit("connect")

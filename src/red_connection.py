@@ -224,7 +224,7 @@ class ConnectionNotify(gobject.GObject):
 
     def notify_new(self, host, local):
         if local:
-            host = "Localhost"
+            host = "localhost"
         self.current_host = host
         self.notify_real(host)
 
