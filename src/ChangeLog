@@ -1,3 +1,8 @@
+2003-01-28  Tambet Ingo  <tambet@ximian.com>
+
+	* red_users.py: Rewrote models to make things (hopefully)
+	suck less.
+
 2003-01-27  Jon Trowbridge  <trow@ximian.com>
 
 	* red_users.py: Rearranged the dialog a bit.  Made pretty much
