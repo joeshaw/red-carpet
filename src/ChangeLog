@@ -1,3 +1,10 @@
+2004-09-14  James Willcox  <james@ximian.com>
+
+	* red_installfiles.py:
+	* red_main.py:
+
+	Handle rpms from the commandline
+
 2004-08-25  Tambet Ingo  <tambet@ximian.com>
 
 	* red_menubar.py (MenuBar.select_cb, MenuBar.deselect_cb): Use absolute

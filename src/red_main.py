@@ -36,6 +36,7 @@ import red_history
 import red_option
 import red_settings
 import red_software
+import red_installfiles
 
 import red_patches
 
@@ -191,6 +192,12 @@ def main(version):
     app.register_component(red_transaction.TransactionComponent())
 
     app.show()
+
+    #add files to install from the cmdline
+    if len(args) > 0:
+        ret = red_installfiles.install_files(args)
+        if not ret:
+            red_appwindow.run_transaction_cb(app)
 
     gtk.main()
 

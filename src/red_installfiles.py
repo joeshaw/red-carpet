@@ -35,70 +35,77 @@ def can_install_remote():
     global have_urllib
     return have_urllib
 
+def install_files(files, parent=None):
+    server = rcd_util.get_server()
+
+    err = 0
+    plist = []
+
+    try:
+        # We need to do the stat check because if we select something in
+        # the filesel and then unselect it (with control-click), we'll
+        # get the parent directory for that file, not the file itself.
+
+        def is_valid(x):
+            try:
+                return stat.S_ISDIR(os.stat(x).st_mode)
+            except OSError, e:
+                # File probably doesn't exist.
+                return 0
+
+        def query_file(x):
+            is_local = rcd_util.get_server_local()
+            if is_local:
+                pdata = os.path.abspath(x)
+            else:
+                pdata = ximian_xmlrpclib.Binary(open(x).read())
+
+            p = server.rcd.packsys.query_file(pdata)
+
+            if is_local:
+                p["package_filename"] = pdata
+            else:
+                p["package_data"] = pdata
+
+            return p
+        
+        plist = [query_file(x) \
+                 for x in files \
+                 if not is_valid(x)]
+    except ximian_xmlrpclib.Fault, f:
+        if f.faultCode == rcd_util.fault.package_not_found \
+           or f.faultCode == rcd_util.fault.invalid_package_file:
+            dialog = gtk.MessageDialog(parent, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                       gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                       _("%s is not a valid package") % x)
+            dialog.run()
+            dialog.destroy()
+            err = 1
+        else:
+            raise
+    else:
+        if not plist:
+            dialog = gtk.MessageDialog(parent, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                       gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                       _("There are no valid packages to install"))
+            dialog.run()
+            dialog.destroy()
+            err = 1
+            
+
+    if not err:
+        [red_pendingops.set_action(x, red_pendingops.TO_BE_INSTALLED) for x in plist]
+
+    return err
+
+
 def install_local(parent):
     
     def get_file_cb(b, fs):
-        server = rcd_util.get_server()
-
-        err = 0
-        plist = []
-
-        try:
-            # We need to do the stat check because if we select something in
-            # the filesel and then unselect it (with control-click), we'll
-            # get the parent directory for that file, not the file itself.
-
-            def is_valid(x):
-                try:
-                    return stat.S_ISDIR(os.stat(x).st_mode)
-                except OSError, e:
-                    # File probably doesn't exist.
-                    return 0
-
-            def query_file(x):
-                is_local = rcd_util.get_server_local()
-                if is_local:
-                    pdata = os.path.abspath(x)
-                else:
-                    pdata = ximian_xmlrpclib.Binary(open(x).read())
-
-                p = server.rcd.packsys.query_file(pdata)
-
-                if is_local:
-                    p["package_filename"] = pdata
-                else:
-                    p["package_data"] = pdata
-
-                return p
-            
-            plist = [query_file(x) \
-                     for x in fs.get_selections() \
-                     if not is_valid(x)]
-        except ximian_xmlrpclib.Fault, f:
-            if f.faultCode == rcd_util.fault.package_not_found \
-               or f.faultCode == rcd_util.fault.invalid_package_file:
-                dialog = gtk.MessageDialog(fs, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                           _("%s is not a valid package") % x)
-                dialog.run()
-                dialog.destroy()
-                err = 1
-            else:
-                raise
-        else:
-            if not plist:
-                dialog = gtk.MessageDialog(fs, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                           _("There are no valid packages to install"))
-                dialog.run()
-                dialog.destroy()
-                err = 1
-
+        err = install_files (fs.get_selections(), fs)
         if not err:
             fs.destroy()
-            [red_pendingops.set_action(x, red_pendingops.TO_BE_INSTALLED) for x in plist]
             
-
     filesel = gtk.FileSelection(_("Install from File"))
     filesel.set_filename(os.environ.get("HOME", "") + "/") # need trailing /
     filesel.set_select_multiple(1)
