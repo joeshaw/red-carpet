@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet 2.1.90\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-21 15:08+0200\n"
+"POT-Creation-Date: 2003-10-30 22:10-0500\n"
 "PO-Revision-Date: 2003-10-21 15:05+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -41,25 +41,24 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
-#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:419
+#: src/rcd_util.py:398
 msgid "Please wait while getting data."
 msgstr "Bitte warten, Daten werden abgerufen."
 
 #. ##############################################################################
-#: src/rcd_util.py:473 src/rcd_util.py:491
+#: src/rcd_util.py:452 src/rcd_util.py:470
 msgid "Please ensure that your network settings are correct."
 msgstr ""
 "Bitte stellen Sie sicher, dass Ihre Netzwerkeinstellungen korrekt sind."
 
-#: src/rcd_util.py:480
+#: src/rcd_util.py:459
 msgid "Refreshing channel data"
 msgstr "Kanaldaten werden aufgefrischt"
 
-#: src/rcd_util.py:482
+#: src/rcd_util.py:461
 msgid "Downloading channel information"
 msgstr "Kanalinformationen werden heruntergeladen"
 
@@ -67,31 +66,31 @@ msgstr "Kanalinformationen werden heruntergeladen"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:508
+#: src/rcd_util.py:487
 msgid "Verifying"
 msgstr "Überprüfen"
 
-#: src/rcd_util.py:509
+#: src/rcd_util.py:488
 msgid "Unable to verify package signature for"
 msgstr "Paketsignatur konnte nicht überprüft werden für"
 
-#: src/rcd_util.py:510
+#: src/rcd_util.py:489
 msgid "There is no package signature for"
 msgstr "Es existiert keine Paketsignatur für"
 
-#: src/rcd_util.py:511
+#: src/rcd_util.py:490
 msgid "Preparing Transaction"
 msgstr "Übertragung wird vorbereitet"
 
-#: src/rcd_util.py:512
+#: src/rcd_util.py:491
 msgid "Installing"
 msgstr "Installieren"
 
-#: src/rcd_util.py:513
+#: src/rcd_util.py:492
 msgid "Removing"
 msgstr "Entfernen"
 
-#: src/rcd_util.py:514
+#: src/rcd_util.py:493
 msgid "Configuring"
 msgstr "Konfigurieren"
 
@@ -1655,7 +1654,7 @@ msgstr "Kein zutreffendes Paket gefunden"
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:760
+#: src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Nach Aktualisierungen suchen..."
 
@@ -1736,7 +1735,7 @@ msgstr "Kollidiert mit"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78 src/red_services.py:112
+#: src/red_packagepage_info.py:78
 msgid "Name"
 msgstr "Name"
 
@@ -2373,58 +2372,6 @@ msgstr "XML-Ausgabedatei wählen"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. ##
-#. ## ListModel methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#: src/red_services.py:88
-msgid "Edit Services"
-msgstr "Dienste bearbeiten"
-
-#: src/red_services.py:117
-msgid "URL"
-msgstr "URL"
-
-#: src/red_services.py:133
-msgid "_Remove service"
-msgstr "Dienst _entfernen"
-
-#: src/red_services.py:146
-msgid "_Add service"
-msgstr "Dienst _hinzufügen"
-
-#: src/red_services.py:226
-msgid "Add Service"
-msgstr "Dienst hinzufügen"
-
-#: src/red_services.py:231
-msgid "Service URL"
-msgstr "Dienst-URL"
-
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
@@ -2735,6 +2682,24 @@ msgstr "Benutzername ungültig."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Benutzer »%s« existiert bereits."
+
+#~ msgid "Edit Services"
+#~ msgstr "Dienste bearbeiten"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "_Remove service"
+#~ msgstr "Dienst _entfernen"
+
+#~ msgid "_Add service"
+#~ msgstr "Dienst _hinzufügen"
+
+#~ msgid "Add Service"
+#~ msgstr "Dienst hinzufügen"
+
+#~ msgid "Service URL"
+#~ msgstr "Dienst-URL"
 
 #~ msgid ""
 #~ "System could not be activated: Invalid activation code or email address."

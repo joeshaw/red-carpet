@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet.HEAD.sk\n"
-"POT-Creation-Date: 2003-09-05 17:12-0400\n"
+"POT-Creation-Date: 2003-10-30 22:10-0500\n"
 "PO-Revision-Date: 2003-02-01 10:08+0100\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@kde.org>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -41,22 +41,22 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:381
+#: src/rcd_util.py:398
 #, fuzzy
 msgid "Please wait while getting data."
 msgstr "Načítavam stránku, prosím, čakajte..."
 
 #. ##############################################################################
-#: src/rcd_util.py:435 src/rcd_util.py:453
+#: src/rcd_util.py:452 src/rcd_util.py:470
 msgid "Please ensure that your network settings are correct."
 msgstr ""
 
-#: src/rcd_util.py:442
+#: src/rcd_util.py:459
 #, fuzzy
 msgid "Refreshing channel data"
 msgstr "Sťahujem dáta kanálu..."
 
-#: src/rcd_util.py:444
+#: src/rcd_util.py:461
 #, fuzzy
 msgid "Downloading channel information"
 msgstr "Sťahujem dáta kanálu..."
@@ -65,32 +65,32 @@ msgstr "Sťahujem dáta kanálu..."
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:470
+#: src/rcd_util.py:487
 msgid "Verifying"
 msgstr "Overujem"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:488
 msgid "Unable to verify package signature for"
 msgstr ""
 
-#: src/rcd_util.py:472
+#: src/rcd_util.py:489
 msgid "There is no package signature for"
 msgstr ""
 
-#: src/rcd_util.py:473
+#: src/rcd_util.py:490
 #, fuzzy
 msgid "Preparing Transaction"
 msgstr "Začítam transakciu..."
 
-#: src/rcd_util.py:474
+#: src/rcd_util.py:491
 msgid "Installing"
 msgstr "Inštalujem"
 
-#: src/rcd_util.py:475
+#: src/rcd_util.py:492
 msgid "Removing"
 msgstr "Odstraňujem"
 
-#: src/rcd_util.py:476
+#: src/rcd_util.py:493
 msgid "Configuring"
 msgstr "Konfigurujem"
 
@@ -179,36 +179,36 @@ msgstr ""
 msgid "Group Activation"
 msgstr ""
 
-#: src/red_activation.py:37
+#: src/red_activation.py:44
+#, fuzzy
+msgid "Service:"
+msgstr "Veľkosť:"
+
+#: src/red_activation.py:48
 msgid "Email:"
 msgstr "E-mail:"
 
-#: src/red_activation.py:41
+#: src/red_activation.py:52
 msgid "Activation Code:"
 msgstr ""
 
-#: src/red_activation.py:59
+#: src/red_activation.py:78
 msgid "Activate"
 msgstr ""
 
-#: src/red_activation.py:76
+#: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
 msgstr ""
 
-#: src/red_activation.py:91
+#: src/red_activation.py:114
 msgid "Unable to activate"
 msgstr ""
 
-#: src/red_activation.py:92
+#: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
 
 #. Store email to config.
-#: src/red_activation.py:110
-msgid ""
-"System could not be activated: Invalid activation code or email address."
-msgstr ""
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -231,7 +231,7 @@ msgstr ""
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:83
+#: src/red_appwindow.py:84
 msgid "C"
 msgstr ""
 
@@ -245,13 +245,13 @@ msgstr ""
 #. dunno, but a sane
 #. fallback
 #. CDE
-#: src/red_appwindow.py:120
+#: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
 msgstr ""
 
-#: src/red_appwindow.py:130
+#: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
@@ -269,7 +269,7 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:405
+#: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr ""
@@ -277,41 +277,41 @@ msgstr ""
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr ""
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:435
 msgid "Perform installations and removals"
 msgstr ""
 
-#: src/red_appwindow.py:441
+#: src/red_appwindow.py:442
 #, fuzzy
 msgid "Channels"
 msgstr "Zrušiť"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
 msgstr ""
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:451
 #, fuzzy
 msgid "Refresh"
 msgstr "_Obnoviť"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:452
 msgid "Refresh channel data"
 msgstr ""
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:462 src/red_packageview.py:232
+#: src/red_appwindow.py:463 src/red_packageview.py:232
 #, fuzzy
 msgid "Mark for _Installation"
 msgstr "Inštalácia balíkov"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:464
 #, fuzzy
 msgid "Mark selected packages for installation"
 msgstr "Vymazať balíky vo vyrovnávacej pamäti pri štarte"
@@ -319,13 +319,13 @@ msgstr "Vymazať balíky vo vyrovnávacej pamäti pri štarte"
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:468 src/red_appwindow.py:763
+#: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 #, fuzzy
 msgid "Mark for _Removal"
 msgstr "Odstránenie balíkov"
 
-#: src/red_appwindow.py:469
+#: src/red_appwindow.py:470
 #, fuzzy
 msgid "Mark selected packages for removal"
 msgstr "Inštalovať vybrané balíky"
@@ -333,23 +333,23 @@ msgstr "Inštalovať vybrané balíky"
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:474 src/red_appwindow.py:776
+#: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 #, fuzzy
 msgid "_Cancel"
 msgstr "Zrušiť"
 
-#: src/red_appwindow.py:475
+#: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
 msgstr ""
 
 #. Info
-#: src/red_appwindow.py:480 src/red_packageview.py:276
+#: src/red_appwindow.py:481 src/red_packageview.py:276
 #, fuzzy
 msgid "I_nformation"
 msgstr "Informácie"
 
-#: src/red_appwindow.py:481
+#: src/red_appwindow.py:482
 #, fuzzy
 msgid "Package information"
 msgstr "Inštalácia balíkov"
@@ -360,11 +360,11 @@ msgstr "Inštalácia balíkov"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:538
+#: src/red_appwindow.py:539
 msgid "_File"
 msgstr ""
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:540
 msgid "_Edit"
 msgstr ""
 
@@ -373,41 +373,41 @@ msgstr ""
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:540 src/red_appwindow.py:826
+#: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:542
 #, fuzzy
 msgid "_Actions"
 msgstr "P_rihlásenia"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:543
 msgid "_Help"
 msgstr ""
 
-#: src/red_appwindow.py:550
+#: src/red_appwindow.py:551
 msgid "Connect to daemon..."
 msgstr ""
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
 msgstr ""
 
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:562
 msgid "Install from _File..."
 msgstr ""
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:563
 #, fuzzy
 msgid "Install a package from a local file"
 msgstr "Inštalovať všetky balíky v priečinku"
 
-#: src/red_appwindow.py:571
+#: src/red_appwindow.py:572
 msgid "Install from _URL..."
 msgstr ""
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:573
 #, fuzzy
 msgid "Install a package from a remote URL"
 msgstr "Inštalovať všetky balíky v priečinku"
@@ -415,11 +415,11 @@ msgstr "Inštalovať všetky balíky v priečinku"
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:589
+#: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr ""
 
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:591
 #, fuzzy
 msgid "Mount a directory as a channel"
 msgstr "Štandardný podkanál:"
@@ -427,31 +427,31 @@ msgstr "Štandardný podkanál:"
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:606
+#: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr ""
 
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:608
 msgid "Unmount a directory"
 msgstr ""
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:622
+#: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr ""
 
-#: src/red_appwindow.py:623
+#: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
 
-#: src/red_appwindow.py:629
+#: src/red_appwindow.py:631
 msgid "Quit"
 msgstr "Koniec"
 
-#: src/red_appwindow.py:630
+#: src/red_appwindow.py:632
 #, fuzzy
 msgid "Quit Red Carpet"
 msgstr "Red Carpet"
@@ -459,130 +459,140 @@ msgstr "Red Carpet"
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:645
+#: src/red_appwindow.py:647
 #, fuzzy
 msgid "Select _All"
 msgstr "Vybrať _všetko"
 
-#: src/red_appwindow.py:646
+#: src/red_appwindow.py:648
 #, fuzzy
 msgid "Select all items"
 msgstr "Vybrať _všetko"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:653
 #, fuzzy
 msgid "Select _None"
 msgstr "Vybrať _nič"
 
-#: src/red_appwindow.py:652
+#: src/red_appwindow.py:654
 msgid "Deselect all items"
 msgstr ""
 
-#: src/red_appwindow.py:659
+#: src/red_appwindow.py:661
+#, fuzzy
+msgid "Services..."
+msgstr "Nastavenie"
+
+#: src/red_appwindow.py:662
+#, fuzzy
+msgid "Edit services"
+msgstr "Premium Services"
+
+#: src/red_appwindow.py:666
 #, fuzzy
 msgid "Channel _Subscriptions..."
 msgstr "P_rihlásenia"
 
-#: src/red_appwindow.py:660
+#: src/red_appwindow.py:667
 #, fuzzy
 msgid "Edit your channel subscriptions"
 msgstr "P_rihlásenia"
 
-#: src/red_appwindow.py:665
+#: src/red_appwindow.py:672
 #, fuzzy
 msgid "_Preferences..."
 msgstr "Nastavenie"
 
-#: src/red_appwindow.py:666
+#: src/red_appwindow.py:673
 #, fuzzy
 msgid "Edit your Red Carpet preferences"
 msgstr "Ximian Red Carpet - Nastavenie"
 
-#: src/red_appwindow.py:670
+#: src/red_appwindow.py:677
 msgid "_Users..."
 msgstr ""
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
 msgstr ""
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr ""
 
-#: src/red_appwindow.py:685
+#: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
 msgstr ""
 
-#: src/red_appwindow.py:689
+#: src/red_appwindow.py:696
 #, fuzzy
 msgid "_Advanced Search Options"
 msgstr "P_rihlásenia"
 
-#: src/red_appwindow.py:690
+#: src/red_appwindow.py:697
 #, fuzzy
 msgid "Hide or show advanced search options"
 msgstr "P_rihlásenia"
 
-#: src/red_appwindow.py:694
+#: src/red_appwindow.py:701
 #, fuzzy
 msgid "_Channel Names"
 msgstr "Informácia o kanáli"
 
-#: src/red_appwindow.py:695
+#: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
 msgstr ""
 
-#: src/red_appwindow.py:701
+#: src/red_appwindow.py:708
 #, fuzzy
 msgid "Package _Information..."
 msgstr "Inštalácia balíkov"
 
-#: src/red_appwindow.py:702
+#: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
 msgstr ""
 
-#: src/red_appwindow.py:710
+#: src/red_appwindow.py:717
 #, fuzzy
 msgid "_Daemon Information..."
 msgstr "Informácie"
 
-#: src/red_appwindow.py:711
+#: src/red_appwindow.py:718
 msgid "View information about this daemon"
 msgstr ""
 
-#: src/red_appwindow.py:713
+#: src/red_appwindow.py:720
 #, fuzzy
 msgid "Red Carpet Ne_ws..."
 msgstr "Novinky Red Carpet"
 
-#: src/red_appwindow.py:714
+#: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
 msgstr ""
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:726
+#: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr ""
 
-#: src/red_appwindow.py:727
+#: src/red_appwindow.py:734
 msgid "Run the current transaction"
 msgstr ""
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:741
+#: src/red_appwindow.py:748
 #, fuzzy
 msgid "_Verify System Dependencies"
 msgstr "Nesplnené závislosti"
 
-#: src/red_appwindow.py:742
+#: src/red_appwindow.py:749
 #, fuzzy
 msgid "Verify that all system dependencies are met"
 msgstr "Nesplnené závislosti"
@@ -590,22 +600,22 @@ msgstr "Nesplnené závislosti"
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 #, fuzzy
 msgid "Mark for I_nstallation"
 msgstr "Inštalácia balíkov"
 
-#: src/red_appwindow.py:754
+#: src/red_appwindow.py:761
 #, fuzzy
 msgid "Mark this package for installation"
 msgstr "Vymazať balíky vo vyrovnávacej pamäti pri štarte"
 
-#: src/red_appwindow.py:764
+#: src/red_appwindow.py:771
 #, fuzzy
 msgid "Mark this package for removal"
 msgstr "Inštalovať vybrané balíky"
 
-#: src/red_appwindow.py:777
+#: src/red_appwindow.py:784
 #, fuzzy
 msgid "Cancel installation or removal mark"
 msgstr "Inštalácia dokončená."
@@ -613,35 +623,35 @@ msgstr "Inštalácia dokončená."
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:791
+#: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr ""
 
-#: src/red_appwindow.py:792
+#: src/red_appwindow.py:799
 #, fuzzy
 msgid "Download latest channel data"
 msgstr "Sťahujem dáta kanálu (%s)"
 
-#: src/red_appwindow.py:801
+#: src/red_appwindow.py:808
 msgid "_Contents"
 msgstr ""
 
-#: src/red_appwindow.py:802
+#: src/red_appwindow.py:809
 #, fuzzy
 msgid "View Red Carpet help"
 msgstr "Red Carpet"
 
-#: src/red_appwindow.py:807
+#: src/red_appwindow.py:814
 #, fuzzy
 msgid "_About..."
 msgstr "O programe"
 
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:815
 #, fuzzy
 msgid "About Red Carpet"
 msgstr "Red Carpet"
 
-#: src/red_appwindow.py:827
+#: src/red_appwindow.py:834
 #, python-format
 msgid "Go to the '%s' page"
 msgstr ""
@@ -697,17 +707,17 @@ msgstr ""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_channeloption.py:50
+#: src/red_channeloption.py:64
 #, fuzzy
 msgid "All Channels"
 msgstr "Vybrané kanále"
 
-#: src/red_channeloption.py:55
+#: src/red_channeloption.py:69
 #, fuzzy
 msgid "All Subscribed Channels"
 msgstr "Prihlásené kanále"
 
-#: src/red_channeloption.py:60
+#: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
 msgstr ""
 
@@ -873,7 +883,7 @@ msgstr ""
 msgid "User name:"
 msgstr "Meno používateľa"
 
-#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Heslo:"
@@ -958,23 +968,23 @@ msgstr "Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 #, fuzzy
 msgid "Dependency Resolution"
 msgstr "Závislosti"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 #, fuzzy
 msgid "Verifying System"
 msgstr "Overujem %s"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 #, fuzzy
 msgid "Resolving Dependencies"
 msgstr "Závislosti"
 
-#: src/red_depcomponent.py:157
+#: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
@@ -983,25 +993,23 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr ""
 
-#. FIXME: flags
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:261
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr ""
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:311
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr ""
 
-#: src/red_depcomponent.py:313
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -1011,25 +1019,25 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:367
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Požadované inštalácie"
 
-#: src/red_depcomponent.py:371
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Požadované odstránenia"
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:383
 #, fuzzy
 msgid "Required Installations"
 msgstr "Požadované inštalácie"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:387
 #, fuzzy
 msgid "Required Removals"
 msgstr "Požadované odstránenia"
 
-#: src/red_depcomponent.py:405
+#: src/red_depcomponent.py:413
 #, fuzzy
 msgid "Continue"
 msgstr "9"
@@ -1054,7 +1062,7 @@ msgstr "9"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 #, fuzzy
 msgid "Channel"
@@ -1436,53 +1444,52 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Handle ~ to mean $HOME
-#: src/red_mount.py:61
-#, python-format
-msgid "Unable to mount '%s' as a channel"
-msgstr ""
-
 #. Always run the dialog in the main thread
-#: src/red_mount.py:91
+#: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr ""
 
-#: src/red_mount.py:117
+#: src/red_mount.py:116
 msgid "Browse..."
 msgstr ""
 
-#: src/red_mount.py:128
+#: src/red_mount.py:127
 msgid "Mount Directory"
 msgstr ""
 
-#: src/red_mount.py:141
+#: src/red_mount.py:140
 #, fuzzy
 msgid "Mount channel"
 msgstr "Štandardný podkanál:"
 
-#: src/red_mount.py:145
+#: src/red_mount.py:144
 msgid "Mount a directory as channel"
 msgstr ""
 
-#: src/red_mount.py:153
+#: src/red_mount.py:152
 #, fuzzy
 msgid "Channel Name:"
 msgstr "Informácia o kanáli"
 
-#: src/red_mount.py:157
+#: src/red_mount.py:156
 msgid "Directory:"
 msgstr ""
 
-#: src/red_mount.py:189
+#: src/red_mount.py:167
+msgid "Look for packages recursively"
+msgstr ""
+
+#: src/red_mount.py:192
 msgid "Please choose the path for channel."
 msgstr ""
 
-#: src/red_mount.py:210
+#: src/red_mount.py:213
 #, fuzzy
 msgid "Unmount Channel"
 msgstr "Odhlásené kanále"
 
-#: src/red_mount.py:239
+#: src/red_mount.py:242
 msgid "Unmount?"
 msgstr ""
 
@@ -1695,7 +1702,7 @@ msgstr "Odstraňujem balíky"
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:760
+#: src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr ""
 
@@ -1812,7 +1819,7 @@ msgstr "Miesto"
 msgid "Summary"
 msgstr "Súhrn"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:478
+#: src/red_packagepage_info.py:86 src/red_prefs.py:413
 #, fuzzy
 msgid "Description"
 msgstr "Popis:"
@@ -1913,7 +1920,7 @@ msgstr ""
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr ""
 
@@ -1921,12 +1928,12 @@ msgstr ""
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 #, fuzzy
 msgid "Download cancelled"
 msgstr "Sťahujem dáta kanálu..."
 
-#: src/red_pendingview.py:578
+#: src/red_pendingview.py:583
 #, fuzzy
 msgid "Transaction cancelled"
 msgstr "Záznam o transakciách"
@@ -1937,42 +1944,42 @@ msgstr "Záznam o transakciách"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
+#: src/red_pendingview.py:618
 #, fuzzy
 msgid "Transaction Finished"
 msgstr "Záznam o transakciách"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 #, fuzzy
 msgid "Downloading packages"
 msgstr "Sťahujem %s"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 #, fuzzy
 msgid "Download Failed"
 msgstr "Sťahujem súbory"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
 msgstr ""
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 #, fuzzy
 msgid "Processing Transaction"
 msgstr "Začítam transakciu..."
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr ""
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 #, fuzzy
 msgid "Transaction failed"
 msgstr "Záznam o transakciách"
 
-#: src/red_pendingview.py:703
+#: src/red_pendingview.py:708
 #, fuzzy
 msgid "Transaction Failed"
 msgstr "Záznam o transakciách"
@@ -2014,121 +2021,110 @@ msgstr "Záznam o transakciách"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Title
-#. Server section
-#: src/red_prefs.py:169
-msgid "Server"
-msgstr ""
-
-#: src/red_prefs.py:177
-msgid "Server URL:"
-msgstr ""
-
-#. manually force the value to update
-#: src/red_prefs.py:228
-#, fuzzy
-msgid "Mirrors"
-msgstr "Mirror"
-
-#: src/red_prefs.py:240
-msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
 msgstr ""
 
 #. Packages section
-#: src/red_prefs.py:251
+#: src/red_prefs.py:182
 #, fuzzy
 msgid "Packages"
 msgstr "Balík"
 
-#: src/red_prefs.py:260
+#: src/red_prefs.py:191
 #, fuzzy
 msgid "Require package signatures"
 msgstr "Signatúry balíkov"
 
-#: src/red_prefs.py:265
+#: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr ""
 
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr ""
+
 #. Proxy section - requires superuser
-#: src/red_prefs.py:275
+#: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:284
+#: src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr ""
 
-#: src/red_prefs.py:288
+#: src/red_prefs.py:223
 #, fuzzy
 msgid "Proxy URL:"
 msgstr "Proxy"
 
-#: src/red_prefs.py:295
+#: src/red_prefs.py:230
 #, fuzzy
 msgid "Username:"
 msgstr "Meno používateľa"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:335
+#: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr ""
 
-#: src/red_prefs.py:359
+#: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr ""
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr ""
 
 #. Expiration section
-#: src/red_prefs.py:373
+#: src/red_prefs.py:308
 msgid "Expiration"
 msgstr ""
 
-#: src/red_prefs.py:377
+#: src/red_prefs.py:312
 msgid "Cache expires"
 msgstr ""
 
-#: src/red_prefs.py:383
+#: src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr ""
 
-#: src/red_prefs.py:394
+#: src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr ""
 
-#: src/red_prefs.py:405
+#: src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr ""
 
-#: src/red_prefs.py:422
+#: src/red_prefs.py:357
 #, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Naozaj chcete prerušiť aktuálny prenos?"
 
-#: src/red_prefs.py:438
+#: src/red_prefs.py:373
 #, fuzzy
 msgid "Empty Cache"
 msgstr "Vyrovnávacia pamäť"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:460
+#: src/red_prefs.py:395
 #, fuzzy, python-format
 msgid "%d MB"
 msgstr "%d KB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:508
+#: src/red_prefs.py:443
 msgid "Value"
 msgstr ""
 
-#: src/red_prefs.py:521
+#: src/red_prefs.py:456
 #, fuzzy
 msgid "Loading preferences..."
 msgstr "Sťahujem novinky..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:585
+#: src/red_prefs.py:520
 #, fuzzy, python-format
 msgid "%s Preferences"
 msgstr "Nastavenie"
@@ -2406,7 +2402,6 @@ msgstr ""
 #. FIXME?  By doing nothing here, we keep the
 #. user from being hammered by a whole bunch of exceptions
 #. if something has gone badly wrong.
-#. FIXME?
 #. FIXME?
 #. do the first poll immediately
 #. get poll timeout started again
@@ -2768,6 +2763,10 @@ msgstr ""
 #, python-format
 msgid "User '%s' already exists."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Mirrors"
+#~ msgstr "Mirror"
 
 #, fuzzy
 #~ msgid "Update cancelled"
@@ -3440,9 +3439,6 @@ msgstr ""
 #~ msgid "Installed Version:"
 #~ msgstr "Nainštalovaná verzia:"
 
-#~ msgid "Size:"
-#~ msgstr "Veľkosť:"
-
 #~ msgid "bytes"
 #~ msgstr "bajtov"
 
@@ -3708,9 +3704,6 @@ msgstr ""
 
 #~ msgid "Navigation"
 #~ msgstr "Navigácia"
-
-#~ msgid "Premium Services"
-#~ msgstr "Premium Services"
 
 #~ msgid "Downloading mirrors..."
 #~ msgstr "Sťahujem mirrory..."

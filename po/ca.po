@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-12 04:45+0200\n"
+"POT-Creation-Date: 2003-10-30 22:10-0500\n"
 "PO-Revision-Date: 2003-10-29 20:00+0100\n"
 "Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 0.9.5\n"
 
 #. ##
@@ -45,20 +45,21 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:381
+#: src/rcd_util.py:398
 msgid "Please wait while getting data."
 msgstr "Espereu mentre s'estan obtenint les dades, si us plau."
 
 #. ##############################################################################
-#: src/rcd_util.py:435 src/rcd_util.py:453
+#: src/rcd_util.py:452 src/rcd_util.py:470
 msgid "Please ensure that your network settings are correct."
-msgstr "Assegureu-vos que la vostra configuració de xarxa sigui correcta, si us plau."
+msgstr ""
+"Assegureu-vos que la vostra configuració de xarxa sigui correcta, si us plau."
 
-#: src/rcd_util.py:442
+#: src/rcd_util.py:459
 msgid "Refreshing channel data"
 msgstr "S'estan refrescant les dades del canal"
 
-#: src/rcd_util.py:444
+#: src/rcd_util.py:461
 msgid "Downloading channel information"
 msgstr "S'està baixant la informació del canal"
 
@@ -66,31 +67,31 @@ msgstr "S'està baixant la informació del canal"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:470
+#: src/rcd_util.py:487
 msgid "Verifying"
 msgstr "S'està verificant"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:488
 msgid "Unable to verify package signature for"
 msgstr "No es pot verificar la signatura de paquet de"
 
-#: src/rcd_util.py:472
+#: src/rcd_util.py:489
 msgid "There is no package signature for"
 msgstr "No hi ha la signatura de paquet de"
 
-#: src/rcd_util.py:473
+#: src/rcd_util.py:490
 msgid "Preparing Transaction"
 msgstr "S'està preparant la transacció"
 
-#: src/rcd_util.py:474
+#: src/rcd_util.py:491
 msgid "Installing"
 msgstr "S'està instal·lant"
 
-#: src/rcd_util.py:475
+#: src/rcd_util.py:492
 msgid "Removing"
 msgstr "S'està suprimint"
 
-#: src/rcd_util.py:476
+#: src/rcd_util.py:493
 msgid "Configuring"
 msgstr "S'està configurant"
 
@@ -141,7 +142,8 @@ msgstr "Desenvolupat per ximpanzés:"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr "Sota la llicència pública general GNU(General Public License), versió 2"
+msgstr ""
+"Sota la llicència pública general GNU(General Public License), versió 2"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -179,35 +181,39 @@ msgstr "Sota la llicència pública general GNU(General Public License), versió
 msgid "Group Activation"
 msgstr "Activació del grup"
 
-#: src/red_activation.py:37
+#: src/red_activation.py:44
+#, fuzzy
+msgid "Service:"
+msgstr "Servidor:"
+
+#: src/red_activation.py:48
 msgid "Email:"
 msgstr "Correu electrònic:"
 
-#: src/red_activation.py:41
+#: src/red_activation.py:52
 msgid "Activation Code:"
 msgstr "Codi d'activació:"
 
-#: src/red_activation.py:59
+#: src/red_activation.py:78
 msgid "Activate"
 msgstr "Activa"
 
-#: src/red_activation.py:76
+#: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
-msgstr "Ompliu l'adreça de correu electrònic i el codi d'activació, si us plau."
+msgstr ""
+"Ompliu l'adreça de correu electrònic i el codi d'activació, si us plau."
 
-#: src/red_activation.py:91
+#: src/red_activation.py:114
 msgid "Unable to activate"
 msgstr "No es pot activar"
 
-#: src/red_activation.py:92
+#: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Assegureu-vos que heu introduït correctament l'adreça de correu electrònic i el codi d'activació, si us plau"
+msgstr ""
+"Assegureu-vos que heu introduït correctament l'adreça de correu electrònic i "
+"el codi d'activació, si us plau"
 
 #. Store email to config.
-#: src/red_activation.py:110
-msgid "System could not be activated: Invalid activation code or email address."
-msgstr "No s'ha pogut activar el sistema: L'adreça de correu electrònic o el codi d'activació no són vàlids."
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -230,7 +236,7 @@ msgstr "No s'ha pogut activar el sistema: L'adreça de correu electrònic o el c
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:83
+#: src/red_appwindow.py:84
 msgid "C"
 msgstr "C"
 
@@ -244,15 +250,20 @@ msgstr "C"
 #. dunno, but a sane
 #. fallback
 #. CDE
-#: src/red_appwindow.py:120
+#: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
-msgstr "No es pot mostrar l'ajuda perquè falten els fitxers d'ajuda.  Aviseu al vostre proveïdor, si us plau."
+msgstr ""
+"No es pot mostrar l'ajuda perquè falten els fitxers d'ajuda.  Aviseu al "
+"vostre proveïdor, si us plau."
 
-#: src/red_appwindow.py:130
-msgid "Unable to show help because there are no applications available to view help."
-msgstr "No es pot  mostrar l'ajuda perquè no hi ha cap aplicació per veure la disponible."
+#: src/red_appwindow.py:131
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr ""
+"No es pot  mostrar l'ajuda perquè no hi ha cap aplicació per veure la "
+"disponible."
 
 #. Menubar
 #. # Toolbar
@@ -267,7 +278,7 @@ msgstr "No es pot  mostrar l'ajuda perquè no hi ha cap aplicació per veure la 
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:405
+#: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Esteu segur d'obrir %d finestres d'informació de paquet?"
@@ -275,71 +286,71 @@ msgstr "Esteu segur d'obrir %d finestres d'informació de paquet?"
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr "Executa ara"
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:435
 msgid "Perform installations and removals"
 msgstr "Realitza les instal·lacions i supressions"
 
-#: src/red_appwindow.py:441
+#: src/red_appwindow.py:442
 msgid "Channels"
 msgstr "Canals"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
 msgstr "Canvieu les subscripcions del canal"
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:451
 msgid "Refresh"
 msgstr "Refresca"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:452
 msgid "Refresh channel data"
 msgstr "Refresca les dades del canal"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:462 src/red_packageview.py:232
+#: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Marca per la _instal·lació"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:464
 msgid "Mark selected packages for installation"
 msgstr "Marca els paquets seleccionats per insta·lar"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:468 src/red_appwindow.py:763
+#: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Marca per sup_rimir"
 
-#: src/red_appwindow.py:469
+#: src/red_appwindow.py:470
 msgid "Mark selected packages for removal"
 msgstr "Marca els paquets seleccionats per suprimir"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:474 src/red_appwindow.py:776
+#: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
-#: src/red_appwindow.py:475
+#: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
 msgstr "Cancel·la les accions dels paquets marcats"
 
 #. Info
-#: src/red_appwindow.py:480 src/red_packageview.py:276
+#: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_informació"
 
-#: src/red_appwindow.py:481
+#: src/red_appwindow.py:482
 msgid "Package information"
 msgstr "Informació del paquet"
 
@@ -349,11 +360,11 @@ msgstr "Informació del paquet"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:538
+#: src/red_appwindow.py:539
 msgid "_File"
 msgstr "_Fitxer"
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:540
 msgid "_Edit"
 msgstr "_Edita"
 
@@ -362,246 +373,259 @@ msgstr "_Edita"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:540 src/red_appwindow.py:826
+#: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "_Visualitza"
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:542
 msgid "_Actions"
 msgstr "_Accions"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:543
 msgid "_Help"
 msgstr "A_juda"
 
-#: src/red_appwindow.py:550
+#: src/red_appwindow.py:551
 msgid "Connect to daemon..."
 msgstr "Connecta a un dimoni..."
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
 msgstr "Connecta a un dimoni remot"
 
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:562
 msgid "Install from _File..."
 msgstr "Insta·la des d'un _fitxer..."
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:563
 msgid "Install a package from a local file"
 msgstr "Instal·la un paquet des d'un fitxer local"
 
-#: src/red_appwindow.py:571
+#: src/red_appwindow.py:572
 msgid "Install from _URL..."
 msgstr "Instal·la des d'una _URL..."
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:573
 msgid "Install a package from a remote URL"
 msgstr "Instal·la un paquet des d'una URL remota"
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:589
+#: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr "Directori de _muntatge..."
 
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:591
 msgid "Mount a directory as a channel"
 msgstr "Munta un directori com un canal"
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:606
+#: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr "Desmu_nta el directori..."
 
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:608
 msgid "Unmount a directory"
 msgstr "Desmunta un directori"
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:622
+#: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr "_Activa..."
 
-#: src/red_appwindow.py:623
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Activa el dimoni contra un servidor de Red Carpet Express o Red Carpet Enterprise"
+#: src/red_appwindow.py:625
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr ""
+"Activa el dimoni contra un servidor de Red Carpet Express o Red Carpet "
+"Enterprise"
 
-#: src/red_appwindow.py:629
+#: src/red_appwindow.py:631
 msgid "Quit"
 msgstr "Surt"
 
-#: src/red_appwindow.py:630
+#: src/red_appwindow.py:632
 msgid "Quit Red Carpet"
 msgstr "Surt del Red Carpet"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:645
+#: src/red_appwindow.py:647
 msgid "Select _All"
 msgstr "Selecciona-ho _tot"
 
-#: src/red_appwindow.py:646
+#: src/red_appwindow.py:648
 msgid "Select all items"
 msgstr "Selecciona tots els elements"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:653
 msgid "Select _None"
 msgstr "No seleccionis _res"
 
-#: src/red_appwindow.py:652
+#: src/red_appwindow.py:654
 msgid "Deselect all items"
 msgstr "Desselecciona tots els elements"
 
-#: src/red_appwindow.py:659
+#: src/red_appwindow.py:661
+#, fuzzy
+msgid "Services..."
+msgstr "_Preferències..."
+
+#: src/red_appwindow.py:662
+#, fuzzy
+msgid "Edit services"
+msgstr "Edita els usuaris"
+
+#: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
 msgstr "_Subscripcions del canal..."
 
-#: src/red_appwindow.py:660
+#: src/red_appwindow.py:667
 msgid "Edit your channel subscriptions"
 msgstr "Editeu les vostres subscripcions del canal"
 
-#: src/red_appwindow.py:665
+#: src/red_appwindow.py:672
 msgid "_Preferences..."
 msgstr "_Preferències..."
 
-#: src/red_appwindow.py:666
+#: src/red_appwindow.py:673
 msgid "Edit your Red Carpet preferences"
 msgstr "Editeu les vostres preferències del Red Carpet"
 
-#: src/red_appwindow.py:670
+#: src/red_appwindow.py:677
 msgid "_Users..."
 msgstr "_Usuaris..."
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
 msgstr "Edita els permissos d'usuari per aquest dimoni"
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr "_Barra lateral"
 
-#: src/red_appwindow.py:685
+#: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Amaga o mostra la barra lateral d'accions pendents"
 
-#: src/red_appwindow.py:689
+#: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
 msgstr "Opcions de cerca _avançada"
 
-#: src/red_appwindow.py:690
+#: src/red_appwindow.py:697
 msgid "Hide or show advanced search options"
 msgstr "Amaga o mostra les opcions de cerca avançada"
 
-#: src/red_appwindow.py:694
+#: src/red_appwindow.py:701
 msgid "_Channel Names"
 msgstr "Noms del _canal"
 
-#: src/red_appwindow.py:695
+#: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
 msgstr "Amaga o mostra els nom de canal en la llista de paquets"
 
-#: src/red_appwindow.py:701
+#: src/red_appwindow.py:708
 msgid "Package _Information..."
 msgstr "_Informació del paquet"
 
-#: src/red_appwindow.py:702
+#: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
 msgstr "Mostra la informació dels paquets seleccionats"
 
-#: src/red_appwindow.py:710
+#: src/red_appwindow.py:717
 msgid "_Daemon Information..."
 msgstr "Informació del _dimoni"
 
-#: src/red_appwindow.py:711
+#: src/red_appwindow.py:718
 msgid "View information about this daemon"
 msgstr "Visualitza la informació sobre el dimoni"
 
-#: src/red_appwindow.py:713
+#: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
 msgstr "No_tícies del Red Carpet"
 
-#: src/red_appwindow.py:714
+#: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
 msgstr "Visualitza les últimes notícies del Red Carpet"
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:726
+#: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr "Executa a_ra"
 
-#: src/red_appwindow.py:727
+#: src/red_appwindow.py:734
 msgid "Run the current transaction"
 msgstr "Executa la transacció actual"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:741
+#: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
 msgstr "_Verifica les dependències del sistema"
 
-#: src/red_appwindow.py:742
+#: src/red_appwindow.py:749
 msgid "Verify that all system dependencies are met"
 msgstr "Verifica que es compleixen totes les dependències del sistema"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
 msgstr "Marca per i_nstal·lar"
 
-#: src/red_appwindow.py:754
+#: src/red_appwindow.py:761
 msgid "Mark this package for installation"
 msgstr "Marca aquest paquet per instal·lar"
 
-#: src/red_appwindow.py:764
+#: src/red_appwindow.py:771
 msgid "Mark this package for removal"
 msgstr "Marca aquest paquet per eliminar"
 
-#: src/red_appwindow.py:777
+#: src/red_appwindow.py:784
 msgid "Cancel installation or removal mark"
 msgstr "Cancel·la la marca d'instal·lació o supressió"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:791
+#: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr "Re_fresca les dades del canal"
 
-#: src/red_appwindow.py:792
+#: src/red_appwindow.py:799
 msgid "Download latest channel data"
 msgstr "Baixa les últimes dades del canal"
 
-#: src/red_appwindow.py:801
+#: src/red_appwindow.py:808
 msgid "_Contents"
 msgstr "_Continguts"
 
-#: src/red_appwindow.py:802
+#: src/red_appwindow.py:809
 msgid "View Red Carpet help"
 msgstr "Visualitza l'ajuda del Red Carpet"
 
-#: src/red_appwindow.py:807
+#: src/red_appwindow.py:814
 msgid "_About..."
 msgstr "_Quant a..."
 
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:815
 msgid "About Red Carpet"
 msgstr "Quan al Red Carpet"
 
-#: src/red_appwindow.py:827
+#: src/red_appwindow.py:834
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Vés a la pàgina '%s'"
@@ -657,15 +681,15 @@ msgstr "Vés a la pàgina '%s'"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_channeloption.py:50
+#: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "Tots els canals"
 
-#: src/red_channeloption.py:55
+#: src/red_channeloption.py:69
 msgid "All Subscribed Channels"
 msgstr "Tots els canals subscrits"
 
-#: src/red_channeloption.py:60
+#: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
 msgstr "Cap canal/canal desconegut"
 
@@ -792,7 +816,9 @@ msgstr ""
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
-msgstr "S'ha detectat la versió de protocol %d.  Es necessita la versió %d.  Heu d'actualitzar la versió del dimoni del Red Carpet."
+msgstr ""
+"S'ha detectat la versió de protocol %d.  Es necessita la versió %d.  Heu "
+"d'actualitzar la versió del dimoni del Red Carpet."
 
 #. LSB compliant distros should have the
 #. following
@@ -836,7 +862,7 @@ msgstr "Servidor:"
 msgid "User name:"
 msgstr "Nom d'usuari:"
 
-#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Contrasenya:"
@@ -919,72 +945,75 @@ msgstr "Surt del Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
 msgstr "Resolució de la dependència"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "S'està verificant el sistema"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
 msgstr "S'estan resolent les dependències"
 
-#: src/red_depcomponent.py:157
-msgid "You must agree to the licenses covering this software before installing it."
-msgstr "Abans d'instal·lar aquest programa heu d'estar conformes amb la seva llicència."
+#: src/red_depcomponent.py:144
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr ""
+"Abans d'instal·lar aquest programa heu d'estar conformes amb la seva "
+"llicència."
 
 #. Try to estimate the size of the window we want.
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr "Hi estic d'acord"
 
-#. FIXME: flags
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:261
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr "Ha fallat la resolució de la dependència"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:311
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr "S'ha verificat el sistema"
 
-#: src/red_depcomponent.py:313
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
-msgstr "Totes les dependències del paquets són correctes i no es necessita cap acció correctiva."
+msgstr ""
+"Totes les dependències del paquets són correctes i no es necessita cap acció "
+"correctiva."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:367
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Instal·lacions sol·licitades"
 
-#: src/red_depcomponent.py:371
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Supressions sol·licitades"
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:383
 msgid "Required Installations"
 msgstr "Instal·lacions necessàries"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:387
 msgid "Required Removals"
 msgstr "Supressions necessàries "
 
-#: src/red_depcomponent.py:405
+#: src/red_depcomponent.py:413
 msgid "Continue"
 msgstr "Continua"
 
@@ -1008,7 +1037,7 @@ msgstr "Continua"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Canal"
@@ -1377,50 +1406,49 @@ msgstr "Escolliu una rèplica"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Handle ~ to mean $HOME
-#: src/red_mount.py:61
-#, python-format
-msgid "Unable to mount '%s' as a channel"
-msgstr "No es pot muntar el '%s' com a canal"
-
 #. Always run the dialog in the main thread
-#: src/red_mount.py:91
+#: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "No es pot desmuntar '%s'"
 
-#: src/red_mount.py:117
+#: src/red_mount.py:116
 msgid "Browse..."
 msgstr "Navega..."
 
-#: src/red_mount.py:128
+#: src/red_mount.py:127
 msgid "Mount Directory"
 msgstr "Munta el directori"
 
-#: src/red_mount.py:141
+#: src/red_mount.py:140
 msgid "Mount channel"
 msgstr "Munta el canal"
 
-#: src/red_mount.py:145
+#: src/red_mount.py:144
 msgid "Mount a directory as channel"
 msgstr "Munta un directori com a canal"
 
-#: src/red_mount.py:153
+#: src/red_mount.py:152
 msgid "Channel Name:"
 msgstr "Nom del canal:"
 
-#: src/red_mount.py:157
+#: src/red_mount.py:156
 msgid "Directory:"
 msgstr "Directori:"
 
-#: src/red_mount.py:189
+#: src/red_mount.py:167
+msgid "Look for packages recursively"
+msgstr ""
+
+#: src/red_mount.py:192
 msgid "Please choose the path for channel."
 msgstr "Escolliu el camí del canal, si us plau"
 
-#: src/red_mount.py:210
+#: src/red_mount.py:213
 msgid "Unmount Channel"
 msgstr "Desmunta el canal"
 
-#: src/red_mount.py:239
+#: src/red_mount.py:242
 msgid "Unmount?"
 msgstr "Desmuntar?"
 
@@ -1625,7 +1653,7 @@ msgstr "No s'ha trobat cap paquet que coincidís"
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:760
+#: src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "S'estan buscant les actualitzacions..."
 
@@ -1734,7 +1762,7 @@ msgstr "Secció"
 msgid "Summary"
 msgstr "Resum"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:478
+#: src/red_packagepage_info.py:86 src/red_prefs.py:413
 msgid "Description"
 msgstr "Descripció"
 
@@ -1833,7 +1861,7 @@ msgstr "%.1f%% completat"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr "Sistema d'actualització"
 
@@ -1841,11 +1869,11 @@ msgstr "Sistema d'actualització"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 msgid "Download cancelled"
 msgstr "S'ha cancel·lat la baixada"
 
-#: src/red_pendingview.py:578
+#: src/red_pendingview.py:583
 msgid "Transaction cancelled"
 msgstr "S'ha cancel·lat la transacció"
 
@@ -1855,37 +1883,37 @@ msgstr "S'ha cancel·lat la transacció"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
+#: src/red_pendingview.py:618
 msgid "Transaction Finished"
 msgstr "S'ha finalitzat la transacció"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 msgid "Downloading packages"
 msgstr "S'estan baixant paquets"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 msgid "Download Failed"
 msgstr "Ha fallat la baixada"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
 msgstr "Error desconegut"
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 msgid "Processing Transaction"
 msgstr "S'està processant la transacció"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr "La transacció ha finalitzat amb èxit"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 msgid "Transaction failed"
 msgstr "Ha fallat la transacció"
 
-#: src/red_pendingview.py:703
+#: src/red_pendingview.py:708
 msgid "Transaction Failed"
 msgstr "Ha fallat la transacció"
 
@@ -1926,113 +1954,105 @@ msgstr "Ha fallat la transacció"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Title
-#. Server section
-#: src/red_prefs.py:169
-msgid "Server"
-msgstr "Servidor"
-
-#: src/red_prefs.py:177
-msgid "Server URL:"
-msgstr "URL del servidor:"
-
-#. manually force the value to update
-#: src/red_prefs.py:228
-msgid "Mirrors"
-msgstr "Rèpliques"
-
-#: src/red_prefs.py:240
-msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
-msgstr "Habilita els Serveis Premium (Red Carpet Express or Enterprise)"
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
+msgstr ""
 
 #. Packages section
-#: src/red_prefs.py:251
+#: src/red_prefs.py:182
 msgid "Packages"
 msgstr "Paquets"
 
-#: src/red_prefs.py:260
+#: src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Necessita les signatures dels paquets"
 
-#: src/red_prefs.py:265
+#: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Número de màxim de paquets a baixar en paral·lel:"
 
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr ""
+
 #. Proxy section - requires superuser
-#: src/red_prefs.py:275
+#: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Servidor intermediari"
 
-#: src/red_prefs.py:284
+#: src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Utilitza un servidor intermediari"
 
-#: src/red_prefs.py:288
+#: src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "URL del proxy:"
 
-#: src/red_prefs.py:295
+#: src/red_prefs.py:230
 msgid "Username:"
 msgstr "Nom d'usuari: "
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:335
+#: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
-msgstr "No teniu permís per visualitzar la configuració del servidor intermediari"
+msgstr ""
+"No teniu permís per visualitzar la configuració del servidor intermediari"
 
-#: src/red_prefs.py:359
+#: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Guarda els paquets baixats i les dades d'informació a la memòria cau"
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Ubicació de les dades de la memòria cau:"
 
 #. Expiration section
-#: src/red_prefs.py:373
+#: src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Venciment"
 
-#: src/red_prefs.py:377
+#: src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "La memòria cau venç"
 
-#: src/red_prefs.py:383
+#: src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Temps màxim en dies:"
 
-#: src/red_prefs.py:394
+#: src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Mida màxima en MB:"
 
-#: src/red_prefs.py:405
+#: src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Mida actual de la memòria cau:"
 
-#: src/red_prefs.py:422
+#: src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr "Esteu segurs de voler suprimir els fitxers dels paquets de la memòria cau?"
+msgstr ""
+"Esteu segurs de voler suprimir els fitxers dels paquets de la memòria cau?"
 
-#: src/red_prefs.py:438
+#: src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Buida la memòria cau"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:460
+#: src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:508
+#: src/red_prefs.py:443
 msgid "Value"
 msgstr "Valor"
 
-#: src/red_prefs.py:521
+#: src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "S'estan carregant les preferències..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:585
+#: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "%s Preferències"
@@ -2301,7 +2321,6 @@ msgstr "Escolliu el fitxer on escriure el XML"
 #. user from being hammered by a whole bunch of exceptions
 #. if something has gone badly wrong.
 #. FIXME?
-#. FIXME?
 #. do the first poll immediately
 #. get poll timeout started again
 #. Start polling.  We skip our first poll, since we won't have made a
@@ -2486,7 +2505,9 @@ msgstr "%s subscripcions al canal"
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr "No teniu permís per subscriure o cancel·lar la subscripció dels canals.  No podreu realitzar cap canvi a les subscripcions."
+msgstr ""
+"No teniu permís per subscriure o cancel·lar la subscripció dels canals.  No "
+"podreu realitzar cap canvi a les subscripcions."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2652,3 +2673,23 @@ msgstr "Nom d'usuari invàlid."
 msgid "User '%s' already exists."
 msgstr "L'usuari '%s' ja existeix."
 
+#~ msgid ""
+#~ "System could not be activated: Invalid activation code or email address."
+#~ msgstr ""
+#~ "No s'ha pogut activar el sistema: L'adreça de correu electrònic o el codi "
+#~ "d'activació no són vàlids."
+
+#~ msgid "Unable to mount '%s' as a channel"
+#~ msgstr "No es pot muntar el '%s' com a canal"
+
+#~ msgid "Server"
+#~ msgstr "Servidor"
+
+#~ msgid "Server URL:"
+#~ msgstr "URL del servidor:"
+
+#~ msgid "Mirrors"
+#~ msgstr "Rèpliques"
+
+#~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
+#~ msgstr "Habilita els Serveis Premium (Red Carpet Express or Enterprise)"

@@ -2,12 +2,12 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.25 2003/10/24 00:29:11 menthos Exp $
+# $Id: sv.po,v 1.26 2003/10/31 03:20:06 joeshaw Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-10-24 02:27+0200\n"
+"POT-Creation-Date: 2003-10-30 22:10-0500\n"
 "PO-Revision-Date: 2003-10-24 02:28+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -41,24 +41,23 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
-#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:419
+#: src/rcd_util.py:398
 msgid "Please wait while getting data."
 msgstr "Var vänlig vänta vid hämtande av data."
 
 #. ##############################################################################
-#: src/rcd_util.py:473 src/rcd_util.py:491
+#: src/rcd_util.py:452 src/rcd_util.py:470
 msgid "Please ensure that your network settings are correct."
 msgstr "Försäkra dig om att dina nätverksinställningar är korrekta."
 
-#: src/rcd_util.py:480
+#: src/rcd_util.py:459
 msgid "Refreshing channel data"
 msgstr "Uppdaterar kanaldata"
 
-#: src/rcd_util.py:482
+#: src/rcd_util.py:461
 msgid "Downloading channel information"
 msgstr "Hämtar kanalinformation"
 
@@ -66,31 +65,31 @@ msgstr "Hämtar kanalinformation"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:508
+#: src/rcd_util.py:487
 msgid "Verifying"
 msgstr "Verifierar"
 
-#: src/rcd_util.py:509
+#: src/rcd_util.py:488
 msgid "Unable to verify package signature for"
 msgstr "Kan inte verifiera paketsignatur för"
 
-#: src/rcd_util.py:510
+#: src/rcd_util.py:489
 msgid "There is no package signature for"
 msgstr "Det finns ingen paketsignatur för"
 
-#: src/rcd_util.py:511
+#: src/rcd_util.py:490
 msgid "Preparing Transaction"
 msgstr "Förbereder transaktion"
 
-#: src/rcd_util.py:512
+#: src/rcd_util.py:491
 msgid "Installing"
 msgstr "Installerar"
 
-#: src/rcd_util.py:513
+#: src/rcd_util.py:492
 msgid "Removing"
 msgstr "Tar bort"
 
-#: src/rcd_util.py:514
+#: src/rcd_util.py:493
 msgid "Configuring"
 msgstr "Konfigurerar"
 
@@ -1643,7 +1642,7 @@ msgstr "Inga matchande paket hittades"
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:760
+#: src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Letar efter uppdateringar..."
 
@@ -1724,7 +1723,7 @@ msgstr "Är i konflikt med"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78 src/red_services.py:112
+#: src/red_packagepage_info.py:78
 msgid "Name"
 msgstr "Namn"
 
@@ -2352,58 +2351,6 @@ msgstr "Välj fil att skriva XML till"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. ##
-#. ## ListModel methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#: src/red_services.py:88
-msgid "Edit Services"
-msgstr "Redigera tjänster"
-
-#: src/red_services.py:117
-msgid "URL"
-msgstr "URL"
-
-#: src/red_services.py:133
-msgid "_Remove service"
-msgstr "_Ta bort tjänst"
-
-#: src/red_services.py:146
-msgid "_Add service"
-msgstr "_Lägg till tjänst"
-
-#: src/red_services.py:226
-msgid "Add Service"
-msgstr "Lägg till tjänst"
-
-#: src/red_services.py:231
-msgid "Service URL"
-msgstr "Tjänst-URL"
-
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
@@ -2713,6 +2660,24 @@ msgstr "Ogiltigt användarnamn."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
+
+#~ msgid "Edit Services"
+#~ msgstr "Redigera tjänster"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "_Remove service"
+#~ msgstr "_Ta bort tjänst"
+
+#~ msgid "_Add service"
+#~ msgstr "_Lägg till tjänst"
+
+#~ msgid "Add Service"
+#~ msgstr "Lägg till tjänst"
+
+#~ msgid "Service URL"
+#~ msgstr "Tjänst-URL"
 
 #~ msgid "Edit services..."
 #~ msgstr "Redigera tjänster..."

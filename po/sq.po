@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-27 23:09+0200\n"
+"POT-Creation-Date: 2003-10-30 22:10-0500\n"
 "PO-Revision-Date: 2003-09-27 23:15+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.2\n"
 
 #. ##
@@ -42,24 +42,23 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
-#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:419
+#: src/rcd_util.py:398
 msgid "Please wait while getting data."
 msgstr "Durim gjatë marrjes së së dhënave."
 
 #. ##############################################################################
-#: src/rcd_util.py:473 src/rcd_util.py:491
+#: src/rcd_util.py:452 src/rcd_util.py:470
 msgid "Please ensure that your network settings are correct."
 msgstr "Sigurohuni që parametrat tuaj të rrjetit janë korrekte."
 
-#: src/rcd_util.py:480
+#: src/rcd_util.py:459
 msgid "Refreshing channel data"
 msgstr "Rifrekim i të dhënave të kanalit"
 
-#: src/rcd_util.py:482
+#: src/rcd_util.py:461
 msgid "Downloading channel information"
 msgstr "Shkarkimi i informacioneve të kanalit"
 
@@ -67,31 +66,31 @@ msgstr "Shkarkimi i informacioneve të kanalit"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:508
+#: src/rcd_util.py:487
 msgid "Verifying"
 msgstr "Duke verifikuar"
 
-#: src/rcd_util.py:509
+#: src/rcd_util.py:488
 msgid "Unable to verify package signature for"
 msgstr "I pamundur verifikimi i firmës së pakos për"
 
-#: src/rcd_util.py:510
+#: src/rcd_util.py:489
 msgid "There is no package signature for"
 msgstr "Asnjë firmë paketi në dispozicion për"
 
-#: src/rcd_util.py:511
+#: src/rcd_util.py:490
 msgid "Preparing Transaction"
 msgstr "Duke përgatitur shkëmbimin"
 
-#: src/rcd_util.py:512
+#: src/rcd_util.py:491
 msgid "Installing"
 msgstr "Duke instaluar"
 
-#: src/rcd_util.py:513
+#: src/rcd_util.py:492
 msgid "Removing"
 msgstr "Duke hequr"
 
-#: src/rcd_util.py:514
+#: src/rcd_util.py:493
 msgid "Configuring"
 msgstr "Duke konfiguruar"
 
@@ -206,13 +205,10 @@ msgstr "Aktivimi nuk është i mundur"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
+msgstr ""
+"Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
 
 #. Store email to config.
-#: src/red_activation.py:133
-msgid "System could not be activated: Invalid activation code or email address."
-msgstr "Sistemi nuk do të aktivohet: Kod aktivimi apo adresë email e pasaktë."
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -258,8 +254,10 @@ msgstr ""
 "kontakt me shitësin tuaj."
 
 #: src/red_appwindow.py:131
-msgid "Unable to show help because there are no applications available to view help."
-msgstr "E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr ""
+"E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
 
 #. Menubar
 #. # Toolbar
@@ -435,8 +433,10 @@ msgid "_Activate..."
 msgstr "_Aktivo..."
 
 #: src/red_appwindow.py:625
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr ""
+"Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
 
 #: src/red_appwindow.py:631
 msgid "Quit"
@@ -808,8 +808,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
-"U zbulua versioni %d i protokollit.  Nevoitet versioni %d.  Duhet të rifreskoni "
-"versionin tuaj të rcd."
+"U zbulua versioni %d i protokollit.  Nevoitet versioni %d.  Duhet të "
+"rifreskoni versionin tuaj të rcd."
 
 #. LSB compliant distros should have the
 #. following
@@ -936,21 +936,22 @@ msgstr "Dalja nga Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:357
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
 msgstr "Zgjidhja e varësisë"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "Duke verifikuar sistemin"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
 msgstr "Duke zgjidhur varësitë"
 
-#: src/red_depcomponent.py:157
-msgid "You must agree to the licenses covering this software before installing it."
+#: src/red_depcomponent.py:144
+msgid ""
+"You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a "
 "instaloni."
@@ -959,25 +960,23 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr "Pranoj"
 
-#. FIXME: flags,
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:262
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr "Zgjidhja e varësive dështoi"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:312
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr "Sistemi u verifikua"
 
-#: src/red_depcomponent.py:314
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -989,23 +988,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:368
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Instalimet e kërkuara"
 
-#: src/red_depcomponent.py:372
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Heqjet e kërkuara"
 
-#: src/red_depcomponent.py:376
+#: src/red_depcomponent.py:383
 msgid "Required Installations"
 msgstr "Instalimet e nevojshme"
 
-#: src/red_depcomponent.py:380
+#: src/red_depcomponent.py:387
 msgid "Required Removals"
 msgstr "Heqjet e nevojshme"
 
-#: src/red_depcomponent.py:406
+#: src/red_depcomponent.py:413
 msgid "Continue"
 msgstr "Vazhdo"
 
@@ -1647,7 +1646,7 @@ msgstr "Nuk u gjet asnjë pako korrisponduese"
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:760
+#: src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Duke kontrolluar për versione të rinj..."
 
@@ -1855,7 +1854,7 @@ msgstr "%.1f%% u kompletua"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr "Duke rifreskuar sistemin"
 
@@ -1863,11 +1862,11 @@ msgstr "Duke rifreskuar sistemin"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 msgid "Download cancelled"
 msgstr "Shkarkimi u anullua"
 
-#: src/red_pendingview.py:578
+#: src/red_pendingview.py:583
 msgid "Transaction cancelled"
 msgstr "Operacioni u anullua"
 
@@ -1877,37 +1876,37 @@ msgstr "Operacioni u anullua"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
+#: src/red_pendingview.py:618
 msgid "Transaction Finished"
 msgstr "Shkëmbimi përfundoi"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 msgid "Downloading packages"
 msgstr "Duke shkarkuar pakot"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 msgid "Download Failed"
 msgstr "Shkarkimi dështoi"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
 msgstr "Gabim i panjohur"
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 msgid "Processing Transaction"
 msgstr "Duke procesuar shkëmbimin"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr "Shkëmbimi u plotësua me sukses"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 msgid "Transaction failed"
 msgstr "Shkëmbimi dështoi"
 
-#: src/red_pendingview.py:703
+#: src/red_pendingview.py:708
 msgid "Transaction Failed"
 msgstr "Shkëmbimi Dështoi"
 
@@ -2666,6 +2665,11 @@ msgstr "Emër përdoruesi i pasaktë."
 msgid "User '%s' already exists."
 msgstr "Përdoruesi '%s' ekziston."
 
+#~ msgid ""
+#~ "System could not be activated: Invalid activation code or email address."
+#~ msgstr ""
+#~ "Sistemi nuk do të aktivohet: Kod aktivimi apo adresë email e pasaktë."
+
 #~ msgid "Unable to mount '%s' as a channel"
 #~ msgstr "Nuk arrij të montoj '%s' si kanal"
 
@@ -2683,4 +2687,3 @@ msgstr "Përdoruesi '%s' ekziston."
 
 #~ msgid "Connect..."
 #~ msgstr "Lidhu..."
-
