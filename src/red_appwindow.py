@@ -38,9 +38,12 @@ def refresh_cb(app):
 
 class AppWindow(gtk.Window):
 
+    # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
-        gtk.mainquit()
-        #sys.exit(0)
+        if red_transaction.ok_to_quit(self):
+            gtk.mainquit()
+            return 0
+        return 1
 
     def assemble_menubar(self, bar):
 
@@ -75,7 +78,7 @@ class AppWindow(gtk.Window):
         self.paned = gtk.VPaned()
         self.add(self.paned)
 
-        self.table = gtk.Table(2, 5)
+        self.table = gtk.Table(2, 6)
         self.paned.pack1 (self.table, 1, 1)
 
         self.components = []
@@ -87,14 +90,15 @@ class AppWindow(gtk.Window):
         self.assemble_menubar(self.menubar)
         
         self.sidebar = red_sidebar.SideBar()
+        self.transactionbar = red_transaction.TransactionBar()
 
         self.header  = gtk.EventBox()
         self.upper   = gtk.EventBox()
         self.lower   = gtk.EventBox()
         self.mainbox = gtk.EventBox()
 
-        self.transaction = red_transaction.Transaction()
-        self.statusbar = red_statusbar.StatusBar(self.transaction)
+        #self.transaction = red_transaction.Transaction()
+        #self.statusbar = red_statusbar.StatusBar(self.transaction)
 
         style = self.mainbox.get_style().copy()
         color = self.mainbox.get_colormap().alloc_color("white")
@@ -135,7 +139,12 @@ class AppWindow(gtk.Window):
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
 
-        self.paned.pack2(self.statusbar, 1, 0)
+        self.table.attach(self.transactionbar,
+                          0, 2, 5, 6,
+                          gtk.FILL, gtk.FILL,
+                          0, 2)
+
+        #self.paned.pack2(self.statusbar, 1, 0)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
@@ -146,7 +155,7 @@ class AppWindow(gtk.Window):
                          callback=lambda: self.activate_component(comp))
 
         comp.set_server(self.server)
-        comp.set_transaction(self.transaction)
+        #comp.set_transaction(self.transaction)
 
         # We activate the first component that gets registered.
         if not self.components:

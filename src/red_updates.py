@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_header, red_pixbuf
-import red_packagearray, red_packageview
+import red_packagearray, red_packageview, red_packagebook
 import red_component
 
 class SummaryComponent(red_component.Component):

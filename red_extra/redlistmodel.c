@@ -125,6 +125,8 @@ red_list_model_get_value (GtkTreeModel *tree_model,
     args = Py_BuildValue("(O)", obj);
     py_value = PyEval_CallObject(col->pycallback, args);
     if (py_value == NULL) {
+        g_print ("error: col=%d i=%d len=%d\n",
+                 column, i, model->array->len);
         g_value_init (value, G_TYPE_STRING);
         g_value_set_string (value, "ERROR!");
         return;
@@ -374,4 +376,24 @@ red_list_model_add_column (RedListModel *model,
     g_ptr_array_add (model->columns, col);
 
     return model->columns->len - 1;
+}
+
+void
+red_list_model_row_changed (RedListModel *model,
+                            gint          row_num)
+{
+    GtkTreeIter iter;
+    GtkTreePath *path;
+
+    g_return_if_fail (RED_IS_LIST_MODEL (model));
+    g_return_if_fail (row_num >= 0);
+    g_return_if_fail (model->array && row_num < model->array->len);
+
+    ITER_SET_INDEX (&iter, row_num);
+    path = gtk_tree_path_new ();
+    gtk_tree_path_append_index (path, row_num);
+
+    gtk_tree_model_row_changed (GTK_TREE_MODEL (model), path, &iter);
+    
+    gtk_tree_path_free (path);
 }

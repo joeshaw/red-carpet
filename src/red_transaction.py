@@ -15,40 +15,166 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import gobject
+import string
+import gobject, gtk
+import rcd_util
+import red_packagearray, red_packageview
+import red_pendingops
+import red_component
 
-import red_packagearray
-
-class Transaction(red_packagearray.PackageArray):
+class TransactionArray(red_packagearray.PackageArray,
+                       red_pendingops.PendingOpsListener):
 
     def __init__(self):
-
+        self.packages = red_pendingops.packages()
         red_packagearray.PackageArray.__init__(self)
+        red_pendingops.PendingOpsListener.__init__(self)
 
-        self.install_packages = []
-        self.uninstall_packages = []
+    def sort(self, sort_fn, reverse):
+        self.packages.sort(sort_fn)
+        if reverse:
+            self.packages.reverse()
 
     def get_all(self):
-        return self.install_packages + self.uninstall_packages
+        return self.packages
 
-    def append_op(self, self2, pl, p):
-        pl.append(p)
+    def pendingops_changed(self, pkg, key, value, old_value):
+        def refresh_op(self):
+            self.packages = red_pendingops.packages_with_actions()
+        self.changed(refresh_op)
 
-    def remove_op(self, self2, pl, p):
-        pl.remove(p)
+#########################################################################
 
-    def add_install_package(self, package):
-        self.changed(self.append_op,
-                     self.install_packages, package)
+class TransactionBar(gtk.HBox,
+                     red_pendingops.PendingOpsListener):
 
-    def remove_install_package(self, package):
-        self.changed(self.remove_op,
-                     self.install_packages, package)
+    no_action_str = "No Pending Actions"
 
-    def add_uninstall_package(self, package):
-        self.changed(self.append_op,
-                     self.uninstall_packages, package)
+    def __init__(self):
+        gtk.HBox.__init__(self)
+        red_pendingops.PendingOpsListener.__init__(self)
+        self.button = gtk.Button("Go!")
+        self.button.set_sensitive(0)
+        self.label = gtk.Label(TransactionBar.no_action_str)
+        self.pack_end(self.button, 0, 0, 2)
+        self.pack_end(self.label, 0, 0, 2)
+        self.label.show()
 
-    def remove_uninstall_package(self, package):
-        self.changed(self.remove_op,
-                     self.uninstall_packages, package)
+        def clicked_cb(x):
+            red_pendingops.resolve_dependencies()
+        self.button.connect("clicked", clicked_cb)
+
+    def update_label(self):
+        msg_list = []
+
+        ins_count = red_pendingops.pending_install_count()
+        if ins_count:
+            msg_list.append("%d pending install%s" %
+                            (ins_count,
+                             (ins_count > 1 and "s") or ""))
+
+        rem_count = red_pendingops.pending_remove_count()
+        if rem_count:
+            msg_list.append("%d pending removal%s" %
+                            (rem_count,
+                             (rem_count > 1 and "s") or ""))
+                
+        msg = string.join(msg_list, ", ")
+        self.label.set_text(msg or TransactionBar.no_action_str)
+        self.button.set_sensitive(msg != "")
+
+    def pendingops_changed(self, pkg, key, value, old_value):
+        if key == "action":
+            self.update_label()
+    
+
+#########################################################################
+
+class TransactionComponent(red_component.Component):
+
+    def name(self):
+        return "Pending Transactions"
+
+    def pixbuf(self):
+        return "about-monkey"
+
+    def build(self):
+        self.array = TransactionArray()
+
+        view = red_packageview.PackageView()
+        view.append_status_column()
+        view.append_name_column(show_channel_icon=1)
+        view.append_version_column()
+        view.append_size_column()
+        view.set_model(self.array)
+
+        def act_cb(view, i, pkg):
+            red_pendingops.toggle_action_with_cancellation(pkg)
+            view.get_model().row_changed(i)
+        view.connect("activated", act_cb)
+
+        self.display("main", view)
+
+
+    def changed_visibility(self, flag):
+
+        if not flag:
+            red_pendingops.clear_action_cancellations()
+            
+#########################################################################
+
+def ok_to_quit(main_app_window):
+
+    ins = red_pendingops.pending_install_count()
+    rem = red_pendingops.pending_remove_count()
+
+    if ins == 0 and rem == 0:
+        return 1
+
+    msgs = []
+    if ins > 0:
+        msgs.append("%d pending install%s" % (ins, (ins > 1 and "s") or ""))
+    if rem > 0:
+        msgs.append("%d pending removal%s" % (rem, (rem > 1 and "s") or ""))
+
+    if (ins == 1 and rem == 0) or (ins == 0 and rem == 1):
+        word = "is"
+    else:
+        word = "are"
+    count_msg  = "There %s currently %s.  If you quit now, all pending " \
+                 "actions will be lost." % (word, string.join(msgs, " and "))
+
+    msg_lines = rcd_util.linebreak(count_msg, 40)
+    msg_lines.append("Are you sure you want to quit?")
+    
+    msgbox = gtk.VBox(0, 0)
+    msgbox.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
+    for line in msg_lines:
+        label = gtk.Label(line)
+        label.set_alignment(0, 0.5)
+        msgbox.pack_start(label, 1, 0, 1)
+    msgbox.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
+
+    img = gtk.Image()
+    img.set_from_stock(gtk.STOCK_DIALOG_WARNING, gtk.ICON_SIZE_DIALOG)
+
+    main_box = gtk.HBox(0, 0)
+
+    main_box.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
+    main_box.pack_start(img, 0, 0, 5)
+    main_box.pack_start(msgbox, 1, 1, 5)
+    main_box.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
+    main_box.show_all()
+        
+    dialog = gtk.Dialog("Quit?")
+    dialog.add_button(gtk.STOCK_QUIT, 1)
+    dialog.add_button(gtk.STOCK_CANCEL, 0)
+    dialog.vbox.add(main_box)
+    
+    dialog.show()
+    retval = dialog.run()
+    dialog.destroy()
+
+    return retval
+    
+    

@@ -154,10 +154,17 @@ def get_package_EVR(pkg):
     return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
 
 def get_package_info(pkg):
-    return server.rcd.packsys.package_info(pkg)
+    if not pkg.has_key("__info"):
+        pkg["__info"] = server.rcd.packsys.package_info(pkg)
+    return pkg["__info"]
 
 def get_package_history(pkg):
     return server.rcd.log.query_log([["name", "=", pkg["name"]]])
+
+def get_package_key(pkg):
+    return "%s/%s/%d" % (pkg["name"],
+                         get_package_EVR(pkg),
+                         pkg["channel"])
 
 ###############################################################################
 

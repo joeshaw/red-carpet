@@ -19,20 +19,12 @@ import sys, os
 import gtk
 import ximian_xmlrpclib
 import rcd_util
-import red_packagearray
-import red_explodedview
-import red_appwindow
-import red_channeloption
-import red_channelbrowse
-import red_summary
-import red_search
-import red_transaction
-import red_subscriptions
+import red_serverlistener
 
 def connect_to_server():
     ## Make contact with the daemon.
     ## We assume local access only
-    url = "/var/run/rcd/rcd"
+    url = "/var/run/rcd"
     username = None
     password = None
 
@@ -51,27 +43,21 @@ def connect_to_server():
 
     return server
 
-def opt_test(server):
 
-    opt = red_channeloption.ChannelOption()
-    app = red_appwindow.AppWindow()
-    app.show_all()
-    app.set_main_widget(opt)
+class MyServerListener(red_serverlistener.ServerListener):
 
-def main(version):
-    server = connect_to_server()
+    def server_changed(self, server):
+        print "Server Changed!"
 
-    app = red_appwindow.AppWindow(server)
-    app.set_title("Red Carpet 2: Electric Boogaloo")
-    app.show_all()
+    def channels_changed(self, server):
+        print "Channels Changed!"
 
-    app.register_component(red_summary.SummaryComponent())
-    app.register_component(red_subscriptions.SubscriptionsComponent())
-    app.register_component(red_channelbrowse.ChannelBrowseComponent())
-    app.register_component(red_transaction.TransactionComponent())
-    app.register_component(red_search.SearchComponent())
-
-    gtk.main()
-    
+    def subscriptions_changed(self, server):
+        print "Subscriptions changed!"
 
 
+connect_to_server()
+
+foo = MyServerListener()
+
+gtk.main()

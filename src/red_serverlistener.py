@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
+import sys, weakref
 import gobject, gtk
 import rcd_util
 
@@ -54,11 +54,36 @@ def register_listener(obj):
         poll_count += 1
     
     listener_id += 1
-    listeners[listener_id] = obj
+    listeners[listener_id] = weakref.ref(obj)
     return listener_id
 
 def unregister_listener(lid):
+    global listeners
     del listeners[lid]
+
+def signal_listeners(server,
+                     packages_changed,
+                     channels_changed,
+                     subscriptions_changed):
+
+    if packages_changed or channels_changed or subscriptions_changed:
+
+        for lid in listeners.keys():
+            listener_ref = listeners[lid]
+            listener = listener_ref()
+            if listener:
+
+                if packages_changed:
+                    listener.packages_changed(server)
+
+                if channels_changed:
+                    listener.channels_changed(server)
+
+                if subscriptions_changed:
+                    listener.subscriptions_changed(server)
+
+            else:
+                unregister_listener(lid)
 
 def poll_cb():
     global poll_count, missed_polls, last_server
@@ -86,20 +111,14 @@ def poll_cb():
            curr_subscription_seqno != last_subscription_seqno:
             rcd_util.reset_channels()
 
-        if curr_package_seqno != last_package_seqno:
-            for x in listeners.values():
-                x.process_package_changes(server)
-            last_package_seqno = curr_package_seqno
+        signal_listeners(server,
+                         curr_package_seqno != last_package_seqno,
+                         curr_subscription_seqno != last_subscription_seqno,
+                         curr_channel_seqno != last_channel_seqno)
 
-        if curr_channel_seqno != last_channel_seqno:
-            for x in listeners.values():
-                x.process_channel_changes(server)
-            last_channel_seqno = curr_channel_seqno
-
-        if curr_subscription_seqno != last_subscription_seqno:
-            for x in listeners.values():
-                x.process_subscription_changes(server)
-            last_subscription_seqno = curr_subscription_seqno
+        curr_package_seqno = last_package_seqno
+        curr_subscription_seqno = last_subscription_seqno
+        curr_channel_seqno = last_channel_seqno
         
         missed_polls = 0
         
@@ -193,9 +212,6 @@ class ServerListener:
                 if self.__missed_subscription_changes > 0:
                     self.process_subscription_changes(server)
 
-    # Any ServerListener has to be shut down when it isn't going to be used
-    # again, or otherwise it will never get GCed.  (A reference to it
-    # will remain in the list of listeners.)
     def shutdown_listener(self):
         if self.freeze_count > 0:
             sys.stderr.write("Shutting down frozen listener")

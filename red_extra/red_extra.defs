@@ -35,3 +35,12 @@
    '("GType"     "type")
   )
 )
+
+(define-method row_changed
+  (of-object "RedListModel")
+  (c-name "red_list_model_row_changed")
+  (return-type "none")
+  (parameters
+   '("gint" "row_number")
+  )
+)

@@ -176,7 +176,8 @@ class SearchComponent(red_component.Component):
         ### Main
 
         view = red_packageview.PackageView()
-        view.append_channel_column()
+        view.append_channel_column(show_channel_name=1,
+                                   show_channel_icon=1)
         view.append_name_column()
         view.append_version_column()
         view.append_size_column()

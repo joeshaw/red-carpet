@@ -20,6 +20,7 @@ import gobject, gtk
 import rcd_util
 import red_extra
 import red_serverlistener, red_pixbuf
+import red_pendingops
 
 ###
 ### Callbacks for our ListModel
@@ -35,7 +36,7 @@ def pkg_EVR(pkg):
     return rcd_util.get_package_EVR(pkg)
 
 def pkg_old_EVR(pkg):
-    old_pkg = pkg.get("old_package")
+    old_pkg = pkg.get("__old_package")
     if old_pkg:
         return rcd_util.get_package_EVR(old_pkg)
     return ""
@@ -71,6 +72,73 @@ def pkg_is_upgrade(pkg):
 def pkg_is_downgrade(pkg):
     return pkg["name_installed"] < 0
 
+# __pending 1 = to be installed
+# __pending 2 = to be uninstalled
+def pkg_status(pkg):
+    pending = red_pendingops.get_action(pkg)
+    if pending:
+
+        if pending == red_pendingops.TO_BE_INSTALLED \
+           or pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
+            if pkg["name_installed"] > 0:
+                str = "to be upgraded"
+            elif pkg["name_installed"] < 0:
+                str = "to be <b>downgraded</b>"
+            else:
+                str = "to be installed"
+            if pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
+                str = "<s>%s</s>" % str
+            return str
+        
+        elif pending == red_pendingops.TO_BE_REMOVED \
+             or pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
+            str = "to be removed"
+            if pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
+                str = "<s>%s</s>" % str
+            return str
+        
+        else:
+            return "?Unknown?"
+        
+    if pkg["name_installed"] > 0: # upgrade
+        return "upgrade"
+    elif pkg["name_installed"] < 0:
+        return "newer version installed"
+    if pkg["installed"]:
+        return "installed"
+    else:
+        return ""
+
+__to_be_installed_icon = red_pixbuf.get_pixbuf("to-be-installed")
+__to_be_removed_icon   = red_pixbuf.get_pixbuf("to-be-removed")
+__update_icon          = red_pixbuf.get_pixbuf("update")
+__downgrade_icon       = red_pixbuf.get_pixbuf("warning", 24, 24)
+__installed_icon       = red_pixbuf.get_pixbuf("installed")
+
+__to_be_installed_xxx_icon = red_pixbuf.get_pixbuf("to-be-installed-cancelled")
+__to_be_removed_xxx_icon   = red_pixbuf.get_pixbuf("to-be-removed-cancelled")
+
+def pkg_status_icon(pkg):
+    pending = red_pendingops.get_action(pkg)
+    if pending:
+        if pending == red_pendingops.TO_BE_INSTALLED:
+            return __to_be_installed_icon
+        elif pending == red_pendingops.TO_BE_REMOVED:
+            return __to_be_removed_icon
+        elif pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
+            return __to_be_installed_xxx_icon
+        elif pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
+            return __to_be_removed_xxx_icon
+        else:
+            return None
+    if pkg["name_installed"] > 0: # upgrade
+        return __update_icon
+    elif pkg["name_installed"] < 0: # downgrade
+        return __downgrade_icon
+    elif pkg["installed"]:
+        return __installed_icon
+    return None
+
 COLUMNS = (
     ("PKG",               pkg,                   gobject.TYPE_PYOBJECT),
     ("NAME",              pkg_name,              gobject.TYPE_STRING),
@@ -86,6 +154,8 @@ COLUMNS = (
     ("IS_NAME_INSTALLED", pkg_is_name_installed, gobject.TYPE_BOOLEAN),
     ("IS_UPGRADE",        pkg_is_upgrade,        gobject.TYPE_BOOLEAN),
     ("IS_DOWNGRADE",      pkg_is_downgrade,      gobject.TYPE_BOOLEAN),
+    ("STATUS",            pkg_status,            gobject.TYPE_STRING),
+    ("STATUS_ICON",       pkg_status_icon,       gtk.gdk.Pixbuf),
     )
 
 for i in range(len(COLUMNS)):
@@ -97,6 +167,7 @@ for i in range(len(COLUMNS)):
 ### Sort functions
 ###
 
+    
 def sort_pkgs_by_name(a, b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
@@ -121,6 +192,7 @@ class PackageArray(red_extra.ListModel):
         gobject.GObject.__init__(self)
         self.__pending_changes = []
         self.__sort_fn = sort_pkgs_by_name
+        self.__reverse_sort = 0
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
@@ -135,7 +207,7 @@ class PackageArray(red_extra.ListModel):
     def request_sort(self):
         if self.__sort_fn:
             t1 = time.time()
-            self.sort(self.__sort_fn)
+            self.sort(self.__sort_fn, self.__reverse_sort)
             t2 = time.time()
 
     def do_changed(self):
@@ -149,23 +221,24 @@ class PackageArray(red_extra.ListModel):
         self.__pending_changes.append((operator, args))
         self.emit("changed")
 
-    def changed_sort_fn(self, sort_fn):
-        def set_sort_fn(array, fn):
+    def changed_sort_fn(self, sort_fn, reverse=0):
+        def set_sort_fn(array, fn, rev):
             array.__sort_fn = fn
-        if self.__sort_fn != sort_fn:
-            self.changed(set_sort_fn, sort_fn)
+            array.__reverse_sort = rev
+        if self.__sort_fn != sort_fn or reverse ^ self.__reverse_sort:
+            self.changed(set_sort_fn, sort_fn, reverse)
 
-    def changed_sort_by_name(self):
-        self.changed_sort_fn(sort_pkgs_by_name)
+    def changed_sort_by_name(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_name, reverse)
 
-    def changed_sort_by_size(self):
-        self.changed_sort_fn(sort_pkgs_by_size)
+    def changed_sort_by_size(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_size, reverse)
 
-    def changed_sort_by_importance(self):
-        self.changed_sort_fn(sort_pkgs_by_importance)
+    def changed_sort_by_importance(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_importance, reverse)
 
-    def changed_sort_by_channel(self):
-        self.changed_sort_fn(sort_pkgs_by_channel)
+    def changed_sort_by_channel(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_channel, reverse)
 
     ## Fallback implementation
     def len(self):
@@ -204,8 +277,10 @@ class PackageStore(PackageArray):
         PackageArray.__init__(self)
         self.__store = []
 
-    def sort(self, sort_fn):
+    def sort(self, sort_fn, reverse):
         self.__store.sort(sort_fn)
+        if reverse:
+            self._store.reverse()
 
     def get_all(self):
         return self.__store
@@ -244,8 +319,10 @@ class FilteredPackageArray(PackageArray):
         if target:
             self.set_target(target)
 
-    def sort(self, sort_fn):
+    def sort(self, sort_fn, reverse):
         self.__cache.sort(sort_fn)
+        if reverse:
+            self.__cache.reverse()
 
     def fpa_changed_cb(self):
         self.__cache = []
@@ -300,8 +377,10 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
         self.__packages = []
 
-    def sort(self, sort_fn):
+    def sort(self, sort_fn, reverse):
         self.__packages.sort(sort_fn)
+        if reverse:
+            self.__packages.reverse()
 
     # This is the method that derived classes need to implement
     def get_packages_from_daemon(self, server):
@@ -372,9 +451,10 @@ class UpdatedPackages(PackagesFromDaemon):
 
         packages = []
         for old_pkg, pkg, history in server.rcd.packsys.get_updates():
-            pkg["old_package"] = old_pkg
-            pkg["history"] = history
+            pkg["__old_package"] = old_pkg
+            pkg["__history"] = history
             packages.append(pkg)
 
         return packages
+
 

@@ -69,5 +69,8 @@ gint red_list_model_add_column (RedListModel *model,
                                 PyObject     *pycallback,
                                 GType         type);
 
+void red_list_model_row_changed (RedListModel *model,
+                                 gint          row_num);
+
 #endif /* __REDLISTMODEL_H__ */
 

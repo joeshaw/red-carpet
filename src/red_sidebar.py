@@ -45,7 +45,7 @@ class SideBar(gtk.EventBox):
             label="No Label",
             callback=None):
 
-        icon = red_pixbuf.get_widget(pixbuf)
+        icon = red_pixbuf.get_widget(pixbuf, width=48, height=48)
 
         my_vbox = gtk.VBox(0, 0)
 
