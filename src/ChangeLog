@@ -1,3 +1,13 @@
+2003-02-20  Jon Trowbridge  <trow@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Updated.
+
+	* red_main.py: Updated to reflect red_search/red_browse rename.
+
+	* red_browse.py: Renamed to red_search.py.
+
+	* red_search.py: Replaced with red_browse.py.
+
 2003-02-20    <tambet@ximian.com>
 
 	* red_users.py: Changed users treeview to optionmenu. Use serverproxy

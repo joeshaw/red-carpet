@@ -18,7 +18,7 @@
 import time, threading, gtk
 import rcd_util
 import red_appwindow
-import red_browse
+import red_search
 import red_summary
 import red_transaction
 import red_news
@@ -89,7 +89,7 @@ def main(version):
     app.set_title(red_name + " " + red_version)
 
     app.register_component(red_summary.SummaryComponent())
-    app.register_component(red_browse.BrowseComponent())
+    app.register_component(red_search.SearchComponent())
     app.register_component(red_news.NewsComponent())
     app.register_component(red_transaction.TransactionComponent())
     app.register_component(red_history.HistoryComponent())
