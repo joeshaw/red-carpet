@@ -1,3 +1,9 @@
+2003-02-07  Frank Belew  <frb@ximian.com>
+
+	* configure.in: add LDIR so red-carpet.in can have the libdir replaced
+
+	* red_extra/Makefile.am: install into $(libdir)/red-carpet/red_extra
+
 2003-02-06  Frank Belew  <frb@ximian.com>
 
 	* autogen.sh: big ugly hack to make it use automake-1.6

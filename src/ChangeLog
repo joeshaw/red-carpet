@@ -1,3 +1,8 @@
+2003-02-07  Frank Belew  <frb@ximian.com>
+
+	* red-carpet.in: added red_carpet_libdir to the path append so client
+	works after make install
+
 2003-02-07  Tambet Ingo  <tambet@ximian.com>
 
 	* red_packagepage_info.py (pkg_section): Implement.

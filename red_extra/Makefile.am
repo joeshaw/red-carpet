@@ -12,7 +12,7 @@ pythondir=$(PYGTK_PREFIX)/lib/python2.2
 pkgpythondir = $(pythondir)/gtk-2.0
 pkgpyexecdir = $(pythondir)/gtk-2.0
 
-red_extraexecdir = $(libdir)/red-carpet
+red_extraexecdir = $(libdir)/red-carpet/red_extra
 red_extraexec_DATA = __init__.py
 EXTRA_DIST += __init__.py
 

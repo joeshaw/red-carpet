@@ -94,6 +94,8 @@ AC_SUBST(PYTHON)
 
 DDIR=`echo $datadir | sed -e "s,"'${prefix}'",$prefix,"`
 AC_SUBST(DDIR)
+LDIR=`echo $libdir | sed -e "s,"'${exec_prefix}'",$prefix,"`
+AC_SUBST(LDIR)
 
 AC_OUTPUT([
 Makefile
