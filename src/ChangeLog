@@ -1,5 +1,10 @@
 2003-02-20  Tambet Ingo  <tambet@ximian.com>
 
+	* red_pendingview.py (PendingView.finished): Emit "finished" singal
+	here instead of in poll() method.
+
+2003-02-20  Tambet Ingo  <tambet@ximian.com>
+
 	* red_users.py (PrivilegesModel.request_update_cb): Implement.
 	Necessary to force the treeview update all cells if "superuser"
 	privilege is toggled.

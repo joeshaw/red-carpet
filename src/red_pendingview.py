@@ -106,6 +106,7 @@ class PendingView(gtk.Window):
         print "Cancelled!"
 
     def finished(self):
+        self.emit("finished")
         print "Finished!"
         self.destroy()
 
@@ -247,7 +248,6 @@ class PendingView(gtk.Window):
 
         if not polling:
             def finished_cb(x):
-                x.emit("finished")
                 if x.self_destruct:
                     x.finished()
                 else:
