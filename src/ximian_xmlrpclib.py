@@ -319,11 +319,12 @@ try:
 except (AttributeError, ImportError):
     FastParser = FastUnmarshaller = None
 
+have_ximian_unmarshaller = 0
 try:
     import ximian_unmarshaller
     have_ximian_unmarshaller = 1
 except (AttributeError, ImportError):
-    have_ximian_unmarshaller = 0
+    pass
 
 #
 # the SGMLOP parser is about 15x faster than Python's builtin
@@ -336,7 +337,6 @@ try:
     import sgmlop
     if not hasattr(sgmlop, "XMLParser"):
         raise ImportError
-    print "Using sgmlop parser."
 except ImportError:
     SgmlopParser = None # sgmlop accelerator not available
 else:
@@ -793,7 +793,6 @@ def getparser():
                 b = Binary()
                 b.decode(data)
                 return b
-
             def boolean_cb(value):
                 if value == "0":
                     return False
@@ -801,10 +800,12 @@ def getparser():
                     return True
                 else:
                     raise TypeError, "bad boolean value"
-            
-            target = ximian_unmarshaller.new(binary_cb, boolean_cb)
+            def fault_cb(arg):
+                raise apply(Fault, (), arg)
+            target = ximian_unmarshaller.new(binary_cb, boolean_cb, fault_cb)
         else:
             target = Unmarshaller()
+            
         if FastParser:
             parser = FastParser(target)
         elif SgmlopParser:
@@ -965,8 +966,17 @@ class Transport:
     def make_connection(self, host):
         # create a HTTP connection object from a host descriptor
         import httplib
-        return httplib.HTTP(host)
-
+        try:
+            return httplib.HTTP(host)
+        except ValueError:
+            # This is lame.  The Python 2.2 httplib seems to have
+            # regressed.  Before if you passed in a nonnumeric port
+            # you'd get a socket.error exception telling you so.  Now
+            # httplib just spews an invalid literal error on int().
+            from socket import error
+                
+            raise error, "nonnumeric port"
+        
     def send_request(self, connection, handler, request_body):
         connection.putrequest("POST", handler)
 
@@ -1042,10 +1052,7 @@ class Transport:
         p, u = self.getparser()
 
         while 1:
-            # For non-local processing, we probably want to
-            # read the response in chunks.  Originally this code
-            # read 1024 bytes at a time.
-            response = f.read()
+            response = f.read(1024)
             if not response:
                 break
             if self.verbose:
@@ -1054,7 +1061,6 @@ class Transport:
 
         f.close()
         p.close()
-
 
         return u.close()
 
@@ -1075,7 +1081,16 @@ class SafeTransport(Transport):
             raise NotImplementedError,\
                   "your version of httplib doesn't support HTTPS"
         else:
-            return apply(HTTPS, (host, None), x509)
+            try:
+                return apply(HTTPS, (host, None), x509)
+            except ValueError:
+                # This is lame.  The Python 2.2 httplib seems to have
+                # regressed.  Before if you passed in a nonnumeric port
+                # you'd get a socket.error exception telling you so.  Now
+                # httplib just spews an invalid literal error on int().
+                from socket import error
+                
+                raise error, "nonnumeric port"
 
     def send_host(self, connection, host):
         if isinstance(host, TupleType):

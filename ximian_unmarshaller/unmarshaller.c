@@ -27,18 +27,17 @@
 #include <glib.h>
 #include <Python.h>
 
-staticforward PyTypeObject PyUnmarshallerType;
-
-enum PyUnmarshallerType {
-    PY_UNMARSHALLER_TYPE_NONE,
-    PY_UNMARSHALLER_TYPE_PARAMS,
-    PY_UNMARSHALLER_TYPE_FAULT,
-    PY_UNMARSHALLER_TYPE_METHODNAME
+enum PyUnmarshallerFlavor {
+    PY_UNMARSHALLER_FLAVOR_NONE,
+    PY_UNMARSHALLER_FLAVOR_PARAMS,
+    PY_UNMARSHALLER_FLAVOR_FAULT,
+    PY_UNMARSHALLER_FLAVOR_METHODNAME
 };
 
-typedef struct {
+typedef struct _PyUnmarshaller PyUnmarshaller;
+struct _PyUnmarshaller {
     PyObject_HEAD;
-    enum PyUnmarshallerType type;
+    enum PyUnmarshallerFlavor flavor;
     GPtrArray *stack;
     GSList    *marks;
     GString   *data;
@@ -47,14 +46,51 @@ typedef struct {
     int        value;
     PyObject  *binary_cb;
     PyObject  *boolean_cb;
-} PyUnmarshaller;
-    
+    PyObject  *fault_cb;
+};
+
+static void      unmarshaller_dealloc (PyObject *);
+static PyObject *unmarshaller_getattr (PyUnmarshaller *, char *);
+static PyObject *unmarshaller_new     (PyObject *, PyObject *);
+
+static PyTypeObject PyUnmarshallerType = {
+    PyObject_HEAD_INIT (NULL)
+    0,
+    "ximian_unmarshaller",
+    sizeof (PyUnmarshaller),
+    0,
+    unmarshaller_dealloc,
+    0, /* tp_print */  
+    (getattrfunc) unmarshaller_getattr,
+    0, /*tp_setattr*/
+    0, /*tp_compare*/
+    0, /*tp_repr*/
+    0, /*tp_as_number*/
+    0, /*tp_as_sequence*/
+    0, /*tp_as_mapping*/
+    0, /*tp_hash */
+};
+
+static PyMethodDef general_methods[] = {
+    { "new", unmarshaller_new, METH_VARARGS, "Create a new unmarshaller" },
+    { NULL, NULL, 0, NULL }
+};
+
+
+
 static PyObject *
 unmarshaller_close (PyObject *self, PyObject *args)
 {
     PyUnmarshaller *unm = (PyUnmarshaller *) self;
     PyObject *tuple;
     int i;
+
+    if (unm->flavor == PY_UNMARSHALLER_FLAVOR_FAULT
+        && unm->fault_cb
+        && unm->stack->len > 0) {
+        args = Py_BuildValue ("(O)", g_ptr_array_index (unm->stack, 0));
+        PyEval_CallObject (unm->fault_cb, args);
+    }
 
     /* tuple-ify the stack */
     tuple = PyTuple_New (unm->stack->len);
@@ -83,13 +119,13 @@ unmarshaller_getmethodname (PyObject *self, PyObject *args)
 static PyObject *
 unmarshaller_xml (PyObject *self, PyObject *args)
 {
+#if 0
     PyUnmarshaller *unm = (PyUnmarshaller *) self;
     char *encoding;
     int standalone;
 
     /* FIXME: do nothing for now */
 
-#if 0
     if (! PyArg_ParseTuple (args, "si", &encoding, &standalone))
         return NULL;
 
@@ -266,13 +302,13 @@ end_value (PyUnmarshaller *unm, const char *data)
 static void
 end_params (PyUnmarshaller *unm, const char *data)
 {
-    unm->type = PY_UNMARSHALLER_TYPE_PARAMS;
+    unm->flavor = PY_UNMARSHALLER_FLAVOR_PARAMS;
 }
 
 static void
 end_fault (PyUnmarshaller *unm, const char *data)
 {
-    unm->type = PY_UNMARSHALLER_TYPE_FAULT;
+    unm->flavor = PY_UNMARSHALLER_FLAVOR_FAULT;
 }
 
 static void
@@ -280,7 +316,7 @@ end_methodName (PyUnmarshaller *unm, const char *data)
 {
     g_free (unm->methodname);
     unm->methodname = g_strdup (data);
-    unm->type = PY_UNMARSHALLER_TYPE_METHODNAME;
+    unm->flavor = PY_UNMARSHALLER_FLAVOR_METHODNAME;
 }
 
 static PyObject *
@@ -361,15 +397,19 @@ static PyObject *
 unmarshaller_new (PyObject *self, PyObject *args)
 {
     PyUnmarshaller *unm;
-    PyObject *binary_cb, *boolean_cb;
+    PyObject *binary_cb, *boolean_cb, *fault_cb;
 
-    if (!PyArg_ParseTuple (args, "OO:new_unmarshaller",
-                           &binary_cb, &boolean_cb))
+    if (!PyArg_ParseTuple (args, "OOO:new_unmarshaller",
+                           &binary_cb, &boolean_cb, &fault_cb))
         return NULL;
     
+#if PY_MAJOR_VERSION == 2
     unm = PyObject_New (PyUnmarshaller, &PyUnmarshallerType);
+#else
+    unm = PyObject_NEW (PyUnmarshaller, &PyUnmarshallerType);
+#endif
 
-    unm->type = PY_UNMARSHALLER_TYPE_NONE;
+    unm->flavor = PY_UNMARSHALLER_FLAVOR_NONE;
     unm->stack = g_ptr_array_new ();
     unm->marks = NULL;
     unm->data = g_string_new ("");
@@ -377,9 +417,11 @@ unmarshaller_new (PyObject *self, PyObject *args)
     unm->encoding = g_strdup ("utf-8");
     unm->binary_cb = binary_cb;
     unm->boolean_cb = boolean_cb;
+    unm->fault_cb = fault_cb;
 
     Py_INCREF (unm->binary_cb);
     Py_INCREF (unm->boolean_cb);
+    Py_INCREF (unm->fault_cb);
 
     return (PyObject *) unm;
 }
@@ -401,7 +443,11 @@ unmarshaller_dealloc (PyObject *self)
     g_free (unm->methodname);
     g_free (unm->encoding);
 
+#if PY_MAJOR_VERSION == 2
     PyObject_Del (self);
+#else
+    PyMem_DEL (self);
+#endif
 }
 
 static PyMethodDef unmarshaller_methods[] = {
@@ -420,29 +466,6 @@ unmarshaller_getattr (PyUnmarshaller *unm, char *name)
 {
     return Py_FindMethod (unmarshaller_methods, (PyObject *) unm, name);
 }
-
-static PyTypeObject PyUnmarshallerType = {
-    PyObject_HEAD_INIT (NULL)
-    0,
-    "ximian_unmarshaller",
-    sizeof (PyUnmarshaller),
-    0,
-    unmarshaller_dealloc,
-    0, /* tp_print */  
-    (getattrfunc) unmarshaller_getattr,
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash */
-};
-
-static PyMethodDef general_methods[] = {
-    { "new", unmarshaller_new, METH_VARARGS, "Create a new unmarshaller" },
-    { NULL, NULL, 0, NULL }
-};
 
 DL_EXPORT (void)
 initximian_unmarshaller (void)
