@@ -1,3 +1,4 @@
+
 compile
 COPYING
 depcomp
@@ -14,7 +15,7 @@ config.log
 config.guess
 config.sub
 aclocal.m4
-autom4te-*.cache
+autom4te*.cache
 Makefile.in
 Makefile
 red-carpet.console
