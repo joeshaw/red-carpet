@@ -31,6 +31,7 @@ import red_pixbuf
 import red_prefs
 import red_subscriptions
 import red_users
+import red_activation
 
 def refresh_cb(app):
     try:
@@ -119,6 +120,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/Edit/Subscriptions",
                 callback=lambda x:red_subscriptions.SubscriptionsWindow().show())
+
+        bar.add("/Edit/Activation",
+                callback=lambda x:red_activation.ActivationWindow().show())
 
         bar.add("/Edit/Preferences",
                 stock=gtk.STOCK_PREFERENCES,
