@@ -52,14 +52,16 @@ class PackageView(gtk.TreeView):
         # idle callback.
         def button_clicked_for_popup_cb(view, ev, select):
             if ev.button == 3:
-                def clicked_idle_cb(view, ev, select):
+                def clicked_idle_cb(view, ev, select, b, t):
                     model, iter = select.get_selected()
                     if iter:
                         path = model.get_path(iter)
                         pkg = model.get_list_item(path[0])
-                        view.emit("popup", ev, path[0], pkg)
+                        view.emit("popup", ev, path[0], b, t, pkg)
                     return 0
-                gtk.idle_add(clicked_idle_cb, view, ev, select)
+                gtk.idle_add(clicked_idle_cb,
+                             view, ev, select,
+                             ev.button, ev.time)
 
         def row_activated_cb(view, path, col):
             model = view.get_model()
@@ -93,7 +95,7 @@ class PackageView(gtk.TreeView):
             red_pendingops.toggle_action(pkg)
         #print "activated %s (%d)" % (pkg["name"], i)
 
-    def do_popup(self, ev, i, pkg):
+    def do_popup(self, ev, i, ev_button, ev_time, pkg):
         pass
         #print "popup on %s (%d)" % (pkg["name"], i)
 
@@ -428,7 +430,9 @@ gobject.signal_new("popup",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gtk.gdk.Event.__gtype__,
-                    gobject.TYPE_INT,
+                    gobject.TYPE_INT, # item number,
+                    gobject.TYPE_INT, # button,
+                    gobject.TYPE_INT, # time
                     gobject.TYPE_PYOBJECT))
 
 

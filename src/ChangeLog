@@ -1,5 +1,19 @@
 2003-01-23  Jon Trowbridge  <trow@ximian.com>
 
+	* red_packagebrowser.py (PackageBrowser.show_popup_cb): Use the
+	extra time and button number arguments when popping up the menu.
+
+	* red_packageview.py (PackageView.button_clicked_for_popup_cb):
+	Propagate the event button number and time through the chain of
+	callbacks and idle functions, since the GdkEvent itself seems to
+	get mangled by the time we actually need this info to pop up our
+	menu.  This fixes the weird problem (due to a bad event time)
+	where the pop-up menu would disappear unless button 3 was held
+	down
+	(PackageView.do_popup): Support the extra arguments discussed
+	above.
+	
+
 	* Makefile.am (red_carpetsupport_DATA): Updated the list of files
 	so that we can make distcheck.
 
