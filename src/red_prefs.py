@@ -152,7 +152,7 @@ class PrefsViewPage_General(PrefsViewPage):
         self.premium_check = self.create_checkbox("enable-premium",
                                                   _("Enable Premium Services "
                                                     "(Red Carpet Express or "
-                                                    "Enterprise"))
+                                                    "Enterprise)"))
         table.attach(self.premium_check, 0, 2, 1, 2,
                      xoptions=gtk.FILL, xpadding=3)
 
@@ -165,8 +165,8 @@ class PrefsViewPage_General(PrefsViewPage):
         frame.add(table)
 
         self.signed_check = self.create_checkbox("require-signatures",
-                                                 _("Require packages to be "
-                                                   "cryptographically signed"))
+                                                 _("Require package "
+                                                   "signatures"))
         table.attach(self.signed_check, 0, 2, 0, 1,
                      xoptions=gtk.FILL, xpadding=3)
 
@@ -331,7 +331,7 @@ class PrefsViewPage_Cache(PrefsViewPage):
 
         self.update_cache_size_label()
 
-        button = gtk.Button(_("Flush Cache"))
+        button = gtk.Button(_("Empty Cache"))
         if rcd_util.check_server_permission("superuser"):
             button.connect("clicked", flush_cache_cb)
         else:
@@ -357,63 +357,6 @@ class PrefsViewPage_Cache(PrefsViewPage):
         server = rcd_util.get_server_proxy()
         th = server.rcd.system.get_cache_size()
         th.connect("ready", update_cb, self)
-
-class PrefsViewPage_Daemon(PrefsViewPage):
-
-    def __init__(self, parent_view, prefs):
-        PrefsViewPage.__init__(self, parent_view, prefs)
-
-    def build(self):
-        vbox = gtk.VBox(spacing=6)
-        self.pack_start(vbox, padding=6)
-
-        # Logging frame
-        frame = gtk.Frame(_("Logging"))
-        vbox.pack_start(frame, expand=0)
-
-        table = gtk.Table(rows=2, columns=2)
-        table.set_row_spacings(5)
-        frame.add(table)
-
-        label = gtk.Label(_("Level at which to log to /var/log/rcd/rcd-messages:"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL, xpadding=3)
-
-        self.debug_level_spin = self.create_spinbutton("debug-level",
-                                                        (0, 6))
-        table.attach(self.debug_level_spin, 1, 2, 0, 1,
-                     xoptions=gtk.FILL, xpadding=3)
-
-        label = gtk.Label(_("Level at which to log to syslog:"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL, xpadding=3)
-
-        self.syslog_level_spin = self.create_spinbutton("syslog-level",
-                                                        (0, 6))
-        table.attach(self.syslog_level_spin, 1, 2, 1, 2,
-                     xoptions=gtk.FILL, xpadding=3)
-
-
-        table = gtk.Table(rows=2, columns=2)
-        table.set_row_spacings(5)
-        vbox.pack_start(table, expand=0)
-
-        label = gtk.Label(_("Server data refresh interval (hours):"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL, xpadding=3)
-
-        def hours_to_seconds(hours):
-            return hours * 60 * 60
-
-        def seconds_to_hours(seconds):
-            return seconds / (60*60)
-
-        self.refresh_spin = self.create_spinbutton("heartbeat-interval",
-                                                   (1, 72),
-                                                   seconds_to_hours,
-                                                   hours_to_seconds)
-        table.attach(self.refresh_spin, 1, 2, 0, 1,
-                     xoptions=gtk.FILL, xpadding=3)
 
 class PrefsViewPage_Advanced(PrefsViewPage):
     def __init__(self, parent_view, prefs):
@@ -520,10 +463,6 @@ class PrefsView(gtk.Notebook):
         page = PrefsViewPage_Cache(self, prefs_dict)
         page.show_all()
         self.append(page, "Cache")
-
-        page = PrefsViewPage_Daemon(self, prefs_dict)
-        page.show_all()
-        self.append(page, "Daemon")
 
         page = PrefsViewPage_Advanced(self, prefs_dict)
         page.show_all()

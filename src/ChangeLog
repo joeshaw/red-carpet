@@ -1,3 +1,8 @@
+2003-03-25  Joe Shaw  <joe@ximian.com>
+
+	* red_prefs.py: Fix some typos, change around some wording, and
+	kill the Daemon prefs tab.  (Fixes most of #40263)
+
 2003-03-24  Jon Trowbridge  <trow@ximian.com>
 
 	* red_pendingview.py (PendingView.set_label): Try to set the
