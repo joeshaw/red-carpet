@@ -19,6 +19,7 @@ import string, gobject, gtk
 import rcd_util
 import red_main
 import red_listmodel, red_thrashingtreeview
+import red_mirrors
 import ximian_xmlrpclib
 
 from red_gettext import _
@@ -54,7 +55,7 @@ class PrefsViewPage(gtk.HBox):
         if not name in self.queued_sets:
             self.queued_sets.append(name)
             if not self.queued_id:
-                self.queued_id = gtk.idle_add(self.apply_prefs)
+                self.queued_id = gtk.timeout_add(10, self.apply_prefs)
 
     def create_entry(self, name):
         def entry_focus_out_cb(e, ev, p, n):
@@ -127,8 +128,10 @@ class PrefsViewPage(gtk.HBox):
 
 class PrefsViewPage_General(PrefsViewPage):
 
-    def __init__(self, parent_view, prefs):
+    def __init__(self, parent_view, prefs, parent=None):
         PrefsViewPage.__init__(self, parent_view, prefs)
+        self.__mirrors_win = None
+        self.__parent = parent
 
     def build(self):
         vbox = gtk.VBox(spacing=6)
@@ -147,7 +150,52 @@ class PrefsViewPage_General(PrefsViewPage):
         table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL, xpadding=3)
 
         self.url_entry = self.create_entry("host")
-        table.attach(self.url_entry, 1, 2, 0, 1, xpadding=3)
+
+        def mirrors_cb(b, page):
+            if not page.__mirrors_win:
+                page.__mirrors_win = red_mirrors.MirrorsWindow()
+                page.__mirrors_win.select_by_url(page.prefs["host"]["value"])
+
+                if page.__parent:
+                    page.__mirrors_win.set_transient_for(page.__parent)
+                    page.__mirrors_win.set_destroy_with_parent(1)
+
+                def entry_focus_out_cb(e, ev, win):
+                    win.select_by_url(e.get_text())
+                page.url_entry.connect("focus_out_event",
+                                       entry_focus_out_cb,
+                                       page.__mirrors_win)
+
+                def destroy_cb(win, page):
+                    page.__mirrors_win = None
+                page.__mirrors_win.connect("destroy",
+                                           destroy_cb,
+                                           page)
+
+                def mirror_selected_cb(win, mirror, page):
+                    url = mirror["url"]
+                    page.url_entry.set_text(url)
+                    # manually force the value to update
+                    page.prefs["host"]["value"] = url
+                    page.enqueue("host")
+
+                page.__mirrors_win.connect("selected_mirror",
+                                           mirror_selected_cb,
+                                           page)
+                
+            page.__mirrors_win.show_all()
+            page.__mirrors_win.present()
+
+        self.mirrors_button = gtk.Button(_("Mirrors"))
+        self.mirrors_button.connect("clicked", mirrors_cb, self)
+        is_su = rcd_util.check_server_permission("superuser")
+        self.mirrors_button.set_sensitive(is_su)
+
+        entry_button_box = gtk.HBox(0, 0)
+        entry_button_box.pack_start(self.url_entry, expand=1, fill=1)
+        entry_button_box.pack_start(self.mirrors_button, expand=0, fill=0)
+
+        table.attach(entry_button_box, 1, 2, 0, 1, xpadding=3)
 
         self.premium_check = self.create_checkbox("enable-premium",
                                                   _("Enable Premium Services "
@@ -248,8 +296,9 @@ class PrefsViewPage_General(PrefsViewPage):
 
 class PrefsViewPage_Cache(PrefsViewPage):
 
-    def __init__(self, parent_view, prefs):
+    def __init__(self, parent_view, prefs, parent=None):
         PrefsViewPage.__init__(self, parent_view, prefs)
+        self.__parent = parent
 
     def build(self):
         vbox = gtk.VBox(spacing=6)
@@ -374,8 +423,9 @@ class PrefsViewPage_Cache(PrefsViewPage):
         th.connect("ready", update_cb, self)
 
 class PrefsViewPage_Advanced(PrefsViewPage):
-    def __init__(self, parent_view, prefs):
+    def __init__(self, parent_view, prefs, parent=None):
         PrefsViewPage.__init__(self, parent_view, prefs)
+        self.__parent = parent
 
     def build(self):
         unique_prefs = [self.prefs[x] for x in self.prefs
@@ -422,8 +472,10 @@ class PrefsViewPage_Advanced(PrefsViewPage):
 
 class PrefsView(gtk.Notebook):
 
-    def __init__(self):
+    def __init__(self, parent=None):
         gtk.Notebook.__init__(self)
+
+        self.__parent = parent
 
         self.set_show_tabs(0)
         label = gtk.Label(_("Loading preferences..."))
@@ -471,15 +523,15 @@ class PrefsView(gtk.Notebook):
         for p in prefs:
             prefs_dict[p["name"]] = p
 
-        page = PrefsViewPage_General(self, prefs_dict)
+        page = PrefsViewPage_General(self, prefs_dict, parent=self.__parent)
         page.show_all()
         self.append(page, "General")
 
-        page = PrefsViewPage_Cache(self, prefs_dict)
+        page = PrefsViewPage_Cache(self, prefs_dict, parent=self.__parent)
         page.show_all()
         self.append(page, "Cache")
 
-        page = PrefsViewPage_Advanced(self, prefs_dict)
+        page = PrefsViewPage_Advanced(self, prefs_dict, parent=self.__parent)
         page.show_all()
         self.append(page, "Advanced")
         
@@ -490,7 +542,7 @@ class PrefsWindow(gtk.Dialog):
 
         self.set_default_size(550, 400)
 
-        view = PrefsView()
+        view = PrefsView(parent=self)
         view.show()
         self.vbox.add(view)
 

@@ -1,3 +1,30 @@
+2003-04-01  Jon Trowbridge  <trow@ximian.com>
+
+	* red_mirrors.py: Added.  Code for the mirrors dialog.
+
+	* Makefile.am (red_carpetsupport_DATA): Added red_mirrors.py.
+
+	* red_prefs.py (PrefsWindow.__init__): Pass the parent window into
+	the PrefsView.
+	(PrefsView.__init__): Store the parent window.
+	(PrefsView.build): Propagate the parent window into the
+	PrefsViewPages.
+	(PrefsViewPage_General.__init__): Store the parent.
+	(PrefsViewPage_Cache.__init__): Ditto.
+	(PrefsViewPage_Advanced.__init__): Ditto.
+	(PrefsViewPage_General.build): Place a 'Mirrors' button next to
+	the 'Server URL' entry.  Pop up the mirrors dialog when clicked.
+	Hook up a whole bunch of signals to keep the mirrors dialog and
+	the entry in sync.
+	(PrefsViewPage.enqueue): Change our preference-application idle
+	into a 10ms timeout.  This works around a very strange bug that
+	was causing the main loop to spin until the mirrors dialog was
+	closed.
+
+	* rcd_util.py (get_mirrors): Added.
+	(reset_mirrors): Added.
+	(register_server): Call reset_mirrors when we register a server.
+
 2003-04-01  Joe Shaw  <joe@ximian.com>
 
 	* red_installfiles.py (install_local): Begin the file selector in

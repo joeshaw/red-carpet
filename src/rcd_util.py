@@ -27,6 +27,7 @@ server_proxy = None
 server_local = 0
 server_permissions = {}
 current_user = None
+mirrors = None
 
 def md5ify_password(pw):
     return md5.new(pw).hexdigest()
@@ -38,6 +39,7 @@ def register_server(srv, local):
     server_local = local
     reset_server_permissions()
     reset_current_user()
+    reset_mirrors()
 
 def get_server():
     return server
@@ -79,6 +81,30 @@ def get_current_user():
     current_user = server.rcd.users.get_current_user()
     return current_user
 
+def get_mirrors():
+    global mirrors
+
+    def sort_cb(a, b):
+        aname = string.lower(a["name"])
+        bname = string.lower(b["name"])
+
+        # "All Animals Are Equal / But Some Are More Equal Than Others."
+        if aname[:6] == "ximian":
+            aname = "a" * 10
+        if bname[:6] == "ximian":
+            bname = "a" * 10
+                
+        return cmp(aname, bname)
+
+    if mirrors is None:
+        server = get_server()
+        mirrors = server.rcd.mirror.get_all()
+        mirrors.sort(sort_cb)
+    return mirrors
+
+def reset_mirrors():
+    global mirrors
+    mirrors = None
 
 ###############################################################################
 

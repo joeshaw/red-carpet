@@ -30,6 +30,7 @@ red_carpetsupport_DATA =	\
 	red_locks.py				\
 	red_main.py				\
 	red_menubar.py				\
+	red_mirrors.py				\
 	red_mount.py				\
 	red_my_computer.py			\
 	red_news.py				\
