@@ -1,3 +1,10 @@
+2003-10-03  Joe Shaw  <joe@ximian.com>
+
+	* red_depcomponent.py (DepComponent): Change over a few things to
+	use serverproxy.
+
+	* ximian_xmlrpclib.py (RawTransport): Fix a potential fd leak.
+
 2003-10-02  Joe Shaw  <joe@ximian.com>
 
 	* red_activation.py (activate_finished_cb): We don't actually care

@@ -792,7 +792,10 @@ class RawTransport(Transport):
 
         self.send_content(sock, request_body)
 
-        return self.parse_response(sock.makefile("rb"))
+        file = sock.makefile("rb")
+        sock.close()
+
+        return self.parse_response(file)
     
     def make_connection(self, host):
         import socket

@@ -47,7 +47,7 @@ class DepComponent(red_component.Component):
         gobject.GObject.__init__(self)
         red_component.Component.__init__(self)
 
-        self.server = rcd_util.get_server()
+        self.server = rcd_util.get_server_proxy()
 
         self.install_packages = install_packages
         self.remove_packages = remove_packages
@@ -109,14 +109,13 @@ class DepComponent(red_component.Component):
         self.dep_remove = []
         self.dep_error = None
 
-        server = rcd_util.get_server_proxy()
         self.busy(1)
 
         if self.verify:
-            self.__worker = server.rcd.packsys.verify_dependencies()
+            self.__worker = self.server.rcd.packsys.verify_dependencies()
             message = _("Verifying System")
         else:
-            self.__worker = server.rcd.packsys.resolve_dependencies(
+            self.__worker = self.server.rcd.packsys.resolve_dependencies(
                 self.install_packages,
                 self.remove_packages,
                 [])
@@ -138,117 +137,125 @@ class DepComponent(red_component.Component):
     def get_remove_packages(self):
         return self.remove_packages + filter_deps(self.dep_remove)
 
+    def display_license_window(self, licenses):
+        dialog = gtk.MessageDialog(self.parent(), 0,
+                                   gtk.MESSAGE_INFO,
+                                   gtk.BUTTONS_NONE,
+                                   _("You must agree to the licenses "
+                                     "covering this software before "
+                                     "installing it."))
 
+        license_texts = string.join(licenses, "\n" + "#"*79 + "\n")
+
+        text = gtk.TextView()
+        text.set_editable(0)
+        text.set_cursor_visible(0)
+        text.set_wrap_mode(gtk.WRAP_WORD)
+
+        buf = text.get_buffer()
+        buf.set_text(license_texts)
+
+        context = text.get_pango_context()
+        font_desc = context.get_font_description()
+        font_desc.set_family("monospace")
+
+        # Try to estimate the size of the window we want.
+        # "W" being the widest glyph.
+        s = ("W"*82 + "\n")*20
+        layout = pango.Layout(context)
+        layout.set_font_description(font_desc)
+        layout.set_text(s)
+        width, height = layout.get_pixel_size()
+        text.set_size_request(width, height)
+
+        # Create a tag with our monospace font
+        tag = buf.create_tag()
+        tag.set_property("font-desc", font_desc)
+        buf.apply_tag(tag, buf.get_start_iter(), buf.get_end_iter())
+
+        # Get a mark to the start of the buffer and then scroll there
+        iter = buf.get_start_iter()
+        mark = buf.create_mark("start", iter, left_gravity=1)
+        text.scroll_to_mark(mark, 0.0)
+
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_IN)
+        sw.add(text)
+        sw.show_all()
+        dialog.vbox.pack_start(sw, expand=1, fill=1)
+
+        dialog.add_button(_("I Agree"), gtk.RESPONSE_OK)
+        dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+
+        response = dialog.run()
+        dialog.destroy()
+        if response != gtk.RESPONSE_OK:
+            self.pop()
+            return 0
+
+        return 1
+        
     def check_licenses(self):
         packages = self.get_install_packages()
-        
-        try:
-            licenses = self.server.rcd.license.lookup_from_packages(packages)
-        except ximian_xmlrpclib.Fault,f :
-            if f.faultCode == rcd_util.fault.undefined_method:
-                licenses = []
-            else:
-                raise
 
-        if licenses:
-            dialog = gtk.MessageDialog(self.parent(), 0,
-                                       gtk.MESSAGE_INFO,
-                                       gtk.BUTTONS_NONE,
-                                       _("You must agree to the licenses "
-                                         "covering this software before "
-                                         "installing it."))
+        def license_cb(worker, dep_comp):
+            try:
+                licenses = worker.get_result()
+            except ximian_xmlrpclib.Fault,f :
+                if f.faultCode == rcd_util.fault.undefined_method:
+                    licenses = []
+                else:
+                    raise
 
-            license_texts = string.join(licenses, "\n" + "#"*79 + "\n")
-
-            text = gtk.TextView()
-            text.set_editable(0)
-            text.set_cursor_visible(0)
-            text.set_wrap_mode(gtk.WRAP_WORD)
-
-            buf = text.get_buffer()
-            buf.set_text(license_texts)
-
-            context = text.get_pango_context()
-            font_desc = context.get_font_description()
-            font_desc.set_family("monospace")
-
-            # Try to estimate the size of the window we want.
-            # "W" being the widest glyph.
-            s = ("W"*82 + "\n")*20
-            layout = pango.Layout(context)
-            layout.set_font_description(font_desc)
-            layout.set_text(s)
-            width, height = layout.get_pixel_size()
-            text.set_size_request(width, height)
-
-            # Create a tag with our monospace font
-            tag = buf.create_tag()
-            tag.set_property("font-desc", font_desc)
-            buf.apply_tag(tag, buf.get_start_iter(), buf.get_end_iter())
-
-            # Get a mark to the start of the buffer and then scroll there
-            iter = buf.get_start_iter()
-            mark = buf.create_mark("start", iter, left_gravity=1)
-            text.scroll_to_mark(mark, 0.0)
-
-            sw = gtk.ScrolledWindow()
-            sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-            sw.set_shadow_type(gtk.SHADOW_IN)
-            sw.add(text)
-            sw.show_all()
-            dialog.vbox.pack_start(sw, expand=1, fill=1)
-
-            dialog.add_button(_("I Agree"), gtk.RESPONSE_OK)
-            dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
-
-            response = dialog.run()
-            dialog.destroy()
-            if response != gtk.RESPONSE_OK:
-                self.pop()
+            if licenses and not dep_comp.display_license_window():
                 return
 
-        self.begin_transaction()
+            dep_comp.begin_transaction()
 
+        worker = self.server.rcd.license.lookup_from_packages(packages)
+        worker.connect("ready", license_cb, self)
+        
     def begin_transaction(self):
+        def transact_cb(worker, dep_comp):
+            try:
+                download_id, transact_id, step_id = worker.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                self.busy(0)
+                rcd_util.dialog_from_fault(f)
+                return
+
+            trans_win = red_pendingview.PendingView_Transaction(download_id,
+                                                                transact_id,
+                                                                step_id,
+                                                                parent=dep_comp.parent())
+
+            trans_win.show()
+
+            def finished_cb(win, comp):
+                # a hack to let history component know we are updated.
+                app = comp.parent()
+                app.history_changed = 1
+
+                comp.busy(0)
+
+            def destroy_cb(win, comp):
+                comp.pop()
+
+            trans_win.connect("finished", finished_cb, self)
+            trans_win.connect("destroy", destroy_cb, self)
+
         self.busy(1)
         install_packages = self.get_install_packages()
         remove_packages = self.get_remove_packages()
-        
-        try:
-            download_id, transact_id, step_id = \
-                         self.server.rcd.packsys.transact(install_packages,
-                                                          remove_packages,
-                                                          0, # FIXME: flags,
-                                                          "",
-                                                          red_main.red_name,
-                                                          red_main.red_version)
-        except ximian_xmlrpclib.Fault, f:
-            self.busy(0)
-            rcd_util.dialog_from_fault(f)
-            return
 
-        trans_win = red_pendingview.PendingView_Transaction(download_id,
-                                                            transact_id,
-                                                            step_id,
-                                                            parent=self.parent())
-        trans_win.show()
-
-        # FIXME: Hold a reference to trans_win to work around
-        # pygtk bug 92955.
-        self.__scratch = trans_win
-
-        def finished_cb(win, comp):
-            # a hack to let history component know we are updated.
-            app = comp.parent()
-            app.history_changed = 1
-
-            comp.busy(0)
-
-        def destroy_cb(win, comp):
-            comp.pop()
-
-        trans_win.connect("finished", finished_cb, self)
-        trans_win.connect("destroy", destroy_cb, self)
+        worker = self.server.rcd.packsys.transact(install_packages,
+                                                  remove_packages,
+                                                  0, # FIXME: flags
+                                                  "",
+                                                  red_main.red_name,
+                                                  red_main.red_version)
+        worker.connect("ready", transact_cb, self)
 
     def build_dep_error_page(self):
         page = self.page
