@@ -1,3 +1,8 @@
+2003-05-19  Joe Shaw  <joe@ximian.com>
+
+	* art/connect.png: Update to use 16x16 icon, we were using 24x24
+	before.  Oops.
+
 2003-05-15  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: Require xsltproc, create makefiles in the
