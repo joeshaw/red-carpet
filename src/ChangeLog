@@ -1,5 +1,16 @@
 2003-02-18  Joe Shaw  <joe@ximian.com>
 
+	* rcd_util.py (md5ify_password): Python 2.2's md5 module contains
+	hexdigest(), so get rid of our impl.
+	(get_channel_icon): Use the name of the fault, not the number.
+	(set_pref): Use a ServerProxy and run a gtk main loop to block the
+	result while things finish up in the thread.  May need to rethink
+	this.
+
+	* red_serverproxy.py (ServerThread): If we encounter a
+	ximian_xmlrpclib.Fault, save it and throw it when the user calls
+	get_result().
+	
 	* red_locks.py (toggle_lock): Use ServerProxy.
 
 	* red_packagearray.py (PackagesFromQuery): Added a locks_changed

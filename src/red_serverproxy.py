@@ -1,6 +1,7 @@
 
 import threading, gobject, gtk
 import red_deaddaemon
+import ximian_xmlrpclib
 
 class ServerThread(threading.Thread, gobject.GObject):
 
@@ -12,13 +13,16 @@ class ServerThread(threading.Thread, gobject.GObject):
         self.__method = method
         self.__args = args
         self.__result = None
+        self.__fault = None
         self.__ready  = 0
         self.__cancelled = 0
 
     def run(self):
-        
+
         try:
             result = getattr(self.__server, self.__method)(*self.__args)
+        except ximian_xmlrpclib.Fault, f:
+            self.__fault = f
         except:
             # FIXME: Handle the correct exceptions, not just this catch-all.
             # We will re-start the thread if the server comes back.
@@ -26,7 +30,7 @@ class ServerThread(threading.Thread, gobject.GObject):
             return
 
         self.__lock.acquire()
-        if not self.__cancelled:
+        if not self.__cancelled and not self.__fault:
             self.__result = result
         self.__ready = 1
         if not self.__cancelled:
@@ -52,7 +56,10 @@ class ServerThread(threading.Thread, gobject.GObject):
         return self.__ready
 
     def get_result(self):
-        return self.__result
+        if self.__fault:
+            raise self.__fault
+        else:
+            return self.__result
 
 gobject.type_register(ServerThread)
 

@@ -27,6 +27,9 @@ server_proxy = None
 server_permissions = {}
 current_user = None
 
+def md5ify_password(pw):
+    return md5.new(pw).hexdigest()
+
 # Tries to connect to server and get a result
 # to ping command.
 # Returns (server, None) on success or
@@ -231,7 +234,7 @@ def get_channel_icon(id, width=0, height=0):
         try:
             icon_data = server.rcd.packsys.get_channel_icon(id)
         except ximian_xmlrpclib.Fault, f:
-            if f.faultCode == -612:
+            if f.faultCode == fault.no_icon:
                 icon_data = None
             else:
                 raise
@@ -454,31 +457,22 @@ def set_pref(name, value):
     else:
         v = value
 
-    server = get_server()
+    server = get_server_proxy()
+    th = server.rcd.prefs.set_pref(name, v)
+
+    # Block while we wait for an answer
+    th.connect("ready", lambda x:gtk.main_quit())
+    gtk.main()
+
     try:
-        server.rcd.prefs.set_pref(name, v)
+        th.get_result()
     except ximian_xmlrpclib.Fault, f:
-        # FIXME: Don't use numbers.  Use rcfault.
-        if f.faultCode == -501: # type mismatch
+        if f.faultCode == fault.type_mismatch:
             return 0
         else:
             raise
     else:
         return 1
-
-###############################################################################
-
-# Python 1.5 doesn't have hexdigest() for md5.  blah.
-def hexstr(s):
-    h = string.hexdigits
-    r = ''
-    for c in s:
-        i = ord(c)
-        r = r + h[(i >> 4) & 0xF] + h[i & 0xF]
-    return r
-
-def md5ify_password(pw):
-    return hexstr(md5.new(pw).digest())
 
 ###############################################################################
 
