@@ -45,9 +45,13 @@ class SummaryComponent(red_component.Component):
         vbox = gtk.VBox(0,0)
 
         def updates_changed_cb(array, label):
-            label.set_markup("There are "
-                             "<b>%d updates</b>"
-                             " available for your system." % array.len())
+            if array.len() == 0:
+                markup = "Your system is up to date."
+            else:
+                markup = "There are <b>%d updates</b>" \
+                         " available for your system." % array.len()
+                
+            label.set_markup(markup)
 
         msg1 = gtk.Label("")
         self.array.connect("changed", updates_changed_cb, msg1)

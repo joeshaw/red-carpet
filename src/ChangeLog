@@ -1,3 +1,19 @@
+2003-01-31  Tambet Ingo  <tambet@ximian.com>
+
+	* red_users.py: Removed some old cruft.
+	(UsersData.refresh): Make sure active_user still exists.
+	(UsersData.get_current_user): Implement.
+	(UsersData.delete_user): Try to select current user after
+	deleting active user.
+	(UsersData.set_active_user): Emit signal only if active user
+	really changed.
+	(UsersWindow.__init__): Select current user by default.
+	(UsersWindow.active_user_changed_cb): Don't trust return values
+	without checking.
+
+	* red_summary.py (SummaryComponent.updates_changed_cb): Added
+	special case if there's no updates.
+
 2003-01-30  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (run_transaction_cb): Fix a regression where we

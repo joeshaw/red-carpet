@@ -122,6 +122,20 @@ class UsersData(red_serverlistener.ServerListener, gobject.GObject):
         self.fetch_privileges()
         self.emit("changed")
 
+        # Check if the active user still exists
+        u = self.get_active_user()
+        if not u:
+            u = self.get_current_user()
+        if u and not self.user_exists(u.name_get()):
+            u = self.get_current_user()
+            if not u:
+                u = self.__users[0]
+            self.set_active_user(u)
+
+    ## Current user == user who runs RC
+    def get_current_user(self):
+        return self.user_exists(rcd_util.get_current_user())
+
     def get_all_users(self):
         return self.__users
 
@@ -131,8 +145,7 @@ class UsersData(red_serverlistener.ServerListener, gobject.GObject):
     def user_exists(self, user_name):
         for u in self.__users:
             if u.name_get() == user_name:
-                return 1
-        return 0
+                return u
 
     ## Make sure to initialize self.__poll_count.
     def set_active_user_cb(self, user):
@@ -150,16 +163,20 @@ class UsersData(red_serverlistener.ServerListener, gobject.GObject):
     def delete_user(self, user):
         self.__poll_count = red_serverlistener.poll_count
         user.delete()
-        user = self.__users[0]
+        user = self.get_current_user()
+        if not user:
+            user = self.__users[0]
         gtk.timeout_add(100, self.set_active_user_cb, user)
 
+    ## Active user == user who's selected in UI
     def get_active_user(self):
         if self.active_user:
             return self.active_user
 
     def set_active_user(self, user):
-        self.active_user = user
-        self.emit("active-changed")
+        if user != self.active_user:
+            self.active_user = user
+            self.emit("active-changed")
 
 gobject.type_register(UsersData)
 gobject.signal_new("changed",
@@ -174,39 +191,6 @@ gobject.signal_new("active-changed",
                    gobject.TYPE_NONE,
                    ())
 
-
-class UsersView(gtk.ScrolledWindow):
-
-    def __init__(self):
-        gtk.ScrolledWindow.__init__(self)
-
-        global users_model
-        if not users_model:
-            server = rcd_util.get_server()
-            users_model = UsersModel(server)
-
-        view = gtk.TreeView(users_model)
-        view.set_headers_visible(0)
-
-        col = gtk.TreeViewColumn("User",
-                                 gtk.CellRendererText(),
-                                 text=COLUMN_NAME)
-        view.append_column(col)
-
-        selection = view.get_selection()
-        selection.set_mode(gtk.SELECTION_SINGLE)
-
-        def selection_changed_cb(selection, component):
-            model, iter = selection.get_selected()
-            if iter:
-                model.current_set(iter)
-
-        selection.connect("changed", selection_changed_cb, self)
-
-        view.show_all()
-
-        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.add(view)
 
 def make_users_view(model):
     view = red_thrashingtreeview.TreeView(model)
@@ -282,6 +266,10 @@ class UsersWindow(gtk.Dialog,
         red_serverlistener.ServerListener.__init__(self)
         self.build()
         self.set_size_request(500, -1)
+
+        me = users_data.get_current_user()
+        if me:
+            gtk.idle_add(users_data.set_active_user, me)
 
     def build_password_part(self):
         table = gtk.Table(3, 2)
@@ -386,8 +374,6 @@ class UsersWindow(gtk.Dialog,
         if not users_data:
             users_data = UsersData()
 
-##        users_data.set_active_user(rcd_util.get_current_user())
-
         box = gtk.HBox(0, 5)
         frame = gtk.Frame("Users")
         users_model = UsersModel(users_data)
@@ -402,10 +388,11 @@ class UsersWindow(gtk.Dialog,
             u = users_data.get_active_user()
             if u:
                 model = view.get_model()
-                iter = model.get_iter_for_user(u)
-                if iter:
-                    selection = view.get_selection()
-                    selection.select_iter(iter)
+                if model:
+                    iter = model.get_iter_for_user(u)
+                    if iter:
+                        selection = view.get_selection()
+                        selection.select_iter(iter)
 
         def selection_changed_cb(selection, sid):
             model, iter = selection.get_selected()
