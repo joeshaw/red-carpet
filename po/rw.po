@@ -1,0 +1,1755 @@
+# translation of red-carpet to Kinyarwanda.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the red-carpet package.
+# Steve Murphy <murf@e-tools.com>, 2005
+# Steve performed initial rough translation from compendium built from translations provided by the following translators:
+# Philibert Ndandali  <ndandali@yahoo.fr>, 2005.
+# Viateur MUGENZI <muvia1@yahoo.fr>, 2005.
+# Noëlla Mupole <s24211045@tuks.co.za>, 2005.
+# Carole Karema <karemacarole@hotmail.com>, 2005.
+# JEAN BAPTISTE NGENDAHAYO <ngenda_denis@yahoo.co.uk>, 2005.
+# Augustin KIBERWA  <akiberwa@yahoo.co.uk>, 2005.
+# Donatien NSENGIYUMVA <ndonatienuk@yahoo.co.uk>, 2005..
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: red-carpet HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-01 16:52-0700\n"
+"PO-Revision-Date: 2005-03-31 20:55-0700\n"
+"Last-Translator: Steve Murphy <murf@e-tools.com>\n"
+"Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"ULL NAME <EMAIL@ADDRESS>\n"
+
+#: src/rcd_util.py:426
+#, fuzzy
+msgid "Please wait while getting data."
+msgstr "Tegereza Ibyatanzwe"
+
+#: src/rcd_util.py:480 src/rcd_util.py:498
+#, fuzzy
+msgid "Please ensure that your network settings are correct."
+msgstr "urusobe Amagenamiterere"
+
+#: src/rcd_util.py:487
+#, fuzzy
+msgid "Refreshing channel data"
+msgstr "Ibyatanzwe"
+
+#: src/rcd_util.py:489
+#, fuzzy
+msgid "Downloading channel information"
+msgstr "Ibisobanuro"
+
+#: src/rcd_util.py:515
+msgid "Verifying"
+msgstr ""
+
+#: src/rcd_util.py:516
+#, fuzzy
+msgid "Unable to verify package signature for"
+msgstr "Kuri Isinya kugirango"
+
+#: src/rcd_util.py:517
+#, fuzzy
+msgid "There is no package signature for"
+msgstr "ni Oya Isinya kugirango"
+
+#: src/rcd_util.py:518
+msgid "Preparing Transaction"
+msgstr ""
+
+# --------------------------------------------------------------------
+#   Install Actions
+# --------------------------------------------------------------------
+#: src/rcd_util.py:519
+#, fuzzy
+msgid "Installing"
+msgstr "gukora iyinjizaporogaramu:%s"
+
+#: src/rcd_util.py:520
+msgid "Removing"
+msgstr ""
+
+#: src/rcd_util.py:521
+msgid "Configuring"
+msgstr ""
+
+#: src/red_about.py:41
+#, fuzzy
+msgid "Brought to you by:"
+msgstr "Kuri ku"
+
+#: src/red_about.py:42
+#, fuzzy
+msgid "With love from:"
+msgstr "Urukundo Bivuye"
+
+#: src/red_about.py:43
+#, fuzzy
+msgid "Best wishes from:"
+msgstr "Bivuye"
+
+# starmath/source\smres.src:RID_TOOLBOXWINDOW.4.RID_SINX.text
+#: src/red_about.py:44
+#, fuzzy
+msgid "Sincerely:"
+msgstr "Mbaye mbashimiye"
+
+#: src/red_about.py:45
+#, fuzzy
+msgid "Developed by chimps:"
+msgstr "ku"
+
+#: src/red_about.py:80
+#, fuzzy
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "i Verisiyo 2."
+
+#: src/red_activation.py:27
+msgid "Group Activation"
+msgstr ""
+
+# sc/source\ui\dbgui\dapitype.src:RID_SCDLG_DAPISERVICE.FT_SERVICE.text
+#: src/red_activation.py:44
+#, fuzzy
+msgid "Service:"
+msgstr "Serivisi"
+
+#: src/red_activation.py:48
+msgid "Email:"
+msgstr "Imeli:"
+
+#: src/red_activation.py:52
+msgid "Activation Code:"
+msgstr ""
+
+# officecfg/registry\schema\org\openoffice\Office\Common.xcs:....Filter.Graphic.Export.GIF.Interlaced..1.text
+#: src/red_activation.py:78
+msgid "Activate"
+msgstr "Kureka bigakora"
+
+#: src/red_activation.py:99
+#, fuzzy
+msgid "Please fill in both email and activation code."
+msgstr "Kuzuza in Byombi imeli Na ITEGEKONGENGA"
+
+#: src/red_activation.py:114
+#, fuzzy
+msgid "Unable to activate"
+msgstr "Kuri Kureka bigakora"
+
+#: src/red_activation.py:115
+#, fuzzy
+msgid "Please ensure you typed the email address and activation code correctly"
+msgstr "i imeli Aderesi Na ITEGEKONGENGA"
+
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_BINOM_DIST.8.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_POISSON_DIST.6.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_NORM_DIST.8.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_EXP_DIST.6.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_GAMMA_DIST.8.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_WEIBULL.8.text
+#. TRANSLATORS: *Only* localize this to the language code if the
+#. Red Carpet help is localized.
+#: src/red_appwindow.py:93
+msgid "C"
+msgstr "C"
+
+#: src/red_appwindow.py:130
+#, fuzzy
+msgid ""
+"Unable to show help because the help files were missing.  Please report this "
+"to your vendor."
+msgstr ""
+"Kuri Garagaza Ifashayobora i Ifashayobora Idosiye Ibuze Icyegeranyo iyi Kuri "
+"Umucuruzi"
+
+#: src/red_appwindow.py:140
+#, fuzzy
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr ""
+"Kuri Garagaza Ifashayobora Oya Porogaramu Bihari Kuri Kureba Ifashayobora"
+
+#: src/red_appwindow.py:415
+#, fuzzy, python-format
+msgid "Are you sure you want to open %d package information windows?"
+msgstr "Kuri Gufungura Ibisobanuro"
+
+#: src/red_appwindow.py:443
+#, fuzzy
+msgid "Run Now"
+msgstr "Kora nonaha"
+
+#: src/red_appwindow.py:444
+#, fuzzy
+msgid "Perform installations and removals"
+msgstr "Na"
+
+#: src/red_appwindow.py:451
+msgid "Channels"
+msgstr ""
+
+#: src/red_appwindow.py:452
+#, fuzzy
+msgid "Change your channel subscriptions"
+msgstr "Kwiyandikisha"
+
+# dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_REFRESH.text
+#: src/red_appwindow.py:460
+msgid "Refresh"
+msgstr "Kugira gishya"
+
+#: src/red_appwindow.py:461
+#, fuzzy
+msgid "Refresh channel data"
+msgstr "Ibyatanzwe"
+
+#. Install
+#: src/red_appwindow.py:472 src/red_packageview.py:232
+#, fuzzy
+msgid "Mark for _Installation"
+msgstr "kugirango"
+
+#: src/red_appwindow.py:473
+#, fuzzy
+msgid "Mark selected packages for installation"
+msgstr "Byahiswemo kugirango iyinjizaporogaramu"
+
+#. #
+#. # Remove Package
+#. #
+#. Remove
+#: src/red_appwindow.py:478 src/red_appwindow.py:779
+#: src/red_packageview.py:245
+#, fuzzy
+msgid "Mark for _Removal"
+msgstr "kugirango"
+
+#: src/red_appwindow.py:479
+#, fuzzy
+msgid "Mark selected packages for removal"
+msgstr "Byahiswemo kugirango"
+
+# crashrep/source\all\crashrep.lng:%CANCEL_BUTTON%.text
+#. Cancel
+#: src/red_appwindow.py:484 src/red_appwindow.py:792
+#: src/red_packageview.py:258
+#, fuzzy
+msgid "_Cancel"
+msgstr "Kureka"
+
+#: src/red_appwindow.py:485
+#, fuzzy
+msgid "Cancel marked package actions"
+msgstr "cy/ byagarajwe"
+
+#. Info
+#: src/red_appwindow.py:490 src/red_packageview.py:276
+#, fuzzy
+msgid "I_nformation"
+msgstr "Ibisobanuro"
+
+#: src/red_appwindow.py:491
+#, fuzzy
+msgid "Package information"
+msgstr "Ibisobanuro"
+
+# sc/source\ui\src\globstr.src:RID_GLOBSTR.STR_HFCMD_FILE.text
+#: src/red_appwindow.py:548
+#, fuzzy
+msgid "_File"
+msgstr "IDOSIYE"
+
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\basidesh.src:RID_BASICMENU.MN_EDIT.text
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\basidesh.src:RID_BASICPLUGINMENU.MN_PLEDIT.text
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\macrodlg.src:RID_MACROCHOOSER.RID_PB_EDIT.text
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\moduldlg.src:RID_TP_MODULS.RID_PB_EDIT.text
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\moduldlg.src:RID_TP_LIBS.RID_PB_EDIT.text
+#: src/red_appwindow.py:549
+#, fuzzy
+msgid "_Edit"
+msgstr "Guhindura"
+
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\basidesh.src:RID_BASICMENU.MN_VIEW.text
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\basidesh.src:RID_BASICPLUGINMENU.MN_PLVIEW.text
+#: src/red_appwindow.py:550 src/red_appwindow.py:842
+#, fuzzy
+msgid "_View"
+msgstr "Kureba"
+
+#: src/red_appwindow.py:551
+msgid "_Actions"
+msgstr ""
+
+#: src/red_appwindow.py:552
+#, fuzzy
+msgid "_Help"
+msgstr "Ifashayobora"
+
+#: src/red_appwindow.py:560
+#, fuzzy
+msgid "Connect to daemon..."
+msgstr "Kuri"
+
+#: src/red_appwindow.py:561
+#, fuzzy
+msgid "Connect to a remote daemon"
+msgstr "Kuri a"
+
+#: src/red_appwindow.py:571
+#, fuzzy
+msgid "Install from _File..."
+msgstr "Bivuye Idosiye"
+
+#: src/red_appwindow.py:572
+#, fuzzy
+msgid "Install a package from a local file"
+msgstr "a Bivuye a IDOSIYE"
+
+#: src/red_appwindow.py:581
+#, fuzzy
+msgid "Install from _URL..."
+msgstr "Bivuye"
+
+#: src/red_appwindow.py:582
+#, fuzzy
+msgid "Install a package from a remote URL"
+msgstr "a Bivuye a"
+
+#: src/red_appwindow.py:599
+msgid "_Mount Directory..."
+msgstr ""
+
+#: src/red_appwindow.py:600
+#, fuzzy
+msgid "Mount a directory as a channel"
+msgstr "a bushyinguro Nka a"
+
+#: src/red_appwindow.py:616
+msgid "U_nmount Directory..."
+msgstr ""
+
+#: src/red_appwindow.py:617
+#, fuzzy
+msgid "Unmount a directory"
+msgstr "a bushyinguro"
+
+# officecfg/registry\schema\org\openoffice\Office\Common.xcs:....Filter.Graphic.Export.GIF.Interlaced..1.text
+#: src/red_appwindow.py:633
+#, fuzzy
+msgid "_Activate..."
+msgstr "Kureka bigakora"
+
+#: src/red_appwindow.py:634
+#, fuzzy
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr "a Cyangwa Seriveri"
+
+#: src/red_appwindow.py:640
+msgid "Quit"
+msgstr "Kuvamo"
+
+#: src/red_appwindow.py:641
+msgid "Quit Red Carpet"
+msgstr ""
+
+# #-#-#-#-#  padmin.pot (PACKAGE VERSION)  #-#-#-#-#
+# padmin/source\padialog.src:RID_FONTIMPORT_DIALOG.RID_FIMP_BTN_SELECTALL.text
+# #-#-#-#-#  padmin.pot (PACKAGE VERSION)  #-#-#-#-#
+# padmin/source\padialog.src:RID_ADDP_PAGE_OLDPRINTERS.RID_ADDP_OLD_BTN_SELECTALL.text
+#: src/red_appwindow.py:656
+#, fuzzy
+msgid "Select _All"
+msgstr "Hitamo byose"
+
+#: src/red_appwindow.py:657
+#, fuzzy
+msgid "Select all items"
+msgstr "Byose"
+
+#: src/red_appwindow.py:662
+msgid "Select _None"
+msgstr ""
+
+#: src/red_appwindow.py:663
+#, fuzzy
+msgid "Deselect all items"
+msgstr "Byose"
+
+#: src/red_appwindow.py:670
+msgid "Services..."
+msgstr ""
+
+#: src/red_appwindow.py:671
+msgid "Edit services"
+msgstr ""
+
+#: src/red_appwindow.py:675
+msgid "Channel _Subscriptions..."
+msgstr ""
+
+#: src/red_appwindow.py:676
+#, fuzzy
+msgid "Edit your channel subscriptions"
+msgstr "Kwiyandikisha"
+
+#: src/red_appwindow.py:681
+#, fuzzy
+msgid "_Preferences..."
+msgstr "Ibyahiswemo..."
+
+#: src/red_appwindow.py:682
+#, fuzzy
+msgid "Edit your Red Carpet preferences"
+msgstr "Ibyahiswemo"
+
+#: src/red_appwindow.py:686
+msgid "_Users..."
+msgstr ""
+
+#: src/red_appwindow.py:687
+#, fuzzy
+msgid "Edit user permissions for this daemon"
+msgstr "Ukoresha: Uruhushya kugirango iyi"
+
+#: src/red_appwindow.py:700
+#, fuzzy
+msgid "_Sidebar"
+msgstr "Umurongo wo ku mpande"
+
+#: src/red_appwindow.py:701
+#, fuzzy
+msgid "Hide or show the Pending Actions sidebar"
+msgstr "Cyangwa Garagaza i Umurongo wo ku mpande"
+
+#: src/red_appwindow.py:705
+msgid "_Advanced Search Options"
+msgstr ""
+
+#: src/red_appwindow.py:706
+#, fuzzy
+msgid "Hide or show advanced search options"
+msgstr "Cyangwa Garagaza Urwego rwo hejuru Gushaka Amahitamo"
+
+#: src/red_appwindow.py:710
+msgid "_Channel Names"
+msgstr ""
+
+#: src/red_appwindow.py:711
+#, fuzzy
+msgid "Hide or show channel names in package lists"
+msgstr "Cyangwa Garagaza Amazina in Intonde"
+
+#: src/red_appwindow.py:717
+msgid "Package _Information..."
+msgstr ""
+
+#: src/red_appwindow.py:718
+#, fuzzy
+msgid "View information about currently selected packages"
+msgstr "Ibisobanuro Ibyerekeye Byahiswemo"
+
+#: src/red_appwindow.py:726
+msgid "_Daemon Information..."
+msgstr ""
+
+#: src/red_appwindow.py:727
+#, fuzzy
+msgid "View information about this daemon"
+msgstr "Ibisobanuro Ibyerekeye iyi"
+
+#: src/red_appwindow.py:729
+msgid "Red Carpet Ne_ws..."
+msgstr ""
+
+#: src/red_appwindow.py:730
+#, fuzzy
+msgid "View the latest Red Carpet news"
+msgstr "i Amakuru"
+
+#: src/red_appwindow.py:742
+#, fuzzy
+msgid "Run _Now"
+msgstr "Kora nonaha"
+
+#: src/red_appwindow.py:743
+#, fuzzy
+msgid "Run the current transaction"
+msgstr "i KIGEZWEHO"
+
+#: src/red_appwindow.py:757
+msgid "_Verify System Dependencies"
+msgstr ""
+
+#: src/red_appwindow.py:758
+#, fuzzy
+msgid "Verify that all system dependencies are met"
+msgstr "Byose Sisitemu"
+
+#. #
+#. # Install Package
+#. #
+#: src/red_appwindow.py:769
+#, fuzzy
+msgid "Mark for I_nstallation"
+msgstr "kugirango"
+
+#: src/red_appwindow.py:770
+#, fuzzy
+msgid "Mark this package for installation"
+msgstr "iyi kugirango iyinjizaporogaramu"
+
+#: src/red_appwindow.py:780
+#, fuzzy
+msgid "Mark this package for removal"
+msgstr "iyi kugirango"
+
+#: src/red_appwindow.py:793
+#, fuzzy
+msgid "Cancel installation or removal mark"
+msgstr "iyinjizaporogaramu Cyangwa Ikimenyetso"
+
+#: src/red_appwindow.py:807
+msgid "Re_fresh Channel Data"
+msgstr ""
+
+#: src/red_appwindow.py:808
+#, fuzzy
+msgid "Download latest channel data"
+msgstr "Ibyatanzwe"
+
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\dbgui\validate.src:TP_VALIDATION_INPUTHELP.FL_CONTENT.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\dbgui\validate.src:TP_VALIDATION_ERROR.FL_CONTENT.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\navipi\navipi.src:RID_SCDLG_NAVIGATOR.TBX_CMD.IID_ZOOMOUT.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\navipi\navipi.src:SCSTR_CONTENT_ROOT.text
+#: src/red_appwindow.py:817
+#, fuzzy
+msgid "_Contents"
+msgstr "Ibigize"
+
+#: src/red_appwindow.py:818
+#, fuzzy
+msgid "View Red Carpet help"
+msgstr "Ifashayobora"
+
+# offmgr/source\offapp\intro\intro.hrc:TEXT_DEFAULTABOUT.text
+#: src/red_appwindow.py:823
+#, fuzzy
+msgid "_About..."
+msgstr "Ibyerekeye"
+
+#: src/red_appwindow.py:824
+msgid "About Red Carpet"
+msgstr ""
+
+#: src/red_appwindow.py:843
+#, fuzzy, python-format
+msgid "Go to the '%s' page"
+msgstr "Kuri i Ipaji"
+
+#: src/red_channeloption.py:64
+msgid "All Channels"
+msgstr ""
+
+#: src/red_channeloption.py:69
+msgid "All Subscribed Channels"
+msgstr ""
+
+#: src/red_channeloption.py:74
+msgid "No Channel/Unknown Channel"
+msgstr ""
+
+#: src/red_connection.py:49
+#, fuzzy, python-format
+msgid ""
+"Unable to connect to the daemon:\n"
+" '%s'."
+msgstr "Kuri Kwihuza Kuri i"
+
+#: src/red_connection.py:67
+#, fuzzy, python-format
+msgid ""
+"Detected Red Carpet Daemon version %d.%d.%d.\n"
+"Version %d.%d.%d (or newer) is required"
+msgstr ""
+"Project- Id- Version: basctl\n"
+"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
+"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
+"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
+"Content- Type: text/ plain; charset= UTF- 8\n"
+"Content- Transfer- Encoding: 8bit\n"
+"X- Generator: KBabel 1. 0\n"
+". Project- Id- Version: basctl\n"
+"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
+"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
+"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
+"Content- Type: text/ plain; charset= UTF- 8\n"
+"Content- Transfer- Encoding: 8bit\n"
+"X- Generator: KBabel 1. 0\n"
+". Project- Id- Version: basctl\n"
+"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
+"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
+"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
+"Content- Type: text/ plain; charset= UTF- 8\n"
+"Content- Transfer- Encoding: 8bit\n"
+"X- Generator: KBabel 1. 0\n"
+"."
+
+#: src/red_connection.py:93
+#, fuzzy, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr "Porotokole Verisiyo ni Bya ngombwa Kuvugurura Verisiyo Bya"
+
+#: src/red_connection.py:123
+msgid "Starting daemon..."
+msgstr ""
+
+#: src/red_connection.py:197
+#, fuzzy
+msgid ""
+"Red Carpet requires a Red Carpet Daemon to be running.\n"
+"Would you like to start one now?"
+msgstr "a Kuri nka Kuri Gutangira NONEAHA"
+
+#: src/red_connection.py:345
+#, fuzzy
+msgid "Connect to this system"
+msgstr "Kuri iyi Sisitemu"
+
+#: src/red_connection.py:349
+#, fuzzy
+msgid "Connect to a remote system"
+msgstr "Kuri a Sisitemu"
+
+#: src/red_connection.py:357
+msgid "Server:"
+msgstr "Seriveri"
+
+#: src/red_connection.py:361 src/red_users.py:389
+msgid "User name:"
+msgstr "Izina ry'ukoresha:"
+
+# sc/source\ui\src\scstring.src:SCSTR_PASSWORD.text
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
+#: src/red_users.py:395
+msgid "Password:"
+msgstr "Ijambobanga:"
+
+#: src/red_connection.py:401
+msgid "Connect"
+msgstr "Kwihuza"
+
+#: src/red_console.py:50
+msgid "Red Carpet Error Console"
+msgstr ""
+
+#: src/red_deaddaemon.py:35
+#, fuzzy
+msgid "Connection to daemon restored.\n"
+msgstr "Kuri"
+
+#: src/red_deaddaemon.py:68
+#, fuzzy
+msgid "Lost contact with the daemon!"
+msgstr "Umuntu Na: i"
+
+#: src/red_deaddaemon.py:69
+msgid "Exit Red Carpet"
+msgstr ""
+
+#: src/red_depcomponent.py:75 src/red_depcomponent.py:403
+msgid "Dependency Resolution"
+msgstr ""
+
+#: src/red_depcomponent.py:125
+msgid "Verifying System"
+msgstr ""
+
+#: src/red_depcomponent.py:137
+msgid "Resolving Dependencies"
+msgstr ""
+
+#: src/red_depcomponent.py:159
+#, fuzzy
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr "Kuri i iyi Mbere gukora iyinjizaporogaramu:%s"
+
+#: src/red_depcomponent.py:203
+msgid "I Agree"
+msgstr ""
+
+#: src/red_depcomponent.py:308
+msgid "Dependency Resolution Failed"
+msgstr ""
+
+#: src/red_depcomponent.py:358
+msgid "System Verified"
+msgstr ""
+
+#: src/red_depcomponent.py:360
+#, fuzzy
+msgid ""
+"All package dependencies are satisfied, and no corrective actions are "
+"required."
+msgstr "Na Oya Bya ngombwa"
+
+#: src/red_depcomponent.py:414
+msgid "Requested Installations"
+msgstr ""
+
+#: src/red_depcomponent.py:418
+msgid "Requested Removals"
+msgstr ""
+
+#: src/red_depcomponent.py:422
+msgid "Required Installations"
+msgstr ""
+
+#: src/red_depcomponent.py:426
+msgid "Required Removals"
+msgstr ""
+
+#: src/red_depcomponent.py:452
+msgid "Continue"
+msgstr "Gukomeza"
+
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
+#: src/red_packageview.py:367
+msgid "Channel"
+msgstr ""
+
+#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
+msgid "Package"
+msgstr ""
+
+# sfx2/source\dialog\filedlghelper.src:STR_SFX_FILEDLG_ACTUALVERSION.text
+#: src/red_depview.py:53 src/red_packageview.py:462
+#, fuzzy
+msgid "Current Version"
+msgstr "Uburyo buriho"
+
+#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
+#: src/red_updates.py:94
+msgid "New Version"
+msgstr ""
+
+# #-#-#-#-#  goodies.pot (PACKAGE VERSION)  #-#-#-#-#
+# goodies/source\filter.vcl\eos2met\dlgeos2.src:DLG_EXPORT_EMET.GRP_SIZE.text
+# #-#-#-#-#  goodies.pot (PACKAGE VERSION)  #-#-#-#-#
+# goodies/source\filter.vcl\epict\dlgepct.src:DLG_EXPORT_EPCT.GRP_SIZE.text
+#: src/red_depview.py:59 src/red_packageview.py:498
+msgid "Size"
+msgstr "Ingano"
+
+# basctl/source\basicide\basidesh.src:RID_STR_ALL.text
+#: src/red_history.py:114 src/red_users.py:30
+msgid "All"
+msgstr "Byose"
+
+#: src/red_history.py:115
+msgid "Installations"
+msgstr ""
+
+#: src/red_history.py:116
+msgid "Removals"
+msgstr ""
+
+#: src/red_history.py:117
+msgid "Upgrades"
+msgstr ""
+
+#: src/red_history.py:122
+msgid "User:"
+msgstr "Ukoresha"
+
+#: src/red_history.py:128
+#, fuzzy
+msgid "Timeframe (days):"
+msgstr "Iminsi"
+
+# 5374
+#: src/red_history.py:280
+msgid "Searching..."
+msgstr "Gushakisha..."
+
+#: src/red_history.py:302 src/red_history.py:436
+msgid "Time"
+msgstr "Igihe"
+
+# sc/source\ui\miscdlgs\acredlin.src:RID_POPUP_CHANGES.SC_SUB_SORT.SC_SORT_ACTION.text
+#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
+msgid "Action"
+msgstr "Igikorwa"
+
+# #-#-#-#-#  svx.pot (PACKAGE VERSION)  #-#-#-#-#
+# svx/source\dialog\chardlg.src:RID_SVXSTR_COLOR_USER.text
+# #-#-#-#-#  svx.pot (PACKAGE VERSION)  #-#-#-#-#
+# svx/source\dialog\page.src:RID_SVXSTRARY_PAPERSIZE_STD.13.text
+# #-#-#-#-#  svx.pot (PACKAGE VERSION)  #-#-#-#-#
+# svx/source\dialog\page.src:RID_SVXSTRARY_PAPERSIZE_DRAW.16.text
+#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
+msgid "User"
+msgstr "Ukoresha"
+
+#: src/red_history.py:306 src/red_history.py:439
+msgid "Old Version"
+msgstr ""
+
+#: src/red_history.py:337 src/red_packagepage.py:45
+msgid "History"
+msgstr "Urutonde"
+
+#: src/red_history.py:340
+#, fuzzy
+msgid "_History"
+msgstr "Urutonde"
+
+#: src/red_history.py:384
+#, fuzzy
+msgid "No results found."
+msgstr "Ibisubizo ku Byabonetse"
+
+#: src/red_installfiles.py:80 src/red_installfiles.py:149
+#, fuzzy, python-format
+msgid "%s is not a valid package"
+msgstr "%sni OYA a Byemewe"
+
+#: src/red_installfiles.py:90
+#, fuzzy
+msgid "There are no valid packages to install"
+msgstr "Oya Byemewe Kuri Kwinjiza porogaramu"
+
+#: src/red_installfiles.py:109
+#, fuzzy
+msgid "Install from File"
+msgstr "Bivuye Idosiye"
+
+#: src/red_installfiles.py:126
+#, fuzzy, python-format
+msgid "Downloading %s..."
+msgstr "Iyimura..."
+
+#: src/red_installfiles.py:165
+#, fuzzy
+msgid "Install from URL"
+msgstr "Bivuye"
+
+#: src/red_installfiles.py:170
+msgid "Package URL:"
+msgstr ""
+
+#: src/red_main.py:110
+#, fuzzy
+msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
+msgstr "Byombi h Ubuturo Na L Amahitamo"
+
+#: src/red_main.py:141
+#, fuzzy
+msgid "ERROR: You cannot specify a user to a local daemon"
+msgstr "a Ukoresha: Kuri a"
+
+#: src/red_mirrors.py:76
+msgid "Mirror"
+msgstr ""
+
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Agenda.Elements.Location.text
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Fax.Save.AutoPath.text
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Memo.Save.AutoDocName.text
+#: src/red_mirrors.py:81
+msgid "Location"
+msgstr "Ahantu"
+
+#: src/red_mirrors.py:108
+#, fuzzy
+msgid "Choose a Mirror"
+msgstr "a"
+
+#: src/red_mount.py:91
+#, fuzzy, python-format
+msgid "Unable to unmount '%s'"
+msgstr "Kuri"
+
+# #-#-#-#-#  filter.pot (PACKAGE VERSION)  #-#-#-#-#
+# filter/source\xsltdialog\xmlfiltertabpagexslt.src:RID_XML_FILTER_TABPAGE_XSLT.ED_XML_DTD_SCHEMA_BROWSE.text
+# #-#-#-#-#  filter.pot (PACKAGE VERSION)  #-#-#-#-#
+# filter/source\xsltdialog\xmlfiltertabpagexslt.src:RID_XML_FILTER_TABPAGE_XSLT.PB_XML_EXPORT_XSLT_BROWSE.text
+# #-#-#-#-#  filter.pot (PACKAGE VERSION)  #-#-#-#-#
+# filter/source\xsltdialog\xmlfiltertabpagexslt.src:RID_XML_FILTER_TABPAGE_XSLT.PB_XML_IMPORT_XSLT_BROWSE.text
+# #-#-#-#-#  filter.pot (PACKAGE VERSION)  #-#-#-#-#
+# filter/source\xsltdialog\xmlfiltertabpagexslt.src:RID_XML_FILTER_TABPAGE_XSLT.PB_XML_IMPORT_TEMPLATE_BROWSE.text
+#: src/red_mount.py:117
+msgid "Browse..."
+msgstr "Gushakisha..."
+
+#: src/red_mount.py:128
+msgid "Mount Directory"
+msgstr ""
+
+#: src/red_mount.py:141
+msgid "Mount channel"
+msgstr ""
+
+#: src/red_mount.py:145
+#, fuzzy
+msgid "Mount a directory as channel"
+msgstr "a bushyinguro Nka"
+
+#: src/red_mount.py:153
+msgid "Channel Name:"
+msgstr ""
+
+# setup2/source\ui\pages\pwsetup.src:RESID_PAGE_PAGEWRONGSETUP.FT_INFO3.text
+#: src/red_mount.py:157
+#, fuzzy
+msgid "Directory:"
+msgstr "bushyinguro"
+
+#: src/red_mount.py:168
+#, fuzzy
+msgid "Look for packages recursively"
+msgstr "kugirango"
+
+#: src/red_mount.py:193
+#, fuzzy
+msgid "Please choose the path for channel."
+msgstr "Guhitamo i Inzira kugirango"
+
+#: src/red_mount.py:214
+msgid "Unmount Channel"
+msgstr ""
+
+#: src/red_mount.py:243
+msgid "Unmount?"
+msgstr ""
+
+#: src/red_news.py:174
+#, python-format
+msgid "%s News"
+msgstr ""
+
+#: src/red_option.py:24
+#, fuzzy
+msgid "Connect to a locally running daemon"
+msgstr "Kuri a"
+
+#: src/red_option.py:25
+#, fuzzy
+msgid "hostname"
+msgstr "Izinabuturo"
+
+#: src/red_option.py:25
+#, fuzzy
+msgid "Contact daemon on specified host"
+msgstr "ku Ubuturo"
+
+#: src/red_option.py:26
+#, fuzzy
+msgid "username"
+msgstr "Izina ry'ukoresha"
+
+# setup2/source\ui\pages\pasuname.src:RESID_PAGE_PAGEASRV_USERNAME.STR_TITLE.text
+#: src/red_option.py:26
+msgid "Specify user name"
+msgstr "Garagaza izina ry'ukoresha"
+
+#: src/red_option.py:27
+#, fuzzy
+msgid "password"
+msgstr "ijambobanga"
+
+#: src/red_option.py:27
+#, fuzzy
+msgid "Specify password"
+msgstr "Ijambobanga..."
+
+#: src/red_option.py:28
+#, fuzzy
+msgid "Print client version and exit"
+msgstr "Umukiriya Verisiyo Na Gusohoka"
+
+#: src/red_option.py:29
+#, fuzzy
+msgid "Get usage information"
+msgstr "Ikoresha: Ibisobanuro"
+
+#: src/red_option.py:120
+#, fuzzy, python-format
+msgid "Usage: %s <options> ..."
+msgstr "Amahitamo"
+
+#: src/red_option.py:122
+#, fuzzy
+msgid "The following options are understood:"
+msgstr "Amahitamo"
+
+#: src/red_packagearray.py:91
+msgid "installed"
+msgstr ""
+
+#. upgrade
+#: src/red_packagearray.py:93
+msgid "newer"
+msgstr ""
+
+#: src/red_packagearray.py:95
+msgid "older"
+msgstr ""
+
+#: src/red_packagearray.py:97
+#, fuzzy
+msgid "not installed"
+msgstr "OYA"
+
+#: src/red_packagearray.py:123
+msgid "upgrade"
+msgstr ""
+
+#: src/red_packagearray.py:125
+msgid "downgrade"
+msgstr ""
+
+# #-#-#-#-#  setup2.pot (PACKAGE VERSION)  #-#-#-#-#
+# setup2/source\ui\pages\plang.src:RESID_PAGE_PAGELANGUAGE.STR_PROG.text
+# #-#-#-#-#  setup2.pot (PACKAGE VERSION)  #-#-#-#-#
+# setup2/source\uibase\agentdlg.src:RC_AGENTDLG.RESID_DLG_AGENT_STR_INSTALL.text
+#: src/red_packagearray.py:127
+#, fuzzy
+msgid "install"
+msgstr "Kwinjiza porogaramu"
+
+# sfx2/source\statbar\statbar.src:RID_NAVIGATION_COMMANDS.6.text
+#: src/red_packagearray.py:134
+msgid "remove"
+msgstr "gukuraho"
+
+#: src/red_packagearray.py:614
+#, python-format
+msgid "Found %d matching packages"
+msgstr ""
+
+#: src/red_packagearray.py:616
+#, fuzzy
+msgid "Found 1 matching package"
+msgstr "1."
+
+#: src/red_packagearray.py:618
+#, fuzzy
+msgid "No matching packages found"
+msgstr "Byabonetse"
+
+#: src/red_packagearray.py:776
+#, fuzzy
+msgid "Looking for updates..."
+msgstr "kugirango"
+
+#: src/red_packagearray.py:801
+#, python-format
+msgid "Found %d matching patches"
+msgstr ""
+
+#: src/red_packagearray.py:803
+#, fuzzy
+msgid "Found 1 matching patch"
+msgstr "1."
+
+#: src/red_packagearray.py:805
+#, fuzzy
+msgid "No matching patches found"
+msgstr "Byabonetse"
+
+#: src/red_packagebook.py:44
+msgid "Package Information"
+msgstr ""
+
+#: src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "Ntazina"
+
+#: src/red_packagepage_deps.py:29
+msgid "Dependencies"
+msgstr ""
+
+#: src/red_packagepage_deps.py:67
+msgid "Provides"
+msgstr ""
+
+#: src/red_packagepage_deps.py:70
+msgid "Requires"
+msgstr ""
+
+#: src/red_packagepage_deps.py:73
+msgid "Conflicts With"
+msgstr ""
+
+#: src/red_packagepage_info.py:90 src/red_services.py:112
+msgid "Name"
+msgstr "Izina"
+
+# goodies/source\filter.vcl\eps\dlgeps.src:DLG_EXPORT_EPS.GRP_VERSION.text
+#: src/red_packagepage_info.py:91 src/red_packageview.py:452
+msgid "Version"
+msgstr "Verisiyo"
+
+#: src/red_packagepage_info.py:92
+msgid "Release"
+msgstr ""
+
+#: src/red_packagepage_info.py:93
+msgid "Package Size"
+msgstr ""
+
+#: src/red_packagepage_info.py:94
+msgid "Installed Size"
+msgstr ""
+
+# #-#-#-#-#  sw.pot (PACKAGE VERSION)  #-#-#-#-#
+# sw/source\ui\app\app.src:STR_REGION_DEFNAME.text
+# #-#-#-#-#  sw.pot (PACKAGE VERSION)  #-#-#-#-#
+# sw/source\ui\chrdlg\ccoll.src:TP_CONDCOLL.STR_REGIONS.4.text
+# #-#-#-#-#  sw.pot (PACKAGE VERSION)  #-#-#-#-#
+# sw/source\ui\dialog\regionsw.src:MD_EDIT_REGION.FL_NAME.text
+# #-#-#-#-#  sw.pot (PACKAGE VERSION)  #-#-#-#-#
+# sw/source\ui\dialog\regionsw.src:DLG_INSERT_SECTION.1.TP_INSERT_SECTION.text
+# #-#-#-#-#  sw.pot (PACKAGE VERSION)  #-#-#-#-#
+# sw/source\ui\ribbar\workctrl.src:RID_SCROLL_NAVIGATION_WIN.ST_REG.text
+# #-#-#-#-#  sw.pot (PACKAGE VERSION)  #-#-#-#-#
+# sw/source\ui\utlui\utlui.src:STR_CONTENT_TYPE_SINGLE_REGION.text
+#: src/red_packagepage_info.py:96
+msgid "Section"
+msgstr "Icyiciro"
+
+#: src/red_packagepage_info.py:97
+msgid "Summary"
+msgstr "Inshamake"
+
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\moptions.src:RID_MACROOPTIONS.RID_FT_DESCR.text
+# #-#-#-#-#  basctl.pot (PACKAGE VERSION)  #-#-#-#-#
+# basctl/source\basicide\moptions.src:RID_MACROOPTIONS.text
+#: src/red_packagepage_info.py:98 src/red_prefs.py:413
+msgid "Description"
+msgstr "Isobanuramiterere"
+
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Agenda.Save.TemplateInfo.text
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Letter.Save.TemplateInfo.text
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Fax.Save.TemplateInfo.text
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Wizard.Memo.Save.TemplateInfo.text
+#: src/red_packagepage_info.py:152
+msgid "Info"
+msgstr "Ibisobanuro"
+
+#: src/red_packageview.py:301
+msgid "Status"
+msgstr "Imimerere"
+
+#: src/red_packageview.py:472
+msgid "Importance"
+msgstr ""
+
+#: src/red_patches.py:35
+msgid "Patches"
+msgstr ""
+
+#: src/red_patches.py:38
+msgid "YOU Patches"
+msgstr ""
+
+#: src/red_patches.py:72
+#, fuzzy
+msgid "Searching for matching patches..."
+msgstr "kugirango"
+
+#: src/red_patches.py:111
+#, fuzzy
+msgid "No matching patches found."
+msgstr "Byabonetse"
+
+#: src/red_pendingview.py:347
+#, fuzzy, python-format
+msgid "%.1f%% completed"
+msgstr ""
+"%.Project- Id- Version: basctl\n"
+"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
+"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
+"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
+"Content- Type: text/ plain; charset= UTF- 8\n"
+"Content- Transfer- Encoding: 8bit\n"
+"X- Generator: KBabel 1. 0\n"
+"."
+
+#: src/red_pendingview.py:536
+msgid "Updating System"
+msgstr ""
+
+#: src/red_pendingview.py:609
+#, fuzzy
+msgid "Download cancelled"
+msgstr "Kureka"
+
+#: src/red_pendingview.py:610
+#, fuzzy
+msgid "Transaction cancelled"
+msgstr "Kureka"
+
+#: src/red_pendingview.py:645
+msgid "Transaction Finished"
+msgstr ""
+
+#: src/red_pendingview.py:658
+msgid "Downloading packages"
+msgstr ""
+
+#: src/red_pendingview.py:671
+msgid "Download Failed"
+msgstr ""
+
+#: src/red_pendingview.py:672
+msgid "Unknown Error"
+msgstr "Ikosa itazwi"
+
+#: src/red_pendingview.py:689
+msgid "Processing Transaction"
+msgstr ""
+
+#: src/red_pendingview.py:728
+msgid "The transaction has completed successfully"
+msgstr ""
+
+#: src/red_pendingview.py:733
+#, fuzzy
+msgid "Transaction failed"
+msgstr "Byanze"
+
+#: src/red_pendingview.py:735
+msgid "Transaction Failed"
+msgstr ""
+
+#: src/red_prefs.py:171
+#, fuzzy
+msgid "Interval to refresh channel data (in hours):"
+msgstr "Kuri Kugira gishya Ibyatanzwe in amasaha"
+
+#. Packages section
+#: src/red_prefs.py:182
+msgid "Packages"
+msgstr ""
+
+#: src/red_prefs.py:191
+msgid "Require package signatures"
+msgstr ""
+
+#: src/red_prefs.py:196
+#, fuzzy
+msgid "Maximum number of packages to download at once:"
+msgstr "Umubare Bya Kuri Gufungura ku Rimwe"
+
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr ""
+
+# #-#-#-#-#  offmgr.pot (PACKAGE VERSION)  #-#-#-#-#
+# offmgr/source\offapp\dialog\inetdlg.src:RID_OFADLG_INTERNET.1.RID_SVXPAGE_INET_PROXY.text
+# #-#-#-#-#  offmgr.pot (PACKAGE VERSION)  #-#-#-#-#
+# offmgr/source\offapp\dialog\treeopt.src:RID_OFADLG_OPTIONS_TREE_PAGES.SID_INET_DLG.2.text
+#. Proxy section - requires superuser
+#: src/red_prefs.py:210
+msgid "Proxy"
+msgstr "Porogisi"
+
+#: src/red_prefs.py:219
+#, fuzzy
+msgid "Use a proxy"
+msgstr "a Porogisi"
+
+#: src/red_prefs.py:223
+msgid "Proxy URL:"
+msgstr ""
+
+#: src/red_prefs.py:230
+#, fuzzy
+msgid "Username:"
+msgstr "Izina ry'ukoresha"
+
+#: src/red_prefs.py:270
+#, fuzzy
+msgid "You do not have permissions to view proxy settings"
+msgstr "OYA Uruhushya Kuri Kureba Porogisi Amagenamiterere"
+
+#: src/red_prefs.py:294
+#, fuzzy
+msgid "Cache downloaded packages and metadata"
+msgstr "Yimuwe Na"
+
+#: src/red_prefs.py:300
+#, fuzzy
+msgid "Location of cached data:"
+msgstr "Bya Ibyatanzwe"
+
+#. Expiration section
+#: src/red_prefs.py:308
+msgid "Expiration"
+msgstr ""
+
+#: src/red_prefs.py:312
+#, fuzzy
+msgid "Cache expires"
+msgstr "Yarenze igihe:"
+
+#: src/red_prefs.py:318
+#, fuzzy
+msgid "Maximum age in days:"
+msgstr "in Iminsi"
+
+#: src/red_prefs.py:329
+#, fuzzy
+msgid "Maximum size in MB:"
+msgstr "Ingano in"
+
+#: src/red_prefs.py:340
+#, fuzzy
+msgid "Current cache size:"
+msgstr "Ubwihisho Ingano"
+
+#: src/red_prefs.py:357
+#, fuzzy
+msgid "Are you sure you want to delete the package files in your cache?"
+msgstr "Kuri Gusiba i Idosiye in Ubwihisho"
+
+#: src/red_prefs.py:373
+msgid "Empty Cache"
+msgstr ""
+
+#: src/red_prefs.py:395
+#, python-format
+msgid "%d MB"
+msgstr ""
+
+#: src/red_prefs.py:443
+msgid "Value"
+msgstr "Agaciro"
+
+#: src/red_prefs.py:456
+#, fuzzy
+msgid "Loading preferences..."
+msgstr "Ibyahiswemo"
+
+#: src/red_prefs.py:520
+#, python-format
+msgid "%s Preferences"
+msgstr ""
+
+# #-#-#-#-#  offmgr.pot (PACKAGE VERSION)  #-#-#-#-#
+# offmgr/source\offapp\dialog\inetdlg.src:RID_OFADLG_INTERNET.1.RID_SVXPAGE_INET_SEARCH.text
+# #-#-#-#-#  offmgr.pot (PACKAGE VERSION)  #-#-#-#-#
+# offmgr/source\offapp\dialog\treeopt.src:RID_OFADLG_OPTIONS_TREE_PAGES.SID_INET_DLG.3.text
+#: src/red_search.py:35
+msgid "Search"
+msgstr "Gushaka"
+
+#: src/red_search.py:38
+msgid "S_earch Packages"
+msgstr ""
+
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+#, fuzzy
+msgid "Searching for matching packages..."
+msgstr "kugirango"
+
+#: src/red_search.py:109
+#, fuzzy
+msgid "No matching packages found."
+msgstr "Byabonetse"
+
+#: src/red_searchbox.py:146
+msgid "All Packages"
+msgstr ""
+
+#: src/red_searchbox.py:147 src/red_updates.py:31
+msgid "Updates"
+msgstr ""
+
+#: src/red_searchbox.py:148
+msgid "Uninstalled Packages"
+msgstr ""
+
+#: src/red_searchbox.py:149
+msgid "Installed Packages"
+msgstr ""
+
+#: src/red_searchbox.py:174
+msgid "All Sections"
+msgstr ""
+
+#: src/red_searchbox.py:175
+msgid "Productivity"
+msgstr ""
+
+#: src/red_searchbox.py:176
+msgid "Imaging"
+msgstr ""
+
+#: src/red_searchbox.py:177
+msgid "Personal Info. Mgmt"
+msgstr ""
+
+#: src/red_searchbox.py:178
+msgid "X Windows"
+msgstr ""
+
+#: src/red_searchbox.py:179
+msgid "Games"
+msgstr ""
+
+#: src/red_searchbox.py:180
+msgid "Multimedia"
+msgstr ""
+
+# officecfg/registry\schema\org\openoffice\Office\Common.xcs:....Save.URL.Internet.text
+#: src/red_searchbox.py:181
+msgid "Internet"
+msgstr "Interineti"
+
+#: src/red_searchbox.py:182
+msgid "Utilities"
+msgstr ""
+
+#: src/red_searchbox.py:183
+msgid "System"
+msgstr "Sisitemu"
+
+#: src/red_searchbox.py:184
+msgid "Documentation"
+msgstr ""
+
+# basctl/source\basicide\moduldlg.src:RID_TD_ORGANIZE.RID_TC_ORGANIZE.RID_TP_LIB.text
+#: src/red_searchbox.py:185
+msgid "Libraries"
+msgstr "Amasomero"
+
+#: src/red_searchbox.py:186
+msgid "Development"
+msgstr ""
+
+#: src/red_searchbox.py:187
+msgid "Development Tools"
+msgstr ""
+
+#: src/red_searchbox.py:188
+msgid "Miscellaneous"
+msgstr "Binyuranye"
+
+#: src/red_searchbox.py:274
+msgid "Search descriptions"
+msgstr ""
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_MATCH.text
+#. ##
+#. ## Match radio buttons
+#. ##
+#: src/red_searchbox.py:286
+#, fuzzy
+msgid "Match:"
+msgstr "BIHUYE"
+
+#: src/red_searchbox.py:322
+msgid "Channel:"
+msgstr ""
+
+#: src/red_serverinfo.py:46
+#, fuzzy
+msgid "The daemon identified itself as:"
+msgstr "Nka"
+
+#: src/red_serverinfo.py:57
+#, fuzzy
+msgid "System type"
+msgstr "Ubwoko"
+
+#: src/red_serverinfo.py:60
+#, fuzzy
+msgid "Server URL"
+msgstr "URL ya seriveri"
+
+#: src/red_serverinfo.py:63
+#, fuzzy
+msgid "Server supports enhanced features."
+msgstr "Ibiranga"
+
+#: src/red_serverinfo.py:68
+#, fuzzy
+msgid "Unable to contact the daemon."
+msgstr "Kuri Umuntu i"
+
+#: src/red_serverinfo.py:76
+#, fuzzy
+msgid "Dump daemon info to XML file"
+msgstr "Ibisobanuro Kuri IDOSIYE"
+
+#: src/red_serverinfo.py:94
+#, fuzzy, python-format
+msgid "Could not open file '%s': %s"
+msgstr "OYA Gufungura IDOSIYE"
+
+#: src/red_serverinfo.py:135
+#, fuzzy
+msgid "Choose file to write XML to"
+msgstr "IDOSIYE Kuri Kwandika Kuri"
+
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr ""
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+#: src/red_services.py:133
+#, fuzzy
+msgid "_Remove service"
+msgstr "Serivisi"
+
+#: src/red_services.py:150
+#, fuzzy
+msgid "_Add service"
+msgstr "Serivisi"
+
+#: src/red_services.py:233
+msgid "Add Service"
+msgstr ""
+
+#: src/red_services.py:238
+#, fuzzy
+msgid "Service URL"
+msgstr "Igikorwa kya URL:"
+
+#: src/red_sidebar.py:61 src/red_transaction.py:133
+msgid "Pending Actions"
+msgstr ""
+
+#: src/red_sidebar.py:89
+#, fuzzy, python-format
+msgid "%d pending install"
+msgstr "%dKwinjiza porogaramu"
+
+#: src/red_sidebar.py:91
+#, python-format
+msgid "%d pending installs"
+msgstr ""
+
+#: src/red_sidebar.py:97
+#, python-format
+msgid "%d pending removal"
+msgstr ""
+
+#: src/red_sidebar.py:99
+#, python-format
+msgid "%d pending removals"
+msgstr ""
+
+#: src/red_sidebar.py:103
+msgid "No pending actions"
+msgstr ""
+
+#: src/red_software.py:28
+msgid "Installed Software"
+msgstr ""
+
+#: src/red_software.py:31
+msgid "I_nstalled Software"
+msgstr ""
+
+#: src/red_software.py:97
+msgid "Available Software"
+msgstr ""
+
+#: src/red_software.py:100
+msgid "A_vailable Software"
+msgstr ""
+
+#: src/red_statusbar.py:50
+#, fuzzy, python-format
+msgid "Connected to %s"
+msgstr "Kuri"
+
+# 6008
+#: src/red_subscriptions.py:57
+msgid "Subscribed"
+msgstr "yanditswe/byemewe"
+
+#: src/red_subscriptions.py:64
+msgid "Channel Name"
+msgstr ""
+
+#: src/red_subscriptions.py:78
+#, python-format
+msgid "%s Channel Subscriptions"
+msgstr ""
+
+#: src/red_subscriptions.py:99
+#, fuzzy
+msgid ""
+"You do not have permission to subscribe or unsubscribe from channels.  You "
+"will be unable to make any changes to the subscriptions."
+msgstr ""
+"OYA Kuri Kwiyandikisha Cyangwa Kwivana aho wiyandikishe Bivuye Kuri Ubwoko "
+"Amahinduka Kuri i Kwiyandikisha"
+
+# filter/source\xsltdialog\xmlfilterdialogstrings.src:STR_DEFAULT_UI_NAME.text
+#: src/red_thrashingtreeview.py:138
+msgid "Untitled"
+msgstr "Nta mutwe"
+
+#: src/red_transaction.py:96
+#, fuzzy
+msgid "Are you sure you want to quit?"
+msgstr "Kuri Kuvamo"
+
+#: src/red_transaction.py:136
+msgid "_Pending Actions"
+msgstr ""
+
+#: src/red_updates.py:34
+msgid "_Updates"
+msgstr ""
+
+# sw/sdi\swslots.src:FN_UPDATE_ALL.text
+#: src/red_updates.py:77
+#, fuzzy
+msgid "_Update All"
+msgstr "Kuvugurura byose"
+
+#: src/red_updates.py:109
+#, fuzzy
+msgid "The system is up-to-date."
+msgstr "Sisitemu ni Hejuru Kuri Itariki"
+
+#: src/red_updates.py:110
+#, fuzzy
+msgid "There are no software updates available in any subscribed channels."
+msgstr "Oya Bihari in yanditswe/ byemewe"
+
+#: src/red_users.py:131
+msgid "Privilege"
+msgstr ""
+
+#: src/red_users.py:148
+#, fuzzy
+msgid ""
+"If you remove superuser privileges from yourself, you will be unable to re-"
+"add them.\n"
+"\n"
+"Are you sure you want to do this?"
+msgstr "Gukuraho... Uburenganzira... Bivuye Kuri Kongeramo Kuri iyi"
+
+#: src/red_users.py:166
+msgid "Enabled"
+msgstr "Bikora"
+
+#: src/red_users.py:181
+msgid "Edit Users"
+msgstr ""
+
+# sfx2/source\dialog\passwd.src:DLG_PASSWD.FT_PASSWD_CONFIRM.text
+#: src/red_users.py:196 src/red_users.py:399
+#, fuzzy
+msgid "Confirm:"
+msgstr "Kwemeza"
+
+#: src/red_users.py:217
+msgid "Set Password"
+msgstr ""
+
+#: src/red_users.py:246 src/red_users.py:422
+#, fuzzy
+msgid "Password can not be empty."
+msgstr "OYA ubusa"
+
+# svx/source\dialog\passwd.src:RID_SVXDLG_PASSWORD.STR_ERR_REPEAT_PASSWD.text
+#: src/red_users.py:248 src/red_users.py:424
+#, fuzzy
+msgid "Passwords do not match."
+msgstr "Amagambobanga ntahura"
+
+#: src/red_users.py:268
+#, fuzzy, python-format
+msgid "Set %s's password"
+msgstr "S Ijambobanga..."
+
+#: src/red_users.py:289
+msgid "Users"
+msgstr ""
+
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\miscdlgs.src:RID_SCDLG_COL_OPT.FT_LABEL.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\miscdlgs.src:RID_SCDLG_ROW_OPT.FT_LABEL.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scstring.src:STR_OPT_ROWHEIGHT.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\scstring.src:STR_OPT_COLWIDTH.text
+#: src/red_users.py:306
+msgid "Add"
+msgstr "Kongera"
+
+#: src/red_users.py:320
+#, fuzzy, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "Wifuza koko gusiba\"$\""
+
+# sc/source\ui\dbgui\pivot.src:RID_SCDLG_PIVOT_LAYOUT.BTN_REMOVE.text
+#: src/red_users.py:326
+msgid "Remove"
+msgstr "Gukuraho"
+
+#: src/red_users.py:339
+#, fuzzy
+msgid "Privileges"
+msgstr "Uburenganzira..."
+
+#: src/red_users.py:379
+#, fuzzy
+msgid "Add new user"
+msgstr "Gishya Ukoresha:"
+
+#: src/red_users.py:426
+#, fuzzy
+msgid "Invalid user name."
+msgstr "Ukoresha: Izina:"
+
+#: src/red_users.py:428
+#, python-format
+msgid "User '%s' already exists."
+msgstr ""
