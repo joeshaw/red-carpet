@@ -19,6 +19,7 @@ import string, threading, gobject, gtk
 import ximian_xmlrpclib
 import rcd_util
 import red_pendingops, red_serverlistener
+import red_pixbuf
 
 class PendingView(gtk.Window):
 
@@ -29,13 +30,17 @@ class PendingView(gtk.Window):
                  self_destruct=0):
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 
-        self.set_default_size(350, 150)
+        self.set_default_size(350, -1)
         self.set_modal(is_modal)
 
         self.window_parent = parent
         if parent:
             self.set_transient_for(parent)
         self.position_window()
+
+        self.icons = None
+        self.curr_icon = 0
+        self.icon_timeout = 0
 
         self.pending_list = []
         self.polling_timeout = 0
@@ -50,30 +55,40 @@ class PendingView(gtk.Window):
         self.ourframe = gtk.Frame()
         self.add(self.ourframe)
 
-        self.mainbox = gtk.VBox(0, 10)
-        self.mainbox.set_border_width(10)
-        self.ourframe.add(self.mainbox)
+        mainbox = gtk.VBox(0, 10)
+        mainbox.set_border_width(10)
+        self.ourframe.add(mainbox)
 
-        self.window_title = title
+        topbox = gtk.HBox(0, 0)
+        self.image = gtk.Image()
+        topbox.pack_start(self.image, 0, 0, 5)
+
+        textbox = gtk.VBox(0, 0)
+        topbox.pack_end(textbox, 1, 1, 0)
+
+        mainbox.pack_start(topbox, 0, 1, 0)
+
         self.title_label = gtk.Label("")
         self.title_label.set_alignment(0, 0.5)
-        self.mainbox.pack_start(self.title_label, 0, 0, 0)
-        self.set_title(self.window_title)
+        textbox.pack_start(self.title_label, 0, 0, 0)
 
         self.step_label = gtk.Label("")
         self.step_label.set_alignment(0, 0.5)
-        self.mainbox.pack_start(self.step_label, 0, 0, 0)
+        textbox.pack_start(self.step_label, 0, 0, 0)
         if label:
             self.set_label(label)
 
+        self.window_title = title
+        self.set_title(self.window_title)
+
         self.progress_bar = gtk.ProgressBar()
-        self.mainbox.pack_start(self.progress_bar, 0, 0, 0)
+        mainbox.pack_start(self.progress_bar, 0, 0, 0)
 
         self.button = None
         if self.allow_cancel or not self.self_destruct:
             bbox = gtk.HButtonBox()
             bbox.set_layout(gtk.BUTTONBOX_END)
-            self.mainbox.pack_end(bbox, 0, 0, 0)
+            mainbox.pack_end(bbox, 0, 0, 0)
             if self.allow_cancel:
                 self.button = gtk.Button(gtk.STOCK_CANCEL)
                 self.button.cancel = 1
@@ -93,6 +108,41 @@ class PendingView(gtk.Window):
 
         self.ourframe.show_all()
 
+    def set_icons(self, icons, interval=300):
+        if self.icon_timeout:
+            gtk.timeout_remove(self.icon_timeout)
+            self.icon_timeout = 0
+            
+        self.icons = []
+        for x in icons:
+            pixbuf = red_pixbuf.get_pixbuf(x)
+            if pixbuf:
+                self.icons.append(pixbuf)
+        if self.icons:
+            self.image.set_from_pixbuf(self.icons[0])
+
+        if len(self.icons) > 1:
+            def icon_cb(pv):
+                pv.curr_icon += 1
+                if pv.curr_icon >= len(pv.icons):
+                    pv.curr_icon = 0
+                pv.image.set_from_pixbuf(pv.icons[pv.curr_icon])
+                return 1
+
+            self.icon_timeout = gtk.timeout_add(interval,
+                                                icon_cb,
+                                                self)
+
+    def set_icon(self, icon):
+        self.set_icons((icon, ))
+
+    def stop_icon_anim(self):
+        if self.icon_timeout:
+            gtk.timeout_remove(self.icon_timeout)
+            self.icon_timeout = 0
+            if self.icons:
+                self.image.set_from_pixbuf(self.icons[0])
+
     def position_window(self):
         if self.window_parent:
             self.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
@@ -104,11 +154,11 @@ class PendingView(gtk.Window):
             self.button.set_sensitive(0)
 
     def cancelled(self):
-        print "Cancelled!"
+        self.stop_icon_anim()
 
     def finished(self):
+        self.stop_icon_anim()
         self.emit("finished")
-        print "Finished!"
         self.destroy()
 
     def set_title(self, msg):
@@ -408,6 +458,10 @@ class PendingView_Transaction(PendingView):
         self.connect("window-state-event",
                      lambda x,y:x.window_state_event_cb(y))
 
+        self.set_icons(("spinning-rupert-1",
+                        "spinning-rupert-2",
+                        "spinning-rupert-3"))
+        
         red_serverlistener.freeze_polling()
         self.start_polling() # this is a different kind of polling
 
@@ -490,6 +544,7 @@ class PendingView_Transaction(PendingView):
 
 
     def transaction_finished(self, msg, title="Update Finished"):
+        self.stop_icon_anim()
         self.switch_cancel_button_to_ok()
         self.set_title(title)
         self.set_label(msg)
@@ -522,6 +577,7 @@ class PendingView_Transaction(PendingView):
     def update_transaction(self):
 
         if self.__finished:
+            self.stop_icon_anim()
             return 0
 
         if self.__working_query:

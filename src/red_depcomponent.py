@@ -129,6 +129,8 @@ class DepComponent(red_component.Component):
         msg = "\n" + string.join(lines, "\n\n")
 
         view = gtk.TextView()
+        view.set_editable(0)
+        view.set_cursor_visible(0)
         view.set_wrap_mode(gtk.WRAP_WORD)
         view.get_buffer().set_text(msg)
 

@@ -57,6 +57,7 @@ def refresh_cb(app):
         pend = red_pendingview.PendingView_Simple(title="Refreshing channel data",
                                                   parent=app)
         pend.set_label("Downloading channel information")
+        pend.set_icon("dialog-refreshing")
         pend.show_all()
         pend.set_pending_list(stuff_to_poll)
 

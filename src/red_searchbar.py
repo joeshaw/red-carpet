@@ -186,10 +186,6 @@ class SearchBar(gtk.VBox):
         box2.pack_start(self.search_entry, expand=1, fill=1)
         self.search_entry.connect("activate", lambda x:self.__emit_search())
 
-        button = gtk.Button("Find Now")
-        box2.pack_start(button, expand=0, fill=0)
-        button.connect("clicked", lambda x:self.__emit_search())
-
         self.pack_start(box1, expand=0, fill=0)
         self.pack_start(box2, expand=0, fill=0)
 
