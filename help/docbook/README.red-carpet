@@ -1,0 +1,4 @@
+This is a partial import for the docbook-xsl package, available from
+http://docbook.sf.net/projects/xsl.  It's used to generate HTML from
+the Docbook XML.  It's only a build-time dependency, not a runtime one,
+so nothing from this directory is installed.

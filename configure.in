@@ -106,6 +106,12 @@ if test x$have_scrollkeeper_config = xno; then
   AC_MSG_ERROR(Couldn't find scrollkeeper-config.  Please install the scrollkeeper package: http://scrollkeeper.sf.net)
 fi
 
+dnl Look for xsltproc
+AC_PATH_PROG(have_xsltproc, xsltproc, no)
+if test x$have_xsltproc = xno; then
+  AC_MSG_ERROR(Couldn't find xsltproc.  This is usually in the libxslt package)
+fi
+
 AC_SUBST(PYTHON)
 
 GETTEXT_PACKAGE=red-carpet
@@ -139,6 +145,11 @@ AC_OUTPUT([
 Makefile
 po/Makefile.in
 help/Makefile
+help/docbook/Makefile
+help/docbook/common/Makefile
+help/docbook/html/Makefile
+help/docbook/images/Makefile
+help/docbook/lib/Makefile
 help/C/Makefile
 art/Makefile
 ximian_unmarshaller/Makefile

@@ -1,3 +1,15 @@
+2003-05-15  Joe Shaw  <joe@ximian.com>
+
+	* configure.in: Require xsltproc, create makefiles in the
+	help/docbook subdirs.
+
+	* help/docbook: Partial import of the Docbook XML stylesheets so
+	we can generate HTML of our help files.
+
+	* help/C/Makefile.am: Pregenerate HTML files from our docbook
+	XML so help works on a wider range of (non-GNOME 2-based)
+	platforms.  Fixes #42605.
+
 2003-05-09  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: 2.0.0
