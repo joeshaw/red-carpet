@@ -64,7 +64,7 @@ class SearchComponent(red_component.Component):
         self.array = red_packagearray.PackagesFromQuery()
         self.connect_array(self.array)
 
-        page = gtk.VBox(0, 0)
+        page = gtk.VBox(0, 6)
 
         self.__bar = red_searchbar.SearchBar()
         page.pack_start(self.__bar, expand=0, fill=1)

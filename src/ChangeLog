@@ -1,5 +1,12 @@
 2003-02-24  Tambet Ingo  <tambet@ximian.com>
 
+	* red_search.py (SearchComponent.build): Set spacing.
+
+	* red_searchbar.py (SearchBar.__init__): Ditto.
+
+	* red_appwindow.py (AppWindow.assemble_toolbar): Old icon is better
+	than no icon at all :)
+
 	* red_pendingview.py (PendingView.__init__): Use PendingView class to
 	store the status about cancel button. It was giving some troubles when
 	we stored it in button.

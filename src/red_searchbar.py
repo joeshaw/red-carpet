@@ -26,6 +26,7 @@ class SearchBar(gtk.VBox):
 
     def __init__(self):
         gobject.GObject.__init__(self)
+        self.set_spacing(6)
         self.match_anyall = "all"
         self.match_substr = "substr"
         self.search_desc = 1
