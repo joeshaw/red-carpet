@@ -17,7 +17,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet\n"
-"POT-Creation-Date: 2003-03-30 23:15+0200\n"
+"POT-Creation-Date: 2003-03-31 23:48+0200\n"
 "PO-Revision-Date: 2002-03-07 21:13+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: src/rcd_util.py:417
 msgid "There is no package signature for"
-msgstr ""
+msgstr "Der er ingen pakkesignatur for"
 
 #: src/rcd_util.py:418
 msgid "Preparing Transaction"
@@ -162,11 +162,11 @@ msgstr "Aktivér"
 
 #: src/red_activation.py:76
 msgid "Please fill in both email and activation code."
-msgstr ""
+msgstr "Udfyld venligst både e-post og aktiveringskode."
 
 #: src/red_activation.py:95
 msgid "System successfully activated."
-msgstr ""
+msgstr "Systemet er aktiveret uden problemer."
 
 #. Store email to config.
 #: src/red_activation.py:103
@@ -191,13 +191,12 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_appwindow.py:60
-#, fuzzy
 msgid "Refreshing channel data"
-msgstr "Henter kanaldata..."
+msgstr "Genopfrisker kanaldata"
 
 #: src/red_appwindow.py:62
 msgid "Downloading channel information"
-msgstr "Henter kanaldata"
+msgstr "Henter kanalinformation"
 
 #. FIXME: This feels like a hack.  Go through the remove_packages and
 #. if any of them have an __old_package field, use that package for
@@ -226,7 +225,7 @@ msgstr "Kør nu"
 
 #: src/red_appwindow.py:343
 msgid "Perform installations and removals"
-msgstr ""
+msgstr "Udfør installationer og afinstallationer"
 
 #: src/red_appwindow.py:350
 msgid "Channels"
@@ -234,7 +233,7 @@ msgstr "Kanaler"
 
 #: src/red_appwindow.py:351
 msgid "Change your channel subscriptions"
-msgstr ""
+msgstr "Ændr dit kanalabonnement"
 
 #: src/red_appwindow.py:356
 msgid "Refresh"
@@ -242,15 +241,14 @@ msgstr "Opdatér"
 
 #: src/red_appwindow.py:357
 msgid "Refresh channel data"
-msgstr ""
+msgstr "Genopfrisk kanaldata"
 
 #. #
 #. # Actionbar.
 #. #
 #: src/red_appwindow.py:369
-#, fuzzy
 msgid "Mark for _Installation"
-msgstr "Pakkeinstallation"
+msgstr "Markér for _installation"
 
 #: src/red_appwindow.py:370
 #, fuzzy
@@ -261,9 +259,8 @@ msgstr "Ryd mellemlagrede pakker ved opstart"
 #. # Remove Package
 #. #
 #: src/red_appwindow.py:377 src/red_appwindow.py:633
-#, fuzzy
 msgid "Mark for _Removal"
-msgstr "Pakkeafinstallation"
+msgstr "Marké_r for afinstallation"
 
 #: src/red_appwindow.py:378
 #, fuzzy
@@ -319,31 +316,30 @@ msgid "_Help"
 msgstr "_Hjælp"
 
 #: src/red_appwindow.py:447
-#, fuzzy
 msgid "Connect..."
-msgstr "Kan ikke tilslutte"
+msgstr "Forbind..."
 
 #: src/red_appwindow.py:457
 msgid "Install from _File..."
-msgstr ""
+msgstr "Installér fra _fil..."
 
 #: src/red_appwindow.py:465
 msgid "Install from _URL..."
-msgstr ""
+msgstr "Installér fra _URL..."
 
 #. #
 #. # Mount command
 #. #
 #: src/red_appwindow.py:481
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "_Montér katalog..."
 
 #. #
 #. # Unmount command
 #. #
 #: src/red_appwindow.py:497
 msgid "U_nmount Directory..."
-msgstr ""
+msgstr "_Afmontér katalog..."
 
 #. #
 #. # Activate
@@ -387,9 +383,8 @@ msgid "_Sidebar"
 msgstr "_Sidebjælke"
 
 #: src/red_appwindow.py:571
-#, fuzzy
 msgid "_Advanced Search Options"
-msgstr "A_bonnementer"
+msgstr "_Avancerede søgemuligheder"
 
 #: src/red_appwindow.py:575
 msgid "_Channel Names"
@@ -400,9 +395,8 @@ msgid "Package _Information..."
 msgstr "Pakke_installation..."
 
 #: src/red_appwindow.py:589
-#, fuzzy
 msgid "_Daemon Information..."
-msgstr "Information"
+msgstr "Information om _dæmonen..."
 
 #. #
 #. # Run Transaction
@@ -423,16 +417,15 @@ msgstr "Mislykkede afhængigheder"
 #. # Install Package
 #. #
 #: src/red_appwindow.py:624
-#, fuzzy
 msgid "Mark for I_nstallation"
-msgstr "Pakkeinstallation"
+msgstr "Markér for i_nstallation"
 
 #. #
 #. # Refresh Channel Data
 #. #
 #: src/red_appwindow.py:659
 msgid "Re_fresh Channel Data"
-msgstr ""
+msgstr "Genop_frisk kanaldata"
 
 #: src/red_appwindow.py:665
 msgid "_About..."
@@ -501,9 +494,8 @@ msgid "All Channels"
 msgstr "Alle kanaler"
 
 #: src/red_channeloption.py:55
-#, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Abonnerede kanaler"
+msgstr "Alle abonnerede kanaler"
 
 #: src/red_channeloption.py:60
 msgid "No Channel/Unknown Channel"
@@ -590,6 +582,8 @@ msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
+"Kunne ikke forbinde til dæmonen:\n"
+" '%s'."
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
@@ -669,7 +663,7 @@ msgstr ""
 #. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr ""
+msgstr "Mistede kontakt med dæmonen!"
 
 #: src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
@@ -695,20 +689,17 @@ msgstr "Afslut Red Carpet"
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:64
-#, fuzzy
 msgid "Dependency Resolution"
-msgstr "Afhængigheder"
+msgstr "Afhængighedsløsning"
 
 #. Clean up
 #: src/red_depcomponent.py:116
-#, fuzzy
 msgid "Verifying System"
-msgstr "Efterprøver %s"
+msgstr "Efterprøver system"
 
 #: src/red_depcomponent.py:122
-#, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Afhængigheder"
+msgstr "Løser afhængigheder"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
@@ -722,7 +713,7 @@ msgstr ""
 #. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:237
 msgid "System Verified"
-msgstr ""
+msgstr "System er efterprøvet"
 
 #: src/red_depcomponent.py:239
 msgid ""
@@ -743,14 +734,12 @@ msgid "Requested Removals"
 msgstr "Forespurgte afinstalleringer"
 
 #: src/red_depcomponent.py:301
-#, fuzzy
 msgid "Required Installations"
-msgstr "Forespurgte installeringer"
+msgstr "Krævede installeringer"
 
 #: src/red_depcomponent.py:305
-#, fuzzy
 msgid "Required Removals"
-msgstr "Forespurgte afinstalleringer"
+msgstr "Krævede afinstalleringer"
 
 #: src/red_depcomponent.py:331
 msgid "Continue"
@@ -881,9 +870,8 @@ msgid "Installations"
 msgstr "Installationer"
 
 #: src/red_history.py:115
-#, fuzzy
 msgid "Removals"
-msgstr "Afinstalleringslog"
+msgstr "Afinstalleringer"
 
 #: src/red_history.py:116
 msgid "Upgrades"
@@ -895,7 +883,7 @@ msgstr "Bruger:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "Tidsramme (dage):"
 
 #. ##
 #. ## Sort functions
@@ -911,9 +899,8 @@ msgid "Time"
 msgstr "Tid"
 
 #: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:317
-#, fuzzy
 msgid "Action"
-msgstr "Placering"
+msgstr "Handling"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:442 src/red_users.py:113
@@ -936,7 +923,7 @@ msgstr "_Historik"
 
 #: src/red_history.py:388
 msgid "No results found."
-msgstr ""
+msgstr "Ingen resultater fundet."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -961,17 +948,15 @@ msgstr ""
 #: src/red_installfiles.py:82 src/red_installfiles.py:141
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s er ikke en gyldig pakke"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
 msgstr ""
 
-# burde strengt taget være programmel, men det passer dårligt ind
 #: src/red_installfiles.py:102
-#, fuzzy
 msgid "Install from File"
-msgstr "Installerede programmer"
+msgstr "Installér fra fil"
 
 #: src/red_installfiles.py:118
 #, python-format
@@ -979,9 +964,8 @@ msgid "Downloading %s..."
 msgstr "Henter %s..."
 
 #: src/red_installfiles.py:157
-#, fuzzy
 msgid "Install from URL"
-msgstr "Installér"
+msgstr "Installér fra URL"
 
 #: src/red_installfiles.py:162
 msgid "Package URL:"
@@ -1129,7 +1113,7 @@ msgstr ""
 #: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
-msgstr ""
+msgstr "Afmontering af '%s' mislukkedes"
 
 #: src/red_mount.py:117
 msgid "Browse..."
@@ -1140,13 +1124,12 @@ msgid "Mount Directory"
 msgstr "Montér katalog"
 
 #: src/red_mount.py:140
-#, fuzzy
 msgid "Mount channel"
-msgstr "Standard-underkanal:"
+msgstr "Montér kanal"
 
 #: src/red_mount.py:144
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Montér et katalog som kanal"
 
 #: src/red_mount.py:152
 msgid "Channel Name:"
@@ -1188,7 +1171,7 @@ msgstr "Afmontér?"
 #: src/red_my_computer.py:28 src/red_my_computer.py:31
 #: src/red_my_computer.py:49
 msgid "My Computer"
-msgstr ""
+msgstr "Min computer"
 
 #: src/red_my_computer.py:34
 msgid "_My Computer"
@@ -1196,7 +1179,7 @@ msgstr "_Min computer"
 
 #: src/red_my_computer.py:54
 msgid "Searching system for matching packages..."
-msgstr ""
+msgstr "Gennemsøger systemet for matchende pakker..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1256,16 +1239,15 @@ msgstr "værtsnavn"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "Kontakt dæmonen på specificerede vært"
 
 #: src/red_option.py:26
 msgid "username"
 msgstr "brugernavn"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "Specify user name"
-msgstr "Brugernavn"
+msgstr "Specificér brugernavn"
 
 #: src/red_option.py:27
 msgid "password"
@@ -1273,11 +1255,11 @@ msgstr "adgangskode"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "Specificér adgangskode"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "Udskriv klientversion og afslut"
 
 #: src/red_option.py:29
 #, fuzzy
@@ -1303,7 +1285,7 @@ msgstr "Information"
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "Brug: %s <tilvalg> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
@@ -1397,19 +1379,19 @@ msgstr "Fjerner pakker"
 
 #: src/red_packagearray.py:614
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "Fandt én matchende pakke"
 
 #: src/red_packagearray.py:616
 #, fuzzy
 msgid "No matching packages found"
-msgstr "Fjerner pakker"
+msgstr "Ingen matchede pakker fundet"
 
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
 #: src/red_packagearray.py:756
 msgid "Looking for updates..."
-msgstr ""
+msgstr "Kigger efter opdateringer..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1498,9 +1480,8 @@ msgid "Version"
 msgstr "Version"
 
 #: src/red_packagepage_info.py:80
-#, fuzzy
 msgid "Release"
-msgstr "Genoptag"
+msgstr "Udgave"
 
 #: src/red_packagepage_info.py:81
 msgid "Package Size"
@@ -1510,12 +1491,11 @@ msgstr "Pakkestørrelse"
 #: src/red_packagepage_info.py:82
 #, fuzzy
 msgid "Installed Size"
-msgstr "Installerede programmer"
+msgstr "Installeret "
 
 #: src/red_packagepage_info.py:84
-#, fuzzy
 msgid "Section"
-msgstr "Placering"
+msgstr "Afsnit"
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
@@ -1547,9 +1527,8 @@ msgstr "Info"
 #. ##
 #. Define me!
 #: src/red_packagepage.py:32
-#, fuzzy
 msgid "Unnamed"
-msgstr "Brugernavn"
+msgstr "Unavngivet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1701,14 +1680,12 @@ msgid "Download Failed"
 msgstr "Henter filer"
 
 #: src/red_pendingview.py:624
-#, fuzzy
 msgid "Unknown Error"
-msgstr "(ingen fejl)"
+msgstr "Ukendt fejl"
 
 #: src/red_pendingview.py:641
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "Begynder transaktion..."
+msgstr "Begynder transaktion"
 
 #: src/red_pendingview.py:660
 msgid "The update has completed successfully"
@@ -1818,7 +1795,7 @@ msgstr ""
 
 #: src/red_prefs.py:263
 msgid "Cache downloaded packages and metadata"
-msgstr ""
+msgstr "Cach hentede pakker og metadata"
 
 #: src/red_prefs.py:269
 msgid "Location of cached data:"
@@ -1922,9 +1899,8 @@ msgid "Updates"
 msgstr "Opdateringer"
 
 #: src/red_searchbox.py:145
-#, fuzzy
 msgid "Installed Packages"
-msgstr " Installér pakker "
+msgstr "Installerede pakker"
 
 #: src/red_searchbox.py:146
 msgid "All Packages"
