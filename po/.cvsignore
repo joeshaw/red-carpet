@@ -1,0 +1,6 @@
+*~
+*.gmo
+*.mo
+Makefile*
+POTFILES
+red-carpet.pot

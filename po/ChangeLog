@@ -1,0 +1,9 @@
+2002-03-06  Joe Shaw  <joe@ximian.com>
+
+	* Set up the po/ directory.
+
+	* POTFILES.in: List of files to translate.
+
+	* es.po: Added a test Spanish translation.  Very incomplete and
+	formed by doing a Google Translation. ;)  Please feel free to make
+	this a real translation.
