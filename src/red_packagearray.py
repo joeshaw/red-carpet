@@ -596,6 +596,7 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.__worker_handler_id = 0
         self.__query_msg = None
         self.__query_filter = None
+        self.query = None
         if query:
             self.set_query(query)
 

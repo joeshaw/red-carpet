@@ -1,3 +1,10 @@
+2003-03-18  Joe Shaw  <joe@ximian.com>
+
+	* red_packagearray.py (PackagesFromQuery.__init__): Initialize
+	self.query to be None.  Fixes a traceback when you go to the
+	"Search" page but don't perform a search and then have a seqno
+	change.
+
 2003-03-18  Jon Trowbridge  <trow@ximian.com>
 
 	* red_serverlistener.py: Added global working_polls variable,
