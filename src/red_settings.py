@@ -54,7 +54,7 @@ class RCConfig:
            not self.__public.has_option(section, option):
             if default:
                 return default
-            return None
+            return ""
 
         return self.__public.get(section, option)
 
@@ -70,7 +70,7 @@ class RCConfig:
            not self.__private.has_option(section, option):
             if default:
                 return default
-            return None
+            return ""
 
         return self.__private.get(section, option)
 
@@ -124,7 +124,7 @@ class DaemonData:
         self.password = config.get_private("daemon/pass")
 
         for i in range(0, MAX_SAVED_URLS):
-            url = config.get("daemon/url" + str(i))
+            url = config.get("daemon/url%d" % i)
             if not url:
                 break
 
@@ -175,8 +175,10 @@ class DaemonData:
         return self.url
 
     def url_set(self, text):
-        if not text in self.url:
-            self.url.insert(0, text)
+        if text in self.url:
+            self.url.remove(text)
+
+        self.url.insert(0, text)
 
     def user_get(self):
         return self.user

@@ -1,3 +1,24 @@
+2003-02-25  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (check_rcd_version_: Require rcd 1.2.1.
+
+	* red_main.py: Add argument parsing.  Get host info from
+	arguments.
+
+	* red_packagearray.py (pkg_status): Mark these for translation.
+
+	* red_settings.py (get, get_private): Return "" instead of None if
+	the option isn't in the file, so we don't try to load/save None
+	values.
+	(url_set): Always remove the url from the list if we match and
+	insert at 0, so the most recently used are always at the head.
+
+	* red_subscriptions.py: Mark "Sub'd" for translaction.
+
+	* ximian_xmlrpclib.py: Don't use the rcd_util.hexstr() functions,
+	use them directly out of the md5 module (since we're using Python
+	2.2).
+
 2003-02-25  Jon Trowbridge  <trow@ximian.com>
 
 	* red_pendingview.py: Tweak the window sizing/line wrapping

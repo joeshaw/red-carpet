@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import os, time, threading, gtk
+import getpass, os, string, sys, time, threading, gtk
 
 red_name      = "Red Carpet"
 red_version   = None
@@ -31,7 +31,8 @@ import red_summary
 import red_transaction
 import red_news
 import red_history
-
+import red_option
+import red_settings
 
 red_running = 1
 
@@ -84,6 +85,67 @@ def main(version):
     print "Red Carpet Client %s" % version
     print "Copyright (C) 2002-2003 Ximian Inc."
     print
+
+    argv = sys.argv[1:]
+    opt_dict, args = red_option.process_argv(argv)
+
+    if opt_dict.has_key("version"):
+        sys.exit(0)
+
+    if opt_dict.has_key("help"):
+        red_option.usage()
+        sys.exit(0)
+
+    if opt_dict.has_key("local") and opt_dict.has_key("host"):
+        print _("ERROR: You cannot specify both -h/--host and -l/--local options")
+        sys.exit(1)
+
+    host = None
+    username = None
+    password = None
+
+    local = 1
+
+    if opt_dict.has_key("host"):
+        host = opt_dict["host"]
+        if host[0] == "/":
+            local = 1
+        else:
+            local = 0
+    elif opt_dict.has_key("user"):
+        local = 0
+
+    if not local:
+        if opt_dict.has_key("host"):
+            host = opt_dict["host"]
+        else:
+            host = "localhost"
+
+        if opt_dict.has_key("user"):
+            username = opt_dict["user"]
+        else:
+            username = getpass.getuser()
+
+        if opt_dict.has_key("password"):
+            password = opt_dict["password"]
+        else:
+            # This'll always fail and pop up the dialog.
+            password = ""
+    else:
+        if opt_dict.has_key("user"):
+            print _("ERROR: You cannoy specify a user to a local daemon")
+            sys.exit(1)
+
+        if opt_dict.has_key("host"):
+            url = opt_dict["host"]
+
+    if host:
+        dd = red_settings.DaemonData()
+        dd.url_set(host)
+        dd.user_set(username)
+        dd.password_set(password)
+        dd.local_set(local)
+        dd.save_config()
 
     server = rcd_util.get_server()
 

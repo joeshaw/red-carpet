@@ -33,7 +33,7 @@ def md5ify_password(pw):
 def check_rcd_version(major, minor, micro):
     req_major = 1
     req_minor = 2
-    req_micro = 0
+    req_micro = 1
 
     # Guard for NoneType
     major = major or 0
