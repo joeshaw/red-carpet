@@ -1,3 +1,7 @@
+2003-04-25  Joe Shaw  <joe@ximian.com>
+
+	* configure.in: Bump version up to 1.99.2.
+
 2003-04-24  Joe Shaw  <joe@ximian.com>
 
 	* art/about-monkey.png: Removed
