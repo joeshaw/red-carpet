@@ -43,41 +43,57 @@
     </releaseinfo>
   </articleinfo>
 
-  <sect1 id="rc-intro">
+  <sect1 id="introduction">
     <title>Introduction</title>
+
     <para>
        <application>Ximian Red Carpet</application> is a program designed to
        help you manage the software you have on your computer. It can
        help you install, update, and remove programs, without making you keep
        track of dependencies and conflicts yourself.  It works with
        the package management structures your operating systems
-       already has, so you can use it alongside command-line tools
-       without running into conflicts.
+       already has, so you can use it alongside unrelated command-line
+       tools.
     </para>
     
     <para>
       Red Carpet 2 has a number of important differences from the
       previous version.  The appearance and interface have been
-      completely overhauled, and there are several new features,
-      such as the ability to manage software on remote systems, and 
-      the queue of pending actions which lets you choose
-      installations, removals, and upgrades of software in 
-      multiple channels, then do everything at once.
+      completely overhauled, and there are several new features like
+      enhanced search tools and the ability to make a list of removals
+      and installations, then then do everything at once.
     </para>
 
     <para>
-      One key difference is that, as of Red Carpet 2.0, Red Carpet the
-      graphical tool is actually a client for
+      One important structural difference is that, as of version
+      2.0, Red Carpet the graphical tool is actually a client for
       <application>rcd</application>, the Red Carpet Daemon.
-      Having two pieces means that you can update remote systems
-      running the daemon. It also allows the use of alternate clients 
-      like the <application>rc</application> command line software
-      management tool. Detailed information about
-      <application>rc</application> and <application>rcd</application>
-      are available in their man pages (standard manuals). You
-      can read them by typing <userinput>man rc</userinput> or
-      <userinput>man rcd</userinput> at the command line.
+      Having two pieces means:
+      <itemizedlist>
+        <listitem>
+          <para>
+            You can update remote systems that are running the
+            daemon. Select
+            <menuchoice><guimenu>File</guimenu><guimenuitem>Connect</guimenuitem></menuchoice>
+            to choose a remote host.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            You have a choice between the graphical
+            <systemitem>red-carpet</systemitem> program and the
+            command line <systemitem>rc</systemitem> tools. Both tools
+            require the <systemitem>rcd</systemitem> package.   Detailed information about
+            <application>rc</application> and <application>rcd</application>
+            are available in their man pages (standard UNIX manuals). You
+            can read them by typing <userinput>man rc</userinput> or
+            <userinput>man rcd</userinput> at the command line. 
+          </para>
+        </listitem>
+      </itemizedlist>
     </para>
+
 
     <note id="whats-a-package">
       <title>What is a Package?</title>
@@ -92,24 +108,51 @@
         install, upgrade, or remove, and can help manage the
         interdependencies among various programs.
       </para>
-
       <para>
         Ximian Red Carpet supports the <systemitem>rpm</systemitem>
-        (Red Hat Package Manager, used by many distributions), and the
+        (Red Hat Package Manager, used by most distributions), and the
         <systemitem>deb</systemitem> (Debian) package formats.
       </para>
+    </note>
 
+
+    <note id="whats-a-channel">
+      <title>What are Channels and Sections?</title>
+      <para>
+        Ximian Red Carpet groups software into channels.  For example,
+        "Red Hat 8.0," "Ximian Evolution Beta Snapshots,"
+        and "Ximian Desktop" are all channels.  You can subscribe to
+        channels that interest you, and ignore those that do
+        not. Ximian Red Carpet will not install or update software
+        from channels to which you are not installed.
+      </para>
+   
+      <para>
+        To subscribe to a channel, select    <menuchoice>
+        <guimenu>Edit</guimenu><guimenuitem>Channel Subscriptions</guimenuitem>
+        </menuchoice> or press the <guibutton>Channels</guibutton> button
+        in the toolbar. A window will open to show you the list of
+        available channels. Check the box next to a channel to subscribe.
+      </para>
+
+      <para>
+        Some channels also have groupings called sections, which
+        describe the purpose of the individual pieces of
+        software. "Imaging," "Productivity," and "Development" are
+        examples of sections.
+      </para>
     </note>
 
     <para>
-       <application>Ximian Red Carpet</application> also gives you
-       access to two important services from Ximian, Inc.  The first
-       service, Red Carpet Express, is for individuals, and offers
-       access to special high-speed servers with faster connections,
-       so you get better download rates.  The other service, Ximian
-       CorporateConnect, is aimed at businesses and workgroups that
-       want to manage software deployment on a relatively large scale.
+      Ximian Red Carpet also gives you access to two important
+      services from Ximian, Inc.  The first service, Red Carpet
+      Express, is for individuals, and offers
+      access to special high-speed servers with faster connections,
+      so you get better download rates.  The other service, Ximian Red
+      Carpet Enterprise, is aimed at businesses and workgroups that
+      want to manage software deployment on a larger scale.
     </para>
+
     <para>
       To find out more about using Red Carpet Express, read <xref
       linkend="rcx" />.  For more about Red Carpet Enterprise
@@ -124,15 +167,15 @@
          <itemizedlist>
 	  <listitem>
 	    <para>
-            The <application>Ximian Red Carpet</application> update
-            and installation services require a network
-            connection. You can still use Ximian Red Carpet to remove
-            software or install local packages without using a network
-            connection. To install from a file, select
-            <menuchoice> <guimenu>File</guimenu> <guimenuitem>Install
-            Local Packages</guimenuitem>
-          </menuchoice>. For information on removing software, see
-          <xref linkend="rc-remove" />.
+            Ximian update and installation services require a network
+              connection. If you do not have a network connection, you
+              can still use Ximian Red Carpet to remove software or
+              install local packages that you already have on disk. To
+              install from a file, select
+              <menuchoice> <guimenu>File</guimenu> <guimenuitem>Install
+              Local Packages</guimenuitem>
+            </menuchoice>. For information on removing software, see
+          <xref linkend="rc-my-computer" />.
           </para>
 	  </listitem>
 
@@ -148,200 +191,189 @@
 	  <listitem>
 	    <para>
               Ximian ships software for a limited number of operating
-              systems. Not all software is available for all systems,
-              although Ximian Red Carpet typically supports the
-              broadest range of systems.  The official list
-              of supported systems is available at the <ulink
-              url="http://support.ximian.com/q?5">Ximian Support
-              Center</ulink>.
+              systems. Not all software is available for all systems.
+              The official list of supported systems is available at
+              the <ulink url="http://support.ximian.com/q?5">Ximian
+              Support Center</ulink>.
             </para>
 	  </listitem>
 	</itemizedlist>
-     </para>
-    </note>
+      </para>
+     </note>
+  </sect1>
 
-    <para>
-      A Red Carpet transaction works like this:
-      <orderedlist>
-        <listitem>
-          <para>
-            Select software you wish to install, update, or
-            remove.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Click the <guibutton>Run</guibutton> button to start the
-            transactions.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Ximian Red Carpet will check to make sure it is possible
-            to perform the requested actions without installing or
-            removing other programs.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            If necessary, Ximian Red Carpet will offer to add or
-            remove additional software to satisfy requirements, giving
-            you an opportunity to approve or cancel the actions.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            When you approve, click <guibutton>Continue</guibutton>
-            and the actions will be performed.
-          </para>
-        </listitem>
-      </orderedlist>
-    </para>
-
+  <sect1 id="getting-started">
+    <title>Getting Started</title>
     <para>
       To start using <application>Ximian Red Carpet</application>, select
       <menuchoice>
       <guimenu>System</guimenu><guimenuitem>Software
       Update</guimenuitem></menuchoice> from the menu panel, or type
-      <userinput>red-carpet</userinput> at the command line.
+      <userinput>red-carpet</userinput> at the command line. Enter
+      your root password when prompted.
+    </para>
+
+    <para>
+      The Red Carpet window has two major sections that display
+      information.  In the center, there is a list of software
+      packages.  On the left side of the window is a list of
+      transactions.  As you use Red Carpet, you will choose software
+      from the package list to install or remove, adding the
+      installation or removal to the list of actions.
+    </para>
+      <para>
+        For detailed information about a package, select it and click
+        the <guibutton>Information</guibutton> button.
+      </para>
+
+      <tip id="sort-order">
+        <title>Sort Order</title>
+        <para>
+          To change the way information is sorted, click the headers
+          at the top of the columns of data. For example, to sort
+          software in alphabetical order by package name, click
+          the <guilabel>Package</guilabel> header. Click again to sort
+          in reverse alphabetical order.
+        </para>
+      </tip>
+
+     <para>
+       To select a package, click on it with the left mouse button. You
+       can select multiple packages by holding down
+       <keycap>Ctrl</keycap> and clicking, or select a range using
+       <keycap>Shift</keycap>. To select all packages in the list,
+       press <keycombo><keycap>Ctrl</keycap><keycap>A</keycap></keycombo>.
+     </para>
+
+    <para>
+      To mark a package for installation or removal, click the
+      <guibutton>Mark for Installation</guibutton> or <guibutton>Mark
+      for Removal</guibutton> buttons at the bottom of the screen.
+    </para>
+
+    <note id="transaction-types">
+      <title>How Many Kinds of Transactions Are There?</title>
+      <para>
+        There are only two basic kinds of transactions in Red
+        Carpet: installation and removal.  An upgrade is essentially
+        the removal of the old version and installation of the new
+        one. Therefore, there are only two actions you can choose:
+        <guibutton>Mark for Installation</guibutton> and <guibutton>Mark for
+        Removal.</guibutton>
+      </para>
+      <para>
+        Where appropriate, Red Carpet displays upgrades as though
+        they were single transactions. For example, the 
+        <guilabel>History</guilabel> view has an
+        <guilabel>Action</guilabel> column that displays upgrades as
+        well as installs or removals.
+      </para>
+    </note>
+
+    <para>
+      To remove an item from the list of pending transactions, select
+      it and click <guibutton>Cancel</guibutton> or right-click on it and
+      select <guimenuitem>Cancel</guimenuitem>.
+    </para>
+
+    <para>
+      When you are done choosing actions, click the <guibutton>Run
+      Now</guibutton> button. Red Carpet will then check to see if
+      additional actions are required. For example, if you attempt to
+      install a new spelling dictionary, but do not have the spelling
+      tool, you will need to install the the spelling tool as well as
+      the dictionary.
+    </para>
+    <para>
+       Red Carpet will present you with a list of the actions that it
+       is about to take, and ask you to confirm or cancel. If you are
+       satisfied with the set of actions, click
+       <guibutton>Continue</guibutton>.
     </para>
   </sect1>
 
-
-  <sect1 id="rc-channels">
-    <title>Channels</title>
-  <para>
-    Ximian Red Carpet organizes software into channels, groups of
-    software sorted by origin or topic.  "Red Hat 8.0," "Ximian
-    Evolution Beta Snapshots," and "Ximian Desktop" are all channels.
-    You can subscribe to different channels based on your interest in
-    them. Software from channels to which you are not subscribed is
-    not updated or installed.
-  </para>
-
-  <para>
-    To subscribe to a channel, select    <menuchoice>
-      <guimenu>Edit</guimenu><guimenuitem>Channel Subscriptions</guimenuitem>
-    </menuchoice> or press the <guibutton>Channels</guibutton> button
-    in the toolbar. A window will open to show you the list of
-    available channels. Check the box next to a channel to subscribe.
-  </para>
-
-  </sect1>
-
-
-  <sect1 id="rc-update">
-    <title>Update</title>
+  <sect1 id="five-views">
+    <title>Five Ways of Looking at Software</title>
+   
     <para>
-      When you start Ximian Red Carpet it will show you a list of
-      software packages that you can update. An update notice is only
-      shown for software that you already have installed, that is in a
-      channel to which you are subscribed, and for which there is a
-      newer version than what you already have. New software, and new
-      versions of software that you have but that is in a channel to
-      which you do not subscribe, is not part of the update screen.
+      At the top left of the Ximian Red Carpet window are five buttons
+      that display five different views of the software world: 
     </para>
-    
-    <para>
-      If you do not see any updates, make sure that you are subscribed
-      to the right channels. See <xref linkend="rc-channels" /> to learn
-      how to adjust channel subscriptions.
-    </para>
-    
-    <para>
-      To perform a simple update of your already installed software:
-      
-      <orderedlist>
-        <listitem>
-          <para>
-            Select all the items in your update list by clicking on them
-            one by one or choosing <menuchoice> <guimenu>Edit</guimenu>
-            <guimenuitem>Select All</guimenuitem></menuchoice>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Mark the packages for installation by clicking the
-            <guibutton>Mark for Installation</guibutton> button.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Click the <guibutton>Run Now</guibutton> button to have Ximian
-            Red Carpet perform the updates.
-          </para>
-        </listitem>
-      </orderedlist>
-    </para>
-
-    <para>
-      You may also select individual packages for upgrade. 
-    </para>
-  </sect1>
-
-  <sect1 id="rc-install">
-    <title>Install</title>
-    <para>
-      To install new software,  click the <guibutton>Search</guibutton>
-      button. This will <emphasis>not</emphasis> display a list of all
-      available software, because that could be a very long list.  You
-      must first search for the software you want to see. If you really
-      wish to see every available piece of software, enter a blank search
-      in the search box. Listing that much software may take some time.
-    </para>
-    <para>
-      To search for software, select one or more criteria for your
-      search. You can choose:
-      <variablelist>
+    <variablelist>
         <varlistentry>
-          <term>Channel</term>
+          <term>Updates</term>
           <listitem>
             <para>
-              Narrow your search to a specific channel. If you do not
-              select anything, you will search in all channels to
-              which you are subscribed.
+              This is the view you will see when you start Ximian Red
+              Carpet. It displays updates to software that you have
+              installed and that is in channels to which you are subscribed.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>Section</term>
+          <term>My Computer</term>
           <listitem>
             <para>
-              The type of software you are looking for, such as
-              <guilabel>Productivit</guilabel> or
-              <guilabel>Imaging</guilabel>.The default is to search in
-              all sections.
+              This displays software that is installed on your
+              computer.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>Status</term>
+          <term>Search</term>
           <listitem>
             <para>
-              You can search for packages that are not installed,
-              packages that are installed, packages that you have
-              installed but for which a newer version is available, or
-              for packages of any status. The default is to search for
-              packages which you do not have installed.
+              This lets you search the largest possible list of
+              packages: those installed on your system, and those
+              available for installation in all channels.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>Search Query</term>
+          <term>History</term>
           <listitem>
             <para>
-              Enter a word or a few letters that describe the package
-              and press <keycap>Enter</keycap>.
+              This displays a list of actions you have performed in
+              the past.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Installations and Removals</term>
+          <listitem>
+            <para>
+              This displays pending software transactions. To perform
+              them, click the <guibutton>Run Now</guibutton> button.
             </para>
           </listitem>
         </varlistentry>
       </variablelist>
-    </para>
-    <para>
-      Each package is displayed with the following information:
+
+      <sect2 id="rc-update">
+        <title>Perform Updates</title>
+        <para>
+          When you start Ximian Red Carpet it will show you a list of
+          software packages that you can update. An update notice is only
+          shown for software that you already have installed, that is in a
+          channel to which you are subscribed, and for which there is a
+          newer version than what you already have. New software, and new
+          versions of software that you have but that is in a channel to
+          which you do not subscribe, is not part of the update screen.
+        </para>
+
+        <para>
+          If you do not see any updates, make sure that you are subscribed
+          to the right channels. See <xref linkend="whats-a-channel" /> to learn
+          how to adjust channel subscriptions.
+        </para>
+
+
+      <para>
+        Each package is displayed with the following information:
         <variablelist>
           <varlistentry>
             <term>Action</term>
@@ -359,16 +391,13 @@
           </varlistentry>
           
           <varlistentry>
-            <term>Status</term>
+            <term>Importance</term>
             <listitem>
               <para>
-                Package status indicates whether the package is 
-                <guilabel>installed</guilabel> or <guilabel>not
-                installed</guilabel>. Status can also be
-                <guilabel>older</guilabel>, meaning that the package
-                displayed here is an older version than one you have
-                installed, or <guilabel>newer</guilabel>, meaning that
-                it is newer than your version.
+                Ximian will indicate how important it is for you to
+                install this update. From least to most important,
+                an update can be listed as minor, feature, suggested,
+                urgent, or necessary.
               </para>
             </listitem>
           </varlistentry>
@@ -384,7 +413,296 @@
           </varlistentry>
           
           <varlistentry>
-            <term>Lock</term>
+            <term>New Version</term>
+            <listitem>
+              <para>
+                The version number for the updated package. Note that
+                version numbers do not count by digits, but instead
+                use numbers separated by. In other words, version 1.10
+                is newer than version 1.9. You can remember this by
+                referring to "one point ten" instead of "one point one
+                zero."
+              </para>
+            </listitem>
+          </varlistentry>
+          
+          <varlistentry>
+            <term>Current Version</term>
+            <listitem>
+              <para>
+                The version number of the software you have installed now.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+         </para>
+   
+        <para>
+          To perform a simple update of software that is already on your system:
+          <orderedlist>
+            <listitem>
+              <para>
+                Select one or more packages in the list of available updates.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Mark the selected packages for installation by clicking the
+                <guibutton>Mark for Installation</guibutton> button.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Click the <guibutton>Run Now</guibutton> button to have Ximian
+                Red Carpet perform the updates.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+    </sect2>
+
+
+      <sect2 id="rc-my-computer">
+        <title>Remove Software on My Computer</title>
+        <para>
+          To uninstall software that is on your computer now, click
+          the <guilabel>My Computer</guilabel> button. Red Carpet will
+          display a list of the software that is on your system now.
+        </para>
+        <para>
+          Each package is displayed with the following information:
+        </para>
+        <variablelist>
+          <varlistentry>
+            <term>Action</term>
+            <listitem>
+              <para>
+                The action you are performing on this package.
+              </para>
+            </listitem>
+          </varlistentry>
+                    
+          <varlistentry>
+            <term>Channel</term>
+            <listitem>
+              <para>
+                The name of the channel in which this package is
+                shipped. 
+              </para>
+            </listitem>
+          </varlistentry>
+          
+          <varlistentry>
+            <term>Package</term>
+            <listitem>
+              <para>
+               The name of the package.
+              </para>
+            </listitem>
+          </varlistentry>
+          
+          <varlistentry>
+            <term>Current Version</term>
+            <listitem>
+              <para>
+                The version number of the software you have installed now.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+    
+        <para>
+          There are three ways to change the items in the list:
+        </para>
+    
+        <variablelist>
+          <varlistentry>
+            <term>Channel</term>
+            <listitem>
+              <para>
+                Choose from the list of channels to show only the software
+                that comes from a particular channel.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Section</term>
+            <listitem>
+              <para>
+                Choose from the list of software sections to show only the
+                software of that type. Some channels do not use section
+                divisions.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Text Search</term>
+            <listitem>
+              <para>
+                You can also search for a word or word fragment in the
+                packages and their descriptions by typing into the text
+                box above the list of packages.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>
+          For this view and for the <guilabel>Search</guilabel> view, you
+          will have the following additional search options:
+        </para>
+        <variablelist>
+          <varlistentry>
+            <term>Search Package Descriptions</term>
+            <listitem>
+              <para>
+                Check this box to search in package descriptions
+                as well as package names.
+              </para>
+            </listitem>
+          </varlistentry>
+
+
+          <varlistentry>
+            <term>Any Words or All Words</term>
+            <listitem>
+              <para>
+                Select <guilabel>Any Word</guilabel> for a broad
+                search that matches any of the words you enter in
+              the text box, or <guilabel>All Words</guilabel> to
+              find only matches that contain all the words you enter.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Substrings or Whole Words</term>
+            <listitem>
+              <para>
+                Select <guilabel>Substrings</guilabel> to search
+              for word fragments, or <guilabel>Whole
+              Words</guilabel> to search for whole words
+              only. Package names are rarely whole words, so this
+              is mostly useful for package descriptions.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+      <sect2 id="rc-search">
+          <title>Search for Software</title>
+          <para>
+            To look at the broadest possible range of software, and to
+            find new software to install, click the <guibutton>Search</guibutton>
+            button. This will <emphasis>not</emphasis> immediately display a list of all
+            available software.  You must first search for the software
+            you want to see. If you really wish to see every available
+            piece of software, enter a blank search in the search
+            box.
+          </para>
+
+          <para>
+            To search for software, select one or more criteria for your
+            search. You can choose:
+          </para>
+          <variablelist>
+            <varlistentry>
+              <term>Channel</term>
+              <listitem>
+                <para>
+                  Narrow your search to a specific channel. If you do not
+                  select anything, you will search in all channels to
+                  which you are subscribed.
+                </para>
+              </listitem>
+            </varlistentry>
+            
+            <varlistentry>
+              <term>Section</term>
+              <listitem>
+                <para>
+                  The type of software you are looking for, such as
+                  <guilabel>Productivit</guilabel> or
+                  <guilabel>Imaging</guilabel>.The default is to search in
+                  all sections.
+                </para>
+              </listitem>
+            </varlistentry>
+            
+            <varlistentry>
+              <term>Status</term>
+              <listitem>
+                <para>
+                  You can search for packages that are not installed,
+                  packages that are installed, packages that you have
+                  installed but for which a newer version is available, or
+                  for packages of any status. The default is to search for
+                  packages which you do not have installed.
+                </para>
+              </listitem>
+            </varlistentry>
+            
+            <varlistentry>
+              <term>Text Search</term>
+              <listitem>
+                <para>
+                  Enter words or word fragments to search for, and
+                  press <keycap>Enter</keycap>.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist> 
+      <para>
+        The advanced search options are the same as in <guilabel>My
+        Computer</guilabel>. See <xref linkend="rc-my-computer" /> for
+        more information.
+      </para>
+
+
+      <para>
+        In the <guilabel>Search</guilabel> view, each package is
+        displayed with the following information:
+    </para>
+        <variablelist>
+          <varlistentry>
+            <term>Action</term>
+            <listitem>
+              <para>
+                The action you are performing on this package.
+              </para>
+            </listitem>
+          </varlistentry>
+          
+          <varlistentry>
+            <term>Status</term>
+            <listitem>
+              <para>
+                Indicates whether you have the software installed and
+                if so, whether an update is available. If you do not
+                have the software, the value is listed as <guilabel>not
+                installed</guilabel>.  If you have the same version of
+              the software as the one listed, the status will be 
+                <guilabel>installed</guilabel>. If you have a
+                different version, the listed package will be
+                described as <guilabel>older</guilabel> or
+                <guilabel>newer</guilabel> than the installed version.
+              </para>
+            </listitem>
+          </varlistentry>
+          
+          <varlistentry>
+            <term>Channel</term>
+            <listitem>
+              <para>
+                The name of the channel in which this package is
+                shipped. 
+              </para>
+            </listitem>
+          </varlistentry>
+          
+          <varlistentry>
+            <term>Lock Icon</term>
             <listitem>
               <para>
                 The column with the lock icon indicates whether the
@@ -411,57 +729,142 @@
             </listitem>
           </varlistentry>
         </variablelist>
+      </sect2>
+    <sect2 id="rc-history">
+      <title>View Past Transactions with History</title>
+      <para>
+        The history view displays a list of of your past
+        transactions. That is, each time you install, remove, or
+        upgrade a piece of software, it's recorded here.
       </para>
 
       <para>
-        When you see an item you would like to install, click on it
-        once to select it, then click the <guibutton>Mark For
-        Installation</guibutton> button.  The package installation will be
-        added to the list of transactions displayed on the left of the
-        window.
+        The history information is taken from the logs of the Red
+        Carpet Daemon, <command>rcd</command>. It includes
+        transactions made with the <command>rc</command> command line
+      tool, but not changes made with <command>dpkg</command>,
+        <command>apt-get</command>, or <command>rpm</command>.
+      </para>
+
+      <para>
+        It displays the following information about each transaction:
+      </para>
+        <variablelist>
+          <varlistentry>
+            <term>Time</term>
+            <listitem>
+              <para>
+                The time and date when the transaction occurred.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Action</term>
+            <listitem>
+              <para>
+                Whether you upgraded, installed, or removed the software.
+              </para>
+            </listitem>
+          </varlistentry>
+
+
+          <varlistentry>
+            <term>User</term>
+            <listitem>
+              <para>
+                The user who performed the action. In most cases, this
+                will be <guilabel>root</guilabel>, but you may allow
+                other users to use Red Carpet.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Package</term>
+            <listitem>
+              <para>
+                The name of the software package involved in the transaction.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Old Version</term>
+            <listitem>
+              <para>
+                For upgrades and removals, this is the version of the
+                software you had installed before the transaction. For
+                installs, this entry is blank.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>New Version</term>
+            <listitem>
+              <para>
+                For Installs and Upgrades, this displays the version of the software after the transactions.
+                For removals, this entry is blank.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      <para>
+        To change the displayed list, you can choose one or more of
+        the following criteria:
+      </para>
+      <variablelist>
+        <varlistentry>
+            <term>Transaction Type</term>
+            <listitem>
+              <para>
+                Normally, the <guilabel>History</guilabel> view shows
+                you all transactions. You may choose instead to display just 
+                installations,  removals, or  upgrades.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>User</term>
+            <listitem>
+              <para>
+                 Normally, Red Carpet will show you transactions
+                performed by all permitted users. If you have allowed
+                other users to use Red Carpet, you may choose to
+                display just their actions. If you have not allowed
+                any other users to change the system, the only option
+                here will be <guilabel>All</guilabel>.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Date Range</term>
+            <listitem>
+              <para>
+                Normally, Red Carpet will show you the transactions in the last
+                thirty days. You can choose a longer or shorter time frame if you wish..
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+    <sect2 id="rc-transaction-view">
+      <title>The Detailed Transaction View</title>
+      <para>
+        The left side of the main Red Carpet window shows you
+        a list of transactions you have selected, but it doesn't have
+        room to give you a lot of detail. For more information about
+        your pending transaction list, click the
+        <guibutton>Installations and Removals</guibutton> button.
       </para>
       <para>
-        To remove an item from the list of pending transactions, select
-        it and click <guibutton>Cancel</guibutton> or right-click on it and
-        select <guimenuitem>Cancel</guimenuitem>.
+        In addition to the action and package name available in the
+        concise view, you can also see the package version number and the
+        amount of disk space taken up by the package.
       </para>
-      <para>
-        Proceed to choose other software you would like to install or
-        remove. When you are done choosing software, click the
-        <guibutton>Run Now</guibutton> button in the toolbar at the top
-        of the window.
-      </para>
-
-  </sect1>
-
-  <sect1 id="rc-remove">
-    <title>Remove</title>
-    <para>
-      To remove software, click the <guibutton>FIXME</guibutton>
-      button. This will display a list of all software installed on your
-      system. You can narrow your list by selecting criteria from the
-      search toolbar. 
-    </para>
-    <para>
-      When you see an item you would like to remove, click on it
-      once to select it, then click the <guibutton>Mark For
-      Removal</guibutton> button.  The package removal will be added
-      to the list of transactions displayed on the left of the window.
-    </para>  
-  
-    <para>
-      To remove an item from the list of pending transactions, select
-      it and click <guibutton>Cancel</guibutton> or right-click on it and
-      select <guimenuitem>Cancel</guimenuitem>.
-    </para>
-
-    <para>
-      Proceed to choose other software you would like to install or
-      remove. When you are done choosing software, click the
-      <guibutton>Run Now</guibutton> button in the toolbar at the top
-      of the window.
-    </para>
-
+    </sect2>
   </sect1>
 
 

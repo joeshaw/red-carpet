@@ -1,3 +1,9 @@
+2003-04-09  Aaron Weber  <aaron@ximian.com>
+
+	* help/C/red-carpet.xml: Finish docs. Remote usage coverage added. Now to wait
+	for next snap and verify that the prefs I describe are the prefs
+	as they are.
+
 2003-03-31  Frank Belew  <frb@ximian.com>
 
 	* ximian_unmarshaller/Makefile.am: don't distribute binary .so of
@@ -16,12 +22,6 @@
 	* configure.in (ALL_LINGUAS): Added lots of translations from
 	red-carpet 1.0
 
-2003-03-26  Aaron Weber  <aaron@ximian.com>
-
-	* help/C/red-carpet.xml: Remote usage coverage added. Now to wait
-	for next snap and verify that the prefs I describe are the prefs
-	as they are.
-	
 2003-03-25  Aaron Weber  <aaron@ximian.com>
 
 	* help/C/red-carpet.xml: add prefs coverage. Prefs coverage is
