@@ -426,7 +426,10 @@ def refresh(parent):
         try:
             stuff_to_poll = worker.get_result()
         except ximian_xmlrpclib.Fault, f:
-            dialog_from_fault(f, parent=parent)
+            dialog_from_fault(f,
+                              additional_text=_("Please ensure that your "
+                              "network settings are correct."),
+                              parent=parent)
             return
         
         import red_pendingview
@@ -441,7 +444,10 @@ def refresh(parent):
     try:
         worker = server.rcd.packsys.refresh_all_channels()
     except ximian_xmlrpclib.Fault, f:
-        dialog_from_fault(f, parent=parent)
+        dialog_from_fault(f,
+                          additional_text=_("Please ensure that your "
+                          "network settings are correct."),
+                          parent=parent)
         return
 
     server_proxy_dialog(worker,

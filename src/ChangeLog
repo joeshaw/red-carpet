@@ -1,5 +1,7 @@
 2003-05-27  Joe Shaw  <joe@ximian.com>
 
+	* rcd_util.py (refresh): Improve error message slightly.
+
 	* red_searchbox.py (__assemble_status_option): Make all_cb() the
 	default status filter
 
