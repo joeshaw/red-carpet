@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=red-carpet %s
+Terminal=0
+MimeType=application/x-rpm
+InitialPreference=10
+NoDisplay=true
+Name=Red Carpet

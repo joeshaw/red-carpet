@@ -1,3 +1,11 @@
+2004-09-20  James Willcox  <james@ximian.com>
+
+	* Makefile.am:
+	* red-carpet-mime.desktop: new
+	* red-carpet.applications: new
+	* trayicon/red_icon_main.py: detect that an icon is already
+	running, and exit
+
 2004-09-13  James Willcox  <james@ximian.com>
 
 	* trayicon/red_icon_main.py:

@@ -131,16 +131,58 @@ class UpdateIcon(red_tray.TrayIcon):
 def get_title():
     return red_name + " " + red_version
 
+def get_pid_path():
+    return "%s/.red-carpet-icon%s" % (os.getenv('HOME'), os.getenv('DISPLAY'))
 
+def get_pid_file(mode='r'):
+    return file(get_pid_path(), mode)
 
-    
+def check_running():
+    try:
+        f = get_pid_file()
+    except Exception, e:
+        return 0
 
+    pid = int(f.read())
+    f.close()
+
+    try:
+        os.kill(pid, 0)
+    except OSError, e:
+        if e.errno == 3:
+            return 0 #that process isn't running now
+
+    return 1
+
+def write_pid():
+    f = get_pid_file('w+')
+    f.write(str(os.getpid()))
+    f.close()
+
+def delete_pid():
+    try:
+        path = get_pid_path()
+        os.unlink(path)
+    except Exception, e:
+        pass
 
 ###
 ### main
 ###
    
 def main(version):
+    if check_running():
+        import gtk
+        dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_WARNING,
+                                   gtk.BUTTONS_OK,
+                                   _("There appears to be a Red Carpet "
+                                     "update icon already running.  Exiting."))
+        dialog.run()
+        dialog.destroy()
+        return 1
+
+    write_pid()
+
     global red_version
     red_version = version
     
@@ -235,6 +277,8 @@ def main(version):
     icon.show_all()
 
     gtk.main()
+
+    delete_pid()
 
     global red_running
     red_running = 0
