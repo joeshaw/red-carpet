@@ -22,9 +22,8 @@ import packagemodel, channelmodel
 
 import rcd_util
 
-import channel
 import red_menubar, red_packagearray, red_packageview, red_header
-import red_explodedview
+import red_explodedview, red_appwindow
 
 def connect_to_server():
     ## Make contact with the daemon.
@@ -175,15 +174,9 @@ def query_test(server):
                                        pixbuf_fn=pkg_to_section_icon)
     
 
-    win = gtk.Window()
-    sw = gtk.ScrolledWindow()
-    sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-    win.add(sw)
-    sw.add_with_viewport(ex)
-    win.show_all()
-
-    win.connect("delete_event", lambda x, y: sys.exit(0))
-                     
+    app = red_appwindow.AppWindow()
+    app.sw.add_with_viewport(ex)
+    app.show_all()
 
 def main(version):
     server = connect_to_server()

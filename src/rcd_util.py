@@ -43,8 +43,15 @@ def fetch_all_channels():
     channel_list = server.rcd.packsys.get_channels()
     for c in channel_list:
         cached_channels[str(c["id"])] = c
+        print c
+        print
 
     have_channels = 1
+
+
+def get_all_channels():
+    fetch_all_channels()
+    return cached_channels.values()
 
 
 def get_channel(id):

@@ -19,7 +19,7 @@ import sys, os, string
 import gobject, gtk
 import red_pixbuf
 
-class RedMenuBar(gtk.MenuBar):
+class MenuBar(gtk.MenuBar):
 
     def __init__(self, accel_group=None):
         #gtk.MenuBar.__init__(self)
@@ -198,11 +198,11 @@ class RedMenuBar(gtk.MenuBar):
 
         walk_tree("/", self)
 
-gobject.type_register(RedMenuBar)
+gobject.type_register(MenuBar)
 
 
 gobject.signal_new("refresh_items",
-                   RedMenuBar,
+                   MenuBar,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    ())
