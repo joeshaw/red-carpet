@@ -34,7 +34,7 @@ def can_install_remote():
     global have_urllib
     return have_urllib
 
-def install_local():
+def install_local(parent):
     # FIXME: Add remote daemon support
     
     def get_file_cb(b, fs):
@@ -79,9 +79,10 @@ def install_local():
     filesel.set_select_multiple(1)
     filesel.ok_button.connect("clicked", get_file_cb, filesel)
     filesel.cancel_button.connect("clicked", lambda x,y:y.destroy(), filesel)
+    filesel.set_transient_for(parent)
     filesel.show()
 
-def install_remote():
+def install_remote(parent):
 
     def get_file_cb(b, w, e):
         w.destroy()
@@ -159,6 +160,7 @@ def install_remote():
             b.set_sensitive(0)
     entry.connect("changed", changed_cb, button)
 
+    win.set_transient_for(parent)
     win.show()
 
 class DownloadWatcher(threading.Thread, gobject.GObject):

@@ -412,6 +412,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             def remove_window_cb(w, a, t):
                 del a.transient_windows[t]
             win.connect("destroy", remove_window_cb, self, type)
+            win.set_transient_for(self)
             win.show()
 
     def select_all_cb(self, sel):
@@ -446,7 +447,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/File/Install From File...",
                 sensitive_fn=install_file_sensitive_fn,
-                callback=lambda x:red_installfiles.install_local())
+                callback=lambda x:red_installfiles.install_local(self))
 
         def install_url_sensitive_fn():
             return rcd_util.check_server_permission("install") and \
@@ -454,7 +455,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/File/Install From URL...",
                 sensitive_fn=install_url_sensitive_fn,
-                callback=lambda x:red_installfiles.install_remote())
+                callback=lambda x:red_installfiles.install_remote(self))
 
         bar.add("/File/sep2", is_separator=1)
 

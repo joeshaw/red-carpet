@@ -28,8 +28,7 @@ class PendingView(gtk.Window):
                  self_destruct=0):
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 
-        self.set_resizable(0)
-
+        self.set_default_size(350, 150)
         self.set_modal(is_modal)
 
         self.window_parent = parent

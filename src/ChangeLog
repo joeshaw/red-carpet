@@ -1,3 +1,18 @@
+2003-02-12  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (open_or_raise_window): Set the window
+	transient for the AppWindow.
+	(assemble_menubar): Pass in the AppWindow to install_local() and
+	install_remote() so they can be set transient for it.
+
+	* red_browse.py: Remove the red_packagebrowser import.
+
+	* red_installfiles.py (install_local, install_remote): Take our
+	parent window as an arg.
+
+	* red_pendingview.py (PendingView.__init__): Allow our window to
+	be resized and set a default size.
+
 2003-02-12  Jon Trowbridge  <trow@ximian.com>
 
 	* red_transaction.py (TransactionArray.pendingops_changed): When
