@@ -211,7 +211,7 @@ def start_daemon():
 
 def munge_uri(local, uri):
     if local:
-        uri = "/var/run/rcd/rcd"
+        uri = "/var/run/zmd/zmd-web.socket"
     elif uri:
         host = uri
         # Prepend "https://" if it isn't already specified

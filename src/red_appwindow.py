@@ -60,15 +60,16 @@ def run_transaction_cb(app):
     # click on an upgrade and select "remove".
     remove_packages = [x.get("__old_package", x) for x in remove_packages]
 
-    if install_packages and rcd_util.package_is_patch(install_packages[0]):
-        patch_transaction = 1
-    else:
-        patch_transaction = 0
+    transaction_type = rcd_util.PACKAGE_TYPE_PACKAGE
+    if len(install_packages) > 0:
+        transaction_type = rcd_util.get_package_type(install_packages[0])
+    elif len(remove_packages) > 0:
+        transaction_type = rcd_util.get_package_type(remove_packages[0])
 
     dep_comp = red_depcomponent.DepComponent(install_packages,
                                              remove_packages,
                                              0,
-                                             patch_transaction)
+                                             transaction_type)
     app.componentbook.push_component(dep_comp)
 
 def verify_deps_cb(app):

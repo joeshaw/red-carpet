@@ -25,6 +25,12 @@ package_data = {}
 listeners = {}
 listener_id = 0
 
+NO_ACTION                 = 0
+TO_BE_INSTALLED           = 1
+TO_BE_REMOVED             = 2
+TO_BE_INSTALLED_CANCELLED = 3
+TO_BE_REMOVED_CANCELLED   = 4
+
 class PendingOpsListener:
 
     def __init__(self):
@@ -121,14 +127,29 @@ def del_package(pkg):
         del package_data[pkg_key]
         signal_listeners()
 
-def patches_pending():
-    ## Is there pending operations where action is set and
-    ## "package" is actually patch.
+def can_set_action(pkg):
+    ## Make sure we don't add different "package" types
+    this_type = rcd_util.get_package_type(pkg)
+
     for p in package_data.values():
         if p.has_key("action") and p["action"] != NO_ACTION and \
-               p.has_key("__package") and \
-               rcd_util.package_is_patch(p["__package"]):
-            return 1
+           p.has_key("__package") and \
+           this_type != rcd_util.get_package_type(p["__package"]):
+            return 0
+
+    return 1
+
+def can_remove_package(pkg):
+	this_type = rcd_util.get_package_type(pkg)
+
+	if this_type == rcd_util.PACKAGE_TYPE_PACKAGE:
+		return 1
+	if this_type == rcd_util.PACKAGE_TYPE_PATCH:
+		return 0
+	if this_type == rcd_util.PACKAGE_TYPE_BUNDLE:
+		return 1
+
+	return 0
 
 def keys(pkg):
     pkg_key = rcd_util.get_package_key(pkg)
@@ -139,12 +160,6 @@ def keys(pkg):
         
 
 ###############################################################################
-
-NO_ACTION                 = 0
-TO_BE_INSTALLED           = 1
-TO_BE_REMOVED             = 2
-TO_BE_INSTALLED_CANCELLED = 3
-TO_BE_REMOVED_CANCELLED   = 4
 
 def get_action(pkg):
     if has_package(pkg):
@@ -239,15 +254,11 @@ def can_perform_action_single(pkg, action):
        pkg_action != NO_ACTION:
         return 1
 
-    ## Make sure there won't be both patches and packages pending.
-    if patches_pending():
-        if not rcd_util.package_is_patch(pkg):
-            return 0
-    elif pending_ops_exist() and rcd_util.package_is_patch(pkg):
+    if not can_set_action(pkg):
         return 0
 
     if action == TO_BE_REMOVED:
-        if rcd_util.package_is_patch(pkg):
+        if not can_remove_package(pkg):
             return 0
         if red_packagearray.pkg_is_installed(pkg) or \
            red_packagearray.pkg_is_name_installed(pkg) and \

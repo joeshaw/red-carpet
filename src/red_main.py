@@ -37,6 +37,7 @@ import red_option
 import red_settings
 import red_software
 import red_installfiles
+import red_bundlecomponent
 
 import red_patches
 
@@ -184,6 +185,7 @@ def main(version):
     app.register_component(red_software.InstalledComponent())
     app.register_component(red_software.AvailableComponent())
     app.register_component(red_search.SearchComponent())
+    app.register_component(red_bundlecomponent.BundleComponent())
 
     if rcd_util.server_has_patch_support(server):
         app.register_component(red_patches.PatchComponent())

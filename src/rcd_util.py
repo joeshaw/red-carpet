@@ -261,16 +261,30 @@ def get_package_EVR(pkg):
         rel_str = "-%s" % pkg["release"]
     return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
 
-def package_is_patch(pkg):
+PACKAGE_TYPE_PACKAGE = 1
+PACKAGE_TYPE_PATCH   = 2
+PACKAGE_TYPE_BUNDLE  = 3
+
+def get_package_type(pkg):
     if pkg.has_key("is_patch") and pkg["is_patch"]:
-        return 1
+        return PACKAGE_TYPE_PATCH
+    if pkg.has_key("is_bundle") and pkg["is_bundle"]:
+        return PACKAGE_TYPE_BUNDLE
+
+    return PACKAGE_TYPE_PACKAGE
 
 def get_package_info(pkg):
     if not pkg.has_key("__info"):
-        if package_is_patch(pkg):
-            pkg["__info"] = server.rcd.you.patch_info(pkg)
-        else:
+        pkg_type = get_package_type(pkg)
+        if pkg_type == PACKAGE_TYPE_PACKAGE:
             pkg["__info"] = server.rcd.packsys.package_info(pkg)
+        elif pkg_type == PACKAGE_TYPE_PATCH:
+            pkg["__info"] = server.rcd.you.patch_info(pkg)
+##      elif pkg_type == PACKAGE_TYPE_BUNDLE:
+            
+        else:
+            pkg["__info"] = {}
+
     return pkg["__info"]
 
 def get_package_history(pkg):

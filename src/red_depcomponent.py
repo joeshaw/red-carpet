@@ -25,7 +25,7 @@ import ximian_xmlrpclib
 import red_main
 import red_pixbuf
 import red_pendingview
-import red_component, red_pendingops, red_depview
+import red_component, red_pendingops, red_depview, red_bundlearray
 from red_gettext import _
 
 def filter_deps(dep_list):
@@ -44,7 +44,7 @@ def filter_deps(dep_list):
 class DepComponent(red_component.Component):
 
     def __init__(self, install_packages=[], remove_packages=[],
-                 verify=0, patch_transaction=0):
+                 verify=0, transaction_type=rcd_util.PACKAGE_TYPE_PACKAGE):
         gobject.GObject.__init__(self)
         red_component.Component.__init__(self)
 
@@ -53,7 +53,6 @@ class DepComponent(red_component.Component):
         self.install_packages = install_packages
         self.remove_packages = remove_packages
         self.verify = verify
-        self.patch_transaction = patch_transaction
 
         self.dep_install = []
         self.dep_remove = []
@@ -62,14 +61,15 @@ class DepComponent(red_component.Component):
         self.__worker = None
         self.__worker_handler_id = 0
 
+        self.transaction_type = transaction_type
+
         # Call get_deps in an idle so that we are fully initialized
         # before we being our computation.  (In particular, the
         # parent isn't properly set on the component at this point.)
-        if not patch_transaction:
-            gtk.idle_add(lambda comp: comp.get_deps(), self)
-        else:
+        if transaction_type == rcd_util.PACKAGE_TYPE_PATCH:
             gtk.idle_add(lambda comp: comp.emit("got-results"), self)
-
+        else:
+            gtk.idle_add(lambda comp: comp.get_deps(), self)
 
     def name(self):
         return _("Dependency Resolution")
@@ -111,6 +111,9 @@ class DepComponent(red_component.Component):
                                                    post_dialog_thunk=lambda:self.pop())
                 else:
                     this.dep_install, this.dep_remove, dep_info = F
+                    if this.transaction_type == rcd_util.PACKAGE_TYPE_BUNDLE:
+                        this.dep_install = red_bundlearray.fix_bundles (this.dep_install)
+                        this.dep_remove = red_bundlearray.fix_bundles (this.dep_remove)
 
 
             self.emit("got-results")
@@ -121,10 +124,16 @@ class DepComponent(red_component.Component):
             self.__worker = self.server.rcd.packsys.verify_dependencies()
             message = _("Verifying System")
         else:
-            self.__worker = self.server.rcd.packsys.resolve_dependencies(
-                self.install_packages,
-                self.remove_packages,
-                [])
+            if self.transaction_type == rcd_util.PACKAGE_TYPE_PACKAGE:
+                self.__worker = self.server.rcd.packsys.resolve_dependencies(
+                    self.install_packages,
+                    self.remove_packages,
+                    [])
+            elif self.transaction_type == rcd_util.PACKAGE_TYPE_BUNDLE:
+                self.__worker = self.server.rcd.bundles.resolve_dependencies(
+					self.install_packages,
+					self.remove_packages)
+
             message = _("Resolving Dependencies")
 
         rcd_util.server_proxy_dialog(self.__worker,
@@ -221,11 +230,17 @@ class DepComponent(red_component.Component):
 
             dep_comp.begin_transaction()
 
-        if self.patch_transaction:
-            worker = self.server.you.licenses(packages)
-        else:
+        if self.transaction_type == rcd_util.PACKAGE_TYPE_PACKAGE:
             worker = self.server.rcd.license.lookup_from_packages(packages)
-        worker.connect("ready", license_cb, self)
+        elif self.transaction_type == rcd_util.PACKAGE_TYPE_PATCH:
+            worker = self.server.rcd.you.licenses(packages)
+        else:
+            worker = None
+
+        if worker:
+            worker.connect("ready", license_cb, self)
+        else:
+            self.begin_transaction()
 
     def begin_transaction(self):
         def transact_cb(worker, dep_comp):
@@ -260,19 +275,24 @@ class DepComponent(red_component.Component):
         install_packages = self.get_install_packages()
         remove_packages = self.get_remove_packages()
 
-        if self.patch_transaction:
-            worker = self.server.rcd.you.transact(install_packages,
-                                                  0, # FIXME: flags
-                                                  "",
-                                                  red_main.red_name,
-                                                  red_main.red_version)
-        else:
+        if self.transaction_type == rcd_util.PACKAGE_TYPE_PACKAGE:
             worker = self.server.rcd.packsys.transact(install_packages,
                                                       remove_packages,
                                                       0, # FIXME: flags
                                                       "",
                                                       red_main.red_name,
                                                       red_main.red_version)
+        elif self.transaction_type == rcd_util.PACKAGE_TYPE_PATCH:
+            worker = self.server.rcd.you.transact(install_packages,
+                                                  0, # FIXME: flags
+                                                  "",
+                                                  red_main.red_name,
+                                                  red_main.red_version)
+        elif self.transaction_type == rcd_util.PACKAGE_TYPE_BUNDLE:
+            worker = self.server.rcd.bundles.transact(install_packages,
+													  remove_packages,
+													  0)
+
         worker.connect("ready", transact_cb, self)
 
 
@@ -459,7 +479,7 @@ class DepComponent(red_component.Component):
             if self.dep_error:
                 self.build_dep_error_page()
 
-            if self.patch_transaction:
+            if self.transaction_type == rcd_util.PACKAGE_TYPE_PATCH:
                 self.build_normal_page()
 
             elif self.verify and not self.dep_install and not self.dep_remove:
