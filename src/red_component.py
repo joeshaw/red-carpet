@@ -61,12 +61,14 @@ class Component(gobject.GObject):
     # Ask the window embedding this component to switch to another
     # component.
     def switch_to(self, component):
+        component.set_parent(self.parent())
         self.emit("switch", component)
 
     # Ask the window embedding this component to push the current
     # component (i.e. ourselves) onto the component stack and to switch
     # to another component.
     def push(self, component):
+        component.set_parent(self.parent())
         self.emit("push", component)
 
     # Ask the window embedding this component to pop a component off of

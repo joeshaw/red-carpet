@@ -1,3 +1,22 @@
+2003-03-05  Jon Trowbridge  <trow@ximian.com>
+
+	* red_depcomponent.py (DepComponent.__init__): Call get_deps() in
+	an idle function so that we are fully initialized before we do
+	anything.
+	(DepComponent.get_deps_cb): Try to do the right thing if our
+	worker thread was cancelled.
+	(DepComponent.get_deps): Display a server proxy dialog while
+	we are working. (Fixes #38894)
+
+	* red_component.py (Component.switch_to): Set the parent on
+	the component we are switching to.
+	(Component.push): Set the parent on the component we are
+	pushing.
+
+	* rcd_util.py (server_proxy_dialog): Added a can_cancel
+	argument.  This allows us to create proxy dialogs w/o cancel
+	buttons.
+
 2003-03-05  Tambet Ingo  <tambet@ximian.com>
 
 	* red_news.py (NewsModel.__init__): Derive from ServerListener, update

@@ -341,13 +341,19 @@ def server_proxy_dialog(worker,
                         callback=None,
                         message=None,
                         user_data=None,
-                        parent=None):
+                        parent=None,
+                        can_cancel=1):
 
     if not message:
         message = _("Please wait while getting data.")
 
+    if can_cancel:
+        buttons = gtk.BUTTONS_CANCEL
+    else:
+        buttons = gtk.BUTTONS_NONE
+
     dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
-                               gtk.BUTTONS_CANCEL, message)
+                               buttons, message)
 
     if parent:
         dialog.set_transient_for(parent)

@@ -55,7 +55,10 @@ class DepComponent(gobject.GObject, red_component.Component):
         self.__worker = None
         self.__worker_handler_id = 0
 
-        self.get_deps()
+        # Call get_deps in an idle so that we are fully initialized
+        # before we being our computation.  (In particular, the
+        # parent isn't properly set on the component at this point.)
+        gtk.idle_add(lambda comp: comp.get_deps(), self)
 
     def name(self):
         return _("Dependency Resolution")
@@ -70,7 +73,17 @@ class DepComponent(gobject.GObject, red_component.Component):
         def get_deps_cb(worker, this):
             this.busy(0)
 
-            if not worker.is_cancelled():
+            # Clean up
+            if this.__worker_handler_id:
+                this.__worker.disconnect(this.__worker_handler_id)
+                this.__worker_handler_is = 0
+            this.__worker = None
+
+
+            if worker.is_cancelled():
+                this.pop()
+                return
+            else:
                 try:
                     F = worker.get_result()
                 except ximian_xmlrpclib.Fault, f:
@@ -82,11 +95,6 @@ class DepComponent(gobject.GObject, red_component.Component):
                 else:
                     this.dep_install, this.dep_remove, dep_info = F
 
-            # Clean up
-            if this.__worker_handler_id:
-                this.__worker.disconnect(this.__worker_handler_id)
-                this.__worker_handler_is = 0
-            this.__worker = None
 
             self.emit("got-results")
 
@@ -99,11 +107,18 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         if self.verify:
             self.__worker = server.rcd.packsys.verify_dependencies()
+            message = _("Verifying System")
         else:
             self.__worker = server.rcd.packsys.resolve_dependencies(
                 self.install_packages,
                 self.remove_packages,
                 [])
+            message = _("Resolving Dependencies")
+
+        rcd_util.server_proxy_dialog(self.__worker,
+                                     message=message,
+                                     parent=self.parent(),
+                                     can_cancel=0)
 
         self.__worker_handler_id = self.__worker.connect("ready",
                                                          get_deps_cb,
