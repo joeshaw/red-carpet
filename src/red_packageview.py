@@ -117,6 +117,28 @@ class PackageView(gtk.TreeView):
             self.__changed_id = model.connect_after("changed",
                                                     lambda x:self.thrash_model())
 
+    def append_action_column(self,
+                             column_title="Action",
+                             show_action_icon=1,
+                             show_action_name=1):
+        col = gtk.TreeViewColumn()
+        col.set_title(column_title)
+
+        if show_action_icon:
+            render_icon = gtk.CellRendererPixbuf()
+            col.pack_start(render_icon, 0)
+            col.set_attributes(render_icon,
+                               pixbuf=red_packagearray.COLUMN_ACTION_ICON)
+
+        if show_action_name:
+            render_text = gtk.CellRendererText()
+            col.pack_start(render_text, 0)
+            col.set_attributes(render_text,
+                               markup=red_packagearray.COLUMN_ACTION)
+
+        self.append_column(col)
+        return col
+
     def append_status_column(self,
                              column_title="Status",
                              show_status_icon=1,
@@ -210,7 +232,7 @@ class PackageView(gtk.TreeView):
     def append_channel_column(self,
                               column_title="Channel",
                               show_channel_icon=1,
-                              show_channel_name=0):
+                              show_channel_name=1):
         col = gtk.TreeViewColumn()
         col.set_title(column_title)
 

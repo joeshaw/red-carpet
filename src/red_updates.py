@@ -20,6 +20,7 @@ import gtk
 import rcd_util
 import red_header, red_pixbuf
 import red_packagearray, red_packageview, red_packagebook
+import red_pendingops
 import red_component
 
 class SummaryComponent(red_component.Component):
@@ -29,16 +30,6 @@ class SummaryComponent(red_component.Component):
 
     def pixbuf(self):
         return "summary"
-
-    def package_selected_cb(self, pkg, action):
-        if action != "install":
-            print "Expected an 'install' action, got '" + action + "'"
-            return
-        
-        if pkg in self.transaction.install_packages:
-            self.transaction.remove_install_package(pkg)
-        else:
-            self.transaction.add_install_package(pkg)
 
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
@@ -60,14 +51,22 @@ class SummaryComponent(red_component.Component):
         ### Main
 
         view = red_packageview.PackageView()
+        view.append_action_column()
         view.append_importance_column()
-        view.append_name_column(show_channel_icon=1)
+        view.append_channel_column(show_channel_name=0)
+        view.append_name_column()
         view.append_version_column(column_title="New Version")
         view.append_current_version_column()
         view.append_size_column()
         view.set_model(self.array)
 
         self.display("main", view)
+
+        def act_cb(view, i, pkg):
+            red_pendingops.toggle_action(pkg)
+            view.get_model().row_changed(i)
+
+        view.connect("activated", act_cb)
 
     def changed_visibility(self, flag):
         if flag:

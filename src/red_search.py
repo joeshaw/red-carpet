@@ -97,24 +97,6 @@ class SearchComponent(red_component.Component):
             
         self.array.set_query(query)
 
-    def package_selected_cb(self, pkg, action):
-        if action == "install":
-            set = self.transaction.install_packages
-            add_fn = self.transaction.add_install_package
-            rem_fn = self.transaction.remove_install_package
-        elif action == "remove":
-            set = self.transaction.uninstall_packages
-            add_fn = self.transaction.add_uninstall_package
-            rem_fn = self.transaction.remove_uninstall_package
-        else:
-            print "Got an unknown action: " + action
-            return
-
-        if pkg in set:
-            rem_fn(pkg)
-        else:
-            add_fn(pkg)
-
     def build(self):
         self.array = red_packagearray.PackagesFromQuery()
 
@@ -176,8 +158,7 @@ class SearchComponent(red_component.Component):
         ### Main
 
         view = red_packageview.PackageView()
-        view.append_channel_column(show_channel_name=1,
-                                   show_channel_icon=1)
+        view.append_channel_column()
         view.append_name_column()
         view.append_version_column()
         view.append_size_column()

@@ -102,7 +102,7 @@ class TransactionComponent(red_component.Component):
         self.array = TransactionArray()
 
         view = red_packageview.PackageView()
-        view.append_status_column()
+        view.append_action_column()
         view.append_name_column(show_channel_icon=1)
         view.append_version_column()
         view.append_size_column()
