@@ -56,10 +56,11 @@ class PendingView(gtk.Window):
         self.mainbox.set_border_width(10)
         self.ourframe.add(self.mainbox)
 
+        self.window_title = title
         self.title_label = gtk.Label("")
         self.title_label.set_alignment(0, 0.5)
         self.mainbox.pack_start(self.title_label, 0, 0, 0)
-        self.set_title(title)
+        self.set_title(self.window_title)
 
         self.step_label = gtk.Label("")
         self.step_label.set_alignment(0, 0.5)
@@ -112,6 +113,7 @@ class PendingView(gtk.Window):
         self.destroy()
 
     def set_title(self, msg):
+        gtk.Window.set_title(self, msg)
         self.title_label.set_markup("<b><big>%s</big></b>" % (msg or ""))
         self.position_window() # keep window centered
 
@@ -207,15 +209,25 @@ class PendingView(gtk.Window):
                         completed_size, total_size,
                         show_size=show_size, show_rate=show_rate)
 
+            return (percent, elapsed_sec, remaining_sec,
+                    completed_size, total_size)
+        else:
+            return (-1, -1, -1, -1, -1)
+
 
     def update_from_pending(self, pending, show_size=1, show_rate=1):
-        self.update_from_pendings([pending],
-                                  show_size=show_size,
-                                  show_rate=show_rate)
+        return self.update_from_pendings([pending],
+                                         show_size=show_size,
+                                         show_rate=show_rate)
 
     # Define me!
     def poll_worker(self):
         return 0
+
+    def switch_cancel_button_to_ok(self):
+        if self.button.cancel:
+            self.button.set_label(gtk.STOCK_OK)
+            self.button.cancel = 0
 
     def poll(self):
 
@@ -229,10 +241,9 @@ class PendingView(gtk.Window):
                 else:
                     # If necessary, change the button from "Cancel"
                     # to "OK".  Make sure the button sensitive.
-                    if x.button.cancel:
-                        x.button.set_label(gtk.STOCK_OK)
-                        x.button.cancel = 0
-                    x.button.set_sensitive(1)
+                    if x.button:
+                        x.switch_cancel_button_to_ok()
+                        x.button.set_sensitive(1)
                 return 0
             gtk.timeout_add(self.finished_lag, finished_cb, self)
             self.polling_timeout = 0
@@ -319,10 +330,41 @@ class PendingView_Transaction(PendingView):
 
         self.pp_thread = None
 
+        self.iconified = 0
+        self.connect("window-state-event",
+                     lambda x,y:x.window_state_event_cb(y))
+
         red_serverlistener.freeze_polling()
         self.start_polling() # this is a different kind of polling
 
-    def abort_download(self):
+    def window_state_event_cb(self, ev):
+        if ev.new_window_state & gtk.gdk.WINDOW_STATE_ICONIFIED:
+            self.iconified = 1
+        else:
+            self.iconified = 0
+            self.set_title(self.window_title)
+
+    def update_from_pendings(self, pending_list, show_size=1, show_rate=1):
+        update_info = PendingView.update_from_pendings(self, pending_list,
+                                                       show_size, show_rate)
+
+        (percent, elapsed_sec, remaining_sec,
+         completed_size, total_size) = update_info
+
+        if self.iconified and percent != -1:
+            title = "%.1f%%" % percent
+            
+            if completed_size != -1 and total_size != -1:
+                cs = rcd_util.byte_size_to_string(completed_size)
+                ts = rcd_util.byte_size_to_string(total_size)
+
+                title += " - %s / %s" % (cs, ts)
+
+            title += " - " + self.window_title
+
+            self.set_title(title)
+
+    def cancelled(self):
 
         if self.download_id == -1 or self.download_complete:
             print "Can't abort transaction"
@@ -336,9 +378,9 @@ class PendingView_Transaction(PendingView):
             self.stop_polling()
             self.transaction_finished(msg="Download cancelled",
                                       title="Update cancelled")
+            self.switch_cancel_button_to_ok()
         else:
             print "Couldn't abort download"
-
 
     def poll_worker(self):
 

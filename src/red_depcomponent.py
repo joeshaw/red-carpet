@@ -115,13 +115,15 @@ class DepComponent(red_component.Component):
         self.table.show_all()
 
         sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         sw.add(self.table)
         sw.show()
 
         page.pack_start(sw, 1, 1, 0)
 
         buttons = gtk.HBox(0, 0)
-        cancel = gtk.Button("Cancel")
+        cancel = gtk.Button(gtk.STOCK_CANCEL)
+        cancel.set_use_stock(1)
         cont = gtk.Button("Continue")
         buttons.pack_end(cont, 0, 0, 2)
         buttons.pack_end(cancel, 0, 0, 2)
