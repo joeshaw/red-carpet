@@ -112,7 +112,7 @@ class SummaryComponent(red_component.Component):
 
         ### Main
 
-        view = red_packageview.PackageView()
+        view = red_packageview.PackageView(self.array)
         self.connect_view(view)
 
         view.append_action_column()
@@ -122,8 +122,7 @@ class SummaryComponent(red_component.Component):
         view.append_version_column(column_title=_("New Version"))
         view.append_current_version_column()
 
-        view.set_model(self.array)
-        view.sort_by(col)
+        view.sort_by(red_packagearray.COLUMN_IMPORTANCE)
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)

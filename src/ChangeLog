@@ -1,3 +1,16 @@
+2003-02-28  Tambet Ingo  <tambet@ximian.com>
+
+	* red_history.py: Uses red_listmodel and red_thrashingview for model
+	and view. Sorts by time by defaults.
+
+	* red_thrashingtreeview.py (TreeView.add_column): Moved it here from
+	red_packageview. Sorting is now done by column id, not column object.
+	Changed all files to reflect that.
+
+	* red_listmodel.py: Moved sorting here from red_packagearray. Moved
+	message pushing/pooping and busy signal handling here from
+	red_packagearray. Changed all files to reflect that.
+
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
 	* red_depcomponent.py (DepComponent.build_verified_ok_page): Make

@@ -34,11 +34,6 @@ class TransactionArray(red_packagearray.PackageArray,
         red_pendingops.PendingOpsListener.__init__(self)
         self.__pending = 0
 
-    def sort(self, sort_fn, reverse):
-        self.packages.sort(sort_fn)
-        if reverse:
-            self.packages.reverse()
-
     def get_all(self):
         return self.packages
 
@@ -139,7 +134,7 @@ class TransactionComponent(red_component.Component):
         label.set_markup("<b>" + self.long_name() + "</b>")
         page.pack_start(label, 0, 0)
 
-        view = red_packageview.PackageView()
+        view = red_packageview.PackageView(self.array)
         self.connect_view(view)
         
         view.append_action_column(show_action_name=1)
@@ -151,8 +146,6 @@ class TransactionComponent(red_component.Component):
             red_pendingops.toggle_action_with_cancellation(pkg)
         view.set_activated_fn(act_cb)
         
-        view.set_model(self.array)
-
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scrolled.set_shadow_type(gtk.SHADOW_OUT)
@@ -176,15 +169,14 @@ class TransactionSimple(gtk.ScrolledWindow):
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.set_shadow_type(gtk.SHADOW_OUT)
 
-        view = red_packageview.PackageView()
-        view.append_action_column(show_action_name=1, activatable=0)
-        view.append_name_column(show_channel_icon=1)
-
         global model
         if not model:
             model = TransactionArray()
 
-        view.set_model(model)
+        view = red_packageview.PackageView(model)
+        view.append_action_column(show_action_name=1, activatable=0)
+        view.append_name_column(show_channel_icon=1)
+
         view.show()
 
         self.add(view)

@@ -15,11 +15,16 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
+import string
 import gobject, gtk
 import red_extra
 import rcd_util
 import red_component
 import red_users
+
+import red_listmodel
+import red_thrashingtreeview
+
 from red_gettext import _
 
 model = None
@@ -151,6 +156,177 @@ class HistorySearchBar(HistoryFilter):
         HistoryFilter.updated(self)
 
 
+PKG_INITIAL = "pkg_initial"
+PKG_FINAL   = "pkg_final"
+
+def pkg_name(item):
+    if item.has_key(PKG_FINAL):
+        return item[PKG_FINAL]["name"]
+    if item.has_key(PKG_INITIAL):
+        return item[PKG_INITIAL]["name"]
+    return ""
+
+def pkg_version(item, flag):
+    if item.has_key(flag):
+        return item[flag]["version"] + "-" + item[flag]["release"]
+    return ""
+
+###
+### Sort functions
+###
+
+def sort_by_pkg(a, b):
+    return cmp(string.lower(pkg_name(a)), string.lower(pkg_name(b)))
+
+def sort_by_time(a, b):
+    xa = a.get("timestamp")
+    if xa:
+        xa = int(xa)
+    xb = b.get("timestamp")
+    if xb:
+        xb = int(xb)
+    ## We want opposite order.
+    return cmp(xb, xa)
+
+def sort_by_user(a, b):
+    return cmp(a.get("user"), b.get("user"))
+
+def sort_by_action(a, b):
+    return cmp(a.get("action"), b.get("action"))
+
+COLUMN_ITEM        = 0
+COLUMN_ACTION      = 1
+COLUMN_USER        = 2
+COLUMN_PKG         = 3
+COLUMN_PKG_INITIAL = 4
+COLUMN_PKG_FINAL   = 5
+COLUMN_TIME        = 6
+
+COLUMNS = (
+    (COLUMN_ITEM,
+     lambda x:x,
+     None,
+     gobject.TYPE_PYOBJECT),
+
+    (COLUMN_ACTION,
+     lambda x:x["action"],
+     sort_by_action,
+     gobject.TYPE_STRING),
+
+    (COLUMN_USER,
+     lambda x:x["user"],
+     sort_by_user,
+     gobject.TYPE_STRING),
+
+    (COLUMN_PKG,
+     lambda x:pkg_name(x),
+     sort_by_pkg,
+     gobject.TYPE_STRING),
+
+    (COLUMN_PKG_INITIAL,
+     lambda x:pkg_version(x, PKG_INITIAL),
+     None,
+     gobject.TYPE_STRING),
+
+    (COLUMN_PKG_FINAL,
+     lambda x:pkg_version(x, PKG_FINAL),
+     None,
+     gobject.TYPE_STRING),
+
+    (COLUMN_TIME,
+     lambda x:x["time_str"],
+     sort_by_time,
+     gobject.TYPE_STRING),
+    )
+
+class HistoryModel(red_listmodel.ListModel):
+
+    def __init__(self):
+        red_listmodel.ListModel.__init__(self)
+
+        self.__worker = None
+        self.__worker_handler_id = 0
+
+        self.add_columns(COLUMNS)
+
+        self.set_history([])
+
+    def set_history(self, history):
+        def set_history_cb(this, h):
+            this.__history = h
+        self.changed(set_history_cb, history)
+
+    def refresh(self, query):
+        if not query:
+            return
+
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_is = 0
+            self.__worker.cancel()
+
+        def get_history_cb(worker, this):
+            this.busy(0)
+            this.message_pop()
+            if not worker.is_cancelled():
+                try:
+                    history = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    return
+                this.set_history(history)
+
+        self.busy(1)
+        self.message_push(_("Searching..."))
+        server = rcd_util.get_server_proxy()
+        self.__worker = server.rcd.log.query_log(query)
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         get_history_cb,
+                                                         self)
+
+    def get_all(self):
+        return self.__history
+
+
+class HistoryView(gtk.ScrolledWindow):
+
+    def __init__(self, model):
+        gtk.ScrolledWindow.__init__(self)
+        self.build(model)
+
+    def build(self, model):
+        view = red_thrashingtreeview.TreeView(model)
+        view.set_rules_hint(1)
+        self.view = view
+
+        cols = [(_("Action"),      COLUMN_ACTION),
+                (_("User"),        COLUMN_USER),
+                (_("Package"),     COLUMN_PKG),
+                (_("Old Version"), COLUMN_PKG_INITIAL),
+                (_("New Version"), COLUMN_PKG_FINAL),
+                (_("Time"),        COLUMN_TIME)]
+
+        for title, id in cols:
+            col = gtk.TreeViewColumn(title,
+                                     gtk.CellRendererText(),
+                                     text=id)
+
+            col.set_resizable(1)
+            view.add_column(col,
+                            title=title,
+                            initially_visible=1,
+                            sort_id=id)
+
+        view.sort_by(COLUMN_TIME)
+
+        view.show_all()
+
+        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_shadow_type(gtk.SHADOW_OUT)
+        self.add(view)
+
+
 class HistoryComponent(red_component.Component):
 
     def __init__(self):
@@ -187,169 +363,15 @@ class HistoryComponent(red_component.Component):
         hbox.pack_start(container, 0, 0)
         hbox.show_all()
 
-        view = HistoryView(search_bar, self)
+        model = HistoryModel()
+        self.connect_array(model)
+        search_bar.connect("updated", lambda x,q,m:m.refresh(q), model)
+
+        view = HistoryView(model)
         page.add(view)
 
         page.show_all()
         return page
-
-
-class HistoryView(gtk.ScrolledWindow):
-
-    def __init__(self, search_bar, component):
-        gtk.ScrolledWindow.__init__(self)
-
-        global model
-        if not model:
-            model = HistoryModel(search_bar)
-
-        model.set_component(component)
-
-        self.build(model)
-
-    def build(self, model):
-        self.view = gtk.TreeView(model)
-        self.view.set_rules_hint(1)
-
-        cols = [(_("Action"),      COLUMN_ACTION,  1),
-                (_("User"),        COLUMN_USER,    1),
-                (_("Package"),     COLUMN_PACKAGE, 1),
-                (_("Old Version"), COLUMN_VER_OLD, 0),
-                (_("New Version"), COLUMN_VER_NEW, 0),
-                (_("Time"),        COLUMN_TIME,    1)]
-
-        for label, id, sortable in cols:
-            col = gtk.TreeViewColumn(label,
-                                     gtk.CellRendererText(),
-                                     text=id)
-
-            col.set_resizable(1)
-
-            if sortable:
-                col.set_sort_column_id(id)
-            self.view.append_column(col)
-
-        self.view.show_all()
-
-        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.set_shadow_type(gtk.SHADOW_OUT)
-        self.add(self.view)
-
-COLUMN_ROW =     0
-COLUMN_ACTION =  1
-COLUMN_USER =    2
-COLUMN_TIME =    3
-COLUMN_PACKAGE = 4
-COLUMN_VER_OLD = 5
-COLUMN_VER_NEW = 6
-COLUMN_LAST =    7
-
-class HistoryModel(gtk.ListStore):
-
-    def __init__(self, filter):
-        gtk.ListStore.__init__(self,
-                               gobject.TYPE_PYOBJECT,
-                               gobject.TYPE_STRING,
-                               gobject.TYPE_STRING,
-                               gobject.TYPE_STRING,
-                               gobject.TYPE_STRING,
-                               gobject.TYPE_STRING,
-                               gobject.TYPE_STRING)
-
-        self.__worker = None
-        self.__worker_handler_id = 0
-        self.__component = None
-
-        self.filter = filter
-        filter.connect("updated", self.update)
-
-        def sort_cb(model, a, b):
-            aa = model.get_value(a, COLUMN_ROW)["timestamp"]
-            bb = model.get_value(b, COLUMN_ROW)["timestamp"]
-            if aa < bb:
-                return -1
-            if aa > bb:
-                return 1
-            return 0
-            
-        self.set_sort_func(COLUMN_TIME, sort_cb)
-        # Get some result now
-        filter.updated()
-
-    def add_rows(self, entries):
-        for entry in entries:
-            pkg_name = ""
-            pkg_initial_ver = ""
-            if entry.has_key("pkg_initial"):
-                pkg = entry["pkg_initial"]
-                pkg_name = pkg["name"]
-                pkg_initial_ver = pkg["version"] + "-" + pkg["release"]
-
-            pkg_final_ver = ""
-            if entry.has_key("pkg_final"):
-                pkg = entry["pkg_final"]
-                pkg_name = pkg["name"]
-                pkg_final_ver = pkg["version"] + "-" + pkg["release"]
-            
-            iter = self.append()
-            self.set(iter,
-                     COLUMN_ROW,     entry,
-                     COLUMN_ACTION,  entry["action"],
-                     COLUMN_USER,    entry["user"],
-                     COLUMN_TIME,    entry["time_str"],
-                     COLUMN_PACKAGE, pkg_name,
-                     COLUMN_VER_OLD, pkg_initial_ver,
-                     COLUMN_VER_NEW, pkg_final_ver)
-
-    def get_worker(self):
-        return self.__worker
-
-    def set_component(self, component):
-        self.__component = component
-
-    def update(self, filter, query):
-        if self.__worker:
-            if self.__worker_handler_id:
-                self.__worker.disconnect(self.__worker_handler_id)
-                self.__worker_handler_is = 0
-            self.__worker.cancel()
-
-        if not query:
-            return
-
-        def get_history_cb(worker, this):
-            if this.__component:
-                this.__component.busy(0)
-
-            if not worker.is_cancelled():
-                try:
-                    entries = worker.get_result()
-                except ximian_xmlrpclib.Fault, f:
-                    rcd_util.dialog_from_fault(f)
-                    return
-
-                if entries:
-                    rows_first = 25
-                    rows_later = 15
-
-                    this.add_rows(entries[:rows_first])
-                    entries = entries[rows_first:]
-
-                    while entries:
-                        gtk.idle_add(this.add_rows, entries[:rows_later])
-                        entries = entries[rows_later:]
-
-        self.clear()
-
-        server = rcd_util.get_server_proxy()
-
-        if self.__component:
-            self.__component.busy(1)
-        
-        self.__worker = server.rcd.log.query_log(query)
-        self.__worker_handler_id = self.__worker.connect("ready",
-                                                         get_history_cb,
-                                                         self)
 
 class PackageHistoryFilter(HistoryFilter):
     def __init__(self, pkg_name):
@@ -369,52 +391,42 @@ class PackageHistory(gtk.ScrolledWindow):
         gtk.ScrolledWindow.__init__(self)
 
         filter = PackageHistoryFilter(pkg_name)
-        pkg_model = HistoryModel(filter)
+        model = HistoryModel()
+        filter.connect("updated", lambda x,q,m:m.refresh(q), model)
 
-        self.model = pkg_model
         self.pkg_name = pkg_name
-        self.build()
+        self.build(model)
+        filter.updated()
 
-    def build(self):
-        self.view = red_extra.ListView()
-        self.view.set_model(self.model)
-        self.view.set_rules_hint(1)
+    def build(self, model):
+        view = red_thrashingtreeview.TreeView(model)
+        view.set_rules_hint(1)
 
         cols = [(_("Action"),      COLUMN_ACTION),
                 (_("User"),        COLUMN_USER),
-                (_("Old Version"), COLUMN_VER_OLD),
-                (_("New Version"), COLUMN_VER_NEW),
+                (_("Old Version"), COLUMN_PKG_INITIAL),
+                (_("New Version"), COLUMN_PKG_FINAL),
                 (_("Time"),        COLUMN_TIME)]
 
         for label, id in cols:
             col = gtk.TreeViewColumn(label,
                                      gtk.CellRendererText(),
                                      text=id)
-            self.view.append_column(col)
+            view.add_column(col,
+                            title=label,
+                            initially_visible=1,
+                            sort_id=id)
 
-        self.view.show_all()
-
-        def got_results_cb(worker, this):
-            rows = 0
-            if not worker.is_cancelled():
-                try:
-                    entries = worker.get_result()
-                except ximian_xmlrpclib.Fault, f:
-                    rcd_util.dialog_from_fault(f)
-                    return
-                rows = len(entries)
-            if not rows:
-                this.add_note(_("There is no record of this package ever being installed or removed."))
-
-        worker = self.model.get_worker()
-        worker.connect("ready", got_results_cb, self)
+        view.sort_by(COLUMN_TIME)
+        view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.add(self.view)
+        self.add(view)
+        self.view = view
 
-    def add_note(self, msg):
-        cell = gtk.CellRendererText()
-        cell.set_property("text", msg)
-        self.view.add_spanner(0, 0, -1, cell)
+##     def add_note(self, msg):
+##         cell = gtk.CellRendererText()
+##         cell.set_property("text", msg)
+##         self.view.add_spanner(0, 0, -1, cell)
 
-        iter = self.model.append()
+##         iter = self.model.append()

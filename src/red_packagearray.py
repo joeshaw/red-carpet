@@ -175,32 +175,6 @@ def pkg_action_icon(pkg):
     else:
         return None
 
-COLUMNS = (
-    ("PKG",               pkg,                   gobject.TYPE_PYOBJECT),
-    ("NAME",              pkg_name,              gobject.TYPE_STRING),
-    ("EVR",               pkg_EVR,               gobject.TYPE_STRING),
-    ("OLD_EVR",           pkg_old_EVR,           gobject.TYPE_STRING),
-    ("SIZE",              pkg_size,              gobject.TYPE_STRING),
-    ("CH_NAME",           pkg_ch_name,           gobject.TYPE_STRING),
-    ("CH_ICON",           pkg_ch_icon,           gtk.gdk.Pixbuf),
-    ("SEC_NAME",          pkg_sec_name,          gobject.TYPE_STRING),
-    ("SEC_ICON",          pkg_sec_icon,          gtk.gdk.Pixbuf),
-    ("IMPORTANCE",        pkg_importance,        gobject.TYPE_STRING),
-    ("LOCKED",            pkg_locked,            gobject.TYPE_BOOLEAN),
-    ("LOCKED_ICON",       pkg_locked_icon,       gtk.gdk.Pixbuf),
-    ("IS_INSTALLED",      pkg_is_installed,      gobject.TYPE_BOOLEAN),
-    ("IS_NAME_INSTALLED", pkg_is_name_installed, gobject.TYPE_BOOLEAN),
-    ("IS_UPGRADE",        pkg_is_upgrade,        gobject.TYPE_BOOLEAN),
-    ("IS_DOWNGRADE",      pkg_is_downgrade,      gobject.TYPE_BOOLEAN),
-    ("STATUS",            pkg_status,            gobject.TYPE_STRING),
-    ("STATUS_ICON",       pkg_status_icon,       gtk.gdk.Pixbuf),
-    ("ACTION",            pkg_action,            gobject.TYPE_STRING),
-    ("ACTION_ICON",       pkg_action_icon,       gtk.gdk.Pixbuf),
-    )
-
-for i in range(len(COLUMNS)):
-    name = COLUMNS[i][0]
-    exec("COLUMN_%s = %d" % (name, i))
 
 
 ###
@@ -266,6 +240,131 @@ def sort_pkgs_by_action(a, b):
 
     return cmp(rank_action(a), rank_action(b))
 
+
+COLUMN_PKG               = 0
+COLUMN_NAME              = 1
+COLUMN_EVR               = 2
+COLUMN_OLD_EVR           = 3
+COLUMN_SIZE              = 4
+COLUMN_CH_NAME           = 5
+COLUMN_CH_ICON           = 6
+COLUMN_SEC_NAME          = 7
+COLUMN_SEC_ICON          = 8
+COLUMN_IMPORTANCE        = 9
+COLUMN_LOCKED            = 10
+COLUMN_LOCKED_ICON       = 11
+COLUMN_IS_INSTALLED      = 12
+COLUMN_IS_NAME_INSTALLED = 13
+COLUMN_IS_UPGRADE        = 14
+COLUMN_IS_DOWNGRADE      = 15
+COLUMN_STATUS            = 16
+COLUMN_STATUS_ICON       = 17
+COLUMN_ACTION            = 18
+COLUMN_ACTION_ICON       = 19
+
+
+COLUMNS = (
+    (COLUMN_PKG,
+     pkg,
+     None,
+     gobject.TYPE_PYOBJECT),
+
+    (COLUMN_NAME,
+     pkg_name,
+     sort_pkgs_by_name,
+     gobject.TYPE_STRING),
+
+    (COLUMN_EVR,
+     pkg_EVR,
+     None,
+     gobject.TYPE_STRING),
+
+    (COLUMN_OLD_EVR,
+     pkg_old_EVR,
+     None,
+     gobject.TYPE_STRING),
+
+    (COLUMN_SIZE,
+     pkg_size,
+     sort_pkgs_by_size,
+     gobject.TYPE_STRING),
+
+    (COLUMN_CH_NAME,
+     pkg_ch_name,
+     sort_pkgs_by_channel,
+     gobject.TYPE_STRING),
+
+    (COLUMN_CH_ICON,
+     pkg_ch_icon,
+     None,
+     gtk.gdk.Pixbuf),
+
+    (COLUMN_SEC_NAME,
+     pkg_sec_name,
+     None,
+     gobject.TYPE_STRING),
+
+    (COLUMN_SEC_ICON,
+     pkg_sec_icon,
+     None,
+     gtk.gdk.Pixbuf),
+
+    (COLUMN_IMPORTANCE,
+     pkg_importance,
+     sort_pkgs_by_importance,
+     gobject.TYPE_STRING),
+
+    (COLUMN_LOCKED,
+     pkg_locked,
+     sort_pkgs_by_locked,
+     gobject.TYPE_BOOLEAN),
+
+    (COLUMN_LOCKED_ICON,
+     pkg_locked_icon,
+     None,
+     gtk.gdk.Pixbuf),
+
+    (COLUMN_IS_INSTALLED,
+     pkg_is_installed,
+     None,
+     gobject.TYPE_BOOLEAN),
+
+    (COLUMN_IS_NAME_INSTALLED,
+     pkg_is_name_installed,
+     None,
+     gobject.TYPE_BOOLEAN),
+
+    (COLUMN_IS_UPGRADE,
+     pkg_is_upgrade,
+     None,
+     gobject.TYPE_BOOLEAN),
+
+    (COLUMN_IS_DOWNGRADE,
+     pkg_is_downgrade,
+     None,
+     gobject.TYPE_BOOLEAN),
+
+    (COLUMN_STATUS,
+     pkg_status,
+     None,
+     gobject.TYPE_STRING),
+
+    (COLUMN_STATUS_ICON,
+     pkg_status_icon,
+     None,
+     gtk.gdk.Pixbuf),
+
+    (COLUMN_ACTION,
+     pkg_action,
+     sort_pkgs_by_action,
+     gobject.TYPE_STRING),
+
+    (COLUMN_ACTION_ICON,
+     pkg_action_icon,
+     None,
+     gtk.gdk.Pixbuf),
+    )
+
 ###
 ### PackageArray: our magic-laden base class
 ###
@@ -274,15 +373,13 @@ class PackageArray(red_listmodel.ListModel,
                    red_pendingops.PendingOpsListener):
 
     def __init__(self):
-        gobject.GObject.__init__(self)
         red_listmodel.ListModel.__init__(self, sort_fn=sort_pkgs_by_name)
         red_pendingops.PendingOpsListener.__init__(self)
 
         self.__package_keys = {}
         self.__busy_flag = 0
 
-        for name, callback, type in COLUMNS:
-            self.add_column(callback, type)
+        self.add_columns(COLUMNS)
 
     ## This function should take the data in the array and sort it according
     ## to the specified function.  This is a "protected" function and
@@ -301,29 +398,6 @@ class PackageArray(red_listmodel.ListModel,
                 indices = self.__package_keys.setdefault(key, [])
                 indices.append(i)
 
-    ## Sort functions
-                
-    def changed_sort_by_name(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_name, reverse)
-
-    def changed_sort_by_size(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_size, reverse)
-
-    def changed_sort_by_importance(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_importance, reverse)
-
-    def changed_sort_by_locked(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_locked, reverse)
-
-    def changed_sort_by_channel(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_channel, reverse)
-
-    def changed_sort_by_status(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_status, reverse)
-
-    def changed_sort_by_action(self, reverse=0):
-        self.changed_sort_fn(sort_pkgs_by_action, reverse)
-
     ## Find all instances of pkg in the PackageArray, and cause a
     ## 'changed_one' signal to be emitted for each.
     def changed_one_by_package(self, pkg):
@@ -332,25 +406,6 @@ class PackageArray(red_listmodel.ListModel,
         for i in indices:
             self.changed_one(i)
 
-    ## Busy/message functions
-
-    def message_push(self, msg, context_id=-1, transient=0):
-        if transient:
-            context_id = 0
-        elif context_id < 0:
-            context_id = hash(self)
-        self.emit("message_push", msg, context_id)
-
-    def message_pop(self, context_id=-1):
-        if context_id < 0:
-            context_id = hash(self)
-        self.emit("message_pop", context_id)
-
-    def busy(self, flag):
-        if self.__busy_flag ^ flag:
-            self.__busy_flag = flag
-            self.emit("busy", flag)
-
     ## Implements PendingOpsListener
     def pendingops_changed(self, pkg, key, value, old_value):
         self.changed_one_by_package(pkg)
@@ -358,27 +413,6 @@ class PackageArray(red_listmodel.ListModel,
     def spew(self):
         for pkg in self.get_all():
             print pkg["name"]
-
-
-gobject.type_register(PackageArray)
-
-gobject.signal_new("busy",
-                   PackageArray,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   (gobject.TYPE_BOOLEAN,))
-
-gobject.signal_new("message_push",
-                   PackageArray,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   (gobject.TYPE_STRING, gobject.TYPE_UINT))
-
-gobject.signal_new("message_pop",
-                   PackageArray,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   (gobject.TYPE_UINT,))
 
 ###############################################################################
 

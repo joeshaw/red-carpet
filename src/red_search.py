@@ -73,7 +73,7 @@ class SearchComponent(red_component.Component):
         self.__sbox.connect("search", search_cb)
 
 
-        view = red_packageview.PackageView()
+        view = red_packageview.PackageView(self.array)
         self.connect_view(view)
 
         view.append_action_column()
@@ -82,7 +82,6 @@ class SearchComponent(red_component.Component):
         view.append_locked_column()
         view.append_name_column()
         view.append_version_column()
-        view.set_model(self.array)
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)

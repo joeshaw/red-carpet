@@ -68,17 +68,15 @@ gobject.signal_new("activated",
 
 class PackageView(red_thrashingtreeview.TreeView):
 
-    def __init__(self):
+    def __init__(self, model):
         gobject.GObject.__init__(self)
         red_thrashingtreeview.TreeView.__init__(self)
 
         self.set_rules_hint(1)
 
-        self.__column_info = {}
-        self.__column_order = []
-        self.__sorted_by = None
-        self.__reverse_sort = 0
         self.__activated_fn = None
+
+        self.set_model(model)
 
         select = self.get_selection()
         select.set_mode(gtk.SELECTION_SINGLE)
@@ -248,80 +246,6 @@ class PackageView(red_thrashingtreeview.TreeView):
         assert isinstance(model, red_packagearray.PackageArray)
 
         red_thrashingtreeview.TreeView.set_model(self, model)
-        
-        #if model:
-        #    self.set_headers_clickable(1)
-
-    def add_column(self, column,
-                   title=None,
-                   widget=None,
-                   initially_visible=0,
-                   sort_fn=None,
-                   sort_callback=None):
-
-        if not title and not widget:
-            title = _("Untitled")
-
-        self.__column_info[column] = { "title":title,
-                                       "widget":widget,
-                                       "visible":initially_visible,
-                                       "sort_fn":sort_fn,
-                                       "sort_callback":sort_callback,
-                                     }
-
-        self.__column_order.append(column)
-
-        if title:
-            column.set_title(title)
-            column.set_alignment(0.0)
-            
-        if widget:
-            column.set_widget(widget)
-            column.set_alignment(0.5)
-            
-        column.set_visible(initially_visible)
-        self.append_column(column)
-
-        def sort_cb(column, view):
-            if view.__sorted_by == column:
-                view.sort_by(column, not self.__reverse_sort)
-            else:
-                view.sort_by(column, 0)
-        if sort_fn or sort_callback:
-            column.connect("clicked", sort_cb, self)
-            column.set_clickable(1)
-            
-
-    def sort_by(self, column, reverse=0):
-
-        if self.__sorted_by == column and not reverse ^ self.__reverse_sort:
-            return
-
-        # Fix the old column header
-        if self.__sorted_by:
-            self.__sorted_by.set_sort_indicator(0)
-
-        info = self.__column_info[column]
-        if not info:
-            return # FIXME: probably should throw an exception
-        
-        if info.has_key("sort_callback"):
-            info["sort_callback"](self.get_model(), reverse)
-        elif info.has_key("sort_fn"):
-            self.get_model().changed_sort_fn(info["sort_fn"], reverse)
-        else:
-            pass # FIXME: probably should throw an exception
-
-        column.set_sort_indicator(1)
-        if reverse:
-            order = gtk.SORT_DESCENDING
-        else:
-            order = gtk.SORT_ASCENDING
-        column.set_sort_order(order)
-                              
-        self.__sorted_by = column
-        self.__reverse_sort = reverse
-        
 
     def append_status_column(self,
                              column_title=_("Status"),
@@ -347,7 +271,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
-                        sort_callback=lambda a, r: a.changed_sort_by_status(r)
+                        sort_id=red_packagearray.COLUMN_STATUS
                         )
 
         return col
@@ -385,7 +309,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
-                        sort_callback=lambda a, r: a.changed_sort_by_action(r)
+                        sort_id=red_packagearray.COLUMN_ACTION
                         )
 
         return col
@@ -414,7 +338,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
-                        sort_callback=lambda a, r: a.changed_sort_by_channel(r),
+                        sort_id=red_packagearray.COLUMN_CH_NAME
                         )
         return col
 
@@ -445,7 +369,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
-                        sort_callback=lambda a, r: a.changed_sort_by_name(r),
+                        sort_id=red_packagearray.COLUMN_NAME
                         )
         return col
 
@@ -479,7 +403,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
-                        sort_callback=lambda a,r: a.changed_sort_by_importance(r),
+                        sort_id=red_packagearray.COLUMN_IMPORTANCE
                         )
         return col
 
@@ -493,7 +417,8 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         widget=widget,
                         initially_visible=1,
-                        sort_callback=lambda a,r: a.changed_sort_by_locked(r))
+                        sort_id=red_packagearray.COLUMN_LOCKED
+                        )
         return col
 
     def append_size_column(self, column_title=_("Size")):
@@ -506,12 +431,10 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
-                        sort_callback=lambda a,r: a.changed_sort_by_size(r),
+                        sort_id=red_packagearray.COLUMN_SIZE
                         )
         return col
-        
 
-        
 
 gobject.type_register(PackageView)
 
