@@ -1,5 +1,10 @@
 2003-02-07  Frank Belew  <frb@ximian.com>
 
+	* art/Makefile.am: added image_DATA to EXTRA_DIST because automake is
+	stupid
+
+2003-02-07  Frank Belew  <frb@ximian.com>
+
 	* configure.in: add art/Makefile to output
 
 	* art/Makefile.am: initial checkin, install all images to 
