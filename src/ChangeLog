@@ -1,3 +1,11 @@
+2003-04-07  Tambet Ingo  <tambet@ximian.com>
+
+	* red_thrashingtreeview.py (TreeView.sort_by): Fix sorting by
+	channel. Less magic.
+	(TreeView.add_column): Ditto.
+	(TreeView.get_column_by_sort_id): Prefer visible column. Fixes
+	problem with sort indicator for channels column.
+
 2003-04-04  Tambet Ingo  <tambet@ximian.com>
 
 	* red_searchbox.py (SearchBox.__assemble_section_option): Mark

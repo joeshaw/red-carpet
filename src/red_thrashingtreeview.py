@@ -144,46 +144,41 @@ class TreeView(gtk.TreeView):
         column.set_visible(initially_visible)
         self.append_column(column)
 
-        def sort_cb(sort_id, view):
-            if view.__sorted_by == column:
-                view.sort_by(sort_id, not self.__reverse_sort)
-            else:
-                view.sort_by(sort_id, 0)
-
         model = self.get_model()
         if sort_id and model.can_sort(sort_id):
             column.data_id = sort_id
-            column.connect("clicked", lambda x,c,v:sort_cb(c,v), sort_id, self)
+            column.connect("clicked", lambda x,y,z:y.sort_by(z), self, sort_id)
             column.set_clickable(1)
 
     def get_column_by_sort_id(self, sort_id):
         info = self.__column_info
         for key in info.keys():
-            if info[key].get("sort_id") == sort_id:
+            if info[key].get("sort_id") == sort_id and \
+               key.get_visible():
                 return key
 
-    def sort_by(self, sort_id, reverse=0):
+    def sort_by(self, sort_id):
         column = self.get_column_by_sort_id(sort_id)
         if not column:
             return
 
-        if self.__sorted_by == column and not reverse ^ self.__reverse_sort:
-            return
+        reverse = 0
+        if self.__sorted_by == column:
+            reverse = not self.__reverse_sort
+        else:
+            if self.__sorted_by:
+                # Fix the old column header
+                self.__sorted_by.set_sort_indicator(0)
+            column.set_sort_indicator(1)
 
-        # Fix the old column header
-        if self.__sorted_by:
-            self.__sorted_by.set_sort_indicator(0)
-
-        model = self.get_model()
-        if model.can_sort(sort_id):
-            model.sort(sort_id, reverse)
-
-        column.set_sort_indicator(1)
         if reverse:
             order = gtk.SORT_DESCENDING
         else:
             order = gtk.SORT_ASCENDING
         column.set_sort_order(order)
+
+        model = self.get_model()
+        model.sort(sort_id, reverse)
 
         self.__sorted_by = column
         self.__reverse_sort = reverse
