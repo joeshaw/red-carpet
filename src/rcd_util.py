@@ -115,8 +115,7 @@ def connect_to_server(force_dialog=0):
             return server
 
         # Try to start an rcd.
-        # FIXME: This will probably require some distribution-specific love
-        if local and os.geteuid() == 0 and os.path.exists("/sbin/service"):
+        if local and os.geteuid() == 0 and os.path.exists("/etc/init.d/rcd"):
             dialog = gtk.MessageDialog(None,
                                        gtk.DIALOG_MODAL,
                                        gtk.MESSAGE_WARNING,
