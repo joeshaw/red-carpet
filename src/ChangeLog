@@ -1,3 +1,8 @@
+2003-03-14  Frank Belew  <frb@ximian.com>
+
+	* red-carpet.in: don't muck with weird paths if we're inside a 
+	standalone archive
+
 2003-03-14  Tambet Ingo  <tambet@ximian.com>
 
 	* red_packagearray.py (COLUMNS): Enable sorting by package status.

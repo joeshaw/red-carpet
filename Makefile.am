@@ -7,11 +7,17 @@ else
 UNMARSHALLER_DIR =
 endif
 
+if STANDALONE
+SRCDIR = 
+else
+SRCDIR = src
+endif
+
 SUBDIRS = $(UNMARSHALLER_DIR)	\
-	art			\
-	red_extra		\
-	src			\
-	po
+	  $(SRCDIR)		\
+	  art			\
+	  red_extra		\
+	  po
 
 #man_MANS = red-carpet.1
 #EXTRA_DIST = red-carpet.1

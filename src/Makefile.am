@@ -64,3 +64,4 @@ EXTRA_DIST = $(red_carpetsupport_DATA)
 
 install-exec-hook:
 	chmod 0755 $(DESTDIR)$(red_carpetexecdir)/$(red_carpetexec_DATA)
+
