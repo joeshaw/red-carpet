@@ -208,7 +208,7 @@ class DepComponent(red_component.Component):
                 else:
                     raise
 
-            if licenses and not dep_comp.display_license_window():
+            if licenses and not dep_comp.display_license_window(licenses):
                 return
 
             dep_comp.begin_transaction()

@@ -1,3 +1,8 @@
+2004-01-20  Joe Shaw  <joe@ximian.com>
+
+	* red_depcomponent.py (check_licenses): Call
+	display_license_window() with the right number of arguments.
+
 2004-01-15  Joe Shaw  <joe@ximian.com>
 
 	* red_about.py, red_depview.py: Explicitly encode some python
