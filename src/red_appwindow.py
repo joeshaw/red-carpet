@@ -412,6 +412,11 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                                                         width=16, height=16),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
+        bar.refresh = bar.add(text=_("Refresh"),
+                              tooltip=_("Refresh Channel Data"),
+                              stock = gtk.STOCK_REFRESH,
+                              callback=lambda x:refresh_cb(self))
+
     # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
         if red_transaction.ok_to_quit(self):
