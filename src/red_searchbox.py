@@ -40,6 +40,7 @@ class _ShowAdvanced(gobject.GObject):
             self.__show = x
             config = red_settings.get_config()
             config.set(self.conf_str, x)
+            config.sync()
             self.emit("changed", x)
 
     def get(self):

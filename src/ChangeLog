@@ -1,3 +1,24 @@
+2003-03-24  Jon Trowbridge  <trow@ximian.com>
+
+	* red_appwindow.py (AppWindow.assemble_menubar): Mark a bunch of
+	menu stuff for translation.  Add a View->Channel Names option.
+
+	* red_summary.py (SummaryComponent.updates_changed_cb): When
+	creating the channel column, make it pay attention to the
+	show-channel-name status.
+
+	* red_searchbox.py (_ShowAdvanced.set): Sync after we change the
+	show-advanced-search-options status.
+
+	* red_packageview.py (_ShowChannelNames): Added a 'singleton'
+	class to emit signals when our show-channel-name status changes.
+	(show_channel_names_get): Added.  A getter for the
+	show-channel-name status.
+	(show_channel_names_set): Added.  A setter for blah the
+	show-channel-name status.
+	(PackageView.append_channel_column): Retooled to do the right thing
+	based on the show-channel-name status.
+
 2003-03-20  Joe Shaw  <joe@ximian.com>
 
 	* red-carpet.in: Wrap everything in a try block so we can catch

@@ -18,7 +18,7 @@
 import gobject, gtk
 import rcd_util
 import red_pendingops, red_packagearray
-import red_pixbuf
+import red_pixbuf, red_settings
 import red_packagebook
 import red_thrashingtreeview
 import red_locks
@@ -66,6 +66,45 @@ gobject.signal_new("activated",
                    gobject.TYPE_NONE,
                    (gobject.TYPE_PYOBJECT,))
 
+###############################################################################
+
+class _ShowChannelNames(gobject.GObject):
+
+    conf_str = "UI/show_channel_names"
+
+    def __init__(self):
+        gobject.GObject.__init__(self)
+        config = red_settings.get_config()
+        self.__show = int(config.get(self.conf_str + "=0"))
+
+    def set(self, x):
+        if self.__show ^ x:
+            self.__show = x
+            config = red_settings.get_config()
+            config.set(self.conf_str, x)
+            config.sync()
+            self.emit("changed", x)
+
+    def get(self):
+        return self.__show
+
+gobject.type_register(_ShowChannelNames)
+gobject.signal_new("changed",
+                   _ShowChannelNames,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_INT,))
+
+_showchnames = _ShowChannelNames()
+
+def show_channel_names_get():
+    return _showchnames.get()
+
+def show_channel_names_set(x):
+    _showchnames.set(x)
+
+###############################################################################
+
 class PackageView(red_thrashingtreeview.TreeView):
 
     def __init__(self, model):
@@ -80,6 +119,16 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         select = self.get_selection()
         select.set_mode(gtk.SELECTION_MULTIPLE)
+
+        self.__ch_icon_col = None
+        self.__ch_name_and_icon_col = None
+
+        def channel_names_cb(showchnames, flag, view):
+            if view.__ch_icon_col and view.__ch_name_and_icon_col:
+                view.__ch_name_and_icon_col.set_visible(flag)
+                view.__ch_icon_col.set_visible(not flag)
+                view.columns_autosize()
+        _showchnames.connect("changed", channel_names_cb, self)
 
         def selection_changed_cb(select, view):
             pkgs = view.get_selected_packages()
@@ -120,7 +169,6 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.connect("button-press-event",
                      button_clicked_for_popup_cb,
                      select)
-
 
     def get_selected_packages(self):
         def selected_cb(model, path, iter, list):
@@ -302,30 +350,58 @@ class PackageView(red_thrashingtreeview.TreeView):
     def append_channel_column(self,
                               column_title=_("Channel"),
                               show_channel_icon=1,
-                              show_channel_name=1):
-        col = gtk.TreeViewColumn()
-        col.set_title(column_title)
+                              show_channel_name=1,
+                              optionally_show_channel_name=0):
 
-        if show_channel_icon:
-            render_icon = gtk.CellRendererPixbuf()
-            expand = not show_channel_name
-            col.pack_start(render_icon, expand)
-            col.set_attributes(render_icon,
-                               pixbuf=red_packagearray.COLUMN_CH_ICON)
-            render_icon.set_property("xalign", 0.5)
+        def assemble_column(with_icon, with_name):
+            col = gtk.TreeViewColumn()
+            col.set_title(column_title)
 
-        if show_channel_name:
-            render_text = gtk.CellRendererText()
-            col.pack_start(render_text, 1)
-            col.set_attributes(render_text,
-                               text=red_packagearray.COLUMN_CH_NAME)
+            if with_icon:
+                render_icon = gtk.CellRendererPixbuf()
+                col.pack_start(render_icon, not with_name)
+                col.set_attributes(render_icon,
+                                   pixbuf=red_packagearray.COLUMN_CH_ICON)
+                render_icon.set_property("xalign", 0.5)
 
-        self.add_column(col,
-                        title=column_title,
-                        initially_visible=1,
-                        sort_id=red_packagearray.COLUMN_CH_NAME
-                        )
-        return col
+            if with_name:
+                render_text = gtk.CellRendererText()
+                col.pack_start(render_text, 1)
+                col.set_attributes(render_text,
+                                   text=red_packagearray.COLUMN_CH_NAME)
+
+            return col
+
+
+        if optionally_show_channel_name:
+
+            col1 = assemble_column(1, 0)
+            col2 = assemble_column(1, 1)
+            show_name = show_channel_names_get()
+
+            self.add_column(col1,
+                            title=column_title,
+                            initially_visible=not show_name,
+                            sort_id=red_packagearray.COLUMN_CH_NAME)
+
+            self.add_column(col2,
+                            title=column_title,
+                            initially_visible=show_name,
+                            sort_id=red_packagearray.COLUMN_CH_NAME)
+
+            self.__ch_icon_col = col1
+            self.__ch_name_and_icon_col = col2
+
+        else:
+
+            col = assemble_column(show_channel_icon, show_channel_name)
+
+            self.add_column(col,
+                            title=column_title,
+                            initially_visible=1,
+                            sort_id=red_packagearray.COLUMN_CH_NAME
+                            )
+
 
     def append_name_column(self,
                            column_title=_("Package"),

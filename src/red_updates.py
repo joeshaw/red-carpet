@@ -82,7 +82,7 @@ class SummaryComponent(red_component.Component):
 
         view.append_action_column()
         col = view.append_importance_column()
-        view.append_channel_column(show_channel_name=0)
+        view.append_channel_column(optionally_show_channel_name=1)
         view.append_name_column()
         view.append_version_column(column_title=_("New Version"))
         view.append_current_version_column()

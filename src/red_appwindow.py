@@ -38,7 +38,7 @@ import red_mount
 import red_serverinfo
 import red_sidebar
 import red_toolbar
-import red_packagearray
+import red_packagearray, red_packageview
 import red_packagebook
 import red_searchbox
 import red_settings
@@ -449,23 +449,25 @@ class AppWindow(gtk.Window,
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
 
-        bar.add("/_File")
-        bar.add("/_Edit")
-        bar.add("/_View")
-        bar.add("/_Actions")
-        bar.add("/_Help")
+        bar.add("/" + _("_File"))
+        bar.add("/" + _("_Edit"))
+        bar.add("/" + _("_View"))
+        bar.add("/" + _("_Actions"))
+        bar.add("/" + _("_Help"))
 
-        bar.add("/File/_Connect...",
+        file_str = _("File")
+
+        bar.add("/%s/%s" % (file_str, _("Connect...")),
                 callback=lambda x:rcd_util.connect_to_server(),
                 pixbuf_name="connect",
                 accelerator="<Control>O")
 
-        bar.add("/File/sep", is_separator=1)
+        bar.add("/%s/sep" % file_str, is_separator=1)
 
         def install_file_sensitive_fn():
             return rcd_util.check_server_permission("install")
 
-        bar.add("/File/Install from _File...",
+        bar.add("/%s/%s" % (file_str, _("Install from _File...")),
                 sensitive_fn=install_file_sensitive_fn,
                 callback=lambda x:red_installfiles.install_local(self))
 
@@ -473,11 +475,11 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("install") and \
                    red_installfiles.can_install_remote()
 
-        bar.add("/File/Install from _URL...",
+        bar.add("/%s/%s" % (file_str, _("Install from _URL...")),
                 sensitive_fn=install_url_sensitive_fn,
                 callback=lambda x:red_installfiles.install_remote(self))
 
-        bar.add("/File/sep2", is_separator=1)
+        bar.add("/%s/sep2" % file_str, is_separator=1)
 
         ##
         ## Mount command
@@ -489,7 +491,7 @@ class AppWindow(gtk.Window,
         def mount_sensitive_fn():
             return rcd_util.check_server_permission("superuser")
 
-        bar.add("/File/_Mount Directory...",
+        bar.add("/%s/%s" % (file_str, _("_Mount Directory...")),
                 callback=mount_callback,
                 sensitive_fn=mount_sensitive_fn,
                 accelerator="<Control>M")
@@ -505,13 +507,13 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("superuser") and \
                    red_mount.has_mounted_channels()
 
-        bar.add("/File/U_nmount Directory...",
+        bar.add("/%s/%s" % (file_str, _("U_nmount Directory...")),
                 callback=unmount_callback,
                 sensitive_fn=unmount_sensitive_fn,
                 accelerator="<Control>U")
         
 
-        bar.add("/File/sep3", is_separator=1)
+        bar.add("/%s/sep3" % file_str, is_separator=1)
 
         ##
         ## Activate
@@ -519,14 +521,14 @@ class AppWindow(gtk.Window,
 
         def activate_sensitive_fn():
             return rcd_util.check_server_permission("superuser")
-
-        bar.add("/File/_Activate...",
+        
+        bar.add("/%s/%s" % (file_str, _("_Activate...")),
                 callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow),
                 sensitive_fn=activate_sensitive_fn)
 
-        bar.add("/File/sep4", is_separator=1)
+        bar.add("/%s/sep4" % file_str, is_separator=1)
         
-        bar.add("/File/Quit",
+        bar.add("/%s/%s" % (file_str, _("Quit")),
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
 
@@ -535,35 +537,37 @@ class AppWindow(gtk.Window,
         ## Select all/none
         ##
 
+        edit_str = _("Edit")
+
         def select_all_sensitive_cb():
             comp = self.get_component()
             if not comp:
                 return 0
             return comp.select_all_sensitive()
 
-        bar.add("/Edit/Select _All",
+        bar.add("/%s/%s" % (edit_str, _("Select _All")),
                 callback=lambda x:self.select_all_cb(1),
                 accelerator="<Control>a",
                 sensitive_fn=select_all_sensitive_cb)
 
-        bar.add("/Edit/Select _None",
+        bar.add("/%s/%s" % (edit_str, _("Select _None")),
                 callback=lambda x:self.select_all_cb(0),
                 sensitive_fn=select_all_sensitive_cb,
                 accelerator="<Shift><Control>A")
 
-        bar.add("/Edit/sep", is_separator=1)
+        bar.add("/%s/sep" % edit_str, is_separator=1)
 
-        bar.add("/Edit/Channel _Subscriptions...",
+        bar.add("/%s/%s" % (edit_str, _("Channel _Subscriptions...")),
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
                 pixbuf=red_pixbuf.get_pixbuf("subscribed",
                                              width=width, height=height),
                 accelerator="<Control>B")
 
-        bar.add("/Edit/_Preferences...",
+        bar.add("/%s/%s" % (edit_str, _("_Preferences...")),
                 stock=gtk.STOCK_PREFERENCES,
                 callback=lambda x:self.open_or_raise_window(red_prefs.PrefsWindow))
 
-        bar.add("/Edit/_Users...",
+        bar.add("/%s/%s" % (edit_str, _("_Users...")),
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
         ##
@@ -575,27 +579,33 @@ class AppWindow(gtk.Window,
         def checked_set_cb(flag):
             self.sidebar.change_visibility()
 
-        bar.add("/View/_Sidebar",
+        view_str = _("View")
+
+        bar.add("/%s/%s" % (view_str, _("_Sidebar")),
                 checked_get=checked_get_cb,
                 checked_set=checked_set_cb)
 
-        bar.add("/View/Advanced Search Options",
+        bar.add("/%s/%s" % (view_str, _("Advanced Search Options")),
                 checked_get=red_searchbox.show_advanced_get,
                 checked_set=red_searchbox.show_advanced_set)
 
-        bar.add("/View/sep", is_separator=1)
+        bar.add("/%s/%s" % (view_str, _("Channel Names")),
+                checked_get=red_packageview.show_channel_names_get,
+                checked_set=red_packageview.show_channel_names_set)
 
-        bar.add("/View/Package _Information...",
+        bar.add("/%s/sep" % view_str, is_separator=1)
+
+        bar.add("/%s/%s" % (view_str, _("Package _Information...")),
                 pixbuf_name="info",
                 callback=lambda x:self.package_info_cb(),
                 sensitive_fn=self.info_sensitive_cb,
                 accelerator="<Control>I")
 
-        bar.add("/View/sep1", is_separator=1)
+        bar.add("/%s/sep1" % view_str, is_separator=1)
 
-        bar.add("/View/_Daemon Information...",
+        bar.add("/%s/%s" % (view_str, _("_Daemon Information...")),
                 callback=red_serverinfo.view_server_info_cb)
-        bar.add("/View/sep2", is_separator=1)
+        bar.add("/%s/sep2" % view_str, is_separator=1)
 
         ##
         ## Run Transaction
@@ -604,7 +614,9 @@ class AppWindow(gtk.Window,
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/Run _Now",
+        actions_str = _("Actions")
+
+        bar.add("/%s/%s" % (actions_str, _("Run _Now")),
                 image=image,
                 callback=run_transaction_cb,
                 sensitive_fn=self.sensitize_run_button,
@@ -617,18 +629,18 @@ class AppWindow(gtk.Window,
         def verify_and_refresh_sensitive_cb():
             return self.sidebar.get_property("sensitive")
                 
-        bar.add("/Actions/_Verify System Dependencies",
+        bar.add("/%s/%s" % (actions_str, _("_Verify System Dependencies")),
                 callback=verify_deps_cb,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
                 accelerator="<Control>D")
 
-        bar.add("/Actions/sep1", is_separator=1)
+        bar.add("/%s/sep1" % actions_str, is_separator=1)
 
         ##
         ## Install Package
         ##
 
-        bar.add("/Actions/Mark for I_nstallation",
+        bar.add("/%s/%s" % (actions_str, _("Mark for I_nstallation")),
                 pixbuf_name="to-be-installed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED),
                 sensitive_fn=self.install_sensitive_cb)
@@ -637,7 +649,7 @@ class AppWindow(gtk.Window,
         ## Remove Package
         ##
 
-        bar.add("/Actions/Mark for _Removal",
+        bar.add("/%s/%s" % (actions_str, _("Mark for _Removal")),
                 pixbuf_name="to-be-removed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED),
                 sensitive_fn=self.remove_sensitive_cb)
@@ -649,12 +661,12 @@ class AppWindow(gtk.Window,
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/_Cancel",
+        bar.add("/%s/%s" % (actions_str, _("_Cancel")),
                 image=image,
                 callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION),
                 sensitive_fn=self.cancel_sensitive_cb)
 
-        bar.add("/Actions/sep2", is_separator=1)
+        bar.add("/%s/sep2" % actions_str, is_separator=1)
 
         ##
         ## Refresh Channel Data
@@ -663,13 +675,15 @@ class AppWindow(gtk.Window,
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/Re_fresh Channel Data",
+        bar.add("/%s/%s" % (actions_str, _("Re_fresh Channel Data")),
                 image=image,
                 callback=refresh_cb,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
                 accelerator="<Control>R")
 
-        bar.add("/Help/_About...",
+        help_str = _("Help")
+
+        bar.add("/%s/%s" % (help_str, _("_About...")),
                 pixbuf_name="menu-about",
                 callback=lambda x:red_about.About().show())
 
