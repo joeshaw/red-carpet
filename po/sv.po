@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.16 2003/06/04 20:15:41 menthos Exp $
+# $Id: sv.po,v 1.17 2003/06/05 04:53:55 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-06-04 22:14+0200\n"
-"PO-Revision-Date: 2003-06-04 22:14+0200\n"
+"POT-Creation-Date: 2003-06-05 06:52+0200\n"
+"PO-Revision-Date: 2003-06-05 06:53+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1010,26 +1010,26 @@ msgstr "Fortsätt"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:37 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:423
+#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "Paket"
 
-#: src/red_depview.py:43 src/red_packageview.py:462
+#: src/red_depview.py:53 src/red_packageview.py:462
 msgid "Current Version"
 msgstr "Aktuell version"
 
 #. ## Main
-#: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:439
+#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
 #: src/red_updates.py:94
 msgid "New Version"
 msgstr "Ny version"
 
-#: src/red_depview.py:49 src/red_packageview.py:498
+#: src/red_depview.py:59 src/red_packageview.py:498
 msgid "Size"
 msgstr "Storlek"
 
@@ -1815,6 +1815,8 @@ msgstr "Viktighet"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. We don't really have any idea how long the transaction will take, but
+#. we'll guess that the download is 2/3 and the actual transaction 1/3.
 #. a few extra pixels...
 #. "W" being the widest glyph.
 #. # Guard for None
@@ -1825,13 +1827,18 @@ msgstr "Viktighet"
 #. keep window centered
 #. If our window has grown our shrunk, we want to make sure
 #. that it stays centered.
+#: src/red_pendingview.py:347
+#, python-format
+msgid "%.1f%% completed"
+msgstr "%.1f%% klart"
+
 #. Define me!
 #. If necessary, change the button from "Cancel"
 #. to "OK".  Make sure the button sensitive.
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:489
+#: src/red_pendingview.py:504
 msgid "Updating System"
 msgstr "Uppdaterar system"
 
@@ -1839,11 +1846,11 @@ msgstr "Uppdaterar system"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:559
+#: src/red_pendingview.py:577
 msgid "Download cancelled"
 msgstr "Hämtning avbruten"
 
-#: src/red_pendingview.py:560
+#: src/red_pendingview.py:578
 msgid "Transaction cancelled"
 msgstr "Transaktion avbruten"
 
@@ -1853,35 +1860,37 @@ msgstr "Transaktion avbruten"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:595
+#: src/red_pendingview.py:613
 msgid "Transaction Finished"
 msgstr "Transaktion slutförd"
 
-#: src/red_pendingview.py:608
+#: src/red_pendingview.py:626
 msgid "Downloading packages"
 msgstr "Hämtar paket"
 
-#: src/red_pendingview.py:620
+#: src/red_pendingview.py:639
 msgid "Download Failed"
 msgstr "Hämtning misslyckades"
 
-#: src/red_pendingview.py:621
+#: src/red_pendingview.py:640
 msgid "Unknown Error"
 msgstr "Okänt fel"
 
-#: src/red_pendingview.py:638
+#: src/red_pendingview.py:657
 msgid "Processing Transaction"
 msgstr "Bearbetar transaktion"
 
-#: src/red_pendingview.py:655
+#. We don't get step_pending notification every time, but
+#. we never want to reduce the total progress bar
+#: src/red_pendingview.py:696
 msgid "The transaction has completed successfully"
 msgstr "Transaktionen har färdigställts utan problem"
 
-#: src/red_pendingview.py:659
+#: src/red_pendingview.py:701
 msgid "Transaction failed"
 msgstr "Transaktion misslyckades"
 
-#: src/red_pendingview.py:661
+#: src/red_pendingview.py:703
 msgid "Transaction Failed"
 msgstr "Transaktion misslyckades"
 
