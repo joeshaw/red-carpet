@@ -239,7 +239,7 @@ class TransactionWindow(red_pendingview.PendingView):
 
     def __init__(self, download_id, transact_id, step_id):
 
-        red_pendingview.PendingView.__init__(self)
+        red_pendingview.PendingView.__init__(self, "Updating System")
 
         self.download_id = download_id
         self.transact_id = transact_id

@@ -17,7 +17,9 @@
 
 import sys
 import gobject, gtk
+import string
 
+import rcd_util
 import red_header, red_menubar, red_sidebar
 import red_transaction
 import red_component
@@ -39,6 +41,41 @@ def refresh_cb(app):
 
     pend.set_pending_list(stuff_to_poll)
     pend.start_timeout()
+
+def view_server_info_cb(app):
+    server = rcd_util.get_server()
+
+    results = server.rcd.system.ping()
+
+    # Couldn't ping the server.  Hmm.
+    # FIXME: This is probably not the right thing to do.
+    if not results:
+        assert 0
+
+    messages = ["The server identified itself as:", ""]
+
+    if results.has_key("name"):
+        messages.append("%s" % results["name"])
+
+    if results.has_key("copyright"):
+        messages.append(results["copyright"])
+
+    messages.append("")
+
+    if results.has_key("distro_info"):
+        messages.append("System type: %s" % results["distro_info"])
+
+    if results.has_key("server_url"):
+        messages.append("Server URL: %s" % results["server_url"])
+
+    if results.get("server_premium", 0):
+        messages.append("Server supports enhanced features.")
+
+    dialog = gtk.MessageDialog(app, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_OK,
+                               string.join(messages, "\n"))
+
+    dialog.connect("response", lambda x,y:x.destroy())
+    dialog.show_all()
 
 class AppWindow(gtk.Window):
 
@@ -76,6 +113,11 @@ class AppWindow(gtk.Window):
         bar.add("/View/Show Sidebar",
                 checked_get=lambda: self.show_sidebar,
                 checked_set=set_show_sidebar_cb)
+
+        bar.add("/View/sep", is_separator=1)
+
+        bar.add("/View/Server Information",
+                callback=view_server_info_cb)
         
         bar.add("/Edit/Foo")
 
