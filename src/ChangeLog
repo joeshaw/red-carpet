@@ -1,3 +1,18 @@
+2003-02-21  Tambet Ingo  <tambet@ximian.com>
+
+	* red_depcomponent.py (DepComponent.__init__): We are a GObject
+	now, we want to emit signal when we're done with fetching data.
+	(DepComponent.get_deps): New method, moved all data fetching code
+	here from __init__ method. Use serverproxy method to fetch data,
+	emit a signal when ready. Set buys while being busy.
+	(DepComponent.build): Build a blank page since we don't have data
+	yet. Catch the signal which notifes the data arrival.
+	(DepComponent.build_normal_page): Build a "normal" page. Too bad
+	we can't use quotes in method names :)
+	(DepComponent.build_verified_ok_page): Build a page for all deps
+	satisifed.
+	(DepComponent.build_dep_error_page): Dependency error page.
+
 2003-02-21  Jon Trowbridge  <trow@ximian.com>
 
 	* red_statusoption.py (_status_types): Properly filter upgrades.

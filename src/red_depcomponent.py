@@ -16,6 +16,7 @@
 ###
 
 import string
+import gobject
 import gtk
 
 import rcd_util
@@ -38,40 +39,75 @@ def filter_deps(dep_list):
     return map(filter_dep, dep_list)
 
 
-class DepComponent(red_component.Component):
+class DepComponent(gobject.GObject, red_component.Component):
 
     def __init__(self, install_packages=[], remove_packages=[], verify=0):
+        gobject.GObject.__init__(self)
         red_component.Component.__init__(self)
 
         self.server = rcd_util.get_server()
-    
+
         self.install_packages = install_packages
         self.remove_packages = remove_packages
         self.verify = verify
+
+        self.__worker = None
+        self.__worker_handler_id = 0
+
+        self.get_deps()
+
+    def name(self):
+        return "Dependency Resolution"
+
+    def get_deps(self):
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_is = 0
+            self.__worker.cancel()
+
+        def get_deps_cb(worker, this):
+            this.busy(0)
+
+            if not worker.is_cancelled():
+                try:
+                    F = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    if f.faultCode == rcd_util.fault.failed_dependencies:
+                        this.dep_error = f.faultString
+                    else:
+                        rcd_util.dialog_from_fault(f,
+                                                   post_dialog_thunk=lambda:self.pop())
+                else:
+                    this.dep_install, this.dep_remove, dep_info = F
+
+            # Clean up
+            if this.__worker_handler_id:
+                this.__worker.disconnect(this.__worker_handler_id)
+                this.__worker_handler_is = 0
+            this.__worker = None
+
+            self.emit("got-results")
 
         self.dep_install = []
         self.dep_remove = []
         self.dep_error = None
 
-        try:
-            if self.verify:
-                F = self.server.rcd.packsys.verify_dependencies()
-            else:
-                F = self.server.rcd.packsys.resolve_dependencies(
-                    self.install_packages,
-                    self.remove_packages,
-                    [])
-        except ximian_xmlrpclib.Fault, f:
-            if f.faultCode == rcd_util.fault.failed_dependencies:
-                self.dep_error = f.faultString
-            else:
-                rcd_util.dialog_from_fault(f,
-                                           post_dialog_thunk=lambda:self.pop())
-        else:
-            self.dep_install, self.dep_remove, dep_info = F
+        server = rcd_util.get_server_proxy()
+        self.busy(1)
 
-    def name(self):
-        return "Dependency Resolution"
+        if self.verify:
+            self.__worker = server.rcd.packsys.verify_dependencies()
+        else:
+            self.__worker = server.rcd.packsys.resolve_dependencies(
+                self.install_packages,
+                self.remove_packages,
+                [])
+
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         get_deps_cb,
+                                                         self)
+
 
     def get_install_packages(self):
         return self.install_packages + filter_deps(self.dep_install)
@@ -108,10 +144,8 @@ class DepComponent(red_component.Component):
             comp.pop()
         trans_win.connect("finished", finished_cb, self)
 
-    def build_dep_error(self):
-
-        page = gtk.VBox(0, 0)
-
+    def build_dep_error_page(self):
+        page = self.page
         # Assemble our warning banner
         banner_box = gtk.EventBox()
         style = banner_box.get_style().copy()
@@ -151,41 +185,32 @@ class DepComponent(red_component.Component):
 
         page.show_all()
 
-        return page
+    def build_verified_ok_page(self):
+        page = self.page
 
-    def build(self):
+        hbox = gtk.HBox(0, 0)
+        page.pack_start(hbox, expand=0, fill=0)
 
-        if self.dep_error:
-            return self.build_dep_error()
+        image = red_pixbuf.get_widget("progress-verify",
+                                      width=48, height=48)
+        hbox.pack_start(image, 0, 0, 0)
 
-        # If we're verifying and we don't need to do anything...
-        if self.verify and not self.dep_install and not self.dep_remove:
-            page = gtk.VBox(0, 6)
+        label = gtk.Label("All package dependencies are satisfied")
+        hbox.pack_start(label, 0, 0 ,0)
 
-            hbox = gtk.HBox(0, 0)
-            page.pack_start(hbox, expand=0, fill=0)
+        buttons = gtk.HBox(0, 0)
+        ok_button = gtk.Button(gtk.STOCK_OK)
+        ok_button.set_use_stock(1)
+        buttons.pack_end(ok_button, 0, 0, 2)
 
-            image = red_pixbuf.get_widget("progress-verify",
-                                          width=48, height=48)
-            hbox.pack_start(image, 0, 0, 0)
+        page.pack_end(buttons, 0, 0, 0)
 
-            label = gtk.Label("All package dependencies are satisfied")
-            hbox.pack_start(label, 0, 0 ,0)
-
-            buttons = gtk.HBox(0, 0)
-            ok_button = gtk.Button(gtk.STOCK_OK)
-            ok_button.set_use_stock(1)
-            buttons.pack_end(ok_button, 0, 0, 2)
-
-            page.pack_end(buttons, 0, 0, 0)
-
-            ok_button.connect("clicked", lambda x:self.pop())
+        ok_button.connect("clicked", lambda x:self.pop())
             
-            page.show_all()
-            
-            return page
+        page.show_all()
 
-        page = gtk.VBox(0, 6)
+    def build_normal_page(self):
+        page = self.page
 
         label = gtk.Label("")
         label.set_alignment(0, 0.5)
@@ -202,7 +227,7 @@ class DepComponent(red_component.Component):
         if self.install_packages:
             self.add_package_list("Requested Installations",
                                   self.install_packages)
-            
+
         if self.remove_packages:
             self.add_package_list("Requested Removals",
                                   self.remove_packages, removal=1)
@@ -236,6 +261,27 @@ class DepComponent(red_component.Component):
         cont.connect("clicked", lambda x:self.begin_transaction())
         cancel.connect("clicked", lambda x:self.pop())
 
+
+    def build(self):
+        ## That's all we can do here. We might (and usually don't)
+        ## have enough information here to decide what kind of page
+        ## to build.
+
+        page = gtk.VBox(0, 6)
+        page.show()
+        self.page = page
+
+        def build_cb(self):
+            if self.dep_error:
+                self.build_dep_error_page()
+
+            elif self.verify and not self.dep_install and not self.dep_remove:
+                self.build_verified_ok_page()
+
+            else:
+                self.build_normal_page()
+
+        self.connect("got-results", build_cb)
         return page
 
     def add_package_list(self, title, package_list, removal=0):
@@ -279,3 +325,17 @@ class DepComponent(red_component.Component):
     def deactivated(self):
         sidebar = self.parent().sidebar
         sidebar.set_sensitive(1)
+
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_is = 0
+            self.__worker.cancel()
+            self.__worker = None
+
+gobject.type_register(DepComponent)
+gobject.signal_new("got-results",
+                   DepComponent,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   ())
