@@ -93,6 +93,9 @@ dnl FIXME: check that pygtk-codegen-2.0 actually exists!
 PYGTK_CODEGEN=$PYGTK_PREFIX/bin/pygtk-codegen-2.0
 AC_SUBST(PYGTK_CODEGEN)
 
+PYGTK_IMPORTDIR=$PYGTK_PREFIX/lib/python$PYTHON_VERSION/site-packages
+AC_SUBST(PYGTK_IMPORTDIR)
+
 dnl **************************************************************************
 
 dnl Look for scrollkeeper

@@ -1,3 +1,9 @@
+2003-09-18  Joe Shaw  <joe@ximian.com>
+
+	* configure.in: Add back in PYGTK_IMPORTDIR, we definitely do use
+	it, in red-carpet.in.  Use $PYTHON_VERSION instead of hardcoding
+	2.2, though.
+
 2003-09-16  Joe Shaw  <joe@ximian.com>
 
 	* acinclude.m4: Add in some m4 magic for detecting python includes
