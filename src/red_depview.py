@@ -52,7 +52,7 @@ class DepView(red_extra.ListView):
     def add_row(self, icon, name, new_version, old_version, size, bold=0):
 
         if icon is None:
-            icon = red_pixbuf.get_pixbuf("lock", width=1, height=1)
+            icon = red_pixbuf.get_pixbuf("empty")
 
         if bold:
             name        = "<b>%s</b>" % name
