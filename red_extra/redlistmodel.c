@@ -33,9 +33,114 @@
 #define ITER_GET_INDEX(iter) (GPOINTER_TO_INT ((iter)->user_data))
 #define ITER_SET_INDEX(iter, i) ((iter)->user_data = GINT_TO_POINTER(i))
 
-#define red_list_model_length(model) ((model) && (model)->array ? (model)->array->len : 0)
+#define red_list_model_array_length(model) ((model) && (model)->array ? (model)->array->len : 0)
 
 static GObjectClass *parent_class = NULL;
+
+/* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
+
+/* Indexing */
+
+static int
+index_sort_fn (gconstpointer a_ptr,
+               gconstpointer b_ptr,
+               gpointer      user_data)
+{
+    RedListModel *model = user_data;
+    gint a, b, cmp;
+    PyObject *args, *val;
+
+    a = *(const gint *) a_ptr;
+    b = *(const gint *) b_ptr;
+    
+    args = Py_BuildValue ("(OO)",
+                          g_ptr_array_index (model->array, a),
+                          g_ptr_array_index (model->array, b));
+    val  = PyEval_CallObject (model->sort_callback, args);
+
+    g_assert (PyInt_Check (val));
+
+    cmp = (gint) PyInt_AsLong (val);
+
+    Py_DECREF (args);
+    Py_DECREF (val);
+
+    return cmp;
+}
+
+static void
+red_list_model_build_index (RedListModel *model)
+{
+    gint len;
+
+    if (model->index) {
+        g_free (model->index);
+        model->index = NULL;
+        model->index_N = -1;
+    }
+
+    if (model->filter_callback == NULL && model->sort_callback == NULL)
+        return;
+    
+    len = red_list_model_array_length (model);
+
+    /* We allocate the full length of the array, which is probably more
+       space than we will actually need.  Oh well. */
+    model->index = g_new (gint, len);
+    model->index_N = 0;
+
+    /* Use the filter callback to assemble a first version of the
+       index. */
+    if (model->filter_callback) {
+        gint i;
+
+        pyg_block_threads ();
+        for (i = 0; i < len; ++i) {
+            PyObject *obj = g_ptr_array_index (model->array, i);
+            PyObject *args = Py_BuildValue ("(O)", obj);
+            PyObject *val = PyEval_CallObject (model->filter_callback, args);
+            g_assert (val);
+            if (PyObject_IsTrue (val)) {
+                model->index[model->index_N] = i;
+                ++model->index_N;
+            }
+            Py_DECREF (args);
+            Py_DECREF (val);
+        }
+        pyg_unblock_threads ();
+    }
+
+    if (model->sort_callback) {
+
+        /* If we don't have a filter, build up a trivial index so we have
+           something to sort against. */
+        if (!model->filter_callback) {
+            gint i;
+            for (i = 0; i < len; ++i)
+                model->index[i] = i;
+            model->index_N = len;
+        }
+
+        pyg_block_threads ();
+
+        g_qsort_with_data (model->index,
+                           model->index_N,
+                           sizeof (gint),
+                           index_sort_fn,
+                           model);
+
+        pyg_unblock_threads ();
+
+        if (model->reverse_sort) {
+            gint i, tmp;
+            for (i = 0; i < model->index_N / 2; ++i) {
+                tmp = model->index[i];
+                model->index[i] = model->index[model->index_N-1-i];
+                model->index[model->index_N-1-i] = tmp;
+            }
+        }
+    }
+}
 
 /* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
 
@@ -123,8 +228,12 @@ red_list_model_get_value (GtkTreeModel *tree_model,
     g_assert (model->array);
     g_assert (0 <= i && i < model->array->len);
 
-    obj = g_ptr_array_index (model->array, i);
+    obj = red_list_model_get_list_item (model, i);
+    g_assert (obj != NULL);
+
     col = g_ptr_array_index (model->columns, column);
+
+    pyg_block_threads ();
 
     args = Py_BuildValue("(O)", obj);
     pyg_block_threads ();
@@ -132,16 +241,22 @@ red_list_model_get_value (GtkTreeModel *tree_model,
     pyg_unblock_threads ();
     Py_DECREF (args);
     if (py_value == NULL) {
+
+        pyg_unblock_threads ();
+
         g_print ("error: col=%d i=%d len=%d\n",
                  column, i, model->array->len);
         g_value_init (value, G_TYPE_STRING);
         g_value_set_string (value, "ERROR!");
+
         return;
     }
 
     g_value_init (value, col->type);
     pyg_value_from_pyobject (value, py_value);
     Py_DECREF (py_value);
+
+    pyg_unblock_threads ();
 }
 
 static gboolean
@@ -267,11 +382,13 @@ red_list_model_clear_columns (RedListModel *model)
     if (model->columns == NULL)
         return;
 
+    pyg_block_threads ();
     for (i = 0; i < model->columns->len; ++i) {
         RedListModelColumn *col = g_ptr_array_index (model->columns, i);
         Py_DECREF (col->pycallback);
         g_free (col);
     }
+    pyg_unblock_threads ();
 
     g_ptr_array_free (model->columns, TRUE);
     model->columns = NULL;
@@ -285,13 +402,19 @@ red_list_model_clear_array (RedListModel *model)
     if (model->array == NULL)
         return;
 
+    pyg_block_threads ();
     for (i = 0; i < model->array->len; ++i) {
         PyObject *obj = g_ptr_array_index (model->array, i);
         Py_DECREF (obj);
     }
+    pyg_unblock_threads ();
 
     g_ptr_array_free (model->array, TRUE);
     model->array = NULL;
+
+    model->index_N = -1;
+    g_free (model->index);
+    model->index = NULL;
 }
 
 /* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
@@ -414,6 +537,8 @@ red_list_model_set_list (RedListModel *model,
 
     red_list_model_clear_array (model);
 
+    pyg_block_threads ();
+
     N = PyList_Size (pylist);
 
     if (model->array == NULL)
@@ -424,6 +549,43 @@ red_list_model_set_list (RedListModel *model,
         Py_INCREF (obj);
         g_ptr_array_add (model->array, obj);
     }
+
+    pyg_unblock_threads ();
+}
+
+PyObject *
+red_list_model_get_list_item (RedListModel *model,
+                              gint          row_num)
+{
+    g_return_val_if_fail (RED_IS_LIST_MODEL (model), NULL);
+    g_return_val_if_fail (model->array, NULL);
+    g_return_val_if_fail (row_num >= 0, NULL);
+
+    if (model->index == NULL)
+        red_list_model_build_index (model);
+
+    if (model->index != NULL) {
+        g_return_val_if_fail (row_num < model->index_N, NULL);
+        row_num = model->index[row_num];
+    }
+
+    g_return_val_if_fail (row_num < red_list_model_array_length (model), NULL);
+
+    return g_ptr_array_index (model->array, row_num);
+}
+
+gint
+red_list_model_length (RedListModel *model)
+{
+    g_return_val_if_fail (RED_IS_LIST_MODEL (model), -1);
+
+    if (model->index == NULL)
+        red_list_model_build_index (model);
+
+    if (model->index != NULL)
+        return model->index_N;
+
+    return red_list_model_array_length (model);
 }
 
 gint
@@ -440,8 +602,10 @@ red_list_model_add_column (RedListModel *model,
     col = g_new0 (RedListModelColumn, 1);
     col->pycallback = pycallback;
     col->type = type;
-    
+
+    pyg_block_threads ();
     Py_INCREF (pycallback);
+    pyg_unblock_threads ();
 
     if (model->columns == NULL)
         model->columns = g_ptr_array_new ();
@@ -469,4 +633,44 @@ red_list_model_row_changed (RedListModel *model,
     gtk_tree_model_row_changed (GTK_TREE_MODEL (model), path, &iter);
     
     gtk_tree_path_free (path);
+}
+
+void
+red_list_model_set_filter_magic (RedListModel *model,
+                              PyObject     *filter_callback)
+{
+    g_return_if_fail (model != NULL);
+    g_return_if_fail (filter_callback != NULL);
+
+    g_free (model->index);
+    model->index_N = -1;
+    model->index = NULL;
+
+    if (filter_callback == Py_None)
+        filter_callback = NULL;
+    else 
+        g_return_if_fail (PyCallable_Check (filter_callback));
+
+    model->filter_callback = filter_callback;
+}
+
+void
+red_list_model_set_sort_magic (RedListModel *model,
+                               PyObject     *sort_callback,
+                               gboolean      reverse_sort)
+{
+    g_return_if_fail (model != NULL);
+    g_return_if_fail (sort_callback);
+
+    g_free (model->index);
+    model->index_N = -1;
+    model->index = NULL;
+
+    if (sort_callback == Py_None)
+        sort_callback = NULL;
+    else 
+        g_return_if_fail (PyCallable_Check (sort_callback));
+
+    model->sort_callback = sort_callback;
+    model->reverse_sort  = reverse_sort;
 }

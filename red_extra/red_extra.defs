@@ -27,6 +27,21 @@
    )
 )
 
+(define-method get_list_item
+  (of-object "RedListModel")
+  (c-name "red_list_model_get_list_item")
+  (return-type "PyObject*")
+  (parameters
+   '("int" "row_num")
+   )
+)
+
+(define-method length
+  (of-object "RedListModel")
+  (c-name "red_list_model_length")
+  (return-type "int")
+)
+
 (define-method add_column
   (of-object "RedListModel")
   (c-name "red_list_model_add_column")
@@ -44,6 +59,25 @@
   (parameters
    '("gint" "row_number")
   )
+)
+
+(define-method set_filter_magic
+  (of-object "RedListModel")
+  (c-name "red_list_model_set_filter_magic")
+  (return-type "none")
+  (parameters
+   '("PyObject*" "filter_callback")
+   )
+)
+
+(define-method set_sort_magic
+  (of-object "RedListModel")
+  (c-name "red_list_model_set_sort_magic")
+  (return-type "none")
+  (parameters
+   '("PyObject*" "sort_callback")
+   '("gboolean"  "reverse_sort")
+   )
 )
 
 

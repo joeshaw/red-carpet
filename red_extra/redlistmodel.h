@@ -45,6 +45,13 @@ struct _RedListModel {
 
     GPtrArray *columns;
     GPtrArray *array;
+
+    gint index_N;
+    gint *index;
+
+    PyObject *filter_callback;
+    PyObject *sort_callback;
+    gboolean  reverse_sort;
 };
 
 struct _RedListModelClass {
@@ -58,19 +65,31 @@ struct _RedListModelClass {
 #define RED_IS_LIST_MODEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), RED_TYPE_LIST_MODEL))
 #define RED_LIST_MODEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), RED_TYPE_LIST_MODEL, RedListModelClass))
 
-GType red_list_model_get_type (void);
+GType         red_list_model_get_type         (void);
 
-RedListModel *red_list_model_new (void);
+RedListModel *red_list_model_new              (void);
 
-void red_list_model_set_list (RedListModel *model,
-                              PyObject     *pylist);
+void          red_list_model_set_list         (RedListModel *model,
+                                               PyObject     *pylist);
 
-gint red_list_model_add_column (RedListModel *model,
-                                PyObject     *pycallback,
-                                GType         type);
+PyObject     *red_list_model_get_list_item    (RedListModel *model,
+                                               gint          row_num);
 
-void red_list_model_row_changed (RedListModel *model,
-                                 gint          row_num);
+gint          red_list_model_length           (RedListModel *model);
+
+gint          red_list_model_add_column       (RedListModel *model,
+                                               PyObject     *pycallback,
+                                               GType         type);
+
+void          red_list_model_row_changed      (RedListModel *model,
+                                               gint          row_num);
+
+void          red_list_model_set_filter_magic (RedListModel *model,
+                                               PyObject     *filter_callback);
+
+void          red_list_model_set_sort_magic   (RedListModel *model,
+                                               PyObject     *sort_callback,
+                                               gboolean      reverse_sort);
 
 #endif /* __REDLISTMODEL_H__ */
 
