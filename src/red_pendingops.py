@@ -216,7 +216,14 @@ def resolve_dependencies():
         if action == TO_BE_INSTALLED:
             install_packages.append(dict["__package"])
         elif action == TO_BE_REMOVED:
-            remove_packages.append(dict["__package"])
+            pkg = dict["__package"]
+            ## If __old_packge key exists then pkg is not installed and thus can't
+            ## be removed.
+            if pkg.has_key("__old_package"):
+                pkg = pkg["__old_package"]
+                print pkg
+
+            remove_packages.append(pkg)
 
     serv = rcd_util.get_server()
     F = serv.rcd.packsys.resolve_dependencies(install_packages,
