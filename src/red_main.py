@@ -89,6 +89,7 @@ def main(version):
     ticker()
 
     app = red_appwindow.AppWindow(server)
+    app.set_title(red_name + " " + red_version)
 
     app.register_component(red_summary.SummaryComponent())
     app.register_component(red_news.NewsComponent())
@@ -98,7 +99,6 @@ def main(version):
     app.register_component(red_search.SearchComponent())
     app.register_component(red_history.HistoryComponent())
 
-    app.set_title(red_name + " " + red_version)
     app.set_size_request(780, 550)
     app.show()
 

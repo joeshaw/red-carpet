@@ -109,6 +109,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         red_component.ComponentListener.__init__(self)
 
         self.server = server
+        self.__title = None
         self.component_stack = []
 
         self.busy_count = 0
@@ -183,6 +184,21 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(south, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+    def set_title(self, title, component=None):
+        buf = ""
+        if component:
+            buf += component + " - "
+
+        if title == None:
+            title = self.__title
+        else:
+            self.__title = title
+
+        if title:
+            buf += title
+
+        gtk.Window.set_title(self, buf)
 
     # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
@@ -337,6 +353,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             old_comp.deactivated()
             old_comp.set_parent(None)
 
+        self.set_title(None, comp.name())
+        
         # Force the componet to emit a display event.  This causes
         # it to get displayed.
         comp.pull_widget()
