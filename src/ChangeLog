@@ -1,3 +1,18 @@
+2003-03-17  Jon Trowbridge  <trow@ximian.com>
+
+	* red_search.py (SearchComponent.search_finished_cb): When we put
+	up our 'no matching packages' screen, clear the selection so that
+	the buttons at the bottom ('mark for install', etc.) will
+	desensitize.
+	(SearchComponent.unselect_all): In some cases, the selection
+	doesn't seem to be emitting the changed signal when we
+	unselect_all.  I'm not sure why this is happening, but it is easy
+	to work around by explicitly with a call to
+	self.packages_selected([]).
+
+	* red_summary.py (SummaryComponent.updates_changed_cb): See above.
+	(SummaryComponent.updates_changed_cb): Ditto.
+
 2003-03-17  Frank Belew  <frb@ximian.com>
 
 	* red-carpet.in: more robust check to see if we are standalone

@@ -56,6 +56,7 @@ class SummaryComponent(red_component.Component):
             if array.len() == 0:
                 comp.__have_updates.hide()
                 comp.__no_updates.show()
+                self.unselect_all()
             else:
                 comp.__have_updates.show()
                 comp.__no_updates.hide()
@@ -135,3 +136,6 @@ class SummaryComponent(red_component.Component):
     def unselect_all(self):
         selection = self.view.get_selection()
         selection.unselect_all()
+        # In some cases, the selection's changed signal doesn't get
+        # emitted when we unselect_all on it.  I'm not sure why.
+        self.packages_selected([])

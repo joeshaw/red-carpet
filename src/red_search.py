@@ -59,6 +59,9 @@ class SearchComponent(red_component.Component):
     def unselect_all(self):
         selection = self.view.get_selection()
         selection.unselect_all()
+        # In some cases, the selection's changed signal doesn't get
+        # emitted when we unselect_all on it.  I'm not sure why.
+        self.packages_selected([])
 
     def build(self):
 
@@ -81,6 +84,7 @@ class SearchComponent(red_component.Component):
             if array.len() == 0:
                 comp.__have_results.hide()
                 comp.__no_results.show()
+                self.unselect_all()
             else:
                 comp.__have_results.show()
                 comp.__no_results.hide()
