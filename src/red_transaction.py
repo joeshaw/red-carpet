@@ -18,6 +18,7 @@
 import string
 import gobject, gtk
 import rcd_util
+import red_main
 import red_packagearray, red_packageview
 import red_pendingview
 import red_pendingops
@@ -48,6 +49,41 @@ class TransactionArray(red_packagearray.PackageArray,
 
 #########################################################################
 
+def begin_transaction(install_packages, remove_packages):
+    serv = rcd_util.get_server()
+
+    download_id, transact_id, step_id = serv.rcd.packsys.transact(
+        install_packages,
+        remove_packages,
+        0, # FIXME: flags
+        red_main.red_name,
+        red_main.red_version)
+
+    print "download id: %d" % download_id
+    print "transact id: %d" % transact_id
+    print "step id: %d" % step_id
+
+    return download_id, transact_id, step_id
+
+def resolve_deps_and_transact():
+    depwindow = red_depwindow.DepWindow()
+    retval = depwindow.run()
+
+    if retval == gtk.RESPONSE_ACCEPT: # Go button
+        serv = rcd_util.get_server()
+
+        download_id, transact_id, step_id = begin_transaction(
+            depwindow.get_install_packages(),
+            depwindow.get_remove_packages())
+
+        transaction_window = TransactionWindow(download_id,
+                                               transact_id,
+                                               step_id)
+
+        transaction_window.show()
+
+    depwindow.destroy()
+
 class TransactionBar(gtk.HBox,
                      red_pendingops.PendingOpsListener):
 
@@ -63,11 +99,7 @@ class TransactionBar(gtk.HBox,
         self.pack_end(self.label, 0, 0, 2)
         self.label.show()
 
-        def clicked_cb(x):
-            depwindow = red_depwindow.DepWindow()
-            depwindow.show()
-            
-        self.button.connect("clicked", clicked_cb)
+        self.button.connect("clicked", lambda x:resolve_deps_and_transact())
 
     def update_label(self):
         msg_list = []
@@ -228,7 +260,12 @@ class TransactionWindow(red_pendingview.PendingView):
             if button.cancel:
                 window.abort_download()
             else:
-                window.destroy()
+                # FIXME: This destroy causes some glib warnings.  Not
+                # totally sure why... seems it doesn't like being destroyed
+                # within its own __init__ function?
+                #
+                # window.destroy()
+                window.hide()
 
         self.button.connect("clicked", clicked_cb, self)
 
