@@ -21,11 +21,134 @@ import rcd_util
 import red_main
 import red_pixbuf
 import red_component
-import red_serverlistener
 import ximian_xmlrpclib
 
-users_model = None
-privileges_model = None
+import red_listmodel, red_serverlistener, red_thrashingtreeview
+
+users_data = None
+
+class User:
+    def __init__(self, name, pwd=None, privileges=[]):
+        self.name_set(name)
+        self.pwd_set(pwd)
+        self.privileges_set(privileges)
+
+    def name_get(self):
+        return self.name
+    def name_set(self, name):
+        self.name = name
+
+    def pwd_get(self):
+        if self.pwd:
+            return self.pwd
+        else:
+            return "-*-unchanged-*-"
+    def pwd_set(self, pwd):
+        if pwd:
+            self.pwd = rcd_util.md5ify_password(pwd)
+        else:
+            self.pwd = None
+
+    def privileges_get(self):
+        return self.privileges
+    def privileges_set(self, privileges):
+        self.privileges = privileges
+    def has_privilege(self, privilege):
+        return "superuser" in self.privileges or \
+               privilege in self.privileges
+
+    def privilege_set(self, privilege, active):
+        if active:
+            if not privilege in self.privileges:
+                self.privileges.append(privilege)
+        else:
+            if privilege in self.privileges:
+                self.privileges.remove(privilege)
+
+        self.update()
+
+    def update(self):
+        server = rcd_util.get_server()
+        privs_str = string.join(self.privileges_get(), ", ")
+        server.rcd.users.update(self.name_get(),
+                                self.pwd_get(),
+                                privs_str)
+
+    def delete(self):
+        server = rcd_util.get_server()
+        server.rcd.users.remove(self.name_get())
+
+
+class UsersData(red_serverlistener.ServerListener, gobject.GObject):
+
+    def __init__(self):
+        red_serverlistener.ServerListener.__init__(self)
+        gobject.GObject.__init__(self)
+
+        self.__users = []
+        self.__privileges = []
+        self.active_user = None
+
+        self.refresh()
+
+    def fetch_users(self):
+        serv = rcd_util.get_server()
+        users = serv.rcd.users.get_all()
+        self.__users = []
+        for u in users:
+            user = User(u[0])
+            user.privileges_set(u[1].split(", "))
+            self.__users.append(user)
+
+    def fetch_privileges(self):
+        serv = rcd_util.get_server()
+        self.__privileges = map(string.lower,
+                                serv.rcd.users.get_valid_privileges())
+        self.__privileges.sort()
+        self.__privileges.append("superuser")
+
+    def users_changed(self):
+        self.refresh()
+
+    def refresh(self):
+        self.fetch_users()
+        self.fetch_privileges()
+        self.emit("changed")
+
+    def get_all_users(self):
+        return self.__users
+
+    def get_all_privileges(self):
+        return self.__privileges
+
+    def user_exists(self, user_name):
+        for u in self.__users:
+            if u.name_get() == user_name:
+                return 1
+
+        return 0
+
+    def get_active_user(self):
+        if self.active_user:
+            return self.active_user
+
+    def set_active_user(self, user):
+        self.active_user = user
+        self.emit("active-changed")
+
+gobject.type_register(UsersData)
+gobject.signal_new("changed",
+                   UsersData,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   ())
+
+gobject.signal_new("active-changed",
+                   UsersData,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   ())
+
 
 class UsersView(gtk.ScrolledWindow):
 
@@ -39,7 +162,6 @@ class UsersView(gtk.ScrolledWindow):
 
         view = gtk.TreeView(users_model)
         view.set_headers_visible(0)
-        self.view = view
 
         col = gtk.TreeViewColumn("User",
                                  gtk.CellRendererText(),
@@ -61,65 +183,52 @@ class UsersView(gtk.ScrolledWindow):
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
 
-class PermissionsView(gtk.ScrolledWindow,
-                      red_serverlistener.ServerListener):
+def make_users_view(model):
+    view = red_thrashingtreeview.TreeView(model)
+    view.set_headers_visible(0)
 
-    def __init__(self):
+    col = gtk.TreeViewColumn("User",
+                             gtk.CellRendererText(),
+                             text=COLUMN_NAME)
+    view.append_column(col)
+    return view
+    
+
+class PermissionsView(gtk.ScrolledWindow):
+
+    def __init__(self, users_data):
         gtk.ScrolledWindow.__init__(self)
-        red_serverlistener.ServerListener.__init__(self)
 
-        global privileges_model
-        if not privileges_model:
-            server = rcd_util.get_server()
-            privileges_model = PrivilegesModel(server, users_model)
+        server = rcd_util.get_server()
+        model = PrivilegesModel(users_data)
 
-        is_superuser = rcd_util.check_server_permission("superuser")
-
-        view = gtk.TreeView(privileges_model)
+        view = gtk.TreeView(model)
         view.set_headers_visible(0)
-        self.view = view
 
         col = gtk.TreeViewColumn("Privilege",
                                  gtk.CellRendererText(),
-                                 text=COL_PERM_PRIVILEGE)
+                                 text=PRIVILEGE_COLUMN_PRIVILEGE)
         view.append_column(col)
 
         def activated_cb(renderer, path, model):
             path = (int(path),)
-            privilege = model.privileges[path[0]]
-
-            # We want opposite state
-            active = not renderer.get_active()
-            users_model.current_set_privilege(privilege, active)
+            privilege = model.get_list_item(path[0])
+            user = users_data.get_active_user()
+            if user:
+                # We want opposite state
+                active = not renderer.get_active()
+                user.privilege_set(privilege, active)
 
         r = gtk.CellRendererToggle()
-        self.__toggle = r
-
-        r.set_property("activatable", is_superuser)
-        r.connect("toggled", activated_cb, privileges_model)
-        col = gtk.TreeViewColumn("Enabled", r, active=COL_PERM_ENABLED)
+        r.set_property("activatable", 1)
+        r.connect("toggled", activated_cb, model)
+        col = gtk.TreeViewColumn("Enabled", r, active=PRIVILEGE_COLUMN_ENABLED)
         view.append_column(col)
-
-        sel = view.get_selection()
-        if is_superuser:
-            sel.set_mode(gtk.SELECTION_SINGLE)
-        else:
-            sel.set_mode(gtk.SELECTION_NONE)
 
         view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
-
-    def users_changed(self):
-        is_superuser = rcd_util.check_server_permission("superuser")
-        self.__toggle.set_property("activatable", is_superuser)
-        sel = self.view.get_selection()
-        if is_superuser:
-            sel.set_mode(gtk.SELECTION_SINGLE)
-        else:
-            sel.set_mode(gtk.SELECTION_NONE)
-
 
 
 class UsersWindow(gtk.Dialog,
@@ -136,16 +245,13 @@ class UsersWindow(gtk.Dialog,
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        frame = gtk.Frame(None)
-        frame.add(table)
-
-        l = gtk.Label("Password:")
-        l.set_alignment(1.0, 0.5)
-        table.attach(l, 0, 1, 0, 1, 0, 0, 0, 0)
+        l = gtk.Label("Password")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 0, 1)
 
         l = gtk.Label("Confirm:")
-        l.set_alignment(1.0, 0.5)
-        table.attach(l, 0, 1, 1, 2, 0, 0, 0, 0)
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 1, 2)
 
         self.pwd1 = gtk.Entry()
         self.pwd1.set_visibility(0)
@@ -154,11 +260,11 @@ class UsersWindow(gtk.Dialog,
         self.pwd2.set_visibility(0)
         table.attach_defaults(self.pwd2, 1, 2, 1, 2)
 
-        def user_changed_cb(model, user, this):
+        def user_changed_cb(model, this):
             this.pwd1.set_text("-*-unchanged-*-")
             this.pwd2.set_text("-*-unchanged-*-")
 
-        users_model.connect("changed", user_changed_cb, self)
+        users_data.connect("active-changed", user_changed_cb, self)
 
         button_box = gtk.HButtonBox()
         button_box.set_layout(gtk.BUTTONBOX_START)
@@ -166,7 +272,7 @@ class UsersWindow(gtk.Dialog,
         button = gtk.Button()
         button.set_label("Set Password")
         button_box.add(button)
-        table.attach_defaults(button_box, 1, 2, 2, 3)
+        table.attach_defaults(button_box, 0, 2, 2, 3)
 
         def password_update_cb(button, this):
             p1 = this.pwd1.get_text()
@@ -185,12 +291,13 @@ class UsersWindow(gtk.Dialog,
                 dialog.destroy()
             else:
                 if p1 != "-*-unchanged-*-":
-                    p1 = rcd_util.md5ify_password(p1)
-                    users_model.current_update(p1)
+                    user = users_data.get_active_user()
+                    user.pwd_set(p1)
+                    user.update()
 
         button.connect("clicked", password_update_cb, self)
 
-        return frame
+        return table
 
     def build(self):
         main_box = gtk.HBox(0, 5)
@@ -200,12 +307,28 @@ class UsersWindow(gtk.Dialog,
         left_box = gtk.VBox(0, 5)
         main_box.add(left_box)
 
+        global users_data
+        if not users_data:
+            users_data = UsersData()
+
         box = gtk.HBox(0, 5)
         frame = gtk.Frame("Users")
-        view = UsersView()
-        frame.add(view)
+        users_model = UsersModel(users_data)
+        view = make_users_view(users_model)
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.add(view)
+        frame.add(sw)
         box.add(frame)
-        self.__users_view = view.view
+
+        def selection_changed_cb(selection):
+            model, iter = selection.get_selected()
+            if iter:
+                u = model.get_value(iter, COLUMN_USER)
+                users_data.set_active_user(u)
+
+        selection = view.get_selection()
+        selection.connect("changed", selection_changed_cb)
 
         is_superuser = rcd_util.check_server_permission("superuser")
 
@@ -220,29 +343,29 @@ class UsersWindow(gtk.Dialog,
         button_box.add(button)
         self.__add_button = button
 
-        def remove_cb(button, this):
-            user = users_model.current_get()
-            if not user:
-                return
+        def remove_cb(button, selection):
+            model, iter = selection.get_selected()
+            if iter:
+                u = model.get_value(iter, COLUMN_USER)
 
-            def remove_dialog_cb(dialog, id, user):
-                if id == gtk.RESPONSE_YES:
-                    users_model.current_delete()
+                def remove_dialog_cb(dialog, id, user):
+                    if id == gtk.RESPONSE_YES:
+                        user.delete()
 
-            dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                       gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
-                                       "Are you sure you want to delete '%s'?" % user["name"])
-            dialog.connect("response", remove_dialog_cb, user)
-            dialog.run()
-            dialog.destroy()
+                dialog = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
+                                           "Are you sure you want to delete '%s'?" % u.name_get())
+                dialog.connect("response", remove_dialog_cb, u)
+                dialog.run()
+                dialog.destroy()
 
         button = gtk.Button()
         button.set_label("Remove")
         button.set_sensitive(is_superuser)
-        button.connect("clicked", remove_cb, self)
+        button.connect("clicked", remove_cb, selection)
         button_box.add(button)
         self.__remove_button = button
-        
+
         box.pack_start(button_box, 0)
 
         user_list_frame = gtk.Frame(None)
@@ -256,10 +379,9 @@ class UsersWindow(gtk.Dialog,
         table.set_sensitive(is_superuser)
 
         frame = gtk.Frame("Privileges")
-        view = PermissionsView()
+        view = PermissionsView(users_data)
         frame.add(view)
         main_box.add(frame)
-        self.__permissions_view = view.view
 
         main_box.show_all()
 
@@ -271,23 +393,6 @@ class UsersWindow(gtk.Dialog,
         self.__add_button.set_sensitive(is_superuser)
         self.__remove_button.set_sensitive(is_superuser)
         self.__password_part.set_sensitive(is_superuser)
-
-        # Thrash our views so that changes in the model will be reflected.
-        # We do it in an idle function, so that the thrash won't happen
-        # until after all of the other users_changed handlers have
-        # executed.
-        def thrash_cb(user_win):
-            print "Thrash!"
-            m = user_win.__users_view.get_model()
-            user_win.__users_view.set_model(None)
-            user_win.__users_view.set_model(m)
-
-            m = user_win.__permissions_view.get_model()
-            user_win.__permissions_view.set_model(None)
-            user_win.__permissions_view.set_model(m)
-
-        gtk.idle_add(thrash_cb, self)
-        
 
 class UserAdd(gtk.Dialog):
     def __init__(self):
@@ -339,7 +444,7 @@ class UserAdd(gtk.Dialog):
                 msg = "Passwords do not match."
             if not re.compile("^\w+$").match(name):
                 msg = "Invalid user name."
-            elif users_model.user_exists(name):
+            elif users_data.user_exists(name):
                 msg = "User '" + name + "' already exists."
 
             if msg:
@@ -349,9 +454,9 @@ class UserAdd(gtk.Dialog):
                 dialog.run()
                 dialog.destroy()
             else:
-                p1 = rcd_util.md5ify_password(p1)
-                if users_model.add(name, p1):
-                    this.destroy()
+                user = User(name, p1)
+                user.update()
+                this.destroy()
 
         button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
         button.connect("clicked", add_cb, self)
@@ -359,261 +464,96 @@ class UserAdd(gtk.Dialog):
         self.show_all()
 
 
-COLUMN_USER = 0
-COLUMN_NAME = 1
-COLUMN_LAST = 2
+COLUMNS = (
+    ("USER",
+     lambda x:x,
+     gobject.TYPE_PYOBJECT),
 
-class UsersModel(gtk.GenericTreeModel,
-                 red_serverlistener.ServerListener):
-    def __init__ (self, server):
-        gobject.GObject.__init__(self)
-        red_serverlistener.ServerListener.__init__(self)
+    ("NAME",
+     lambda x:x.name_get(),
+     gobject.TYPE_STRING),
+    )
 
-        self.server = server
-        self.current = None
-        self.__fetch_user_info()
-        
-    def __fetch_user_info(self):
-        self.users = []
-        users = self.server.rcd.users.get_all()
-        for u in users:
-            user = {}
-            user["name"] = u[0]
-            user["privileges"] = u[1].split(", ")
-            self.users.append(user)
+for i in range(len(COLUMNS)):
+    name = COLUMNS[i][0]
+    exec("COLUMN_%s = %d" % (name, i))
 
-    def user_to_column(self, user, index):
-        if index == COLUMN_USER:
-            return user
-        elif index == COLUMN_NAME:
-            return user["name"]
+class UsersModel(red_listmodel.ListModel):
 
-    def on_get_flags(self):
-        return 0
+    def __init__(self, users_data, sort_fn=None, filter_fn=None):
+        red_listmodel.ListModel.__init__(self, sort_fn, filter_fn)
+        self.__users = []
 
-    def on_get_n_columns(self):
-        return COLUMN_LAST
+        users_data.connect("changed", self.refresh)
 
-    def on_get_column_type(self, index):
-        if index == COLUMN_USER:
-            return gobject.TYPE_PYOBJECT
-        else:
-            return gobject.TYPE_STRING
+        for name, callback, type in COLUMNS:
+            self.add_column(callback, type)
 
-    def on_get_tree_path(self, node):
-        return node
+        self.refresh(users_data)
 
-    def on_get_iter(self, path):
-        return path
+    def refresh(self, users_data):
+        def refresh_cb(this, users_data):
+            self.__users = users_data.get_all_users()
 
-    def on_get_value(self, node, column):
-        user = self.users[node[0]]
-        if user:
-            return self.user_to_column(user, column)
-        return "?no user"
+        self.changed(refresh_cb, users_data)
 
-    def on_iter_next(self, node):
-        next = node[0] + 1
-        if next >= len(self.users):
-            return None
-        return (next,)
+    ###
+    ### red_listmodel.ListModel implementation
+    ###
 
-    def on_iter_children(self, node):
-        if node == None:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_has_child(self, node):
-        return 0
-
-    def on_iter_nth_child(self, node, n):
-        if node == None and n == 0:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_parent(self, node):
-        return None
-
-    def user_exists(self, name):
-        for u in self.users:
-            if u["name"] == name:
-                return 1
-        return 0
-
-    def add(self, name, pwd):
-        user = { "name" : name, "privileges" : [] }
-        self.users.append(user)
-
-        path = len(self.users) - 1
-        path = (path,)
-        node = self.get_iter(path)
-
-        self.row_inserted(path, node)
-        self.current_set(node)
-        if self.current_update(pwd):
-            return 1
-        else:
-            self.users.remove(user)
-            self.current_set(None)
-            return 0
-
-    def current_set(self, node):
-        self.current = node
-        self.emit("changed", self.current_get())
-
-    def current_get(self):
-        if not self.current:
-            return None
-        return self.get_value(self.current, COLUMN_USER)
-
-    def current_has_privilege(self, privilege):
-        user = self.current_get()
-        if not user:
-            return 0
-
-        privs = user["privileges"]
-        if "superuser" in privs or privilege in privs:
-            return 1
-
-        return 0
-
-    def current_update(self, pwd=None):
-        user = self.current_get()
-        if not user:
-            return 0
-
-        if not pwd:
-            pwd = "-*-unchanged-*-"
-
-        new_privs_str = string.join(user["privileges"], ", ")
-        if self.server.rcd.users.update(user["name"], pwd, new_privs_str):
-            return 1
-        else:
-            return 0
-
-    def current_set_privilege(self, privilege, active):
-        user = self.current_get()
-        if not user:
-            return
-
-        if active:
-            if not privilege in user["privileges"]:
-                user["privileges"].append(privilege)
-        else:
-            if privilege in user["privileges"]:
-                user["privileges"].remove(privilege)
-
-        if privilege == "superuser":
-            self.emit("changed", self.current_get())
-
-        self.current_update()
-
-    def current_delete(self):
-        user = self.current_get()
-        if not user:
-            return
-        if self.server.rcd.users.remove(user["name"]):
-            self.users.remove(user)
-            self.row_deleted(self.get_path(self.current))
-            self.current_set(None)
-
-    def users_changed(self):
-        # Re-fetch the user information
-        self.__fetch_user_info()
-        
-
-gobject.type_register(UsersModel)
-gobject.signal_new("changed",
-                   UsersModel,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   (gobject.TYPE_PYOBJECT,))
+    def get_all(self):
+        return self.__users
 
 
-COL_PERM_USER =      0
-COL_PERM_PRIVILEGE = 1
-COL_PERM_ENABLED =   2
-COL_PERM_LAST =      3
+def get_enabled(privilege):
+    u = users_data.get_active_user()
+    if u and u.has_privilege(privilege):
+        return 1
 
-class PrivilegesModel(gtk.GenericTreeModel,
-                      red_serverlistener.ServerListener):
-    def __init__ (self, server, users_model):
-        gtk.GenericTreeModel.__init__(self)
-        red_serverlistener.ServerListener.__init__(self)
+    return 0
 
-        self.users_model = users_model
-        self.privileges = map(string.lower,
-                              server.rcd.users.get_valid_privileges())
-        self.privileges.sort()
-        self.privileges.append("superuser")
+PRIVILEGE_COLUMNS = (
+    ("PRIVILEGE",
+     lambda x:x,
+     gobject.TYPE_STRING),
 
-        users_model.connect("changed", self.refresh)
+    ("ENABLED",
+     lambda x:get_enabled(x),
+     gobject.TYPE_BOOLEAN),
+    )
 
-    def privilege_to_column(self, privilege, index):
-        if index == COL_PERM_USER:
-            return self.user
-        elif index == COL_PERM_PRIVILEGE:
-            return privilege
-        elif index == COL_PERM_ENABLED:
-            return self.users_model.current_has_privilege(privilege)
+for i in range(len(PRIVILEGE_COLUMNS)):
+    name = PRIVILEGE_COLUMNS[i][0]
+    exec("PRIVILEGE_COLUMN_%s = %d" % (name, i))
 
-    def on_get_flags(self):
-        return 0
+class PrivilegesModel(red_listmodel.ListModel):
 
-    def on_get_n_columns(self):
-        return COL_PERM_LAST
+    def __init__(self, users_data, sort_fn=None, filter_fn=None):
+        red_listmodel.ListModel.__init__(self, sort_fn, filter_fn)
+        self.__privileges = []
 
-    def on_get_column_type(self, index):
-        if index == COL_PERM_PRIVILEGE:
-            return gobject.TYPE_STRING
-        else:
-            return gobject.TYPE_BOOLEAN
+        users_data.connect("changed", self.refresh)
+        users_data.connect("active-changed", self.active_changed)
 
-    def on_get_path(self, node):
-        return node
+        for name, callback, type in PRIVILEGE_COLUMNS:
+            self.add_column(callback, type)
 
-    def on_get_iter(self, path):
-        return path
+        self.refresh(users_data)
 
-    def on_get_value(self, node, column):
-        privilege = self.privileges[node[0]]
-        if privilege:
-            return self.privilege_to_column(privilege, column)
-        return "?no user"
+    def refresh(self, users_data):
+        def refresh_cb(this, users_data):
+            self.__privileges = users_data.get_all_privileges()
 
-    def on_iter_next(self, node):
-        next = node[0] + 1
-        if next >= len(self.privileges):
-            return None
-        return (next,)
+        self.changed(refresh_cb, users_data)
 
-    def on_iter_children(self, node):
-        if node == None:
-            return (0,)
-        else:
-            return None
+    def active_changed(self, users_data):
+        def active_changed_cb(self, path, iter):
+            self.row_changed(path[0])
+        self.foreach(active_changed_cb)
 
-    def on_iter_has_child(self, node):
-        return 0
+    ###
+    ### red_listmodel.ListModel implementation
+    ###
 
-    def on_iter_nth_child(self, node, n):
-        if node == None and n == 0:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_parent(self, node):
-        return None
-
-## Additional methods
-
-    # Refresh model
-    def refresh(self, model, user):
-        def refresh_cb(self, path, iter):
-            self.row_changed(path, iter)
-        self.foreach(refresh_cb)
-
-    def users_changed(self):
-        pass
+    def get_all(self):
+        return self.__privileges
