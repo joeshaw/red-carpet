@@ -1,5 +1,8 @@
 2003-04-15  Jon Trowbridge  <trow@ximian.com>
 
+	* red_appwindow.py (AppWindow.assemble_toolbar): Desensitize the
+	refresh button when the dependency component is visible.
+
 	* red_appwindow.py: Instead of managing components itself, the
 	appwindow now uses a componentbook to get a tabbed UI.
 

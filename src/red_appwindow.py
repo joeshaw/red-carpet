@@ -391,9 +391,14 @@ class AppWindow(gtk.Window,
                            pixbuf=red_pixbuf.get_pixbuf("channels-24"),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
+        def verify_and_refresh_sensitive_cb():
+            comp=self.componentbook.get_visible_component()
+            return comp.run_sensitized()
+
         bar.refresh = bar.add(text=_("Refresh"),
                               tooltip=_("Refresh channel data"),
                               stock = gtk.STOCK_REFRESH,
+                              sensitive_fn=verify_and_refresh_sensitive_cb,
                               callback=lambda x:refresh_cb(self))
 
     ##
@@ -659,7 +664,8 @@ class AppWindow(gtk.Window,
         ##
 
         def verify_and_refresh_sensitive_cb():
-            return self.sidebar.get_property("sensitive")
+            comp = self.componentbook.get_visible_component()
+            return comp.run_sensitized()
                 
         bar.add("/%s/%s" % (actions_str, _("_Verify System Dependencies")),
                 callback=verify_deps_cb,
