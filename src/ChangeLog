@@ -1,3 +1,27 @@
+2003-02-11  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (AppWindow.__init__): Connect to our
+	size_allocate signal and load our width, height, and sidebar
+	width.
+	(save_geometry): Added.  Uses red_settings to save our width,
+	height, and sidebar size to disk.
+	(load_geometry): Load it up.
+
+	* red_packageview.py (CellRendererActivatablePixbuf): Added new
+	class.  Basically proxies everything to a CellRendererPixbuf,
+	except it handles the on_activate, which emits the "activated"
+	signal.
+	(PackageView.append_action_column): Add an "activatable"
+	parameter, defaulting to on.  Instead of creating a regular pixbuf
+	cell renderer, create our activatable one and connect to the
+	activated signal, which then emits an "activated" signal on the
+	TreeView.
+
+	* red_transaction.py (TransactionComponent.build): Show the action
+	name for our pending transactions so it's more clear what happens
+	when you disable an action on a package.
+	(TransactionSimple.build): Make these not activatable.
+
 2003-02-11  Tambet Ingo  <tambet@ximian.com>
 
 	* red_packagearray.py (pkg_status): Return "uninstalled" string

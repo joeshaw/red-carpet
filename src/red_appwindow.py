@@ -40,6 +40,7 @@ import red_sidebar
 import red_toolbar
 import red_packagearray
 import red_packagebook
+import red_settings
 
 def refresh_cb(app):
     server = rcd_util.get_server_proxy()
@@ -127,8 +128,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
 
-        hpaned = gtk.HPaned()
-        self.vbox.pack_start(hpaned, expand=1, fill=1)
+        self.hpaned = gtk.HPaned()
+        self.vbox.pack_start(self.hpaned, expand=1, fill=1)
 
         self.sidebar = red_sidebar.SideBar()
         self.shortcut_bar = self.sidebar.get_shortcut_bar()
@@ -137,11 +138,11 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         # (when the components are registered)
         gtk.idle_add(self.connect_sidebar_buttons, self.sidebar)
 
-        hpaned.pack1(self.sidebar, resize=0, shrink=0)
+        self.hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
         main_box = gtk.VBox(0, 6)
         main_box.set_border_width(6)
-        hpaned.pack2(main_box, resize=1, shrink=1)
+        self.hpaned.pack2(main_box, resize=1, shrink=1)
 
         ## Toolbar
         toolbar_box = gtk.HBox(0, 0)
@@ -159,12 +160,58 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         main_box.pack_start(self.container, expand=1, fill=1)
         main_box.show_all()
-        hpaned.show()
+        self.hpaned.show()
 
         self.statusbar.show()
         self.vbox.pack_start(self.statusbar, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+        ## Geometry handling
+        self.load_geometry()
+
+        self.save_geometry_id = 0
+
+        def size_allocate_cb(win, alloc):
+
+            def save_geometry_cb(win):
+                win.save_geometry()
+                win.save_geometry_id = 0
+
+                return 0
+            
+            if not self.save_geometry_id:
+                self.save_geometry_id = gtk.idle_add(save_geometry_cb, win)
+
+        self.connect("size_allocate", size_allocate_cb)
+
+    def save_geometry(self):
+        conf = red_settings.get_config()
+
+        x, y, w, h = self.allocation
+
+        conf.set("Geometry/width", w)
+        conf.set("Geometry/height", h)
+
+        x, y, w, h = self.sidebar.allocation
+
+        conf.set("Geometry/sidebar_width", w)
+        
+        conf.sync()
+
+    def load_geometry(self):
+        conf = red_settings.get_config()
+
+        w = int(conf.get("Geometry/width=0"))
+        h = int(conf.get("Geometry/height=0"))
+
+        if w and h:
+            self.set_default_size(w, h)
+
+        w = int(conf.get("Geometry/sidebar_width=0"))
+
+        if w:
+            self.hpaned.set_position(w)
 
     def connect_sidebar_buttons(self, bar):
         ## Run button

@@ -22,6 +22,47 @@ import red_pixbuf
 import red_packagebook
 import red_thrashingtreeview
 
+class CellRendererActivatablePixbuf(gtk.GenericCellRenderer):
+
+    __gproperties__ = {
+        "pixbuf" : (gtk.gdk.Pixbuf, "pixbuf property",
+                    "the pixbuf", gobject.PARAM_READWRITE)
+    }
+
+    def __init__(self):
+        gobject.GObject.__init__(self)
+        self.set_property("mode", gtk.CELL_RENDERER_MODE_ACTIVATABLE)
+        self.pixbuf_renderer = gtk.CellRendererPixbuf()
+
+    def do_set_property(self, pspec, value):
+        return self.pixbuf_renderer.set_property(pspec.name, value)
+
+    def do_get_property(self, pspec):
+        return self.pixbuf_renderer.get_property(pspec.name)
+
+    def on_get_size(self, widget, cell_area):
+        return self.pixbuf_renderer.get_size(widget, cell_area)
+
+    def on_render(self, window, widget, background_area,
+                  cell_area, expose_area, flags):
+        return self.pixbuf_renderer.render(window, widget,
+                                           background_area,
+                                           cell_area, expose_area,
+                                           flags)
+
+    def on_activate(self, event, widget, path,
+                    background_area, cell_area, flags):
+        self.emit("activated", path)
+        return 1
+
+gobject.type_register(CellRendererActivatablePixbuf)
+
+gobject.signal_new("activated",
+                   CellRendererActivatablePixbuf,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_PYOBJECT,))
+
 class PackageView(red_thrashingtreeview.TreeView):
 
     def __init__(self):
@@ -286,12 +327,20 @@ class PackageView(red_thrashingtreeview.TreeView):
     def append_action_column(self,
                              column_title="Action",
                              show_action_icon=1,
-                             show_action_name=0):
+                             show_action_name=0,
+                             activatable=1):
         col = gtk.TreeViewColumn()
         col.set_title(column_title)
 
+        def activated_cb(r, p, t):
+            model = t.get_model()
+            pkg = model.get_list_item(int(p))
+            t.emit("activated", int(p), pkg)
+
         if show_action_icon:
-            render_icon = gtk.CellRendererPixbuf()
+            render_icon = CellRendererActivatablePixbuf()
+            if activatable:
+                render_icon.connect("activated", activated_cb, self)
             col.pack_start(render_icon, 0)
             col.set_attributes(render_icon,
                                pixbuf=red_packagearray.COLUMN_ACTION_ICON)

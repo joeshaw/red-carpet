@@ -173,7 +173,7 @@ class CellRendererPref(gtk.GenericCellRenderer):
         pref = model.prefs[int(path)]
         self.emit("activated", pref)
         return r.activate(event, widget, path,
-                   background_area, cell_area, flags)
+                          background_area, cell_area, flags)
 
     def on_start_editing(self, event, widget, path,
                          background_area, cell_area, flags):

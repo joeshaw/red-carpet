@@ -130,7 +130,7 @@ class TransactionComponent(red_component.Component):
         view = red_packageview.PackageView()
         self.connect_view(view)
         
-        view.append_action_column()
+        view.append_action_column(show_action_name=1)
         view.append_name_column(show_channel_icon=1)
         view.append_version_column()
         view.append_size_column()
@@ -165,7 +165,7 @@ class TransactionSimple(gtk.ScrolledWindow):
         self.set_shadow_type(gtk.SHADOW_OUT)
 
         view = red_packageview.PackageView()
-        view.append_action_column(show_action_name=1)
+        view.append_action_column(show_action_name=1, activatable=0)
         view.append_name_column(show_channel_icon=1)
 
         global model
