@@ -1,3 +1,16 @@
+2003-03-07  Tambet Ingo  <tambet@ximian.com>
+
+	* red_toolbar.py (Toolbar.add): Use large stock icons instead of small
+	which is Gtk's default toolbar icon size. Fixes part of #39136.
+
+	* red_appwindow.py (AppWindow.assemble_toolbar): Get icon sizes from gtk
+	theme instead of magic "16". Fixes part of #39136.
+	Moved "Run" button to the beginning of toolbar.
+
+	* red_searchbox.py (SearchBox.all_cb): Changed "Uninstalled Packages" to
+	"Not Installed Packages". If it's not good english, then change it
+	again, but it should be more acurate than "uninstalled".
+
 2003-03-06  Joe Shaw  <joe@ximian.com>
 
 	* red_gettext.py: Hook this stuff up to the python gettext stuff.

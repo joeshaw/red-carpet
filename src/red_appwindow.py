@@ -374,18 +374,28 @@ class AppWindow(gtk.Window,
 
     def assemble_toolbar(self, bar):
 
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_LARGE_TOOLBAR)
+
+        bar.run = bar.add(text=_("Run"),
+                          tooltip=_("Perform Pending Operations"),
+                          sensitive_fn=red_pendingops.pending_ops_exist,
+                          stock=gtk.STOCK_EXECUTE,
+                          callback=lambda x:run_transaction_cb(self))
+
+        bar.append_space()
+
         bar.install = bar.add(text=_("Install"),
                               tooltip=_("Install selected package"),
                               pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
-                                                           width=16,
-                                                           height=16),
+                                                           width=width,
+                                                           height=height),
                               sensitive_fn=self.install_sensitive_cb,
                               callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
 
         bar.remove = bar.add(text=_("Remove"),
                              tooltip=_("Remove selected package"),
                              pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
-                                                          width=16, height=16),
+                                                          width=width, height=height),
                              sensitive_fn=self.remove_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
@@ -398,22 +408,16 @@ class AppWindow(gtk.Window,
         bar.info = bar.add(text=_("Info"),
                            tooltip=_("Package Information"),
                            pixbuf=red_pixbuf.get_pixbuf("info",
-                                                        width=16, height=16),
+                                                        width=width, height=height),
                            sensitive_fn=self.info_sensitive_cb,
                            callback=lambda x:self.package_info_cb())
 
         bar.append_space()
 
-        bar.run = bar.add(text=_("Run"),
-                          tooltip=_("Perform Pending Operations"),
-                          sensitive_fn=red_pendingops.pending_ops_exist,
-                          stock=gtk.STOCK_EXECUTE,
-                          callback=lambda x:run_transaction_cb(self))
-
         bar.subs = bar.add(text=_("Channels"),
                            tooltip=_("Change your channel subscriptions"),
                            pixbuf=red_pixbuf.get_pixbuf("subscribed",
-                                                        width=16, height=16),
+                                                        width=width, height=height),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
         bar.refresh = bar.add(text=_("Refresh"),

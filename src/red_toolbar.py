@@ -49,7 +49,7 @@ class Toolbar(gtk.Toolbar, red_pendingops.PendingOpsListener):
 
             if stock:
                 assert not pixbuf
-                image.set_from_stock(stock, gtk.ICON_SIZE_SMALL_TOOLBAR)
+                image.set_from_stock(stock, gtk.ICON_SIZE_LARGE_TOOLBAR)
 
             if pixbuf:
                 assert not stock
