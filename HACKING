@@ -12,6 +12,6 @@ conventions, be accompanied by a ChangeLog entry, and sent in GNU
 unified diff format (diff -u).
 
 Please DO NOT commit to CVS without approval from one of the
-maintainers.
+maintainers.  (Except for translations, please feel free to add those.)
 
 

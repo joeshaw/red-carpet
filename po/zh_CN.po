@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-05-09 17:00-0400\n"
+"POT-Creation-Date: 2003-05-22 12:18-0400\n"
 "PO-Revision-Date: 2002-03-29 00:14+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -42,7 +42,7 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:367
+#: src/rcd_util.py:376
 #, fuzzy
 msgid "Please wait while getting data."
 msgstr "正在载入页面，请等待..."
@@ -51,32 +51,32 @@ msgstr "正在载入页面，请等待..."
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:416
+#: src/rcd_util.py:425
 msgid "Verifying"
 msgstr "正在验证"
 
-#: src/rcd_util.py:417
+#: src/rcd_util.py:426
 msgid "Unable to verify package signature for"
 msgstr ""
 
-#: src/rcd_util.py:418
+#: src/rcd_util.py:427
 msgid "There is no package signature for"
 msgstr ""
 
-#: src/rcd_util.py:419
+#: src/rcd_util.py:428
 #, fuzzy
 msgid "Preparing Transaction"
 msgstr "开始处理..."
 
-#: src/rcd_util.py:420
+#: src/rcd_util.py:429
 msgid "Installing"
 msgstr "正在安装"
 
-#: src/rcd_util.py:421
+#: src/rcd_util.py:430
 msgid "Removing"
 msgstr "正在删除"
 
-#: src/rcd_util.py:422
+#: src/rcd_util.py:431
 msgid "Configuring"
 msgstr "正在配置"
 
@@ -181,12 +181,20 @@ msgstr ""
 msgid "Please fill in both email and activation code."
 msgstr ""
 
-#: src/red_activation.py:95
+#: src/red_activation.py:91
+msgid "Unable to activate"
+msgstr ""
+
+#: src/red_activation.py:92
+msgid "Please ensure you typed the email address and activation code correctly"
+msgstr ""
+
+#: src/red_activation.py:100
 msgid "System successfully activated."
 msgstr ""
 
 #. Store email to config.
-#: src/red_activation.py:103
+#: src/red_activation.py:108
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
@@ -223,16 +231,29 @@ msgstr "正在下载频道数据..."
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:105
+#: src/red_appwindow.py:116
 msgid "C"
 msgstr ""
 
-#. successfully spawned
-#. If we got here, we couldn't open any help file with any handler
-#: src/red_appwindow.py:129
+#. GNOME 2
+#. XD2 w/o yelp?
+#. RH 9
+#. KDE
+#. GNOME 1.x
+#. GNOME 1.x w/o help
+#. browser?
+#. dunno, but a sane
+#. fallback
+#. CDE
+#: src/red_appwindow.py:153
 msgid ""
-"Unable to show help because it was not found or because you don't have any "
-"help viewers available."
+"Unable to show help because the help files were missing.  Please report this "
+"to your vendor."
+msgstr ""
+
+#: src/red_appwindow.py:163
+msgid ""
+"Unable to show help because there are no applications available to view help."
 msgstr ""
 
 #. Menubar
@@ -247,7 +268,7 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:387
+#: src/red_appwindow.py:420
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr ""
@@ -255,40 +276,40 @@ msgstr ""
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:415
+#: src/red_appwindow.py:448
 msgid "Run Now"
 msgstr ""
 
-#: src/red_appwindow.py:416
+#: src/red_appwindow.py:449
 msgid "Perform installations and removals"
 msgstr ""
 
-#: src/red_appwindow.py:423
+#: src/red_appwindow.py:456
 #, fuzzy
 msgid "Channels"
 msgstr "取消"
 
-#: src/red_appwindow.py:424
+#: src/red_appwindow.py:457
 msgid "Change your channel subscriptions"
 msgstr ""
 
-#: src/red_appwindow.py:432
+#: src/red_appwindow.py:465
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:466
 msgid "Refresh channel data"
 msgstr ""
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:444
+#: src/red_appwindow.py:477 src/red_packageview.py:232
 #, fuzzy
 msgid "Mark for _Installation"
 msgstr "软件包安装"
 
-#: src/red_appwindow.py:445
+#: src/red_appwindow.py:478
 #, fuzzy
 msgid "Mark selected packages for installation"
 msgstr "启动时清除缓存的软件包"
@@ -296,12 +317,13 @@ msgstr "启动时清除缓存的软件包"
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:450 src/red_appwindow.py:725
+#: src/red_appwindow.py:483 src/red_appwindow.py:757
+#: src/red_packageview.py:245
 #, fuzzy
 msgid "Mark for _Removal"
 msgstr "软件包删除"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:484
 #, fuzzy
 msgid "Mark selected packages for removal"
 msgstr "安装选中的软件包"
@@ -309,21 +331,23 @@ msgstr "安装选中的软件包"
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:456 src/red_appwindow.py:737
+#: src/red_appwindow.py:489 src/red_appwindow.py:769
+#: src/red_packageview.py:258
 #, fuzzy
 msgid "_Cancel"
 msgstr "取消"
 
-#: src/red_appwindow.py:457
+#: src/red_appwindow.py:490
 msgid "Cancel marked package actions"
 msgstr ""
 
-#: src/red_appwindow.py:462
+#. Info
+#: src/red_appwindow.py:495 src/red_packageview.py:276
 #, fuzzy
 msgid "I_nformation"
 msgstr "信息"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:496
 #, fuzzy
 msgid "Package information"
 msgstr "软件包安装"
@@ -334,11 +358,11 @@ msgstr "软件包安装"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:520
+#: src/red_appwindow.py:553
 msgid "_File"
 msgstr ""
 
-#: src/red_appwindow.py:521
+#: src/red_appwindow.py:554
 msgid "_Edit"
 msgstr ""
 
@@ -347,111 +371,111 @@ msgstr ""
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:522 src/red_appwindow.py:783
+#: src/red_appwindow.py:555 src/red_appwindow.py:815
 msgid "_View"
 msgstr "查看(_V)"
 
-#: src/red_appwindow.py:523
+#: src/red_appwindow.py:556
 #, fuzzy
 msgid "_Actions"
 msgstr "订阅(_U)"
 
-#: src/red_appwindow.py:524
+#: src/red_appwindow.py:557
 msgid "_Help"
 msgstr ""
 
-#: src/red_appwindow.py:532
+#: src/red_appwindow.py:565
 msgid "Connect..."
 msgstr ""
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:575
 msgid "Install from _File..."
 msgstr ""
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:584
 msgid "Install from _URL..."
 msgstr ""
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:568
+#: src/red_appwindow.py:601
 msgid "_Mount Directory..."
 msgstr ""
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:584
+#: src/red_appwindow.py:617
 msgid "U_nmount Directory..."
 msgstr ""
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:599
+#: src/red_appwindow.py:632
 msgid "_Activate..."
 msgstr ""
 
-#: src/red_appwindow.py:605
+#: src/red_appwindow.py:638
 msgid "Quit"
 msgstr "退出"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:620
+#: src/red_appwindow.py:653
 #, fuzzy
 msgid "Select _All"
 msgstr "全选(_A) "
 
-#: src/red_appwindow.py:625
+#: src/red_appwindow.py:658
 #, fuzzy
 msgid "Select _None"
 msgstr "不选(_N) "
 
-#: src/red_appwindow.py:632
+#: src/red_appwindow.py:665
 #, fuzzy
 msgid "Channel _Subscriptions..."
 msgstr "订阅(_U)"
 
-#: src/red_appwindow.py:637
+#: src/red_appwindow.py:670
 #, fuzzy
 msgid "_Preferences..."
 msgstr "首选项"
 
-#: src/red_appwindow.py:641
+#: src/red_appwindow.py:674
 msgid "_Users..."
 msgstr ""
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:654
+#: src/red_appwindow.py:687
 msgid "_Sidebar"
 msgstr ""
 
-#: src/red_appwindow.py:658
+#: src/red_appwindow.py:691
 #, fuzzy
 msgid "_Advanced Search Options"
 msgstr "订阅(_U)"
 
-#: src/red_appwindow.py:662
+#: src/red_appwindow.py:695
 #, fuzzy
 msgid "_Channel Names"
 msgstr "频道信息"
 
-#: src/red_appwindow.py:668
+#: src/red_appwindow.py:701
 #, fuzzy
 msgid "Package _Information..."
 msgstr "软件包安装"
 
-#: src/red_appwindow.py:676
+#: src/red_appwindow.py:709
 #, fuzzy
 msgid "_Daemon Information..."
 msgstr "信息"
 
-#: src/red_appwindow.py:678
+#: src/red_appwindow.py:711
 #, fuzzy
 msgid "Red Carpet Ne_ws..."
 msgstr "红魔毯新闻"
@@ -459,14 +483,14 @@ msgstr "红魔毯新闻"
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:691
+#: src/red_appwindow.py:723
 msgid "Run _Now"
 msgstr ""
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:705
+#: src/red_appwindow.py:737
 #, fuzzy
 msgid "_Verify System Dependencies"
 msgstr "不满足的依赖关系"
@@ -474,7 +498,7 @@ msgstr "不满足的依赖关系"
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:716
+#: src/red_appwindow.py:748
 #, fuzzy
 msgid "Mark for I_nstallation"
 msgstr "软件包安装"
@@ -482,15 +506,15 @@ msgstr "软件包安装"
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:751
+#: src/red_appwindow.py:783
 msgid "Re_fresh Channel Data"
 msgstr ""
 
-#: src/red_appwindow.py:760
+#: src/red_appwindow.py:792
 msgid "_Contents"
 msgstr ""
 
-#: src/red_appwindow.py:765
+#: src/red_appwindow.py:797
 #, fuzzy
 msgid "_About..."
 msgstr "关于"
@@ -712,7 +736,7 @@ msgstr ""
 msgid "User name:"
 msgstr "用户名"
 
-#: src/red_connection.py:341 src/red_prefs.py:257 src/red_users.py:192
+#: src/red_connection.py:341 src/red_prefs.py:279 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "密码："
@@ -797,7 +821,7 @@ msgstr "红魔毯"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:355
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
 #, fuzzy
 msgid "Dependency Resolution"
 msgstr "依赖关系"
@@ -822,7 +846,7 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:200
+#: src/red_depcomponent.py:201
 msgid "I Agree"
 msgstr ""
 
@@ -831,16 +855,16 @@ msgstr ""
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:260
+#: src/red_depcomponent.py:261
 msgid "Dependency Resolution Failed"
 msgstr ""
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:310
+#: src/red_depcomponent.py:311
 msgid "System Verified"
 msgstr ""
 
-#: src/red_depcomponent.py:312
+#: src/red_depcomponent.py:313
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -850,25 +874,25 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:366
+#: src/red_depcomponent.py:367
 msgid "Requested Installations"
 msgstr "要求的安装"
 
-#: src/red_depcomponent.py:370
+#: src/red_depcomponent.py:371
 msgid "Requested Removals"
 msgstr "要求的删除"
 
-#: src/red_depcomponent.py:374
+#: src/red_depcomponent.py:375
 #, fuzzy
 msgid "Required Installations"
 msgstr "要求的安装"
 
-#: src/red_depcomponent.py:378
+#: src/red_depcomponent.py:379
 #, fuzzy
 msgid "Required Removals"
 msgstr "要求的删除"
 
-#: src/red_depcomponent.py:404
+#: src/red_depcomponent.py:405
 #, fuzzy
 msgid "Continue"
 msgstr "九"
@@ -894,16 +918,16 @@ msgstr "九"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_depview.py:37 src/red_mount.py:226 src/red_packagepage_info.py:83
-#: src/red_packageview.py:359
+#: src/red_packageview.py:367
 #, fuzzy
 msgid "Channel"
 msgstr "取消"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:415
+#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "软件包"
 
-#: src/red_depview.py:43 src/red_packageview.py:454
+#: src/red_depview.py:43 src/red_packageview.py:462
 #, fuzzy
 msgid "Current Version"
 msgstr "要求的版本："
@@ -915,7 +939,7 @@ msgstr "要求的版本："
 msgid "New Version"
 msgstr "版本"
 
-#: src/red_depview.py:49 src/red_packageview.py:490
+#: src/red_depview.py:49 src/red_packageview.py:498
 msgid "Size"
 msgstr "大小"
 
@@ -1033,7 +1057,7 @@ msgstr "查找"
 msgid "Time"
 msgstr ""
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:322
+#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
 #, fuzzy
 msgid "Action"
 msgstr "位置"
@@ -1626,7 +1650,7 @@ msgstr "冲突："
 msgid "Name"
 msgstr "名字"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:444
+#: src/red_packagepage_info.py:79 src/red_packageview.py:452
 msgid "Version"
 msgstr "版本"
 
@@ -1654,7 +1678,7 @@ msgstr "位置"
 msgid "Summary"
 msgstr "摘要"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:438
+#: src/red_packagepage_info.py:86 src/red_prefs.py:455
 #, fuzzy
 msgid "Description"
 msgstr "描述："
@@ -1685,59 +1709,11 @@ msgstr "信息"
 msgid "Unnamed"
 msgstr "用户名"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##############################################################################
-#. ##############################################################################
-#. This callback gets invoked before the selection has
-#. been updated, which causes get_selected to return
-#. out-of-date information unless we do the query in an
-#. idle callback.
-#. # This 'activated_fn' business is just a hack to get a call to
-#. # toggle_action to be the default behavior.
-#. print "selected %s (%d)" % (pkg["name"], i)
-#. print "activated %s (%d)" % (pkg["name"], i)
-#. Install
-#: src/red_packageview.py:224
-#, fuzzy
-msgid "Mark for Installation"
-msgstr "软件包安装"
-
-#. Remove
-#: src/red_packageview.py:237
-#, fuzzy
-msgid "Mark for Removal"
-msgstr "软件包删除"
-
-#. Cancel
-#: src/red_packageview.py:250
-msgid "Cancel"
-msgstr "取消"
-
-#. Info
-#: src/red_packageview.py:268
-msgid "Information"
-msgstr "信息"
-
-#: src/red_packageview.py:293
+#: src/red_packageview.py:301
 msgid "Status"
 msgstr ""
 
-#: src/red_packageview.py:464
+#: src/red_packageview.py:472
 msgid "Importance"
 msgstr ""
 
@@ -1894,122 +1870,122 @@ msgstr "更新"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. Server frame
-#: src/red_prefs.py:141
+#. Title
+#. Server section
+#: src/red_prefs.py:160
 msgid "Server"
 msgstr ""
 
-#: src/red_prefs.py:148
+#: src/red_prefs.py:168
 msgid "Server URL:"
 msgstr ""
 
 #. manually force the value to update
-#: src/red_prefs.py:189
+#: src/red_prefs.py:209
 #, fuzzy
 msgid "Mirrors"
 msgstr "镜像"
 
-#: src/red_prefs.py:201
+#: src/red_prefs.py:221
 msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
 msgstr ""
 
-#. Packages frame
-#: src/red_prefs.py:208
+#. Packages section
+#: src/red_prefs.py:228
 #, fuzzy
 msgid "Packages"
 msgstr "软件包"
 
-#: src/red_prefs.py:216
+#: src/red_prefs.py:237
 #, fuzzy
 msgid "Require package signatures"
 msgstr "软件包签名"
 
-#: src/red_prefs.py:221
+#: src/red_prefs.py:242
 msgid "Maximum number of packages to download at once:"
 msgstr ""
 
-#. Proxy frame - requires superuser
-#: src/red_prefs.py:231
+#. Proxy section - requires superuser
+#: src/red_prefs.py:252
 msgid "Proxy"
 msgstr "代理服务器"
 
-#: src/red_prefs.py:239
+#: src/red_prefs.py:261
 msgid "Use a proxy"
 msgstr ""
 
-#: src/red_prefs.py:243
+#: src/red_prefs.py:265
 #, fuzzy
 msgid "Proxy URL:"
 msgstr "代理服务器"
 
-#: src/red_prefs.py:250
+#: src/red_prefs.py:272
 #, fuzzy
 msgid "Username:"
 msgstr "用户名"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:291
+#: src/red_prefs.py:312
 msgid "You do not have permissions to view proxy settings"
 msgstr ""
 
-#: src/red_prefs.py:312
+#: src/red_prefs.py:336
 msgid "Cache downloaded packages and metadata"
 msgstr ""
 
-#: src/red_prefs.py:318
+#: src/red_prefs.py:342
 msgid "Location of cached data:"
 msgstr ""
 
-#. Expiration frame
-#: src/red_prefs.py:326
+#. Expiration section
+#: src/red_prefs.py:350
 msgid "Expiration"
 msgstr ""
 
-#. lame shim
-#: src/red_prefs.py:337
+#: src/red_prefs.py:354
 msgid "Cache expires"
 msgstr ""
 
-#: src/red_prefs.py:343
+#: src/red_prefs.py:360
 msgid "Maximum age in days:"
 msgstr ""
 
-#: src/red_prefs.py:354
+#: src/red_prefs.py:371
 msgid "Maximum size in MB:"
 msgstr ""
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:382
 msgid "Current cache size:"
 msgstr ""
 
-#: src/red_prefs.py:382
+#: src/red_prefs.py:399
 #, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "您确定要中止当前的传输吗？"
 
-#: src/red_prefs.py:398
+#: src/red_prefs.py:415
 #, fuzzy
 msgid "Empty Cache"
 msgstr "缓存"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:420
+#: src/red_prefs.py:437
 #, fuzzy, python-format
 msgid "%d MB"
 msgstr "%d KB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:468
+#: src/red_prefs.py:485
 msgid "Value"
 msgstr ""
 
-#: src/red_prefs.py:481
+#: src/red_prefs.py:498
 #, fuzzy
 msgid "Loading preferences..."
 msgstr "正在下载新闻..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:541
+#: src/red_prefs.py:562
 #, fuzzy, python-format
 msgid "%s Preferences"
 msgstr "首选项"
@@ -2035,8 +2011,8 @@ msgstr "首选项"
 #. system packages and uninstalled packages are mutually exclusive
 #: src/red_searchbox.py:146
 #, fuzzy
-msgid "Uninstalled Packages"
-msgstr " 安装软件包 "
+msgid "All Packages"
+msgstr "软件包"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2060,13 +2036,13 @@ msgstr "更新"
 
 #: src/red_searchbox.py:148
 #, fuzzy
-msgid "Installed Packages"
+msgid "Uninstalled Packages"
 msgstr " 安装软件包 "
 
 #: src/red_searchbox.py:149
 #, fuzzy
-msgid "All Packages"
-msgstr "软件包"
+msgid "Installed Packages"
+msgstr " 安装软件包 "
 
 #: src/red_searchbox.py:174
 #, fuzzy
@@ -2448,7 +2424,7 @@ msgid "%s Channel Subscriptions"
 msgstr "订阅(_U)"
 
 #. FIXME: Make transient of app
-#: src/red_subscriptions.py:95
+#: src/red_subscriptions.py:99
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
@@ -2621,6 +2597,20 @@ msgstr ""
 #, python-format
 msgid "User '%s' already exists."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Mark for Installation"
+#~ msgstr "软件包安装"
+
+#, fuzzy
+#~ msgid "Mark for Removal"
+#~ msgstr "软件包删除"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid "Information"
+#~ msgstr "信息"
 
 #, fuzzy
 #~ msgid "View"

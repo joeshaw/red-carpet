@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"POT-Creation-Date: 2003-05-22 01:49+0000\n"
+"POT-Creation-Date: 2003-05-22 12:18-0400\n"
 "PO-Revision-Date: 2003-05-22 01:55+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -187,7 +187,8 @@ msgstr "Incapaz de activar"
 
 #: src/red_activation.py:92
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Certifique-se de que preencheu correctamente o email e o código de activação"
+msgstr ""
+"Certifique-se de que preencheu correctamente o email e o código de activação"
 
 #: src/red_activation.py:100
 msgid "System successfully activated."
@@ -249,15 +250,15 @@ msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
 msgstr ""
-"Incapaz de mostrar a ajuda porque não foram encontrados os ficheiros de ajuda. "
-"Relate esta ocorrência ao seu distribuidor."
+"Incapaz de mostrar a ajuda porque não foram encontrados os ficheiros de "
+"ajuda. Relate esta ocorrência ao seu distribuidor."
 
 #: src/red_appwindow.py:163
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
-"Incapaz de mostrar a ajuda porque não existe nenhuma aplicação disponível para "
-"visualizar a ajuda."
+"Incapaz de mostrar a ajuda porque não existe nenhuma aplicação disponível "
+"para visualizar a ajuda."
 
 #. Menubar
 #. # Toolbar

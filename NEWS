@@ -1,3 +1,20 @@
+Red Carpet 2.0.1
+----------------
+22 May 2003
+
+	* Fixed a problem where invoking help on some systems would cause
+	  Red Carpet to hang until after help was exited. (#43144)
+
+	* Included Docbook XSL so we can transform the XML into HTML
+	  so we can display help on non-GNOME 2-based desktops. (#42605)
+
+	* Fixed a number of HIG-related problems. (most of #43231, #42703)
+
+	* Improved error messages when RCX/RCE activation fails. (#43331)
+
+	* Fixed a potential display problem when presenting licenses for
+	  packages which require license agreement.
+
 Red Carpet 2.0.0
 ----------------
 9 May 2003
