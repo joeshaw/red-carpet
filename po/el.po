@@ -1,25 +1,29 @@
+# translation of el.po to Greek
 # Greek translation of red-carpet.
-# Copyright (C) 2001 Free Software Foundation, Inc.
-# Simos Xenitellis <simos@hellug.gr>, 2001.
-# Dimitris Kamenopoulos <el97146@mail.ntua.gr>, 2001.
-# Alejandros Diamandidis <adia@egnatia.ee.auth.gr>, 2001.
+# Copyright (C) 2001, 2003 Free Software Foundation, Inc.
 #
 # 20Sep2001: 220 messages, initial translation, simos
 # 25Sep2001: 220 messages, updates from comments by dimitris/alejandros, simos
 # 20Dec2001: 263 messages, more messages translated, simos
 # 15Sep2003: 215 messages, 15 messages stayed same since 2001. simos
+# 22 Nov2003, 328 messages, updated translation, Kostas
+# Simos Xenitellis <simos@hellug.gr>, 2001.
+# Dimitris Kamenopoulos <el97146@mail.ntua.gr>, 2001.
+# Alejandros Diamandidis <adia@egnatia.ee.auth.gr>, 2001.
+# Kostas Papadimas <pkst@gnome.org>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: red-carpet 2.0.3\n"
-"POT-Creation-Date: 2003-10-30 22:10-0500\n"
-"PO-Revision-Date: 2003-09-12 21:17+0100\n"
-"Last-Translator: Simos Xenitellis <simos74@gmx.net>\n"
+"Project-Id-Version: el\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-22 08:57+0200\n"
+"PO-Revision-Date: 2003-11-22 08:54+0200\n"
+"Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -85,7 +89,7 @@ msgstr "Δεν υπάρχει υπογραφή πακέτου για "
 
 #: src/rcd_util.py:490
 msgid "Preparing Transaction"
-msgstr "Προετοιμασία Συνναλαγής"
+msgstr "Προετοιμασία συνναλαγής"
 
 #: src/rcd_util.py:491
 msgid "Installing"
@@ -185,9 +189,8 @@ msgid "Group Activation"
 msgstr "Ενεργοποίηση Ομάδας"
 
 #: src/red_activation.py:44
-#, fuzzy
 msgid "Service:"
-msgstr "Εξυπηρετητής:"
+msgstr "Υπηρεσία:"
 
 #: src/red_activation.py:48
 msgid "Email:"
@@ -195,7 +198,7 @@ msgstr "Ηλεκ. Διεύθυνση:"
 
 #: src/red_activation.py:52
 msgid "Activation Code:"
-msgstr "Κωδικός Ενεργοποίησης:"
+msgstr "Κωδικός ενεργοποίησης:"
 
 #: src/red_activation.py:78
 msgid "Activate"
@@ -256,12 +259,14 @@ msgstr "C"
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
-msgstr ""
+msgstr "Αδυναμία εμφάνισης βοήθειας επειδή τα αρχεία βοήθειας λείπουν."
 
 #: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
+"Αδυναμία εμφάνισης βοήθειας επειδή δεν υπαρχουν διαθέσιμες επιλογές για την "
+"προβολή της βοήθειας."
 
 #. Menubar
 #. # Toolbar
@@ -279,7 +284,7 @@ msgstr ""
 #: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
-msgstr ""
+msgstr "Είστε σίγουροι ότι θέλετε να ανοίξετε %d παράθυρα πληροφοριών πακέτου?"
 
 #. #
 #. # Toolbar
@@ -341,7 +346,7 @@ msgstr "_Ακύρωση"
 
 #: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
-msgstr ""
+msgstr "Ακύρωση εγκατάστασης ενεργειών πακέτου "
 
 #. Info
 #: src/red_appwindow.py:481 src/red_packageview.py:276
@@ -440,6 +445,8 @@ msgstr "_Ενεργοποίηση..."
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
+"Ενεργοποίηση δαίμονα για έναν εξυπηρετητή Red Carpet Express ή Red Carpet "
+"Enterprise"
 
 #: src/red_appwindow.py:631
 msgid "Quit"
@@ -469,32 +476,28 @@ msgid "Deselect all items"
 msgstr "Αφεπιλογή όλων των αντικειμένων"
 
 #: src/red_appwindow.py:661
-#, fuzzy
 msgid "Services..."
-msgstr "_Προτιμήσεις..."
+msgstr "Υπηρεσίες..."
 
 #: src/red_appwindow.py:662
 msgid "Edit services"
-msgstr ""
+msgstr "Επεξεργασία υπηρεσιών"
 
 #: src/red_appwindow.py:666
-#, fuzzy
 msgid "Channel _Subscriptions..."
-msgstr "Εγγρα_φές"
+msgstr "_Συνδρομές καναλιών..."
 
 #: src/red_appwindow.py:667
-#, fuzzy
 msgid "Edit your channel subscriptions"
-msgstr "Εγγρα_φές"
+msgstr "Επεξεργασία των συνδρομών σας"
 
 #: src/red_appwindow.py:672
 msgid "_Preferences..."
 msgstr "_Προτιμήσεις..."
 
 #: src/red_appwindow.py:673
-#, fuzzy
 msgid "Edit your Red Carpet preferences"
-msgstr "Ximian Red Carpet - Προτιμήσεις"
+msgstr "Επεξεργασία των προτιμήσεων του Red Carpet"
 
 #: src/red_appwindow.py:677
 msgid "_Users..."
@@ -502,7 +505,7 @@ msgstr "_Χρήστες..."
 
 #: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
-msgstr ""
+msgstr "Επεξεργασία δικαιωμάτων χρήστη για αυτό τον δαίμονα"
 
 #. #
 #. # Sidebar
@@ -513,24 +516,23 @@ msgstr "_Πλευρική μπάρα"
 
 #: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
-msgstr ""
+msgstr "Προβολή ή απόκρυψη πλευρικής στήλης εκκρεμών ενεργειών"
 
 #: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
 msgstr "_Προχωρημένες Επιλογές Αναζήτησης"
 
 #: src/red_appwindow.py:697
-#, fuzzy
 msgid "Hide or show advanced search options"
-msgstr "Εγγρα_φές"
+msgstr "Εμφάνιση ή απόκρυψη προχωρημένων επιλογών αναζήτησης"
 
 #: src/red_appwindow.py:701
 msgid "_Channel Names"
-msgstr "Ονόματα _Καναλιών"
+msgstr "Ονόματα _καναλιών"
 
 #: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
-msgstr ""
+msgstr "Εμφάνιση ονομάτων καναλιών στις λίστες πακέτων"
 
 #: src/red_appwindow.py:708
 msgid "Package _Information..."
@@ -538,7 +540,7 @@ msgstr "_Πληροφορίες Πακέτου..."
 
 #: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
-msgstr ""
+msgstr "Προβολή πληροφοριών για τα τρέχοντα επιλεγμένα πακέτα"
 
 #: src/red_appwindow.py:717
 msgid "_Daemon Information..."
@@ -546,7 +548,7 @@ msgstr "Πληροφορίες _Υπηρεσίας..."
 
 #: src/red_appwindow.py:718
 msgid "View information about this daemon"
-msgstr ""
+msgstr "Προβολή πληροφοριών για αυτό τον δαίμονα"
 
 #: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
@@ -554,7 +556,7 @@ msgstr "_Νέα του Red Carpet..."
 
 #: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
-msgstr ""
+msgstr "Προβολή των τελευταίων νέων από το Red Carpet"
 
 #. #
 #. # Run Transaction
@@ -571,36 +573,31 @@ msgstr "Εκτέλεση της τρέχουσας συνναλαγής"
 #. # Verify System Dependencies
 #. #
 #: src/red_appwindow.py:748
-#, fuzzy
 msgid "_Verify System Dependencies"
-msgstr "Αποτυχημένες Εξαρτήσεις"
+msgstr "Επι_βεβαίωση εξαρτήσεων συστήματος"
 
 #: src/red_appwindow.py:749
-#, fuzzy
 msgid "Verify that all system dependencies are met"
-msgstr "Αποτυχημένες Εξαρτήσεις"
+msgstr "Επιβεβαίωση ότι έχουν ικανοποιηθεί όλες οι εξαρτήσεις"
 
 #. #
 #. # Install Package
 #. #
 #: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
-msgstr "Σήμανση για _Εγκατάσταση"
+msgstr "Σήμανση για _εγκατάσταση"
 
 #: src/red_appwindow.py:761
-#, fuzzy
 msgid "Mark this package for installation"
-msgstr "Καθαρισμός των ήδη μεταφορτωμένων πακέτων κατά την εκκίνηση"
+msgstr "Σημείωση αυτού του πακέτου για εγκατάσταση"
 
 #: src/red_appwindow.py:771
-#, fuzzy
 msgid "Mark this package for removal"
-msgstr "Εγκατάσταση επιλεγμένων πακέτων"
+msgstr "Σημείωση αυτού του πακέτου για απομάκρυνση"
 
 #: src/red_appwindow.py:784
-#, fuzzy
 msgid "Cancel installation or removal mark"
-msgstr "Η εγκατάσταση ολοκληρώθηκε."
+msgstr "Ακύρωση εγκατάστασης ή σημείωσης απομάκρυνσης"
 
 #. #
 #. # Refresh Channel Data
@@ -695,7 +692,7 @@ msgstr "Όλα τα Εγγεγραμμένα Κανάλια"
 
 #: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "Όχι κανάλι/Άγνωστο κανάλι"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -800,6 +797,8 @@ msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
+"Αποτυχία σύνδεσης με τον δαίμονα:\n"
+" '%s'."
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
@@ -809,6 +808,8 @@ msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
+"Εντοπίστηκε έκδοση  Red Carpet Daemon %d.%d.%d.\n"
+"Έκδοση %d.%d.%d (ή νεώτερη) απαιτείται"
 
 #. Assume protocol v1 if method not present.
 #: src/red_connection.py:93
@@ -817,6 +818,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"Εντοπίστηξε πρωτόκολλο έκδοσης %d. Απαιτείται έκδοση πρωτοκόλλου  %d. Θα "
+"πρέπει να αναβαθμίσετε την έκδοση του rcd."
 
 #. LSB compliant distros should have the
 #. following
@@ -836,6 +839,8 @@ msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
 msgstr ""
+"Το Red Carpet απαιτεί να εκτελείται ένας δαίμονας  Red Carpet.\n"
+"Θέλετε να ξεκινήσει ένας τώρα?"
 
 #. Conform to GNOME HIG
 #. This will block with a dialog.
@@ -911,12 +916,12 @@ msgstr "Κονσόλα Σφαλμάτων Red Carpet"
 #. ##
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
-msgstr ""
+msgstr "Η σύνδεση με το δαίμονα αποκαταστάθηκε.\n"
 
 #. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr ""
+msgstr "Χάθηκε η επαφή με τον δαίμονα!"
 
 #: src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
@@ -943,7 +948,7 @@ msgstr "Έξοδος από το Red Carpet"
 #. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
-msgstr "Επίλυση Εξαρτήσεων"
+msgstr "Επίλυση εξαρτήσεων"
 
 #. Clean up
 #: src/red_depcomponent.py:116
@@ -958,6 +963,8 @@ msgstr "Ανάλυση Εξαρτήσεων"
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
+"Θα πρέπει να συμφωνήσετε με τις άδειες που καλύπτουν το λογισμικό πριν την "
+"εγκατάσταση του."
 
 #. Try to estimate the size of the window we want.
 #. "W" being the widest glyph.
@@ -972,18 +979,20 @@ msgstr "Δέχομαι"
 #. Assemble our warning banner
 #: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
-msgstr "Αποτυχία Επίλυσης Εξαρτήσεων"
+msgstr "Αποτυχία επίλυσης εξαρτήσεων"
 
 #. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:319
 msgid "System Verified"
-msgstr "Το Σύστημα Επιβεβεώθηκε"
+msgstr "Το Σύστημα επιβεβαιώθηκε"
 
 #: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
 msgstr ""
+"Όλες οι εξαρτήσεις πακέτων ικανοποιήθηκαν, και δεν απαιτούνται διορθωτικές "
+"ενέργειες."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
@@ -991,19 +1000,19 @@ msgstr ""
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
 #: src/red_depcomponent.py:375
 msgid "Requested Installations"
-msgstr "Αιτούμενες Εγκαταστάσεις"
+msgstr "Αιτούμενες εγκαταστάσεις"
 
 #: src/red_depcomponent.py:379
 msgid "Requested Removals"
-msgstr "Αιτούμενες Διαγραφές"
+msgstr "Αιτούμενες διαγραφές"
 
 #: src/red_depcomponent.py:383
 msgid "Required Installations"
-msgstr "Απαιτούμενες Εγκαταστάσεις"
+msgstr "Απαιτούμενες εγκαταστάσεις"
 
 #: src/red_depcomponent.py:387
 msgid "Required Removals"
-msgstr "Απαιτούμενες Διαγραφές"
+msgstr "Απαιτούμενες διαγραφές"
 
 #: src/red_depcomponent.py:413
 msgid "Continue"
@@ -1144,7 +1153,7 @@ msgstr "Χρήστης:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "Timeframe (days):"
 
 #. ##
 #. ## Sort functions
@@ -1152,7 +1161,7 @@ msgstr ""
 #. # We want opposite order.
 #: src/red_history.py:279
 msgid "Searching..."
-msgstr "Σε αναζήτηση..."
+msgstr "Αναζήτηση..."
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:435
@@ -1209,11 +1218,11 @@ msgstr "Δε βρέθηκαν αποτελέσματα."
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s δεν είναι έγκυρο πακέτο"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
-msgstr ""
+msgstr "Δεν υπάρχουν έγκυρα πακέτα για εγκατάσταση"
 
 #: src/red_installfiles.py:102
 msgid "Install from File"
@@ -1303,11 +1312,13 @@ msgstr "URL Πακέτο:"
 #: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr ""
+"ΣΦΑΛΜΑ: Δεν μπορείτε να καθορίσετε το -h/--host και το -l/--local options "
+"μαζί"
 
 #. This'll always fail and pop up the dialog.
 #: src/red_main.py:137
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr ""
+msgstr "ΣΦΑΛΜΑ: Δεν μπορείτε να καθορίσετε ένα χρήστη σε ένα τοπικό δαίμονα"
 
 #. Try the command-line options or the saved data first
 #. Enclosed in an empty try-except because we don't care about the
@@ -1379,7 +1390,7 @@ msgstr "Τοποθεσία"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr "Επιλέξτε Σύστημα Καθεπτρισμού"
+msgstr "Επιλέξτε σύστημα καθεπτρισμού"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1402,7 +1413,7 @@ msgstr "Επιλέξτε Σύστημα Καθεπτρισμού"
 #: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
-msgstr ""
+msgstr "Αποτυχία αποπροσάρτησης '%s'"
 
 #: src/red_mount.py:116
 msgid "Browse..."
@@ -1410,16 +1421,15 @@ msgstr "Εξερεύνηση..."
 
 #: src/red_mount.py:127
 msgid "Mount Directory"
-msgstr ""
+msgstr "Προσάρτηση καταλόγου"
 
 #: src/red_mount.py:140
-#, fuzzy
 msgid "Mount channel"
-msgstr "Εξ' ορισμού υποκανάλι:"
+msgstr "Προσάρτηση καναλιού"
 
 #: src/red_mount.py:144
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Προσάρτηση καταλόγου ως κανάλι"
 
 #: src/red_mount.py:152
 msgid "Channel Name:"
@@ -1431,20 +1441,19 @@ msgstr "Κατάλογος:"
 
 #: src/red_mount.py:167
 msgid "Look for packages recursively"
-msgstr ""
+msgstr "Αναδρομική αναζήτηση για πακέτα"
 
 #: src/red_mount.py:192
 msgid "Please choose the path for channel."
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε την διαδρομή για το κανάλι."
 
 #: src/red_mount.py:213
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "Μη Εγγεγραμένα Κανάλια"
+msgstr "Αποπροσάρτηση καναλιού"
 
 #: src/red_mount.py:242
 msgid "Unmount?"
-msgstr ""
+msgstr "Αποπροσάρτηση?"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1467,9 +1476,9 @@ msgstr ""
 #. some sort of intelligent way.
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "%s News"
-msgstr "Νέα"
+msgstr "%s Νέα"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1489,24 +1498,23 @@ msgstr "Νέα"
 #. ##
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr ""
+msgstr "Σύνδεση σε ένα δαίμονα που εκτελείται τοπικά"
 
 #: src/red_option.py:25
 msgid "hostname"
-msgstr ""
+msgstr "όνομα συστήματος"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "Επαφή με δαίμονα σε καθορισμένο σύστημα"
 
 #: src/red_option.py:26
 msgid "username"
 msgstr "όνομα χρήστη"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "Specify user name"
-msgstr "Όνομα χρήστη"
+msgstr "Καθορίστε όνομα χρήστη"
 
 #: src/red_option.py:27
 msgid "password"
@@ -1514,16 +1522,15 @@ msgstr "κωδικός"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "Καθορίστε κωδικό"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "Εκτύπωση έκδοσης πελάτη και έξοδος"
 
 #: src/red_option.py:29
-#, fuzzy
 msgid "Get usage information"
-msgstr "Πληροφορίες"
+msgstr "Λήψη πληροφοριών χρήσης"
 
 #. ##
 #. ## Expand our synthetic args.
@@ -1544,11 +1551,11 @@ msgstr "Πληροφορίες"
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "Χρήση: %s <options> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
-msgstr ""
+msgstr "Οι παρακάτω επιλογές έγιναν κατανοητές"
 
 #. By appending [0,0], we insure that this will work even if
 #. opt_list is empty (which it never should be)
@@ -1634,18 +1641,17 @@ msgstr "απεγκατάσταση"
 #. it received from the daemon.
 #. ##############################################################################
 #: src/red_packagearray.py:614
-#, fuzzy, python-format
+#, python-format
 msgid "Found %d matching packages"
-msgstr "Γίνεται απεγκατάσταση πακέτων"
+msgstr "Βρέθηκαν %d πακέτα που ταιριάζουν"
 
 #: src/red_packagearray.py:616
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "Βρέθηκε 1 αρχείο που ταιριάζει"
 
 #: src/red_packagearray.py:618
-#, fuzzy
 msgid "No matching packages found"
-msgstr "Γίνεται απεγκατάσταση πακέτων"
+msgstr "δεν βρέθηκαν πακέτα να ταιριάζουν"
 
 #. Find System packages
 #. Remove instelled Channel packages
@@ -1731,7 +1737,7 @@ msgstr "Συγκρούεται Με"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Όνομα"
 
@@ -1740,24 +1746,20 @@ msgid "Version"
 msgstr "Έκδοση"
 
 #: src/red_packagepage_info.py:80
-#, fuzzy
 msgid "Release"
-msgstr "Συνέχιση"
+msgstr "Έκδοση"
 
 #: src/red_packagepage_info.py:81
-#, fuzzy
 msgid "Package Size"
-msgstr "Πακέτο"
+msgstr "Μέγεθος πακέτου"
 
 #: src/red_packagepage_info.py:82
-#, fuzzy
 msgid "Installed Size"
-msgstr "Εγκατεστημένο Λογισμικό"
+msgstr "Μέγεθος εγκατάστασης"
 
 #: src/red_packagepage_info.py:84
-#, fuzzy
 msgid "Section"
-msgstr "Τοποθεσία"
+msgstr "ενότητα"
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
@@ -1864,21 +1866,19 @@ msgstr "Ολοκλήρωση κατά %.1f%%"
 #. #############################################################################
 #: src/red_pendingview.py:509
 msgid "Updating System"
-msgstr "Γίνεται Αναβάθμιση του Συστήματος"
+msgstr "Γίνεται αναβάθμιση του συστήματος"
 
 #. this is a different kind of polling
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
 #: src/red_pendingview.py:582
-#, fuzzy
 msgid "Download cancelled"
-msgstr "Μεταφόρτωση δεδομένων καναλιού..."
+msgstr "Η μεταφόρτωση ακυρώθηκε"
 
 #: src/red_pendingview.py:583
-#, fuzzy
 msgid "Transaction cancelled"
-msgstr "Ακυρώθηκε"
+msgstr "Η συναλλαγή ακυρώθηκε"
 
 #. We can't cancel once the transaction begins
 #. We're in "download only" mode.
@@ -1888,39 +1888,37 @@ msgstr "Ακυρώθηκε"
 #. FIXME: Do something intelligent here?
 #: src/red_pendingview.py:618
 msgid "Transaction Finished"
-msgstr "Η Συναλλαγή Ολοκληρώθηκε"
+msgstr "Η συναλλαγή ολοκληρώθηκε"
 
 #: src/red_pendingview.py:631
 msgid "Downloading packages"
 msgstr "Μεταφόρτωση πακέτων"
 
 #: src/red_pendingview.py:644
-#, fuzzy
 msgid "Download Failed"
-msgstr "Μεταφόρτωση αρχείων"
+msgstr "Η μεταφόρτωση απέτυχε"
 
 #: src/red_pendingview.py:645
 msgid "Unknown Error"
-msgstr "Άγνωστο Σφάλμα"
+msgstr "Άγνωστο σφάλμα"
 
 #: src/red_pendingview.py:662
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "Πιθανές ενέργειες:"
+msgstr "Προώθηση συναλλαγής"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
 #: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
-msgstr ""
+msgstr "Η συναλλαγή ολοκληρώθηκε με επιτυχία"
 
 #: src/red_pendingview.py:706
 msgid "Transaction failed"
-msgstr ""
+msgstr "Η συναλλαγή απέτυχε"
 
 #: src/red_pendingview.py:708
 msgid "Transaction Failed"
-msgstr ""
+msgstr "Η συναλλαγή απέτυχε"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1961,7 +1959,7 @@ msgstr ""
 #. Title
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr ""
+msgstr "Μεσοδιάστημα για ανανέωση δεδομένων καναλιού (σε ώρες):"
 
 #. Packages section
 #: src/red_prefs.py:182
@@ -1974,11 +1972,11 @@ msgstr "Απαίτηση υπογραφών πακέτων"
 
 #: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
-msgstr ""
+msgstr "Μέγιστος αριθμός πακέτων για ταυτόχρονη μεταφόρτωση:"
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr ""
+msgstr "Enable package rollback"
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:210
@@ -1994,22 +1992,22 @@ msgid "Proxy URL:"
 msgstr "URL Διαμεσολαβητής:"
 
 #: src/red_prefs.py:230
-#, fuzzy
 msgid "Username:"
-msgstr "Όνομα χρήστη"
+msgstr "Όνομα χρήστη:"
 
 #. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr ""
+"Δεν έχετε τα δικαιώματα για να δείτε τις ρυθμίσεις του διαμεσολαβητή (proxy)"
 
 #: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
-msgstr ""
+msgstr "Αποθήκευση στην cache μεταφορτωμένων πακέτων και metadata"
 
 #: src/red_prefs.py:300
 msgid "Location of cached data:"
-msgstr ""
+msgstr "Τοποθεσία δεδομένων στην cache:"
 
 #. Expiration section
 #: src/red_prefs.py:308
@@ -2018,29 +2016,27 @@ msgstr "Λήξη"
 
 #: src/red_prefs.py:312
 msgid "Cache expires"
-msgstr ""
+msgstr "Η cache λήγει"
 
 #: src/red_prefs.py:318
 msgid "Maximum age in days:"
-msgstr ""
+msgstr "Μέγιστο όριο σε ημέρες:"
 
 #: src/red_prefs.py:329
 msgid "Maximum size in MB:"
-msgstr ""
+msgstr "Μέγιστο μέγεθος σε MB:"
 
 #: src/red_prefs.py:340
 msgid "Current cache size:"
-msgstr ""
+msgstr "Τρέχον μέγεθος cache:"
 
 #: src/red_prefs.py:357
-#, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr "Θέλετε σίγουρα να διακόψετε την τρέχουσα μεταφορά αρχείου;"
+msgstr "Θέλετε σίγουρα να διαγράψετε τα αρχεία πακέτου από την cache?"
 
 #: src/red_prefs.py:373
-#, fuzzy
 msgid "Empty Cache"
-msgstr "Ήδη μεταφορτωμένα πακέτα"
+msgstr "Εκκαθάριση Cache"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:395
@@ -2110,16 +2106,15 @@ msgstr "Ανανεώσεις"
 
 #: src/red_searchbox.py:148
 msgid "Uninstalled Packages"
-msgstr "Απεγκαταστημένα Πακέτα"
+msgstr "Απεγκαταστημένα πακέτα"
 
 #: src/red_searchbox.py:149
 msgid "Installed Packages"
-msgstr "Εγκατεστημένα Πακέτα"
+msgstr "Εγκατεστημένα πακέτα"
 
 #: src/red_searchbox.py:174
-#, fuzzy
 msgid "All Sections"
-msgstr "Τοποθεσία"
+msgstr "Όλες οι ενότητες"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
@@ -2127,15 +2122,15 @@ msgstr "Παραγωγικότητα"
 
 #: src/red_searchbox.py:176
 msgid "Imaging"
-msgstr "Επεξεργασία Εικόνας"
+msgstr "Επεξεργασία εικόνας"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
-msgstr ""
+msgstr "Διαχ. προσωπικών πληροφ."
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr "Γραφικό Περιβάλλον"
+msgstr "X Windows"
 
 #: src/red_searchbox.py:179
 msgid "Games"
@@ -2167,11 +2162,11 @@ msgstr "Βιβλιοθήκες"
 
 #: src/red_searchbox.py:186
 msgid "Development"
-msgstr "Ανάπτυξη Εφαρμογών"
+msgstr "Ανάπτυξη εφαρμογών"
 
 #: src/red_searchbox.py:187
 msgid "Development Tools"
-msgstr "Εργαλεία Ανάπτυξης Εφαρμογών"
+msgstr "Εργαλεία ανάπτυξης εφαρμογών"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
@@ -2230,19 +2225,18 @@ msgid "Search"
 msgstr "Αναζήτηση"
 
 #: src/red_search.py:38
-#, fuzzy
 msgid "S_earch Packages"
-msgstr "Πακέτο"
+msgstr "Ανα_ζήτηση πακέτων"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
 msgid "Searching for matching packages..."
-msgstr ""
+msgstr "Αναζήτηση για πακέτα που ταιριάζουν"
 
 #: src/red_search.py:109
 msgid "No matching packages found."
-msgstr ""
+msgstr "Δεν βρέθηκαν πακέτα να ταιριάζουν."
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2265,39 +2259,38 @@ msgstr ""
 #. We only allow one server info window at a time
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
-msgstr ""
+msgstr "Ο δαίμονας παρουσιάστηκε ως:"
 
 #: src/red_serverinfo.py:57
 msgid "System type"
-msgstr ""
+msgstr "Τύπος συστήματος"
 
 #: src/red_serverinfo.py:60
 msgid "Server URL"
-msgstr ""
+msgstr "URL εξυπηρετητή"
 
 #: src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
-msgstr ""
+msgstr "Ο εξυπηρετητής υποστηρίζει αναβαθμισμένες λειτουργίες."
 
 #. couldn't ping the server
 #: src/red_serverinfo.py:68
-#, fuzzy
 msgid "Unable to contact the daemon."
-msgstr "Αποτυχία διαπίστευσης"
+msgstr "Αποτυχία επικοινωνίας με τον δαίμονα."
 
 #: src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
-msgstr ""
+msgstr "Dump daemon info σε αρχείο XML"
 
 #: src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
-msgstr ""
+msgstr "Αδυναμία ανοίγματος αρχείου '%s': %s"
 
 #. We only allow one filesel window at a time
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
-msgstr ""
+msgstr "Επιλογή αρχείου για εγγραφή  XML σε"
 
 #. need trailing /
 #. ##
@@ -2373,6 +2366,58 @@ msgstr ""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "Επεξεργασία υπηρεσιών"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "Απομακ_ρυμένη υπηρεσία"
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr "Προσθήκη _υπηρεσίας"
+
+#: src/red_services.py:226
+msgid "Add Service"
+msgstr "Προσθήκη υπηρεσίας"
+
+#: src/red_services.py:231
+msgid "Service URL"
+msgstr "URL υπηρεσίας"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
@@ -2393,30 +2438,29 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_sidebar.py:61 src/red_transaction.py:112
-#, fuzzy
 msgid "Pending Actions"
-msgstr "Τοποθεσία"
+msgstr "Εκκρεμείς ενέργειες"
 
 #. PendingOpsListener implementation
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d εκκρεμής εγκατάσταση"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d εκκρεμείς εγκαταστάσεις"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d εκκρεμής απομάκρυνση"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d εκκρεμείς απομακρύνσεις"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
@@ -2506,9 +2550,9 @@ msgid "Channel Name"
 msgstr "Όνομα Καναλιού"
 
 #: src/red_subscriptions.py:78
-#, fuzzy, python-format
+#, python-format
 msgid "%s Channel Subscriptions"
-msgstr "Εγγρα_φές"
+msgstr "%s Συνδρομές καναλιών"
 
 #. FIXME: Make transient of app
 #: src/red_subscriptions.py:99
@@ -2516,6 +2560,8 @@ msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
 msgstr ""
+"Δεν έχετε τα δικαιώματα να εγγραφείτε ή να αποχωρήσετε από κανάλια. Δεν θα "
+"μπορείτε να κάνετε αλλαγές σε συνδρομές."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2576,14 +2622,12 @@ msgstr "Δίχως τίτλο"
 #. ##
 #. ########################################################################
 #: src/red_transaction.py:75
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "Θέλετε σίγουρα να διακόψετε την τρέχουσα μεταφορά αρχείου;"
+msgstr "Θέλετε σίγουρα να διακόψετε?"
 
 #: src/red_transaction.py:115
-#, fuzzy
 msgid "_Pending Actions"
-msgstr "Εγγρα_φές"
+msgstr "Ε_κκρεμείς ενέργειες"
 
 #: src/red_updates.py:34
 msgid "_Updates"
@@ -2605,7 +2649,7 @@ msgstr ""
 
 #: src/red_users.py:131
 msgid "Privilege"
-msgstr ""
+msgstr "Προνόμιο"
 
 #. Warn the user about removing their own superuser priv
 #: src/red_users.py:148
@@ -2615,6 +2659,10 @@ msgid ""
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
+"Αν απομακρύνετε τα προνόμια υπερχρήστη από τον εαυτό σας, δεν θα μπορείτε να "
+"τα ξαναπροσθέσετε.\n"
+"\n"
+"Είστε σίγουροι ότι θέλετε να το κάνετε?"
 
 #. We want opposite state
 #: src/red_users.py:166
@@ -2623,1017 +2671,60 @@ msgstr "Ενεργοποιημένο"
 
 #: src/red_users.py:181
 msgid "Edit Users"
-msgstr ""
+msgstr "Επεξεργασία χρηστών"
 
 #: src/red_users.py:196 src/red_users.py:399
-#, fuzzy
 msgid "Confirm:"
-msgstr "Συγκρούσεις:"
+msgstr "Επιβεβαίωση:"
 
 #: src/red_users.py:217
-#, fuzzy
 msgid "Set Password"
-msgstr "Κωδικός χρήστη"
+msgstr "Ορισμός κωδικού"
 
 #. else:
 #: src/red_users.py:246 src/red_users.py:422
 msgid "Password can not be empty."
-msgstr ""
+msgstr "Ο κωδικός δεν πρέπει να είναι κενός."
 
 #: src/red_users.py:248 src/red_users.py:424
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Οι κωδικοί δεν ταιριάζουν"
 
 #: src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
-msgstr ""
+msgstr "Ορισμός  %s's κωδικού "
 
 #: src/red_users.py:289
 msgid "Users"
-msgstr ""
+msgstr "Χρήστες"
 
 #: src/red_users.py:306
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: src/red_users.py:320
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Θέλετε σίγουρα να διακόψετε την τρέχουσα μεταφορά αρχείου;"
+msgstr "Θέλετε σίγουρα να διαγράψετε '%s'?"
 
 #: src/red_users.py:326
 msgid "Remove"
 msgstr "Απεγκατάσταση"
 
 #: src/red_users.py:339
-#, fuzzy
 msgid "Privileges"
-msgstr "Παρέχει:"
+msgstr "Προνόμια"
 
 #: src/red_users.py:379
 msgid "Add new user"
-msgstr ""
+msgstr "Προσθήκη νέου χρήστη"
 
 #: src/red_users.py:426
 msgid "Invalid user name."
-msgstr ""
+msgstr "Μη έγκυρο όνομα χρήστη"
 
 #: src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
-msgstr ""
-
-#~ msgid ""
-#~ "System could not be activated: Invalid activation code or email address."
-#~ msgstr ""
-#~ "Το σύστημα δε μπόρεσε να ενεργοποιηθεί: Ακατάλληλος κωδικός ενεργοποίησης "
-#~ "ή ηλεκ. διεύθυνση."
-
-#~ msgid "Mirrors"
-#~ msgstr "Συστήματα Καθεπτρισμού"
-
-#, fuzzy
-#~ msgid "Update Failed"
-#~ msgstr "Αναβάθμιση"
-
-#, fuzzy
-#~ msgid "Mark for Installation"
-#~ msgstr "Εγκατάσταση Πακέτου"
-
-#, fuzzy
-#~ msgid "Mark for Removal"
-#~ msgstr "Απεγκατάσταση Πακέτου"
-
-#~ msgid "Cancel"
-#~ msgstr "Ακύρωση"
-
-#~ msgid "Information"
-#~ msgstr "Πληροφορίες"
-
-#, fuzzy
-#~ msgid "View"
-#~ msgstr "_Προβολή"
-
-#, fuzzy
-#~ msgid "Update Summary"
-#~ msgstr "Περίληψη"
-
-#~ msgid "_Verify Installed Packages"
-#~ msgstr "_Επιβεβαίωση Εγκατεστημένων Πακέτων"
-
-#~ msgid "_Install Local Packages..."
-#~ msgstr "_Εγκατάσταση Τοπικών Πακέτων..."
-
-#~ msgid "_Refresh"
-#~ msgstr "_Αναβάθμιση"
-
-#~ msgid "_Unsubscribe"
-#~ msgstr "_Διαγραφή"
-
-#~ msgid "_Users Manual"
-#~ msgstr "_Εγχειρίδιο Χρήστη"
-
-#~ msgid "Main Page"
-#~ msgstr "Κύρια Σελίδα"
-
-#~ msgid "Pause"
-#~ msgstr "Παύση"
-
-#~ msgid "Download"
-#~ msgstr "Μεταφόρτωση"
-
-#~ msgid "OK"
-#~ msgstr "Εντάξει"
-
-#~ msgid "Error Page"
-#~ msgstr "Σελίδα Σφάλματος"
-
-#~ msgid "Misc Page"
-#~ msgstr "Σελίδα Διαφόρων"
-
-#~ msgid "Executive Summary"
-#~ msgstr "Γενική Περίληψη"
-
-#~ msgid ""
-#~ "Update packages individually (NOTE: This is an unsupported operation)"
-#~ msgstr ""
-#~ "Αναβάθμιση πακέτων ατομικά (ΣΗΜΕΙΩΣΗ: Αυτή είναι μια μη υποστηριζόμενη "
-#~ "λειτουργία)"
-
-#~ msgid "Actual widget tag"
-#~ msgstr "Πραγματική ετικέτα στοιχείου γραφικού περιβάλλοντος"
-
-#~ msgid "No Proxy"
-#~ msgstr "Χωρίς Διαμεσολαβητή"
-
-#~ msgid "HTTP Proxy"
-#~ msgstr "Διαμεσολαβητής HTTP"
-
-#~ msgid "SOCKS 4 Proxy"
-#~ msgstr "Διαμεσολαβητής SOCKS 4"
-
-#~ msgid "SOCKS 5 Proxy"
-#~ msgstr "Διαμεσολαβητής SOCKS 5"
-
-#~ msgid "Host"
-#~ msgstr "Σύστημα"
-
-#~ msgid "Port"
-#~ msgstr "Θύρα"
-
-#~ msgid "Authenticated Proxy"
-#~ msgstr "Διαπιστευμένος Διαμεσολαβητής"
-
-#~ msgid "Enable caching of downloaded data"
-#~ msgstr "Ενεργοποίηση της χρήσης ήδη μεταφορτωμένων δεδομένων"
-
-#~ msgid "Allowed cache difference:"
-#~ msgstr "Επιτρεπόμενη διαφορά μεταξύ μεταφορτωμένων αρχείων:"
-
-#~ msgid "seconds"
-#~ msgstr "δευτερόλεπτα"
-
-#~ msgid "Clear cached packages on exit"
-#~ msgstr "Καθαρισμός των ήδη μεταφορτωμένων πακέτων κατά την έξοδο"
-
-#~ msgid "User Interface"
-#~ msgstr "Γραφική Διασύνδεση Χρήστη"
-
-#~ msgid "Show more descriptive package names instead of the actual names."
-#~ msgstr "Εμφάνιση περιγραφικών ονομάτων πακέτων αντί των καθεαυτού ονομάτων."
-
-#~ msgid ""
-#~ "Ask before installing packages with signatures that cannot be verified."
-#~ msgstr "Επερώτηση πριν την εγκατάσταση πακέτων χωρίς επιβεβαίωση υπογραφών."
-
-#~ msgid "General"
-#~ msgstr "Γενικά"
-
-#~ msgid "Ximian Red Carpet - Search"
-#~ msgstr "Ximian Red Carpet - Αναζήτηση"
-
-#~ msgid "Find text:"
-#~ msgstr "Εύρεση κειμένου:"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Διαφοροποίηση κεφαλαίων/πεζών"
-
-#~ msgid "Ximian Red Carpet - Please Wait"
-#~ msgstr "Ximian Red Carpet - Παρακαλώ Περιμένετε"
-
-#~ msgid ""
-#~ "Please wait while Red Carpet downloads channel information relevant to "
-#~ "your system."
-#~ msgstr ""
-#~ "Παρακαλώ περιμένετε καθώς το Red Carpet μεταφορτώνει τις πληροφορίες\n"
-#~ "καναλιού που είναι σχετικές με το σύστημά σας."
-
-#~ msgid "%P%%"
-#~ msgstr "%P%%"
-
-#~ msgid "%P%% (%V of %U)"
-#~ msgstr "%P%% (%V από %U)"
-
-#~ msgid "Ximian Red Carpet - Verification"
-#~ msgstr "Ximian Red Carpet - Επιβεβαίωση"
-
-#~ msgid ""
-#~ "CAUTION: Red Carpet is unable to ensure the cryptographic integrity of "
-#~ "this package. The package might not be signed, or Red Carpet may not have "
-#~ "the key needed to verify this package. You may continue and install this "
-#~ "package, but Red Carpet cannot ensure that it is safe or from a trusted "
-#~ "source."
-#~ msgstr ""
-#~ "ΠΡΟΣΟΧΗ: Το Red Carpet δεν κατάφερε να επιβεβαιώσει την κρυπτογραφική "
-#~ "εγκυρότητα αυτού του πακέτου. Το πακέτο μπορεί να μην έχει υπογραφή ή το "
-#~ "Red Carpet μπορεί να μην έχει το κλειδί που απαιτείται για την "
-#~ "επιβεβαίωση. Μπορείτε να συνεχίσετε και να εγκαταστήσετε το πακέτο, "
-#~ "ωστόσο το Red Carpet δε μπορεί να εγγυηθεί ότι είναι ασφαλές ή ότι "
-#~ "προέρχεται από ασφαλή πηγή."
-
-#~ msgid "Do you wish to install this package anyway?"
-#~ msgstr "Θέλετε να εγκαταστήσετε αυτό το πακέτου ούτως ή άλλως;"
-
-#~ msgid "Do not show this warning again."
-#~ msgstr "Να μην εμφανιστεί αυτή η προειδοποίηση ξανά."
-
-#~ msgid ""
-#~ "Warning! Removing this many packages can be dangerous\n"
-#~ "and should only be done if you know what you are doing.\n"
-#~ "\n"
-#~ "Are you sure you want to proceed with this transaction?"
-#~ msgstr ""
-#~ "Προειδοποίηση! Η διαγραφή τόσο πολλών πακέτων μπορεί να\n"
-#~ "είναι επικίνδυνη για το σύστημά σας και πρέπει να γίνεται όταν\n"
-#~ "είστε σίγουρος/η για το τί κάνετε.\n"
-#~ "\n"
-#~ "Θέλετε σίγουρα να συνεχίσετε με αυτή τη διαδικασία;"
-
-#~ msgid "Red Carpet - Warning"
-#~ msgstr "Red Carpet - Προειδοποίηση"
-
-#~ msgid ""
-#~ "If you are behind a firewall and use a proxy to access web sites, you "
-#~ "should\n"
-#~ "enable proxy support here. If your proxy requires authentication, select\n"
-#~ "\"Use authentication\" and enter your username and password.\n"
-#~ "\n"
-#~ "You can change these settings in the future by selecting Preferences from "
-#~ "the\n"
-#~ "Settings menu. These settings are on the Proxy tab.\n"
-#~ "\n"
-#~ "When you have correctly entered your proxy information, click OK to "
-#~ "continue.\n"
-#~ msgstr ""
-#~ "Αν είστε πίσω από firewall και κάνετε χρήση διαμεσολαβητή για την "
-#~ "πρόσβαση\n"
-#~ "σε δικτυακούς τόπους, πρέπει να ενεργοποιήσετε την υποστήριξη "
-#~ "διαμεσολαβητή\n"
-#~ "που είναι παρακάτω. Αν ο διαμεσολαβητής απαιτεί διαπίστευση, επιλέξτε\n"
-#~ "\"Με χρήση διαπίστευσης\" και εισάγετε το όνομα και κωδικό χρήστη.\n"
-#~ "\n"
-#~ "Μπορείτε να αλλάξετε αυτές τις επιλογές επιλέγοντας Προτιμίσεις από το\n"
-#~ "μενού Ρυθμίσεις. Αυτές οι επιλογές είναι στην όψη Διαμεσολαβητής.\n"
-#~ "\n"
-#~ "Αφού εισάγετε σωστά τις πληροφορίες διαμεσολαβητή, πατήστε Εντάξει για\n"
-#~ "να συνεχίσετε.\n"
-
-#~ msgid "Use authentication"
-#~ msgstr "Με χρήση διαπίστευσης"
-
-#~ msgid ""
-#~ "Hi. Thanks for testing out this beta version of Red Carpet.\n"
-#~ "This new version includes a number of improvements, including\n"
-#~ "improved dependency checking, RPM and dpkg backend\n"
-#~ "improvements for faster and more successful transactions,\n"
-#~ "a new and improved transfer layer, and more.\n"
-#~ "\n"
-#~ "Please keep in mind, however, that this version is not ready for\n"
-#~ "production use. You should expect things to break. If you\n"
-#~ "encounter a bug, please file it at the Ximian Bugzilla at\n"
-#~ "http://bugzilla.ximian.com and ensure that you file the bug\n"
-#~ "against the correct version (1.0.93). This will make everyone's\n"
-#~ "life easier. When reporting a bug via bugzilla or to the mailing\n"
-#~ "lists, please include the name and version of your distribution\n"
-#~ "and, if you encounter a problem when trying to install or remove\n"
-#~ "packages, the packages that you were trying to add or remove.\n"
-#~ "\n"
-#~ "Thanks again for testing Red Carpet; your contributions as\n"
-#~ "testers are paramount to its improvement.\n"
-#~ "\n"
-#~ "The Red Carpet team"
-#~ msgstr ""
-#~ "Γεια σας και ευχαριστούμε που δοκιμάζετε αυτή τη δοκιμαστική έκδοση\n"
-#~ "του Red Carpet. Αυτή η νέα έκδοση περιλαμβάνει μια σειρά από \n"
-#~ "βελτιώσεις σταθερότητας όπως επιπλέον πληροφορίες εξαρτήσεων κατά\n"
-#~ "την απεγκατάσταση πακέτων, βελτιώσεις στα συστήματα RPM και dpkg\n"
-#~ "για ταχύτερες και πιο επιτυχείς συνναλαγές, ένα νέο και βελτιωμένο\n"
-#~ "στρώμα μεταφοράς αρχείων και πολλά άλλα.\n"
-#~ "\n"
-#~ "Παρακαλούμε προσέξτε ότι αυτή η συγκεκριμένη έκδοση δεν είναι\n"
-#~ "εντελώς έτοιμη για χρήση από τον καθένα και θα πρέπει να αναμένετε\n"
-#~ "κάποιες λειτουργίες να μην είναι επιτυχείς. Αν συναντήσετε κάποιο "
-#~ "σφάλμα,\n"
-#~ "παρακαλούμε να το δηλώσετε στο http://bugzilla.ximian.com και\n"
-#~ "προσέξτε να το τοποθετήσετε κάτω από τη σωστή έκδοση του \n"
-#~ "προγράμματος (1.0.93). Αυτό θα κάνει τη ζωή του καθενός ευκολότερη.\n"
-#~ "Όταν αναφέρετε σφάλματα μέσω του bugzilla ή μέσω των λιστών \n"
-#~ "συνδρομητών, παρακαλώ να συμπεριλαμβάνετε το όνομα και την\n"
-#~ "έκδοση της διανομής καθώς και το αν εμφανίζεται το πρόβλημα κατά\n"
-#~ "την εγκατάσταση ή απεγκατάσταση, μαζί με τα πακέτα που προσθέτετε\n"
-#~ "ή αφαιρείτε.\n"
-#~ "\n"
-#~ "Ευχαριστούμε ξανά που δοκιμάζετε το Red Carpet, η συμβολή σας ως\n"
-#~ "δοκιμαστές είναι πολύτιμη στη βελτίωσή του.\n"
-#~ "\n"
-#~ "Η ομάδα του Red Carpet"
-
-#~ msgid "Do not show this dialog again"
-#~ msgstr "Να μην εμφανιστεί αυτός ο διάλογος ξανά"
-
-#~ msgid "Downloading"
-#~ msgstr "Μεταφορτώνεται"
-
-#~ msgid "Done"
-#~ msgstr "Έγινε"
-
-#~ msgid "Percent Complete"
-#~ msgstr "Ποσοστό Ολοκλήρωσης"
-
-#, fuzzy
-#~ msgid ""
-#~ "The packages you requested are being downloaded and installed on your "
-#~ "system."
-#~ msgstr "Τα επόμενα πακέτα από αυτό το κανάλι εγκαθίστανται στο σύστημά σας."
-
-#, fuzzy
-#~ msgid "The packages you selected are being removed from your system"
-#~ msgstr "Τα επόμενα πακέτα από αυτό το κανάλι εγκαθίστανται στο σύστημά σας."
-
-#, fuzzy
-#~ msgid "The packages you selected are being removed from your system."
-#~ msgstr "Τα επόμενα πακέτα από αυτό το κανάλι εγκαθίστανται στο σύστημά σας."
-
-#~ msgid "Keyword not found"
-#~ msgstr "Δε βρέθηκε το λεκτικό"
-
-#~ msgid "<!--html-->Failed Dependencies"
-#~ msgstr "<!--html-->Αποτυχία Εξαρτήσεων"
-
-#~ msgid ""
-#~ "<!--html-->Red Carpet was unable to successfully locate all the necessary "
-#~ "files to complete this request. The errors and conflicts that occured are "
-#~ "listed here, along with a suggested action to take."
-#~ msgstr ""
-#~ "<!--html-->Το Red Carpet δε μπόρεσε να εντοπίσει επιτυχώς όλα τα "
-#~ "απαραίτητα αρχεία για να ολοκληρώσει την αίτηση. Τα σφάλματα και οι "
-#~ "συγκρούσεις πακέτων εμφανίζονται εδώ, μαζί με μια προτιμώμενη "
-#~ "αντιμετώπιση."
-
-#~ msgid "needed by"
-#~ msgstr "απαιτείται από"
-
-#~ msgid "needs %s %s %s, which is being removed"
-#~ msgstr "απαιτεί %s %s %s, που διαγράφεται"
-
-#~ msgid "needs %s %s %s, which cannot be found"
-#~ msgstr "απαιτεί %s %s %s, που δε μπορεί να βρεθεί"
-
-#~ msgid "conflicts with %s %s %s"
-#~ msgstr "συγκρούεται με %s %s %s"
-
-#~ msgid "<!--html-->This package will be pulled in from the %s channel."
-#~ msgstr "<!--html-->Αυτό το πακέτο θα ληφθεί από το κανάλι %s."
-
-#~ msgid ""
-#~ "<!--html-->This package will be pulled in from the <b>unsubscribed</b> %s "
-#~ "channel."
-#~ msgstr ""
-#~ "<!--html-->Αυτό το πακέτο θα ληφθεί από το κανάλι %s στο οποίο δεν είστε "
-#~ "<b>συνδρομητής/τρια</b>."
-
-#~ msgid "<!--html-->Package Dependencies"
-#~ msgstr "<!--html-->Εξαρτήσεις Πακέτων"
-
-#~ msgid ""
-#~ "<!--html-->Your system's package database is valid!<br><br>Click the "
-#~ "Previous button to go back."
-#~ msgstr ""
-#~ "<!--html-->Η βάση δεδομένων των πακέτων του συστήματός σας είναι έγκυρη!"
-#~ "<br><br>Πατήστε το πλήκτρο Προηγούμενο για να γυρίσετε πίσω."
-
-#~ msgid "<b>1</b> Requested Package"
-#~ msgstr "<b>1</b> Πακέτο που ζητήθηκε"
-
-#~ msgid "<b>%d</b> %s"
-#~ msgstr "<b>%d</b> %s"
-
-#~ msgid "Requested Packages"
-#~ msgstr "Πακέτα που ζητήθηκαν"
-
-#~ msgid "<b>1</b> Necessary Removal"
-#~ msgstr "<b>1</b> Απαιτούμενη Διαγραφή"
-
-#~ msgid "Necessary Removals"
-#~ msgstr "Απαιτούμενες Διαγραφές"
-
-#~ msgid "<b>1</b> Necessary Installation"
-#~ msgstr "<b>1</b> Απαιτούμενη Εγκατάσταση"
-
-#~ msgid "Necessary Installations"
-#~ msgstr "Απαιτούμενες Εγκαταστάσεις"
-
-#~ msgid "<!--html--><b>%s</b> will need to be downloaded. "
-#~ msgstr "<!--html-->Το <b>%s</b> θα πρέπει να μεταφορτωθεί."
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be used."
-#~ msgstr ""
-#~ "<!--html-->Μετά τις λειτουργίες, θα χρησιμοποιθούν <b>%s</b> χώρου στο "
-#~ "δίσκο."
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be freed."
-#~ msgstr ""
-#~ "<!--html-->Μετά τις λειτουργίες θα ελευθερωθούν <b>%s</b> χώρου δίσκου."
-
-#~ msgid ""
-#~ "<!--html-->After operations, no additional space will be freed or used."
-#~ msgstr ""
-#~ "<!--html-->Μετά τις λειτουργίες, δε θα ελευθερωθεί ή δεσμευθεί επιπλέον "
-#~ "χώρος δίσκου."
-
-#~ msgid ""
-#~ "<!--html-->You have insufficient disk space to download the requested "
-#~ "packages. You must free up some disk space before you can continue. Some "
-#~ "options include:"
-#~ msgstr ""
-#~ "<!--html-->Δεν έχετε επαρκή χώρο στο δίσκο για να μεταφορτώσετε τα "
-#~ "απαιτούμενα πακέτα. Πρέπει να ελευθερώσετε χώρο στο δίσκο πριν "
-#~ "συνεχίσετε. Μερικές επιλογές είναι:"
-
-#~ msgid "<!--html-->Removing some packages from your system"
-#~ msgstr "<!--html-->Διαγραφή πακέτων από το σύστημά σας"
-
-#~ msgid "Changing your <a href=\"updater:prefs_cache\">cache settings</a>."
-#~ msgstr ""
-#~ "Αλλαγή των <a href=\"updater:prefs_cache\">ρυθμίσεων ήδη μεταφορτωμένων "
-#~ "πακέτων</a>."
-
-#~ msgid "<a href=\"updater:cache_clear\">Clearing your cache</a>."
-#~ msgstr ""
-#~ "<a href=\"updater:cache_clear\">Καθαρισμός των ήδη μεταφορτωμένων "
-#~ "πακέτων</a>."
-
-#~ msgid ""
-#~ "<font color=#ff0000>Warning!</font> There may not be sufficient disk "
-#~ "space to install this package, and installation of this package may fail. "
-#~ "You should free up some disk space before continuing."
-#~ msgstr ""
-#~ "<font color=#ff0000>Προειδοποίηση!</font> Ίσως να μην υπάρχει επαρκής "
-#~ "χώρος στο δίσκο για την εγκατάσταση αυτού του πακέτου και η εγκατάστασή "
-#~ "του μπορεί να αποτύχει. Συνίσταται να ελευθερώσετε χώρο στο δίσκο πριν "
-#~ "συνεχίσετε."
-
-#~ msgid "1&nbsp;Package"
-#~ msgstr "1&nbsp;Πακέτο"
-
-#~ msgid "%d&nbsp;Packages"
-#~ msgstr "%d&nbsp;Πακέτα"
-
-#~ msgid "<html><body><b>Please wait, loading page...</b></body></html>"
-#~ msgstr ""
-#~ "<html><body><b>Παρακαλώ περιμένετε, γίνετε μεταφόρτωση της σελίδας...</"
-#~ "b></body></html>"
-
-#~ msgid ""
-#~ "You have no packages from this channel currently installed on your system."
-#~ msgstr ""
-#~ "Δεν έχετε κανένα πακέτο από αυτό το κανάλι ήδη εγκατεστημένο στο σύστημά "
-#~ "σας."
-
-#, fuzzy
-#~ msgid ""
-#~ "You can visit the channel's <a href=\"updater:info_page\">about page</a> "
-#~ "to get more information about what software is available, or you can go "
-#~ "directly to the <a href=\"updater:available_page\">install page</a> to "
-#~ "install software."
-#~ msgstr ""
-#~ "Μπορείτε να επισκεφθείτε τη σελίδα <a href=\"updater:about\">πληροφοριών</"
-#~ "a> του καναλιού για να πάρετε περισσότερες πληροφορίες σχετικά με το "
-#~ "διαθέσιμο λογισμικό ή να πάτε κατευθείαν στη <a href=\"updater:"
-#~ "available_page\">σελίδα εγκατάστασης</a> για την εγκατάσταση του "
-#~ "λογισμικού."
-
-#, fuzzy
-#~ msgid "View the <a href=\"updater:info_page\">about page</a>."
-#~ msgstr "Προβολή της <a href=\"updater:about\">σελίδας πληροφοριών</a>."
-
-#~ msgid "View the <a href=\"updater:available_page\">install page</a>."
-#~ msgstr ""
-#~ "Προβολή της <a href=\"updater:available_page\">σελίδας εγκατάστασης</a>."
-
-#~ msgid "Return to the <a href=\"updater:summary\">Summary</a>."
-#~ msgstr "Επιστροφή στη <a href=\"updater:summary\">σελίδα Περίληψης</a>."
-
-#~ msgid ""
-#~ "You don't have any packages installed from this channel. The following "
-#~ "pre-defined sets of packages are available, or you may select individual "
-#~ "packages from the <a href=updater:available_page>Install page</a>."
-#~ msgstr ""
-#~ "Δεν έχετε κανένα πακέτο εγκατεστημένο από αυτό το κανάλι. Τα παρακάτω προ-"
-#~ "ρυθμισμένα σύνολα πακέτων είναι διαθέσιμα ή εναλλακτικά μπορείτε να "
-#~ "επιλέξετε τα πακέτα ατομικά από τη <a href=updater:available_page>Σελίδα "
-#~ "Εγκατάστασης</a>."
-
-#~ msgid "All of the software from this channel is up-to-date."
-#~ msgstr "Όλο το λογισμικό από αυτό το κανάλι είναι αναβαθμίσμένο."
-
-#~ msgid ""
-#~ "To install new software from this channel, visit the <a href=\"updater:"
-#~ "available_page\">install page</a>."
-#~ msgstr ""
-#~ "Για να εγκαταστήσετε νέο λογισμικό από αυτό το κανάλι, επισκεφτείτε τη <a "
-#~ "href=\"updater:available_page\">σελίδα εγκατάστασης</a>."
-
-#~ msgid ""
-#~ "To remove already installed software from this channel, visit the <a href="
-#~ "\"updater:installed_page\">remove page</a>."
-#~ msgstr ""
-#~ "Για να διαγράψετε ήδη εγκατεστημένο λογισμικό από αυτό το κανάλι, "
-#~ "επισκεφθείτε τη <a href=\"updater:installed_page\">σελίδα απεγκατάστασης</"
-#~ "a>."
-
-#~ msgid ""
-#~ "There is <b>1 update</b> available in this channel, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Υπάρχει <b>1 αναβάθμιση</b> διαθέσιμη σε αυτό το κανάλι, σε σύνολο <b>%s</"
-#~ "b> δεδομένων για μεταφόρτωση."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available in this channel, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Υπάρχουν <b>%s αναβαθμίσεις</b> διαθέσιμες σε αυτό το κανάλι, σε σύνολο "
-#~ "<b>%s</b> δεδομένων για μεταφόρτωση."
-
-#~ msgid ""
-#~ "  You will not be able to update your system unless you run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "  Δε θα μπορέσετε να αναβαθμίσετε το σύστημά σας αν δεν εκτελέσετε το Red "
-#~ "Carpet ως διαχειριστής."
-
-#~ msgid "Essential Updates"
-#~ msgstr "Αναγκαίες Ενημερώσεις"
-
-#~ msgid "Urgent Updates"
-#~ msgstr "Επείγουσες Ενημερώσεις"
-
-#~ msgid "Suggested Updates"
-#~ msgstr "Προτιμώμενες Ενημερώσεις"
-
-#~ msgid "Feature Enhancements"
-#~ msgstr "Βελτιώσεις Χαρακτηριστικών"
-
-#~ msgid "Minor Fixes/Updates"
-#~ msgstr "Μικρές Διορθώσεις/Ενημερώσεις"
-
-#~ msgid "1 update"
-#~ msgstr "1 αναβάθμιση"
-
-#~ msgid "%d updates"
-#~ msgstr "%d αναβαθμίσεις"
-
-#~ msgid ""
-#~ "The following packages from this channel are currently installed on your "
-#~ "system."
-#~ msgstr "Τα επόμενα πακέτα από αυτό το κανάλι εγκαθίστανται στο σύστημά σας."
-
-#~ msgid ""
-#~ "<!--html-->  To remove packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  Για να απεγκαταστήσετε πακέτα πρέπει να εκτελέσετε το Red "
-#~ "Carpet ως διαχειριστής."
-
-#~ msgid ""
-#~ "<p>All packages available in this channel are already installed on your "
-#~ "system.</p>"
-#~ msgstr ""
-#~ "<p>Όλα τα πακέτα σε αυτό το κανάλι είναι ήδη εγκατεστημένα στο σύστημά "
-#~ "σας.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:update_page\">Update page</a> to "
-#~ "view available updates for your software in this channel, or return to "
-#~ "the <a href=\"updater:summary\">Summary</a> to view all available updates."
-#~ "</p>"
-#~ msgstr ""
-#~ "<p>Μπορείτε να πάτε στη <a href=\"updater:update_page\">Σελίδα "
-#~ "Αναβάθμισης</a> για να δείτε τις διαθέσιμες αναβαθμίσεις για το λογισμικό "
-#~ "του καναλιού αυτού ή να επιστρέψτε στη <a href=\"updater:summary"
-#~ "\">Περίληψη</a> για να δείτε όλες τις διαθέσιμες αναβαθμίσεις.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:summary\">Summary</a> to view all "
-#~ "available updates for your system.</p>"
-#~ msgstr ""
-#~ "<p>Μπορείτε να πάτε στην <a href=\"updater:summary\">Περίληψη</a> για να "
-#~ "δείτε όλες τις διαθέσιμες αναθμίσεις για το σύστημά σας.</p>"
-
-#~ msgid ""
-#~ "<!--html-->The following packages from this channel are available for "
-#~ "installation."
-#~ msgstr ""
-#~ "<!--html-->Τα παρακάτω πακέτα από το τρέχον κανάλι είναι διαθέσιμα για "
-#~ "εγκατάσταση."
-
-#~ msgid ""
-#~ " Package names that are in <font color=\"#777777\">gray</font> indicate "
-#~ "that a newer version of this package is already installed."
-#~ msgstr ""
-#~ " Πακέτα που το όνομά τους είναι σε <font color=\"#777777\">γκρι</font> "
-#~ "υποδηλώνουν ότι υπάρχει ήδη εγκατεστημένη νεώτερη έκδοση."
-
-#~ msgid ""
-#~ "<!--html-->  To install packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  Για την εγκατάσταση πακέτων, πρέπει να εκτελέσετε το Red "
-#~ "Carpet ως διαχειριστής."
-
-#~ msgid "Name:"
-#~ msgstr "Όνομα:"
-
-#~ msgid "Installed Version:"
-#~ msgstr "Εγκατεστημένη Έκδοση:"
-
-#~ msgid "Size:"
-#~ msgstr "Μέγεθος:"
-
-#~ msgid "bytes"
-#~ msgstr "byte"
-
-#~ msgid "Summary:"
-#~ msgstr "Περίληψη:"
-
-#~ msgid "or"
-#~ msgstr "ή"
-
-#~ msgid " Update Now! "
-#~ msgstr "Αναβάθμιση Τώρα! "
-
-#~ msgid " Update Packages "
-#~ msgstr " Αναβάθμιση Πακέτων "
-
-#~ msgid " Remove Packages "
-#~ msgstr " Απεγκατάσταση Πακέτων "
-
-#~ msgid " Unsubscribe "
-#~ msgstr " Απεγγραφή "
-
-#~ msgid " Subscribe "
-#~ msgstr " Εγγραφή "
-
-#~ msgid "Keyword&nbsp;Search:"
-#~ msgstr "Αναζήτηση&nbsp;με&nbsp;λεκτικό:"
-
-#~ msgid "Prefs"
-#~ msgstr "Προτιμήσεις"
-
-#~ msgid "User Interface Design"
-#~ msgstr "Σχεδίαση Γραφικής Διασύνδεσης Χρήστη"
-
-#~ msgid "Artwork"
-#~ msgstr "Γραφικά"
-
-#~ msgid ""
-#~ "<p>Red Carpet is the Ximian package management system and software "
-#~ "portal, allowing you to install, upgrade, and remove packages on your "
-#~ "system. For more information, please visit the <a href=\"http://www."
-#~ "ximian.com/redcarpet/\">Red Carpet web site</a>.</p><p>We welcome your "
-#~ "feedback and bug reports, either through the <a href=\"http://bugzilla."
-#~ "ximian.com/\">Ximian Bugzilla</a>, or the Red Carpet mailing list at <a "
-#~ "href=\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-"
-#~ "carpet@ximian.com</a>.  Thank you!"
-#~ msgstr ""
-#~ "<p>Το Red Carpet είναι το σύστημα διαχείρισης πακέτων και ο δικτυακός "
-#~ "τόπος σύνδεσης της Ximian που σας επιτρέπει να εγκαθιστάτε, αναβαθμίζετε "
-#~ "και να απεγκαθιστάτε πακέτα στο σύστημά σας. Για περισσότερες "
-#~ "πληροφορίες, παρακαλώ επισκεφθείτε το <a href=\"http://www.ximian.com/"
-#~ "redcarpet/\">Δικτυακό Τόπο του Red Carpet</a>.</p><p>Επιθυμούμε τα σχόλιά "
-#~ "σας και τις αναφορές σφαλμάτων, είτε μέσω του <a href=\"http://bugzilla."
-#~ "ximian.com/\">Ximian Bugzilla</a>, είτε μέσω της λίστας συνδρομητών του "
-#~ "Red Carpet στο <a href=\"http://lists.ximian.com/mailman/listinfo/red-"
-#~ "carpet\">red-carpet@ximian.com</a>.  Σας ευχαριστούμε!"
-
-#~ msgid "All links will open in an external browser window."
-#~ msgstr "Όλοι οι σύνδεσμοι θα ανοίξουν σε εξωτερικό παράθυρο."
-
-#~ msgid "The following channels are our featured channels!"
-#~ msgstr "Τα παρακάτω κανάλια είναι τα παρεχόμενα κανάλια!"
-
-#~ msgid "You are currently subscribed to all available channels!"
-#~ msgstr "Είστε ήδη εγγεγραμμένος σε όλα τα διαθέσιμα κανάλια!"
-
-#~ msgid ""
-#~ "We are constantly working on making more software available through Red "
-#~ "Carpet, so watch the <a href=\"updater:news_page\">News Page</a> and this "
-#~ "space for more channels to be added in the future!"
-#~ msgstr ""
-#~ "Προσπαθούμε συνεχώς να κάνουμε διαθέσιμο περισσότερο λογισμικό μέσω του "
-#~ "Red Carpet, οπότε καλό είναι να παρακολουθείτε τη <a href=\"updater:"
-#~ "news_page\">Σελίδα Νέων</a> και αυτό το χώρο για περισσότερα κανάλια που "
-#~ "θα προστεθούν στο μέλλον!"
-
-#~ msgid "View my <a href=\"updater:subscribed_page\">subscribed channels</a>."
-#~ msgstr ""
-#~ "Προβολή της σελίδας των <a href=\"updater:subscribed_page\">καναλιών που "
-#~ "είμαι συνδρομητής</a>."
-
-#~ msgid "View the <a href=\"updater:news_page\">News Page</a>."
-#~ msgstr "Εμφάνιση της <a href=\"updater:news_page\">Σελίδας Νέων</a>."
-
-#, fuzzy
-#~ msgid ""
-#~ "You are currently not subscribed to any channels!<p>We suggest that you "
-#~ "subscribe to the <a href=\"updater:channel_name?Ximian GNOME "
-#~ "Desktop#updater:info_page\">Ximian GNOME Desktop channel</a> to keep your "
-#~ "Ximian GNOME desktop running smoothly.  You can also view the software "
-#~ "channels available from Ximian and our Red Carpet partners on the <a href="
-#~ "\"updater:unsubscribed_page\">unsubscribed channels page</a>."
-#~ msgstr ""
-#~ "Δεν είστε συνδρομητής σε κανένα κανάλι!<p>Σας συνιστούμε να εγγραφείτε "
-#~ "στο <a href=\"updater:channel_name?Ximian GNOME Desktop#updater:about"
-#~ "\">Κανάλι του Ximian GNOME Desktop</a> για να έχετε πάντα μια ανανεωμένη "
-#~ "έκδοση του Ximian GNOME desktop.  Μπορείτε επίσης να δείτε τα διαθέσιμα "
-#~ "κανάλια από τη Ximian και των συνεργατών μας του Red Carpet στη <a href="
-#~ "\"updater:unsubscribed_page\">Σελίδα διαθέσιμων καναλιών</a>."
-
-#~ msgid ""
-#~ "View <a href=\"updater:unsubscribed_page\">unsubscribed channels</a>."
-#~ msgstr ""
-#~ "Δείτε τα <a href=\"updater:unsubscribed_page\">διαθέσιμα κανάλια</a>."
-
-#~ msgid ""
-#~ "Return to the <a href=\"updater:summary\">introduction to Red Carpet</a>."
-#~ msgstr ""
-#~ "Επιστροφή στην <a href=\"updater:summary\">εισαγωγή στο Red Carpet</a>."
-
-#~ msgid ""
-#~ "<font size=6><b>Welcome to Red Carpet!</b></font><p>Thank you for using "
-#~ "Red Carpet. From resolving package dependencies to ensuring cryptographic "
-#~ "security, Red Carpet takes the headache out of managing your GNOME "
-#~ "desktop system. Red Carpet is also an excellent way to keep on top of the "
-#~ "latest software offerings. The software available to you is organized "
-#~ "into channels; you choose the channels you want and we'll make sure "
-#~ "they're full of great programs.</p><p><font size=4><b>Subscribing to "
-#~ "Channels</b></font></p><p>Since you've just started running Red Carpet, "
-#~ "you aren't yet subscribed to any channels. On the left of the Red Carpet "
-#~ "window is the <b>Navigation Bar</b>, which allows you to access the main "
-#~ "pages of Red Carpet.</p><p>To browse available channels which you are not "
-#~ "subscribed to, click on the <b>Unsubscribed Channels</b> icon in the "
-#~ "navigation bar. After you've done that, to subscribe to a channel, click "
-#~ "on it and click on the <b>Subscribe</b> button in the bottom right corner "
-#~ "of the main content area or select <b>Subscribe</b> from the "
-#~ "Subscriptions menu.</p><p>We welcome your feedback and bug reports, "
-#~ "either through the <a href=\"http://bugzilla.ximian.com/\">Ximian "
-#~ "Bugzilla</a>, or the Red Carpet mailing list at <a href=\"http://lists."
-#~ "ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian.com</a>.  "
-#~ "Thank you!</p>"
-#~ msgstr ""
-#~ "<font size=6><b>Καλώς ήλθατε στο Red Carpet!</b></font><p>Ευχαριστούμε "
-#~ "που χρησιμοποιείτε το Red Carpet. Από την επίλυση εξαρτήσεων των πακέτων "
-#~ "ως τον έλεγχο της κρυπτογραφικής ασφάλειας, το Red Carpet σας βοηθά στη "
-#~ "διαχείριση του περιβάλλοντος εργασίας GNOME. Το Red Carpet είναι επίσης "
-#~ "ένας πολύ καλός τρόπος για να έχετε εγκατεστημένες τις τελευαταίες "
-#~ "εκδόσεις λογισμικού. Το λογισμικό που σας είναι διαθέσιμο είναι "
-#~ "ταξινομημένο σε κανάλια, επιλέγετε τα κανάλια που επιθυμείτε και εμείς "
-#~ "σας εγγυούμαστε ότι θα είναι γεμάτα με τα καλύτερα προγράμματα. </"
-#~ "p><p><font size=4><b>Εγγραφή σε Κανάλια</b></font></p><p>Μιας και μόλις "
-#~ "τρέξατε το Red Carpet για πρώτη φορά, δεν είστε συνδρομητής σε κανένα "
-#~ "κανάλι ακόμα. Στα αριστερά του παραθύρου του Red Carpet είναι η <b>Μπάρα "
-#~ "Πλοήγησης</b>, που σας επιτρέπει να συνδέεστε στις κύριες σελίδες του Red "
-#~ "Carpet.</p><p>Για να περιηγηθείτε στα διαθέσιμα κανάλια που δεν είστε "
-#~ "συνδρομητής, πατήστε στο εικονίδιο <b>Μη εγγεγραμμένα κανάλια</b> στη "
-#~ "μπάρα πλοήγησης. Μόλις το κάνετε, για να εγγραφείτε σε ένα κανάλι, "
-#~ "επιλέξτε το κανάλι και πατήστε στο κουμπί <b>Εγγραφή</b> στο κάτω δεξιά "
-#~ "γωνία του παραθύρου περιεχομένων ή επιλέξτε <b>Εγγραφή</b> από το μενού "
-#~ "Εγγραφές.</p><p>Καλωσορίζουμε τα σχόλιά σας και τις αναφορές σφαλμάτων, "
-#~ "είτε μέσω του <a href=\"http://bugzilla.ximian.com/\">Ximian Bugzilla</"
-#~ "a>, είτε μέσω της λίστας συνδρομητών στο <a href=\"http://lists.ximian."
-#~ "com/mailman/listinfo/red-carpet\">red-carpet@ximian.com</a>.  Σας "
-#~ "ευχαριστούμε!</p>"
-
-#~ msgid ""
-#~ "There is one <b>Essential Update</b> available for your system.  To "
-#~ "ensure that Ximian Red Carpet continues to function properly, you must "
-#~ "install this update before continuing.  After installing this update, "
-#~ "Ximian Red Carpet will automatically restart."
-#~ msgstr ""
-#~ "Υπάρχει μία <b>Απαραίτηση Αναβάθμιση</b> διαθέσιμη για το σύστημά σας. "
-#~ "Για να είστε σίγουρος/η ότι το Ximian Red Carpet θα εξακολουθήσει να "
-#~ "λειτουργεί σωστά, πρέπει να εγκαταστήσετε αυτήν την αναβάθμιση πριν "
-#~ "συνεχίσετε. Μετά την εγκατάσταση αυτής της αναβάθμισης, το Ximian Red "
-#~ "Carpet θα ξεκινήσει αυτόματα ξανά."
-
-#~ msgid ""
-#~ "There are %s <b>Essential Updates</b> available for your system.  To "
-#~ "ensure that Ximian Red Carpet continues to function properly, you must "
-#~ "install this update before continuing.  After installing this update, "
-#~ "Ximian Red Carpet will automatically restart."
-#~ msgstr ""
-#~ "Υπάρχουν %s <b>Απαραίτητες Ανανεώσεις</b> διαθέσιμες για το σύστημά σας. "
-#~ "Για να είστε σίγουρος/η ότι το Ximian Red Carpet θα εξακολουθήσει να "
-#~ "λειτουργεί σωστά, πρέπει να εγκαταστήσετε αυτές τις αναβαθμίσεις πριν "
-#~ "συνεχίσετε. Μετά την εγκατάσταση αυτών των αναβαθμίσεων, το Ximian Red "
-#~ "Carpet θα ξεκινήσει αυτόματα ξανά."
-
-#~ msgid ""
-#~ "There is <b>one update</b> available for your system, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Υπάρχει <b>μια αναβάθμιση</b> διαθέσιμη για το σύστημά σας, σε σύνολο <b>%"
-#~ "s</b> δεδομένων για μεταφόρτωση."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available for your system, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Υπάρχουν <b>%s αναβαθμίσεις</b> διαθέσιμες για το σύστημά σας, σε σύνολο "
-#~ "<b>%s</b> δεδομένων για μεταφόρτωση."
-
-#~ msgid ""
-#~ "<!--html-->  To update your system, you will have to run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "<!--html-->  Για να αναβαθμίσετε το σύστημά σας, πρέπει να εκτελέσετε το "
-#~ "Red Carpet ως διαχειριστής."
-
-#~ msgid " Of these updates, <b>one</b> is <b>urgent</b>."
-#~ msgstr " Από αυτές τις αναβαθμίσεις, <b>μία</b> είναι <b>επείγουσα</b>."
-
-#~ msgid " Of these updates, <b>%s</b> are <b>urgent</b>."
-#~ msgstr " Από αυτές τις αναβαθμίσεις, <b>%s</b> είναι <b>επείγουσες</b>."
-
-#~ msgid "1 other in the %s channel..."
-#~ msgstr "1 ακόμα στο κανάλι %s..."
-
-#~ msgid "%d others in the %s channel..."
-#~ msgstr "%d ακόμα στο κανάλι %s..."
-
-#~ msgid "(Re)configure proxy settings before starting"
-#~ msgstr "(Επανα)ρύθμιση των ρυθμίσεων διαμεσολαβητή πριν την εκκίνηση"
-
-#~ msgid ""
-#~ "Could not find '%s'.\n"
-#~ "Please make sure Red Carpet was installed correctly."
-#~ msgstr ""
-#~ "Δε μπόρεσε να βρεθεί το '%s'.\n"
-#~ "Παρακαλώ επιβεβαιώστε ότι το Red Carpet έχει εγκατασταθεί σωστά."
-
-#~ msgid "Downloading channel list..."
-#~ msgstr "Μεταφόρτωση της λίστας καναλιού..."
-
-#~ msgid "Downloading mirror list..."
-#~ msgstr "Μεταφόρτωση λίστας ενναλακτικών διακομιστών\t..."
-
-#~ msgid "Downloading channel artwork..."
-#~ msgstr "Μεταφόρτωση αρχείων τέχνης καναλιού..."
-
-#~ msgid "Navigation"
-#~ msgstr "Περιήγηση"
-
-#~ msgid "Downloading mirrors..."
-#~ msgstr "Μεταφόρτωση ενναλακτικών διακομιστών..."
-
-#~ msgid "packages"
-#~ msgstr "πακέτα"
-
-#~ msgid "%%p%%%% (%s of %s)"
-#~ msgstr "%%p%%%% (%s από %s)"
-
-#~ msgid "%s pulled from cache"
-#~ msgstr "Το %s έχει ληφθεί από τα ήδη μεταφορτωμένα αρχεία"
-
-#~ msgid "%s downloaded %d bytes in %d seconds (%s/s)"
-#~ msgstr "Το %s μεταφόρτωσε %d byte σε %d δευτερόλεπτα (%s/s)"
-
-#~ msgid "%p%% (%v of %u)"
-#~ msgstr "%p%% (%v από %u)"
-
-#~ msgid "%s (%s) has been verified as cryptographically secure by %s"
-#~ msgstr ""
-#~ "Το %s (%s) έχει πιστοποιηθεί ότι είναι κρυπτογραφικά ασφαλές από τον/την %"
-#~ "s"
-
-#~ msgid "Download Log"
-#~ msgstr "Καταγραφή Μεταφορτώσεων"
-
-#~ msgid "Activate Premium Services"
-#~ msgstr "Ενεργοποίηση Υπερεχούσων Υπηρεσιών"
-
-#~ msgid "File not found"
-#~ msgstr "Δε βρέθηκε το αρχείο"
-
-#~ msgid "IO error"
-#~ msgstr "Σφάλμα ΕΕ (Εισόδου/Εξόδου)"
-
-#~ msgid "%.2f MB"
-#~ msgstr "%.2f MB"
-
-#~ msgid "%d bytes"
-#~ msgstr "%d byte"
-
-#~ msgid "%%p%%%% (%s of %s) - %s/s"
-#~ msgstr "%%p%%%% (%s από %s) - %s/s"
-
-#~ msgid "%s - %s/s"
-#~ msgstr "%s - %s/s"
-
-#~ msgid "Downloading data..."
-#~ msgstr "Μεταφόρτωση δεδομένων..."
-
-#~ msgid "%%p%%%% (%s of %s) - Paused"
-#~ msgstr "%%p%%%% (%s από %s) - Παύση"
-
-#~ msgid "%s - Paused"
-#~ msgstr "%s - Παύση"
-
-#~ msgid "Red Carpet encountered an error querying your system:<br>%s"
-#~ msgstr ""
-#~ "Το Red Carpet συνάντησε ένα σφάλμα κατά την επερώτηση του συστήματός σας:"
-#~ "<br>%s"
-
-#~ msgid "%.2f%sMB"
-#~ msgstr "%.2f%sMB"
-
-#~ msgid "%d%sKB"
-#~ msgstr "%d%sKB"
-
-#~ msgid "%d%sbytes"
-#~ msgstr "%d%sbyte"
-
-#~ msgid "zero"
-#~ msgstr "μηδέν"
-
-#~ msgid "one"
-#~ msgstr "ένα"
-
-#~ msgid "two"
-#~ msgstr "δύο"
-
-#~ msgid "three"
-#~ msgstr "τρία"
-
-#~ msgid "four"
-#~ msgstr "τέσσερα"
-
-#~ msgid "five"
-#~ msgstr "πέντε"
-
-#~ msgid "six"
-#~ msgstr "έξη"
-
-#~ msgid "seven"
-#~ msgstr "επτά"
-
-#~ msgid "eight"
-#~ msgstr "οκτώ"
-
-#~ msgid "Fatal Error"
-#~ msgstr "Μοιραίο Σφάλμα"
-
-#~ msgid "Error"
-#~ msgstr "Σφάλμα"
-
-#~ msgid ""
-#~ "Red Carpet has encountered an error while trying to process your request:"
-#~ msgstr ""
-#~ "Το Red Carpet συνάντησε ένα σφάλμα κατά την επεξεργασία της αίτησης σας:"
-
-#~ msgid "<li>Click <b>Quit</b> to quit."
-#~ msgstr "<li>Πατήστε <b>Έξοδος</b> για να τερματίσετε."
-
-#~ msgid "<li>Click <b>Retry</b> to retry."
-#~ msgstr "<li>Πατήστε <b>Επανάληψη</b> για να δοκιμάσετε ξανά."
-
-#~ msgid "<li>Click <b>Cancel</b> to cancel."
-#~ msgstr "<li>Πατήστε <b>Ακύρωση</b> για να ακυρώσετε."
-
-#~ msgid "Retry"
-#~ msgstr "Προσπάθεια ξανά"
-
-#~ msgid "Load file(s)"
-#~ msgstr "Φόρτωση αρχείου(ων)"
-
-#~ msgid "Close"
-#~ msgstr "Κλείσιμο"
-
-#~ msgid "Ximian Red Carpet will now restart."
-#~ msgstr "Το Ximian Red Carpet θα επανεκτελεστεί."
-
-#~ msgid "User Registration"
-#~ msgstr "Εγγραφή Χρήστη"
-
-#~ msgid "GUI Options"
-#~ msgstr "Επιλογές Γραφικού Περιβάλλοντος"
+msgstr "Ο χρήστης '%s' υπάρχει ήδη."
