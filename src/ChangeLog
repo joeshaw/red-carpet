@@ -1,3 +1,14 @@
+2003-02-18  Joe Shaw  <joe@ximian.com>
+
+	* red_locks.py (toggle_lock): Use ServerProxy.
+
+	* red_packagearray.py (PackagesFromQuery): Added a locks_changed
+	handler which flushes the query cache and chains up.
+	(PackagesFromDaemon): Added a locks_changed handler which
+	schedules a refresh of the query.
+
+	* red_prefs.py: Make categories mandatory, use ServerProxy.
+
 2003-02-18  Jon Trowbridge  <trow@ximian.com>
 
 	* red_pendingview.py (PendingView.set_label): Break up long

@@ -483,6 +483,9 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
     def packages_changed(self):
         self.schedule_refresh()
 
+    def locks_changed(self):
+        self.schedule_refresh()
+
     def len(self):
         return self.__length
 
@@ -587,6 +590,10 @@ class PackagesFromQuery(PackagesFromDaemon):
     def channels_changed(self):
         _reset_query_cache()
         pass
+
+    def locks_changed(self):
+        _reset_query_cache()
+        PackagesFromDaemon.locks_changed(self)
 
     def filter_duplicates(self, packages):
         if self.query:

@@ -25,9 +25,8 @@ model = None
 def build_categories(prefs):
     categories = []
     for x in prefs:
-        c = x.get("category", None)
-        if c and not c in categories:
-            categories.append(c)
+        if not x["category"] in categories:
+            categories.append(x["category"])
 
     return categories
 
@@ -35,15 +34,22 @@ class PrefsView(gtk.Notebook):
 
     def __init__(self):
         gtk.Notebook.__init__(self)
-        
-        server = rcd_util.get_server()
-        prefs = server.rcd.prefs.list_prefs()
-        categories = build_categories(prefs)
 
-        # Pre 1.2 daemons didn't have categories.
-        if not categories:
-            categories = [None]
-            self.set_show_tabs(0)
+        self.set_show_tabs(0)
+        label = gtk.Label("Loading preferences...")
+        label.show()
+        self.append_page(label, gtk.Label(""))
+        
+        server = rcd_util.get_server_proxy()
+        th = server.rcd.prefs.list_prefs()
+        th.connect("ready", lambda x:self.build(x.get_result()))
+
+    def build(self, prefs):
+        # Remove the "loading" "page".
+        self.remove_page(0)
+        self.set_show_tabs(1)
+        
+        categories = build_categories(prefs)
 
         for c in categories:
             model = PrefsModel(prefs, c)
@@ -226,7 +232,7 @@ class PrefsModel(gtk.GenericTreeModel):
         
         if category:
             self.prefs = [x for x in prefs \
-                          if x.get("category", None) == category]
+                          if x["category"] == category]
         else:
             self.prefs = prefs
 
@@ -238,7 +244,7 @@ class PrefsModel(gtk.GenericTreeModel):
         elif index == COLUMN_DESCRIPTION:
             return string.join(rcd_util.linebreak(pref["description"], 50), "\n")
         elif index == COLUMN_CATEGORY:
-            return pref.get("category", "")
+            return pref["category"]
         elif index == COLUMN_VALUE:
             return pref["value"]
 

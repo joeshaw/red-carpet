@@ -21,8 +21,8 @@ def toggle_lock(pkg):
     if not pkg:
         return
 
-    server = rcd_util.get_server()
-
+    server = rcd_util.get_server_proxy()
+    
     locked = pkg.get("locked")
     if not locked:
         server.rcd.packsys.add_lock({"glob":pkg["name"]})
