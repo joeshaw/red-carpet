@@ -139,6 +139,14 @@ elif test "x$with_usermode_type" = "xredhat8"; then
   AM_CONDITIONAL(USERMODE_REDHAT8, true)
 fi
 
+AC_PATH_PROG(KDE_CONFIG, kde-config, yes, no)
+
+if test x$KDE_CONFIG = "xyes"; then
+  AM_CONDITIONAL(HAVE_KDE_CONFIG, true)
+else
+  AM_CONDITIONAL(HAVE_KDE_CONFIG, false)
+fi
+
 AC_OUTPUT([
 Makefile
 po/Makefile.in

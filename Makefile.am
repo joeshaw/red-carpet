@@ -27,14 +27,21 @@ SUBDIRS = $(UNMARSHALLER_DIR)	\
 desktopdir = $(datadir)/applications
 desktop_DATA = red-carpet.desktop
 
-kdemimedir = `kde-config --prefix`/share/applnk/.hidden
-kdemime_DATA = red-carpet-mime.desktop
 
 gnomemimedir = $(datadir)/application-registry
 gnomemime_DATA = red-carpet.applications
 
+if HAVE_KDE_CONFIG
+kdemimedir = `kde-config --prefix`/share/applnk/.hidden
+kdemime_DATA = red-carpet-mime.desktop
+KDE_MIME_FILES = $(kdemime_DATA)
+else
+KDE_MIME_FILES =
+endif
+
 EXTRA_DIST = red-carpet.console.in red-carpet.pam.rh7 red-carpet.pam.rh8 \
-	     $(desktop_DATA) $(gnomemime_DATA) $(kdemime_DATA)
+	     $(desktop_DATA) $(gnomemime_DATA) $(KDE_MIME_FILES)
+
 
 if USERMODE
 consoledir = $(sysconfdir)/security/console.apps
