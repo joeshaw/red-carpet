@@ -170,13 +170,15 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_OUT)
         sw.add(view)
         page.pack_start(sw, expand=1, fill=1, padding=0)
 
-        buttons = gtk.HBox(0, 0)
+        buttons = gtk.HButtonBox()
+        buttons.set_layout(gtk.BUTTONBOX_END)
         button = gtk.Button(gtk.STOCK_OK)
         button.set_use_stock(1)
-        buttons.pack_end(button, 0, 0, 2)
+        buttons.add(button)
 
         page.pack_end(buttons, 0, 0, 2)
 
@@ -198,14 +200,15 @@ class DepComponent(gobject.GObject, red_component.Component):
         label = gtk.Label("All package dependencies are satisfied")
         hbox.pack_start(label, 0, 0 ,0)
 
-        buttons = gtk.HBox(0, 0)
-        ok_button = gtk.Button(gtk.STOCK_OK)
-        ok_button.set_use_stock(1)
-        buttons.pack_end(ok_button, 0, 0, 2)
+        buttons = gtk.HButtonBox()
+        buttons.set_layout(gtk.BUTTONBOX_END)
+        button = gtk.Button(gtk.STOCK_OK)
+        button.set_use_stock(1)
+        buttons.add(button)
 
         page.pack_end(buttons, 0, 0, 0)
 
-        ok_button.connect("clicked", lambda x:self.pop())
+        button.connect("clicked", lambda x:self.pop())
             
         page.show_all()
 
@@ -248,12 +251,25 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         page.pack_start(sw, 1, 1, 0)
 
-        buttons = gtk.HBox(0, 0)
+        buttons = gtk.HButtonBox()
+        buttons.set_spacing(6)
+        buttons.set_layout(gtk.BUTTONBOX_END)
+
         cancel = gtk.Button(gtk.STOCK_CANCEL)
         cancel.set_use_stock(1)
-        cont = gtk.Button("Continue")
-        buttons.pack_end(cont, 0, 0, 2)
-        buttons.pack_end(cancel, 0, 0, 2)
+
+        cont = gtk.Button()
+        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        cont.add(align)
+        box = gtk.HBox(0, 2)
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_GO_FORWARD, gtk.ICON_SIZE_BUTTON)
+        box.pack_start(image, 0, 0)
+        box.pack_start(gtk.Label("Continue"), 0, 0)
+        align.add(box)
+
+        buttons.add(cancel)
+        buttons.add(cont)
 
         page.pack_end(buttons, 0, 0, 0)
         page.show_all()

@@ -42,8 +42,20 @@ class PrefsView(gtk.Notebook):
         self.append_page(label, gtk.Label(""))
         
         self.server = rcd_util.get_server_proxy()
+        self.get_prefs()
+
+    def get_prefs(self):
+        def get_prefs_cb(worker, this):
+            try:
+                prefs = worker.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                prefs = []
+                rcd_util.dialog_from_fault(f)
+
+            this.build(prefs)
+
         th = self.server.rcd.prefs.list_prefs()
-        th.connect("ready", lambda x:self.build(x.get_result()))
+        th.connect("ready", get_prefs_cb, self)
 
     def build(self, prefs):
         # Remove the "loading" "page".

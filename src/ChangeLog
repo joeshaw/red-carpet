@@ -1,3 +1,19 @@
+2003-02-21  Tambet Ingo  <tambet@ximian.com>
+
+	* red_depcomponent.py (DepComponent.build_dep_error_page): Set
+	shadow to main view.
+	(DepComponent.build_dep_error_page): Use buttonbox to house button(s),
+	so that all of them are sized consistently.
+	(DepComponent.build_verified_ok_page): Here too.
+	(DepComponent.build_normal_page): Ditto.
+	(DepComponent.build_normal_page): Add gtk.STOCK_GO_FORWARD icon to
+	"continue" button.
+
+	* red_prefs.py (PrefsView.get_prefs_cb): Get preferences here, also
+	catch exceptions.
+
+	* red_serverinfo.py (dump_finished_cb): Catch exceptions.
+
 2003-02-21  Joe Shaw  <joe@ximian.com>
 
 	* red_activation.py: Make the entries activate the default.  For

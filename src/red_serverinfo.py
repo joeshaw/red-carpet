@@ -98,8 +98,12 @@ def dump_xml(filename):
 
     def dump_finished_cb(worker, f):
         if not worker.is_cancelled():
-            dump = worker.get_result()
-            f.write(zlib.decompress(dump.data))
+            try:
+                dump = worker.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                rcd_util.dialog_from_fault(f)
+            else:
+                f.write(zlib.decompress(dump.data))
         f.close()
 
     worker = server.rcd.packsys.dump()
