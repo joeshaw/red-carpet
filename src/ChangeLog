@@ -1,5 +1,9 @@
 2003-10-02  Joe Shaw  <joe@ximian.com>
 
+	* red_activation.py (activate_finished_cb): We don't actually care
+	about the return value from the activation call anymore... if
+	there's an error, it'll be thrown as a fault.
+
 	* red_pendingview.py (PendingView.poll_worker): We want to assert
 	out if poll_worker() isn't defined, not just return 0.
 	(PendingView_Simple.set_pending_list): If the pending list we get

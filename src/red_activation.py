@@ -108,7 +108,7 @@ class ActivationWindow(gtk.Dialog):
                 return
 
             try:
-                success = worker.get_result()
+                worker.get_result()
             except ximian_xmlrpclib.Fault, f:
                 rcd_util.dialog_from_fault(f,
                                            error_text=_("Unable to activate"),
@@ -118,25 +118,12 @@ class ActivationWindow(gtk.Dialog):
                                            parent=self)
                 return
             
-            if success:
-                # Store email to config.
-                config = red_settings.get_config()
-                config.set("Activation/email", this.email_to_save)
-                config.sync()
+            # Store email to config.
+            config = red_settings.get_config()
+            config.set("Activation/email", this.email_to_save)
+            config.sync()
 
-                rcd_util.refresh(this)
-            else:
-                dialog = gtk.MessageDialog(this,
-                                           gtk.DIALOG_DESTROY_WITH_PARENT,
-                                           gtk.MESSAGE_ERROR,
-                                           gtk.BUTTONS_OK,
-                                           _("System could not be activated: "
-                                             "Invalid activation code or "
-                                             "email address."))
-
-                dialog.run()
-                gtk.threads_leave()
-                dialog.destroy()
+            rcd_util.refresh(this)
                 
             this.destroy()
 
