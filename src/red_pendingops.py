@@ -105,6 +105,9 @@ def clear(pkg, key):
     if dict and dict.has_key(key):
         old_value = dict[key]
         del dict[key]
+        # Remove package from list if threre's no more keys than "__package"
+        if len(dict.keys()) <= 1:
+            del package_data[pkg_key]
         signal_listeners(pkg, key, None, old_value)
 
 def has_package(pkg):

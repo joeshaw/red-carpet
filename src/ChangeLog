@@ -1,5 +1,8 @@
 2003-04-02  Tambet Ingo  <tambet@ximian.com>
 
+	* red_pendingops.py (clear): Remove package from package_data
+	list if it doesn't have any other keys set. (Fixes #40620).
+
 	* Makefile.am (red_carpetsupport_DATA): Add red_statusbar.py.
 
 	* red_statusbar.py: New file for custom statusbar. (Fixes #40468).
