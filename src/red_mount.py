@@ -25,7 +25,7 @@ import red_dirselection
 import red_thrashingtreeview
 from red_gettext import _
 
-def mount_channel(path, name=None):
+def mount_channel(path, name, recursive):
     # Handle ~ to mean $HOME
     if path[0] == "~":
         homedir = os.getenv("HOME")
@@ -36,7 +36,8 @@ def mount_channel(path, name=None):
     path_base = os.path.basename(path)
     alias = string.lower(path_base)
 
-    aliases = map(rcd_util.get_channel_alias, rcd_util.get_all_channels())
+    aliases = map(lambda x:rcd_util.get_channel_alias(x["id"]),
+                  rcd_util.get_all_channels())
 
     old_alias = alias
     count = 1
@@ -48,32 +49,30 @@ def mount_channel(path, name=None):
         name = path
 
     server = rcd_util.get_server_proxy()
-    mount_th = server.rcd.packsys.mount_directory(path, name, alias)
+    mount_th = server.rcd.packsys.mount_directory(path, name, alias, recursive)
 
     def mount_cb(th, path):
         try:
-            cid = th.get_result()
-        except ximian_xmlrpclib, f:
-            rcd_util.dialog_from_fault(f)
-            return
-        
-        if not cid:
-            msg = _("Unable to mount '%s' as a channel") % path
-            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
-                                       gtk.BUTTONS_OK, msg)
+            th.get_result()
+        except ximian_xmlrpclib.Fault, f:
+            if f.faultCode == rcd_util.fault.invalid_service:
+                dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
+                                           gtk.BUTTONS_OK,
+                                           "%s" % f.faultString)
 
-            def idle_cb(d):
-                gtk.threads_enter()
-                d.show()
-                d.run()
-                d.destroy()
-                gtk.threads_leave()
+                def idle_cb(d):
+                    gtk.threads_enter()
+                    d.show()
+                    d.run()
+                    d.destroy()
+                    gtk.threads_leave()
 
-            # Always run the dialog in the main thread
-            gtk.idle_add(idle_cb, dialog)
+                # Always run the dialog in the main thread
+                gtk.idle_add(idle_cb, dialog)
+            else:
+                raise
 
     mount_th.connect("ready", mount_cb, path)
-
 
 def unmount_channel(cid):
 
@@ -100,7 +99,7 @@ def unmount_channel(cid):
 
 def has_mounted_channels():
     return len([x["id"] for x in rcd_util.get_all_channels()
-                if x.get("transient", 0)])
+                if x.get("mounted", 0)])
 
 class FileEntry(gtk.HBox):
 
@@ -145,7 +144,7 @@ class MountWindow(gtk.Dialog):
         frame = gtk.Frame(_("Mount a directory as channel"))
         frame.set_border_width(5)
 
-        table = gtk.Table(2, 2)
+        table = gtk.Table(3, 2)
         table.set_border_width(5)
         table.set_col_spacings(5)
         table.set_row_spacings(5)
@@ -164,6 +163,10 @@ class MountWindow(gtk.Dialog):
 
         self.directory = FileEntry()
         table.attach(self.directory, 1, 2, 1, 2)
+
+        self.recursive = gtk.CheckButton(_("Look for packages "
+                                               "recursively"))
+        table.attach(self.recursive, 0, 2, 2, 3)
 
         frame.add(table)
         frame.show_all()
@@ -194,7 +197,7 @@ class MountWindow(gtk.Dialog):
         if not name:
             name = path
 
-        mount_channel(path, name)
+        mount_channel(path, name, self.recursive.get_active())
         self.destroy()
 
 
@@ -211,7 +214,7 @@ class UnmountWindow(gtk.Dialog):
 
         self.set_default_size(300, 300)
 
-        model = red_channelmodel.ChannelModel(filter_fn=lambda x:x["transient"])
+        model = red_channelmodel.ChannelModel(filter_fn=lambda x:x.get("mounted", 0))
 
         channels_to_unmount = {}
         for c in model.get_all():

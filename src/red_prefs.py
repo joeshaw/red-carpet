@@ -165,93 +165,24 @@ class PrefsViewPage_General(PrefsViewPage):
         vbox = gtk.VBox(spacing=18)
         self.pack_start(vbox, expand=0, fill=0, padding=12)
 
-        # Server section
-        section, content = self.create_section(_("Server"))
-        vbox.pack_start(section, expand=0, fill=0)
+        hbox = gtk.HBox(spacing=6)
+        vbox.pack_start(hbox, expand=0, fill=0)
 
-        table = gtk.Table(rows=2, columns=3)
-        table.set_row_spacings(6)
-        table.set_col_spacings(6)
-        content.pack_start(table, expand=0, fill=0)
+        label = gtk.Label(_("Interval to refresh channel data (in hours):"))
+        hbox.pack_start(label, expand=0, fill=0)
 
-        label = gtk.Label(_("Server URL:"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL)
+        refresh_spin = self.create_spinbutton("heartbeat-interval",
+                                              (1, 24),
+                                              lambda x:x / 3600 or 1,
+                                              lambda x:x * 3600)
+        hbox.pack_start(refresh_spin, expand=0, fill=0)
 
-        self.url_entry = self.create_entry("host")
-        self.old_host = self.url_entry.get_text()
-
-        def host_focus_out_cb(entry, *args):
-            if self.url_entry.get_text() != self.old_host:
-                self.host_changed = 1
-
-        self.url_entry.connect("focus_out_event", host_focus_out_cb)
-                               
-
-        def mirrors_cb(b, page):
-            if not page.__mirrors_win:
-                page.__mirrors_win = red_mirrors.MirrorsWindow()
-                page.__mirrors_win.select_by_url(page.prefs["host"]["value"])
-
-                if page.__parent:
-                    page.__mirrors_win.set_transient_for(page.__parent)
-                    page.__mirrors_win.set_destroy_with_parent(1)
-
-                def entry_focus_out_cb(e, ev, win):
-                    win.select_by_url(e.get_text())
-                page.url_entry.connect("focus_out_event",
-                                       entry_focus_out_cb,
-                                       page.__mirrors_win)
-
-                def destroy_cb(win, page):
-                    page.__mirrors_win = None
-                page.__mirrors_win.connect("destroy",
-                                           destroy_cb,
-                                           page)
-
-                def mirror_selected_cb(win, mirror, page):
-                    url = mirror["url"]
-                    page.url_entry.set_text(url)
-                    # manually force the value to update
-                    page.prefs["host"]["value"] = url
-                    if url != page.old_host:
-                        page.host_changed = 1
-                    page.enqueue("host")
-
-                page.__mirrors_win.connect("selected_mirror",
-                                           mirror_selected_cb,
-                                           page)
-                
-            page.__mirrors_win.show_all()
-            page.__mirrors_win.present()
-
-        self.mirrors_button = gtk.Button(_("Mirrors"))
-        self.mirrors_button.connect("clicked", mirrors_cb, self)
-        is_su = rcd_util.check_server_permission("superuser")
-        self.mirrors_button.set_sensitive(is_su)
-
-        entry_button_box = gtk.HBox(spacing=6)
-        entry_button_box.pack_start(self.url_entry, expand=1, fill=1)
-        entry_button_box.pack_start(self.mirrors_button, expand=0, fill=0)
-
-        table.attach(entry_button_box, 1, 2, 0, 1)
-
-        self.premium_check = self.create_checkbox("enable-premium",
-                                                  _("Enable Premium Services "
-                                                    "(Red Carpet Express or "
-                                                    "Enterprise)"))
-        def premium_toggled_cb(b, page):
-            page.host_changed = 1
-        self.premium_check.connect("toggled", premium_toggled_cb, self)
-        
-        table.attach(self.premium_check, 0, 3, 1, 2,
-                     xoptions=gtk.FILL)
 
         # Packages section
         section, content = self.create_section(_("Packages"))
         vbox.pack_start(section, expand=0, fill=0)
 
-        table = gtk.Table(rows=2, columns=2)
+        table = gtk.Table(rows=3, columns=2)
         table.set_row_spacings(6)
         table.set_col_spacings(6)
         content.pack_start(table, expand=0, fill=0)
@@ -270,6 +201,10 @@ class PrefsViewPage_General(PrefsViewPage):
                                                         (0, 20))
         table.attach(self.max_download_spin, 1, 2, 1, 2,
                      xoptions=gtk.FILL)
+
+        rollback_check = self.create_checkbox("rollback",
+                                              _("Enable package rollback"))
+        table.attach(rollback_check, 0, 2, 2, 3, xoptions=gtk.FILL)
 
         # Proxy section - requires superuser
         section, content = self.create_section(_("Proxy"))

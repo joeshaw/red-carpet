@@ -53,7 +53,7 @@ COLUMNS = (
     
     ("ID",
      lambda x:x["id"],
-     gobject.TYPE_INT),
+     gobject.TYPE_STRING),
     
     ("NAME",
      lambda x:x["name"],
@@ -62,13 +62,17 @@ COLUMNS = (
     ("ALIAS",
      lambda x:get_alias(x),
      gobject.TYPE_STRING),
+
+    ("HIDDEN",
+     lambda x:x["hidden"],
+     gobject.TYPE_BOOLEAN),
     
     ("SUBSCRIBED",
      lambda x:x["subscribed"],
      gobject.TYPE_BOOLEAN),
 
-    ("TRANSIENT",
-     lambda x:x["transient"],
+    ("MOUNTED",
+     lambda x:x["mounted"],
      gobject.TYPE_BOOLEAN),
     
     ("ICON",

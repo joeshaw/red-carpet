@@ -18,7 +18,7 @@
 import gtk
 import rcd_util
 import ximian_xmlrpclib
-import red_settings
+import red_settings, red_services
 from red_gettext import _
 
 class ActivationWindow(gtk.Dialog):
@@ -28,27 +28,46 @@ class ActivationWindow(gtk.Dialog):
         self.build()
         self.fill()
 
+    def sensitize_window_elements(self):
+        any_services = self.service_opt.get_service_id() is not None
+
+        self.email.set_sensitive(any_services)
+        self.code.set_sensitive(any_services)
+        self.activate_button.set_sensitive(any_services)
+
     def build(self):
-        table = gtk.Table(2, 2)
+        table = gtk.Table(rows=3, columns=2)
         table.set_border_width(5)
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label(_("Email:"))
+        l = gtk.Label(_("Service:"))
         l.set_alignment(0, 0.5)
         table.attach(l, 0, 1, 0, 1)
 
-        l = gtk.Label(_("Activation Code:"))
+        l = gtk.Label(_("Email:"))
         l.set_alignment(0, 0.5)
         table.attach(l, 0, 1, 1, 2)
 
+        l = gtk.Label(_("Activation Code:"))
+        l.set_alignment(0, 0.5)
+        table.attach(l, 0, 1, 2, 3)
+
+        self.service_opt = red_services.ServicesOption()
+        table.attach(self.service_opt, 1, 2, 0, 1)
+
+        def changed_cb(opt, this):
+            this.sensitize_window_elements()
+
+        self.service_opt.connect("changed", changed_cb, self)
+
         self.email = gtk.Entry()
         self.email.set_activates_default(1)
-        table.attach(self.email, 1, 2, 0, 1)
+        table.attach(self.email, 1, 2, 1, 2)
 
         self.code = gtk.Entry()
         self.code.set_activates_default(1)
-        table.attach(self.code, 1, 2, 1, 2)
+        table.attach(self.code, 1, 2, 2, 3)
 
         table.show_all()
         self.vbox.add(table)
@@ -56,9 +75,12 @@ class ActivationWindow(gtk.Dialog):
         button = self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         button.connect("clicked", lambda x:self.destroy())
 
-        button = self.add_button(_("Activate"), gtk.RESPONSE_CLOSE)
-        button.grab_default()
-        button.connect("clicked", self.activate)
+        self.activate_button = self.add_button(_("Activate"),
+                                               gtk.RESPONSE_CLOSE)
+        self.activate_button.grab_default()
+        self.activate_button.connect("clicked", self.activate)
+
+        self.sensitize_window_elements()
 
     def fill(self):
         config = red_settings.get_config()
@@ -67,6 +89,7 @@ class ActivationWindow(gtk.Dialog):
             self.email.set_text(email)
 
     def activate(self, button):
+        service_id = self.service_opt.get_service_id()
         email = self.email.get_text()
         code = self.code.get_text()
 
@@ -117,7 +140,11 @@ class ActivationWindow(gtk.Dialog):
                 
             this.destroy()
 
-        worker = server.rcd.system.activate(code, email)
+        activation_info = {"service" : service_id,
+                           "activation_code" : code,
+                           "email" : email}
+        
+        worker = server.rcd.service.activate(activation_info)
         self.email_to_save = email
         rcd_util.server_proxy_dialog(worker,
                                      callback=activate_finished_cb,

@@ -218,7 +218,8 @@ class DepComponent(red_component.Component):
             download_id, transact_id, step_id = \
                          self.server.rcd.packsys.transact(install_packages,
                                                           remove_packages,
-                                                          0, # FIXME: flags
+                                                          0, # FIXME: flags,
+                                                          "",
                                                           red_main.red_name,
                                                           red_main.red_version)
         except ximian_xmlrpclib.Fault, f:

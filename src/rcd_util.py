@@ -118,7 +118,7 @@ def reset_channels():
     cached_channels = {}
     cached_channel_icons = {}
 
-def fetch_all_channels():
+def fetch_channels():
     global have_channels, cached_channels
     
     if have_channels:
@@ -126,19 +126,26 @@ def fetch_all_channels():
 
     channel_list = server.rcd.packsys.get_channels()
     for c in channel_list:
-        cached_channels[str(c["id"])] = c
+        if not c["hidden"]:
+            cached_channels[c["id"]] = c
 
     have_channels = 1
 
 
 def get_all_channels():
-    fetch_all_channels()
+    fetch_channels()
     return cached_channels.values()
 
 
 def get_channel(id):
-    fetch_all_channels()
-    id = str(id)
+    import types
+    try:
+        assert type(id) is types.StringType
+    except AssertionError:
+        print id
+        raise
+
+    fetch_channels()
     if cached_channels.has_key(id):
         return cached_channels[id]
     return None
@@ -160,13 +167,25 @@ def get_channel_alias(id):
 
 def get_channel_icon(id, width=0, height=0):
 
-    if id <= 0:
+    # FIXME?  Negative numbers were special wildcards in red_channelopen and
+    # red_searchbox before.
+    if id < 0:
+        return None
+
+    import types
+    try:
+        assert type(id) is types.StringType
+    except AssertionError:
+        print id
+        raise
+
+    if not id:
         return None
 
     if width > 0 and height > 0:
-        key = "%s %d %d" % (str(id), width, height)
+        key = "%s %d %d" % (id, width, height)
     else:
-        key = str(id)
+        key = id
     
     if cached_channel_icons.has_key(key):
         return cached_channel_icons[key]
@@ -271,6 +290,32 @@ def get_package_key(pkg):
 def get_dep_EVR(dep):
     evr = get_package_EVR(dep)
     return dep["relation"] + " " + evr
+
+###############################################################################
+have_services = 0
+cached_services = {}
+
+def reset_services():
+    global have_services, cached_services
+    have_services = 0
+    cached_services = {}
+
+def fetch_services():
+    global have_services, cached_services
+
+    if have_services:
+        return
+
+    service_list = server.rcd.service.list()
+    for s in service_list:
+        if not s["is_invisible"]:
+            cached_services[s["id"]] = s
+
+    have_services = 1
+
+def get_all_services():
+    fetch_services()
+    return cached_services.values()
 
 ###############################################################################
 
@@ -447,7 +492,7 @@ def refresh(parent):
         pend.set_pending_list(stuff_to_poll)
 
     try:
-        worker = server.rcd.packsys.refresh_all_channels()
+        worker = server.rcd.service.refresh()
     except ximian_xmlrpclib.Fault, f:
         dialog_from_fault(f,
                           additional_text=_("Please ensure that your "
@@ -508,4 +553,8 @@ class fault:
     no_icon                = -612
     cant_activate          = -613
     not_supported          = -614
+    license_not_found      = -615
+    cant_set_preference    = -616
+    invalid_service        = -617
+    transaction_failed     = -618
 

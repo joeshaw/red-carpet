@@ -99,10 +99,11 @@ class SeqNoChecker:
         self.curr_user_seqno    = -1
         self.curr_lock_seqno    = -1
 
-    def set_world_seqnos(self, pkg, ch, subs):
+    def set_world_seqnos(self, pkg, ch, subs, lock):
         self.curr_package_seqno = pkg
         self.curr_channel_seqno = ch
         self.curr_subs_seqno    = subs
+        self.curr_lock_seqno    = lock
         self.check()
 
     def set_user_seqno(self, usr):
@@ -146,6 +147,7 @@ class SeqNoChecker:
         if self.curr_channel_seqno != last_channel_seqno or \
            self.curr_subs_seqno != last_subs_seqno or \
            self.curr_lock_seqno != last_lock_seqno:
+            rcd_util.reset_services()
             rcd_util.reset_channels()
 
         if self.curr_user_seqno != last_user_seqno:
@@ -191,7 +193,6 @@ def poll_cb():
         snc = SeqNoChecker()
         t1 = server.rcd.packsys.world_sequence_numbers()
         t2 = server.rcd.users.sequence_number()
-        t3 = server.rcd.packsys.lock_sequence_number()
 
         def world_seqno_cb(th, snc):
             try:
@@ -210,20 +211,10 @@ def poll_cb():
             except ximian_xmlrpclib.Fault, f:
                 pass # FIXME?
             else:
-                snc.set_user_seqno(r)
-
-        def lock_seqno_cb(th, snc):
-            try:
-                r = th.get_result()
-            except ximian_xmlrpclib.Fault,f:
-                pass # FIXME?
-            else:
-                snc.set_lock_seqno(r)
-            
+                snc.set_user_seqno(r)            
 
         t1.connect("ready", world_seqno_cb, snc)
         t2.connect("ready", user_seqno_cb, snc)
-        t3.connect("ready", lock_seqno_cb, snc)
 
         missed_polls = 0
 

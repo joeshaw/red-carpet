@@ -276,7 +276,7 @@ class PendingView(gtk.Window):
             else:
                 rate_str = None
 
-            if show_size:
+            if show_size and total_size > 0:
                 cs = rcd_util.byte_size_to_string(completed_size)
                 if total_size > 0:
                     ts = rcd_util.byte_size_to_string(total_size)

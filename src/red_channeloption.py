@@ -117,7 +117,7 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
     def set_channel_by_id(self, id):
         if not id in self.item_id_list:
-            print "Unknown channel '%d'" % id
+            print "Unknown channel '%s'" % id
             assert 0
 
         i = self.item_id_list.index(id)

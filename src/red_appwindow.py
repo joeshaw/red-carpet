@@ -40,6 +40,7 @@ import red_toolbar
 import red_packagearray, red_packageview
 import red_packagebook
 import red_searchbox
+import red_services
 import red_settings
 import red_actionbar
 import red_connection
@@ -617,7 +618,8 @@ class AppWindow(gtk.Window,
         ##
 
         def activate_sensitive_fn():
-            return rcd_util.check_server_permission("superuser")
+            return rcd_util.check_server_permission("superuser") \
+                   and rcd_util.get_all_services()
         
         bar.add("/%s/%s" % (file_str, _("_Activate...")),
                 description=_("Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"),
@@ -655,6 +657,11 @@ class AppWindow(gtk.Window,
                 accelerator="<Shift><Control>A")
 
         bar.add("/%s/sep" % edit_str, is_separator=1)
+
+        bar.add("/%s/%s" % (edit_str, _("Services...")),
+                description=_("Edit services"),
+                callback=lambda x:self.open_or_raise_window(red_services.ServicesWindow),
+                accelerator="<Control>E")
 
         bar.add("/%s/%s" % (edit_str, _("Channel _Subscriptions...")),
                 description=_("Edit your channel subscriptions"),

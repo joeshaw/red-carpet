@@ -1,3 +1,66 @@
+2003-09-24  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (get_channel, get_channel_icon): Enforce that
+	channel ids be strings.  Man, times like this I wish Python were
+	strongly typed.
+	(fetch_channels): Don't add hidden channels to the list of
+	available channels.
+	(reset_services, fetch_services, get_all_services): Added,
+	gets the list of services from the daemon and caches it.
+	(refresh): Update for refresh API change.
+	(fault): Add new faults.
+
+	* red_activation.py: Add a ServicesOption so the user can select
+	what service to activate against.  Add a bunch of code to handle
+	sensitization when there are no services set.
+	(activate): Update for activation API change.
+
+	* red_appwindow.py (activate_sensitize_fn): Desensitize the
+	Activate menu option when there are no services.
+	(assemble_menubar): Add Edit -> Services...
+
+	* red_channelmodel.py (COLUMNS): Make the ID column a string, not
+	an int.  Add "hidden" and "mounted" columns, remove "transient".
+
+	* red_channeloption.py (set_channel_by_id): Change a format
+	specifier to %s from %d for a channel id.
+
+	* red_connection.py: Require rcd version 1.5.1 and protocol
+	version 2.
+
+	* red_depcomponent.py (begin_transaction): Update for transact API
+	change.
+
+	* red_mount.py (mount_channel): Get the aliases by mapping the
+	result of get_channel_alias(x["id"]), not the value of the
+	function itself.  Update for API changes.
+	(has_mounted_channels): Check the "mounted" property, not
+	"transient".
+	(MountWindow): Add a checkbox to get packages recursively in
+	mounting packages.
+	(UnmountWindow): Get the "mounted" property, not "transient".
+
+	* red_pendingview.py (PendingView.update): Don't show size info if
+	total_size is <= 0.
+
+	* red_prefs.py (PrefsViewPage_General): Remove the "Server"
+	section, since that stuff is in Edit->Services now.  Add in
+	refresh interval.
+	(PrefsViewPage_General): Add in rollback checkbox.
+
+	* red_searchbox.py (SearchBox): Add some warnings of comparisons
+	to fix.
+
+	* red_serverlistener.py (set_world_seqnos): Take a lock argument
+	and set it.
+	(check): Reset the services as well as the channels.
+	(poll_cb): Don't call lock_sequence_number() anymore... it doesn't
+	exist, and we get it from world_sequence_numbers()
+	(lock_seqno_cb): Nuke this.
+
+	* red_subscriptions.py (SubscriptionsView.__init__): Fix a typo in
+	which we were calling set_sensitive() instead of set_shadow_type().
+
 2003-09-16  Joe Shaw  <joe@ximian.com>
 
 	Patch from Marcin Krzyzanowski <krzak@linux.net.pl>

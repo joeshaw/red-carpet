@@ -437,7 +437,7 @@ class SearchBox(gtk.VBox):
         else:
             channel_id = self.__ch_opt.get_channel_id()
             if channel_id >= 0:
-                query.append(["channel", "is", str(channel_id)])
+                query.append(["channel", "is", channel_id])
 
         return query
     
@@ -465,6 +465,7 @@ class SearchBox(gtk.VBox):
                    and (p.get("channel") != 0 or p.has_key("channel_guess")):
                 return 0
 
+            # XXX - Fix these numeric comparisons!
             if self.__system_packages_only \
                and channel_id > 0 \
                and channel_id != p.get("channel_guess"):

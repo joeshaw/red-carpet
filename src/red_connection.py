@@ -32,11 +32,11 @@ from red_gettext import _
 
 # Required rcd versions
 required_major_version = 1
-required_minor_version = 4
+required_minor_version = 5
 required_micro_version = 1
 
 # Required protocol version
-required_protocol_version = 1
+required_protocol_version = 2
 
 class IncorrectVersionError(exceptions.Exception):
     def __init__(self, args=None):
