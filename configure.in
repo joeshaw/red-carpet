@@ -52,7 +52,9 @@ dnl Make sure we have the right gtk+ bindings
 
 py_gtk_version="2.0.0"
 py_gtk_version_check="
-import sys, string, gtk
+import sys, string, pygtk
+pygtk.require(\"2.0\")
+import gtk
 required_version = map(int, string.split(\"$py_gtk_version\",\".\"))
 version = gtk.gtk_version
 sys.exit(version < required_version)"
