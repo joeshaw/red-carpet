@@ -1,11 +1,11 @@
-# Translation of red-carpet to Croatian
-# Copyright (C) Croatian team
-# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Jerko Škifić <skific@riteh.hr>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,Željko Brajdić <zorz@iskon.hr>,
+# Translation of red-carpet to Croatiann
+# Copyright (C) Croatiann team
+# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Jerko Škifić <skific@riteh.hr>,Željko Brajdić <zorz@iskon.hr>,pr pr <delacko@192.168.0.1>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 0\n"
-"POT-Creation-Date: 2003-11-06 18:13+0100\n"
-"PO-Revision-Date: 2003-12-30 20:47+CET\n"
+"POT-Creation-Date: 2004-02-01 17:14+0100\n"
+"PO-Revision-Date: 2004-02-05 23:52+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -13,47 +13,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: TransDict server\n"
 
-#: src/rcd_util.py:398
+#: src/rcd_util.py:402
 msgid "Please wait while getting data."
-msgstr ""
+msgstr "Molim pričekajte dok uzimam podatke."
 
-#: src/rcd_util.py:452 src/rcd_util.py:470
+#: src/rcd_util.py:456 src/rcd_util.py:474
 msgid "Please ensure that your network settings are correct."
-msgstr ""
+msgstr "Provjerite da li su mrežne postavke ispravne."
 
-#: src/rcd_util.py:459
+#: src/rcd_util.py:463
 msgid "Refreshing channel data"
-msgstr ""
+msgstr "Osvježavam podatke o kanalu"
 
-#: src/rcd_util.py:461
+#: src/rcd_util.py:465
 msgid "Downloading channel information"
-msgstr ""
+msgstr "Preuzimanje informacije o kanalu"
 
-#: src/rcd_util.py:487
+#: src/rcd_util.py:491
 msgid "Verifying"
 msgstr "Provjeravam"
 
-#: src/rcd_util.py:488
+#: src/rcd_util.py:492
 msgid "Unable to verify package signature for"
-msgstr ""
+msgstr "Ne mogu provjeriti potpis paketa za"
 
-#: src/rcd_util.py:489
+#: src/rcd_util.py:493
 msgid "There is no package signature for"
-msgstr ""
+msgstr "Nema potpisa paketa za"
 
-#: src/rcd_util.py:490
+#: src/rcd_util.py:494
 msgid "Preparing Transaction"
-msgstr ""
+msgstr "Pripremam prijenos"
 
-#: src/rcd_util.py:491
+#: src/rcd_util.py:495
 msgid "Installing"
 msgstr "Instaliram"
 
-#: src/rcd_util.py:492
+#: src/rcd_util.py:496
 msgid "Removing"
 msgstr "Uklanjanje"
 
-#: src/rcd_util.py:493
+#: src/rcd_util.py:497
 msgid "Configuring"
 msgstr "Postavljam"
 
@@ -63,31 +63,31 @@ msgstr "Ovo iskustvo vam je omogućio:"
 
 #: src/red_about.py:42
 msgid "With love from:"
-msgstr ""
+msgstr "S ljubavlju od:"
 
 #: src/red_about.py:43
 msgid "Best wishes from:"
-msgstr ""
+msgstr "Sve najbolje od:"
 
 #: src/red_about.py:44
 msgid "Sincerely:"
-msgstr ""
+msgstr "Iskreno:"
 
 #: src/red_about.py:45
 msgid "Developed by chimps:"
-msgstr ""
+msgstr "Razvile čimpanze:"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr ""
+msgstr "Licencirano pod 'GNU' Općom Javnom Licencom, inačica 2"
 
 #: src/red_activation.py:27
 msgid "Group Activation"
-msgstr ""
+msgstr "Aktiviranje grupe"
 
 #: src/red_activation.py:44
 msgid "Service:"
-msgstr ""
+msgstr "Usluga:"
 
 #: src/red_activation.py:48
 msgid "Email:"
@@ -95,7 +95,7 @@ msgstr "E-pošta:"
 
 #: src/red_activation.py:52
 msgid "Activation Code:"
-msgstr ""
+msgstr "Aktivirajući kod:"
 
 #: src/red_activation.py:78
 msgid "Activate"
@@ -103,15 +103,15 @@ msgstr "Aktiviraj"
 
 #: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
-msgstr ""
+msgstr "Molim popunite i e-poštu i aktivirajući kod."
 
 #: src/red_activation.py:114
 msgid "Unable to activate"
-msgstr ""
+msgstr "Ne mogu aktivirati"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr ""
+msgstr "Provjerite jeste li ispravno popunili adresu e-pošte i aktivirajući kod."
 
 #: src/red_appwindow.py:84
 msgid "C"
@@ -122,15 +122,16 @@ msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
 msgstr ""
+"Ne mogu prikazati pomoć jer nedostaje datoteka. Prijavite ovo Vašem "
+"dobavljaču."
 
 #: src/red_appwindow.py:131
 msgid "Unable to show help because there are no applications available to view help."
-msgstr ""
+msgstr "Ne mogu da prikazati pomoć jer nema aplikacije za pregled pomoći."
 
 #: src/red_appwindow.py:406
-#, python-format
 msgid "Are you sure you want to open %d package information windows?"
-msgstr ""
+msgstr "Jeste li sigurni da želite otvoriti prozore s informacijama o paketu %d ?"
 
 #: src/red_appwindow.py:434
 msgid "Run Now"
@@ -138,7 +139,7 @@ msgstr "Izvedi sada"
 
 #: src/red_appwindow.py:435
 msgid "Perform installations and removals"
-msgstr ""
+msgstr "Obavi instalacije i uklanjanja"
 
 #: src/red_appwindow.py:442
 msgid "Channels"
@@ -146,7 +147,7 @@ msgstr "Kanali"
 
 #: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
-msgstr ""
+msgstr "Promjena prijava na kanalima"
 
 #: src/red_appwindow.py:451
 msgid "Refresh"
@@ -154,24 +155,24 @@ msgstr "Osvježi"
 
 #: src/red_appwindow.py:452
 msgid "Refresh channel data"
-msgstr ""
+msgstr "Osvježi podatke o kanalu"
 
 #: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
-msgstr ""
+msgstr "Označi za _instalaciju"
 
 #: src/red_appwindow.py:464
 msgid "Mark selected packages for installation"
-msgstr ""
+msgstr "Označavanje paketa za instalaciju"
 
 #: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
-msgstr ""
+msgstr "Označi za _uklanjanje"
 
 #: src/red_appwindow.py:470
 msgid "Mark selected packages for removal"
-msgstr ""
+msgstr "Označavanje paketa za uklanjanje"
 
 #: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
@@ -180,16 +181,15 @@ msgstr "_Odustani"
 
 #: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
-msgstr ""
+msgstr "Otkazuje označene postupke za pakete"
 
 #: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "_Prikaži informacije"
 
 #: src/red_appwindow.py:482
-#, fuzzy
 msgid "Package information"
-msgstr "Informacije paketa"
+msgstr "Informacije o paketu"
 
 #: src/red_appwindow.py:539
 msgid "_File"
@@ -213,51 +213,52 @@ msgstr "_Pomoć"
 
 #: src/red_appwindow.py:551
 msgid "Connect to daemon..."
-msgstr ""
+msgstr "Povezujem se s daemonom..."
 
 #: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
-msgstr ""
+msgstr "Povezujem se s udaljenim daemonom"
 
 #: src/red_appwindow.py:562
 msgid "Install from _File..."
-msgstr ""
+msgstr "Instaliranje iz _datoteke..."
 
 #: src/red_appwindow.py:563
 msgid "Install a package from a local file"
-msgstr ""
+msgstr "Instaliranje paketa iz datoteke"
 
 #: src/red_appwindow.py:572
 msgid "Install from _URL..."
-msgstr ""
+msgstr "Instaliranje s _interneta..."
 
 #: src/red_appwindow.py:573
 msgid "Install a package from a remote URL"
-msgstr ""
+msgstr "Instaliranje paketa s interneta"
 
 #: src/red_appwindow.py:590
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "_Montiraj direktorij..."
 
 #: src/red_appwindow.py:591
 msgid "Mount a directory as a channel"
-msgstr ""
+msgstr "Montiraj direktorij kao kanal"
 
 #: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
-msgstr ""
+msgstr "Odmo_ntiraj direktorij..."
 
 #: src/red_appwindow.py:608
 msgid "Unmount a directory"
-msgstr ""
+msgstr "Odmontiraj direktorij..."
 
 #: src/red_appwindow.py:624
 msgid "_Activate..."
-msgstr ""
+msgstr "_Aktiviraj..."
 
 #: src/red_appwindow.py:625
 msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr ""
+msgstr """Aktiviraj daemon program za Red Carpet Express ili Red Carpet Enterprise "
+"poslužitelj"
 
 #: src/red_appwindow.py:631
 msgid "Quit"
@@ -265,7 +266,7 @@ msgstr "Izlaz"
 
 #: src/red_appwindow.py:632
 msgid "Quit Red Carpet"
-msgstr ""
+msgstr "Izađi iz Red Carpeta"
 
 #: src/red_appwindow.py:647
 msgid "Select _All"
@@ -273,7 +274,7 @@ msgstr "Označi _sve"
 
 #: src/red_appwindow.py:648
 msgid "Select all items"
-msgstr ""
+msgstr "Odaberi sve stavke"
 
 #: src/red_appwindow.py:653
 msgid "Select _None"
@@ -281,7 +282,7 @@ msgstr "_Bez odabira"
 
 #: src/red_appwindow.py:654
 msgid "Deselect all items"
-msgstr ""
+msgstr "Ukloni sav odabir"
 
 #: src/red_appwindow.py:661
 msgid "Services..."
@@ -289,15 +290,15 @@ msgstr "Servisi..."
 
 #: src/red_appwindow.py:662
 msgid "Edit services"
-msgstr ""
+msgstr "Uređivanje servisa"
 
 #: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
-msgstr ""
+msgstr "Prijave na kanale..."
 
 #: src/red_appwindow.py:667
 msgid "Edit your channel subscriptions"
-msgstr ""
+msgstr "Promjena prijava na kanale"
 
 #: src/red_appwindow.py:672
 msgid "_Preferences..."
@@ -305,64 +306,63 @@ msgstr "_Podešenja..."
 
 #: src/red_appwindow.py:673
 msgid "Edit your Red Carpet preferences"
-msgstr ""
+msgstr "Promijenite vlastite postavke Red Carpeta"
 
 #: src/red_appwindow.py:677
 msgid "_Users..."
-msgstr ""
+msgstr "_Korisnici..."
 
 #: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
-msgstr ""
+msgstr "Promijeni korisničke dozvole za ovaj daemon"
 
 #: src/red_appwindow.py:691
-#, fuzzy
 msgid "_Sidebar"
-msgstr ".BočnaTraka"
+msgstr "Linija sa _strane"
 
 #: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
-msgstr ""
+msgstr "Pokaži ili sakrij traku s narednim akcijama"
 
 #: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
-msgstr ""
+msgstr "N_apredne opcije pretraživanja"
 
 #: src/red_appwindow.py:697
 msgid "Hide or show advanced search options"
-msgstr ""
+msgstr "Pokaži ili sakrij napredne postavke pretraživanja"
 
 #: src/red_appwindow.py:701
 msgid "_Channel Names"
-msgstr ""
+msgstr "Imena _kanala"
 
 #: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
-msgstr ""
+msgstr "Pokaži ili sakrij imena kanala u listi paketa"
 
 #: src/red_appwindow.py:708
 msgid "Package _Information..."
-msgstr ""
+msgstr "_Informacije o paketu..."
 
 #: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
-msgstr ""
+msgstr "Pogledaj informacije o trenutno odabranim paketima"
 
 #: src/red_appwindow.py:717
 msgid "_Daemon Information..."
-msgstr ""
+msgstr "Informacije o daemonu..."
 
 #: src/red_appwindow.py:718
 msgid "View information about this daemon"
-msgstr ""
+msgstr "Pogledaj informacije o ovom daemonu"
 
 #: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
-msgstr ""
+msgstr "Novosti Red Carpeta..."
 
 #: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
-msgstr ""
+msgstr "Pogledaj posljednje novosti Red Carpeta"
 
 #: src/red_appwindow.py:733
 msgid "Run _Now"
@@ -370,39 +370,39 @@ msgstr "_Izvedi sada"
 
 #: src/red_appwindow.py:734
 msgid "Run the current transaction"
-msgstr ""
+msgstr "Pokreni tekući prijenos"
 
 #: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
-msgstr ""
+msgstr "Pro_vjeri zavisnosti sustava"
 
 #: src/red_appwindow.py:749
 msgid "Verify that all system dependencies are met"
-msgstr ""
+msgstr "Provjeravanje zavisnosti sustava"
 
 #: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
-msgstr ""
+msgstr "Označi za instalaciju"
 
 #: src/red_appwindow.py:761
 msgid "Mark this package for installation"
-msgstr ""
+msgstr "Označavanje paketa za instalaciju"
 
 #: src/red_appwindow.py:771
 msgid "Mark this package for removal"
-msgstr ""
+msgstr "Označavanje paketa za uklanjanje"
 
 #: src/red_appwindow.py:784
 msgid "Cancel installation or removal mark"
-msgstr ""
+msgstr "Ukloni znak za instalaciju ili uklanjanje"
 
 #: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
-msgstr ""
+msgstr "Osvježi podatke o kanalu"
 
 #: src/red_appwindow.py:799
 msgid "Download latest channel data"
-msgstr ""
+msgstr "Preuzimi najnovije podatke o kanalu"
 
 #: src/red_appwindow.py:808
 msgid "_Contents"
@@ -410,7 +410,7 @@ msgstr "_Sadržaj"
 
 #: src/red_appwindow.py:809
 msgid "View Red Carpet help"
-msgstr ""
+msgstr "Pogledaj pomoć za Red Carpet"
 
 #: src/red_appwindow.py:814
 msgid "_About..."
@@ -418,12 +418,11 @@ msgstr "_O..."
 
 #: src/red_appwindow.py:815
 msgid "About Red Carpet"
-msgstr ""
+msgstr "O Red Carpet-u"
 
 #: src/red_appwindow.py:834
-#, python-format
 msgid "Go to the '%s' page"
-msgstr ""
+msgstr "Idi na stranicu '%s'"
 
 #: src/red_channeloption.py:64
 msgid "All Channels"
@@ -431,50 +430,55 @@ msgstr "Kanali"
 
 #: src/red_channeloption.py:69
 msgid "All Subscribed Channels"
-msgstr ""
+msgstr "Svi prijavljeni kanali"
 
 #: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "Nema kanala/Nepoznat kanal"
 
 #: src/red_connection.py:49
-#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
+"Ne mogu se spojiti na daemon:\n"
+" „%s“."
 
 #: src/red_connection.py:67
-#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
+"Inačica daemona Red Carpeta je %d.%d.%d.\n"
+"Potrebna je inačica %d.%d.%d (ili novija)."
 
 #: src/red_connection.py:93
-#, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"Pronađen je protokol inačice %d.  Potrebna je inačica %d.  Morate nadograditi "
+"vaše izdanje rcd-a."
 
 #: src/red_connection.py:123
 msgid "Starting daemon..."
-msgstr ""
+msgstr "Pokrećem daemon..."
 
 #: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
 msgstr ""
+"Red Carpet zahtjeva da Red Carpet daemon bude pokrenut. \n"
+"Želite li ga pokrenuti odmah?"
 
 #: src/red_connection.py:345
 msgid "Connect to this system"
-msgstr ""
+msgstr "Spoji se na ovaj sustav"
 
 #: src/red_connection.py:349
 msgid "Connect to a remote system"
-msgstr ""
+msgstr "Spoji se na udaljeni sustav"
 
 #: src/red_connection.py:357
 msgid "Server:"
@@ -495,75 +499,76 @@ msgstr "Spoji"
 
 #: src/red_console.py:50
 msgid "Red Carpet Error Console"
-msgstr ""
+msgstr "Konzola grešaka Red Carpeta"
 
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
-msgstr ""
+msgstr "Veza s daemonom je ponovo uspostavljena.\n"
 
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr ""
+msgstr "Izgubljena veza sa daemonom!"
 
 #: src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
-msgstr ""
+msgstr "Izađi iz Red Carpeta"
 
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
-msgstr ""
+msgstr "Provjera zavisnosti"
 
 #: src/red_depcomponent.py:116
 msgid "Verifying System"
-msgstr ""
+msgstr "Provjeravanje sustava"
 
 #: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
-msgstr ""
+msgstr "Rješavam zavisnosti"
 
 #: src/red_depcomponent.py:144
 msgid "You must agree to the licenses covering this software before installing it."
-msgstr ""
+msgstr """Morate se složiti s licencama koje se odnose na ovaj program prije nego što "
+"ga instalirate."
 
 #: src/red_depcomponent.py:188
 msgid "I Agree"
-msgstr ""
+msgstr "Slažem se"
 
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
-msgstr ""
-
-#: src/red_depcomponent.py:319
-msgid "System Verified"
-msgstr ""
+msgstr "Neuspjelo rješavanje zavisnosti"
 
 #: src/red_depcomponent.py:321
+msgid "System Verified"
+msgstr "Sustav provjeren"
+
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
-msgstr ""
+msgstr "Sve zavisnosti paketa su zadovoljene, i nikakve ispravke nisu potrebne."
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
-msgstr ""
+msgstr "Tražene instalacije"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
-msgstr ""
+msgstr "Tražena uklanjanja"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
-msgstr ""
+msgstr "Neophodne instalacije"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
-msgstr ""
+msgstr "Potrebna uklanjanja"
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr "Nastavi"
 
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanal"
@@ -579,7 +584,7 @@ msgstr "Aktivna verzija"
 #: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
 #: src/red_updates.py:94
 msgid "New Version"
-msgstr ""
+msgstr "Nova inačica"
 
 #: src/red_depview.py:59 src/red_packageview.py:498
 msgid "Size"
@@ -591,15 +596,15 @@ msgstr "Sve"
 
 #: src/red_history.py:114
 msgid "Installations"
-msgstr ""
+msgstr "Instalacije"
 
 #: src/red_history.py:115
 msgid "Removals"
-msgstr ""
+msgstr "Uklanjanja"
 
 #: src/red_history.py:116
 msgid "Upgrades"
-msgstr ""
+msgstr "Nadogradnje"
 
 #: src/red_history.py:121
 msgid "User:"
@@ -607,7 +612,7 @@ msgstr "Korisnik:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "Vremenski rok (dani):"
 
 #: src/red_history.py:279
 msgid "Searching..."
@@ -639,7 +644,7 @@ msgstr "_Povijest"
 
 #: src/red_history.py:383
 msgid "No results found."
-msgstr ""
+msgstr "Ništa nije nađeno."
 
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
@@ -648,32 +653,31 @@ msgstr "%s nije ispravan paket"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
-msgstr ""
+msgstr "Nema ispravnih paketa za instalaciju"
 
 #: src/red_installfiles.py:102
 msgid "Install from File"
-msgstr ""
+msgstr "Instaliranje iz datoteke"
 
 #: src/red_installfiles.py:119
-#, python-format
 msgid "Downloading %s..."
-msgstr ""
+msgstr "Preuzimanje %s..."
 
 #: src/red_installfiles.py:158
 msgid "Install from URL"
-msgstr ""
+msgstr "Instaliranje s interneta"
 
 #: src/red_installfiles.py:163
 msgid "Package URL:"
-msgstr ""
+msgstr "Adresa paketa:"
 
 #: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
-msgstr ""
+msgstr "GREŠKA: Ne možete koristiti i -h/--host i -l/--local opcije"
 
 #: src/red_main.py:137
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr ""
+msgstr "GREŠKA: Ne možete navesti korisnika za lokalni daemon"
 
 #: src/red_mirrors.py:76
 msgid "Mirror"
@@ -685,52 +689,51 @@ msgstr "Smještaj"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "Odaberite kopiju poslužitelja"
 
-#: src/red_mount.py:90
-#, python-format
+#: src/red_mount.py:91
 msgid "Unable to unmount '%s'"
-msgstr ""
+msgstr "Ne mogu montirati '%s'"
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Potraži..."
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
-msgstr ""
+msgstr "Montiraj direktorij"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
-msgstr ""
+msgstr "Montiraj kanal"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Montiraj direktorij kao kanal"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Naziv kanala:"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Imenik:"
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
-msgstr ""
+msgstr "Rekurzivno traženje paketa"
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
-msgstr ""
+msgstr "Odaberite putanju za kanal."
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
-msgstr ""
+msgstr "Odmontiraj kanal"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
-msgstr ""
+msgstr "Odmontiravanje?"
 
 #: src/red_news.py:174
 #, python-format
@@ -739,16 +742,15 @@ msgstr "%s Novosti"
 
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr ""
+msgstr "Spoji se s lokalno pokrenutim demonom"
 
 #: src/red_option.py:25
-#, fuzzy
 msgid "hostname"
-msgstr "Ime računala"
+msgstr "računalo"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "Kontaktiram daemon naznačenom poslužitelju"
 
 #: src/red_option.py:26
 msgid "username"
@@ -759,35 +761,32 @@ msgid "Specify user name"
 msgstr "Navedi ime korisnika"
 
 #: src/red_option.py:27
-#, fuzzy
 msgid "password"
 msgstr "lozinka"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "Lozinka"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "Ispiši inačicu klijenta i izađi"
 
 #: src/red_option.py:29
 msgid "Get usage information"
-msgstr ""
+msgstr "Dohvat informacija o korištenju"
 
 #: src/red_option.py:120
-#, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "Uporaba: %s <options> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
-msgstr ""
+msgstr "Sljedeće opcije su prihvaćene:"
 
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "Postavljeno"
+msgstr "instalirano"
 
 #: src/red_packagearray.py:93
 msgid "newer"
@@ -798,66 +797,60 @@ msgid "older"
 msgstr "starije"
 
 #: src/red_packagearray.py:97
-#, fuzzy
 msgid "not installed"
-msgstr "Nije postavljeno"
+msgstr "nije instalirano"
 
 #: src/red_packagearray.py:123
-#, fuzzy
 msgid "upgrade"
-msgstr "Dogradnja"
+msgstr "nadogradi"
 
 #: src/red_packagearray.py:125
 msgid "downgrade"
-msgstr ""
+msgstr "razgradi"
 
 #: src/red_packagearray.py:127
 msgid "install"
 msgstr "instaliraj"
 
 #: src/red_packagearray.py:134
-#, fuzzy
 msgid "remove"
 msgstr "ukloni"
 
 #: src/red_packagearray.py:614
-#, python-format
 msgid "Found %d matching packages"
-msgstr ""
+msgstr "Broj pronađenih paketa: %d"
 
 #: src/red_packagearray.py:616
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "Nađen 1 odgovarajući paket"
 
 #: src/red_packagearray.py:618
 msgid "No matching packages found"
-msgstr ""
+msgstr "Nisu nađeni odgovarajući paketi"
 
 #: src/red_packagearray.py:776
 msgid "Looking for updates..."
-msgstr ""
+msgstr "Traženje nadogradnji..."
 
 #: src/red_packagebook.py:43
 msgid "Package Information"
 msgstr "Informacije paketa"
 
 #: src/red_packagepage_deps.py:29
-#, fuzzy
 msgid "Dependencies"
-msgstr "ovisnosti"
+msgstr "Zavisnosti"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "omogućuje"
+msgstr "Omogućava"
 
 #: src/red_packagepage_deps.py:70
 msgid "Requires"
-msgstr ""
+msgstr "Zahtjeva"
 
 #: src/red_packagepage_deps.py:73
 msgid "Conflicts With"
-msgstr ""
+msgstr "U sukobu s"
 
 #: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
@@ -873,11 +866,11 @@ msgstr "Inačica za objavljivanje"
 
 #: src/red_packagepage_info.py:81
 msgid "Package Size"
-msgstr ""
+msgstr "Veličina paketa"
 
 #: src/red_packagepage_info.py:82
 msgid "Installed Size"
-msgstr ""
+msgstr "Instalirana veličina"
 
 #: src/red_packagepage_info.py:84
 msgid "Section"
@@ -912,53 +905,53 @@ msgstr "Važnost"
 msgid "%.1f%% completed"
 msgstr "%.1f%% završeno"
 
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Ažuriranje sustava"
 
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 msgid "Download cancelled"
-msgstr ""
+msgstr "Preuzimanje otkazano"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 msgid "Transaction cancelled"
-msgstr ""
-
-#: src/red_pendingview.py:618
-msgid "Transaction Finished"
-msgstr ""
-
-#: src/red_pendingview.py:631
-msgid "Downloading packages"
-msgstr ""
-
-#: src/red_pendingview.py:644
-msgid "Download Failed"
-msgstr ""
+msgstr "Transakcija je otkazana"
 
 #: src/red_pendingview.py:645
+msgid "Transaction Finished"
+msgstr "Transakcija je uspjela"
+
+#: src/red_pendingview.py:658
+msgid "Downloading packages"
+msgstr "Preuzimanje paketa"
+
+#: src/red_pendingview.py:671
+msgid "Download Failed"
+msgstr "Preuzimanje neuspješno"
+
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Nepoznata greška"
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
-msgstr ""
+msgstr "Obrađujem prijenos"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
-msgstr ""
+msgstr "Prijenos je uspješno obavljen"
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Prijenos neuspješan"
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
-msgstr ""
+msgstr "Transakcija nije uspjela"
 
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr ""
+msgstr "Vrijeme između osvježavanja podataka kanala (u satima):"
 
 #: src/red_prefs.py:182
 msgid "Packages"
@@ -966,15 +959,15 @@ msgstr "Paketi"
 
 #: src/red_prefs.py:191
 msgid "Require package signatures"
-msgstr ""
+msgstr "Zahtjevaj potpise paketa"
 
 #: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
-msgstr ""
+msgstr "Najveći broj paketa koji se preuzimaju odjednom:"
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr ""
+msgstr "Uključite vraćanje paketa"
 
 #: src/red_prefs.py:210
 msgid "Proxy"
@@ -982,11 +975,11 @@ msgstr "Proxy"
 
 #: src/red_prefs.py:219
 msgid "Use a proxy"
-msgstr ""
+msgstr "Koristi proxy"
 
 #: src/red_prefs.py:223
 msgid "Proxy URL:"
-msgstr ""
+msgstr "Adresa proxya:"
 
 #: src/red_prefs.py:230
 msgid "Username:"
@@ -994,43 +987,43 @@ msgstr "Korisničko ime:"
 
 #: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
-msgstr ""
+msgstr "Nemate dozvolu da vidjeti postavke vašeg proxya"
 
 #: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
-msgstr ""
+msgstr "Ostavi preuzete pakete i njihove podatke"
 
 #: src/red_prefs.py:300
 msgid "Location of cached data:"
-msgstr ""
+msgstr "Lokacija međuspremnika:"
 
 #: src/red_prefs.py:308
 msgid "Expiration"
-msgstr ""
+msgstr "Ističe"
 
 #: src/red_prefs.py:312
 msgid "Cache expires"
-msgstr ""
+msgstr "Međuspremnik ističe"
 
 #: src/red_prefs.py:318
 msgid "Maximum age in days:"
-msgstr ""
+msgstr "Starosna granica u danima:"
 
 #: src/red_prefs.py:329
 msgid "Maximum size in MB:"
-msgstr ""
+msgstr "Maksimalna veličina u MB:"
 
 #: src/red_prefs.py:340
 msgid "Current cache size:"
-msgstr ""
+msgstr "Trenutna veličina međuspremnika:"
 
 #: src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr ""
+msgstr "Sigurni ste da želite izbrisati ostavljene pakete?"
 
 #: src/red_prefs.py:373
 msgid "Empty Cache"
-msgstr ""
+msgstr "Isprazni međuspremnik"
 
 #: src/red_prefs.py:395
 #, python-format
@@ -1043,7 +1036,7 @@ msgstr "Vrijednost"
 
 #: src/red_prefs.py:456
 msgid "Loading preferences..."
-msgstr ""
+msgstr "Učitavanje postavki..."
 
 #: src/red_prefs.py:520
 msgid "%s Preferences"
@@ -1059,31 +1052,31 @@ msgstr "Nadogradnje"
 
 #: src/red_searchbox.py:148
 msgid "Uninstalled Packages"
-msgstr ""
+msgstr "Deinstalirani paketi"
 
 #: src/red_searchbox.py:149
 msgid "Installed Packages"
-msgstr ""
+msgstr "Instalirani paketi"
 
 #: src/red_searchbox.py:174
 msgid "All Sections"
-msgstr ""
+msgstr "Svi delovi"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr ""
+msgstr "Produktivnost"
 
 #: src/red_searchbox.py:176
 msgid "Imaging"
-msgstr ""
+msgstr "Obrada slika"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
-msgstr ""
+msgstr "Upravljanje osobnim informacijama"
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr ""
+msgstr "X Windows"
 
 #: src/red_searchbox.py:179
 msgid "Games"
@@ -1127,7 +1120,7 @@ msgstr "Razno"
 
 #: src/red_searchbox.py:274
 msgid "Search descriptions"
-msgstr ""
+msgstr "Pretražuj opise"
 
 #: src/red_searchbox.py:286
 msgid "Match:"
@@ -1143,52 +1136,51 @@ msgstr "&Traži"
 
 #: src/red_search.py:38
 msgid "S_earch Packages"
-msgstr ""
+msgstr "Traži pakete"
 
 #: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
 msgid "Searching for matching packages..."
-msgstr ""
+msgstr "Traženje odgovarajućih paketa..."
 
 #: src/red_search.py:109
 msgid "No matching packages found."
-msgstr ""
+msgstr "Nisu nađeni odgovarajući paketi."
 
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
-msgstr ""
+msgstr "Daemon se predstavio kao:"
 
 #: src/red_serverinfo.py:57
 msgid "System type"
-msgstr ""
+msgstr "Tip sustava"
 
 #: src/red_serverinfo.py:60
 msgid "Server URL"
-msgstr ""
+msgstr "Adresa poslužitelja"
 
 #: src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
-msgstr ""
+msgstr "Poslužitelj podržava dodatne mogućnosti"
 
 #: src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
-msgstr ""
+msgstr "Ne mogu kontaktirati daemon."
 
 #: src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
-msgstr ""
+msgstr "Ubaci podatke o daemonu u XML datoteku"
 
 #: src/red_serverinfo.py:94
-#, python-format
 msgid "Could not open file '%s': %s"
-msgstr ""
+msgstr "Ne mogu otvoriti datoteku „%s“: %s"
 
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
-msgstr ""
+msgstr "Odaberite datoteku za upisivanje XML-a"
 
 #: src/red_services.py:88
 msgid "Edit Services"
-msgstr ""
+msgstr "Uredite usluge"
 
 #: src/red_services.py:117
 msgid "URL"
@@ -1196,11 +1188,11 @@ msgstr "URL"
 
 #: src/red_services.py:133
 msgid "_Remove service"
-msgstr ""
+msgstr "U_kloni servis"
 
 #: src/red_services.py:146
 msgid "_Add service"
-msgstr ""
+msgstr "_Dodaj uslugu"
 
 #: src/red_services.py:226
 msgid "Add Service"
@@ -1208,11 +1200,11 @@ msgstr "Dodaj servis"
 
 #: src/red_services.py:231
 msgid "Service URL"
-msgstr ""
+msgstr "Adresa usluge"
 
-#: src/red_sidebar.py:61 src/red_transaction.py:112
+#: src/red_sidebar.py:61 src/red_transaction.py:133
 msgid "Pending Actions"
-msgstr ""
+msgstr "Akcije na čekanju"
 
 #: src/red_sidebar.py:89
 #, python-format
@@ -1236,28 +1228,27 @@ msgstr "%d za uklanjanja"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "Nema akcija na čekanju"
 
 #: src/red_software.py:28
 msgid "Installed Software"
-msgstr ""
+msgstr "Instalirani programi"
 
 #: src/red_software.py:31
 msgid "I_nstalled Software"
-msgstr ""
+msgstr "I_nstalirani programi"
 
 #: src/red_software.py:97
 msgid "Available Software"
-msgstr ""
+msgstr "Dostupni programi"
 
 #: src/red_software.py:100
 msgid "A_vailable Software"
-msgstr ""
+msgstr "Dostupni programi"
 
 #: src/red_statusbar.py:49
-#, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "Spoji se na %s"
 
 #: src/red_subscriptions.py:57
 msgid "Subscribed"
@@ -1265,7 +1256,7 @@ msgstr "U pretplati"
 
 #: src/red_subscriptions.py:64
 msgid "Channel Name"
-msgstr ""
+msgstr "Ime kanala"
 
 #: src/red_subscriptions.py:78
 #, python-format
@@ -1277,18 +1268,20 @@ msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
 msgstr ""
+"Nemate dozvolu za prijavljivanje i odjavljivanje s kanala. Nećete moći "
+"mijenjati ništa u vezi prijava na kanale."
 
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Bez naslova"
 
-#: src/red_transaction.py:75
+#: src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
 msgstr "Jeste li sigurni da želite prekinuti?"
 
-#: src/red_transaction.py:115
+#: src/red_transaction.py:136
 msgid "_Pending Actions"
-msgstr ""
+msgstr "_Postupci koji slijede"
 
 #: src/red_updates.py:34
 msgid "_Updates"
@@ -1296,19 +1289,19 @@ msgstr "_Nadogradnje"
 
 #: src/red_updates.py:77
 msgid "_Update All"
-msgstr ""
+msgstr "Ažuriraj _sve"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
-msgstr ""
+msgstr "Sustav je kao ažuriran."
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr ""
+msgstr "Nema dostupnih programskih nadogradnji ni na jednom prijavljenom kanalu."
 
 #: src/red_users.py:131
 msgid "Privilege"
-msgstr ""
+msgstr "Privilegije"
 
 #: src/red_users.py:148
 msgid ""
@@ -1317,6 +1310,10 @@ msgid ""
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
+"Ako uklonite svoje privilegije kao ovlaštenog korisnika, nećete ih moći "
+"povratiti.\n"
+"\n"
+"Jeste li sigurni da to želite učiniti?"
 
 #: src/red_users.py:166
 msgid "Enabled"
@@ -1324,7 +1321,7 @@ msgstr "Omogućeno"
 
 #: src/red_users.py:181
 msgid "Edit Users"
-msgstr ""
+msgstr "Uređivanje korisnika"
 
 #: src/red_users.py:196 src/red_users.py:399
 msgid "Confirm:"
@@ -1336,16 +1333,15 @@ msgstr "Postavi lozinku"
 
 #: src/red_users.py:246 src/red_users.py:422
 msgid "Password can not be empty."
-msgstr ""
+msgstr "Lozinka ne može biti prazna."
 
 #: src/red_users.py:248 src/red_users.py:424
 msgid "Passwords do not match."
 msgstr "Lozinke se ne podudaraju."
 
 #: src/red_users.py:268
-#, python-format
 msgid "Set %s's password"
-msgstr ""
+msgstr "Odredi lozinku korisnika %s"
 
 #: src/red_users.py:289
 msgid "Users"
@@ -1356,9 +1352,8 @@ msgid "Add"
 msgstr "Dodaj"
 
 #: src/red_users.py:320
-#, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "Jeste li sigurni da želite obrisati '%s'?"
 
 #: src/red_users.py:326
 msgid "Remove"
@@ -1366,18 +1361,17 @@ msgstr "Ukloni"
 
 #: src/red_users.py:339
 msgid "Privileges"
-msgstr ""
+msgstr "Privilegije"
 
 #: src/red_users.py:379
 msgid "Add new user"
-msgstr ""
+msgstr "Dodaj novog korisnika"
 
 #: src/red_users.py:426
 msgid "Invalid user name."
-msgstr ""
+msgstr "Neispravno ime korisnika."
 
 #: src/red_users.py:428
-#, python-format
 msgid "User '%s' already exists."
-msgstr ""
+msgstr "Korisnik '%s' već postoji."
 
