@@ -28,12 +28,13 @@ from red_gettext import _
 
 poll_lock = threading.RLock()
 
-poll_count   = 0
-last_server  = -1
-freeze_count = 0
-missed_polls = 0
-poll_timeout = 0
-timeout_len  = 3000
+poll_count    = 0
+last_server   = -1
+freeze_count  = 0
+working_polls = 0
+missed_polls  = 0
+poll_timeout  = 0
+timeout_len   = 3000
 
 last_package_seqno      = -1
 last_channel_seqno      = -1
@@ -121,7 +122,7 @@ class SeqNoChecker:
             return
 
         global last_server
-        global poll_count
+        global poll_count, working_polls
         global last_package_seqno
         global last_subs_seqno
         global last_channel_seqno
@@ -169,19 +170,27 @@ class SeqNoChecker:
         last_lock_seqno = self.curr_lock_seqno
 
         poll_count += 1
+        working_polls -= 1
 
         poll_lock.release()
 
 def poll_cb():
-    global poll_count, missed_polls
+    global poll_count, working_polls, missed_polls
 
     poll_lock.acquire()
 
-    if freeze_count == 0:
+    if working_polls > 3:
+        # Print a cryptic error message to the console.  I suck.
+        sys.stderr.write("Skipping poll --- working_polls too big.\n")
+
+    elif freeze_count == 0:
 
         server = rcd_util.get_server_proxy()
         if server is None:
+            poll_lock.release()
             return 1
+
+        working_polls += 1
 
         snc = SeqNoChecker()
         t1 = server.rcd.packsys.world_sequence_numbers()

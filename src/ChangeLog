@@ -1,3 +1,14 @@
+2003-03-18  Jon Trowbridge  <trow@ximian.com>
+
+	* red_serverlistener.py: Added global working_polls variable,
+	which counts the number of unfinished polling threads.
+	(SeqNoChecker.check): Decrease the number of working_polls.
+	(poll_cb): If there are too many working polls, don't poll again.
+	This is sort of hacky, but at least this way we won't eat up all
+	of the file descriptors over time if something goes terribly
+	wrong.  Increment the number of working polls.  Release the poll
+	lock if rcd_util.get_server_proxy() returns None.
+
 2003-03-18  Joe Shaw  <joe@ximian.com>
 
 	* red_actionbar.py (Actionbar.add): Use mnemonics in the text.
