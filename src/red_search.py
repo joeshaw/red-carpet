@@ -37,11 +37,11 @@ class SearchComponent(red_component.Component):
     def long_name(self):
         return _("Search Packages")
 
+    def menu_name(self):
+        return _("S_earch Packages")
+
     def stock(self):
         return gtk.STOCK_FIND
-
-    def access_key(self):
-        return "e"
 
     def accelerator(self):
         return "<Control>f"
@@ -90,7 +90,6 @@ class SearchComponent(red_component.Component):
                 comp.__no_results.hide()
 
         self.array.connect_after("changed", search_finished_cb, self)
-
 
         view = red_packageview.PackageView(self.array)
         self.connect_view(view)

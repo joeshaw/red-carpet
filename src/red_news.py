@@ -176,8 +176,8 @@ class NewsComponent(red_component.Component):
     def long_name(self):
         return _("Red Carpet News")
 
-    def access_key(self):
-        return "n"
+    def menu_name(self):
+        return _("Red Carpet _News")
 
     def accelerator(self):
         return "<Control>n"

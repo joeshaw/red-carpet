@@ -32,11 +32,11 @@ class SummaryComponent(red_component.Component):
     def long_name(self):
         return _("Update Summary")
 
+    def menu_name(self):
+        return _("_Update Summary")
+
     def pixbuf(self):
         return "summary"
-
-    def access_key(self):
-        return "s"
 
     def accelerator(self):
         return "<Control>s"

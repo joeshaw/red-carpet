@@ -572,7 +572,7 @@ class AppWindow(gtk.Window,
                 checked_get=red_searchbox.show_advanced_get,
                 checked_set=red_searchbox.show_advanced_set)
 
-        bar.add("/%s/%s" % (view_str, _("C_hannel Names")),
+        bar.add("/%s/%s" % (view_str, _("_Channel Names")),
                 checked_get=red_packageview.show_channel_names_get,
                 checked_set=red_packageview.show_channel_names_set)
 
@@ -697,12 +697,7 @@ class AppWindow(gtk.Window,
             if flag:
                 self.activate_component(comp)
 
-        ln = comp.long_name()
-        if comp.access_key():
-            index = string.index(string.lower(ln),
-                                 string.lower(comp.access_key()))
-            ln = ln[:index] + "_" + ln[index:]
-        self.menubar.add("/%s/%s" % (_("_View"), ln),
+        self.menubar.add("/%s/%s" % (_("_View"), comp.menu_name()),
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb,
                          accelerator=comp.accelerator())

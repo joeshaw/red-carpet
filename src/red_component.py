@@ -160,8 +160,9 @@ class Component(gobject.GObject):
     def stock(self):
         return None
 
-    def access_key(self):
-        return None
+    # This should always be the same as the long name plus a menu mnemonic
+    def menu_name(self):
+        return self.name()
 
     def accelerator(self):
         return None

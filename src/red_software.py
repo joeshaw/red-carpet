@@ -30,11 +30,11 @@ class MyComputerComponent(red_component.Component):
     def long_name(self):
         return _("My Computer")
 
+    def menu_name(self):
+        return _("_My Computer")
+
     def pixbuf(self):
         return "my-computer"
-
-    def access_key(self):
-        return "m"
 
     def accelerator(self):
         return "<Control>m"
