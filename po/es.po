@@ -10,14 +10,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet.HEAD.es\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-08 12:53+0200\n"
+"POT-Creation-Date: 2003-09-05 15:11-0400\n"
 "PO-Revision-Date: 2003-08-08 20:52+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@arrakis.es>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.1\n"
 
 #. ##
@@ -211,7 +211,8 @@ msgstr ""
 
 #. Store email to config.
 #: src/red_activation.py:110
-msgid "System could not be activated: Invalid activation code or email address."
+msgid ""
+"System could not be activated: Invalid activation code or email address."
 msgstr ""
 "El sistema no pudo ser activado: Código de activación inválido o dirección "
 "de correo errónea."
@@ -261,7 +262,8 @@ msgstr ""
 "Informa de esto a su vendedor."
 
 #: src/red_appwindow.py:130
-msgid "Unable to show help because there are no applications available to view help."
+msgid ""
+"Unable to show help because there are no applications available to view help."
 msgstr ""
 "No se puede mostrar la ayuda porque no hay aplicaciones disponibles para ver "
 "la ayuda."
@@ -440,7 +442,8 @@ msgid "_Activate..."
 msgstr "_Activar..."
 
 #: src/red_appwindow.py:623
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr "Activar demonio contra un servidor Red Carpet Express o Enterprise"
 
 #: src/red_appwindow.py:629
@@ -776,7 +779,9 @@ msgstr "No hay canal/ canal desconocido"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_connection.py:41
+#. Required rcd versions
+#. Required protocol version
+#: src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -787,7 +792,7 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:61
+#: src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -796,9 +801,17 @@ msgstr ""
 "Se detectó la versión de Red Carpet %d.%d.%d\n"
 "Se requiere la versión %d.%d.%d (o más nueva)."
 
+#. Assume protocol v1 if method not present.
+#: src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:99
+#: src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Iniciando demonio..."
 
@@ -809,7 +822,7 @@ msgstr "Iniciando demonio..."
 #. File doesn't exist?
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:173
+#: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -822,30 +835,30 @@ msgstr ""
 #. Prepend "https://" if it isn't already specified
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
-#: src/red_connection.py:321
+#: src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Conectar a este sistema"
 
-#: src/red_connection.py:325
+#: src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Conectar a un sistema remoto"
 
-#: src/red_connection.py:333
+#: src/red_connection.py:357
 msgid "Server:"
 msgstr "Servidor:"
 
-#: src/red_connection.py:337 src/red_users.py:389
+#: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
 msgstr "Nombre de usuario:"
 
-#: src/red_connection.py:341 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Contraseña"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
-#: src/red_connection.py:377
+#: src/red_connection.py:401
 msgid "Connect"
 msgstr "Conectar"
 
@@ -935,7 +948,8 @@ msgid "Resolving Dependencies"
 msgstr "Resolviendo dependencias"
 
 #: src/red_depcomponent.py:157
-msgid "You must agree to the licenses covering this software before installing it."
+msgid ""
+"You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Debe estar de acuerdo con las licencias que cubren este software antes de "
 "instalarlo."
@@ -2580,7 +2594,8 @@ msgstr "El sistema está actualizado"
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr "No hay disponibles actualizaciones de software en ningún canal suscrito"
+msgstr ""
+"No hay disponibles actualizaciones de software en ningún canal suscrito"
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -3461,4 +3476,3 @@ msgstr "El usuario «%s» ya existe."
 #~ msgstr ""
 #~ "No se ha podido encontrar '%s'.\n"
 #~ "Asegúrese que Red Carpet se ha instalado correctamente."
-

@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet 2.0.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-21 20:14+0200\n"
+"POT-Creation-Date: 2003-09-05 15:11-0400\n"
 "PO-Revision-Date: 2003-07-21 20:14+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -44,21 +44,21 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:376
+#: src/rcd_util.py:381
 msgid "Please wait while getting data."
 msgstr "Bitte warten, Daten werden abgerufen."
 
 #. ##############################################################################
-#: src/rcd_util.py:430 src/rcd_util.py:448
+#: src/rcd_util.py:435 src/rcd_util.py:453
 msgid "Please ensure that your network settings are correct."
 msgstr ""
 "Bitte stellen Sie sicher, dass Ihre Netzwerkeinstellungen korrekt sind."
 
-#: src/rcd_util.py:437
+#: src/rcd_util.py:442
 msgid "Refreshing channel data"
 msgstr "Kanaldaten werden aufgefrischt"
 
-#: src/rcd_util.py:439
+#: src/rcd_util.py:444
 msgid "Downloading channel information"
 msgstr "Kanalinformationen werden heruntergeladen"
 
@@ -66,31 +66,31 @@ msgstr "Kanalinformationen werden heruntergeladen"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:465
+#: src/rcd_util.py:470
 msgid "Verifying"
 msgstr "Überprüfen"
 
-#: src/rcd_util.py:466
+#: src/rcd_util.py:471
 msgid "Unable to verify package signature for"
 msgstr "Paketsignatur konnte nicht überprüft werden für"
 
-#: src/rcd_util.py:467
+#: src/rcd_util.py:472
 msgid "There is no package signature for"
 msgstr "Es existiert keine Paketsignatur für"
 
-#: src/rcd_util.py:468
+#: src/rcd_util.py:473
 msgid "Preparing Transaction"
 msgstr "Übertragung wird vorbereitet"
 
-#: src/rcd_util.py:469
+#: src/rcd_util.py:474
 msgid "Installing"
 msgstr "Installieren"
 
-#: src/rcd_util.py:470
+#: src/rcd_util.py:475
 msgid "Removing"
 msgstr "Entfernen"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:476
 msgid "Configuring"
 msgstr "Konfigurieren"
 
@@ -778,7 +778,9 @@ msgstr "Kein/unbekannter Kanal"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_connection.py:41
+#. Required rcd versions
+#. Required protocol version
+#: src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -789,7 +791,7 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:61
+#: src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -798,9 +800,17 @@ msgstr ""
 "Red Carpet-Daemon-Version %d.%d.%d erkannt.\n"
 "Version %d.%d.%d (oder neuer) ist erforderlich"
 
+#. Assume protocol v1 if method not present.
+#: src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:99
+#: src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Daemon wird gestartet..."
 
@@ -811,7 +821,7 @@ msgstr "Daemon wird gestartet..."
 #. File doesn't exist?
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:173
+#: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -825,30 +835,30 @@ msgstr ""
 #. Prepend "https://" if it isn't already specified
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
-#: src/red_connection.py:321
+#: src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Mit diesem System verbinden"
 
-#: src/red_connection.py:325
+#: src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Mit einem entfernten System verbinden"
 
-#: src/red_connection.py:333
+#: src/red_connection.py:357
 msgid "Server:"
 msgstr "Server:"
 
-#: src/red_connection.py:337 src/red_users.py:389
+#: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
 msgstr "Benutzername:"
 
-#: src/red_connection.py:341 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Passwort:"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
-#: src/red_connection.py:377
+#: src/red_connection.py:401
 msgid "Connect"
 msgstr "Verbinden"
 

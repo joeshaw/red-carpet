@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:red-carpet\n"
-"POT-Creation-Date: 2003-06-06 03:56+0200\n"
+"POT-Creation-Date: 2003-09-05 15:11-0400\n"
 "PO-Revision-Date: 2003-07-05 10:29+0530\n"
 "Last-Translator: FSF-India <locale@gnu.org.in>\n"
 "Language-Team: Malayalam <locale@gnu.org.in>\n"
@@ -765,7 +765,9 @@ msgstr ""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_connection.py:41
+#. Required rcd versions
+#. Required protocol version
+#: src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -774,16 +776,24 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:61
+#: src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
 
+#. Assume protocol v1 if method not present.
+#: src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:99
+#: src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr ""
 
@@ -794,7 +804,7 @@ msgstr ""
 #. File doesn't exist?
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:173
+#: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -805,31 +815,31 @@ msgstr ""
 #. Prepend "https://" if it isn't already specified
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
-#: src/red_connection.py:321
+#: src/red_connection.py:345
 msgid "Connect to this system"
 msgstr ""
 
-#: src/red_connection.py:325
+#: src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr ""
 
-#: src/red_connection.py:333
+#: src/red_connection.py:357
 #, fuzzy
 msgid "Server:"
 msgstr "സ‍ര്‍വ്വര്:"
 
-#: src/red_connection.py:337 src/red_users.py:389
+#: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
 msgstr ""
 
-#: src/red_connection.py:341 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "അടയാളവാക്ക്:"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
-#: src/red_connection.py:377
+#: src/red_connection.py:401
 #, fuzzy
 msgid "Connect"
 msgstr "ഘടിപ്പിക്കുക"

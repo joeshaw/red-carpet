@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"POT-Creation-Date: 2003-07-27 23:43+0100\n"
+"POT-Creation-Date: 2003-09-05 15:11-0400\n"
 "PO-Revision-Date: 2003-07-27 23:50+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -44,20 +44,20 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:376
+#: src/rcd_util.py:381
 msgid "Please wait while getting data."
 msgstr "Aguarde por favor, estão a ser obtidos dados."
 
 #. ##############################################################################
-#: src/rcd_util.py:430 src/rcd_util.py:448
+#: src/rcd_util.py:435 src/rcd_util.py:453
 msgid "Please ensure that your network settings are correct."
 msgstr "Certifique-se de que as suas definições de rede estão correctas."
 
-#: src/rcd_util.py:437
+#: src/rcd_util.py:442
 msgid "Refreshing channel data"
 msgstr "A actualizar dados de canal"
 
-#: src/rcd_util.py:439
+#: src/rcd_util.py:444
 msgid "Downloading channel information"
 msgstr "A descarregar informação do canal"
 
@@ -65,31 +65,31 @@ msgstr "A descarregar informação do canal"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:465
+#: src/rcd_util.py:470
 msgid "Verifying"
 msgstr "A verificar"
 
-#: src/rcd_util.py:466
+#: src/rcd_util.py:471
 msgid "Unable to verify package signature for"
 msgstr "Incapaz de verificar assinatura de pacote para"
 
-#: src/rcd_util.py:467
+#: src/rcd_util.py:472
 msgid "There is no package signature for"
 msgstr "Não existe assinatura de pacote para"
 
-#: src/rcd_util.py:468
+#: src/rcd_util.py:473
 msgid "Preparing Transaction"
 msgstr "A Preparar Transacção"
 
-#: src/rcd_util.py:469
+#: src/rcd_util.py:474
 msgid "Installing"
 msgstr "A instalar"
 
-#: src/rcd_util.py:470
+#: src/rcd_util.py:475
 msgid "Removing"
 msgstr "A remover"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:476
 msgid "Configuring"
 msgstr "A configurar"
 
@@ -773,7 +773,9 @@ msgstr "Nenhum Canal/Canal Desconhecido"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_connection.py:41
+#. Required rcd versions
+#. Required protocol version
+#: src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -784,7 +786,7 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:61
+#: src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -793,9 +795,17 @@ msgstr ""
 "Detectado Daemon Red Carpet versão %d.%d.%d.\n"
 "É requerida a versão %d.%d.%d (ou mais recente)"
 
+#. Assume protocol v1 if method not present.
+#: src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:99
+#: src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "A iniciar daemon..."
 
@@ -806,7 +816,7 @@ msgstr "A iniciar daemon..."
 #. File doesn't exist?
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:173
+#: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -819,30 +829,30 @@ msgstr ""
 #. Prepend "https://" if it isn't already specified
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
-#: src/red_connection.py:321
+#: src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Ligar-se ao sistema"
 
-#: src/red_connection.py:325
+#: src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Ligar-se a um sistema remoto"
 
-#: src/red_connection.py:333
+#: src/red_connection.py:357
 msgid "Server:"
 msgstr "Servidor:"
 
-#: src/red_connection.py:337 src/red_users.py:389
+#: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
 msgstr "Nome utilizador:"
 
-#: src/red_connection.py:341 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Senha:"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
-#: src/red_connection.py:377
+#: src/red_connection.py:401
 msgid "Connect"
 msgstr "Ligar"
 
@@ -3738,10 +3748,10 @@ msgstr "Utilizador '%s' já existe."
 #~ "packaging system:<br>%s</p>"
 #~ msgstr ""
 #~ "<p>Ocorreu um erro fatal enquanto o Red Carpet estava a processar esta "
-#~ "transacção. Isto foi provavelmente causado por uma construção imprópria do "
-#~ "pacote.</p><p>Se este problema persistir, reporte-o no <a href=\"http://"
-#~ "bugzilla.ximian.com\">Bugzilla Ximian</a>.</p><p>Informação sobre o "
-#~ "sistema de empacotamento:<br>%s</p>"
+#~ "transacção. Isto foi provavelmente causado por uma construção imprópria "
+#~ "do pacote.</p><p>Se este problema persistir, reporte-o no <a href="
+#~ "\"http://bugzilla.ximian.com\">Bugzilla Ximian</a>.</p><p>Informação "
+#~ "sobre o sistema de empacotamento:<br>%s</p>"
 
 #~ msgid ""
 #~ "<p>An error has occurred while Red Carpet was processing this "
@@ -3752,8 +3762,8 @@ msgstr "Utilizador '%s' já existe."
 #~ "p>"
 #~ msgstr ""
 #~ "<p>Ocorreu um erro enquanto o Red Carpet estava a processar esta "
-#~ "transacção. Isto foi provavelmente causado por uma construção imprópria do "
-#~ "pacote ou por um pacote danificado. Deve tentar a instalação com menos "
+#~ "transacção. Isto foi provavelmente causado por uma construção imprópria "
+#~ "do pacote ou por um pacote danificado. Deve tentar a instalação com menos "
 #~ "pacotes. Pode <a href=\"updater:send_bug_report\">enviar-nos um relatório "
 #~ "de erro</a> paraa Ximian analisar.</p><p>Informação do sistema de pacotes:"
 #~ "<br>%s</p>"
@@ -3955,11 +3965,11 @@ msgstr "Utilizador '%s' já existe."
 #~ msgstr ""
 #~ "<p>Um erro ocorreu enquanto o Red Carpet estava a processar as "
 #~ "dependências para esta transacção. Isto pode ter sido causado por um erro "
-#~ "no pacote ou no servidor. Deve tentar a transacção com menos pacotes. Deve "
-#~ "também informar-nos sobre este problema para <a href=\"red-carpet@ximian."
-#~ "com\">red-carpet@ximian.com</a> o mais cedo possível. Por favor incluia "
-#~ "informação sobre a sua distribuiçãoe o conjunto de pacotes nesta "
-#~ "transacção.</p><p>Informações do sistema de dependências:<br> %s</p>"
+#~ "no pacote ou no servidor. Deve tentar a transacção com menos pacotes. "
+#~ "Deve também informar-nos sobre este problema para <a href=\"red-"
+#~ "carpet@ximian.com\">red-carpet@ximian.com</a> o mais cedo possível. Por "
+#~ "favor incluia informação sobre a sua distribuiçãoe o conjunto de pacotes "
+#~ "nesta transacção.</p><p>Informações do sistema de dependências:<br> %s</p>"
 
 #~ msgid ""
 #~ "<p>An error has occurred while Red Carpet was processing the dependencies "
@@ -3975,8 +3985,8 @@ msgstr "Utilizador '%s' já existe."
 #~ "no servidor Deve tentar esta transacção de novo com menos pacotes. Deve "
 #~ "avisar-nos deste problema o mais cedo possível para <a href=\"mailto:red-"
 #~ "carpet@ximian.com\">red-carpet@ximian.com</a>. Por favor inclua "
-#~ "informação sobre a distribuição e o conjunto de pacotes nesta transacção.</"
-#~ "p><p>Informação do sistema de dependências:<br>%s</p>"
+#~ "informação sobre a distribuição e o conjunto de pacotes nesta transacção."
+#~ "</p><p>Informação do sistema de dependências:<br>%s</p>"
 
 #~ msgid "Allowed cache difference:"
 #~ msgstr "Diferença da cahe permitida:"

@@ -2,12 +2,12 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.20 2003/07/08 19:27:40 joeshaw Exp $
+# $Id: sv.po,v 1.21 2003/09/05 19:19:06 joeshaw Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-07-08 15:19-0400\n"
+"POT-Creation-Date: 2003-09-05 15:11-0400\n"
 "PO-Revision-Date: 2003-06-22 00:54+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -44,20 +44,20 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:376
+#: src/rcd_util.py:381
 msgid "Please wait while getting data."
 msgstr "Var vänlig vänta vid hämtande av data."
 
 #. ##############################################################################
-#: src/rcd_util.py:430 src/rcd_util.py:448
+#: src/rcd_util.py:435 src/rcd_util.py:453
 msgid "Please ensure that your network settings are correct."
 msgstr "Försäkra dig om att dina nätverksinställningar är korrekta."
 
-#: src/rcd_util.py:437
+#: src/rcd_util.py:442
 msgid "Refreshing channel data"
 msgstr "Uppdaterar kanaldata"
 
-#: src/rcd_util.py:439
+#: src/rcd_util.py:444
 msgid "Downloading channel information"
 msgstr "Hämtar kanalinformation"
 
@@ -65,31 +65,31 @@ msgstr "Hämtar kanalinformation"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:465
+#: src/rcd_util.py:470
 msgid "Verifying"
 msgstr "Verifierar"
 
-#: src/rcd_util.py:466
+#: src/rcd_util.py:471
 msgid "Unable to verify package signature for"
 msgstr "Kan inte verifiera paketsignatur för"
 
-#: src/rcd_util.py:467
+#: src/rcd_util.py:472
 msgid "There is no package signature for"
 msgstr "Det finns ingen paketsignatur för"
 
-#: src/rcd_util.py:468
+#: src/rcd_util.py:473
 msgid "Preparing Transaction"
 msgstr "Förbereder transaktion"
 
-#: src/rcd_util.py:469
+#: src/rcd_util.py:474
 msgid "Installing"
 msgstr "Installerar"
 
-#: src/rcd_util.py:470
+#: src/rcd_util.py:475
 msgid "Removing"
 msgstr "Tar bort"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:476
 msgid "Configuring"
 msgstr "Konfigurerar"
 
@@ -772,7 +772,9 @@ msgstr "Ingen kanal/Okänd kanal"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_connection.py:41
+#. Required rcd versions
+#. Required protocol version
+#: src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -783,7 +785,7 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:61
+#: src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -792,9 +794,17 @@ msgstr ""
 "Detekterade Red Carpet-demon version %d.%d.%d.\n"
 "Version %d.%d.%d (eller nyare) krävs"
 
+#. Assume protocol v1 if method not present.
+#: src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:99
+#: src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Startar demon..."
 
@@ -805,7 +815,7 @@ msgstr "Startar demon..."
 #. File doesn't exist?
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:173
+#: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -818,30 +828,30 @@ msgstr ""
 #. Prepend "https://" if it isn't already specified
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
-#: src/red_connection.py:321
+#: src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Anslut till detta system"
 
-#: src/red_connection.py:325
+#: src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Anslut till ett fjärrsystem"
 
-#: src/red_connection.py:333
+#: src/red_connection.py:357
 msgid "Server:"
 msgstr "Server:"
 
-#: src/red_connection.py:337 src/red_users.py:389
+#: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
 msgstr "Användarnamn:"
 
-#: src/red_connection.py:341 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Lösenord:"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
-#: src/red_connection.py:377
+#: src/red_connection.py:401
 msgid "Connect"
 msgstr "Anslut"
 

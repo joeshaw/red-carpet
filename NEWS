@@ -1,3 +1,18 @@
+Red Carpet 2.0.3
+----------------
+5 September 2003
+
+	* Require pygtk 2.0.0
+
+	* Don't crash when we get an invalid channel icon, just show the
+	  default channel icon.  (Requires an upgrade to newer pygtk)
+
+	* Check the new protocol version, to make migration to rcd 2.0
+	  a little less hairy.
+
+	* Replaced deprecated calls that would throw warnings with pygtk
+	  2.0.0.
+
 Red Carpet 2.0.2
 ----------------
 8 July 2003
