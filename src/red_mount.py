@@ -23,7 +23,7 @@ import red_dirselection
 
 mounted_channels = []
 
-def mount_channel(path):
+def mount_channel(path, name=None):
     server = rcd_util.get_server()
 
     path_base = os.path.basename(path)
@@ -37,7 +37,10 @@ def mount_channel(path):
         alias = "%s%d" % (old_alias, count)
         count += 1
 
-    cid = server.rcd.packsys.mount_directory(path, path, alias)
+    if not name:
+        name = path
+
+    cid = server.rcd.packsys.mount_directory(path, name, alias)
 
     if not cid:
         dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
@@ -82,6 +85,100 @@ def has_mounted_channels():
     channels += [x["id"] for x in server.rcd.packsys.get_channels()
                  if x.get("transient", 0) and not x["id"] in mounted_channels]
     return len(channels)
+
+
+class FileEntry(gtk.HBox):
+
+    def __init__(self):
+        gtk.HBox.__init__(self)
+        self.build()
+
+    def build(self):
+        self.entry = gtk.Entry()
+        self.pack_start(self.entry)
+        self.entry.show()
+
+        button = gtk.Button("Browse...")
+        self.pack_start(button)
+        button.connect("clicked", self.browse)
+        button.show()
+
+    def browse(self, button):
+        def get_file_cb(b, this):
+            file = this.dirsel.get_selections()
+            self.entry.set_text(file[0])
+            self.dirsel.destroy()
+
+        self.dirsel = red_dirselection.DirSelection("Mount Directory")
+        self.dirsel.set_select_multiple(0)
+        self.dirsel.ok_button.connect("clicked", get_file_cb, self)
+        self.dirsel.cancel_button.connect("clicked", lambda x,y:y.destroy(), self.dirsel)
+        self.dirsel.show()
+
+    def get_entry(self):
+        return self.entry
+
+class MountWindow(gtk.Dialog):
+
+    def __init__(self):
+        gtk.Dialog.__init__(self)
+        self.build()
+
+    def build(self):
+        frame = gtk.Frame("Mount a directory as channel")
+        frame.set_border_width(5)
+
+        table = gtk.Table(2, 2)
+        table.set_border_width(5)
+        table.set_col_spacings(5)
+        table.set_row_spacings(5)
+
+        l = gtk.Label("Channel Name:")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 0, 1)
+
+        l = gtk.Label("Directory:")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 1, 2)
+
+        self.channel = gtk.Entry()
+        table.attach_defaults(self.channel, 1, 2, 0, 1)
+
+        self.directory = FileEntry()
+        table.attach_defaults(self.directory, 1, 2, 1, 2)
+
+        frame.add(table)
+        frame.show_all()
+
+        self.vbox.add(frame)
+
+        button = self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        button.connect("clicked", lambda x:self.destroy())
+
+        button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        button.grab_default()
+        button.connect("clicked", lambda x:self.mount())
+
+    def mount(self):
+        name = self.channel.get_text()
+
+        e = self.directory.get_entry()
+        path = e.get_text()
+
+        if not path:
+            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
+                                       gtk.BUTTONS_OK,
+                                       "Please choose the path for channel.")
+            dialog.run()
+            dialog.destroy()
+            return
+
+        if not name:
+            name = path
+
+        mount_channel(path, name)
+        self.destroy()
+
 
 COLUMN_CID  =    0
 COLUMN_ICON =    1

@@ -1,5 +1,32 @@
 2003-01-24  Tambet Ingo  <tambet@ximian.com>
 
+	* red_appwindow.py (AppWindow.register_component): Put on the
+	toolbar only if component asks for it.
+
+	* red_component.py (Component.show_on_toolbar): New method to
+	determine whether component should be placed on the toolbar.
+
+	* red_summary.py (SummaryComponent.show_on_toolbar): Yes, put
+	me on toolbar.
+
+	* red_transaction.py (TransactionComponent.show_on_toolbar): ditto.
+
+	* red_channelbrowse.py (ChannelBrowseComponent.show_on_toolbar):
+	ditto.
+
+	* red_system.py (SystemComponent.show_on_toolbar): ditto.
+
+	* red_packagebrowser.py (show_package_info): Don't show more than
+	one dialog fore every package.
+
+	* red_appwindow.py (AppWindow.mount_callback): Use new dialog
+	widget.
+
+	* red_mount.py (FileEntry): New class which looks (and acts) a bit
+	like GnomeFileEntry.
+	(MountWindow): New class to mount channels.
+	(mount_channel): Added optional name argument for channel name.
+
 	* red_packagearray.py (UpdatedPackages.subscriptions_changed): 
 	(UpdatedPackages.channels_changed): Removed server argument.
 

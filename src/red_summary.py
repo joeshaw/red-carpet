@@ -34,6 +34,9 @@ class SummaryComponent(red_component.Component):
     def accelerator(self):
         return "<Control>s"
 
+    def show_on_toolbar(self):
+        return 1
+
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
 

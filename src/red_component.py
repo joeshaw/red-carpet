@@ -159,6 +159,9 @@ class Component(gobject.GObject):
     def deactivated(self):
         pass
 
+    def show_on_toolbar(self):
+        return 0
+
     ###
     ### Hints for setting up component navigation
     ###

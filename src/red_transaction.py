@@ -155,6 +155,9 @@ class TransactionComponent(red_component.Component):
     def pixbuf(self):
         return "about-monkey"
 
+    def show_on_toolbar(self):
+        return 1
+
     def build(self):
         self.array = TransactionArray()
 

@@ -265,7 +265,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         ##
 
         def mount_callback(app):
-            red_mount.select_and_mount()
+            app.open_or_raise_window(red_mount.MountWindow)
 
         def mount_sensitive_fn():
             return rcd_util.check_server_permission("superuser")
@@ -335,12 +335,13 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
     def register_component(self, comp):
 
-        self.toolbar.append_item(comp.name(),
-                                 comp.long_name(),
-                                 None,
-                                 red_pixbuf.get_widget(comp.pixbuf(), width=24, height=24),
-                                 lambda x:self.activate_component(comp),
-                                 None)
+        if comp.show_on_toolbar():
+            self.toolbar.append_item(comp.name(),
+                                     comp.long_name(),
+                                     None,
+                                     red_pixbuf.get_widget(comp.pixbuf(), width=24, height=24),
+                                     lambda x:self.activate_component(comp),
+                                     None)
 
         # We need to make the component menu items checked
         # instead of radio-style, because with a radio group you
