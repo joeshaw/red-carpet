@@ -100,7 +100,7 @@ def unmount_channel(cid):
 
 def has_mounted_channels():
     return len([x["id"] for x in rcd_util.get_all_channels()
-                if x["transient"]])
+                if x.get("transient", 0)])
 
 class FileEntry(gtk.HBox):
 

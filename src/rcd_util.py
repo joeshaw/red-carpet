@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, errno, time, signal, string, md5, socket, gtk
+import sys, os, errno, time, signal, string, md5, socket, gobject, gtk
 import ximian_xmlrpclib
 import red_pixbuf, red_serverproxy
 import red_settings
@@ -191,9 +191,14 @@ def get_channel_icon(id, width=0, height=0):
 
         if icon_data:
             loader = gtk.gdk.gdk_pixbuf_loader_new()
-            loader.write(icon_data.data, len(icon_data.data))
-            loader.close()
-            pixbuf = loader.get_pixbuf()
+
+            try:
+                loader.write(icon_data.data, len(icon_data.data))
+                loader.close()
+            except gobject.GError, e:
+                pass
+            else:
+                pixbuf = loader.get_pixbuf()
 
     if pixbuf is None:
         pixbuf = red_pixbuf.get_pixbuf("default-channel", width, height)

@@ -1,3 +1,10 @@
+2003-08-07  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (get_channel_icon): import gobject and put the
+	gdk-pixbuf loader functions in a try-except block so we can
+	correctly handle when we get invalid data from the daemon.  Should
+	fix #43143, #44985, and #45133.
+
 2003-06-12  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (assemble_menubar): Change "Connect..." to be
