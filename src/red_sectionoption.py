@@ -30,7 +30,7 @@ class SectionOption(gtk.OptionMenu):
             self.set_array(array)
 
     def assemble_menu(self):
-        sections = [("All Packages", None, -1)]
+        sections = [("All", None, -1)]
 
         if self.array:
             seen_sections = {}
@@ -52,11 +52,11 @@ class SectionOption(gtk.OptionMenu):
             hbox = gtk.HBox(0, 0)
 
             if icon:
-                img = red_pixbuf.get_widget(icon)
+                img = red_pixbuf.get_widget(icon, width=24, height=24)
                 hbox.pack_start(img, 0, 0, 0)
 
             label = gtk.Label(name)
-            hbox.pack_start(label, 0, 0, 0)
+            hbox.pack_start(label, 0, 0, 4)
 
             item = gtk.MenuItem()
             item.add(hbox)

@@ -32,14 +32,14 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         for c in rcd_util.get_all_channels():
             hbox = gtk.HBox(0, 0)
 
-            pixbuf = rcd_util.get_channel_icon(c["id"], 28, 28)
+            pixbuf = rcd_util.get_channel_icon(c["id"], 24, 24)
             img = gtk.Image()
             img.set_from_pixbuf(pixbuf)
 
-            label = gtk.Label("%s (%d)" % (c["name"], c["id"]))
+            label = gtk.Label(c["name"])
 
             hbox.pack_start(img, 0, 0, 0)
-            hbox.pack_start(label, 0, 0, 0)
+            hbox.pack_start(label, 0, 0, 4)
 
             item = gtk.MenuItem()
             item.add(hbox)

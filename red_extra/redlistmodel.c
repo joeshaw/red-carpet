@@ -99,13 +99,16 @@ red_list_model_build_index (RedListModel *model)
             PyObject *obj = g_ptr_array_index (model->array, i);
             PyObject *args = Py_BuildValue ("(O)", obj);
             PyObject *val = PyEval_CallObject (model->filter_callback, args);
-            g_assert (val);
-            if (PyObject_IsTrue (val)) {
-                model->index[model->index_N] = i;
-                ++model->index_N;
+            if (val == NULL) {
+                PyErr_Print ();
+            } else {
+                if (PyObject_IsTrue (val)) {
+                    model->index[model->index_N] = i;
+                    ++model->index_N;
+                }
+                Py_DECREF (args);
+                Py_DECREF (val);
             }
-            Py_DECREF (args);
-            Py_DECREF (val);
         }
         pyg_unblock_threads ();
     }
