@@ -41,6 +41,7 @@ red_carpetsupport_DATA =	\
 	red_packagepage_deps.py			\
 	red_packagepage_info.py			\
 	red_packageview.py			\
+	red_patches.py				\
 	red_pendingops.py			\
 	red_pendingview.py			\
 	red_pixbuf.py				\
