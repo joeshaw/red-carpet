@@ -338,6 +338,16 @@ class AppWindow(gtk.Window,
         for p in pkgs:
             red_packagebook.show_package_info(p)
 
+    def sensitize_run_button(self):
+        comp = self.get_component()
+
+        if not comp:
+            allow_run = 1
+        else:
+            allow_run = comp.run_sensitized()
+
+        return allow_run and red_pendingops.pending_ops_exist()
+
     ##
     ## Toolbar
     ##
@@ -348,7 +358,7 @@ class AppWindow(gtk.Window,
 
         bar.run = bar.add(text=_("Run Now"),
                           tooltip=_("Perform installations and removals"),
-                          sensitive_fn=red_pendingops.pending_ops_exist,
+                          sensitive_fn=self.sensitize_run_button,
                           stock=gtk.STOCK_EXECUTE,
                           callback=lambda x:run_transaction_cb(self))
 
@@ -597,7 +607,7 @@ class AppWindow(gtk.Window,
         bar.add("/Actions/Run _Now",
                 image=image,
                 callback=run_transaction_cb,
-                sensitive_fn=red_pendingops.pending_ops_exist,
+                sensitive_fn=self.sensitize_run_button,
                 accelerator="<Control>X")
 
         ##
@@ -807,7 +817,7 @@ class AppWindow(gtk.Window,
 
     def pendingops_changed(self, pkg, key, value, old_value):
         def sensitize_run_cb(app):
-            have_pending = red_pendingops.pending_ops_exist()
+            have_pending = app.sensitize_run_button()
             app.toolbar.run.set_sensitive(have_pending)
         gtk.idle_add(sensitize_run_cb, self)
         

@@ -188,6 +188,9 @@ class Component(gobject.GObject):
     def show_in_shortcuts(self):
         return 0
 
+    def run_sensitized(self):
+        return 1
+
     ###
     ### Hints for setting up component navigation
     ###

@@ -66,6 +66,9 @@ class DepComponent(gobject.GObject, red_component.Component):
     def show_actionbar(self):
         return 0
 
+    def run_sensitized(self):
+        return 0
+
     def get_deps(self):
         if self.__worker:
             if self.__worker_handler_id:

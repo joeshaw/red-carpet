@@ -1,3 +1,22 @@
+2003-03-20  Joe Shaw  <joe@ximian.com>
+
+	This commit fixes #40049.
+
+	* red_appwindow.py (sensitize_run_button): Added.  First checks to
+	see if the component allows the run button to be sensitized and
+	then checks to see if we have any pending ops to do.
+	(assemble_toolbar, assemble_menubar): Use the new
+	sensitize_run_button() function instead of just
+	pending_ops_exist().
+	(pendingops_changed): Ditto.
+
+	* red_component.py (run_sensitized): Added.  Determines whether
+	the component allows the "Run Now" button to be sensitized.
+	Defaults to 1.
+
+	* red_depcomponent.py (DepComponent): Override the
+	run_sensitized() method to always return 0.
+
 2003-03-19  Joe Shaw  <joe@ximian.com>
 
 	* red_connection.py: Bump up the required rcd version to 1.3.2.
