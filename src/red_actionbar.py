@@ -64,7 +64,9 @@ class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
         box = gtk.HBox(0, 2)
         if image:
             box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label(text), 0, 0)
+        label = gtk.Label("")
+        label.set_text_with_mnemonic(text)
+        box.pack_start(label, 0, 0)
         align.add(box)
 
         if tooltip:

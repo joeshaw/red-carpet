@@ -373,7 +373,7 @@ class AppWindow(gtk.Window,
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
 
-        bar.install = bar.add(text=_("Mark for Installation"),
+        bar.install = bar.add(text=_("Mark for _Installation"),
                               tooltip=_("Mark selected packages for installation"),
                               pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
                                                            width=width,
@@ -381,20 +381,20 @@ class AppWindow(gtk.Window,
                               sensitive_fn=self.install_sensitive_cb,
                               callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
 
-        bar.remove = bar.add(text=_("Mark for Removal"),
+        bar.remove = bar.add(text=_("Mark for _Removal"),
                              tooltip=_("Mark selected packages for removal"),
                              pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
                                                           width=width, height=height),
                              sensitive_fn=self.remove_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
-        bar.cancel = bar.add(text=_("Cancel"),
+        bar.cancel = bar.add(text=_("_Cancel"),
                              tooltip=_("Cancel marked package actions"),
                              stock=gtk.STOCK_CANCEL,
                              sensitive_fn=self.cancel_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
 
-        bar.info = bar.add(text=_("Information"),
+        bar.info = bar.add(text=_("I_nformation"),
                            tooltip=_("Package information"),
                            pixbuf=red_pixbuf.get_pixbuf("info",
                                                         width=width, height=height),

@@ -1,3 +1,11 @@
+2003-03-18  Joe Shaw  <joe@ximian.com>
+
+	* red_actionbar.py (Actionbar.add): Use mnemonics in the text.
+
+	* red_appwindow.py (assemble_actionbar): Add mnemonics.
+
+	* red_connection.py: Add license, rename bleh() to munge_uri().
+
 2003-03-17  Joe Shaw  <joe@ximian.com>
 
 	* red-carpet.in: Swap around some logic here.
