@@ -546,20 +546,7 @@ class PackagesFromQuery(PackagesFromDaemon):
                 print "query time=%.2fs" % elapsed
                 print "got %d packages" % len(packages)
 
-                # Remove duplicates in which a package is installed on
-                # the system and matches a package in a channel.
-                # We'll just show the channel package.
-
-                in_channel = {}
-                for p in packages:
-                    if p["installed"] and p["channel"]:
-                        in_channel[rcd_util.get_package_key(p)] = 1
-
-                for p in packages:
-                    key = rcd_util.get_package_key(p)
-                    if p["channel"] == 0 and in_channel.has_key(key):
-                        packages.remove(p)
-
+                packages = self.filter_duplicates(packages)
                 _cache_query_results(self.query, packages)
                 array.set_packages(packages or [])
             array.message_pop()
@@ -591,6 +578,30 @@ class PackagesFromQuery(PackagesFromDaemon):
         _reset_query_cache()
         pass
 
+    def filter_duplicates(self, packages):
+        if self.query:
+            for r in self.query:
+                if r[0] == "package-installed":
+                    if r[2] == "false":
+                        # Shouldn't contain duplicates
+                        return packages
+                    else:
+                        break
+
+        in_system = {}
+        for p in packages:
+            if p["installed"] and not p["channel"]:
+                # System package
+                key = "%s/%s" % (p["name"], rcd_util.get_package_EVR(p))
+                in_system[key] = 1
+
+        for p in packages:
+            key = "%s/%s" % (p["name"], rcd_util.get_package_EVR(p))
+            if p["channel"] and in_system.has_key(key):
+                # Channel package, has system package.
+                packages.remove(p)
+
+        return packages
 
 ###############################################################################
 

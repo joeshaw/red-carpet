@@ -42,6 +42,8 @@ class SectionOption(gtk.OptionMenu):
         self.item_num_list = []
         self.array = None
         self.array_changed = 0
+        self.current_selection = -1
+
         if array:
             self.set_array(array)
 
@@ -60,7 +62,6 @@ class SectionOption(gtk.OptionMenu):
 
         sections.sort(lambda a, b: cmp(a[2], b[2]))
 
-        self.current_selection = -1
         self.item_num_list = []
 
         menu = gtk.Menu()
@@ -91,6 +92,10 @@ class SectionOption(gtk.OptionMenu):
 
         menu.show()
         self.set_menu(menu)
+
+        # Restore selection if necessary.
+        if self.current_selection >= 0:
+            self.set_history(self.item_num_list.index(self.current_selection))
 
     def set_array(self, array):
         if self.array_changed:
