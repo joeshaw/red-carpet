@@ -362,7 +362,7 @@ class AppWindow(gtk.Window,
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_LARGE_TOOLBAR)
 
         bar.run = bar.add(text=_("Run Now"),
-                          tooltip=_("Perform Pending Operations"),
+                          tooltip=_("Perform installations and removals"),
                           sensitive_fn=red_pendingops.pending_ops_exist,
                           stock=gtk.STOCK_EXECUTE,
                           callback=lambda x:run_transaction_cb(self))
@@ -376,7 +376,7 @@ class AppWindow(gtk.Window,
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
         bar.refresh = bar.add(text=_("Refresh"),
-                              tooltip=_("Refresh Channel Data"),
+                              tooltip=_("Refresh channel data"),
                               stock = gtk.STOCK_REFRESH,
                               callback=lambda x:refresh_cb(self))
 
@@ -404,13 +404,13 @@ class AppWindow(gtk.Window,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
         bar.cancel = bar.add(text=_("Cancel"),
-                             tooltip=_("Remove marked package actions"),
+                             tooltip=_("Cancel marked package actions"),
                              stock=gtk.STOCK_CANCEL,
                              sensitive_fn=self.cancel_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
 
         bar.info = bar.add(text=_("Information"),
-                           tooltip=_("Package Information"),
+                           tooltip=_("Package information"),
                            pixbuf=red_pixbuf.get_pixbuf("info",
                                                         width=width, height=height),
                            sensitive_fn=self.info_sensitive_cb,
@@ -609,7 +609,7 @@ class AppWindow(gtk.Window,
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/Run _Transaction",
+        bar.add("/Actions/Run _Now",
                 image=image,
                 callback=run_transaction_cb,
                 sensitive_fn=red_pendingops.pending_ops_exist,
@@ -633,7 +633,7 @@ class AppWindow(gtk.Window,
         ## Install Package
         ##
 
-        bar.add("/Actions/I_nstall Package",
+        bar.add("/Actions/Mark for I_nstallation",
                 pixbuf_name="to-be-installed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED),
                 sensitive_fn=self.install_sensitive_cb)
@@ -642,7 +642,7 @@ class AppWindow(gtk.Window,
         ## Remove Package
         ##
 
-        bar.add("/Actions/_Remove Package",
+        bar.add("/Actions/Mark for _Removal",
                 pixbuf_name="to-be-removed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED),
                 sensitive_fn=self.remove_sensitive_cb)
@@ -654,7 +654,7 @@ class AppWindow(gtk.Window,
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/_Cancel Action",
+        bar.add("/Actions/_Cancel",
                 image=image,
                 callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION),
                 sensitive_fn=self.cancel_sensitive_cb)

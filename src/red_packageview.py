@@ -160,7 +160,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                     red_pendingops.set_action(pkg, action)
 
         # Install
-        item = gtk.ImageMenuItem(_("Install selected packages"))
+        item = gtk.ImageMenuItem(_("Mark for Installation"))
         image = red_pixbuf.get_widget("to-be-installed")
         item.set_image(image)
         if not red_pendingops.can_perform_action_multiple(pkgs,
@@ -173,7 +173,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                      lambda x:set_package_action(pkgs, red_pendingops.TO_BE_INSTALLED))
 
         # Remove
-        item = gtk.ImageMenuItem(_("Remove selected packages"))
+        item = gtk.ImageMenuItem(_("Mark for Removal"))
         image = red_pixbuf.get_widget("to-be-removed")
         item.set_image(image)
         if not red_pendingops.can_perform_action_multiple(pkgs,
@@ -186,7 +186,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                      lambda x:set_package_action(pkgs, red_pendingops.TO_BE_REMOVED))
 
         # Cancel
-        item = gtk.ImageMenuItem(_("Cancel actions"))
+        item = gtk.ImageMenuItem(_("Cancel"))
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
         item.set_image(image)
@@ -204,7 +204,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         menu.append(item)
 
         # Info
-        item = gtk.ImageMenuItem(_("Package Info"))
+        item = gtk.ImageMenuItem(_("Information"))
         image = red_pixbuf.get_widget("info")
         item.set_image(image)
         item.show_all()

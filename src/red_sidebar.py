@@ -177,6 +177,8 @@ class ShortcutBar(gtk.HBox):
         if len(self.components) < 1:
             return
 
+        self.tooltips = gtk.Tooltips()
+
         components = [(comp, callback) for comp, callback in self.components
                       if comp.show_in_shortcuts()]
 
@@ -215,6 +217,8 @@ class ShortcutBar(gtk.HBox):
 
             box.pack_start(gtk.Label(comp.name()), 0, 0)
             align.add(box)
+
+            self.tooltips.set_tip(button, comp.long_name())
 
             y = int(row)
             if row > y:

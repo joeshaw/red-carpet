@@ -29,6 +29,7 @@ class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
 
         self.set_spacing(6)
 
+        self.tooltips = gtk.Tooltips()
         self.items = []
 
     def add(self,
@@ -65,6 +66,9 @@ class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
             box.pack_start(image, 0, 0)
         box.pack_start(gtk.Label(text), 0, 0)
         align.add(box)
+
+        if tooltip:
+            self.tooltips.set_tip(button, tooltip)
 
         gtk.Box.pack_start(self, button, expand=1, fill=1)
         button.set_sensitive(0)

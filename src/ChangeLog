@@ -1,3 +1,22 @@
+2003-03-13  Tambet Ingo  <tambet@ximian.com>
+
+	* red_transaction.py (TransactionComponent.name): Fix inconsistency
+	with main window.
+	(TransactionComponent.long_name): Ditto.
+	(TransactionComponent.access_key): New access key.
+
+	* red_sidebar.py (ShortcutBar.construct): Add tooltips.
+
+	* red_packageview.py (PackageView.set_package_action): Fix
+	inconsistent popup menu items' names.
+
+	* red_appwindow.py (AppWindow.assemble_toolbar): Fix tooltips'
+	capitalization.
+	(AppWindow.checked_set_cb): Fix inconsistent menu items' names.
+
+	* red_actionbar.py (Actionbar.__init__): Add tooltips.
+	(Actionbar.add): Ditto.
+
 2003-03-12  Tambet Ingo  <tambet@ximian.com>
 
 	* rcd_util.py (is_system_package): Implement.

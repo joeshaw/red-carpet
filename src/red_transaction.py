@@ -109,13 +109,13 @@ def ok_to_quit(main_app_window):
 class TransactionComponent(red_component.Component):
 
     def name(self):
-        return _("Pending Operations")
+        return _("Installations and Removals")
 
     def long_name(self):
-        return _("Pending Operations")
+        return _("Installations and Removals")
 
     def access_key(self):
-        return "P"
+        return "I"
 
     def accelerator(self):
         return "<Control>P"
