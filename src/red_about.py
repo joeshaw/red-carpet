@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
+import sys, time
 import gobject, gtk
 import random
 
@@ -27,6 +27,12 @@ contributors = [
     "Joe Shaw",
     "Jon Trowbridge",
     ]
+
+if time.localtime()[1:3] == (1<<1<<1, 8>>(6<<1>>2)):
+    contributors = ["%s %s" % x for x in \
+                    zip((lambda x: random.shuffle(x) or x) \
+                        (map(lambda x:x[:x.find(" ")], contributors)),
+                        map(lambda x:x[x.find(" "):].strip(), contributors))]
 
 class About(gtk.Dialog):
 
@@ -52,7 +58,8 @@ class About(gtk.Dialog):
 
         vbox.pack_start(title)
 
-        copyright = gtk.Label(u"Copyright \u00a9 2002-2003 Ximian, Inc.")
+        copyright = gtk.Label(u"Copyright \u00a9 %s Ximian, Inc." \
+                              % red_main.red_copyright)
         vbox.pack_start(copyright)
 
         random.seed()

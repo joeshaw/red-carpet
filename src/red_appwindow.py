@@ -243,21 +243,52 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/File/sep", is_separator=1)
 
+        def install_file_sensitive_fn():
+            return rcd_util.check_server_permission("install")
+
         bar.add("/File/Install From File...",
+                sensitive_fn=install_file_sensitive_fn,
                 callback=lambda x:red_installfiles.install_local())
 
+        def install_url_sensitive_fn():
+            return rcd_util.check_server_permission("install") and \
+                   red_installfiles.can_install_remote()
+
         bar.add("/File/Install From URL...",
-                callback=lambda x:red_installfiles.install_remote(),
-                sensitive_fn=red_installfiles.can_install_remote)
+                sensitive_fn=install_url_sensitive_fn,
+                callback=lambda x:red_installfiles.install_remote())
 
         bar.add("/File/sep2", is_separator=1)
 
+        ##
+        ## Mount command
+        ##
+
+        def mount_callback(app):
+            red_mount.select_and_mount()
+
+        def mount_sensitive_fn():
+            return rcd_util.check_server_permission("superuser")
+
         bar.add("/File/Mount Directory...",
-                callback=lambda x:red_mount.select_and_mount())
+                callback=mount_callback,
+                sensitive_fn=mount_sensitive_fn)
+
+        ##
+        ## Unmount command
+        ##
+
+        def unmount_callback(app):
+            app.open_or_raise_window(red_mount.UnmountWindow)
+
+        def unmount_sensitive_fn():
+            return rcd_util.check_server_permission("superuser") and \
+                   red_mount.has_mounted_channels()
 
         bar.add("/File/Unmount Directory...",
-                callback=lambda x:self.open_or_raise_window(red_mount.UnmountWindow),
-                sensitive_fn=red_mount.has_mounted_channels)
+                callback=unmount_callback,
+                sensitive_fn=unmount_sensitive_fn)
+        
 
         bar.add("/File/sep3", is_separator=1)
 
@@ -321,6 +352,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def checked_set_cb(flag):
             if flag:
                 self.activate_component(comp)
+        
         self.menubar.add("/View/" + comp.long_name(),
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb,

@@ -75,7 +75,7 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         i = self.item_id_list.index(id)
         self.set_history(i)
 
-    def channels_changed(self, server):
+    def channels_changed(self):
         id = self.get_channel_id()
         self.__assemble()
         if id is not None and id in self.item_id_list:

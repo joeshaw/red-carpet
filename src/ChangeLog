@@ -1,3 +1,56 @@
+2003-01-24  Jon Trowbridge  <trow@ximian.com>
+
+	* red_packagebrowser.py (PackageBrowser.show_popup_cb):
+	Desensitize the remove/install/upgrade items in the right-click
+	menu if we don't have sufficient privileges to perform those
+	actions.
+
+	* red_appwindow.py (AppWindow.assemble_menubar): Desensitize the
+	File->Install, File->Mount and File->Unmount menu items if we
+	don't have sufficient privileges to perform the associated
+	actions.
+
+	* red_menubar.py (MenuBar.refresh_items): Added code to allow
+	sensitive functions and callbacks to be passed in as sequences,
+	where the 0th item is the actual callable and the subsequent items
+	are arguments to the callable... sort of a poor man's lexical
+	closure.
+
+	* red_packagearray.py (PackagesFromQuery): Multiple small changes to
+	reflect revised ServerListener API.
+
+	* red_channeloption.py (ChannelOption): Ditto.
+
+	* red_channelinfo.py (ChannelInfo): Ditto.
+
+	* red_channelmodel.py (ChannelModel): Ditto.
+
+	* red_serverlistener.py: Extended to track the user sequence
+	number as well as the world sequence numbers, and to clear the
+	permission cache (via a call to rcd_util.reset_server_permissions)
+	when the user sequence number changes.  When polling the server,
+	execute both sequence-number-fetching calls as normal xml-rpc
+	calls in a thread, instead of using ServerProxy objects.  If we
+	detect a change, throw off an idle function to notify the
+	ServerListeners.  This ensures that the notification happens in
+	the main thread.  Also, removed a bunch of cruft which caused the
+	server to be propogated throughout the ServerListener calls.  Our
+	current policy is that if you need a server object, you get it by
+	just calling rcd_util.get_server.
+
+	* red_about.py (About.__init__): Use the copyright years from
+	red_main.red_copyright, instead of hard-wiring it into the string.
+
+	* red_main.py (red_copyright): Added a variable containing the
+	program's copyright years, along with the name and version.
+
+	* rcd_util.py (check_server_permission): Added.  Tests to see if
+	the user has the specified permission on the server.  The results
+	are cached, so subsequent queries don't require a (potentially
+	blocking) xml-rpc call.
+	(reset_server_permissions): Clears the permission cache.
+
+
 2003-01-23  Joe Shaw  <joe@ximian.com>
 
 	* red_channelmodel.py: Begin porting this over to be a
@@ -10,6 +63,7 @@
 
 	* red_subscriptions.py: Removed some code which didn't appear to
 	have any purpose and was causing tracebacks.
+
 
 2003-01-23  Jon Trowbridge  <trow@ximian.com>
 

@@ -26,6 +26,7 @@ import socket
 
 server = None
 server_proxy = None
+server_permissions = {}
 
 # Tries to connect to server and get a result
 # to ping command.
@@ -100,6 +101,7 @@ def register_server(srv):
     global server, server_proxy
     server = srv
     server_proxy = red_serverproxy.ServerProxy(server)
+    reset_server_permissions()
 
 def get_server():
     global server
@@ -113,6 +115,25 @@ def get_server():
 
 def get_server_proxy():
     return server_proxy
+
+def reset_server_permissions():
+    global server_permissions
+    server_permissions = {}
+
+def check_server_permission(perm):
+    if not perm:
+        return 0
+    perm = perm.lower()
+    if not server_permissions.has_key(perm):
+        server = get_server()
+        try:
+            server_permissions[perm] = server.rcd.users.has_privilege(perm)
+        except:
+            pass # FIXME: we can do better than this...
+
+    return server_permissions.get(perm, 0)
+    
+    
 
 ###############################################################################
 

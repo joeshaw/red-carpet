@@ -117,11 +117,11 @@ class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
     ### ServerListener methods
     ###
 
-    def channels_changed(self, server):
+    def channels_changed(self):
         print "Channels changed!"
         self.refresh()
 
-    def subscriptions_changed(self, server):
+    def subscriptions_changed(self):
         print "Subscriptions changed!"
         self.refresh()
 

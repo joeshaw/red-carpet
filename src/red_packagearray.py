@@ -532,7 +532,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
                 return 0
             self.pending_refresh = gtk.timeout_add(20, schedule_cb, self)
 
-    def packages_changed(self, server):
+    def packages_changed(self):
         self.schedule_refresh()
 
     def len(self):
@@ -641,11 +641,11 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.__query_msg = query_msg
         self.schedule_refresh()
 
-    def packages_changed(self, server):
+    def packages_changed(self):
         _reset_query_cache()
         pass
 
-    def channels_changed(self, server):
+    def channels_changed(self):
         _reset_query_cache()
         pass
 

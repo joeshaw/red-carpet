@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, string
+import sys, os, string, types
 import re
 import gobject, gtk
 import red_pixbuf
@@ -292,14 +292,26 @@ class MenuBar(gtk.MenuBar):
                         widget.show()
                     else:
                         widget.hide()
-                    
-                    sensitive_fn = item["sensitive_fn"]
-                    widget.set_sensitive((not sensitive_fn) or sensitive_fn())
 
-                    checked_get = item["checked_get"]
-                    if checked_get:
-                        x = (checked_get() and 1) or 0
-                        widget.set_active(x)
+                    def eval_fn_or_tuple(fn):
+                        if not fn:
+                            return 1
+                        elif callable(fn):
+                            return (fn() and 1) or 0
+                        elif type(fn) == types.TupleType \
+                             or type(fn) == types.ListType:
+                            assert(len(fn) > 0)
+                            assert(callable(fn[0]))
+                            return (apply(fn[0], fn[1:]) and 1) or 0
+                        print "Couldn't eval", fn
+                        return 0
+
+                    is_sensitive = eval_fn_or_tuple(item["sensitive_fn"])
+                    widget.set_sensitive(is_sensitive)
+
+                    if item["checked_get"]:
+                        is_checked = eval_fn_or_tuple(item["checked_get"])
+                        widget.set_active(is_checked)
 
                     radiogroup = item["radiogroup"]
                     radiotag = item["radiotag"]

@@ -29,8 +29,9 @@ import red_transaction
 import red_news
 import red_history
 
-red_name = "Red Carpet"
-red_version = None
+red_name      = "Red Carpet"
+red_version   = None
+red_copyright = "2002-2003"
 
 red_running = 1
 

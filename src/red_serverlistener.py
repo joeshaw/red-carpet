@@ -35,7 +35,8 @@ timeout_len  = 3000
 
 last_package_seqno      = -1
 last_channel_seqno      = -1
-last_subscription_seqno = -1
+last_subs_seqno = -1
+last_user_seqno         = -1
 
 listeners = {}
 listener_id = 0
@@ -50,12 +51,15 @@ def unregister_listener(lid):
     global listeners
     del listeners[lid]
 
-def signal_listeners(server,
-                     packages_changed,
+def signal_listeners(packages_changed,
                      channels_changed,
-                     subscriptions_changed):
+                     subscriptions_changed,
+                     users_changed):
 
-    if packages_changed or channels_changed or subscriptions_changed:
+    if packages_changed \
+           or channels_changed \
+           or subscriptions_changed \
+           or users_changed:
 
         for lid in listeners.keys():
             listener_ref = listeners[lid]
@@ -63,13 +67,16 @@ def signal_listeners(server,
             if listener:
 
                 if packages_changed:
-                    listener.packages_changed(server)
+                    listener.packages_changed()
 
                 if channels_changed:
-                    listener.channels_changed(server)
+                    listener.channels_changed()
 
                 if subscriptions_changed:
-                    listener.subscriptions_changed(server)
+                    listener.subscriptions_changed()
+
+                if users_changed:
+                    listener.users_changed()
 
             else:
                 unregister_listener(lid)
@@ -81,52 +88,67 @@ def poll_cb():
 
     if freeze_count == 0:
 
-        server = rcd_util.get_server_proxy()
+        server = rcd_util.get_server()
         if server is None:
             return
 
-        def ready_cb(th):
-            global last_server
-            global poll_count
-            global last_package_seqno
-            global last_subscription_seqno
-            global last_channel_seqno
+        class SeqNoChecker(threading.Thread):
 
-            curr_package_seqno, curr_channel_seqno, curr_subscription_seqno =\
-                                th.get_result()
+            def run(self):
+                global last_server
+                global poll_count
+                global last_package_seqno
+                global last_subs_seqno
+                global last_channel_seqno
+                global last_user_seqno
 
-            poll_lock.acquire()
+                poll_lock.acquire()
 
-            # This lets us do the right thing if the server changes
-            # out from under us.
-            if id(server) != last_server:
-                last_package_seqno      = -1
-                last_channel_seqno      = -1
-                last_subscription_seqno = -1
-            last_server = id(server)
+                server = rcd_util.get_server()
 
-            if curr_channel_seqno != last_channel_seqno or \
-                   curr_subscription_seqno != last_subscription_seqno:
-                rcd_util.reset_channels()
+                (curr_package_seqno,
+                 curr_channel_seqno,
+                 curr_subs_seqno) = server.rcd.packsys.world_sequence_numbers()
+                curr_user_seqno = server.rcd.users.sequence_number()
 
-            # Ignore any problems on the first poll, since we know we
-            # don't have valid server information before that point.
-            if poll_count != 0:
-                signal_listeners(server,
+                # This lets us do the right thing if the server changes
+                # out from under us.
+                if id(server) != last_server:
+                    last_package_seqno      = -1
+                    last_channel_seqno      = -1
+                    last_subs_seqno = -1
+                    last_user_seqno         = -1
+                last_server = id(server)
+
+                if curr_channel_seqno != last_channel_seqno or \
+                       curr_subs_seqno != last_subs_seqno:
+                    rcd_util.reset_channels()
+
+                if curr_user_seqno != last_user_seqno:
+                    rcd_util.reset_server_permissions()
+
+                # Ignore any problems on the first poll, since we know we
+                # don't have valid server information before that point.
+                if poll_count != 0:
+                    # We signal the listeners in an idle function so that
+                    # it will always happen in the main thread.
+                    gtk.idle_add(signal_listeners,
                                  curr_package_seqno != last_package_seqno,
                                  curr_channel_seqno != last_channel_seqno,
-                                 curr_subscription_seqno != last_subscription_seqno)
-                
-            last_package_seqno = curr_package_seqno
-            last_channel_seqno = curr_channel_seqno
-            last_subscription_seqno = curr_subscription_seqno
+                                 curr_subs_seqno != last_subs_seqno,
+                                 curr_user_seqno != last_user_seqno)
 
-            poll_lock.release()
-            
-            poll_count += 1
-            
-        th = server.rcd.packsys.world_sequence_numbers()
-        th.connect("ready", ready_cb)
+                last_package_seqno = curr_package_seqno
+                last_subs_seqno = curr_subs_seqno
+                last_channel_seqno = curr_channel_seqno
+                last_user_seqno = curr_user_seqno
+
+                poll_lock.release()
+
+                poll_count += 1
+
+        th = SeqNoChecker()
+        th.start()
 
         missed_polls = 0
         
@@ -151,14 +173,12 @@ def reset_polling(do_immediate_poll=1):
 def freeze_polling():
     global freeze_count
     poll_lock.acquire()
-    print "Freeze count is %d pre-freeze" % freeze_count
     freeze_count += 1
     poll_lock.release()
 
 def thaw_polling(do_immediate_poll=0):
     global freeze_count
     poll_lock.acquire()
-    print "Freeze count is %d pre-thaw" % freeze_count
     if freeze_count > 0:
         freeze_count -= 1
     if freeze_count == 0:
@@ -186,41 +206,50 @@ class ServerListener:
         self.__missed_package_changes = 0
         self.__missed_channel_changes = 0
         self.__missed_subscription_changes = 0
+        self.__missed_user_changes = 0
         self.__listener_id = register_listener(self)
 
     # These are the function that should be overrided in derived classes.
-    def packages_changed(self, server):
+    def packages_changed(self):
         pass
 
-    def channels_changed(self, server):
+    def channels_changed(self):
         pass
 
-    def subscriptions_changed(self, server):
+    def subscriptions_changed(self):
         pass
 
-    def process_package_changes(self, server):
+    def users_changed(self):
+        pass
+
+    def process_package_changes(self):
         if self.__freeze_count > 0:
             self.__missed_package_changes += 1
         else:
-            self.packages_changed(server)
-            print "Packages changed!"
+            self.packages_changed()
             self.__missed_package_changes = 0
 
-    def process_channel_changes(self, server):
+    def process_channel_changes(self):
         if self.__freeze_count > 0:
             self.__missed_channel_changes += 1
         else:
-            self.channels_changed(server)
-            print "Channels changed!"
+            self.channels_changed()
             self.__missed_channel_changes = 0
 
-    def process_subscription_changes(self, server):
+    def process_subscription_changes(self):
         if self.__freeze_count > 0:
-            print "Subs changed!"
             self.__missed_subscription_changes += 1
         else:
-            self.subscriptions_changed(server)
+            self.subscriptions_changed()
             self.__missed_subscription_changes = 0
+
+    def process_user_changes(self):
+        if self.__freeze_count > 0:
+            self.__missed_user_changes += 1
+        else:
+            self.users_changed()
+            self.__missed_user_changes = 0
+
 
     def freeze(self):
         self.__freeze_count += 1
@@ -229,13 +258,14 @@ class ServerListener:
         if self.__freeze_count > 0:
             self.__freeze_count -= 1
             if self.__freeze_count == 0:
-                server = rcd_util.get_server()
                 if self.__missed_package_changes > 0:
-                    self.process_package_changes(server)
+                    self.process_package_changes()
                 if self.__missed_channel_changes > 0:
-                    self.process_channel_changes(server)
+                    self.process_channel_changes()
                 if self.__missed_subscription_changes > 0:
-                    self.process_subscription_changes(server)
+                    self.process_subscription_changes()
+                if self.__missed_user_changes > 0:
+                    self.process_user_changes()
 
     def shutdown_listener(self):
         if self.freeze_count > 0:
@@ -248,6 +278,8 @@ class ServerListener:
                 pending.append("channel")
             if self.__missed_subscription_changes > 0:
                 pending.append("subscription")
+            if self.__missed_user_changes > 0:
+                pending.append("user")
 
             if pending:
                 msg = string.join(pending, ", ")
