@@ -1,3 +1,9 @@
+2003-06-02  Joe Shaw  <joe@ximian.com>
+
+	* red_pendingview.py (PendingView_Simple): Poll every 150ms.  Take
+	it easy on the polling; make sure we only do it on the interval,
+	not several times a second.  Fixes #42931.
+
 2003-05-27  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (refresh): Improve error message slightly.

@@ -378,7 +378,8 @@ class PendingView_Simple(PendingView):
 
     def __init__(self, title, parent=None):
         PendingView.__init__(self, title, parent=parent,
-                             self_destruct=1, allow_cancel=0)
+                             self_destruct=1, allow_cancel=0,
+                             timeout_len=150)
 
         self.pending_list = []
 
@@ -387,7 +388,6 @@ class PendingView_Simple(PendingView):
         self.pending_countdown = 0
         self.poll_queue = []
         self.poll_results = {}
-        self.first_poll = 1
         self.finished_polling = 0
 
     def set_pending_list(self, pending_list):
@@ -419,8 +419,6 @@ class PendingView_Simple(PendingView):
         
         self.poll_results[pending["id"]] = pending
 
-        self.launch_poll_threads()
-
         if len(self.poll_results) == len(self.pending_list):
             results = self.poll_results.values()
             polling = 0
@@ -438,13 +436,10 @@ class PendingView_Simple(PendingView):
 
     def poll_worker(self):
 
-        if self.first_poll:
-            self.launch_poll_threads(launch_max=1)
-            self.first_poll = 0
+        self.launch_poll_threads()
 
         if self.finished_polling:
             red_serverlistener.thaw_polling()
-            self.first_poll = 1
             return 0
 
         return 1
