@@ -174,7 +174,7 @@ class AppWindow(gtk.Window,
         ## Actionbar
         self.actionbar = red_actionbar.Actionbar()
         self.assemble_actionbar(self.actionbar)
-        main_box.pack_end(self.actionbar, 0, 0)
+        main_box.pack_end(self.actionbar, expand=0, fill=0)
 
         main_box.pack_start(self.container, expand=1, fill=1)
         main_box.show_all()
@@ -318,7 +318,7 @@ class AppWindow(gtk.Window,
             return 0
 
         pkgs = comp.get_current_packages()
-        return len(pkgs) == 1
+        return len(pkgs) > 0
 
     def package_info_cb(self):
         comp = self.get_component()
@@ -327,9 +327,19 @@ class AppWindow(gtk.Window,
         
         pkgs = comp.get_current_packages()
 
-        assert len(pkgs) == 1
+        if len(pkgs) > 5:
+            dialog = gtk.MessageDialog(self, 0,
+                                       gtk.MESSAGE_QUESTION,
+                                       gtk.BUTTONS_OK_CANCEL,
+                                       _("Are you sure you want to open %d "
+                                         "package information windows?") % len(pkgs))
+            resp = dialog.run()
+            dialog.destroy()
+            if resp != gtk.RESPONSE_OK:
+                return
 
-        red_packagebook.show_package_info(pkgs[0])
+        for p in pkgs:
+            red_packagebook.show_package_info(p)
 
     ##
     ## Toolbar
@@ -344,15 +354,6 @@ class AppWindow(gtk.Window,
                           sensitive_fn=red_pendingops.pending_ops_exist,
                           stock=gtk.STOCK_EXECUTE,
                           callback=lambda x:run_transaction_cb(self))
-
-        bar.append_space()
-
-        bar.info = bar.add(text=_("Info"),
-                           tooltip=_("Package Information"),
-                           pixbuf=red_pixbuf.get_pixbuf("info",
-                                                        width=width, height=height),
-                           sensitive_fn=self.info_sensitive_cb,
-                           callback=lambda x:self.package_info_cb())
 
         bar.append_space()
 
@@ -390,11 +391,18 @@ class AppWindow(gtk.Window,
                              sensitive_fn=self.remove_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
-        bar.cancel = bar.add(text=_("Remove Marked Actions"),
+        bar.cancel = bar.add(text=_("Cancel"),
                              tooltip=_("Remove marked package actions"),
                              stock=gtk.STOCK_CANCEL,
                              sensitive_fn=self.cancel_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
+
+        bar.info = bar.add(text=_("Info"),
+                           tooltip=_("Package Information"),
+                           pixbuf=red_pixbuf.get_pixbuf("info",
+                                                        width=width, height=height),
+                           sensitive_fn=self.info_sensitive_cb,
+                           callback=lambda x:self.package_info_cb())
 
 
     # The return value is for the benefit of our delete_event handler.

@@ -21,14 +21,13 @@ import red_pendingops
 from red_gettext import _
 
 
-class Actionbar(gtk.HButtonBox, red_pendingops.PendingOpsListener):
+class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
 
     def __init__(self):
-        gtk.HButtonBox.__init__(self)
+        gtk.HBox.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
 
         self.set_spacing(6)
-        self.set_layout(gtk.BUTTONBOX_START)
 
         self.items = []
 
@@ -67,7 +66,7 @@ class Actionbar(gtk.HButtonBox, red_pendingops.PendingOpsListener):
         box.pack_start(gtk.Label(text), 0, 0)
         align.add(box)
 
-        gtk.ButtonBox.add(self, button)
+        gtk.Box.pack_start(self, button, expand=1, fill=1)
         button.set_sensitive(0)
 
         if callback:

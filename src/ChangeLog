@@ -1,3 +1,21 @@
+2003-03-10  Joe Shaw  <joe@ximian.com>
+
+	* red_actionbar.py (Actionbar): Make this an HBox instead of an
+	HButtonBox so we don't have to have homogeneous buttons.
+
+	* red_appwindow.py (info_sensitive_cb): Make this sensitize when
+	multiple packages are selected.
+	(package_info_cb): Handle multiple packages, pop up a dialog when
+	more than 5 are selected for the user to confirm.
+	(assemble_actionbar): Move the "Info" button down here from the
+	toolbar.
+
+	* red_history.py (PackageHistory): Make the Time column the first
+	column to be consistent with the system history view.
+
+	* red_packagebook.py (show_package_info): Make the window default
+	to 450x350.
+
 2003-03-10  Tambet Ingo  <tambet@ximian.com>
 
 	* red_appwindow.py (AppWindow.activate_component): Show/hide actionbar

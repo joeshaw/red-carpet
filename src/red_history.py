@@ -414,11 +414,11 @@ class PackageHistory(gtk.ScrolledWindow):
         view = red_thrashingtreeview.TreeView(model)
         view.set_rules_hint(1)
 
-        cols = [(_("Action"),      COLUMN_ACTION),
+        cols = [(_("Time"),        COLUMN_TIME),
+                (_("Action"),      COLUMN_ACTION),
                 (_("User"),        COLUMN_USER),
                 (_("Old Version"), COLUMN_PKG_INITIAL),
-                (_("New Version"), COLUMN_PKG_FINAL),
-                (_("Time"),        COLUMN_TIME)]
+                (_("New Version"), COLUMN_PKG_FINAL)]
 
         for label, id in cols:
             col = gtk.TreeViewColumn(label,
