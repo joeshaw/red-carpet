@@ -51,6 +51,7 @@ class DepComponent(red_component.Component):
 
         self.dep_install = []
         self.dep_remove = []
+        self.dep_error = None
 
         try:
             if self.verify:
@@ -61,10 +62,13 @@ class DepComponent(red_component.Component):
                     self.remove_packages,
                     [])
         except ximian_xmlrpclib.Fault, f:
-            rcd_util.dialog_from_fault(f, post_dialog_thunk=lambda: self.pop())
-            return
-            
-        self.dep_install, self.dep_remove, dep_info = F
+            if f.faultCode == rcd_util.fault.failed_dependencies:
+                self.dep_error = f.faultString
+            else:
+                rcd_util.dialog_from_fault(f,
+                                           post_dialog_thunk=lambda:self.pop())
+        else:
+            self.dep_install, self.dep_remove, dep_info = F
 
     def name(self):
         return "Dependency Resolution"
@@ -104,7 +108,53 @@ class DepComponent(red_component.Component):
             comp.pop()
         trans_win.connect("finished", finished_cb, self)
 
+    def build_dep_error(self):
+
+        page = gtk.VBox(0, 0)
+
+        # Assemble our warning banner
+        banner_box = gtk.EventBox()
+        style = banner_box.get_style().copy()
+        bg_color = banner_box.get_colormap().alloc_color("red")
+        style.bg[gtk.STATE_NORMAL] = bg_color
+        banner_box.set_style(style)
+        banner = gtk.Label("")
+        msg = "Dependency Resolution Failed"
+        banner.set_markup("<span size=\"large\"><b>%s</b></span>" % msg)
+        banner_box.add(banner)
+        page.pack_start(banner_box, 0, 0, 0)
+
+        # double-space our dependency error to make it easier to read
+        lines = filter(lambda x: x != "", string.split(self.dep_error, "\n"))
+        msg = "\n" + string.join(lines, "\n\n")
+
+        view = gtk.TextView()
+        view.set_wrap_mode(gtk.WRAP_WORD)
+        view.get_buffer().set_text(msg)
+
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        sw.add(view)
+        page.pack_start(sw, expand=1, fill=1, padding=0)
+
+        buttons = gtk.HBox(0, 0)
+        button = gtk.Button(gtk.STOCK_OK)
+        button.set_use_stock(1)
+        buttons.pack_end(button, 0, 0, 2)
+
+        page.pack_end(buttons, 0, 0, 2)
+
+        button.connect("clicked",
+                       lambda x: self.pop())
+
+        page.show_all()
+
+        return page
+
     def build(self):
+
+        if self.dep_error:
+            return self.build_dep_error()
 
         # If we're verifying and we don't need to do anything...
         if self.verify and not self.dep_install and not self.dep_remove:
