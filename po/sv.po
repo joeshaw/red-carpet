@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.18 2003/06/06 18:36:38 menthos Exp $
+# $Id: sv.po,v 1.19 2003/06/21 22:55:10 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-06-06 20:35+0200\n"
-"PO-Revision-Date: 2003-06-06 20:53+0200\n"
+"POT-Creation-Date: 2003-06-22 00:53+0200\n"
+"PO-Revision-Date: 2003-06-22 00:54+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -381,8 +381,8 @@ msgid "_Help"
 msgstr "_Hjälp"
 
 #: src/red_appwindow.py:550
-msgid "Connect..."
-msgstr "Anslut..."
+msgid "Connect to daemon..."
+msgstr "Anslut till demon..."
 
 #: src/red_appwindow.py:551
 msgid "Connect to a remote daemon"
@@ -2659,6 +2659,9 @@ msgstr "Ogiltigt användarnamn."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
+
+#~ msgid "Connect..."
+#~ msgstr "Anslut..."
 
 #~ msgid "Connect to %s"
 #~ msgstr "Anslut till %s"
