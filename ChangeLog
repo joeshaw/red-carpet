@@ -1,3 +1,14 @@
+2003-03-26  Aaron Weber  <aaron@ximian.com>
+
+	* help/C/red-carpet.xml: Remote usage coverage added. Now to wait
+	for next snap and verify that the prefs I describe are the prefs
+	as they are.
+	
+2003-03-25  Aaron Weber  <aaron@ximian.com>
+
+	* help/C/red-carpet.xml: add prefs coverage. Prefs coverage is
+	nearly complete. Still needs remote usage coverage.
+
 2003-03-24  Aaron Weber  <aaron@ximian.com>
 
 	* help/C/red-carpet.xml: Somewhat incomplete draft.
