@@ -1,0 +1,343 @@
+###
+### Copyright (C) 2002-2003 Ximian, Inc.
+###
+### This program is free software; you can redistribute it and/or modify
+### it under the terms of the GNU General Public License, version 2,
+### as published by the Free Software Foundation.
+###
+### This program is distributed in the hope that it will be useful,
+### but WITHOUT ANY WARRANTY; without even the implied warranty of
+### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+### GNU General Public License for more details.
+###
+### You should have received a copy of the GNU General Public License
+### along with this program; if not, write to the Free Software
+### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+###
+
+import string, gobject, gtk
+import rcd_util
+import ximian_xmlrpclib
+import red_listmodel, red_serverlistener, red_thrashingtreeview
+
+from red_gettext import _
+
+COLUMNS = (
+    ("SERVICE",
+     lambda x:x,
+     gobject.TYPE_PYOBJECT),
+
+    ("ID",
+     lambda x:x["id"],
+     gobject.TYPE_STRING),
+    
+    ("NAME",
+     lambda x:x["name"],
+     gobject.TYPE_STRING),
+
+    ("URL",
+     lambda x:x["url"],
+     gobject.TYPE_STRING),
+    
+)
+
+for i in xrange(len(COLUMNS)):
+    name = COLUMNS[i][0]
+    exec("COLUMN_%s = %d" % (name, i))
+
+class ServicesModel(red_listmodel.ListModel,
+                    red_serverlistener.ServerListener):
+
+    def __init__(self):
+        red_listmodel.ListModel.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
+
+        self.__services = rcd_util.get_all_services()
+
+        for name, callback, type in COLUMNS:
+            self.add_column(callback, type)
+
+        self.refresh()
+
+    ###
+    ### ListModel methods
+    ###
+
+    def get_all(self):
+        return self.__services
+
+    def spew(self):
+        for s in self.get_all():
+            print s
+
+    ###
+    ### ServerListener methods
+    ###
+
+    def channels_changed(self):
+        self.refresh()
+
+    def refresh(self):
+        def refresh_cb(me):
+            me.__services = rcd_util.get_all_services()
+        self.changed(refresh_cb)
+
+class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
+
+    def __init__(self):
+        gtk.Dialog.__init__(self, _("Edit Services"))
+        red_serverlistener.ServerListener.__init__(self)
+
+        self.__busy = 0
+
+        self.build()
+        self.set_size_request(500, 300)
+
+##        def destroy_cb(win):
+##            win.busy_stop()
+
+##        self.connect("destroy", destroy_cb)
+
+    def build(self):
+
+        hbox = gtk.HBox()
+        self.vbox.pack_start(hbox, expand=1, fill=1, padding=12)
+
+        vbox = gtk.VBox()
+        hbox.pack_start(vbox, expand=1, fill=1, padding=12)
+
+        model = ServicesModel()
+        self.view = red_thrashingtreeview.TreeView(model)
+
+        col = gtk.TreeViewColumn(_("Name"),
+                                 gtk.CellRendererText(),
+                                 text=COLUMN_NAME)
+        self.view.append_column(col)
+
+        col = gtk.TreeViewColumn(_("URL"),
+                                 gtk.CellRendererText(),
+                                 text=COLUMN_URL)
+        self.view.append_column(col)
+
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_IN)
+        sw.add(self.view)
+                                 
+        vbox.pack_start(sw)
+
+        bbox = gtk.HButtonBox()
+        bbox.set_spacing(6)
+        bbox.set_layout(gtk.BUTTONBOX_END)
+
+        self.remove_button = gtk.Button(_("_Remove service"))
+        self.remove_button_sensitize()
+        self.remove_button.connect("clicked", lambda x:self.remove_service())
+        bbox.pack_start(self.remove_button, expand=0, fill=0, padding=3)
+
+        def selection_changed_cb(select, this):
+            this.remove_button_sensitize()
+
+        select = self.view.get_selection()
+        select.connect("changed",
+                       selection_changed_cb,
+                       self)
+
+        button = gtk.Button(_("_Add service"))
+        button.set_sensitive(rcd_util.check_server_permission("superuser"))
+        button.connect("clicked", lambda x:self.add_service())
+        bbox.pack_start(button, expand=0, fill=0, padding=3)
+
+        vbox.pack_end(bbox, expand=0, fill=0, padding=6)
+
+        self.vbox.show_all()
+
+        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        button.grab_default()
+        button.connect("clicked", lambda x:self.destroy())
+
+    def get_selected_service(self):
+        select = self.view.get_selection()
+
+        def selected_cb(model, path, iter, sl):
+            service = model.get_value(iter, COLUMN_SERVICE)
+            sl.append(service)
+
+        service_list = []
+        select.selected_foreach(selected_cb, service_list)
+
+        if not service_list:
+            return None
+        else:
+            return service_list[0]
+
+    def remove_button_sensitize(self):
+        if rcd_util.check_server_permission("superuser") \
+           and self.get_selected_service() is not None:
+            self.remove_button.set_sensitive(1)
+        else:
+            self.remove_button.set_sensitive(0)
+
+    def remove_service(self):
+        selected_service = self.get_selected_service()
+
+        def remove_service_cb(th, win):
+            try:
+                th.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                rcd_util.dialog_from_fault(f)
+                return
+            else:
+                win.busy_start()
+
+        server = rcd_util.get_server_proxy()
+        th = server.rcd.service.remove(selected_service["id"])
+        th.connect("ready", remove_service_cb, self)
+
+    def add_service(self):
+        def get_url_cb(b, w, e):
+            def service_added_cb (th, parent):
+                if th.is_cancelled():
+                    return
+
+                try:
+                    th.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    return
+                else:
+                    parent.busy_start()
+                    
+            w.destroy()
+
+            url = e.get_text()
+
+            server = rcd_util.get_server_proxy()
+
+            try:
+                th = server.rcd.service.add(url)
+            except ximian_xmlrpclib.Fault, f:
+                rcd_util.dialog_from_fault(f)
+                return
+
+            rcd_util.server_proxy_dialog(th, callback=service_added_cb,
+                                         user_data=self, parent=self)
+        
+        win = gtk.Dialog(_("Add Service"))
+        win.set_has_separator(0)
+
+        hbox = gtk.HBox(0, 6)
+
+        label = gtk.Label(_("Service URL"))
+        hbox.pack_start(label)
+
+        entry = gtk.Entry()
+        entry.set_activates_default(1)
+        hbox.pack_start(entry)
+
+        hbox.show_all()
+        win.vbox.pack_start(hbox)
+
+        button = win.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        button.connect("clicked", lambda x,y:y.destroy(), win)
+
+        button = win.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
+        button.grab_default()
+        button.connect("clicked", get_url_cb, win, entry)
+        button.set_sensitive(0)
+
+        def changed_cb(e, b):
+            if string.strip(e.get_text()):
+                b.set_sensitive(1)
+            else:
+                b.set_sensitive(0)
+
+        entry.connect("changed", changed_cb, button)
+
+        win.set_transient_for(self)
+        win.show()
+
+    def busy_start(self):
+        self.__busy = 1
+        if self.window:
+            self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+
+    def busy_stop(self):
+        self.__busy = 0
+        if self.window:
+            self.window.set_cursor(None)
+
+    ###
+    ### ServerListener methods
+    ###
+
+    def channels_changed(self):
+        self.busy_stop()
+
+class ServicesOption(gtk.OptionMenu, red_serverlistener.ServerListener):
+
+    def __init__(self):
+        gobject.GObject.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
+
+        self.build()
+        self.__last_id = None
+
+    def build(self):
+        self.item_id_list = []
+        
+        menu = gtk.Menu()
+        
+        services = rcd_util.get_all_services()
+        services.sort(lambda x,y:cmp(string.lower(x["name"]),
+                                     string.lower(y["name"])))
+
+        for s in services:
+            self.item_id_list.append(s["id"])
+            
+            item = gtk.MenuItem(s["name"])
+            item.show()
+
+            def activate_cb(item, id, opt):
+                if id != self.__last_id:
+                    opt.__last_id = id
+                    opt.emit("selected", id)
+
+            item.connect("activate", activate_cb, s["id"], self)
+
+            menu.append(item)
+
+        menu.show()
+        self.set_menu(menu)
+
+    def get_service_id(self):
+        h = self.get_history()
+        if h < 0:
+            return None
+        return self.item_id_list[h]
+
+    def set_service_by_id(self, id):
+        if not id in self.item_id_list:
+            print "Unknown service '%s'" % id
+            assert 0
+
+        i = self.item_id_list.index(id)
+        self.set_history(i)
+
+    ###
+    ### ServerListener methods
+    ###
+
+    def channels_changed(self):
+        id = self.get_service_id()
+        self.build()
+        if id is not None and id in self.item_id_list:
+            self.set_service_by_id(id)
+
+gobject.type_register(ServicesOption)
+
+gobject.signal_new("selected",
+                   ServicesOption,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_STRING,))

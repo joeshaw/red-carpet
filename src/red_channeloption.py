@@ -24,17 +24,31 @@ MATCH_ANY_CHANNEL      = -1
 MATCH_NO_CHANNEL       = -2
 MATCH_ANY_SUBD_CHANNEL = -3
 
+def is_channel_wildcard(id):
+    if id == MATCH_ANY_CHANNEL \
+       or id == MATCH_NO_CHANNEL \
+       or id == MATCH_ANY_SUBD_CHANNEL:
+        return 1
+    else:
+        return 0
+
+def is_valid_channel(id):
+    return id and not is_channel_wildcard(id)
+
 class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
     def __init__(self,
                  allow_any_channel=0,
                  allow_any_subd_channel=0,
                  allow_no_channel=0):
+
         gobject.GObject.__init__(self)
         red_serverlistener.ServerListener.__init__(self)
-        self.__allow_any_channel=allow_any_channel
-        self.__allow_any_subd_channel=allow_any_subd_channel
-        self.__allow_no_channel=allow_no_channel
+
+        self.__allow_any_channel      = allow_any_channel
+        self.__allow_any_subd_channel = allow_any_subd_channel
+        self.__allow_no_channel       = allow_no_channel
+        
         self.__assemble()
         self.__last_id = None
 
@@ -64,7 +78,10 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         for c in channels:
             hbox = gtk.HBox(0, 0)
 
-            pixbuf = rcd_util.get_channel_icon(c["id"], 24, 24)
+            if not is_channel_wildcard(c["id"]):
+                pixbuf = rcd_util.get_channel_icon(c["id"], 24, 24)
+            else:
+                pixbuf = None
                 
             img = gtk.Image()
             img.set_size_request(24, 24)

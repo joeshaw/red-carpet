@@ -1,3 +1,27 @@
+2003-09-25  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (get_channel_icon): Remove a FIXME and a hack around
+	channel wildcards.
+
+	* red_channeloption (is_channel_wildcard): Added.  Checks whether
+	the channel id matches one of the wildcards (MATCH_ANY_CHANNEL,
+	etc.).
+	(is_valid_channel): Checks whether the channel id is set and that
+	it's not a wildcard.
+	(ChannelOption.__assemble): Only get the channel icon if it's not
+	a wildcard.
+
+	* red_searchbox.py (SearchBox.get_query): Check if the channel ID
+	is valid, not > 0.  Remove some useless assignments.
+	(SearchBox.get_filter): Fix a bunch of numeric channel ID
+	comparisons to use is_valid_channel() and such.
+
+	* red_services.py: Forgot to add this yesterday... Adds various
+	classes for dealing with services.  ServicesModel is a
+	red_listmodel similar to ChannelModel.  ServicesWindow is for
+	editing services.  ServicesOption is used in activation when the
+	user needs to pick a specific service.
+
 2003-09-24  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (get_channel, get_channel_icon): Enforce that

@@ -430,13 +430,11 @@ class SearchBox(gtk.VBox):
 
         if self.__system_packages_only:
             query.append(["installed", "is", "true"])
-            channel_id = 0
         elif self.__uninstalled_packages_only:
             query.append(["name-installed", "is", "false"])
-            channel_id = 0
         else:
             channel_id = self.__ch_opt.get_channel_id()
-            if channel_id >= 0:
+            if red_channeloption.is_valid_channel(channel_id):
                 query.append(["channel", "is", channel_id])
 
         return query
@@ -462,17 +460,16 @@ class SearchBox(gtk.VBox):
                 return 0
 
             if channel_id == red_channeloption.MATCH_NO_CHANNEL \
-                   and (p.get("channel") != 0 or p.has_key("channel_guess")):
+                   and (p.get("channel") or p.has_key("channel_guess")):
                 return 0
 
-            # XXX - Fix these numeric comparisons!
             if self.__system_packages_only \
-               and channel_id > 0 \
+               and red_channeloption.is_valid_channel(channel_id) \
                and channel_id != p.get("channel_guess"):
                 return 0
 
             if self.__uninstalled_packages_only \
-               and channel_id > 0 \
+               and red_channeloption.is_valid_channel(channel_id) \
                and channel_id != p.get("channel"):
                 return 0
             

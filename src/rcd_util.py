@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, errno, time, signal, string, md5, socket, gobject, gtk
+import sys, os, errno, time, signal, string, types, md5, socket, gobject, gtk
 import ximian_xmlrpclib
 import red_pixbuf, red_serverproxy
 import red_settings
@@ -138,7 +138,6 @@ def get_all_channels():
 
 
 def get_channel(id):
-    import types
     try:
         assert type(id) is types.StringType
     except AssertionError:
@@ -167,12 +166,6 @@ def get_channel_alias(id):
 
 def get_channel_icon(id, width=0, height=0):
 
-    # FIXME?  Negative numbers were special wildcards in red_channelopen and
-    # red_searchbox before.
-    if id < 0:
-        return None
-
-    import types
     try:
         assert type(id) is types.StringType
     except AssertionError:

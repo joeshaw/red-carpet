@@ -50,6 +50,7 @@ red_carpetsupport_DATA =	\
 	red_serverinfo.py			\
 	red_serverlistener.py			\
 	red_serverproxy.py			\
+	red_services.py				\
 	red_settings.py				\
 	red_sidebar.py				\
 	red_software.py				\
