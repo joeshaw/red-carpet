@@ -1,3 +1,5 @@
 Makefile
 Makefile.in
 *.pyc
+red-carpet
+red-carpet.gladep
