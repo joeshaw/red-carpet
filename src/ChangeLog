@@ -1,3 +1,14 @@
+2003-04-15  Jon Trowbridge  <trow@ximian.com>
+
+	* red_appwindow.py: Instead of managing components itself, the
+	appwindow now uses a componentbook to get a tabbed UI.
+
+	* red_sidebar.py: Removed a lot of code related to the shortcut
+	bar, which we no longer use.
+
+	* red_componentbook.py: Added.  A tabbed widget for displaying
+	components.
+
 2003-04-15  Tambet Ingo  <tambet@ximian.com>
 
 	* red_news.py (NewsWindow): Remove News component, add News

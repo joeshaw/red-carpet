@@ -56,9 +56,6 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         config.sync()
 
     def build(self):
-        self.shortcut_bar = ShortcutBar()
-        self.pack_start(self.shortcut_bar, expand=0, fill=0)
-
         frame = gtk.Frame("")
         l = frame.get_label_widget()
         l.set_markup("<b>%s</b>" % _("Installations and Removals"))
@@ -75,9 +72,6 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         self.label.set_alignment(0.0, 0.5)
         self.update_label()
         frame_content.pack_start(self.label, expand=0, fill=1)
-
-    def get_shortcut_bar(self):
-        return self.shortcut_bar
 
     # PendingOpsListener implementation
     def pendingops_changed(self, pkg, key, value, old_value):
@@ -119,116 +113,3 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
         self.label.set_text(msg)
 
-class ShortcutBar(gtk.HBox):
-
-    def __init__(self):
-        gtk.HBox.__init__(self)
-        self.components = []
-        self.buttons = []
-        self.constructed = 0
-
-        def on_realize(x):
-            x.construct()
-
-        self.connect("realize", on_realize)
-
-    def add(self, component, callback):
-        self.components.append((component, callback))
-
-    def active_changed(self, comp, w, button):
-        for b, id in self.buttons:
-            if not b:
-                continue
-
-            b.handler_block(id)
-            if b != button:
-                b.set_active(0)
-            else:
-                b.set_active(1)
-            b.handler_unblock(id)
-
-    def construct(self):
-        if self.constructed:
-            return
-        self.constructed = 1
-
-        if len(self.components) < 1:
-            return
-
-        self.tooltips = gtk.Tooltips()
-
-        components = [(comp, callback) for comp, callback in self.components
-                      if comp.show_in_shortcuts()]
-
-        rows = int(math.ceil(len(components) / 2.0))
-        table = gtk.Table(rows, 2, 1)
-        table.set_col_spacings(6)
-        table.set_row_spacings(6)
-
-        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
-
-        row = 0
-        for comp, callback in self.components:
-            button = None
-            if comp.show_in_shortcuts():
-                button = gtk.ToggleButton()
-                align = gtk.Alignment(0.5, 0.5, 0, 0)
-                button.add(align)
-                box = gtk.HBox(0, 2)
-
-                image = None
-
-                if comp.stock():
-                    assert not comp.pixbuf()
-
-                    stock_id = comp.stock()
-
-                    image = gtk.Image()
-                    image.set_from_stock(stock_id, gtk.ICON_SIZE_MENU)
-
-                if comp.pixbuf():
-                    assert not comp.stock()
-                    image = red_pixbuf.get_widget(comp.pixbuf(),
-                                                  width=width, height=height)
-
-
-                if image:
-                    box.pack_start(image, 0, 0)
-
-                box.pack_start(gtk.Label(comp.name()), 0, 0)
-                align.add(box)
-
-                self.tooltips.set_tip(button, comp.long_name())
-
-                y = int(row)
-                if row > y:
-                    x = 1
-                else:
-                    x = 0
-
-                # Is this the last item and the only one on the row?
-                if x == 0 and (comp, callback) == components[-1]:
-                    span = 2
-                else:
-                    span = 1
-                
-                table.attach(button,
-                             x, x+span, y, y+1,
-                             gtk.FILL, 0, 0, 0)
-
-                row += 0.5
-
-                def toggled(button, callback):
-                    if button.get_active():
-                        callback()
-                    else:
-                        button.set_active(1)
-
-                sid = button.connect("toggled", toggled, callback)
-
-                self.buttons.append((button, sid))
-
-            comp.connect("display", self.active_changed, button)
-
-        self.pack_start(table)
-        table.show_all()

@@ -24,6 +24,7 @@ import red_menubar
 import red_transaction
 import red_installfiles
 import red_component
+import red_componentbook
 import red_pendingview
 import red_pixbuf
 import red_pendingops
@@ -92,11 +93,11 @@ def run_transaction_cb(app):
     remove_packages = [x.get("__old_package", x) for x in remove_packages]
 
     dep_comp = red_depcomponent.DepComponent(install_packages, remove_packages)
-    app.push_component(dep_comp)
+    app.componentbook.push_component(dep_comp)
 
 def verify_deps_cb(app):
     dep_comp = red_depcomponent.DepComponent(verify=1)
-    app.push_component(dep_comp)
+    app.componentbook.push_component(dep_comp)
 
 class AppWindow(gtk.Window,
                 red_component.ComponentListener,
@@ -126,28 +127,25 @@ class AppWindow(gtk.Window,
 
         self.set_icon(red_pixbuf.get_pixbuf("red-carpet"))
 
+        # Menubar
         self.menubar = red_menubar.MenuBar(self.accel_group)
         self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
-
-        self.transient_windows = {}
-
-        ## FIXME: We don't use it anywhere, remove if it's really deprecated.
-        # self.progressbar = gtk.ProgressBar()
-
-        # A box to put component widgets in.  We use an EventBox
-        # instead of just a [HV]Box so that we can control the
-        # background color if we want to.
-        self.container = gtk.EventBox()
-
         self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
+
+        ## Toolbar
+        self.toolbar = red_toolbar.Toolbar()
+        self.assemble_toolbar(self.toolbar)
+        self.vbox.pack_start(self.toolbar, expand=0, fill=0)
+        self.toolbar.show_all()
+
+        self.transient_windows = {}
 
         self.hpaned = gtk.HPaned()
         self.vbox.pack_start(self.hpaned, expand=1, fill=1)
 
         self.sidebar = red_sidebar.SideBar()
-        self.shortcut_bar = self.sidebar.get_shortcut_bar()
 
         self.hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
@@ -155,20 +153,51 @@ class AppWindow(gtk.Window,
         main_box.set_border_width(6)
         self.hpaned.pack2(main_box, resize=1, shrink=1)
 
-        ## Toolbar
-        toolbar_box = gtk.HBox(0, 0)
-        main_box.pack_start(toolbar_box, 0, 0)
-
-        self.toolbar = red_toolbar.Toolbar()
-        self.assemble_toolbar(self.toolbar)
-        toolbar_box.pack_start(self.toolbar, 1, 1)
-
         ## Actionbar
         self.actionbar = red_actionbar.Actionbar()
         self.assemble_actionbar(self.actionbar)
         main_box.pack_end(self.actionbar, expand=0, fill=0)
 
-        main_box.pack_start(self.container, expand=1, fill=1)
+        # Componentbook
+        self.componentbook = red_componentbook.ComponentBook()
+
+        def componentbook_switched_cb(cbook, comp):
+            old_comp = self.get_component()
+            if id(old_comp) == id(comp):
+                return
+            self.set_component(comp)
+            
+            if comp.is_busy():
+                self.busy_start()
+            if old_comp and old_comp.is_busy():
+                self.busy_stop()
+
+            # Clear the status bar, update the toolbar
+            self.statusbar.pop(0)
+            self.toolbar.sensitize_toolbar_items()
+            self.actionbar.sensitize_actionbar_items()
+
+            # Show the new component, hide the old one
+            comp.visible(1)
+            comp.set_parent(self)
+            comp.activated()
+            if not comp.show_actionbar():
+                self.actionbar.hide()
+            else:
+                self.actionbar.show()
+
+            if old_comp:
+                old_comp.visible(0)
+                old_comp.deactivated()
+                old_comp.set_parent(None)
+                
+            self.set_title(comp.name())
+            
+        self.componentbook.connect("switched", componentbook_switched_cb)
+
+        
+
+        main_box.pack_start(self.componentbook, expand=1, fill=1)
         main_box.show_all()
         self.hpaned.show()
 
@@ -250,7 +279,7 @@ class AppWindow(gtk.Window,
     ##
 
     def install_sensitive_cb(self):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         if not comp:
             return 0
@@ -264,7 +293,7 @@ class AppWindow(gtk.Window,
             pkgs, red_pendingops.TO_BE_INSTALLED)
 
     def remove_sensitive_cb(self):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         if not comp:
             return 0
@@ -278,7 +307,7 @@ class AppWindow(gtk.Window,
             pkgs, red_pendingops.TO_BE_REMOVED)
 
     def cancel_sensitive_cb(self):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         if not comp:
             return 0
@@ -292,7 +321,7 @@ class AppWindow(gtk.Window,
             pkgs, red_pendingops.NO_ACTION)
 
     def set_package_action_cb(self, action):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         assert comp is not None
         
@@ -302,7 +331,7 @@ class AppWindow(gtk.Window,
                 red_pendingops.set_action(pkg, action)
 
     def info_sensitive_cb(self):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         if not comp:
             return 0
@@ -311,7 +340,7 @@ class AppWindow(gtk.Window,
         return len(pkgs) > 0
 
     def package_info_cb(self):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         assert comp is not None
         
@@ -332,7 +361,7 @@ class AppWindow(gtk.Window,
             red_packagebook.show_package_info(p)
 
     def sensitize_run_button(self):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
 
         if not comp:
             allow_run = 1
@@ -432,7 +461,7 @@ class AppWindow(gtk.Window,
             win.show()
 
     def select_all_cb(self, sel):
-        comp = self.get_component()
+        comp = self.componentbook.get_visible_component()
         if not comp:
             return
         
@@ -544,7 +573,7 @@ class AppWindow(gtk.Window,
         ##
 
         def select_all_sensitive_cb():
-            comp = self.get_component()
+            comp = self.componentbook.get_visible_component()
             if not comp:
                 return 0
             return comp.select_all_sensitive()
@@ -688,25 +717,8 @@ class AppWindow(gtk.Window,
                 pixbuf_name="menu-about",
                 callback=lambda x:self.open_or_raise_window(red_about.About))
 
-        if red_main.debug:
-            self.assemble_debug_menubar(bar)
-
-
-    def assemble_debug_menubar(self, bar):
-        
-        bar.add("/Debug")
-        
-        bar.add("/Debug/Exercise Components",
-                callback=lambda x: x.exercise_components())
-
-        bar.add("/Debug/Exercise Menu Items",
-                callback=lambda x: x.menubar.exercise_menubar())
-
 
     def register_component(self, comp):
-
-        self.shortcut_bar.add(comp,
-                              lambda :self.activate_component(comp))
 
         # We need to make the component menu items checked
         # instead of radio-style, because with a radio group you
@@ -714,93 +726,28 @@ class AppWindow(gtk.Window,
         # component is on the screen (like the dep resolution page),
         # the component gets reset if you open any menu.
         def checked_get_cb():
-            return id(self.get_component()) == id(comp)
+            return id(self.componentbook.get_visible_component()) == id(comp)
         def checked_set_cb(flag):
             if flag:
-                self.activate_component(comp)
+                self.componentbook.view_component(comp)
 
         self.menubar.add("/%s/%s" % (_("_View"), comp.menu_name()),
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb,
                          accelerator=comp.accelerator())
 
-
-        # We activate the first component that gets registered.
-        if not self.components:
-            gtk.idle_add(self.activate_component, comp)
-
         self.components.append(comp)
-
-
-    def activate_component(self, comp):
-        old_comp = self.get_component()
-        if id(old_comp) == id(comp):
-            return
-
-        if comp.is_busy():
-            self.busy_start()
-
-        self.set_component(comp)
-
-        if old_comp and old_comp.is_busy():
-            self.busy_stop()
-
-        # Clear the status bar, update toolbar
-        self.statusbar.pop(0)
-        self.toolbar.sensitize_toolbar_items()
-        self.actionbar.sensitize_actionbar_items()
-
-        # Show the new component, hide the old one.
-        comp.visible(1)
-        comp.set_parent(self)
-        comp.activated()
-        if not comp.show_actionbar():
-            self.actionbar.hide()
-        else:
-            self.actionbar.show()
-
-        if old_comp:
-            old_comp.visible(0)
-            old_comp.deactivated()
-            old_comp.set_parent(None)
-
-        self.set_title(None, comp.name())
-        
-        # Force the componet to emit a display event.  This causes
-        # it to get displayed.
-        comp.pull_widget()
-
-    def push_component(self, new_comp):
-        old_comp = self.get_component()
-        if old_comp:
-            self.component_stack.append(old_comp)
-        self.activate_component(new_comp)
-
-    def pop_component(self):
-        if self.component_stack:
-            new_comp = self.component_stack.pop()
-            if new_comp:
-                self.activate_component(new_comp)
-
-    def exercise_components(self):
-        interval = 1000
-        when = interval
-        for c in self.components:
-            gtk.timeout_add(when, lambda x, y: x.push_component(y), self, c)
-            when += interval
-        for c in self.components:
-            gtk.timeout_add(when, lambda x: x.pop_component(), self)
-            when += interval
-
+        self.componentbook.add_component(comp)
 
     def busy_start(self):
         self.busy_count += 1
-        self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        if self.window:
+            self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
 
     def busy_stop(self):
         if self.busy_count > 0:
             self.busy_count -= 1
-        if self.busy_count == 0:
+        if self.busy_count == 0 and self.window:
             self.window.set_cursor(None)
 
     ###
@@ -817,19 +764,11 @@ class AppWindow(gtk.Window,
     ### Handlers for Component signals (via the ComponentListener API)
     ###
 
-    def do_component_display(self, widget):
-        # Clean any old widgets out of self.container,
-        # then stick in our new widget and show it.
-        for c in self.container.get_children():
-            self.container.remove(c)
-        self.container.add(widget)
-        widget.show()
+    def do_component_push(self, comp):
+        self.componentbook.push_component(comp)
 
-    def do_component_switch(self, new_comp):
-        self.activate_component(new_comp)
-
-    do_component_push = push_component
-    do_component_pop  = pop_component
+    def do_component_pop(self):
+        self.componentbook.pop_component()
 
     def do_component_message_push(self, msg, context_id):
         self.statusbar.pop(0) # always pop off transient messages
