@@ -1,3 +1,11 @@
+2004-06-14  Tambet Ingo  <tambet@ximian.com>
+
+	* rcd_util.py (server_has_patch_support): Query "rcd.you" module
+	instead of calling a test method. (Hey Joe!).
+
+	* red_packagearray.py (PatchesFromQuery.filter_duplicates):
+	Actually filter patches.
+
 2004-06-11  Tambet Ingo  <tambet@ximian.com>
 
 	* red_patches.py: New file. Implements patch component.

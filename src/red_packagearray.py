@@ -890,6 +890,20 @@ class PatchesFromQuery(PackagesFromDaemon):
         PackagesFromDaemon.subscriptions_changed(self)
 
     def filter_duplicates(self, patches):
+        # Find System packages
+        in_system = {}
+        for p in patches:
+            if rcd_util.is_system_package(p):
+                key = rcd_util.get_package_key(p)
+                in_system[key] = 1
+
+        # Remove instelled Channel packages
+        for p in patches:
+            if not rcd_util.is_system_package(p):
+                key = rcd_util.get_package_key(p)
+                if in_system.has_key(key):
+                    patches.remove(p)
+
         return patches
 
     def patchify(self, patches):

@@ -51,12 +51,7 @@ def get_server_local():
     return server_local
 
 def server_has_patch_support(server):
-    try:
-        server.rcd.you.ping()
-    except ximian_xmlrpclib.Fault, f:
-        if f.faultCode == fault.undefined_method:
-            return 0
-    return 1
+    return server.rcd.system.query_module("rcd.you", 1, 0)
 
 def reset_server_permissions():
     global server_permissions
