@@ -23,12 +23,13 @@ import ximian_xmlrpclib
 import rcd_util
 import red_serverlistener
 
-COLUMN_ID         = 0
-COLUMN_NAME       = 1
-COLUMN_ALIAS      = 2
-COLUMN_SUBSCRIBED = 3
-COLUMN_ICON       = 4
-COLUMN_LAST       = 5
+COLUMN_ID          = 0
+COLUMN_NAME        = 1
+COLUMN_ALIAS       = 2
+COLUMN_SUBSCRIBED  = 3
+COLUMN_ICON        = 4
+COLUMN_DESCRIPTION = 5
+COLUMN_LAST        = 6
 
 def fake_alias(c):
     alias = string.strip(string.lower(c["name"]))
@@ -71,7 +72,8 @@ class ChannelModel(gtk.GenericTreeModel, red_serverlistener.ServerListener):
             return channel["subscribed"]
         elif i == COLUMN_ICON:
             return rcd_util.get_channel_icon(channel["id"], 28, 28)
-
+        elif i == COLUMN_DESCRIPTION:
+            return channel["description"]
 
     ###
     ### GenericTreeModel implementation

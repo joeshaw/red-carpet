@@ -35,69 +35,6 @@ class SubscriptionsComponent(red_component.Component):
     def construct(self):
         channels = rcd_util.get_all_channels()
 
-        rows = len(channels) * 4
-        cols = 3
-
-        table = gtk.Table(rows, cols, 0)
-
-        r = 0
-        for c in channels:
-
-            # a spacer
-            table.attach(gtk.VBox(0, 0),
-                         0, 3, r, r+1,
-                         0, gtk.EXPAND | gtk.FILL,
-                         0, 8)
-
-            r = r + 1
-
-            pixbuf = rcd_util.get_channel_icon(c["id"])
-            img = gtk.Image()
-            img.set_from_pixbuf(pixbuf)
-            img.show()
-            table.attach(img,
-                         0, 1, r, r+2,
-                         0, 0,
-                         0, 0)
-
-            label = gtk.Label("")
-            label.set_alignment(0, 0)
-            label.set_markup("<b>%s</b>" % c["name"])
-            label.show()
-            table.attach(label,
-                         1, 2, r, r+1,
-                         gtk.EXPAND | gtk.FILL, gtk.EXPAND | gtk.FILL,
-                         0, 0)
-
-            view = gtk.TextView()
-            view.get_buffer().set_text(c["description"])
-            view.set_wrap_mode(gtk.WRAP_WORD)
-            table.attach(view,
-                         1, 2, r+1, r+2,
-                         gtk.FILL, gtk.FILL,
-                         0, 0)
-
-            b = gtk.Button("Foo!")
-            b.show()
-            table.attach(b,
-                         2, 3, r, r+2,
-                         gtk.FILL, gtk.FILL,
-                         0, 0)
-
-            def popup(self, channel):
-                win = gtk.Window()
-                info = red_channelinfo.ChannelInfo()
-                info.set_channel(channel)
-                win.add(info)
-                win.show_all()
-
-            b.connect("clicked", popup, c)
-
-            
-            r = r + 3
-
-        table.show_all()
-
         model = red_channelmodel.ChannelModel()
         view = red_channelmodel.make_channel_view(model)
 
