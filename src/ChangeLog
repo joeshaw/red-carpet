@@ -1,3 +1,21 @@
+2003-04-01  Tambet Ingo  <tambet@ximian.com>
+
+	* ximian_xmlrpclib.py: XML-RPC methods can be cancelled now!
+	Fixes #38839.
+	(ServerProxy.cancel): Ask current transport to cancel.
+	(Transport.__init__): Prepare a list for receiving cancellations.
+	(Transport.cancel): New method, add new thread to cancel to our
+	"threads to cancel" list.
+	(Transport.parse_response): Check whether we are cancelled, if yes,
+	cancel reading, return empty tuple.
+
+	* red_serverproxy.py (ServerThread.cancel): Cancel running XML-RPC
+	call.
+
+	* red_packagearray.py (PackagesFromQuery.query_finished_cb): Reset
+	worker when we're done with it.
+	(PackagesFromQuery.set_query): Cancel previous query (if running).
+
 2003-03-31  Tambet Ingo  <tambet@ximian.com>
 
 	* ximian_xmlrpclib.py: Removed lots of unused pre-historic stuff:

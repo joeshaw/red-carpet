@@ -64,6 +64,7 @@ class ServerThread(threading.Thread, gobject.GObject):
     def cancel(self):
         self.__lock.acquire()
         if not self.__cancelled:
+            getattr(self.__server, "cancel")(self)
             self.__ready = 1
             self.__cancelled = 1
             self.emit("ready")

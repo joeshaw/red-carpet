@@ -124,6 +124,7 @@ Exported functions:
 
 import re, string, time, operator
 import ximian_unmarshaller
+import threading
 from types import *
 
 try:
@@ -586,6 +587,9 @@ class Transport:
     __auth_data = None
     tried_once = 0
 
+    def __init__(self):
+        self.__cancelled = []
+
     def request(self, host, handler, request_body, verbose=0,
                 username=None, password=None):
         # issue XML-RPC request
@@ -706,6 +710,9 @@ class Transport:
                                               handler, response)
         
 
+    def cancel(self, thread):
+        self.__cancelled.append(thread)
+
     def parse_response(self, f):
         # read response from input file, and parse it
 
@@ -723,8 +730,13 @@ class Transport:
         def fault_cb(arg):
             raise apply(Fault, (), arg)
 
+        my_thread = threading.currentThread()
         unmarshaller = ximian_unmarshaller.new(binary_cb, boolean_cb, fault_cb)
         while 1:
+            if my_thread in self.__cancelled:
+                f.close()
+                self.__cancelled.remove(my_thread)
+                return ()
             response = f.read(1024)
             if not response:
                 break
@@ -880,6 +892,9 @@ class ServerProxy:
 
     # note: to call a remote object with an non-standard name, use
     # result getattr(server, "strange-python-name")(args)
+
+    def cancel(self, thread):
+        self.__transport.cancel(thread)
 
     def set_username(self, username):
         self.__username = username

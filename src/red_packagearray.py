@@ -662,7 +662,8 @@ class PackagesFromQuery(PackagesFromDaemon):
                         packages = filter(filter_fn, packages)
 
                 array.set_packages(packages or [])
-            self.refresh_end()
+            array.refresh_end()
+            array.__worker = None
 
         if self.__query_msg:
             self.message_push(self.__query_msg)
@@ -680,6 +681,7 @@ class PackagesFromQuery(PackagesFromDaemon):
 
         if self.__worker and self.__worker_handler_id:
             self.__worker.disconnect(self.__worker_handler_id)
+            self.__worker.cancel()
             self.__worker = None
             self.__worker_handler_id = 0
 
