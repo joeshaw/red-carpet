@@ -1,5 +1,11 @@
 2003-01-30  Joe Shaw  <joe@ximian.com>
 
+	* red_appwindow.py (run_transaction_cb): Fix a regression where we
+	couldn't remove packages listed as upgrades.  Feels like a hack,
+	though, so add a FIXME about it.
+
+2003-01-30  Joe Shaw  <joe@ximian.com>
+
 	* red_appwindow.py (run_transaction_cb): Added.  Call this instead
 	of into some random function in red_transaction.py.
 	(verify_deps_cb): Added.

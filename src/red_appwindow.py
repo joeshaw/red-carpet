@@ -60,6 +60,12 @@ def run_transaction_cb(app):
     remove_packages = red_pendingops.packages_with_actions(
         red_pendingops.TO_BE_REMOVED)
 
+    # FIXME: This feels like a hack.  Go through the remove_packages and
+    # if any of them have an __old_package field, use that package for
+    # the removal instead of the actual package.  This is so you can right
+    # click on an upgrade and select "remove".
+    remove_packages = [x.get("__old_package", x) for x in remove_packages]
+
     dep_comp = red_depcomponent.DepComponent(install_packages, remove_packages)
     app.push_component(dep_comp)
 
