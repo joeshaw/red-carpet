@@ -50,10 +50,14 @@ class About(gtk.Dialog):
         hbox.pack_start(vbox)
 
         title = gtk.Label("")
-        title.set_markup("<b>%s</b>" % red_main.red_name)
+        title.set_markup("<b>%s %s</b>" % (red_main.red_name,
+                                           red_main.red_version))
 
         vbox.pack_start(title)
 
+        copyright = gtk.Label(u"Copyright \u00a9 2002-2003 Ximian, Inc.")
+        vbox.pack_start(copyright)
+        
         contributors.sort(randomize)
 
         [vbox.pack_start(gtk.Label("%s" % x)) \

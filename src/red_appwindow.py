@@ -117,17 +117,6 @@ def connect_cb():
             d.destroy()
             break
     
-def mount_cb():
-    def get_file_cb(b, fs):
-        # FIXME: Implement.
-        fs.destroy()
-    
-    filesel = gtk.FileSelection("Mount Directory")
-    filesel.set_select_multiple(1)
-    filesel.ok_button.connect("clicked", get_file_cb, filesel)
-    filesel.cancel_button.connect("clicked", lambda x,y:y.destroy(), filesel)
-    filesel.show()
-
 class AppWindow(gtk.Window, red_component.ComponentListener):
 
     def __init__(self, server):
@@ -251,7 +240,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/File/sep2", is_separator=1)
 
         bar.add("/File/Mount Directory...",
-                callback=lambda x:mount_cb())
+                callback=lambda x:red_mount.select_and_mount())
 
         bar.add("/File/Unmount Directory...",
                 callback=lambda x:self.open_or_raise_window(red_mount.UnmountWindow))

@@ -168,11 +168,10 @@ class SearchComponent(red_component.Component):
         view = browser.get_view()
         view.append_action_column()
         view.append_status_column()
-        view.append_channel_column(show_channel_name=0)
+        view.append_channel_column()
         view.append_locked_column()
         view.append_name_column()
         view.append_version_column()
-        view.append_size_column()
         view.set_model(self.array)
 
         browser.show()

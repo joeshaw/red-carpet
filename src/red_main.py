@@ -81,7 +81,7 @@ def main(version):
     red_version = version
     
     print "Red Carpet Client %s" % version
-    print "Copyright (C) 2002 Ximian Inc."
+    print "Copyright (C) 2002-2003 Ximian Inc."
     print
 
     server = rcd_util.connect_to_server("/var/run/rcd/rcd")
