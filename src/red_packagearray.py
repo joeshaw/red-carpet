@@ -582,7 +582,7 @@ class PackagesFromQuery(PackagesFromDaemon):
 
     def packages_changed(self):
         _reset_query_cache()
-        pass
+        PackagesFromDaemon.packages_changed(self)
 
     def channels_changed(self):
         _reset_query_cache()

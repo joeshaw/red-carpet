@@ -349,26 +349,43 @@ class PendingView_Simple(PendingView):
 
 ##############################################################################
 
-class PollPending_Thread(threading.Thread):
+class PollPending_Transact:
 
-    def __init__(self, server, transact_id, step_id):
-        threading.Thread.__init__(self)
-        self.__server = server
-        self.__transact_id = transact_id
-        self.__step_id = step_id
+    def __init__(self, transact_id, step_id, callback, *cb_args):
+        self.__callback = callback
+        self.__cb_args = cb_args
+        self.__transact_pending = None
+        self.__step_pending = None
+        self.__count = 0
 
-    def run(self):
-        s = self.__server
-        self.transact_pending = s.rcd.system.poll_pending(self.__transact_id)
-        self.step_pending     = s.rcd.system.poll_pending(self.__step_id)
+        serv = rcd_util.get_server_proxy()
+        tran_th = serv.rcd.system.poll_pending(transact_id)
+        step_th = serv.rcd.system.poll_pending(step_id)
 
+        tran_th.connect("ready",
+                        lambda th, ppt: \
+                        ppt.set_transact_pending(th.get_result()), self)
+        step_th.connect("ready",
+                        lambda th, ppt: \
+                        ppt.set_step_pending(th.get_result()), self)
 
-class PendingView_TransactionFailed(Exception):
-    def __init__(self, message):
-        self.message = message
+    def set_transact_pending(self, pending):
+        self.__transact_pending = pending
+        self.__count += 1
+        self.finish()
 
-    def __repr__(self):
-        return "<TransactionFailed '%s'>" % self.message
+    def set_step_pending(self, pending):
+        self.__step_pending = pending
+        self.__count += 1
+        self.finish()
+
+    def finish(self):
+        if self.__count < 2:
+            return
+        self.__callback(self.__transact_pending,
+                        self.__step_pending,
+                        *self.__cb_args)
+
 
 class PendingView_Transaction(PendingView):
 
@@ -381,8 +398,8 @@ class PendingView_Transaction(PendingView):
         self.step_id     = step_id
 
         self.download_complete = 0
-
-        self.pp_thread = None
+        self.__working_query = 0
+        self.__finished = 0
 
         self.iconified = 0
         self.connect("window-state-event",
@@ -432,94 +449,100 @@ class PendingView_Transaction(PendingView):
             self.stop_polling()
             self.transaction_finished(msg="Download cancelled",
                                       title="Update cancelled")
-            self.switch_cancel_button_to_ok()
         else:
             print "Couldn't abort download"
 
     def poll_worker(self):
 
+        if self.__finished:
+            return 0
+
         # We can't cancel once the transaction begins
         if self.download_complete:
             self.disable_cancellation()
 
-        try:
-            if self.download_id != -1 and not self.download_complete:
-                self.update_download()
-            elif self.transact_id == -1:
-                # We're in "download only" mode.
-                if self.download_complete:
-                    return 0
-                elif self.download_id == -1:
-                    # Everything we wanted to download is already cached on the
-                    # system.
-                    #
-                    # FIXME: Do something intelligent here?
-                    return 0
-            else:
-                return self.update_transaction()
-        except PendingView_TransactionFailed, e:
-            self.transaction_finished(msg=e.message, title="Update Failed")
-            return 0
-            
+        if self.download_id != -1 and not self.download_complete:
+            self.update_download()
+        elif self.transact_id == -1:
+            # We're in "download only" mode.
+            if self.download_complete:
+                return 0
+            elif self.download_id == -1:
+                # Everything we wanted to download is already cached on the
+                # system.
+                #
+                # FIXME: Do something intelligent here?
+                return 0
+        else:
+            return self.update_transaction()
+
         return 1
 
 
     def transaction_finished(self, msg, title="Update Finished"):
-
+        self.switch_cancel_button_to_ok()
         self.set_title(title)
         self.set_label(msg)
         self.update_fill()
         red_serverlistener.thaw_polling(do_immediate_poll=1)
 
     def update_download(self):
-        serv = rcd_util.get_server()
-        pending = serv.rcd.system.poll_pending(self.download_id)
+
+        if self.__working_query:
+            return
 
         self.step_label.set_text("Downloading packages")
 
-        self.update_from_pending(pending)
-
-        if pending["status"] == "finished":
-            self.download_complete = 1
-            self.update_fill()
-        elif pending["status"] == "failed":
-            self.download_complete = 1
-            raise PendingView_TransactionFailed, "Download failed"
+        def download_pending_cb(th, pv):
+            pv.__working_query = 0
+            pending = th.get_result()
+            pv.update_from_pending(pending)
+            if pending["status"] == "finished":
+                pv.download_complete = 1
+                pv.update_fill()
+            elif pending["status"] == "failed":
+                pv.download_complete = 1
+                pv.transaction_finished("Download Failed")
+                
+        serv = rcd_util.get_server_proxy()
+        th = serv.rcd.system.poll_pending(self.download_id)
+        th.connect("ready", download_pending_cb, self)
+        self.__working_query = 1
         
     def update_transaction(self):
-        fresh_thread = 0
-        if self.pp_thread is None:
-            fresh_thread = 1
-            self.pp_thread = PollPending_Thread(rcd_util.get_server(),
-                                                self.transact_id,
-                                                self.step_id)
-            self.pp_thread.start()
-            
-        if self.pp_thread.isAlive():
-            if not fresh_thread:
-                self.update_pulse()
+
+        if self.__finished:
+            return 0
+
+        if self.__working_query:
             return 1
 
-        pending = self.pp_thread.transact_pending
-        step_pending = self.pp_thread.step_pending
-
-        self.pp_thread = None
-
         self.set_title("Processing Transaction")
-        if pending["messages"]:
-            self.set_label(rcd_util.transaction_status(pending["messages"][-1]))
 
-        if step_pending["status"] == "running":
-            self.update_from_pending(step_pending, show_rate=0)
-        else:
-            self.update_pulse()
+        def update_pending_cb(pending, step_pending, pv):
+            pv.__working_query = 0
+            if pending["messages"]:
+                msg = rcd_util.transaction_status(pending["messages"][-1])
+                pv.set_label(msg)
+            if step_pending["status"] == "running":
+                pv.update_from_pending(step_pending, show_rate=0)
+            else:
+                pv.update_pulse()
 
-        if pending["status"] == "finished":
-            red_pendingops.clear_packages_with_actions()
-            self.transaction_finished(msg="The update has completed successfully")
-            return 0
-        elif pending["status"] == "failed":
-            raise PendingView_TransactionFailed, "Transaction failed: %s" % pending["error_msg"]
+            if pending["status"] == "finished":
+                red_pendingops.clear_packages_with_actions()
+                pv.transaction_finished(msg="The update has " \
+                                        "completed successfully")
+                pv.__finished = 1
+            elif pending["status"] == "failed":
+                msg = "Transaction failed: %s" % pending["error_msg"]
+                pv.transaction_finished(msg)
+                self.__finished = 1
+
+        unused = PollPending_Transact(self.transact_id,
+                                      self.step_id,
+                                      update_pending_cb,
+                                      self)
 
         return 1
 

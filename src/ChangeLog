@@ -1,3 +1,23 @@
+2003-02-18  Jon Trowbridge  <trow@ximian.com>
+
+	* red_pendingview.py: A bunch of changes to
+	PendingView_Transaction to make it use ServerProxies.
+
+	* red_summary.py (SummaryComponent.select_all_sensitive): If there
+	are no updates, don't sensitize the select all/select none menu
+	items.
+
+	* red_pendingops.py (set_action): Restored the code that cancels
+	any operations on packages w/ the same name.
+
+	* red_packagearray.py (PackagesFromQuery.packages_changed): Make
+	sure that PackagesFromDaemon's packages_changed also gets called.
+	This makes sure that our search window gets updated after we do a
+	transaction, etc.
+
+	* red_browse.py (BrowseComponent): Implemented
+	select_all/unselect_all magic.
+
 2003-02-14  Tambet Ingo  <tambet@ximian.com>
 
 	* red_locks.py (toggle_lock): New file, new function. Locks

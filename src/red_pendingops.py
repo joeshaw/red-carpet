@@ -137,6 +137,13 @@ def get_action(pkg):
     return NO_ACTION
 
 def set_action(pkg, action):
+    key = rcd_util.get_package_key(pkg)
+    name = pkg["name"]
+    for xkey, x in package_data.iteritems():
+        if xkey != key:
+            p = x["__package"]
+            if p["name"] == name:
+                set(p, "action", NO_ACTION)
     set(pkg, "action", action)
 
 def toggle_action(pkg):

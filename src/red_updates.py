@@ -86,7 +86,8 @@ class SummaryComponent(red_component.Component):
             self.array.freeze()
 
     def select_all_sensitive(self):
-        return rcd_util.check_server_permission("upgrade")
+        return rcd_util.check_server_permission("upgrade") \
+               and self.array.len() > 0
 
     def select_all(self):
         for pkg in self.array.get_all():
