@@ -29,6 +29,7 @@ import red_pendingview
 import red_pixbuf
 import red_prefs
 import red_subscriptions
+import red_users
 
 def refresh_cb(app):
     try:
@@ -121,6 +122,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/Edit/Preferences",
                 stock=gtk.STOCK_PREFERENCES,
                 callback=lambda x:red_prefs.PrefsWindow().show())
+
+        bar.add("/Edit/Users",
+                callback=lambda x:red_users.UsersWindow().show())
 
         bar.add("/Actions/Refresh Channel Data",
                 callback=refresh_cb)

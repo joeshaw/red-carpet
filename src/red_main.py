@@ -26,6 +26,8 @@ import red_channelbrowse
 import red_summary
 import red_search, red_system
 import red_transaction
+import red_news
+import red_history
 
 red_name = "Red Carpet 2: Electric Boogaloo"
 red_version = "0.0.1"
@@ -108,10 +110,12 @@ def main(version):
     app = red_appwindow.AppWindow(server)
 
     app.register_component(red_summary.SummaryComponent())
+    app.register_component(red_news.NewsComponent())
     app.register_component(red_channelbrowse.ChannelBrowseComponent())
     app.register_component(red_transaction.TransactionComponent())
     app.register_component(red_system.SystemComponent())
     app.register_component(red_search.SearchComponent())
+    app.register_component(red_history.HistoryComponent())
 
     app.set_title(red_name)
     app.set_size_request(780, 550)
