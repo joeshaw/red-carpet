@@ -149,10 +149,17 @@ def check_running():
     try:
         os.kill(pid, 0)
     except OSError, e:
-        if e.errno == 3:
-            return 0 #that process isn't running now
+        return 0 #that process isn't running now, or isn't owned by us
 
-    return 1
+    #kill succeeded, make sure it's actually us running
+    f = file('/proc/%s/cmdline' % pid, 'r')
+    cmdline = f.read()
+    f.close()
+
+    if cmdline.find('red-carpet-icon') >= 0:
+        return 1
+    else:
+        return 0
 
 def write_pid():
     f = get_pid_file('w+')
