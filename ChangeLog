@@ -1,3 +1,7 @@
+2004-09-24  Craig Jeffares <cjeffares@novell.com>
+
+        * configure.in: Added ja to ALL_LINGUAS.
+
 2004-09-22  James Willcox  <james@ximian.com>
 
 	* configure.in: Bump to 2.4.1

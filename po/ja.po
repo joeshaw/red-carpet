@@ -1,0 +1,3119 @@
+# Red-Carpet ja.po.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Craig Jeffares <cjeffares@novell.com>, 2004.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Red Carpet\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-09-24 16:04+0100\n"
+"PO-Revision-Date: 2004-09-21 17:42+0100\n"
+"Last-Translator: Craig Jeffares <cjeffares@novell.com>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. FIXME: we can do better than this...
+#. "All Animals Are Equal / But Some Are More Equal Than Others."
+#. ##############################################################################
+#. assert server
+#. Don't return None here, because we want an empty image to be
+#. scaled to the correct height.
+#. ##############################################################################
+#. ##############################################################################
+#. ##############################################################################
+#. ##############################################################################
+#. Gnome HIG says no titles on these sorts of dialogs
+#. Always run the dialog in the main thread.
+#. ##############################################################################
+#: src/rcd_util.py:412
+msgid "Please wait while getting data."
+msgstr "データを取得しています。お待ちください。"
+
+# Novell Translation
+#. ##############################################################################
+#: src/rcd_util.py:466 src/rcd_util.py:484
+msgid "Please ensure that your network settings are correct."
+msgstr "ネットワークの設定が正しいことを確認してください。"
+
+# Novell Translation
+#: src/rcd_util.py:473
+msgid "Refreshing channel data"
+msgstr "チャネルデータを更新しています"
+
+# Novell Translation
+#: src/rcd_util.py:475
+msgid "Downloading channel information"
+msgstr "チャネル情報をダウンロードしています"
+
+# Novell Translation
+#. ##############################################################################
+#. ##
+#. ## Format transaction status messages into readable text
+#. ##
+#: src/rcd_util.py:501
+msgid "Verifying"
+msgstr "確認しています"
+
+# Novell Translation
+#: src/rcd_util.py:502
+msgid "Unable to verify package signature for"
+msgstr "パッケージの署名を確認できません:"
+
+# Novell Translation
+#: src/rcd_util.py:503
+msgid "There is no package signature for"
+msgstr "パッケージの署名がありません:"
+
+# Novell Translation
+#: src/rcd_util.py:504
+msgid "Preparing Transaction"
+msgstr "トランザクションを準備しています"
+
+# Novell Translation
+#: src/rcd_util.py:505
+msgid "Installing"
+msgstr "インストールしています"
+
+# Novell Translation
+#: src/rcd_util.py:506
+msgid "Removing"
+msgstr "削除しています"
+
+# Novell Translation
+#: src/rcd_util.py:507
+msgid "Configuring"
+msgstr "設定しています"
+
+# Novell Translation
+#. ##############################################################################
+#. ## XML-RPC faults that we care about back from the daemon.
+#. ##
+#. ## KEEP THIS IN SYNC WITH RCD!
+#. matches xmlrpc-c
+#. matches xmlrpc-c
+#. matches xmlrpc-c
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Translators: you can translate these into any cute greetings in your own
+#. language.  Just nothing offensive please. :)
+#: src/red_about.py:41
+msgid "Brought to you by:"
+msgstr "提供者:"
+
+# Novell Translation
+#: src/red_about.py:42
+msgid "With love from:"
+msgstr "提供者:"
+
+# Novell Translation
+#: src/red_about.py:43
+msgid "Best wishes from:"
+msgstr "提供者:"
+
+# Novell Translation
+#: src/red_about.py:44
+msgid "Sincerely:"
+msgstr "提供者:"
+
+# Novell Translation
+#: src/red_about.py:45
+msgid "Developed by chimps:"
+msgstr "開発者:"
+
+# Novell Translation
+#: src/red_about.py:80
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "GNU一般公衆利用許諾契約書バージョン2に従いライセンス供与"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_activation.py:27
+msgid "Group Activation"
+msgstr "グループアクティベーション"
+
+# Novell Translation
+#: src/red_activation.py:44
+msgid "Service:"
+msgstr "サービス:"
+
+# Novell Translation
+#: src/red_activation.py:48
+msgid "Email:"
+msgstr "電子メール:"
+
+# Novell Translation
+#: src/red_activation.py:52
+msgid "Activation Code:"
+msgstr "アクティベーションコード:"
+
+# Novell Translation
+#: src/red_activation.py:78
+msgid "Activate"
+msgstr "アクティベート"
+
+# Novell Translation
+#: src/red_activation.py:99
+msgid "Please fill in both email and activation code."
+msgstr "電子メールアドレスとアクティベーションコードの両方を入力してください。"
+
+# Novell Translation
+#: src/red_activation.py:114
+msgid "Unable to activate"
+msgstr "アクティベートできません"
+
+# Novell Translation
+#: src/red_activation.py:115
+msgid "Please ensure you typed the email address and activation code correctly"
+msgstr ""
+"電子メールアドレスとアクティベーションコードを正しく入力したことを確認してく"
+"ださい"
+
+# Novell Translation
+#. Store email to config.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. FIXME: This feels like a hack.  Go through the remove_packages and
+#. if any of them have an __old_package field, use that package for
+#. the removal instead of the actual package.  This is so you can right
+#. click on an upgrade and select "remove".
+#. TRANSLATORS: *Only* localize this to the language code if the
+#. Red Carpet help is localized.
+#: src/red_appwindow.py:92
+msgid "C"
+msgstr "C"
+
+# Novell Translation
+#. GNOME 2
+#. XD2 w/o yelp?
+#. RH 9
+#. KDE
+#. GNOME 1.x
+#. GNOME 1.x w/o help
+#. browser?
+#. dunno, but a sane
+#. fallback
+#. CDE
+#: src/red_appwindow.py:129
+msgid ""
+"Unable to show help because the help files were missing.  Please report this "
+"to your vendor."
+msgstr ""
+"ヘルプファイルが見つからないため、ヘルプを表示できません。ベンダーに報告して"
+"ください。"
+
+# Novell Translation
+#: src/red_appwindow.py:139
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr ""
+"ヘルプを表示するためのアプリケーションがないため、ヘルプを表示できません。"
+
+# Novell Translation
+#. Menubar
+#. # Toolbar
+#. # GtkSettings
+#. Ensure a sane width for the sidebar if visible
+#. # Actionbar
+#. Componentbook
+#. Clear the status bar, update the toolbar
+#. Show the new component, hide the old one
+#. # Statusbar
+#. # Geometry handling
+#. #
+#. # Toolbar and menubar callback and sensitivity functions
+#. #
+#: src/red_appwindow.py:414
+#, python-format
+msgid "Are you sure you want to open %d package information windows?"
+msgstr "%d パッケージ情報ウィンドウを開きますか?"
+
+# Novell Translation
+#. #
+#. # Toolbar
+#. #
+#: src/red_appwindow.py:442
+msgid "Run Now"
+msgstr "今すぐ実行"
+
+# Novell Translation
+#: src/red_appwindow.py:443
+msgid "Perform installations and removals"
+msgstr "インストールと削除を実行します"
+
+# Novell Translation
+#: src/red_appwindow.py:450
+msgid "Channels"
+msgstr "チャネル"
+
+# Novell Translation
+#: src/red_appwindow.py:451
+msgid "Change your channel subscriptions"
+msgstr "チャネル加入を変更します"
+
+# Novell Translation
+#: src/red_appwindow.py:459
+msgid "Refresh"
+msgstr "更新"
+
+# Novell Translation
+#: src/red_appwindow.py:460
+msgid "Refresh channel data"
+msgstr "チャネルデータを更新します"
+
+# Novell Translation
+#. #
+#. # Actionbar.
+#. #
+#: src/red_appwindow.py:471 src/red_packageview.py:232
+msgid "Mark for _Installation"
+msgstr "インストール用にマーク(_I)"
+
+# Novell Translation
+#: src/red_appwindow.py:472
+msgid "Mark selected packages for installation"
+msgstr "インストール用に選択したパッケージにマークを付けます"
+
+# Novell Translation
+#. #
+#. # Remove Package
+#. #
+#: src/red_appwindow.py:477 src/red_appwindow.py:778
+#: src/red_packageview.py:245
+msgid "Mark for _Removal"
+msgstr "削除用にマーク(_R)"
+
+# Novell Translation
+#: src/red_appwindow.py:478
+msgid "Mark selected packages for removal"
+msgstr "削除用に選択したパッケージにマークを付けます"
+
+# Novell Translation
+#. #
+#. # Cancel Action
+#. #
+#: src/red_appwindow.py:483 src/red_appwindow.py:791
+#: src/red_packageview.py:258
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
+
+# Novell Translation
+#: src/red_appwindow.py:484
+msgid "Cancel marked package actions"
+msgstr "マークを付けたパッケージのアクションをキャンセルします"
+
+# Novell Translation
+#. Info
+#: src/red_appwindow.py:489 src/red_packageview.py:276
+msgid "I_nformation"
+msgstr "情報(_N)"
+
+# Novell Translation
+#: src/red_appwindow.py:490
+msgid "Package information"
+msgstr "パッケージ情報です"
+
+# Novell Translation
+#. We want to revert to our old settings if we don't connect to
+#. a new daemon successfully.
+#. The return value is for the benefit of our delete_event handler.
+#. #
+#. # Menubar
+#. #
+#: src/red_appwindow.py:547
+msgid "_File"
+msgstr "ファイル(_F)"
+
+# Novell Translation
+#: src/red_appwindow.py:548
+msgid "_Edit"
+msgstr "編集(_E)"
+
+# Novell Translation
+#. We need to make the component menu items checked
+#. instead of radio-style, because with a radio group you
+#. always have to have exactly one item set: when a non-navigable
+#. component is on the screen (like the dep resolution page),
+#. the component gets reset if you open any menu.
+#: src/red_appwindow.py:549 src/red_appwindow.py:841
+msgid "_View"
+msgstr "表示(_V)"
+
+# Novell Translation
+#: src/red_appwindow.py:550
+msgid "_Actions"
+msgstr "アクション(_A)"
+
+# Novell Translation
+#: src/red_appwindow.py:551
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+# Novell Translation
+#: src/red_appwindow.py:559
+msgid "Connect to daemon..."
+msgstr "デーモンに接続..."
+
+# Novell Translation
+#: src/red_appwindow.py:560
+msgid "Connect to a remote daemon"
+msgstr "リモートデーモンに接続します"
+
+# Novell Translation
+#: src/red_appwindow.py:570
+msgid "Install from _File..."
+msgstr "ファイルからインストール(_F)..."
+
+# Novell Translation
+#: src/red_appwindow.py:571
+msgid "Install a package from a local file"
+msgstr "ローカルファイルからパッケージをインストールします"
+
+# Novell Translation
+#: src/red_appwindow.py:580
+msgid "Install from _URL..."
+msgstr "URLからインストール(_U)..."
+
+# Novell Translation
+#: src/red_appwindow.py:581
+msgid "Install a package from a remote URL"
+msgstr "リモートURLからパッケージをインストールします"
+
+# Novell Translation
+#. #
+#. # Mount command
+#. #
+#: src/red_appwindow.py:598
+msgid "_Mount Directory..."
+msgstr "ディレクトリのマウント(_M)..."
+
+# Novell Translation
+#: src/red_appwindow.py:599
+msgid "Mount a directory as a channel"
+msgstr "チャネルとしてディレクトリをマウントします"
+
+# Novell Translation
+#. #
+#. # Unmount command
+#. #
+#: src/red_appwindow.py:615
+msgid "U_nmount Directory..."
+msgstr "ディレクトリのアンマウント(_N)..."
+
+# Novell Translation
+#: src/red_appwindow.py:616
+msgid "Unmount a directory"
+msgstr "ディレクトリをアンマウントします"
+
+# Novell Translation
+#. #
+#. # Activate
+#. #
+#: src/red_appwindow.py:632
+msgid "_Activate..."
+msgstr "アクティベート(_A)..."
+
+# Novell Translation
+#: src/red_appwindow.py:633
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr ""
+"Red Carpet ExpressまたはRed Carpet Enterpriseサーバに対してデーモンをアクティ"
+"ベートします"
+
+# Novell Translation
+#: src/red_appwindow.py:639
+msgid "Quit"
+msgstr "終了"
+
+# Novell Translation
+#: src/red_appwindow.py:640
+msgid "Quit Red Carpet"
+msgstr "Red Carpetを終了します"
+
+# Novell Translation
+#. #
+#. # Select all/none
+#. #
+#: src/red_appwindow.py:655
+msgid "Select _All"
+msgstr "すべて選択(_A)"
+
+# Novell Translation
+#: src/red_appwindow.py:656
+msgid "Select all items"
+msgstr "すべての項目を選択します"
+
+# Novell Translation
+#: src/red_appwindow.py:661
+msgid "Select _None"
+msgstr "何も選択しない(_N)"
+
+# Novell Translation
+#: src/red_appwindow.py:662
+msgid "Deselect all items"
+msgstr "すべての項目を選択解除します"
+
+# Novell Translation
+#: src/red_appwindow.py:669
+msgid "Services..."
+msgstr "サービス..."
+
+# Novell Translation
+#: src/red_appwindow.py:670
+msgid "Edit services"
+msgstr "サービスを編集します"
+
+# Novell Translation
+#: src/red_appwindow.py:674
+msgid "Channel _Subscriptions..."
+msgstr "チャネル加入(_S)..."
+
+# Novell Translation
+#: src/red_appwindow.py:675
+msgid "Edit your channel subscriptions"
+msgstr "チャネル加入を編集します"
+
+# Novell Translation
+#: src/red_appwindow.py:680
+msgid "_Preferences..."
+msgstr "初期設定(_P)..."
+
+# Novell Translation
+#: src/red_appwindow.py:681
+msgid "Edit your Red Carpet preferences"
+msgstr "Red Carpetの初期設定を編集します"
+
+# Novell Translation
+#: src/red_appwindow.py:685
+msgid "_Users..."
+msgstr "ユーザ(_U)..."
+
+# Novell Translation
+#: src/red_appwindow.py:686
+msgid "Edit user permissions for this daemon"
+msgstr "このデーモンのユーザ許可を編集します"
+
+# Novell Translation
+#. #
+#. # Sidebar
+#. #
+#: src/red_appwindow.py:699
+msgid "_Sidebar"
+msgstr "サイドバー(_S)"
+
+# Novell Translation
+#: src/red_appwindow.py:700
+msgid "Hide or show the Pending Actions sidebar"
+msgstr "［保留中のアクション］サイドバーを表示または非表示にします"
+
+# Novell Translation
+#: src/red_appwindow.py:704
+msgid "_Advanced Search Options"
+msgstr "高度な検索オプション(_A)"
+
+# Novell Translation
+#: src/red_appwindow.py:705
+msgid "Hide or show advanced search options"
+msgstr "高度な検索オプションを表示または非表示にします"
+
+# Novell Translation
+#: src/red_appwindow.py:709
+msgid "_Channel Names"
+msgstr "チャネル名(_C)"
+
+# Novell Translation
+#: src/red_appwindow.py:710
+msgid "Hide or show channel names in package lists"
+msgstr "パッケージリストのチャネル名を表示または非表示にします"
+
+# Novell Translation
+#: src/red_appwindow.py:716
+msgid "Package _Information..."
+msgstr "パッケージ情報(_I)..."
+
+# Novell Translation
+#: src/red_appwindow.py:717
+msgid "View information about currently selected packages"
+msgstr "現在選択中のパッケージに関する情報を表示します"
+
+# Novell Translation
+#: src/red_appwindow.py:725
+msgid "_Daemon Information..."
+msgstr "デーモン情報(_D)..."
+
+# Novell Translation
+#: src/red_appwindow.py:726
+msgid "View information about this daemon"
+msgstr "このデーモンに関する情報を表示します"
+
+# Novell Translation
+#: src/red_appwindow.py:728
+msgid "Red Carpet Ne_ws..."
+msgstr "Red Carpetニュース(_W)..."
+
+# Novell Translation
+#: src/red_appwindow.py:729
+msgid "View the latest Red Carpet news"
+msgstr "最新のRed Carpetニュースを表示します"
+
+# Novell Translation
+#. #
+#. # Run Transaction
+#. #
+#: src/red_appwindow.py:741
+msgid "Run _Now"
+msgstr "今すぐ実行(_N)"
+
+# Novell Translation
+#: src/red_appwindow.py:742
+msgid "Run the current transaction"
+msgstr "現在のトランザクションを実行します"
+
+# Novell Translation
+#. #
+#. # Verify System Dependencies
+#. #
+#: src/red_appwindow.py:756
+msgid "_Verify System Dependencies"
+msgstr "システムの依存関係の検証(_V)"
+
+# Novell Translation
+#: src/red_appwindow.py:757
+msgid "Verify that all system dependencies are met"
+msgstr "すべてのシステムの依存関係が満たされていることを検証します"
+
+# Novell Translation
+#. #
+#. # Install Package
+#. #
+#: src/red_appwindow.py:768
+msgid "Mark for I_nstallation"
+msgstr "インストール用にマーク(_N)"
+
+# Novell Translation
+#: src/red_appwindow.py:769
+msgid "Mark this package for installation"
+msgstr "このパッケージにインストール用のマークを付けます"
+
+# Novell Translation
+#: src/red_appwindow.py:779
+msgid "Mark this package for removal"
+msgstr "このパッケージに削除用のマークを付けます"
+
+# Novell Translation
+#: src/red_appwindow.py:792
+msgid "Cancel installation or removal mark"
+msgstr "インストールまたは削除マークをキャンセルします"
+
+# Novell Translation
+#. #
+#. # Refresh Channel Data
+#. #
+#: src/red_appwindow.py:806
+msgid "Re_fresh Channel Data"
+msgstr "チャネルデータの更新(_F)"
+
+# Novell Translation
+#: src/red_appwindow.py:807
+msgid "Download latest channel data"
+msgstr "最新のチャネルデータをダウンロードします"
+
+# Novell Translation
+#: src/red_appwindow.py:816
+msgid "_Contents"
+msgstr "目次(_C)"
+
+# Novell Translation
+#: src/red_appwindow.py:817
+msgid "View Red Carpet help"
+msgstr "Red Carpetヘルプを表示します"
+
+# Novell Translation
+#: src/red_appwindow.py:822
+msgid "_About..."
+msgstr "バージョン情報(_A)..."
+
+# Novell Translation
+#: src/red_appwindow.py:823
+msgid "About Red Carpet"
+msgstr "バージョン情報"
+
+# Novell Translation
+#: src/red_appwindow.py:842
+#, python-format
+msgid "Go to the '%s' page"
+msgstr "'%s' ページに移動します"
+
+# Novell Translation
+#. ##
+#. ## Handlers for PendingOpsListener
+#. ##
+#. ##
+#. ## Handlers for Component signals (via the ComponentListener API)
+#. ##
+#. always pop off transient messages
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. FIXME: hackish evil to generate nicer fallback aliases.
+#. This should be removed once we actually get aliases
+#. into the channel XML.
+#. ##
+#. ## red_listmodel.ListModel implementation
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## Other methods
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_channeloption.py:64
+msgid "All Channels"
+msgstr "すべてのチャネル"
+
+# Novell Translation
+#: src/red_channeloption.py:69
+msgid "All Subscribed Channels"
+msgstr "加入しているすべてのチャネル"
+
+# Novell Translation
+#: src/red_channeloption.py:74
+msgid "No Channel/Unknown Channel"
+msgstr "チャネルなし/不明なチャネル"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Forces the component to emit a 'display' signal
+#. for the current widget (and causes the build method
+#. to be executed if no widget has been displayed yet).
+#. Change the component's visibility flag.  This doesn't
+#. actually make the component visible or invisible: instead,
+#. it tells the component whether or not it is currently being
+#. viewed.  If a component is hidden, we often want to do things
+#. like "freeze" views so that they don't respond to rcd changes.
+#. Ask the window embedding this component to switch to another
+#. component.
+#. Ask the window embedding this component to push the current
+#. component (i.e. ourselves) onto the component stack and to switch
+#. to another component.
+#. Ask the window embedding this component to pop a component off of
+#. the stack and switch to it.  If the stack is empty, this is a no-op.
+#. Send a status message to the window embedding this component.  The
+#. window is expected to do something reasonable with the message, like
+#. displaying it in a status bar.
+#. Pop the component's previous message off of the status bar.
+#. Signal our 'busy state' to the window embedding this component.
+#. When we tell the window we are busy (i.e. set the busy flag to
+#. 1), it should give some user feedback (i.e. throbbing a throbber
+#. or pulsing a progress bar) until we transmit a busy flag of 0.
+#. Pass a widget up to the window embedding this component.  This widget
+#. becomes the "view" on the component, replacing any previous widget.
+#. Proxy selected signals from package views
+#. Proxy busy and message signals from arrays.
+#. ##
+#. ## Virtual functions
+#. ##
+#. This should always be the same as the long name plus a menu mnemonic
+#. Always autoresize our connected views, since the treeview is
+#. stupid and doesn't work properly if the widget is hidden.
+#. ##
+#. ## Hints for setting up component navigation
+#. ##
+#. ##
+#. ## A convenience class that handles all of the signal connecting and
+#. ## disconnecting required to monitor a component.
+#. ##
+#. A paranoid check: make sure that a component matches what the
+#. ComponentListener thinks is the current component.
+#. Ugh... fractured English.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Clean any old widgets out of self.container,
+#. then stick in our new widget and show it.
+#. component
+#. list of packages
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Required rcd versions
+#. Required protocol version
+#: src/red_connection.py:49
+#, python-format
+msgid ""
+"Unable to connect to the daemon:\n"
+" '%s'."
+msgstr ""
+"次のデーモンに接続できません:\n"
+" '%s'。"
+
+# Novell Translation
+#. Gnome HIG says no titles on these sorts of dialogs
+#. Guard for NoneType
+#: src/red_connection.py:67
+#, python-format
+msgid ""
+"Detected Red Carpet Daemon version %d.%d.%d.\n"
+"Version %d.%d.%d (or newer) is required"
+msgstr ""
+"Red Carpetデーモンバージョン %d.%d.%d が検出されました。\n"
+"バージョン %d.%d.%d 以降が必要です"
+
+# Novell Translation
+#. Assume protocol v1 if method not present.
+#: src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+"プロトコルバージョン %d が検出されました。バージョン %d が必要です。rcdのバー"
+"ジョンを更新する必要があります。"
+
+# Novell Translation
+#. LSB compliant distros should have the
+#. following
+#: src/red_connection.py:123
+msgid "Starting daemon..."
+msgstr "デーモンを起動しています..."
+
+# Novell Translation
+#. child
+#. If we get here, the exec failed.
+#. parent
+#. Couldn't kill it, probably already dead
+#. File doesn't exist?
+#. FIXME: allow other paths?
+#. Give the rcd 20 seconds to start before we give up.
+#: src/red_connection.py:197
+msgid ""
+"Red Carpet requires a Red Carpet Daemon to be running.\n"
+"Would you like to start one now?"
+msgstr ""
+"Red Carpetデーモンが動作している必要があります。\n"
+"今すぐデーモンを起動しますか?"
+
+# Novell Translation
+#. Conform to GNOME HIG
+#. This will block with a dialog.
+#. Prepend "https://" if it isn't already specified
+#. Append default port number (505) if one isn't specified
+#. NOTE: password must be md5ified.
+#: src/red_connection.py:345
+msgid "Connect to this system"
+msgstr "このシステムに接続します"
+
+# Novell Translation
+#: src/red_connection.py:349
+msgid "Connect to a remote system"
+msgstr "リモートシステムに接続します"
+
+# Novell Translation
+#: src/red_connection.py:357
+msgid "Server:"
+msgstr "サーバ:"
+
+# Novell Translation
+#: src/red_connection.py:361 src/red_users.py:389
+msgid "User name:"
+msgstr "ユーザ名:"
+
+# Novell Translation
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
+#: src/red_users.py:395
+msgid "Password:"
+msgstr "パスワード:"
+
+# Novell Translation
+#. Don't activate the dropdown with enter
+#. desensitize the table by default.
+#: src/red_connection.py:401
+msgid "Connect"
+msgstr "接続"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_console.py:50
+msgid "Red Carpet Error Console"
+msgstr "Red Carpetエラーコンソール"
+
+# Novell Translation
+#. ignore deprecation warnings, sigh
+#. We put the text into the console window in a timeout.  That
+#. way we can be sure that it happens in the main thread and
+#. that we don't have any gtk locking issues if another thread
+#. writes to stderr.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_deaddaemon.py:35
+msgid "Connection to daemon restored.\n"
+msgstr "デーモンへの接続が復元しました。\n"
+
+# Novell Translation
+#. FIXME: don't just mindlessly catch all exceptions
+#: src/red_deaddaemon.py:68
+msgid "Lost contact with the daemon!"
+msgstr "デーモンとの接続が失われました!"
+
+# Novell Translation
+#: src/red_deaddaemon.py:69
+msgid "Exit Red Carpet"
+msgstr "Red Carpetの終了"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Call get_deps in an idle so that we are fully initialized
+#. before we being our computation.  (In particular, the
+#. parent isn't properly set on the component at this point.)
+#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
+msgid "Dependency Resolution"
+msgstr "依存関係の解決"
+
+# Novell Translation
+#. Clean up
+#: src/red_depcomponent.py:122
+msgid "Verifying System"
+msgstr "システムを検証しています"
+
+# Novell Translation
+#: src/red_depcomponent.py:128
+msgid "Resolving Dependencies"
+msgstr "依存関係を解決しています"
+
+# Novell Translation
+#: src/red_depcomponent.py:150
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr ""
+"インストールする前に、このソフトウェアを対象とする使用許諾契約書に同意する必"
+"要があります。"
+
+# Novell Translation
+#. Try to estimate the size of the window we want.
+#. "W" being the widest glyph.
+#. Create a tag with our monospace font
+#. Get a mark to the start of the buffer and then scroll there
+#: src/red_depcomponent.py:194
+msgid "I Agree"
+msgstr "同意します"
+
+# Novell Translation
+#. a hack to let history component know we are updated.
+#. FIXME: flags
+#. FIXME: flags
+#. Assemble our warning banner
+#: src/red_depcomponent.py:288
+msgid "Dependency Resolution Failed"
+msgstr "依存関係の解決に失敗しました"
+
+# Novell Translation
+#. double-space our dependency error to make it easier to read
+#: src/red_depcomponent.py:338
+msgid "System Verified"
+msgstr "システムが検証されました"
+
+# Novell Translation
+#: src/red_depcomponent.py:340
+msgid ""
+"All package dependencies are satisfied, and no corrective actions are "
+"required."
+msgstr ""
+"すべてのパッケージの依存関係が満たされています。修正アクションは必要ありませ"
+"ん。"
+
+# Novell Translation
+#. Freeze the daemon listeners while we're doing a dependency
+#. resolution.  Otherwise we detect a change and slow things down.
+#. red_serverlistener.freeze_polling()
+#. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
+#: src/red_depcomponent.py:394
+msgid "Requested Installations"
+msgstr "要求されたインストール"
+
+# Novell Translation
+#: src/red_depcomponent.py:398
+msgid "Requested Removals"
+msgstr "要求された削除"
+
+# Novell Translation
+#: src/red_depcomponent.py:402
+msgid "Required Installations"
+msgstr "必要なインストール"
+
+# Novell Translation
+#: src/red_depcomponent.py:406
+msgid "Required Removals"
+msgstr "必要な削除"
+
+# Novell Translation
+#: src/red_depcomponent.py:432
+msgid "Continue"
+msgstr "続行"
+
+# Novell Translation
+#. # That's all we can do here. We might (and usually don't)
+#. # have enough information here to decide what kind of page
+#. # to build.
+#. The section heading
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
+#: src/red_packageview.py:367
+msgid "Channel"
+msgstr "チャネル"
+
+# Novell Translation
+#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
+msgid "Package"
+msgstr "パッケージ"
+
+# Novell Translation
+#: src/red_depview.py:53 src/red_packageview.py:462
+msgid "Current Version"
+msgstr "現在のバージョン"
+
+# Novell Translation
+#. ## Main
+#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
+#: src/red_updates.py:94
+msgid "New Version"
+msgstr "新しいバージョン"
+
+# Novell Translation
+#: src/red_depview.py:59 src/red_packageview.py:498
+msgid "Size"
+msgstr "サイズ"
+
+# Novell Translation
+#. \u2022 is the unicode bullet
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. This is probably very, very bad because we're relying on some
+#. strange GTK behavior which might very well be a bug.  That is,
+#. if no file is selected and nothing is in the entry, it returns
+#. the current directory.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. No translation file for this language
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_history.py:114 src/red_users.py:30
+msgid "All"
+msgstr "すべて"
+
+# Novell Translation
+#: src/red_history.py:115
+msgid "Installations"
+msgstr "インストール"
+
+# Novell Translation
+#: src/red_history.py:116
+msgid "Removals"
+msgstr "削除"
+
+# Novell Translation
+#: src/red_history.py:117
+msgid "Upgrades"
+msgstr "アップグレード"
+
+# Novell Translation
+#: src/red_history.py:122
+msgid "User:"
+msgstr "ユーザ:"
+
+# Novell Translation
+#: src/red_history.py:128
+msgid "Timeframe (days):"
+msgstr "タイムフレーム(日数):"
+
+# Novell Translation
+#. ##
+#. ## Sort functions
+#. ##
+#. # We want opposite order.
+#: src/red_history.py:280
+msgid "Searching..."
+msgstr "検索しています..."
+
+# Novell Translation
+#. 10 years
+#: src/red_history.py:302 src/red_history.py:436
+msgid "Time"
+msgstr "時間"
+
+# Novell Translation
+#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
+msgid "Action"
+msgstr "アクション"
+
+# Novell Translation
+#. # Make sure we have at least 'view'
+#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
+msgid "User"
+msgstr "ユーザ"
+
+# Novell Translation
+#: src/red_history.py:306 src/red_history.py:439
+msgid "Old Version"
+msgstr "旧バージョン"
+
+# Novell Translation
+#. Define me!
+#. Define me!
+#: src/red_history.py:337 src/red_packagepage.py:45
+msgid "History"
+msgstr "履歴"
+
+# Novell Translation
+#: src/red_history.py:340
+msgid "_History"
+msgstr "履歴(_H)"
+
+# Novell Translation
+#: src/red_history.py:384
+msgid "No results found."
+msgstr "結果が見つかりません。"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. We need to do the stat check because if we select something in
+#. the filesel and then unselect it (with control-click), we'll
+#. get the parent directory for that file, not the file itself.
+#. File probably doesn't exist.
+#: src/red_installfiles.py:80 src/red_installfiles.py:149
+#, python-format
+msgid "%s is not a valid package"
+msgstr "%s は有効なパッケージではありません"
+
+# Novell Translation
+#: src/red_installfiles.py:90
+msgid "There are no valid packages to install"
+msgstr "インストールする有効なパッケージがありません"
+
+# Novell Translation
+#: src/red_installfiles.py:109
+msgid "Install from File"
+msgstr "ファイルからインストール"
+
+# Novell Translation
+#. need trailing /
+#: src/red_installfiles.py:126
+#, python-format
+msgid "Downloading %s..."
+msgstr "%s をダウンロードしています..."
+
+# Novell Translation
+#: src/red_installfiles.py:165
+msgid "Install from URL"
+msgstr "URLからインストール"
+
+# Novell Translation
+#: src/red_installfiles.py:170
+msgid "Package URL:"
+msgstr "パッケージのURL:"
+
+# Novell Translation
+#. replace - with _
+#. emit the signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel: our magic-laden base class
+#. ##
+#. FIXME: We should just reverse our list if possible
+#. FIXME: Should throw a proper exception
+#. # Fallback implementation
+#. # Fallback implementation
+#. # Busy/message functions
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## This is some code to help us track down performance problems
+#. ## in GtkTreeView, etc.  Turned off by default.
+#. ##
+#. os.kill(os.getpid(), signal.SIGTRAP)
+#. os.kill(os.getpid(), signal.SIGTRAP)
+#. ##
+#. ## main
+#. ##
+#: src/red_main.py:109
+msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
+msgstr ""
+"エラー:-h/--hostオプションと-l/--localオプションを同時に指定することはできま"
+"せん"
+
+# Novell Translation
+#. This'll always fail and pop up the dialog.
+#: src/red_main.py:140
+msgid "ERROR: You cannot specify a user to a local daemon"
+msgstr "エラー:ローカルデーモンに対してユーザを指定することはできません"
+
+# Novell Translation
+#. Try the command-line options or the saved data first
+#. Enclosed in an empty try-except because we don't care about the
+#. error on the first connect.
+#. That failed, pop up the dialog
+#. add files to install from the cmdline
+#. This will terminate all our child threads without joining
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. # The format looks like "<Control>a" or "<Shift><Alt>F1.
+#. # The parser is fairly liberal and allows lower or upper case, and also
+#. # abbreviations such as "<Ctl>" and "<Ctrl>".
+#. No key, no joy!
+#. # End of public methods
+#. Automatically construct our menu items, and refresh the items,
+#. when we are realized.
+#. We can only be constructed once.
+#. ## Flag items that aren't hooked up to callbacks.
+#. assert item["radio_get"] and item["radio_set"]
+#. ## If this item is a leaf in our tree,
+#. ## hook up it's callback
+#. ##
+#. ## If this item has special visibility, sensitivity or checked
+#. ## functions, hook them up to listen for our refresh_items
+#. ## signals.
+#. ##
+#. ##
+#. ## If this item has subitems, construct the submenu
+#. ## and continue walking down the tree.
+#. ##
+#. Refresh the menu bar every time a top-level
+#. menu item is opened.
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_mirrors.py:76
+msgid "Mirror"
+msgstr "ミラー"
+
+# Novell Translation
+#: src/red_mirrors.py:81
+msgid "Location"
+msgstr "場所"
+
+# Novell Translation
+#: src/red_mirrors.py:108
+msgid "Choose a Mirror"
+msgstr "ミラーの選択"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Handle ~ to mean $HOME
+#. Always run the dialog in the main thread
+#: src/red_mount.py:91
+#, python-format
+msgid "Unable to unmount '%s'"
+msgstr "'%s' をアンマウントできません"
+
+# Novell Translation
+#: src/red_mount.py:117
+msgid "Browse..."
+msgstr "ブラウズしています..."
+
+# Novell Translation
+#: src/red_mount.py:128
+msgid "Mount Directory"
+msgstr "ディレクトリのマウント"
+
+# Novell Translation
+#: src/red_mount.py:141
+msgid "Mount channel"
+msgstr "チャネルのマウント"
+
+# Novell Translation
+#: src/red_mount.py:145
+msgid "Mount a directory as channel"
+msgstr "チャネルとしてディレクトリをマウントします"
+
+# Novell Translation
+#: src/red_mount.py:153
+msgid "Channel Name:"
+msgstr "チャネル名:"
+
+# Novell Translation
+#: src/red_mount.py:157
+msgid "Directory:"
+msgstr "ディレクトリ:"
+
+# Novell Translation
+#: src/red_mount.py:168
+msgid "Look for packages recursively"
+msgstr "パッケージを再帰的に検索します"
+
+# Novell Translation
+#: src/red_mount.py:193
+msgid "Please choose the path for channel."
+msgstr "チャネルのパスを選択してください。"
+
+# Novell Translation
+#: src/red_mount.py:214
+msgid "Unmount Channel"
+msgstr "チャネルのアンマウント"
+
+# Novell Translation
+#: src/red_mount.py:243
+msgid "Unmount?"
+msgstr "アンマウントしますか?"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Break the news item up to make it easier to read.
+#. FIXME: It would be nice to actually wrap the text in
+#. some sort of intelligent way.
+#. FIXME: Special hacks for current (bad) news file
+#: src/red_news.py:174
+#, python-format
+msgid "%s News"
+msgstr "%s ニュース"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_option.py:24
+msgid "Connect to a locally running daemon"
+msgstr "ローカルで実行しているデーモンに接続します"
+
+# Novell Translation
+#: src/red_option.py:25
+msgid "hostname"
+msgstr "ホスト名"
+
+# Novell Translation
+#: src/red_option.py:25
+msgid "Contact daemon on specified host"
+msgstr "指定したホスト上のデーモンを接続します"
+
+# Novell Translation
+#: src/red_option.py:26
+msgid "username"
+msgstr "ユーザ名"
+
+# Novell Translation
+#: src/red_option.py:26
+msgid "Specify user name"
+msgstr "ユーザ名を指定します"
+
+# Novell Translation
+#: src/red_option.py:27
+msgid "password"
+msgstr "パスワード"
+
+# Novell Translation
+#: src/red_option.py:27
+msgid "Specify password"
+msgstr "パスワードを指定します"
+
+# Novell Translation
+#: src/red_option.py:28
+msgid "Print client version and exit"
+msgstr "クライアントバージョンを出力して終了します"
+
+# Novell Translation
+#: src/red_option.py:29
+msgid "Get usage information"
+msgstr "使用状況情報を取得します"
+
+# Novell Translation
+#. ##
+#. ## Expand our synthetic args.
+#. ## Then compile our list of arguments into something that getopt can
+#. ## understand.  Finally, call getopt on argv and massage the results
+#. ## in something easy-to-use.
+#. ##
+#. Just in case something strange went wrong and we weren't
+#. able to describe quite why the options parsing failed,
+#. we print a catch-all error message.
+#. ##
+#. ## Walk through our list of options and replace short options with the
+#. ## corresponding long option.
+#. ##
+#. ##
+#. ## Store our options in a dictionary
+#. ##
+#: src/red_option.py:120
+#, python-format
+msgid "Usage: %s <options> ..."
+msgstr "使用状況: %s <options> ..."
+
+# Novell Translation
+#: src/red_option.py:122
+msgid "The following options are understood:"
+msgstr "次のオプションを指定できます。"
+
+# Novell Translation
+#. By appending [0,0], we insure that this will work even if
+#. opt_list is empty (which it never should be)
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## Callbacks for our ListModel
+#. ##
+#: src/red_packagearray.py:91
+msgid "installed"
+msgstr "インストール済み"
+
+# Novell Translation
+#. upgrade
+#: src/red_packagearray.py:93
+msgid "newer"
+msgstr "新しい"
+
+# Novell Translation
+#: src/red_packagearray.py:95
+msgid "older"
+msgstr "古い"
+
+# Novell Translation
+#: src/red_packagearray.py:97
+msgid "not installed"
+msgstr "インストールされていない"
+
+# Novell Translation
+#. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
+#. __older_icon               = red_pixbuf.get_pixbuf("status-older")
+#. upgrade
+#. downgrade
+#: src/red_packagearray.py:123
+msgid "upgrade"
+msgstr "アップグレード"
+
+# Novell Translation
+#: src/red_packagearray.py:125
+msgid "downgrade"
+msgstr "ダウングレード"
+
+# Novell Translation
+#: src/red_packagearray.py:127
+msgid "install"
+msgstr "インストール"
+
+# Novell Translation
+#: src/red_packagearray.py:134
+msgid "remove"
+msgstr "削除"
+
+# Novell Translation
+#. ##
+#. ## Sort functions
+#. ##
+#. We want locked (1) to sort higher than unlocked (0), that's
+#. why the logic is backwards.
+#. upgrade
+#. downgrade
+#. ##
+#. ## PackageArray: our magic-laden base class
+#. ##
+#. # This function should take the data in the array and sort it according
+#. # to the specified function.  This is a "protected" function and
+#. # shouldn't be called by users of PackageArrays.
+#. def sort(self, sort_fn):
+#. assert 0, "PackageArray.sort not defined"
+#. # Find all instances of pkg in the PackageArray, and cause a
+#. # 'changed_one' signal to be emitted for each.
+#. # Implements PendingOpsListener
+#. ##############################################################################
+#. ##############################################################################
+#. ##############################################################################
+#. This is the method that derived classes need to implement
+#. The derived class should use this function to report the packages
+#. it received from the daemon.
+#. ##############################################################################
+#: src/red_packagearray.py:614
+#, python-format
+msgid "Found %d matching packages"
+msgstr "一致するパッケージが %d 個見つかりました"
+
+# Novell Translation
+#: src/red_packagearray.py:616
+msgid "Found 1 matching package"
+msgstr "一致するパッケージが1個見つかりました"
+
+# Novell Translation
+#: src/red_packagearray.py:618
+msgid "No matching packages found"
+msgstr "一致するパッケージが見つかりませんでした"
+
+# Novell Translation
+#. Find System packages
+#. Remove instelled Channel packages
+#. ##############################################################################
+#: src/red_packagearray.py:776
+msgid "Looking for updates..."
+msgstr "更新を検索しています..."
+
+# Novell Translation
+#: src/red_packagearray.py:801
+#, python-format
+msgid "Found %d matching patches"
+msgstr "一致するパッチが %d 個見つかりました"
+
+# Novell Translation
+#: src/red_packagearray.py:803
+msgid "Found 1 matching patch"
+msgstr "一致するパッチが1個見つかりました"
+
+# Novell Translation
+#: src/red_packagearray.py:805
+msgid "No matching patches found"
+msgstr "一致するパッチが見つかりませんでした"
+
+# Novell Translation
+#. Find System packages
+#. Remove instelled Channel packages
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_packagebook.py:44
+msgid "Package Information"
+msgstr "パッケージ情報"
+
+# Novell Translation
+#. grab_default() is not sufficient here.
+#. print "Built page %d: '%s'" % (num, page_box.page.name())
+#. If a page is currently set, remember it.
+#. We don't want to build page widgets if pages become visible
+#. as other pages are removed.
+#. If this is the page that was being displayed before,
+#. make it the current page.
+#. If no page was set previously, go to the first page.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Define me!
+#: src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "名称未設定"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_packagepage_deps.py:29
+msgid "Dependencies"
+msgstr "依存関係"
+
+# Novell Translation
+#: src/red_packagepage_deps.py:67
+msgid "Provides"
+msgstr "提供"
+
+# Novell Translation
+#: src/red_packagepage_deps.py:70
+msgid "Requires"
+msgstr "必要"
+
+# Novell Translation
+#: src/red_packagepage_deps.py:73
+msgid "Conflicts With"
+msgstr "競合"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. evil magic failure code
+#: src/red_packagepage_info.py:90 src/red_services.py:112
+msgid "Name"
+msgstr "名前"
+
+# Novell Translation
+#: src/red_packagepage_info.py:91 src/red_packageview.py:452
+msgid "Version"
+msgstr "バージョン"
+
+# Novell Translation
+#: src/red_packagepage_info.py:92
+msgid "Release"
+msgstr "リリース"
+
+# Novell Translation
+#: src/red_packagepage_info.py:93
+msgid "Package Size"
+msgstr "パッケージサイズ"
+
+# Novell Translation
+#: src/red_packagepage_info.py:94
+msgid "Installed Size"
+msgstr "インストールサイズ"
+
+# Novell Translation
+#: src/red_packagepage_info.py:96
+msgid "Section"
+msgstr "セクション"
+
+# Novell Translation
+#: src/red_packagepage_info.py:97
+msgid "Summary"
+msgstr "概要"
+
+# Novell Translation
+#: src/red_packagepage_info.py:98 src/red_prefs.py:413
+msgid "Description"
+msgstr "説明"
+
+# Novell Translation
+#: src/red_packagepage_info.py:152
+msgid "Info"
+msgstr "情報"
+
+# Novell Translation
+#. # assert isinstance(model, red_packagearray.PackageArray)
+#: src/red_packageview.py:301
+msgid "Status"
+msgstr "状況"
+
+# Novell Translation
+#: src/red_packageview.py:472
+msgid "Importance"
+msgstr "重要度"
+
+# Novell Translation
+#. button,
+#. time
+#. x coordinate
+#. y coordinate
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_patches.py:35
+msgid "Patches"
+msgstr "パッチ"
+
+# Novell Translation
+#: src/red_patches.py:38
+msgid "YOU Patches"
+msgstr "YOUパッチ"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#: src/red_patches.py:72
+msgid "Searching for matching patches..."
+msgstr "一致するパッチを検索しています..."
+
+# Novell Translation
+#: src/red_patches.py:111
+msgid "No matching patches found."
+msgstr "一致するパッチが見つかりませんでした。"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##############################################################################
+#. Remove package from list if threre's no more keys than "__package"
+#. # Is there pending operations where action is set and
+#. # "package" is actually patch.
+#. ##############################################################################
+#. # Make sure there won't be both patches and packages pending.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. We don't really have any idea how long the transaction will take, but
+#. we'll guess that the download is 2/3 and the actual transaction 1/3.
+#. a few extra pixels...
+#. "W" being the widest glyph.
+#. # Guard for None
+#. keep window centered
+#. Try to set the scrollbox to a reasonable size, neither too big
+#. or too small. (We always want at least 3 lines of text to avoid
+#. "jumpyness".)
+#. keep window centered
+#. If our window has grown our shrunk, we want to make sure
+#. that it stays centered.
+#: src/red_pendingview.py:347
+#, python-format
+msgid "%.1f%% completed"
+msgstr "%.1f%% 完了"
+
+# Novell Translation
+#. Define me!
+#. If necessary, change the button from "Cancel"
+#. to "OK".  Make sure the button sensitive.
+#. gobject.type_register(PendingView)
+#. #############################################################################
+#. #############################################################################
+#: src/red_pendingview.py:536
+msgid "Updating System"
+msgstr "システムを更新しています"
+
+# Novell Translation
+#. this is a different kind of polling
+#. # FIXME: This is really ugly hack, but otherwise ui will be
+#. # unresponsive if connection with rcd is lost (even if rcd
+#. # comes back).
+#: src/red_pendingview.py:609
+msgid "Download cancelled"
+msgstr "ダウンロードがキャンセルされました"
+
+# Novell Translation
+#: src/red_pendingview.py:610
+msgid "Transaction cancelled"
+msgstr "トランザクションがキャンセルされました"
+
+# Novell Translation
+#. We can't cancel once the transaction begins
+#. We're in "download only" mode.
+#. Everything we wanted to download is already cached on the
+#. system.
+#.
+#. FIXME: Do something intelligent here?
+#: src/red_pendingview.py:645
+msgid "Transaction Finished"
+msgstr "トランザクションが終了しました"
+
+# Novell Translation
+#: src/red_pendingview.py:658
+msgid "Downloading packages"
+msgstr "パッケージをダウンロードしています"
+
+# Novell Translation
+#: src/red_pendingview.py:671
+msgid "Download Failed"
+msgstr "ダウンロードに失敗しました"
+
+# Novell Translation
+#: src/red_pendingview.py:672
+msgid "Unknown Error"
+msgstr "不明なエラー"
+
+# Novell Translation
+#: src/red_pendingview.py:689
+msgid "Processing Transaction"
+msgstr "トランザクションを処理しています"
+
+# Novell Translation
+#. We don't get step_pending notification every time, but
+#. we never want to reduce the total progress bar
+#: src/red_pendingview.py:728
+msgid "The transaction has completed successfully"
+msgstr "トランザクションは正常に終了しました"
+
+# Novell Translation
+#: src/red_pendingview.py:733
+msgid "Transaction failed"
+msgstr "トランザクションに失敗しました"
+
+# Novell Translation
+#: src/red_pendingview.py:735
+msgid "Transaction Failed"
+msgstr "トランザクションに失敗しました"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. If this isn't a string, maybe it is a GdkPixbuf.  If so, just
+#. pass it through.  Otherwise something is very wrong, so we
+#. assert.
+#. FIXME: How do I check this type w/o the "try"?
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. Title
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
+msgstr "チャネルデータの更新間隔(時間):"
+
+# Novell Translation
+#. Packages section
+#: src/red_prefs.py:182
+msgid "Packages"
+msgstr "パッケージ"
+
+# Novell Translation
+#: src/red_prefs.py:191
+msgid "Require package signatures"
+msgstr "パッケージの署名が必要"
+
+# Novell Translation
+#: src/red_prefs.py:196
+msgid "Maximum number of packages to download at once:"
+msgstr "同時にダウンロードするパッケージの最大数:"
+
+# Novell Translation
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "パッケージのロールバックを有効にする"
+
+# Novell Translation
+#. Proxy section - requires superuser
+#: src/red_prefs.py:210
+msgid "Proxy"
+msgstr "プロキシ"
+
+# Novell Translation
+#: src/red_prefs.py:219
+msgid "Use a proxy"
+msgstr "プロキシの使用"
+
+# Novell Translation
+#: src/red_prefs.py:223
+msgid "Proxy URL:"
+msgstr "プロキシのURL:"
+
+# Novell Translation
+#: src/red_prefs.py:230
+msgid "Username:"
+msgstr "ユーザ名:"
+
+# Novell Translation
+#. Have to wait for the above widgets to be created.
+#: src/red_prefs.py:270
+msgid "You do not have permissions to view proxy settings"
+msgstr "プロキシ設定を表示するための権利がありません"
+
+# Novell Translation
+#: src/red_prefs.py:294
+msgid "Cache downloaded packages and metadata"
+msgstr "ダウンロードしたパッケージとメタデータをキャッシュします"
+
+# Novell Translation
+#: src/red_prefs.py:300
+msgid "Location of cached data:"
+msgstr "キャッシュしたデータの場所:"
+
+# Novell Translation
+#. Expiration section
+#: src/red_prefs.py:308
+msgid "Expiration"
+msgstr "期限切れ"
+
+# Novell Translation
+#: src/red_prefs.py:312
+msgid "Cache expires"
+msgstr "キャッシュの期限"
+
+# Novell Translation
+#: src/red_prefs.py:318
+msgid "Maximum age in days:"
+msgstr "最大日数:"
+
+# Novell Translation
+#: src/red_prefs.py:329
+msgid "Maximum size in MB:"
+msgstr "最大サイズ(MB):"
+
+# Novell Translation
+#: src/red_prefs.py:340
+msgid "Current cache size:"
+msgstr "現在のキャッシュサイズ:"
+
+# Novell Translation
+#: src/red_prefs.py:357
+msgid "Are you sure you want to delete the package files in your cache?"
+msgstr "キャッシュ内のパッケージファイルを削除しますか?"
+
+# Novell Translation
+#: src/red_prefs.py:373
+msgid "Empty Cache"
+msgstr "空のキャッシュ"
+
+# Novell Translation
+#. Have to do this after the other widgets are created
+#: src/red_prefs.py:395
+#, python-format
+msgid "%d MB"
+msgstr "%d MB"
+
+# Novell Translation
+#. Don't set the pref if we didn't change anything.
+#: src/red_prefs.py:443
+msgid "Value"
+msgstr "値"
+
+# Novell Translation
+#: src/red_prefs.py:456
+msgid "Loading preferences..."
+msgstr "初期設定をロードしています..."
+
+# Novell Translation
+#. Remove the "loading" "page".
+#: src/red_prefs.py:520
+#, python-format
+msgid "%s Preferences"
+msgstr "%s の初期設定"
+
+# Novell Translation
+#. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
+#. Should only be called for text renderer
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_search.py:35
+msgid "Search"
+msgstr "検索"
+
+# Novell Translation
+#: src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "パッケージの検索(_E)"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "一致するパッケージを検索しています..."
+
+# Novell Translation
+#: src/red_search.py:109
+msgid "No matching packages found."
+msgstr "一致するパッケージが見つかりませんでした。"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. system packages and uninstalled packages are mutually exclusive
+#: src/red_searchbox.py:146
+msgid "All Packages"
+msgstr "すべてのパッケージ"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_searchbox.py:147 src/red_updates.py:31
+msgid "Updates"
+msgstr "更新"
+
+# Novell Translation
+#: src/red_searchbox.py:148
+msgid "Uninstalled Packages"
+msgstr "アンインストールされたパッケージ"
+
+# Novell Translation
+#: src/red_searchbox.py:149
+msgid "Installed Packages"
+msgstr "インストール済みのパッケージ"
+
+# Novell Translation
+#: src/red_searchbox.py:174
+msgid "All Sections"
+msgstr "すべてのセクション"
+
+# Novell Translation
+#: src/red_searchbox.py:175
+msgid "Productivity"
+msgstr "プロダクティビティ"
+
+# Novell Translation
+#: src/red_searchbox.py:176
+msgid "Imaging"
+msgstr "イメージング"
+
+# Novell Translation
+#: src/red_searchbox.py:177
+msgid "Personal Info. Mgmt"
+msgstr "個人情報管理"
+
+# Novell Translation
+#: src/red_searchbox.py:178
+msgid "X Windows"
+msgstr "X Windows"
+
+# Novell Translation
+#: src/red_searchbox.py:179
+msgid "Games"
+msgstr "ゲーム"
+
+# Novell Translation
+#: src/red_searchbox.py:180
+msgid "Multimedia"
+msgstr "マルチメディア"
+
+# Novell Translation
+#: src/red_searchbox.py:181
+msgid "Internet"
+msgstr "インターネット"
+
+# Novell Translation
+#: src/red_searchbox.py:182
+msgid "Utilities"
+msgstr "ユーティリティ"
+
+# Novell Translation
+#: src/red_searchbox.py:183
+msgid "System"
+msgstr "システム"
+
+# Novell Translation
+#: src/red_searchbox.py:184
+msgid "Documentation"
+msgstr "マニュアル"
+
+# Novell Translation
+#: src/red_searchbox.py:185
+msgid "Libraries"
+msgstr "ライブラリ"
+
+# Novell Translation
+#: src/red_searchbox.py:186
+msgid "Development"
+msgstr "開発"
+
+# Novell Translation
+#: src/red_searchbox.py:187
+msgid "Development Tools"
+msgstr "開発ツール"
+
+# Novell Translation
+#: src/red_searchbox.py:188
+msgid "Miscellaneous"
+msgstr "その他"
+
+# Novell Translation
+#: src/red_searchbox.py:274
+msgid "Search descriptions"
+msgstr "検索の説明"
+
+# Novell Translation
+#. ##
+#. ## Match radio buttons
+#. ##
+#: src/red_searchbox.py:286
+msgid "Match:"
+msgstr "一致:"
+
+# Novell Translation
+#: src/red_searchbox.py:322
+msgid "Channel:"
+msgstr "チャネル:"
+
+# Novell Translation
+#. ##
+#. ## Build the second row of the search UI, which contains the
+#. ## entry and some option menus.
+#. ##
+#. Make the lag longer if we haven't typed much yet.
+#. ##
+#. ## Create a box for our 'view' widget.
+#. ##
+#. ##
+#. ## Build our bottom row of advanced options.
+#. ##
+#. ##
+#. ## Assemble all of these pieces into our VBox.
+#. We are always subscribed to channel 0
+#. (i.e. system packages)
+#. query
+#. filter fn
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. We only allow one server info window at a time
+#: src/red_serverinfo.py:46
+msgid "The daemon identified itself as:"
+msgstr "デーモンの識別情報:"
+
+# Novell Translation
+#: src/red_serverinfo.py:57
+msgid "System type"
+msgstr "システムタイプ"
+
+# Novell Translation
+#: src/red_serverinfo.py:60
+msgid "Server URL"
+msgstr "サーバURL"
+
+# Novell Translation
+#: src/red_serverinfo.py:63
+msgid "Server supports enhanced features."
+msgstr "サーバで拡張機能がサポートされています。"
+
+# Novell Translation
+#. couldn't ping the server
+#: src/red_serverinfo.py:68
+msgid "Unable to contact the daemon."
+msgstr "デーモンと接続できません。"
+
+# Novell Translation
+#: src/red_serverinfo.py:76
+msgid "Dump daemon info to XML file"
+msgstr "デーモン情報をXMLファイルにダンプします"
+
+# Novell Translation
+#: src/red_serverinfo.py:94
+#, python-format
+msgid "Could not open file '%s': %s"
+msgstr "ファイル '%s' を開くことができません: %s"
+
+# Novell Translation
+#. We only allow one filesel window at a time
+#: src/red_serverinfo.py:135
+msgid "Choose file to write XML to"
+msgstr "XMLを出力するファイルを選択します"
+
+# Novell Translation
+#. need trailing /
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## Set up our polling timeout.  This should be the only place
+#. ## where we poll for the world sequence number.
+#. ##
+#. This lets us do the right thing if the server changes
+#. out from under us.
+#. Ignore any problems on the first poll, since we know we
+#. don't have valid server information before that point.
+#. We signal the listeners in an idle function so that
+#. it will always happen in the main thread.
+#. FIXME?  By doing nothing here, we keep the
+#. user from being hammered by a whole bunch of exceptions
+#. if something has gone badly wrong.
+#. FIXME?
+#. do the first poll immediately
+#. get poll timeout started again
+#. Start polling.  We skip our first poll, since we won't have made a
+#. connection to the server yet.
+#. ##############################################################################
+#. ##
+#. ##  The ServerListener class: a base class for objects that need to
+#. ## detect when the state of the world changes on the server
+#. ##
+#. These are the function that should be overrided in derived classes.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. We want to emit our signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "サービスの編集"
+
+# Novell Translation
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+# Novell Translation
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "サービスの削除(_R)"
+
+# Novell Translation
+#: src/red_services.py:150
+msgid "_Add service"
+msgstr "サービスの追加(_A)"
+
+# Novell Translation
+#: src/red_services.py:233
+msgid "Add Service"
+msgstr "サービスの追加"
+
+# Novell Translation
+#: src/red_services.py:238
+msgid "Service URL"
+msgstr "サービスのURL"
+
+# Novell Translation
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. # Start of public API
+#. FIXME: This error message isn't great, but is better than a
+#. cryptic backtrace.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_sidebar.py:61 src/red_transaction.py:133
+msgid "Pending Actions"
+msgstr "保留中のアクション"
+
+# Novell Translation
+#. PendingOpsListener implementation
+#: src/red_sidebar.py:89
+#, python-format
+msgid "%d pending install"
+msgstr "%d 個のインストールが保留中です"
+
+# Novell Translation
+#: src/red_sidebar.py:91
+#, python-format
+msgid "%d pending installs"
+msgstr "%d 個のインストールが保留中です"
+
+# Novell Translation
+#: src/red_sidebar.py:97
+#, python-format
+msgid "%d pending removal"
+msgstr "%d 個の削除が保留中です"
+
+# Novell Translation
+#: src/red_sidebar.py:99
+#, python-format
+msgid "%d pending removals"
+msgstr "%d 個の削除が保留中です"
+
+# Novell Translation
+#: src/red_sidebar.py:103
+msgid "No pending actions"
+msgstr "保留中のアクションはありません"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_software.py:28
+msgid "Installed Software"
+msgstr "インストール済みのソフトウェア"
+
+# Novell Translation
+#: src/red_software.py:31
+msgid "I_nstalled Software"
+msgstr "インストール済みのソフトウェア(_N)"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#: src/red_software.py:97
+msgid "Available Software"
+msgstr "使用可能なソフトウェア"
+
+# Novell Translation
+#: src/red_software.py:100
+msgid "A_vailable Software"
+msgstr "使用可能なソフトウェア(_V)"
+
+# Novell Translation
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_statusbar.py:49
+#, python-format
+msgid "Connected to %s"
+msgstr "%s に接続されています"
+
+# Novell Translation
+#. Pop off any old message
+#. # Proxy GtkStatusbar's interface
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_subscriptions.py:57
+msgid "Subscribed"
+msgstr "加入済み"
+
+# Novell Translation
+#: src/red_subscriptions.py:64
+msgid "Channel Name"
+msgstr "チャネル名"
+
+# Novell Translation
+#: src/red_subscriptions.py:78
+#, python-format
+msgid "%s Channel Subscriptions"
+msgstr "%s のチャネル加入"
+
+# Novell Translation
+#. FIXME: Make transient of app
+#: src/red_subscriptions.py:99
+msgid ""
+"You do not have permission to subscribe or unsubscribe from channels.  You "
+"will be unable to make any changes to the subscriptions."
+msgstr ""
+"チャネルへの加入または加入解除のための権利がありません。加入に変更を加えるこ"
+"とはできません。"
+
+# Novell Translation
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. We want (as many of) the same items to be selected even if
+#. we sort it differently.  We have to make two passes since
+#. setting the cursor after the selection seems to break some
+#. of the time.
+#: src/red_thrashingtreeview.py:138
+msgid "Untitled"
+msgstr "無題"
+
+# Novell Translation
+#. Fix the old column header
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. We need to go through and delete packages in the pending actions
+#. if they were going to be installed from a channel which no longer
+#. exists.
+#. noop
+#. ########################################################################
+#: src/red_transaction.py:96
+msgid "Are you sure you want to quit?"
+msgstr "終了しますか?"
+
+# Novell Translation
+#: src/red_transaction.py:136
+msgid "_Pending Actions"
+msgstr "保留中のアクション(_P)"
+
+# Novell Translation
+#: src/red_updates.py:34
+msgid "_Updates"
+msgstr "更新(_U)"
+
+# Novell Translation
+#. ## Update All button
+#: src/red_updates.py:77
+msgid "_Update All"
+msgstr "すべて更新(_U)"
+
+# Novell Translation
+#: src/red_updates.py:109
+msgid "The system is up-to-date."
+msgstr "システムは最新です。"
+
+# Novell Translation
+#: src/red_updates.py:110
+msgid "There are no software updates available in any subscribed channels."
+msgstr "加入しているチャネルに適用されるソフトウェアの更新がありません。"
+
+# Novell Translation
+#: src/red_users.py:131
+msgid "Privilege"
+msgstr "特権"
+
+# Novell Translation
+#. Warn the user about removing their own superuser priv
+#: src/red_users.py:148
+msgid ""
+"If you remove superuser privileges from yourself, you will be unable to re-"
+"add them.\n"
+"\n"
+"Are you sure you want to do this?"
+msgstr ""
+"スーパーユーザ権を削除すると、元に戻すことはできません。\n"
+"\n"
+"この処理を実行しますか?"
+
+# Novell Translation
+#. We want opposite state
+#: src/red_users.py:166
+msgid "Enabled"
+msgstr "有効"
+
+# Novell Translation
+#: src/red_users.py:181
+msgid "Edit Users"
+msgstr "ユーザの編集"
+
+# Novell Translation
+#: src/red_users.py:196 src/red_users.py:399
+msgid "Confirm:"
+msgstr "確認:"
+
+# Novell Translation
+#: src/red_users.py:217
+msgid "Set Password"
+msgstr "パスワードの設定"
+
+# Novell Translation
+#. else:
+#: src/red_users.py:246 src/red_users.py:422
+msgid "Password can not be empty."
+msgstr "パスワードは空欄にできません。"
+
+# Novell Translation
+#: src/red_users.py:248 src/red_users.py:424
+msgid "Passwords do not match."
+msgstr "パスワードが一致しません。"
+
+# Novell Translation
+#: src/red_users.py:268
+#, python-format
+msgid "Set %s's password"
+msgstr "%s のパスワードを設定"
+
+# Novell Translation
+#: src/red_users.py:289
+msgid "Users"
+msgstr "ユーザ"
+
+# Novell Translation
+#: src/red_users.py:306
+msgid "Add"
+msgstr "追加"
+
+# Novell Translation
+#: src/red_users.py:320
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "'%s' を削除しますか?"
+
+# Novell Translation
+#: src/red_users.py:326
+msgid "Remove"
+msgstr "削除"
+
+# Novell Translation
+#: src/red_users.py:339
+msgid "Privileges"
+msgstr "特権"
+
+# Novell Translation
+#: src/red_users.py:379
+msgid "Add new user"
+msgstr "新しいユーザを追加"
+
+# Novell Translation
+#: src/red_users.py:426
+msgid "Invalid user name."
+msgstr "ユーザ名が無効です。"
+
+# Novell Translation
+#: src/red_users.py:428
+#, python-format
+msgid "User '%s' already exists."
+msgstr "ユーザ '%s' はすでに存在しています。"
