@@ -144,9 +144,7 @@ def help_cb(app):
 
             url = url_info[1] + "://" + f
 
-            print  "executing: %s %s" % (fullpath, url)
             pid = os.spawnv(os.P_NOWAIT, fullpath, (fullpath, url))
-            print "PID: %d" % pid
             return
 
         dialog = gtk.MessageDialog(app, 0,
