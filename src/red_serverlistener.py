@@ -179,11 +179,7 @@ def poll_cb():
 
     poll_lock.acquire()
 
-    if working_polls > 3:
-        # Print a cryptic error message to the console.  I suck.
-        sys.stderr.write("Skipping poll --- working_polls too big.\n")
-
-    elif freeze_count == 0:
+    if working_polls < 4 and freeze_count == 0:
 
         server = rcd_util.get_server_proxy()
         if server is None:
