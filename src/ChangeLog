@@ -1,3 +1,8 @@
+2003-04-24  Tambet Ingo  <tambet@ximian.com>
+
+	* red_pendingview.py (PendingView_Transaction.update_transaction):
+	Set __working_query when starting a poll, DOH! Fixes #40312.
+
 2003-04-18  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py: A bunch of channel-related checks so we can work

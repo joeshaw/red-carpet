@@ -644,8 +644,6 @@ class PendingView_Transaction(PendingView):
         def update_pending_cb(pending, step_pending, pv):
             if pv.__finished:
                 return
-            if pending and step_pending:
-                pv.__working_query = 0
 
             if pending and pending["messages"]:
                 msg = rcd_util.transaction_status(pending["messages"][-1])
@@ -667,9 +665,14 @@ class PendingView_Transaction(PendingView):
                                         title=_("Update Failed"))
                 pv.__finished = 1
 
+            if pending and step_pending:
+                pv.__working_query = 0
+
+
         unused = PollPending_Transact(self.transact_id,
                                       self.step_id,
                                       update_pending_cb,
                                       self)
+        self.__working_query = 1
 
         return 1
