@@ -213,6 +213,7 @@ class FilteredPackageArray(PackageArray):
         # get filled the first time we try to look at it.
         self.cache_dirty = 1
 
+
     def set_target(self, target):
         if self.ch_id:
             self.target.disconnect(self.ch_id)
@@ -220,9 +221,12 @@ class FilteredPackageArray(PackageArray):
 
         self.target = target
 
+        def target_changed_cb(target, us):
+            self.changed(lambda x:x.fpa_changed_cb())            
+            
         if self.target:
             self.ch_id = self.target.connect("changed",
-                                             lambda x, y:y.fpa_changed_cb(),
+                                             target_changed_cb,
                                              self)
 
         self.cache_dirty = 1

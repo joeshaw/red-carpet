@@ -15,9 +15,34 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
+import sys, string
 import gobject, gtk
 import red_pixbuf
+
+def linebreak(in_str, width):
+
+    str = string.strip(in_str)
+
+    if not str:
+        return []
+
+    if len(str) <= width:
+        return [str]
+
+    if width < len(str) and str[width] == " ":
+        n = width
+    else:
+        n = string.rfind(str[0:width], " ")
+
+    lines = []
+
+    if n == -1:
+        lines.append(str)
+    else:
+        lines.append(str[0:n])
+        lines = lines + linebreak(str[n+1:], width)
+
+    return lines
 
 class SideBar(gtk.EventBox):
 
@@ -31,7 +56,7 @@ class SideBar(gtk.EventBox):
         style.bg[0] = self.color
         self.set_style(style)
 
-        self.vbox = gtk.VBox(0, 10)
+        self.vbox = gtk.VBox(0, 5)
 
         # We put our vbox in an hbox to get a little extra x-padding...
         # this nesting of hboxes and vboxes reminds me of TeX!
@@ -41,30 +66,30 @@ class SideBar(gtk.EventBox):
 
     def add(self,
             pixbuf=None,
-            label=None,
+            label="No Label",
             callback=None,
             user_data=None):
 
         icon = red_pixbuf.get_widget(pixbuf)
 
+        my_vbox = gtk.VBox(0, 0)
+
         button = gtk.Button()
         button.set_relief(gtk.RELIEF_NONE)
         button.add(icon)
-
         style = button.get_style().copy()
         style.bg[gtk.STATE_NORMAL] = self.color
         style.bg[gtk.STATE_PRELIGHT] = self.color
         button.set_style(style)
-
-        l = gtk.Label(label)
-        style = l.get_style().copy()
-        style.fg[gtk.STATE_NORMAL] = self.text_color
-        l.set_style(style)
-
-        my_vbox = gtk.VBox(0, 0)
-        
         my_vbox.pack_start(button, 0, 0, 0)
-        my_vbox.pack_start(l, 0, 0, 0)
+
+        lines = linebreak(label, 12)
+        for line in lines:
+            l = gtk.Label(line)
+            style = l.get_style().copy()
+            style.fg[gtk.STATE_NORMAL] = self.text_color
+            l.set_style(style)
+            my_vbox.pack_start(l, 0, 0, 0)
 
         if callback:
             button.connect("clicked",

@@ -25,25 +25,6 @@ import rcd_util
 import red_menubar, red_packagearray, red_packageview, red_header
 import red_explodedview, red_appwindow
 
-def connect_to_server():
-    ## Make contact with the daemon.
-    ## We assume local access only
-    url = "/var/run/rcd"
-    username = None
-    password = None
-
-    transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
-
-    try:
-        server = ximian_xmlrpclib.Server(url,
-                                         auth_username=username,
-                                         auth_password=password,
-                                         verbose=transport_debug)
-    except:
-        sys.stderr.write("Unable to connect to the daemon.\n")
-        sys.exit(1)
-
-    return server
 
 def build_main_window(server):
     xml = gtk.glade.XML ("red-carpet.glade")
@@ -143,44 +124,10 @@ def menubar_test_window():
 
     win.connect("delete_event", lambda x,y:sys.exit(0))
 
-def pkg_to_channel(pkg):
-    return pkg["channel"]
 
-def pkg_to_channel_name(pkg):
-    c = pkg["channel"]
-    return rcd_util.get_channel_name(c)
-
-def pkg_to_channel_icon(pkg):
-    c = pkg["channel"]
-    return rcd_util.get_channel_icon(c, 32, 32)
-
-def pkg_to_section(pkg):
-    return pkg["section_num"]
-
-def pkg_to_section_name(pkg):
-    return pkg["section_user_str"]
-
-def pkg_to_section_icon(pkg):
-    return "section-" + pkg["section_str"]
-    
-
-def query_test(server):
-    a = red_packagearray.PackageQuery(server, [["name", "contains", "gnome"],
-                                               ["installed", "is", "false"]])
-
-    ex = red_explodedview.ExplodedView(array=a,
-                                       explode_fn=pkg_to_section,
-                                       label_fn=pkg_to_section_name,
-                                       pixbuf_fn=pkg_to_section_icon)
-    
-
-    app = red_appwindow.AppWindow()
-    app.sw.add_with_viewport(ex)
-    app.show_all()
 
 def main(version):
     server = connect_to_server()
-    rcd_util.register_server(server)
 
     query_test(server)
 

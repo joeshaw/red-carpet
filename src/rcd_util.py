@@ -43,8 +43,6 @@ def fetch_all_channels():
     channel_list = server.rcd.packsys.get_channels()
     for c in channel_list:
         cached_channels[str(c["id"])] = c
-        print c
-        print
 
     have_channels = 1
 
@@ -70,6 +68,9 @@ def get_channel_name(id):
         return "????"
 
 def get_channel_icon(id, width=0, height=0):
+
+    if id <= 0:
+        return None
 
     if width > 0 and height > 0:
         key = "%s %d %d" % (str(id), width, height)

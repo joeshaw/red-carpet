@@ -29,22 +29,22 @@ sys.path.insert(0, "/opt/pygtk/lib/python2.2/site-packages")
 # without having done a "make install".  We might want to take this
 # out at some point.
 
-if not (os.path.isfile("./redmain.py") \
+if not (os.path.isfile("./red_main.py") \
         or (os.path.isdir(red_carpet_dir) \
-            and os.path.isfile(red_carpet_dir + "/redmain.py"))):
+            and os.path.isfile(red_carpet_dir + "/red_main.py"))):
     print "ERROR: The Red Carpet Graphical Client doesn't appear to be"
     print "ERROR: installed properly.  Please check your installation."
     sys.exit(1)
 
 
 sys.path.append(red_carpet_dir)
-import redmain
+import red_main
 
 if "--rc-profile" in sys.argv:
     import profile
     sys.stderr.write("*** Profiling Enabled ***\n")
     sys.argv = filter(lambda x:x != "--rc-profile", sys.argv)
-    profile.run("rcmain.main(rc_version)")
+    profile.run("red_main.main(rc_version)")
 else:
-    redmain.main(red_carpet_version)
+    red_main.main(red_carpet_version)
     

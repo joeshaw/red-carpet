@@ -49,6 +49,9 @@ class AppWindow(gtk.Window):
         bar.add(pixbuf="summary",
                 label="Summary")
 
+        bar.add(pixbuf="featured",
+                label="Browse by Channel")
+
         bar.add(pixbuf="news",
                 label="News")
         
@@ -57,7 +60,7 @@ class AppWindow(gtk.Window):
 
         gtk.Window.__init__(self)
 
-        self.table = gtk.Table(2, 2)
+        self.table = gtk.Table(2, 3)
         self.add (self.table)
 
         self.menubar = red_menubar.MenuBar()
@@ -66,8 +69,17 @@ class AppWindow(gtk.Window):
         self.sidebar = red_sidebar.SideBar()
         self.assemble_sidebar(self.sidebar)
 
+        self.control = gtk.EventBox()
+
+        self.main = gtk.EventBox()
+        style = self.main.get_style().copy()
+        color = self.main.get_colormap().alloc_color("white")
+        style.bg[gtk.STATE_NORMAL] = color
+        self.main.set_style(style)
+
         self.sw = gtk.ScrolledWindow()
-        self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        self.sw.add_with_viewport(self.main)
 
         self.table.attach(self.menubar,
                           0, 2, 0, 1,
@@ -75,13 +87,31 @@ class AppWindow(gtk.Window):
                           0, 0)
 
         self.table.attach(self.sidebar,
-                          0, 1, 1, 2,
+                          0, 1, 1, 3,
                           gtk.FILL, gtk.FILL,
                           0, 0)
 
-        self.table.attach(self.sw,
+        self.table.attach(self.control,
                           1, 2, 1, 2,
+                          gtk.FILL | gtk.EXPAND, gtk.FILL,
+                          0, 0)
+
+        self.table.attach(self.sw,
+                          1, 2, 2, 3,
                           gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
                           0, 0)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+    def set_control_widget(self, item):
+        for c in self.control.get_children():
+            self.control.remove(c)
+        self.control.add(item)
+        item.show()
+
+    def set_main_widget(self, item):
+        for c in self.main.get_children():
+            self.main.remove(c)
+        self.main.add(item)
+        item.show()
+        
