@@ -98,50 +98,6 @@ def view_server_info_cb(app):
 
 class AppWindow(gtk.Window, red_component.ComponentListener):
 
-    # The return value is for the benefit of our delete_event handler.
-    def shutdown(self):
-        if red_transaction.ok_to_quit(self):
-            gtk.mainquit()
-            return 0
-        return 1
-
-    def assemble_menubar(self, bar):
-
-        bar.add("/_File")
-        bar.add("/_Edit")
-        bar.add("/_View")
-        bar.add("/_Actions")
-        bar.add("/_Settings")
-        bar.add("/_Help")
-
-        bar.add("/File/Quit",
-                stock=gtk.STOCK_QUIT,
-                callback=lambda x:self.shutdown())
-
-        bar.add("/Edit/Subscriptions",
-                callback=lambda x:red_subscriptions.SubscriptionsWindow().show())
-
-        bar.add("/Edit/Activation",
-                callback=lambda x:red_activation.ActivationWindow().show())
-
-        bar.add("/Edit/Preferences",
-                stock=gtk.STOCK_PREFERENCES,
-                callback=lambda x:red_prefs.PrefsWindow().show())
-
-        bar.add("/Edit/Users",
-                callback=lambda x:red_users.UsersWindow().show())
-
-        bar.add("/Actions/Refresh Channel Data",
-                callback=refresh_cb)
-        bar.add("/Actions/sep", is_separator=1)
-
-        bar.add("/View/Server Information",
-                callback=view_server_info_cb)
-        
-        bar.add("/Settings/Foo")
-        bar.add("/Help/Foo")
-
-
     def __init__(self, server):
 
         gtk.Window.__init__(self)
@@ -180,6 +136,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.sensitize_go_button(0)
 
         self.toolbar.append_space()
+
+        self.transient_windows = {}
         
         self.transactionbar = red_transaction.TransactionBar(self)
 
@@ -208,6 +166,60 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(south, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+    # The return value is for the benefit of our delete_event handler.
+    def shutdown(self):
+        if red_transaction.ok_to_quit(self):
+            gtk.mainquit()
+            return 0
+        return 1
+
+    def open_or_raise_window(self, type):
+        if self.transient_windows.has_key(type):
+            self.transient_windows[type].present()
+        else:
+            win = type()
+            self.transient_windows[type] = win
+            def remove_window_cb(w, a, t):
+                del a.transient_windows[t]
+            win.connect("destroy", remove_window_cb, self, type)
+            win.show()
+
+    def assemble_menubar(self, bar):
+
+        bar.add("/_File")
+        bar.add("/_Edit")
+        bar.add("/_View")
+        bar.add("/_Actions")
+        bar.add("/_Settings")
+        bar.add("/_Help")
+
+        bar.add("/File/Quit",
+                stock=gtk.STOCK_QUIT,
+                callback=lambda x:self.shutdown())
+
+        bar.add("/Edit/Subscriptions",
+                callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
+
+        bar.add("/Edit/Activation",
+                callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow))
+
+        bar.add("/Edit/Preferences",
+                stock=gtk.STOCK_PREFERENCES,
+                callback=lambda x:self.open_or_raise_window(red_prefs.PrefsWindow))
+
+        bar.add("/Edit/Users",
+                callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
+
+        bar.add("/Actions/Refresh Channel Data",
+                callback=refresh_cb)
+        bar.add("/Actions/sep", is_separator=1)
+
+        bar.add("/View/Server Information",
+                callback=view_server_info_cb)
+        
+        bar.add("/Settings/Foo")
+        bar.add("/Help/Foo")
 
     def sensitize_go_button(self, en):
         self.go_button.set_sensitive(en)

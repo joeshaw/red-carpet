@@ -86,9 +86,9 @@ class HistorySearchBar(gtk.HBox):
         self.pack_start(gtk.Label("Browse"), 0, 0, 0)
 
         actions = [("All",        None),
-                   ("Installed", "install"),
-                   ("Removed",   "remove"),
-                   ("Upgraded",  "upgrade")]
+                   ("Installs",   "install"),
+                   ("Removals",   "remove"),
+                   ("Upgrades",   "upgrade")]
         self.action_opt = HistoryOption(actions)
         self.pack_start(self.action_opt, 0, 0, 0)
         self.action_opt.connect("selected", lambda x, y:self.updated())
