@@ -455,7 +455,6 @@ class PollPending_Transact:
         self.finish()
 
     def finish(self):
-        print "finished"
         self.__callback(self.__transact_pending,
                         self.__step_pending,
                         *self.__cb_args)
