@@ -1,5 +1,8 @@
 2003-05-27  Joe Shaw  <joe@ximian.com>
 
+	* red_searchbox.py (__assemble_status_option): Make all_cb() the
+	default status filter
+
 	* rcd_util.py (refresh): Move the refresh function here.  We have
 	to do an on-demand import of red_pendingview because of circular
 	import issues though, boo.

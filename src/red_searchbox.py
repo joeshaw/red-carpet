@@ -164,7 +164,7 @@ class SearchBox(gtk.VBox):
         opt = gtk.OptionMenu()
         opt.set_menu(menu)
 
-        self.__status_filter = uninstalled_cb
+        self.__status_filter = all_cb
 
         return opt
 
