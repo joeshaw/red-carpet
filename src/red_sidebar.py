@@ -86,10 +86,6 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
     def pendingops_changed_cb(self):
         self.update_label()
-        if red_pendingops.pending_ops_exist():
-            self.details.set_sensitive(1)
-        else:
-            self.details.set_sensitive(0)
 
         self.update_pending = 0
         return 0
