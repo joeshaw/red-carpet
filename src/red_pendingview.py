@@ -23,7 +23,8 @@ import red_pixbuf
 
 from red_gettext import _
 
-MAX_LABEL_LEN = 40
+MAX_LABEL_LEN = 20
+WRAP_LABEL_LEN = 40
 
 class PendingView(gtk.Window):
 
@@ -159,10 +160,9 @@ class PendingView(gtk.Window):
         # "W" being the widest glyph.
         # Text is usually split to two lines, add another one just
         # to make sure we have enough space.
-        buf = max_len * "W" + "\n\n"
-
+        s = "W"*max_len + "\n\n"
         layout = pango.Layout(gtk.Label("").get_pango_context())
-        layout.set_text(buf, max_len + 2)
+        layout.set_text(s, max_len+2)
         (width, height) = layout.get_pixel_size()
 
         return (width, height)
@@ -188,7 +188,7 @@ class PendingView(gtk.Window):
 
     def set_label(self, msg):
         if msg:
-            lines = rcd_util.linebreak(msg, MAX_LABEL_LEN)
+            lines = rcd_util.linebreak(msg, WRAP_LABEL_LEN)
             msg = string.join(lines, "\n")
         else:
             msg = ""
@@ -587,7 +587,10 @@ class PendingView_Transaction(PendingView):
                 pv.update_fill()
             elif pending["status"] == "failed":
                 pv.download_complete = 1
-                pv.transaction_finished(_("Download Failed"))
+                pv.__finished = 1
+                msg = _("Download Failed") + ":\n"                
+                msg += pending.get("error_msg", _("Unknown Error"))
+                pv.transaction_finished(msg)
                 
         serv = rcd_util.get_server_proxy()
         th = serv.rcd.system.poll_pending(self.download_id)
