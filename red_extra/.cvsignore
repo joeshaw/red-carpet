@@ -1,0 +1,8 @@
+.deps
+.libs
+Makefile
+Makefile.in
+*.pyc
+*.lo
+*.la
+red_extra.c
