@@ -70,7 +70,6 @@ class UpdateIcon(red_tray.TrayIcon):
 
     def image_press_cb(self, img, event, data):
         if event.button == 1:
-            print 'Launching red-carpet'
             f = os.popen('red-carpet', 'r')
 
     def check_updates(self, icon):
@@ -80,7 +79,7 @@ class UpdateIcon(red_tray.TrayIcon):
                     packages = worker.get_result()
                 except ximian_xmlrpclib.Fault, f:
                     packages = []
-                    print 'Got a fault: ' + str(f)
+                    print 'Failed to get available updates: ' + str(f)
                 else:
                     max_importance = 10
                     importance_str = ""
@@ -90,9 +89,6 @@ class UpdateIcon(red_tray.TrayIcon):
                             max_importance = new_pkg['importance_num']
                             importance_str = new_pkg['importance_str']
                             
-                print 'max importance: ' + str(max_importance)
-                print 'importance: ' + importance_str
-
                 if max_importance < 10:
                     self.image.set_from_pixbuf(self.imp_icons[importance_str])
                     self.tooltips.set_tip(self.box, "Updates available")
