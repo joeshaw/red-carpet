@@ -1,3 +1,7 @@
+2004-09-22  James Willcox  <james@ximian.com>
+
+	* configure.in: Bump to 2.4.1
+
 2004-09-21  Tambet Ingo  <tambet@ximian.com>
 
 	* ximian_unmarshaller/unmarshaller.c (node_new): Use
