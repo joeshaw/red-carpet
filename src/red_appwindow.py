@@ -25,7 +25,6 @@ import red_transaction
 import red_installfiles
 import red_component
 import red_componentbook
-import red_pendingview
 import red_pixbuf
 import red_pendingops
 import red_depcomponent
@@ -47,38 +46,6 @@ import red_connection
 import red_statusbar
 import red_news
 from red_gettext import _
-
-
-def refresh_cb(app):
-    server = rcd_util.get_server_proxy()
-
-    def got_channels_cb(worker, app):
-        if worker.is_cancelled():
-            return
-        try:
-            stuff_to_poll = worker.get_result()
-        except ximian_xmlrpclib.Fault, f:
-            rcd_util.dialog_from_fault(f, parent=app)
-            return
-        
-        pend = red_pendingview.PendingView_Simple(title=_("Refreshing channel data"),
-                                                  parent=app)
-        pend.set_label(_("Downloading channel information"))
-        pend.set_icon("dialog-refreshing")
-        pend.show_all()
-        pend.set_pending_list(stuff_to_poll)
-
-    try:
-        worker = server.rcd.packsys.refresh_all_channels()
-    except ximian_xmlrpclib.Fault, f:
-        rcd_util.dialog_from_fault(f, parent=app)
-        return
-
-    rcd_util.server_proxy_dialog(worker,
-                                 callback=got_channels_cb,
-                                 user_data=app,
-                                 parent=app)
-
 
 def run_transaction_cb(app):
     install_packages = red_pendingops.packages_with_actions(
@@ -466,7 +433,7 @@ class AppWindow(gtk.Window,
                               tooltip=_("Refresh channel data"),
                               stock = gtk.STOCK_REFRESH,
                               sensitive_fn=verify_and_refresh_sensitive_cb,
-                              callback=lambda x:refresh_cb(self))
+                              callback=lambda x:rcd_util.refresh(self))
 
     ##
     ## Actionbar.
@@ -782,7 +749,7 @@ class AppWindow(gtk.Window,
 
         bar.add("/%s/%s" % (actions_str, _("Re_fresh Channel Data")),
                 image=image,
-                callback=refresh_cb,
+                callback=rcd_util.refresh,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
                 accelerator="<Control>R")
 

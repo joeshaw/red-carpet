@@ -417,6 +417,40 @@ def server_proxy_dialog(worker,
 
 ###############################################################################
 
+def refresh(parent):
+    server = get_server_proxy()
+
+    def got_channels_cb(worker, parent):
+        if worker.is_cancelled():
+            return
+        try:
+            stuff_to_poll = worker.get_result()
+        except ximian_xmlrpclib.Fault, f:
+            dialog_from_fault(f, parent=parent)
+            return
+        
+        import red_pendingview
+
+        pend = red_pendingview.PendingView_Simple(title=_("Refreshing channel data"),
+                                                  parent=parent)
+        pend.set_label(_("Downloading channel information"))
+        pend.set_icon("dialog-refreshing")
+        pend.show_all()
+        pend.set_pending_list(stuff_to_poll)
+
+    try:
+        worker = server.rcd.packsys.refresh_all_channels()
+    except ximian_xmlrpclib.Fault, f:
+        dialog_from_fault(f, parent=parent)
+        return
+
+    server_proxy_dialog(worker,
+                        callback=got_channels_cb,
+                        user_data=parent,
+                        parent=parent)
+    
+###############################################################################
+
 ###
 ### Format transaction status messages into readable text
 ###

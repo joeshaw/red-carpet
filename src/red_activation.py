@@ -96,23 +96,25 @@ class ActivationWindow(gtk.Dialog):
                 return
             
             if success:
-                msg_type = gtk.MESSAGE_INFO
-                msg_txt = _("System successfully activated.")
-
                 # Store email to config.
                 config = red_settings.get_config()
                 config.set("Activation/email", this.email_to_save)
                 config.sync()
-            else:
-                msg_type = gtk.MESSAGE_ERROR
-                msg_txt = _("System could not be activated:" \
-                          " Invalid activation code or email address.")
 
-            dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                       msg_type, gtk.BUTTONS_OK, msg_txt)
-            dialog.run()
-            gtk.threads_leave()
-            dialog.destroy()
+                rcd_util.refresh(this)
+            else:
+                dialog = gtk.MessageDialog(this,
+                                           gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_ERROR,
+                                           gtk.BUTTONS_OK,
+                                           _("System could not be activated: "
+                                             "Invalid activation code or "
+                                             "email address."))
+
+                dialog.run()
+                gtk.threads_leave()
+                dialog.destroy()
+                
             this.destroy()
 
         worker = server.rcd.system.activate(code, email)

@@ -1,3 +1,22 @@
+2003-05-27  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (refresh): Move the refresh function here.  We have
+	to do an on-demand import of red_pendingview because of circular
+	import issues though, boo.
+
+	* red_activation.py (activate_finished_cb): If we successfully
+	activated, refresh the channel data.  (Fixes #43740)
+
+	* red_appwindow.py (refresh_cb): Moved to rcd_util.py.
+	(assemble_menubar, assemble_toolbar): Call rcd_util.refresh().
+
+	* red_prefs.py (PrefsViewPage_General): Save the old host and add
+	a flag indicating if the host has changed.  Connect to the
+	window's destroy signal to fire off a refresh if the host info has
+	changed.  Connect to the host entry's focus_out event and the
+	enable premium checkbox's toggled signal to set the host_changed
+	flag.  Also do that when changing the mirror.  (Fixes #40644)
+
 2003-05-20  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (dialog_from_fault): Take a generic "error_text"

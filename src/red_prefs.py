@@ -152,6 +152,15 @@ class PrefsViewPage_General(PrefsViewPage):
         self.__mirrors_win = None
         self.__parent = parent
 
+        self.old_host = None
+        self.host_changed = 0
+
+        parent.connect("destroy", self.check_for_host_changed)
+
+    def check_for_host_changed(self, parent):
+        if self.host_changed:
+            rcd_util.refresh(parent)
+
     def build(self):
         vbox = gtk.VBox(spacing=18)
         self.pack_start(vbox, expand=0, fill=0, padding=12)
@@ -170,6 +179,14 @@ class PrefsViewPage_General(PrefsViewPage):
         table.attach(label, 0, 1, 0, 1, xoptions=gtk.FILL)
 
         self.url_entry = self.create_entry("host")
+        self.old_host = self.url_entry.get_text()
+
+        def host_focus_out_cb(entry, *args):
+            if self.url_entry.get_text() != self.old_host:
+                self.host_changed = 1
+
+        self.url_entry.connect("focus_out_event", host_focus_out_cb)
+                               
 
         def mirrors_cb(b, page):
             if not page.__mirrors_win:
@@ -197,6 +214,8 @@ class PrefsViewPage_General(PrefsViewPage):
                     page.url_entry.set_text(url)
                     # manually force the value to update
                     page.prefs["host"]["value"] = url
+                    if url != page.old_host:
+                        page.host_changed = 1
                     page.enqueue("host")
 
                 page.__mirrors_win.connect("selected_mirror",
@@ -221,6 +240,10 @@ class PrefsViewPage_General(PrefsViewPage):
                                                   _("Enable Premium Services "
                                                     "(Red Carpet Express or "
                                                     "Enterprise)"))
+        def premium_toggled_cb(b, page):
+            page.host_changed = 1
+        self.premium_check.connect("toggled", premium_toggled_cb, self)
+        
         table.attach(self.premium_check, 0, 3, 1, 2,
                      xoptions=gtk.FILL)
 
