@@ -173,7 +173,7 @@ class PendingView(gtk.Window):
         # to make sure we have enough space.
         s = "W"*max_len + "\n\n"
         layout = pango.Layout(gtk.Label("").get_pango_context())
-        layout.set_text(s, max_len+2)
+        layout.set_text(s)
         (width, height) = layout.get_pixel_size()
 
         return (width, height)

@@ -1,3 +1,8 @@
+2003-03-03  Frank Belew  <frb@ximian.com>
+
+	* red_pendingview.py (PendingView.calculate_required_text_size): 
+	remove length argument on call to pango.Layout.set_text()
+
 2003-03-03  Jon Trowbridge  <trow@ximian.com>
 
 	* red_searchbox.py (SearchBox.get_filter): When filtering out
