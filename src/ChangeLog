@@ -1,3 +1,9 @@
+2003-02-27  Jon Trowbridge  <trow@ximian.com>
+
+	* red_console.py (Console.write): Queue up any messages and write
+	them to the console window in a timeout.  This avoids gtk locking
+	problems if another thread writes to stderr.
+
 2003-02-26  Jon Trowbridge  <trow@ximian.com>
 
 	* red_pendingview.py (PendingView_Transaction.finished): Thaw the

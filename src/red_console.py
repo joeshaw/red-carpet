@@ -25,6 +25,9 @@ class Console:
 
     def __init__(self):
 
+        self.__pending_messages = []
+        self.__pending_handler  = 0
+
         img = red_pixbuf.get_widget("console")
 
         box = gtk.HBox(0, 0)
@@ -53,20 +56,38 @@ class Console:
 
     def write(self, msg):
         _original_stderr.write(msg)
-        
+
         if msg[:11] == "Traceback (":
             msg = "\n" + msg
-            
-        buf = self.textview.get_buffer()
-        iter = buf.get_end_iter()
-        self.textview.get_buffer().insert(iter, msg)
-        self.window.show_all()
 
-        def scroll_down_cb():
-            adj = self.scrolled.get_vadjustment()
-            adj.set_value(adj.upper - adj.page_size)
+        self.__pending_messages.append(msg)
+
+        def write_messages_cb(console):
+            buf = console.textview.get_buffer()
+            iter = buf.get_end_iter()
+            for msg in console.__pending_messages:
+                console.textview.get_buffer().insert(iter, msg)
+
+            console.window.show_all()
+            
+            def scroll_down_cb(console):
+                adj = console.scrolled.get_vadjustment()
+                adj.set_value(adj.upper - adj.page_size)
+                return 0
+            gtk.idle_add(scroll_down_cb, console)
+
+            console.__pending_messages = []
+            console.__pending_handler  = 0
             return 0
-        gtk.idle_add(scroll_down_cb)
+
+        # We put the text into the console window in a timeout.  That
+        # way we can be sure that it happens in the main thread and
+        # that we don't have any gtk locking issues if another thread
+        # writes to stderr.
+        if self.__pending_handler == 0:
+            self.__pending_handler = gtk.timeout_add(50,
+                                                     write_messages_cb,
+                                                     self)
 
     def writelines(self, lines):
         msg = string.join(lines, "\n")
