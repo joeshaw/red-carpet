@@ -7,7 +7,6 @@ red_carpetsupport_DATA =	\
 	red_about.py				\
 	red_activation.py			\
 	red_appwindow.py			\
-	red_browse.py				\
 	red_channelbrowse.py			\
 	red_channelmodel.py			\
 	red_channeloption.py			\
