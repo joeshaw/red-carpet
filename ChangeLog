@@ -1,5 +1,9 @@
 2004-08-26  James Willcox  <james@ximian.com>
 
+	* configure.in: Bump to 2.3.9
+
+2004-08-26  James Willcox  <james@ximian.com>
+
 	* Makefile.am:
 	* art/importance-*:
 	* configure.in:
