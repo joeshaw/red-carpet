@@ -762,7 +762,7 @@
       <para>
         The history information is taken from the logs of the Red
         Carpet Daemon, <command>rcd</command>. It includes
-        transactions made with the <command>rc</command> command line
+        transactions made with the <command>rug</command> command line
       tool, but not changes made with <command>dpkg</command>,
         <command>apt-get</command>, or <command>rpm</command>.
       </para>
@@ -1207,7 +1207,7 @@
     </para>
     <para>
       To add an rcd account on the remote system, you must log in to that
-      system as root, and use the <command>rc user-add -U username -P
+      system as root, and use the <command>rug user-add -U username -P
       password</command> command. Then, you may administer the system
     without logging in as root.
     </para>
