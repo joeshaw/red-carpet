@@ -18,9 +18,11 @@ xxx_red_tray_la_LDFLAGS = -module -avoid-version -export-symbols-regex initxxx_r
 xxx_red_tray_la_LIBADD = $(GTK_LIBS)
 xxx_red_tray_la_SOURCES =	\
 	module.c		\
-	red_tray.c		\
 	eggtrayicon.c		\
 	eggtrayicon.h	
+
+nodist_xxx_red_tray_la_SOURCES = red_tray.c
+CLEANFILES = red_tray.c
 
 red_tray.c: red_tray.defs red_tray.override
 	(cd $(srcdir) \

@@ -1,3 +1,9 @@
+2004-09-08  James Willcox  <james@ximian.com>
+
+	* trayicon/bindings/Makefile.am:
+
+	Don't put red_tray.c in the dist
+
 2004-09-03  James Willcox  <james@ximian.com>
 
 	* configure.in: Bump to 2.4.0
