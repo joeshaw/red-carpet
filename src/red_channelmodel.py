@@ -134,17 +134,21 @@ class ChannelModel(red_listmodel.ListModel, red_serverlistener.ServerListener):
     ###
 
     def toggle_subscribed(self, channel):
-        def set_subscribed_fn(model, ch, flag):
-            server = rcd_util.get_server()
 
-            ch["subscribed"] = (flag and 1) or 0
+        def subscribe_cb(th, model, channel, sub):
+            def set_cb(m, ch, flag):
+                ch["subscribed"] = (flag and 1) or 0
+            model.changed(set_cb, channel, sub)
+        
+        server = rcd_util.get_server_proxy()
 
-            if flag:
-                server.rcd.packsys.subscribe(ch["id"])
-            else:
-                server.rcd.packsys.unsubscribe(ch["id"])
+        if channel["subscribed"]:
+            th = server.rcd.packsys.unsubscribe(channel["id"])
+        else:
+            th = server.rcd.packsys.subscribe(channel["id"])
 
-        self.changed(set_subscribed_fn, channel, not channel["subscribed"])
+        th.connect("ready", subscribe_cb, self, channel,
+                   not channel["subscribed"])
 
 def make_channel_view(model):
 

@@ -15,12 +15,10 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, string, md5, gtk
+import sys, os, errno, time, signal, string, md5, socket, gtk
 import ximian_xmlrpclib
 import red_pixbuf, red_serverproxy
 import red_settings
-
-import socket
 
 server = None
 server_proxy = None
@@ -66,7 +64,7 @@ def connect_to_server(force_dialog=0):
     if not force_dialog:
         # Get stuff from config and try to connect.
         data = red_settings.DaemonData()
-        url, username, password = data.data_get()
+        url, username, password, local = data.data_get()
         server, err_msg = connect_real(url, username, password)
 
         if not err_msg:
@@ -77,7 +75,7 @@ def connect_to_server(force_dialog=0):
     while 1:
         d = red_settings.ConnectionWindow()
         d.run()
-        url, username, password = d.get_server_info()
+        url, username, password, local = d.get_server_info()
         d.destroy()
         # FIXME: This shouldn't be here, it should be fixed in pygtk.
         gtk.threads_leave()
@@ -90,14 +88,40 @@ def connect_to_server(force_dialog=0):
             register_server(server)
             return server
 
-        dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
-                                   gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                   "Unable to connect to the daemon:\n '%s'." % err_msg)
-        dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
-        gtk.threads_enter()
-        dialog.run()
-        gtk.threads_leave()
-        dialog.destroy()
+        # Try to start an rcd.
+        # FIXME: This will probably require some distribution-specific love
+        if local and os.geteuid() == 0 and os.path.exists("/sbin/service"):
+            dialog = gtk.MessageDialog(None,
+                                       gtk.DIALOG_MODAL,
+                                       gtk.MESSAGE_WARNING,
+                                       gtk.BUTTONS_YES_NO,
+                                       "Red Carpet requires a Red Carpet "
+                                       "Daemon to be running.\n"
+                                       "Would you like to start one now?")
+            dialog.set_title("") # Conform to GNOME HIG
+            gtk.threads_enter()
+            response = dialog.run()
+            gtk.threads_leave()
+            dialog.destroy()
+
+            if response == gtk.RESPONSE_YES:
+                sd = StartDaemon()
+                # This will block with a dialog.
+                server = sd.run()
+
+                if server is not None:
+                    register_server(server)
+                    return server
+        else:
+            dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
+                                       gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                       "Unable to connect to the "
+                                       "daemon:\n '%s'." % err_msg)
+            dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
+            gtk.threads_enter()
+            dialog.run()
+            gtk.threads_leave()
+            dialog.destroy()
 
 def register_server(srv):
     global server, server_proxy
@@ -149,6 +173,83 @@ def get_current_user():
     server = get_server()
     current_user = server.rcd.users.get_current_user()
     return current_user
+
+class StartDaemon:
+    def __init__(self):
+        self.start_time = 0
+        self.service_pid = -1;
+        self.rcd_pid = -1;
+        self.server = None
+
+        # FIXME: Distro-specific love?
+        self.cmd = "/sbin/service"
+        self.args = (self.cmd, "rcd", "start")
+
+    def run(self):
+        self.dialog = gtk.MessageDialog(None, 0,
+                                        gtk.MESSAGE_INFO,
+                                        gtk.BUTTONS_CANCEL,
+                                        "Starting daemon...")
+
+        child_pid = os.fork()
+        if child_pid == 0: # child
+            os.execv(self.cmd, self.args)
+            # If we get here, the exec failed.
+            return None
+
+        # parent
+        self.service_pid = child_pid
+        print "service pid is %d" % self.service_pid
+
+        gtk.timeout_add(500, self.wait_for_daemon_cb)
+
+        gtk.threads_enter()
+        response = self.dialog.run()
+        print "run exited, so a mainloop died somewhere"
+        gtk.threads_leave()
+        self.dialog.destroy()
+
+        if response == gtk.RESPONSE_CANCEL or \
+           response == gtk.RESPONSE_DELETE_EVENT:
+            if self.service_pid != -1:
+                os.kill(self.service_pid, signal.SIGKILL)
+            if self.rcd_pid != -1:
+                os.kill(self.rcd_pid, signal.SIGKILL)
+
+        return self.server
+
+    def wait_for_daemon_cb(self):
+        if self.service_pid != -1:
+            pid, status = os.waitpid(self.service_pid, os.WNOHANG)
+            if pid == self.service_pid:
+                self.service_pid = -1
+
+                pidfile = open("/var/run/rcd.pid")
+                pidstr = pidfile.read()
+                print "pidstr: %s" % pidstr
+                self.rcd_pid = int(pidstr)
+                print "rcd pid: %d" % self.rcd_pid
+
+        if self.rcd_pid != -1:
+            # FIXME: allow other paths?
+            s = ximian_xmlrpclib.Server("/var/run/rcd/rcd")
+            try:
+                s.rcd.system.ping()
+            except:
+                if not self.start_time:
+                    self.start_time = time.time()
+                else:
+                    # Give the rcd 20 seconds to start before we give up.
+                    if time.time() - self.start_time >= 20:
+                        self.dialog.response(gtk.RESPONSE_CANCEL)
+                        return 0
+            else:
+                print "Contacted daemon"
+                self.dialog.response(gtk.RESPONSE_OK)
+                self.server = s
+                return 0
+
+        return 1
 
 ###############################################################################
 
@@ -458,34 +559,6 @@ def transaction_status(message):
         return m + " " + status[1]
     else:
         return m
-
-###############################################################################
-
-def set_pref(name, value):
-    if value != ximian_xmlrpclib.True and value != ximian_xmlrpclib.False:
-        try:
-            v = int(value)
-        except ValueError:
-            v = value
-    else:
-        v = value
-
-    server = get_server_proxy()
-    th = server.rcd.prefs.set_pref(name, v)
-
-    # Block while we wait for an answer
-    th.connect("ready", lambda x:gtk.main_quit())
-    gtk.main()
-
-    try:
-        th.get_result()
-    except ximian_xmlrpclib.Fault, f:
-        if f.faultCode == fault.type_mismatch:
-            return 0
-        else:
-            raise
-    else:
-        return 1
 
 ###############################################################################
 

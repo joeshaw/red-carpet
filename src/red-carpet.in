@@ -20,36 +20,38 @@
 import sys
 import os
 
-import pygtk
-pygtk.require("2.0")
-
-red_carpet_dir = "@DDIR@/red-carpet"
+red_carpet_prefix = "@prefix@"
+red_carpet_datadir = "@DDIR@/red-carpet"
 red_carpet_libdir = "@LDIR@/red-carpet"
 red_carpet_version = "@VERSION@"
 red_carpet_pixbuf_path = "@DDIR@/pixmaps/red-carpet"
 
-sys.path.insert(0, "../ximian_unmarshaller")
-sys.path.append("../sgmlop")
-sys.path.append("../sgmlop/build/lib.linux-i686-2.2")
-sys.path.append(red_carpet_libdir)
+# Magic that allows us to use red_extra and the unmarshaller w/o
+# having it installed and a pygtk installed into a different prefix.
 
-# Magic that allows us use red_extra w/o having it installed.
-sys.path.insert(0, "..")
-sys.path.insert(0, "../red_extra/.libs")
+additional_paths = ["..", "../red_extra/.libs", "@PYGTK_IMPORTDIR@",
+                    "../ximian_unmarshaller", "../sgmlop",
+                    "../sgmlop/build/lib.linux-i686-2.2",
+                    red_carpet_libdir]
+
+sys.path = additional_paths + sys.path
+
+import pygtk
+pygtk.require("2.0")
 
 # FIXME: This has a special check to allow us to run rc in-place
 # without having done a "make install".  We might want to take this
 # out at some point.
 
 if not (os.path.isfile("./red_main.py") \
-        or (os.path.isdir(red_carpet_dir) \
-            and os.path.isfile(red_carpet_dir + "/red_main.py"))):
+        or (os.path.isdir(red_carpet_datadir) \
+            and os.path.isfile(red_carpet_datadir + "/red_main.py"))):
     print "ERROR: The Red Carpet Graphical Client doesn't appear to be"
     print "ERROR: installed properly.  Please check your installation."
     sys.exit(1)
 
 
-sys.path.append(red_carpet_dir)
+sys.path.append(red_carpet_datadir)
 
 import red_pixbuf
 red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)

@@ -18,6 +18,7 @@
 import string, gobject, gtk
 import rcd_util
 import red_main
+import red_listmodel, red_thrashingtreeview
 import ximian_xmlrpclib
 
 model = None
@@ -40,20 +41,20 @@ class PrefsView(gtk.Notebook):
         label.show()
         self.append_page(label, gtk.Label(""))
         
-        server = rcd_util.get_server_proxy()
-        th = server.rcd.prefs.list_prefs()
+        self.server = rcd_util.get_server_proxy()
+        th = self.server.rcd.prefs.list_prefs()
         th.connect("ready", lambda x:self.build(x.get_result()))
 
     def build(self, prefs):
         # Remove the "loading" "page".
         self.remove_page(0)
         self.set_show_tabs(1)
-        
+
         categories = build_categories(prefs)
 
         for c in categories:
             model = PrefsModel(prefs, c)
-            view = gtk.TreeView(model)
+            view = red_thrashingtreeview.TreeView(model)
 
             col = gtk.TreeViewColumn("Description",
                                      gtk.CellRendererText(),
@@ -62,24 +63,41 @@ class PrefsView(gtk.Notebook):
 
             r = CellRendererPref()
 
-            def activated_cb(r, pref):
+            def set_pref_cb(th, pref, value, model):
+                try:
+                    result = th.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    if f.faultCode == rcd_util.fault.type_mismatch:
+                        result = 1
+                    else:
+                        raise
+
+                print "Setting '%s' to '%s'" % (pref["name"], str(value))
+                if not result:
+                    def set_cb(m, p, v):
+                        p["value"] = v
+                    model.changed(set_cb, pref, value)
+                else:
+                    print "Couldn't set pref!"
+
+            def activated_cb(r, pref, model):
                 opp = ximian_xmlrpclib.Boolean(not pref["value"])
 
-                if rcd_util.set_pref(pref["name"], opp):
-                    pref["value"] = opp
-                else:
-                    print "Couldn't set preference!"
+                th = self.server.rcd.prefs.set_pref(pref["name"], opp)
+                th.connect("ready", set_pref_cb, pref, opp, model)
 
-            r.connect("activated", activated_cb)
+            r.connect("activated", activated_cb, model)
 
-            def editing_done_cb(r, pref, value):
-                print "Setting '%s' to '%s'" % (pref["name"], str(value))
-                if rcd_util.set_pref(pref["name"], value):
-                    pref["value"] = value
-                else:
-                    print "Couldn't set preference!"
+            def editing_done_cb(r, pref, value, model):
+                try:
+                    v = int(value)
+                except ValueError:
+                    v = value
 
-            r.connect("editing_done", editing_done_cb)
+                th = self.server.rcd.prefs.set_pref(pref["name"], v)
+                th.connect("ready", set_pref_cb, pref, v, model)
+
+            r.connect("editing_done", editing_done_cb, model)
 
             col = gtk.TreeViewColumn("Value", r, value=COLUMN_VALUE)
             view.append_column(col)
@@ -90,7 +108,7 @@ class PrefsView(gtk.Notebook):
                 label = gtk.Label(c)
             else:
                 label = gtk.Label("Settings")
-            self.append_page(view, label)
+            self.append_page(view, label)        
 
 class PrefsWindow(gtk.Dialog):
 
@@ -176,7 +194,7 @@ class CellRendererPref(gtk.GenericCellRenderer):
             assert 0
 
         model = widget.get_model()
-        pref = model.prefs[int(path)]
+        pref = model.get_list_item(int(path))
         self.emit("activated", pref)
         return r.activate(event, widget, path,
                           background_area, cell_area, flags)
@@ -190,7 +208,7 @@ class CellRendererPref(gtk.GenericCellRenderer):
             assert 0
 
         model = widget.get_model()
-        pref = model.prefs[int(path)]
+        pref = model.get_list_item(int(path))
 
         entry = gtk.Entry()
         entry.set_property("has_frame", 0)
@@ -218,80 +236,50 @@ gobject.signal_new("editing_done",
                    gobject.TYPE_NONE,
                    (gobject.TYPE_PYOBJECT, gobject.TYPE_STRING))
 
-COLUMN_PREF        = 0
-COLUMN_NAME        = 1
-COLUMN_DESCRIPTION = 2
-COLUMN_CATEGORY    = 3
-COLUMN_VALUE       = 4
-COLUMN_LAST        = 5
-        
-class PrefsModel(gtk.GenericTreeModel):
+COLUMNS = (
+    ("PREF",
+     lambda x:x,
+     gobject.TYPE_PYOBJECT),
+    
+    ("NAME",
+     lambda x:x["name"],
+     gobject.TYPE_STRING),
+    
+    ("DESCRIPTION",
+     lambda x:string.join(rcd_util.linebreak(x["description"], 50), "\n"),
+     gobject.TYPE_STRING),
+    
+    ("CATEGORY",
+     lambda x:x["category"],
+     gobject.TYPE_STRING),
+    
+    ("VALUE",
+     lambda x:x["value"],
+     gobject.TYPE_PYOBJECT)
+)
+
+for i in range(len(COLUMNS)):
+    name = COLUMNS[i][0]
+    exec("COLUMN_%s = %d" % (name, i))
+
+class PrefsModel(red_listmodel.ListModel):
     def __init__(self, prefs, category=None):
 
-        gtk.GenericTreeModel.__init__(self)
-        
-        if category:
-            self.prefs = [x for x in prefs \
-                          if x["category"] == category]
+        red_listmodel.ListModel.__init__(self)
+
+        self.__category = category
+        if self.__category:
+            self.__prefs = [x for x in prefs if x["category"] == category]
         else:
-            self.prefs = prefs
+            self.__prefs = prefs
 
-    def pref_to_column(self, pref, index):
-        if index == COLUMN_PREF:
-            return pref
-        elif index == COLUMN_NAME:
-            return pref["name"]
-        elif index == COLUMN_DESCRIPTION:
-            return string.join(rcd_util.linebreak(pref["description"], 50), "\n")
-        elif index == COLUMN_CATEGORY:
-            return pref["category"]
-        elif index == COLUMN_VALUE:
-            return pref["value"]
+        for name, callback, type in COLUMNS:
+            self.add_column(callback, type)
 
-    def on_get_flags(self):
-        return 0
+        self.changed(lambda x:x)
 
-    def on_get_n_columns(self):
-        return COLUMN_LAST
+    def get(self, i):
+        return self.__prefs[i]
 
-    def on_get_column_type(self, index):
-        if index == COLUMN_PREF or index == COLUMN_VALUE:
-            return gobject.TYPE_PYOBJECT
-        else:
-            return gobject.TYPE_STRING
-
-    def on_get_path(self, node):
-        return node
-
-    def on_get_iter(self, path):
-        return path
-
-    def on_get_value(self, node, column):
-        pref = self.prefs[node[0]]
-        if pref:
-            return self.pref_to_column(pref, column)
-        return "?no pref"
-
-    def on_iter_next(self, node):
-        next = node[0] + 1
-        if next >= len(self.prefs):
-            return None
-        return (next,)
-
-    def on_iter_children(self, node):
-        if node == None:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_has_child(self, node):
-        return 0
-
-    def on_iter_nth_child(self, node, n):
-        if node == None and n == 0:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_parent(self, node):
-        return None
+    def get_all(self):
+        return self.__prefs

@@ -17,6 +17,7 @@
 
 import sys, weakref, threading, gtk
 import rcd_util
+import ximian_xmlrpclib
 
 ###
 ### Set up our polling timeout.  This should be the only place

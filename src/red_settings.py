@@ -200,7 +200,8 @@ class DaemonData:
     def data_get(self):
         return (self.url_get(),
                 self.user_get(),
-                self.password_get())
+                self.password_get(),
+                self.local_get())
 
 
 class DaemonSettings(gtk.VBox):
@@ -323,4 +324,4 @@ class ConnectionWindow(gtk.Dialog):
         if self.accepted:
             return self.ui.get_daemon_info()
 
-        return (None, None, None)
+        return (None, None, None, 0)

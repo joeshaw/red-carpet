@@ -1,4 +1,9 @@
+if USERMODE
+red_carpetexecdir = $(sbindir)
+else
 red_carpetexecdir = $(bindir)
+endif
+
 red_carpetexec_DATA = red-carpet
 
 red_carpetsupportdir = $(datadir)/red-carpet
@@ -19,6 +24,7 @@ red_carpetsupport_DATA =	\
 	red_history.py				\
 	red_installfiles.py			\
 	red_listmodel.py			\
+	red_locks.py				\
 	red_main.py				\
 	red_menubar.py				\
 	red_mount.py				\

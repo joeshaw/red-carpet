@@ -1,3 +1,35 @@
+2003-02-19  Joe Shaw  <joe@ximian.com>
+
+	* Makefile.am: If we're installing usermode files, install into
+	$(sbindir) instead of $(bindir).  Add red_locks.py.
+
+	* red-carpet.glade: Delete.  We never used it.
+
+	* red-carpet.in: Reorganize this a bit so we can pull in pygtk
+	libs from the correct prefix.
+
+	* rcd_util.py: Also get a "local" flag from
+	red_settings.DaemonData.data_get() and
+	red_settings.ConnectionWindow.get_server_info().
+	(connect_to_server): If we're connecting locally, and we're root
+	and we have /sbin/service, offer to start a daemon.
+	(StartDaemon): New class which starts a daemon.
+	(set_pref): Nuke this, it's been absorbed in red_prefs.py.
+
+	* red_channelmodel.py (toggle_subscribed): Make this use
+	ServerProxy.
+
+	* red_prefs.py (PrefsView.build): Mostly rewrite this to get prefs
+	async via ServerProxy.  Make the view a thrashing view
+	(CellRendererPref): get the pref using get_list_item() instead of
+	accessing the prefs directly.
+	(PrefsModel): Make this a ListModel, make it mostly opaque.
+
+	* red_serverlistener.py: import ximian_xmlrpclib.
+
+	* red_settings.py (DaemonData.data_get): Expand the tuple to
+	return a local flag.
+
 2003-02-19  Tambet Ingo  <tambet@ximian.com>
 
 	* red_news.py (NewsModel.get_news_cb): Catch xmlrpc faults.
