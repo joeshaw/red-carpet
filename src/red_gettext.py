@@ -15,10 +15,12 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import red_main
+import os
+
+debug = os.getenv("RC_GUI_TRANSLATION_DEBUG")
 
 def _(msg):
-    if red_main.debug:
+    if debug:
         return "((%s))" % msg
     else:
         return msg
