@@ -24,9 +24,9 @@ Red Carpet is written in Python and C.  It requires
 
   * Python 2.2.2 or newer
 
-  * pygtk 1.99.15 or newer
+  * pygtk 1.99.16 or newer
 
-Red Carpet can only connect to rcd 1.2.1 or newer.
+Red Carpet can only connect to rcd 1.4.0 or newer.
 
 If you have the necessary requirements, building Red Carpet is easy.
 It uses GNU autotools, so all you need to do is:
