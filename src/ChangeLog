@@ -1,5 +1,7 @@
 2003-02-21  Jon Trowbridge  <trow@ximian.com>
 
+	* red_statusoption.py (_status_types): Properly filter upgrades.
+
 	* red_main.py (debug): Set the debug flag based on the
 	RC_GUI_DEBUG environment variable.
 

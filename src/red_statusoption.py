@@ -19,7 +19,7 @@ import gobject, gtk
 
 _status_types = (
     ("Uninstalled", lambda p: not p["installed"] and not p["name_installed"]),
-    ("Upgrade",     lambda p: p["name_installed"] > 0),
+    ("Upgrade",     lambda p: p["name_installed"] > 0 and not p["installed"]),
     ("Installed",   lambda p: p["installed"] or p["name_installed"]),
     ("All",         lambda p: 1),
     )

@@ -1,3 +1,10 @@
+2003-02-21  Jon Trowbridge  <trow@ximian.com>
+
+	* art: Add various icons from jimmac.
+
+	* art/Makefile.am (image_DATA): Grab all of the png files
+	with a wildcard.
+
 2003-02-19  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: Get and substite a PYGTK_IMPORTDIR.  Add
