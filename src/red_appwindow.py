@@ -37,6 +37,7 @@ import red_activation
 import red_about
 import red_settings
 import red_mount
+import red_serverinfo
 
 def refresh_cb(app):
     try:
@@ -51,55 +52,6 @@ def refresh_cb(app):
     pend.show_all()
     pend.set_pending_list(stuff_to_poll)
 
-def view_server_info_cb(app):
-
-    # We only allow one server info window at a time
-    if getattr(app, "server_info_window", None):
-        app.server_info_window.destroy()
-    
-    server = rcd_util.get_server()
-    try:
-        results = server.rcd.system.ping()
-    except:
-        results = None
-
-    if results:
-        dialog_type = gtk.MESSAGE_INFO
-
-        messages = ["The server identified itself as:", ""]
-
-        if results.has_key("name"):
-            messages.append("%s" % results["name"])
-
-        if results.has_key("copyright"):
-            messages.append(results["copyright"])
-
-        messages.append("")
-
-        if results.has_key("distro_info"):
-            messages.append("System type: %s" % results["distro_info"])
-
-        if results.has_key("server_url"):
-            messages.append("Server URL: %s" % results["server_url"])
-
-        if results.get("server_premium", 0):
-            messages.append("Server supports enhanced features.")
-
-    else: # couldn't ping the server
-
-        dialog_type = gtk.MESSAGE_WARNING
-        messages = ["Unable to contact the server."]
-
-    dialog = gtk.MessageDialog(app, 0, dialog_type, gtk.BUTTONS_OK,
-                               string.join(messages, "\n"))
-
-    def destroy_cb(x, y, z):
-        z.server_info_window = None
-        x.destroy()
-    dialog.connect("response", destroy_cb, app)
-    dialog.show_all()
-
-    app.server_info_window = dialog
 
 class AppWindow(gtk.Window, red_component.ComponentListener):
 
@@ -324,7 +276,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
         bar.add("/View/Server Information...",
-                callback=view_server_info_cb)
+                callback=red_serverinfo.view_server_info_cb)
         bar.add("/View/sep", is_separator=1)
         
         bar.add("/Help/About...",

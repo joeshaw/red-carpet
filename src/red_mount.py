@@ -60,16 +60,6 @@ def unmount_channel(cid):
         dialog.run()
         dialog.destroy()
 
-def select_and_mount():
-    def get_file_cb(b, ds):
-        [mount_channel(x) for x in ds.get_selections()]
-        ds.destroy()
-
-    dirsel = red_dirselection.DirSelection("Mount Directory")
-    dirsel.ok_button.connect("clicked", get_file_cb, dirsel)
-    dirsel.cancel_button.connect("clicked", lambda x,y:y.destroy(), dirsel)
-    dirsel.show()
-
 def has_mounted_channels():
     return len([x["id"] for x in rcd_util.get_all_channels()
                 if x["transient"]])
