@@ -123,6 +123,29 @@ def get_package_channel_icon(pkg, width=0, height=0):
     else:
         return None
 
+def get_package_EVR(pkg):
+    epoch_str = ""
+    rel_str = ""
+    if pkg["has_epoch"]:
+        epoch_str = "%d:" % pkg["epoch"]
+    if pkg["release"]:
+        rel_str = "-%s" % pkg["release"]
+    return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
+
+
+###############################################################################
+
+def byte_size_to_string(sz):
+    if sz <= 0:
+        return ""
+    elif sz < 1024:
+        return "%d bytes" % sz
+    elif sz < 1048576:
+        return "%d kb" % (sz/1024)
+    else:
+        return "%.1f mb" % (sz/(1048576.0))
+
+
 
 
         

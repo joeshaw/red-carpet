@@ -50,13 +50,18 @@ class MenuBar(gtk.MenuBar):
 
     def add(self, path,
             callback=None,
+            with_dropdown_arrow=0,
             is_separator=0,
             visible_fn=None,
             sensitive_fn=None,
             stock=None,
             pixbuf=None,
             pixbuf_name=None,
-            checked_get=None, checked_set=None):
+            checked_get=None, checked_set=None,
+            radiogroup=None,
+            radiotag=None,
+            radio_get=None,
+            radio_set=None):
 
         if self.constructed:
             print "Can't add '%s' to an already-constructed menu bar." \
@@ -78,6 +83,7 @@ class MenuBar(gtk.MenuBar):
         item = {"path":path,
                 "name":name,
                 "callback":callback,
+                "with_dropdown_arrow":with_dropdown_arrow,
                 "is_separator":is_separator,
                 "visible_fn":visible_fn,
                 "sensitive_fn":sensitive_fn,
@@ -85,6 +91,10 @@ class MenuBar(gtk.MenuBar):
                 "pixbuf":pixbuf,
                 "checked_get":checked_get,
                 "checked_set":checked_set,
+                "radiogroup":radiogroup,
+                "radiotag":radiotag,
+                "radio_get":radio_get,
+                "radio_set":radio_set,
                 }
 
         self.pending_items.append(item)
@@ -98,6 +108,8 @@ class MenuBar(gtk.MenuBar):
         self.constructed = 1
 
         tree_structure = {}
+        radiogroups = {}
+        
         for item in self.pending_items:
             prefix, base = os.path.split(item["path"])
             if tree_structure.has_key(prefix):
@@ -132,23 +144,62 @@ class MenuBar(gtk.MenuBar):
                 elif item["pixbuf"]:
                     menu_item = gtk.ImageMenuItem()
                     menu_item.set_image(item["pixbuf"])
+                elif item["radiogroup"] and item["radiotag"]:
+
+                    grp = radiogroups.get(item["radiogroup"])
+                    grp_widget = None
+                    if grp:
+                        grp_widget, grp_item = grp
+                        item["radio_get"] = grp_item["radio_get"]
+                        item["radio_set"] = grp_item["radio_set"]
+                        
+                    
+                    menu_item = gtk.RadioMenuItem(grp_widget, item["name"])
+                    if not grp:
+                        #assert item["radio_get"] and item["radio_set"]
+                        radiogroups[item["radiogroup"]] = (menu_item,
+                                                           item)
+
+                    def radio_activate(mi, get_fn, set_fn, tag):
+                        if get_fn() != tag:
+                            set_fn(tag)
+
+                    menu_item.connect_after("activate",
+                                            radio_activate,
+                                            item["radio_get"],
+                                            item["radio_set"],
+                                            item["radiotag"])
+
+                    needs_refresh = 1
+                    
                 elif item["checked_get"] and item["checked_set"]:
                     menu_item = gtk.CheckMenuItem(item["name"])
                     menu_item.set_active(item["checked_get"]())
                     needs_refresh = 1
-
-                    def check_activate(mi):
+                    
+                    def check_activate(mi, get_fn, set_fn):
                         state = mi.get_active()
-                        x = (item["checked_get"]() and 1) or 0
+                        x = (get_fn() and 1) or 0
                         if x ^ state:
-                            item["checked_set"](state)
+                            set_fn(state)
                             
-                    menu_item.connect_after("activate", check_activate)
+                    menu_item.connect_after("activate",
+                                            check_activate,
+                                            item["checked_get"],
+                                            item["checked_set"])
                 else:
-                    menu_item = gtk.MenuItem(item_name)
+                    if item["with_dropdown_arrow"]:
+                        menu_item = gtk.MenuItem()
+                        hbox = gtk.HBox(0, 0)
+                        hbox.pack_start(gtk.Label(item_name), 0, 0, 0)
+                        hbox.pack_start(gtk.Arrow(gtk.ARROW_DOWN,
+                                                  gtk.SHADOW_OUT), 0, 0, 0)
+                        menu_item.add(hbox)
+                    else:
+                        menu_item = gtk.MenuItem(item_name)
 
                 parent_menu.append(menu_item)
-                menu_item.show()
+                menu_item.show_all()
 
                 ### If this item is a leaf in our tree,
                 ### hook up it's callback
@@ -177,6 +228,14 @@ class MenuBar(gtk.MenuBar):
                     if checked_get:
                         x = (checked_get() and 1) or 0
                         widget.set_active(x)
+
+                    radiogroup = item["radiogroup"]
+                    radiotag = item["radiotag"]
+                    radio_get = item["radio_get"]
+                    radio_set = item["radio_set"]
+                    if radiogroup and radiotag and radio_get and radio_set:
+                        active_tag = radio_get()
+                        widget.set_active(radiotag == active_tag)
 
                 if needs_refresh:
                     self.connect("refresh_items",

@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_header, red_pixbuf
-import red_packagearray, red_channeloption, red_explodedview
+import red_packagearray, red_channeloption, red_packagetable
 import red_component
 
 class SummaryComponent(red_component.Component):
@@ -49,11 +49,11 @@ class SummaryComponent(red_component.Component):
 
         ### Main
 
-        if self.array.len() > 0:
-            ex = red_explodedview.ExplodedView(array=self.array,
-                                               by_importance=1)
-            
-            self.display("main", ex)
+        ex = red_packagetable.PackageTable()
+        ex.set_exploder(by_importance=1)
+        ex.set_array(self.array)
+
+        self.display("main", ex)
 
 
         ### Lower

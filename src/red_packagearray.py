@@ -19,6 +19,18 @@ import sys, string
 import gobject, gtk
 import rcd_util
 
+# FIXME: This sorting function should be smarter, and should
+# sort lists into some sort of canonical form that will
+# make it inexpensive to figure out if two sorted lists of packages
+# are the same.
+def pkg_cmp(a,b):
+    return cmp(string.lower(a["name"]), string.lower(b["name"]))
+
+def pkg_key(p):
+    return string.join([p["name"], p["epoch"], p["version"], p["release"]],
+                       "||")
+
+
 colcounter = -1
 def next_col():
     global colcounter
@@ -54,6 +66,7 @@ column[COLUMN_INSTALLED_SIZE] = \
 
 def installed_size_str_cb(pkg):
     sz = pkg["file_size"]
+    
     if sz < 1024:
         return "%d bytes" % sz
     elif sz < 1048576:
@@ -173,7 +186,9 @@ gobject.signal_new("changed",
                    gobject.TYPE_NONE,
                    ())
 
+
 ###############################################################################
+
 
 class PackageStore(PackageArray):
 
@@ -194,13 +209,19 @@ class PackageStore(PackageArray):
             x.store = pl
         self.changed(set_op, pkg_list)
 
-    def append(self, pkg):
-        def append_op(x, p):
+    def add(self, pkg):
+        def add_op(x, p):
             x.store.append(p)
-        self.changed(append_op, pkg)
+        self.changed(add_op, pkg)
+
+    def remove(self, pkg):
+        def remove_op(x, i):
+            del x.store[i]
+        self.changed(remove_op, 0)
 
         
 ###############################################################################
+
 
 class FilteredPackageArray(PackageArray):
 
@@ -325,11 +346,6 @@ class PackagesFromDaemon(PackageArray):
 
             packages = self.get_packages_from_daemon(self.server)
 
-            # FIXME: This sorting function should be smarter, and should
-            # sort lists into some sort of canonical form that will
-            # make it inexpensive to figure out if array.packages != packages.
-            def pkg_cmp(a,b):
-                return cmp(string.lower(a["name"]), string.lower(b["name"]))
             if packages:
                 packages.sort(pkg_cmp)
 
