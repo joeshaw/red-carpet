@@ -18,6 +18,8 @@
 import sys, string
 import gtk
 import rcd_util
+import red_packagearray
+import red_history
 
 class PackagePage:
 
@@ -32,6 +34,7 @@ class PackagePage:
     def visible(self, pkg):
         return 1
 
+    # Define me!
     def build_widget(self, pkg, server):
         return gtk.Label("PackagePage.build_widget not implemented")
 
@@ -70,6 +73,18 @@ class PageHistory(PackagePage):
         buf.set_text(string.join(pkg["__history"], "\n"))
         return sw
 
+class PageHistory2(PackagePage):
+
+    def name(self):
+        return "History2"
+
+    def visible(self, pkg):
+        return pkg and red_packagearray.pkg_name(pkg)
+
+    def build_widget(self, pkg, server):
+        pkg_name = red_packagearray.pkg_name(pkg)
+        if pkg_name:
+            return red_history.PackageHistory(pkg_name)
 
 class PackageBook(gtk.Notebook):
 
