@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-09-06 16:06+0200\n"
-"PO-Revision-Date: 2003-09-06 16:06+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-26 17:47+0200\n"
+"PO-Revision-Date: 2003-09-26 18:04+0200\n"
 "Last-Translator: Slobodan Simic <slsimic@verat.net>\n"
 "Language-Team: Srpski <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,23 +44,24 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
+#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:381
+#: src/rcd_util.py:419
 msgid "Please wait while getting data."
 msgstr "Молим сачекајте док узимам податке."
 
 #. ##############################################################################
-#: src/rcd_util.py:435 src/rcd_util.py:453
+#: src/rcd_util.py:473 src/rcd_util.py:491
 msgid "Please ensure that your network settings are correct."
 msgstr "Проверите да ли су мрежна подешавања исправна."
 
-#: src/rcd_util.py:442
+#: src/rcd_util.py:480
 msgid "Refreshing channel data"
 msgstr "Освежавам податке о каналу"
 
-#: src/rcd_util.py:444
+#: src/rcd_util.py:482
 msgid "Downloading channel information"
 msgstr "Преузимам информације о каналу"
 
@@ -67,31 +69,31 @@ msgstr "Преузимам информације о каналу"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:470
+#: src/rcd_util.py:508
 msgid "Verifying"
 msgstr "Проверавам"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:509
 msgid "Unable to verify package signature for"
 msgstr "Не могу да проверим потпис пакета за"
 
-#: src/rcd_util.py:472
+#: src/rcd_util.py:510
 msgid "There is no package signature for"
 msgstr "Нема потписа пакета за"
 
-#: src/rcd_util.py:473
+#: src/rcd_util.py:511
 msgid "Preparing Transaction"
 msgstr "Припремам пренос"
 
-#: src/rcd_util.py:474
+#: src/rcd_util.py:512
 msgid "Installing"
 msgstr "Инсталирам"
 
-#: src/rcd_util.py:475
+#: src/rcd_util.py:513
 msgid "Removing"
 msgstr "Уклањам"
 
-#: src/rcd_util.py:476
+#: src/rcd_util.py:514
 msgid "Configuring"
 msgstr "Подешавам"
 
@@ -180,33 +182,37 @@ msgstr "Лиценцирано под 'GNU' Општом Јавном Лицен
 msgid "Group Activation"
 msgstr "Активирање групе"
 
-#: src/red_activation.py:37
+#: src/red_activation.py:44
+msgid "Service:"
+msgstr "Услуга:"
+
+#: src/red_activation.py:48
 msgid "Email:"
 msgstr "Е-пошта:"
 
-#: src/red_activation.py:41
+#: src/red_activation.py:52
 msgid "Activation Code:"
 msgstr "Активирајући код:"
 
-#: src/red_activation.py:59
+#: src/red_activation.py:78
 msgid "Activate"
 msgstr "Активирај"
 
-#: src/red_activation.py:76
+#: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
 msgstr "Молим попуните и е-пошту и активирајући код."
 
-#: src/red_activation.py:91
+#: src/red_activation.py:114
 msgid "Unable to activate"
 msgstr "Не могу да активирам"
 
-#: src/red_activation.py:92
+#: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
 "Проверите да ли сте исправно попунили е-поштанску адресу и активирајући код."
 
 #. Store email to config.
-#: src/red_activation.py:110
+#: src/red_activation.py:133
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
@@ -235,7 +241,7 @@ msgstr ""
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:83
+#: src/red_appwindow.py:84
 msgid "C"
 msgstr "C"
 
@@ -249,7 +255,7 @@ msgstr "C"
 #. dunno, but a sane
 #. fallback
 #. CDE
-#: src/red_appwindow.py:120
+#: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -257,7 +263,7 @@ msgstr ""
 "Не могу да прикажем помоћ јер недостаје датотека. Пријавите ово Вашем "
 "продавцу."
 
-#: src/red_appwindow.py:130
+#: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr "Не могу да прикажем помоћ јер нема апликације за преглед помоћи."
@@ -275,7 +281,7 @@ msgstr "Не могу да прикажем помоћ јер нема апли�
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:405
+#: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Сигурно желите да отворите прозоре са информацијама о пакету %d ?"
@@ -283,71 +289,71 @@ msgstr "Сигурно желите да отворите прозоре са и
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr "Покрени одмах"
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:435
 msgid "Perform installations and removals"
 msgstr "Обави инсталације и уклањања"
 
-#: src/red_appwindow.py:441
+#: src/red_appwindow.py:442
 msgid "Channels"
 msgstr "Канали"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
 msgstr "Промена пријава на каналима"
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:451
 msgid "Refresh"
 msgstr "Освежи"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:452
 msgid "Refresh channel data"
 msgstr "Освежи податке о каналу"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:462 src/red_packageview.py:232
+#: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Означи за _инсталацију"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:464
 msgid "Mark selected packages for installation"
 msgstr "Означава пакете за инсталацију"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:468 src/red_appwindow.py:763
+#: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Означи за _уклањање"
 
-#: src/red_appwindow.py:469
+#: src/red_appwindow.py:470
 msgid "Mark selected packages for removal"
 msgstr "Означава пакете за уклањање"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:474 src/red_appwindow.py:776
+#: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Откажи"
 
-#: src/red_appwindow.py:475
+#: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
 msgstr "Отказује означене поступке за пакете"
 
 #. Info
-#: src/red_appwindow.py:480 src/red_packageview.py:276
+#: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "И_нформације"
 
-#: src/red_appwindow.py:481
+#: src/red_appwindow.py:482
 msgid "Package information"
 msgstr "Информације о пакету"
 
@@ -357,11 +363,11 @@ msgstr "Информације о пакету"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:538
+#: src/red_appwindow.py:539
 msgid "_File"
 msgstr "_Фајл"
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:540
 msgid "_Edit"
 msgstr "Изм_ена"
 
@@ -370,249 +376,257 @@ msgstr "Изм_ена"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:540 src/red_appwindow.py:826
+#: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "_Преглед"
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:542
 msgid "_Actions"
 msgstr "Поступци"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:543
 msgid "_Help"
 msgstr "П_омоћ"
 
-#: src/red_appwindow.py:550
+#: src/red_appwindow.py:551
 msgid "Connect to daemon..."
 msgstr "Повезујем се са услужним програмом..."
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
 msgstr "Повезујем се са удаљеним услужним програмом"
 
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:562
 msgid "Install from _File..."
 msgstr "Инсталирај из _датотеке..."
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:563
 msgid "Install a package from a local file"
 msgstr "Инсталира пакет из датотеке"
 
-#: src/red_appwindow.py:571
+#: src/red_appwindow.py:572
 msgid "Install from _URL..."
 msgstr "Инсталирај са _интернета..."
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:573
 msgid "Install a package from a remote URL"
 msgstr "Инсталира пакет са интернета"
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:589
+#: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr "_Монтирај директоријум..."
 
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:591
 msgid "Mount a directory as a channel"
 msgstr "Монтирај директоријум као канал"
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:606
+#: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr "Демо_нтирај директоријум..."
 
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:608
 msgid "Unmount a directory"
 msgstr "Демонтирај директоријум..."
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:622
+#: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr "_Активирај..."
 
-#: src/red_appwindow.py:623
+#: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
 "Активирај услужни програм за Red Carpet Express или Red Carpet Enterprise "
 "сервер"
 
-#: src/red_appwindow.py:629
+#: src/red_appwindow.py:631
 msgid "Quit"
 msgstr "Заврши"
 
-#: src/red_appwindow.py:630
+#: src/red_appwindow.py:632
 msgid "Quit Red Carpet"
 msgstr "Изађи из Red Carpet-a"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:645
+#: src/red_appwindow.py:647
 msgid "Select _All"
 msgstr "Означи _све"
 
-#: src/red_appwindow.py:646
+#: src/red_appwindow.py:648
 msgid "Select all items"
 msgstr "Означава све ставке"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:653
 msgid "Select _None"
 msgstr "_Ништа означено"
 
-#: src/red_appwindow.py:652
+#: src/red_appwindow.py:654
 msgid "Deselect all items"
 msgstr "Ништа није означено"
 
-#: src/red_appwindow.py:659
+#: src/red_appwindow.py:661
+msgid "Services..."
+msgstr "Услуге..."
+
+#: src/red_appwindow.py:662
+msgid "Edit services"
+msgstr "Уредите услуге"
+
+#: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
 msgstr "Пријаве на канале..."
 
-#: src/red_appwindow.py:660
+#: src/red_appwindow.py:667
 msgid "Edit your channel subscriptions"
 msgstr "Промена пријава на каналима"
 
-#: src/red_appwindow.py:665
+#: src/red_appwindow.py:672
 msgid "_Preferences..."
 msgstr "_Поставке..."
 
-#: src/red_appwindow.py:666
+#: src/red_appwindow.py:673
 msgid "Edit your Red Carpet preferences"
 msgstr "Измени своја подешавања Red Carpet-a"
 
-#: src/red_appwindow.py:670
+#: src/red_appwindow.py:677
 msgid "_Users..."
 msgstr "_Корисници..."
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
 msgstr "Измени корисничке дозволе за овај услужни програм"
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr "Линија са _стране"
 
-#: src/red_appwindow.py:685
+#: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Прикажи или сакриј траку о наредним поступцима"
 
-#: src/red_appwindow.py:689
+#: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
 msgstr "Н_апредне опције претраживања"
 
-#: src/red_appwindow.py:690
+#: src/red_appwindow.py:697
 msgid "Hide or show advanced search options"
 msgstr "Прикажи или сакриј напредне опције претраживања"
 
-#: src/red_appwindow.py:694
+#: src/red_appwindow.py:701
 msgid "_Channel Names"
 msgstr "Имена _канала"
 
-#: src/red_appwindow.py:695
+#: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
 msgstr "Прикажи или сакриј имена канала у листи пакета"
 
-#: src/red_appwindow.py:701
+#: src/red_appwindow.py:708
 msgid "Package _Information..."
 msgstr "_Информације о пакету..."
 
-#: src/red_appwindow.py:702
+#: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
 msgstr "Погледај информације о тренутно означеним пакетима"
 
-#: src/red_appwindow.py:710
+#: src/red_appwindow.py:717
 msgid "_Daemon Information..."
 msgstr "Информације о услужном програму..."
 
-#: src/red_appwindow.py:711
+#: src/red_appwindow.py:718
 msgid "View information about this daemon"
 msgstr "Погледај информације о овом услужном програму"
 
-#: src/red_appwindow.py:713
+#: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
 msgstr "Новости Red Carpet-a..."
 
-#: src/red_appwindow.py:714
+#: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
 msgstr "Погледај последње новости Red Carpet-a"
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:726
+#: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr "Покрени _одмах"
 
-#: src/red_appwindow.py:727
+#: src/red_appwindow.py:734
 msgid "Run the current transaction"
 msgstr "Покрени текући пренос"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:741
+#: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
 msgstr "Про_вери зависности система"
 
-#: src/red_appwindow.py:742
+#: src/red_appwindow.py:749
 msgid "Verify that all system dependencies are met"
 msgstr "Проверава зависности система"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
 msgstr "Означи за инсталацију"
 
-#: src/red_appwindow.py:754
+#: src/red_appwindow.py:761
 msgid "Mark this package for installation"
 msgstr "Означава пакете за инсталацију"
 
-#: src/red_appwindow.py:764
+#: src/red_appwindow.py:771
 msgid "Mark this package for removal"
 msgstr "Означава пакете за уклањање"
 
-#: src/red_appwindow.py:777
+#: src/red_appwindow.py:784
 msgid "Cancel installation or removal mark"
 msgstr "Уклони знак за инсталацију или уклањање"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:791
+#: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr "Освежи податке о каналу"
 
-#: src/red_appwindow.py:792
+#: src/red_appwindow.py:799
 msgid "Download latest channel data"
 msgstr "Преузими најновије податке о каналу"
 
-#: src/red_appwindow.py:801
+#: src/red_appwindow.py:808
 msgid "_Contents"
 msgstr "_Садржај"
 
-#: src/red_appwindow.py:802
+#: src/red_appwindow.py:809
 msgid "View Red Carpet help"
 msgstr "Погледај помоћ за Red Carpet-а"
 
-#: src/red_appwindow.py:807
+#: src/red_appwindow.py:814
 msgid "_About..."
 msgstr "_О програму..."
 
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:815
 msgid "About Red Carpet"
 msgstr "О Red Carpet-у"
 
-#: src/red_appwindow.py:827
+#: src/red_appwindow.py:834
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Иди на страну '%s'"
@@ -668,15 +682,15 @@ msgstr "Иди на страну '%s'"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_channeloption.py:50
+#: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "Сви канали"
 
-#: src/red_channeloption.py:55
+#: src/red_channeloption.py:69
 msgid "All Subscribed Channels"
 msgstr "Сви пријављени канали"
 
-#: src/red_channeloption.py:60
+#: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
 msgstr "Нема канала/Непознат канал"
 
@@ -849,7 +863,7 @@ msgstr "Сервер:"
 msgid "User name:"
 msgstr "Име корисника:"
 
-#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Лозинка:"
@@ -932,7 +946,7 @@ msgstr "Изађи из Red Carpet-а"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:357
 msgid "Dependency Resolution"
 msgstr "Провера зависности"
 
@@ -960,21 +974,21 @@ msgstr ""
 msgid "I Agree"
 msgstr "Слажем се"
 
-#. FIXME: flags
+#. FIXME: flags,
 #. FIXME: Hold a reference to trans_win to work around
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:261
+#: src/red_depcomponent.py:262
 msgid "Dependency Resolution Failed"
 msgstr "Неуспело решавање зависности"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:311
+#: src/red_depcomponent.py:312
 msgid "System Verified"
 msgstr "Систем проверен"
 
-#: src/red_depcomponent.py:313
+#: src/red_depcomponent.py:314
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -984,23 +998,23 @@ msgstr "Све зависности пакета су задовољене, и �
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:367
+#: src/red_depcomponent.py:368
 msgid "Requested Installations"
 msgstr "Тражене инсталације"
 
-#: src/red_depcomponent.py:371
+#: src/red_depcomponent.py:372
 msgid "Requested Removals"
 msgstr "Тражена уклањања"
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:376
 msgid "Required Installations"
 msgstr "Неопходне инсталације"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:380
 msgid "Required Removals"
 msgstr "Неопходна уклањања"
 
-#: src/red_depcomponent.py:405
+#: src/red_depcomponent.py:406
 msgid "Continue"
 msgstr "Настави"
 
@@ -1024,7 +1038,7 @@ msgstr "Настави"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Канал"
@@ -1393,50 +1407,49 @@ msgstr "Изабери копију сервера"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Handle ~ to mean $HOME
-#: src/red_mount.py:61
-#, python-format
-msgid "Unable to mount '%s' as a channel"
-msgstr "Не могу да монтирам '%s' као канал"
-
 #. Always run the dialog in the main thread
-#: src/red_mount.py:91
+#: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Не могу да монтирам '%s'"
 
-#: src/red_mount.py:117
+#: src/red_mount.py:116
 msgid "Browse..."
 msgstr "Листај..."
 
-#: src/red_mount.py:128
+#: src/red_mount.py:127
 msgid "Mount Directory"
 msgstr "Монтирај директоријум"
 
-#: src/red_mount.py:141
+#: src/red_mount.py:140
 msgid "Mount channel"
 msgstr "Монтирај канал"
 
-#: src/red_mount.py:145
+#: src/red_mount.py:144
 msgid "Mount a directory as channel"
 msgstr "Монтирај директоријум као канал"
 
-#: src/red_mount.py:153
+#: src/red_mount.py:152
 msgid "Channel Name:"
 msgstr "Име канала:"
 
-#: src/red_mount.py:157
+#: src/red_mount.py:156
 msgid "Directory:"
 msgstr "Директоријум:"
 
-#: src/red_mount.py:189
+#: src/red_mount.py:167
+msgid "Look for packages recursively"
+msgstr "Рекурзивно пронађите пакете"
+
+#: src/red_mount.py:192
 msgid "Please choose the path for channel."
 msgstr "Изаберите путању за канал."
 
-#: src/red_mount.py:210
+#: src/red_mount.py:213
 msgid "Unmount Channel"
 msgstr "Демонтирај канал"
 
-#: src/red_mount.py:239
+#: src/red_mount.py:242
 msgid "Unmount?"
 msgstr "Демонтажа?"
 
@@ -1750,7 +1763,7 @@ msgstr "Део"
 msgid "Summary"
 msgstr "Сажетак"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:478
+#: src/red_packagepage_info.py:86 src/red_prefs.py:413
 msgid "Description"
 msgstr "Опис"
 
@@ -1942,113 +1955,103 @@ msgstr "Пренос неуспешан"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Title
-#. Server section
-#: src/red_prefs.py:169
-msgid "Server"
-msgstr "Сервер"
-
-#: src/red_prefs.py:177
-msgid "Server URL:"
-msgstr "Адреса сервера:"
-
-#. manually force the value to update
-#: src/red_prefs.py:228
-msgid "Mirrors"
-msgstr "Копије сервера"
-
-#: src/red_prefs.py:240
-msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
-msgstr "Укључи додатне услуге ( Red Carpet Express или Enterprise)"
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
+msgstr "Време између освежавања података канала (у сатима):"
 
 #. Packages section
-#: src/red_prefs.py:251
+#: src/red_prefs.py:182
 msgid "Packages"
 msgstr "Пакети"
 
-#: src/red_prefs.py:260
+#: src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Захтевај потписе у пакету"
 
-#: src/red_prefs.py:265
+#: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Највећи број пакета који се преузимају одједном:"
 
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "Укључите враћање пакета"
+
 #. Proxy section - requires superuser
-#: src/red_prefs.py:275
+#: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Посредник"
 
-#: src/red_prefs.py:284
+#: src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Користи посредника"
 
-#: src/red_prefs.py:288
+#: src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "Адреса посредника:"
 
-#: src/red_prefs.py:295
+#: src/red_prefs.py:230
 msgid "Username:"
 msgstr "Корисничко име:"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:335
+#: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr "Немате дозволу да видите подешавања посредника"
 
-#: src/red_prefs.py:359
+#: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Остави преузете пакете и њихове податке"
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Место остављених података:"
 
 #. Expiration section
-#: src/red_prefs.py:373
+#: src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Истиче"
 
-#: src/red_prefs.py:377
+#: src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Остављено истиче"
 
-#: src/red_prefs.py:383
+#: src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Старосна граница у данима:"
 
-#: src/red_prefs.py:394
+#: src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Максимална величина у MB:"
 
-#: src/red_prefs.py:405
+#: src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Тренутна величина остављеног:"
 
-#: src/red_prefs.py:422
+#: src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Сигурни сте да желите да избришете остављене пакете?"
 
-#: src/red_prefs.py:438
+#: src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Испразни Оставу"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:460
+#: src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:508
+#: src/red_prefs.py:443
 msgid "Value"
 msgstr "Вредност"
 
-#: src/red_prefs.py:521
+#: src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Учитавам поставке..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:585
+#: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "%s Поставке"
@@ -2316,7 +2319,6 @@ msgstr "Изаберите датотеку за уписивање XML-а"
 #. FIXME?  By doing nothing here, we keep the
 #. user from being hammered by a whole bunch of exceptions
 #. if something has gone badly wrong.
-#. FIXME?
 #. FIXME?
 #. do the first poll immediately
 #. get poll timeout started again
@@ -2670,6 +2672,21 @@ msgstr "Неисправно име корисника."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Корисник '%s' већ постоји."
+
+#~ msgid "Unable to mount '%s' as a channel"
+#~ msgstr "Не могу да монтирам '%s' као канал"
+
+#~ msgid "Server"
+#~ msgstr "Сервер"
+
+#~ msgid "Server URL:"
+#~ msgstr "Адреса сервера:"
+
+#~ msgid "Mirrors"
+#~ msgstr "Копије сервера"
+
+#~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
+#~ msgstr "Укључи додатне услуге ( Red Carpet Express или Enterprise)"
 
 #~ msgid ""
 #~ "Unable to show help because it was not found or because you don't have "
