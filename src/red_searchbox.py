@@ -143,10 +143,10 @@ class SearchBox(gtk.VBox):
             return 1
         
         status_types = (
-            (_("Uninstalled Packages"),  uninstalled_cb),
+            (_("All Packages"),          all_cb),
             (_("Updates"),               update_cb),
+            (_("Uninstalled Packages"),  uninstalled_cb),
             (_("Installed Packages"),    installed_cb),
-            (_("All Packages"),          all_cb)
             )
 
 

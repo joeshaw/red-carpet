@@ -158,11 +158,12 @@ class DepComponent(gobject.GObject, red_component.Component):
                                          "covering this software before "
                                          "installing it."))
 
-            license_texts = string.join(licenses, "\n\n")
+            license_texts = string.join(licenses, "\n" + "#"*79 + "\n")
 
             text = gtk.TextView()
             text.set_editable(0)
             text.set_cursor_visible(0)
+            text.set_wrap_mode(gtk.WRAP_WORD)
 
             buf = text.get_buffer()
             buf.set_text(license_texts)

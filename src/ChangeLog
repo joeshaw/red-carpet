@@ -1,3 +1,22 @@
+2003-05-15  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (which): Added.  Basically equivalent to the
+	which tool: returns the first instance of "file" in PATH.
+	(help_cb): Refactor this so we don't block when certain help
+	programs are run, and try to support more help programs, including
+	Red Hat's htmlview and KDE's khelpcenter and netscape on CDE.
+	Fixes #42895 and probably #42943
+	(assemble_menubar): Drop the Control-W shortcut for news.
+	Conflicts with what is normally "Close Window". Fixes #42703
+
+	* red_depcomponent.py: Set wordwrap mode on the license window,
+	since we're going to remove the formatting info.
+
+	* red_searchbox.py: Make "All Packages" the default for Search.
+
+	* red_transaction.py (ok_to_quit): Set the quit confirmation
+	dialog's parent to the main app window.
+
 2003-05-09  Joe Shaw  <joe@ximian.com>
 
 	* red_connection.py (check_rcd_version): Require rcd 1.4.0.

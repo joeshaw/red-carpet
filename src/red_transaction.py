@@ -93,7 +93,7 @@ def ok_to_quit(main_app_window):
     main_box.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
     main_box.show_all()
         
-    dialog = gtk.Dialog("")
+    dialog = gtk.Dialog("", parent=main_app_window)
     dialog.add_button(gtk.STOCK_CANCEL, 0)
     dialog.add_button(gtk.STOCK_QUIT, 1)
     dialog.vbox.add(main_box)

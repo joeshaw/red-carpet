@@ -100,35 +100,70 @@ def verify_deps_cb(app):
     app.componentbook.push_component(dep_comp)
 
 def help_cb(app):
+
+    def which(file):
+        for p in string.split(os.environ["PATH"], ":"):
+            if not p:
+                continue
+
+            path = os.path.normpath(p + "/" + file)
+
+            if os.access(path, os.F_OK | os.X_OK):
+                return path
+
     # TRANSLATORS: *Only* localize this to the language code if the
     # Red Carpet help is localized.
     help_locale = _("C")
 
-    help_files = ("%s/%s/red-carpet.xml" % (red_main.help_path, help_locale),
-                  "%s/C/red-carpet.xml" % red_main.help_path)
+    xml_files = ("%s/%s/red-carpet.xml" % (red_main.help_path, help_locale),
+                 "%s/C/red-carpet.xml" % red_main.help_path)
+    html_files = ("%s/%s/red-carpet.html" % (red_main.help_path, help_locale),
+                  "%s/C/red-carpet.html" % red_main.help_path)
 
-    url_handlers = ("gnome-url-show", "gnome-help", "gnome-moz-remote")
+    url_handlers = (
+        ("gnome-help", "ghelp", xml_files),           # GNOME 2
+        ("gnome-url-show", "file", html_files),       # XD2 w/o yelp?
+        ("htmlview", "file", html_files),             # RH 9
+        ("khelpcenter", "file", html_files),          # KDE
+        ("gnome-help-browser", "file", html_files),   # GNOME 1.x
+        ("gnome-moz-remote", "file", html_files),     # GNOME 1.x w/o help
+                                                      #   browser?
+        ("mozilla", "file", html_files),              # dunno, but a sane
+                                                      #   fallback
+        ("netscape", "file", html_files),             # CDE
+    )
 
-    for f in help_files:
-        if not os.path.exists(f):
+    for url_info in url_handlers:
+        fullpath = which(url_info[0])
+        if not fullpath:
             continue
 
-        url = "ghelp://" + f
+        for f in url_info[2]:
+            if not os.path.exists(f):
+                continue
 
-        for u in url_handlers:
-            ret = os.spawnvp(os.P_WAIT, u, (u, url))
+            url = url_info[1] + "://" + f
 
-            if ret == 0: # successfully spawned
-                return
+            print  "executing: %s %s" % (fullpath, url)
+            pid = os.spawnv(os.P_NOWAIT, fullpath, (fullpath, url))
+            print "PID: %d" % pid
+            return
 
-    # If we got here, we couldn't open any help file with any handler
+        dialog = gtk.MessageDialog(app, 0,
+                                   gtk.MESSAGE_ERROR,
+                                   gtk.BUTTONS_OK,
+                                   _("Unable to show help because the help "
+                                     "files were missing.  Please report "
+                                     "this to your vendor."))
+        dialog.run()
+        dialog.destroy()
+        return
 
     dialog = gtk.MessageDialog(app, 0,
                                gtk.MESSAGE_ERROR,
                                gtk.BUTTONS_OK,
-                               _("Unable to show help because it was not "
-                                 "found or because you don't have any help "
-                                 "viewers available."))
+                               _("Unable to show help because there are no "
+                                 "applications available to view help."))
     dialog.run()
     dialog.destroy()
             
@@ -676,8 +711,7 @@ class AppWindow(gtk.Window,
         bar.add("/%s/%s" % (view_str, _("_Daemon Information...")),
                 callback=red_serverinfo.view_server_info_cb)
         bar.add("/%s/%s" % (view_str, _("Red Carpet Ne_ws...")),
-                callback=lambda x:self.open_or_raise_window(red_news.NewsWindow),
-                accelerator="<Control>W")
+                callback=lambda x:self.open_or_raise_window(red_news.NewsWindow))
 
         bar.add("/%s/sep2" % view_str, is_separator=1)
 
