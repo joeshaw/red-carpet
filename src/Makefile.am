@@ -66,6 +66,12 @@ red_carpetsupport_DATA =	\
 
 EXTRA_DIST = $(red_carpetsupport_DATA)
 
-install-exec-hook:
-	chmod 0755 $(DESTDIR)$(red_carpetexecdir)/$(red_carpetexec_DATA)
+install-hook:
 
+install-exec-hook:
+if USE_KDESU
+	$(INSTALL_DATA) -m 0755 $(srcdir)/kdesu-wrapper $(DESTDIR)$(bindir)/red-carpet
+	$(INSTALL_DATA) -m 0755 $(srcdir)/red-carpet $(DESTDIR)$(libexecdir)/red-carpet
+else
+	$(INSTALL_DATA) -m 0755 $(srcdir)/red-carpet $(DESTDIR)$(bindir)/red-carpet
+endif

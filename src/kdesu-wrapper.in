@@ -1,0 +1,3 @@
+#!/bin/sh
+
+@KDESU@ @prefix@/libexec/red-carpet $@

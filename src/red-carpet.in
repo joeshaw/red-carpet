@@ -52,6 +52,7 @@ try:
         if not (os.path.isfile("./red_main.py") \
                 or (os.path.isdir(red_carpet_datadir) \
                     and os.path.isfile(red_carpet_datadir + "/red_main.py"))):
+            print "BLAH!"
             print "ERROR: The Red Carpet Graphical Client doesn't appear to be"
             print "ERROR: installed properly.  Please check your installation."
             sys.exit(1)
