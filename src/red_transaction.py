@@ -117,7 +117,11 @@ class TransactionComponent(red_component.Component):
             view.get_model().row_changed(i)
         view.connect("activated", act_cb)
 
-        self.display("main", view)
+        scrolled = gtk.ScrolledWindow()
+        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.add(view)
+
+        self.display("main", scrolled)
 
 
     def changed_visibility(self, flag):
@@ -170,9 +174,9 @@ def ok_to_quit(main_app_window):
     main_box.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
     main_box.show_all()
         
-    dialog = gtk.Dialog("Quit?")
-    dialog.add_button(gtk.STOCK_QUIT, 1)
+    dialog = gtk.Dialog("")
     dialog.add_button(gtk.STOCK_CANCEL, 0)
+    dialog.add_button(gtk.STOCK_QUIT, 1)
     dialog.vbox.add(main_box)
     
     dialog.show()

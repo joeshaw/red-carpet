@@ -97,9 +97,13 @@ class SubscriptionsComponent(red_component.Component):
 
         model = red_channelmodel.ChannelModel()
         view = red_channelmodel.make_channel_view(model)
-        return view
 
-            
+        scrolled = gtk.ScrolledWindow()
+        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.add(view)
+        view.show_all()
+
+        return scrolled
 
     def build(self):
         widget = self.construct()

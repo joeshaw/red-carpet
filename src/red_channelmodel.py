@@ -150,6 +150,9 @@ class ChannelModel(gtk.GenericTreeModel, red_serverlistener.ServerListener):
             else:
                 server.rcd.packsys.unsubscribe(channel["id"])
             self.changed_channel(channel)
+            # Restart the polling, w/ the first poll right now,
+            # to trigger a serverlistener channels_changed event.
+            red_serverlistener.reset_polling()
 
     def toggle_subscribed(self, channel):
         self.set_subscribed(channel, not channel["subscribed"])

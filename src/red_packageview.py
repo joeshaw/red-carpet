@@ -316,7 +316,16 @@ class PackageView(gtk.TreeView):
                         sort_callback=lambda a,r: a.changed_sort_by_importance(r),
                         )
         return col
-        
+
+    def append_locked_column(self):
+        col = gtk.TreeViewColumn("L",
+                                 gtk.CellRendererPixbuf(),
+                                 pixbuf=red_packagearray.COLUMN_LOCKED_ICON)
+        self.add_column(col,
+                        title="L",
+                        initially_visible=1)
+        return col
+
     def append_size_column(self, column_title="Size"):
         render = gtk.CellRendererText()
         render.set_property("xalign", 1.0)

@@ -162,10 +162,14 @@ class SearchComponent(red_component.Component):
         view.append_name_column()
         view.append_version_column()
         view.append_size_column()
-
         view.set_model(self.array)
 
-        self.display("main", view)
+        scrolled = gtk.ScrolledWindow()
+        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.add(view)
+        view.show_all()
+
+        self.display("main", scrolled)
 
     def changed_visibility(self, flag):
         if flag:

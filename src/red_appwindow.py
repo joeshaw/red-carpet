@@ -95,16 +95,12 @@ class AppWindow(gtk.Window):
         self.header  = gtk.EventBox()
         self.upper   = gtk.EventBox()
         self.lower   = gtk.EventBox()
-        self.mainbox = gtk.EventBox()
+        self.main    = gtk.EventBox()
 
-        style = self.mainbox.get_style().copy()
-        color = self.mainbox.get_colormap().alloc_color("white")
+        style = self.main.get_style().copy()
+        color = self.main.get_colormap().alloc_color("white")
         style.bg[gtk.STATE_NORMAL] = color
-        self.mainbox.set_style(style)
-
-        self.main = gtk.ScrolledWindow()
-        self.main.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.mainbox.add(self.main)
+        self.main.set_style(style)
 
         self.table.attach(self.menubar,
                           0, 2, 0, 1,
@@ -126,7 +122,7 @@ class AppWindow(gtk.Window):
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
 
-        self.table.attach(self.mainbox,
+        self.table.attach(self.main,
                           1, 2, 3, 4,
                           gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
                           0, 0)

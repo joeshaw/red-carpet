@@ -60,6 +60,17 @@ def pkg_sec_icon(pkg):
 def pkg_importance(pkg):
     return pkg.get("importance_str", "")
 
+def pkg_locked(pkg):
+    return pkg["locked"]
+
+__locked_icon = red_pixbuf.get_pixbuf("lock")
+
+def pkg_locked_icon(pkg):
+    if pkg["locked"]:
+        return __locked_icon
+    else:
+        return None
+
 def pkg_is_installed(pkg):
     return pkg["installed"]
 
@@ -159,6 +170,8 @@ COLUMNS = (
     ("SEC_NAME",          pkg_sec_name,          gobject.TYPE_STRING),
     ("SEC_ICON",          pkg_sec_icon,          gtk.gdk.Pixbuf),
     ("IMPORTANCE",        pkg_importance,        gobject.TYPE_STRING),
+    ("LOCKED",            pkg_locked,            gobject.TYPE_BOOLEAN),
+    ("LOCKED_ICON",       pkg_locked_icon,       gtk.gdk.Pixbuf),
     ("IS_INSTALLED",      pkg_is_installed,      gobject.TYPE_BOOLEAN),
     ("IS_NAME_INSTALLED", pkg_is_name_installed, gobject.TYPE_BOOLEAN),
     ("IS_UPGRADE",        pkg_is_upgrade,        gobject.TYPE_BOOLEAN),
@@ -397,8 +410,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
     def get_packages_from_daemon(self, server):
         return []
 
-    def server_changed(self, server):
-
+    def packages_changed(self, server):
         packages = self.get_packages_from_daemon(server)
 
         def set_pkg_cb(array, p):
@@ -406,7 +418,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         self.changed(set_pkg_cb, packages)
 
     def sync_with_daemon(self):
-        self.server_changed(rcd_util.get_server())
+        self.packages_changed(rcd_util.get_server())
 
     def len(self):
         return len(self.__packages)
@@ -459,7 +471,6 @@ class UpdatedPackages(PackagesFromDaemon):
         self.sync_with_daemon()
 
     def get_packages_from_daemon(self, server):
-
         packages = []
         for old_pkg, pkg, history in server.rcd.packsys.get_updates():
             pkg["__old_package"] = old_pkg
@@ -467,5 +478,13 @@ class UpdatedPackages(PackagesFromDaemon):
             packages.append(pkg)
 
         return packages
+
+    # The list of updates needs to refresh when the list of available
+    # channels or subscriptions change.
+    def subscriptions_changed(self, server):
+        self.packages_changed(server)
+
+    def channels_changed(self, server):
+        self.packages_changed(server)
 
 

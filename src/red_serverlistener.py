@@ -104,21 +104,22 @@ def poll_cb():
             last_subscription_seqno = -1
         last_server = id(server)
 
-        curr_package_seqno, curr_channel_seqno, curr_subscription_seqno \
-                            = server.rcd.packsys.world_sequence_numbers()
+        if not server is None:
+            curr_package_seqno, curr_channel_seqno, curr_subscription_seqno \
+                                = server.rcd.packsys.world_sequence_numbers()
 
-        if curr_channel_seqno != last_channel_seqno or \
-           curr_subscription_seqno != last_subscription_seqno:
-            rcd_util.reset_channels()
+            if curr_channel_seqno != last_channel_seqno or \
+                   curr_subscription_seqno != last_subscription_seqno:
+                rcd_util.reset_channels()
 
-        signal_listeners(server,
-                         curr_package_seqno != last_package_seqno,
-                         curr_subscription_seqno != last_subscription_seqno,
-                         curr_channel_seqno != last_channel_seqno)
+            signal_listeners(server,
+                             curr_package_seqno != last_package_seqno,
+                             curr_subscription_seqno != last_subscription_seqno,
+                             curr_channel_seqno != last_channel_seqno)
 
-        curr_package_seqno = last_package_seqno
-        curr_subscription_seqno = last_subscription_seqno
-        curr_channel_seqno = last_channel_seqno
+            last_package_seqno = curr_package_seqno
+            last_subscription_seqno = curr_subscription_seqno
+            last_channel_seqno = curr_channel_seqno
         
         missed_polls = 0
         
@@ -131,6 +132,8 @@ def reset_polling():
     global poll_timeout
     if poll_timeout:
         gtk.timeout_remove(poll_timeout)
+    # do the first poll immediately
+    poll_cb()
     poll_timeout = gtk.timeout_add(timeout_len, poll_cb)
 
 def freeze_polling():
@@ -181,6 +184,7 @@ class ServerListener:
             self.__missed_package_changes += 1
         else:
             self.packages_changed(server)
+            print "Packages changed!"
             self.__missed_package_changes = 0
 
     def process_channel_changes(self, server):
@@ -188,10 +192,12 @@ class ServerListener:
             self.__missed_channel_changes += 1
         else:
             self.channels_changed(server)
+            print "Channels changed!"
             self.__missed_channel_changes = 0
 
     def process_subscription_changes(self, server):
         if self.__freeze_count > 0:
+            print "Subs changed!"
             self.__missed_subscription_changes += 1
         else:
             self.subscriptions_changed(server)

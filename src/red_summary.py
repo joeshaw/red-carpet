@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_header, red_pixbuf
-import red_packagearray, red_packageview, red_packagebook
+import red_packagearray, red_packageview, red_packagebrowser, red_packagebook
 import red_pendingops
 import red_component
 
@@ -50,7 +50,9 @@ class SummaryComponent(red_component.Component):
 
         ### Main
 
-        view = red_packageview.PackageView()
+        browser = red_packagebrowser.PackageBrowser()
+
+        view = browser.get_view()
         view.append_action_column()
         view.append_importance_column()
         view.append_channel_column(show_channel_name=0)
@@ -60,7 +62,9 @@ class SummaryComponent(red_component.Component):
         view.append_size_column()
         view.set_model(self.array)
 
-        self.display("main", view)
+        browser.show()
+
+        self.display("main", browser)
 
         def act_cb(view, i, pkg):
             red_pendingops.toggle_action(pkg)

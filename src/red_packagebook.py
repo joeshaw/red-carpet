@@ -44,8 +44,9 @@ class PageSummary(PackagePage):
         return pkg
 
     def build_widget(self, pkg, server):
+        info = rcd_util.get_package_info(pkg)
         box = gtk.VBox(0,0)
-        box.pack_start(gtk.Label(pkg["name"]))
+        box.pack_start(gtk.Label(info.get("summary", "")))
         box.show_all()
         return box
 
@@ -55,11 +56,11 @@ class PageHistory(PackagePage):
         return "History"
 
     def visible(self, pkg):
-        return pkg and pkg.has_key("history")
+        return pkg and pkg.has_key("__history")
 
     def build_widget(self, pkg, server):
         box = gtk.VBox(0, 0)
-        for msg in pkg["history"]:
+        for msg in pkg["__history"]:
             box.pack_start(gtk.Label(msg), 0, 0, 2)
         box.show_all()
         return box
@@ -109,9 +110,13 @@ class PackageBook(gtk.Notebook):
         for page in self.pages:
             if page.visible(self.package):
                 name = page.name()
-                page_box  = gtk.Frame()
+                page_box  = gtk.EventBox()
                 page_box.page = page
                 page_box.initialized = 0
+                style = page_box.get_style().copy()
+                color = page_box.get_colormap().alloc_color("white")
+                style.bg[gtk.STATE_NORMAL] = color
+                page_box.set_style(style)
                 self.append_page(page_box, gtk.Label(name))
                 page_box.show()
                 # If this is the page that was being displayed before,
