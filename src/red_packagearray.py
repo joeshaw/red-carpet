@@ -346,7 +346,7 @@ COLUMNS = (
 
     (COLUMN_STATUS,
      pkg_status,
-     None,
+     sort_pkgs_by_status,
      gobject.TYPE_STRING),
 
     (COLUMN_STATUS_ICON,

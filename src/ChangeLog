@@ -1,5 +1,7 @@
 2003-03-14  Tambet Ingo  <tambet@ximian.com>
 
+	* red_packagearray.py (COLUMNS): Enable sorting by package status.
+
 	* red_thrashingtreeview.py (TreeView.post_thrash_model): Resize
 	columns immediately.
 
