@@ -115,9 +115,6 @@ def del_package(pkg):
         del package_data[pkg_key]
         signal_listeners()
 
-def packages():
-    return map(lambda x:x["__package"], package_data.values())
-
 def keys(pkg):
     pkg_key = rcd_util.get_package_key(pkg)
     dict = package_data.get(pkg_key)
@@ -140,18 +137,6 @@ def get_action(pkg):
     return NO_ACTION
 
 def set_action(pkg, action):
-
-    ## FIXME!: Setting the action on a package can/should modify the action
-    ## for other packages w/ the same name.  The little snippet of code
-    ## below is _not_ the correct semantics for this... it is just a
-    ## "proof of concept" to ensure that the notification, etc. all works
-    ## properly.  The correct behavior needs to be worked out, and might
-    ## be a bit tricky to get right.
-    key = rcd_util.get_package_key(pkg)
-    for p in packages():
-        if p["name"] == pkg["name"] and rcd_util.get_package_key(p) != key:
-            set(p, "action", NO_ACTION)
-
     set(pkg, "action", action)
 
 def toggle_action(pkg):

@@ -30,6 +30,7 @@ class TransactionArray(red_packagearray.PackageArray,
         self.packages = red_pendingops.packages_with_actions()
         red_packagearray.PackageArray.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
+        self.__pending = 0
 
     def sort(self, sort_fn, reverse):
         self.packages.sort(sort_fn)
@@ -40,9 +41,15 @@ class TransactionArray(red_packagearray.PackageArray,
         return self.packages
 
     def pendingops_changed(self, pkg, key, value, old_value):
-        def refresh_op(self):
-            self.packages = red_pendingops.packages_with_actions()
-        self.changed(refresh_op)
+        def pending_refresh_cb(array):
+            def refresh_op(x):
+                x.packages = red_pendingops.packages_with_actions()
+            array.changed(refresh_op)
+            array.__pending = 0
+            return 0
+
+        if not self.__pending:
+            self.__pending = gtk.idle_add(pending_refresh_cb, self)
 
 #########################################################################
 

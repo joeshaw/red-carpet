@@ -193,7 +193,13 @@ for i in range(len(COLUMNS)):
 
     
 def sort_pkgs_by_name(a, b):
-    return cmp(string.lower(a["name"]), string.lower(b["name"]))
+    xa = a.get("_lower_name")
+    if not xa:
+        a["_lower_name"] = xa = string.lower(a["name"])
+    xb = b.get("_lower_name")
+    if not xb:
+        b["_lower_name"] = xb = string.lower(a["name"])
+    return cmp(xa, xb)
 
 def sort_pkgs_by_size(a, b):
     return cmp(a["file_size"], b["file_size"])
@@ -322,7 +328,7 @@ class PackageArray(red_listmodel.ListModel,
     ## Implements PendingOpsListener
     def pendingops_changed(self, pkg, key, value, old_value):
         self.changed_one_by_package(pkg)
-
+        
     def spew(self):
         for pkg in self.get_all():
             print pkg["name"]
