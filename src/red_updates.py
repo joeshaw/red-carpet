@@ -15,12 +15,14 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
+import string
 import gtk
+import rcd_util
 import red_header, red_pixbuf
 import red_packagearray, red_channeloption, red_explodedview
-import red_appcomponent
+import red_component
 
-class SummaryComponent(red_appcomponent.AppComponent):
+class SummaryComponent(red_component.Component):
 
     def name(self):
         return "Summary"
@@ -32,12 +34,14 @@ class SummaryComponent(red_appcomponent.AppComponent):
         self.updates = self.server().rcd.packsys.get_updates()
         self.packages = map(lambda x:x[1], self.updates)
 
-    def do_prebuild(self):
+
+    def build(self):
         self.get_updates()
         self.array = red_packagearray.PackageStore()
         self.array.set(self.packages)
 
-    def build_upper_widget(self):
+        ### Upper
+        
         vbox = gtk.VBox(0,0)
 
         msg1 = gtk.Label("")
@@ -47,19 +51,20 @@ class SummaryComponent(red_appcomponent.AppComponent):
         vbox.pack_start(msg1, 1, 1, 0)
         
         vbox.show_all()
-        return vbox
+        self.display("upper", vbox)
 
-    def build_main_widget(self):
-        # No updates
-        if not self.packages:
-            return None
-        
-        ex = red_explodedview.ExplodedView(array=self.array,
-                                           by_importance=1)
-        ex.show_all()
-        return ex
 
-    def build_lower_widget(self):
+        ### Main
+
+        if self.packages:
+            ex = red_explodedview.ExplodedView(array=self.array,
+                                               by_importance=1)
+            
+            self.display("main", ex)
+
+
+        ### Lower
+            
         img = red_pixbuf.get_widget("update-now")
         b = gtk.Button()
         b.set_relief(gtk.RELIEF_NONE)
@@ -82,5 +87,5 @@ class SummaryComponent(red_appcomponent.AppComponent):
 
         b.connect("clicked", not_yet)
         
-        return box
+        self.display("lower", box)
         

@@ -30,6 +30,7 @@ class MenuBar(gtk.MenuBar):
         self.constructed = 0
         self.pending_items = []
         self.pending_items_hash = {}
+        self.user_data = None
 
         # Automatically construct our menu items, and refresh the items,
         # when we are realized.
@@ -39,6 +40,9 @@ class MenuBar(gtk.MenuBar):
             
         self.connect("realize",
                      on_realize)
+
+    def set_user_data(self, x):
+        self.user_data = x
         
     def refresh_items(self):
         self.emit("refresh_items")
@@ -151,7 +155,7 @@ class MenuBar(gtk.MenuBar):
 
                 if is_leaf and item["callback"]:
                     menu_item.connect("activate",
-                                      item["callback"])
+                                      lambda x:item["callback"](self.user_data))
 
                 ###
                 ### If this item has special visibility, sensitivity or checked

@@ -19,6 +19,21 @@ import sys
 import gobject, gtk
 
 import red_header, red_menubar, red_sidebar
+import red_component
+import red_pendingview
+
+def refresh_cb(app):
+    # FIXME: this should be in a try
+    stuff_to_poll = app.server.rcd.packsys.refresh_all_channels()
+
+    pend = red_pendingview.PendingView()
+    win = gtk.Window()
+    win.add(pend)
+    win.show_all()
+
+    pend.set_server(app.server)
+    pend.set_pending_list(stuff_to_poll)
+    
 
 class AppWindow(gtk.Window):
 
@@ -30,6 +45,7 @@ class AppWindow(gtk.Window):
         bar.add("/_File")
         bar.add("/_Edit")
         bar.add("/_View")
+        bar.add("/_Actions")
         bar.add("/S_ubscriptions")
         bar.add("/_Settings")
         bar.add("/_Help")
@@ -37,6 +53,10 @@ class AppWindow(gtk.Window):
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
+
+        bar.add("/Actions/Refresh Channel Data",
+                callback=refresh_cb)
+        
         bar.add("/Edit/Foo")
         bar.add("/View/Foo")
         bar.add("/Subscriptions/Foo")
@@ -54,8 +74,11 @@ class AppWindow(gtk.Window):
         self.add (self.table)
 
         self.components = []
+        self.current_comp = None
+        self.comp_display_id = 0
 
         self.menubar = red_menubar.MenuBar()
+        self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
         
         self.sidebar = red_sidebar.SideBar()
@@ -107,49 +130,74 @@ class AppWindow(gtk.Window):
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
+    def register_component(self, comp):
 
-    def add_component(self, comp):
-        
         self.sidebar.add(label=comp.name(),
                          pixbuf=comp.pixbuf(),
-                         callback=lambda: self.set_component(comp))
-
-        if not self.components:
-            self.set_component(comp)
-
-        self.components.append(comp)
-        
-
-    def set_component(self, comp):
-
-        def switch_children(parent, child):
-            for c in parent.get_children():
-                parent.remove(c)
-            if not child:
-                child = gtk.EventBox()
-            parent.add(child)
-            child.show()
-
-        self.component = comp
+                         callback=lambda: self.activate_component(comp))
 
         comp.set_server(self.server)
 
-        # Create a pure virtual component, which will return None
-        # when asked for any widget.
-        if not comp:
-            comp = red_appcomponent.AppComponent()
+        # We activate the first component that gets registered.
+        if not self.components:
+            self.activate_component(comp)
 
-        comp.prebuild()
+        self.components.append(comp)
 
+
+    def switch_children(self, type, widget):
+        if type == "header":
+            box = self.header
+        elif type == "upper":
+            box = self.upper
+        elif type == "lower":
+            box = self.lower
+        elif type == "main":
+            box = self.main
+        else:
+            print "Unknown type '%s'" % type
+            assert 0
+            
+        for c in box.get_children():
+            box.remove(c)
+            
+        if not widget:
+            widget = gtk.EventBox()
+            
+        box.add(widget)
+        widget.show()
+
+
+    def activate_component(self, comp):
+
+        # Disconnect from the old component's display signal
+        if self.comp_display_id:
+            self.current_comp.disconnect(self.comp_display_id)
+            self.comp_display_id = 0
+
+        # Show the new component, hide the old one.
+        comp.visible(1)
+        if self.current_comp:
+            self.current_comp.visible(0)
+
+        self.current_comp = comp
+
+        # Set the header
         hdr = red_header.Header(comp.pixbuf(), comp.long_name())
         hdr.show_all()
+        self.switch_children("header", hdr)
 
-        switch_children(self.header, hdr)
-        switch_children(self.upper, comp.get_upper_widget())
-        switch_children(self.main,  comp.get_main_widget())
-        switch_children(self.lower, comp.get_lower_widget())
+        # Handle all of the widget reparenting
+        for t in red_component.valid_widget_types:
+            self.switch_children(t, comp.get(t))
 
-        comp.postbuild()
+        def display_cb(c, type, w, win):
+            win.switch_children(type, w)
 
-        # Might also need to hook up some signals, etc.
+        # Listen for display signals from the the new component
+        if comp:
+            self.comp_display_id = comp.connect("display",
+                                                display_cb,
+                                                self)
+
 

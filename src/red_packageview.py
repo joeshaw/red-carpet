@@ -71,12 +71,12 @@ class PackageView(gtk.TreeView):
 
         old_model = self.get_model()
         if self.changed_id:
-            old_model.disconnect(self.changed_handler)
+            old_model.disconnect(self.changed_id)
             self.changed_id = 0
 
         gtk.TreeView.set_model(self, model)
 
         if model:
-            self.changed_id = model.connect("changed",
-                                            lambda x:self.thrash_model())
+            self.changed_id = model.connect_after("changed",
+                                                  lambda x:self.thrash_model())
                                             

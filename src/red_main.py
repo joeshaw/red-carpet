@@ -48,20 +48,6 @@ def connect_to_server():
 
     return server
 
-def query_test(server):
-    a = red_packagearray.PackageQuery(server, [["name", "contains", "gnome"],
-                                               ["installed", "is", "false"]])
-
-    ex = red_explodedview.ExplodedView(array=a,
-                                       by_section=1)
-
-    ex.show_all()
-
-    opt = red_channeloption.ChannelOption()
-    opt.show_all()
-    opt.set_channel_by_id(20001)
-
-
 def opt_test(server):
 
     opt = red_channeloption.ChannelOption()
@@ -76,9 +62,8 @@ def main(version):
     app.set_title("Red Carpet 2: Electric Boogaloo")
     app.show_all()
 
-    #comp = red_channelbrowse.ChannelBrowseComponent()
-    app.add_component(red_summary.SummaryComponent())
-    app.add_component(red_channelbrowse.ChannelBrowseComponent())
+    app.register_component(red_summary.SummaryComponent())
+    app.register_component(red_channelbrowse.ChannelBrowseComponent())
 
     gtk.main()
     
