@@ -138,6 +138,9 @@ class Component(gobject.GObject):
     def pixbuf(self):
         return None
 
+    def accelerator(self):
+        return None
+
     def build(self):
         return None
 

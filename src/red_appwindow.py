@@ -125,7 +125,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.comp_message_id = 0
         self.comp_switch_id = 0
 
-        self.menubar = red_menubar.MenuBar()
+        self.accel_group = gtk.AccelGroup()
+        self.add_accel_group(self.accel_group)
+
+        self.menubar = red_menubar.MenuBar(self.accel_group)
         self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
 
@@ -270,7 +273,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=lambda x:self.shutdown())
 
         bar.add("/Edit/Select All",
-                callback=lambda x:self.select_all_cb(1))
+                callback=lambda x:self.select_all_cb(1),
+                accelerator="<Control>a")
 
         bar.add("/Edit/Select None",
                 callback=lambda x:self.select_all_cb(0))
@@ -318,7 +322,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 self.activate_component(comp)
         self.menubar.add("/View/" + comp.long_name(),
                          checked_get=checked_get_cb,
-                         checked_set=checked_set_cb)
+                         checked_set=checked_set_cb,
+                         accelerator=comp.accelerator())
 
 
         # We activate the first component that gets registered.

@@ -31,6 +31,9 @@ class SummaryComponent(red_component.Component):
     def pixbuf(self):
         return "summary"
 
+    def accelerator(self):
+        return "<Control>s"
+
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
 

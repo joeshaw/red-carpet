@@ -37,6 +37,9 @@ class SearchComponent(red_component.Component):
     def long_name(self):
         return "Search Packages"
 
+    def accelerator(self):
+        return "<Control>f"
+
     def pixbuf(self):
         return "info-button"
 

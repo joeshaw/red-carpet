@@ -16,8 +16,66 @@
 ###
 
 import sys, os, string
+import re
 import gobject, gtk
 import red_pixbuf
+
+
+## The format looks like "<Control>a" or "<Shift><Alt>F1.
+## The parser is fairly liberal and allows lower or upper case, and also
+## abbreviations such as "<Ctl>" and "<Ctrl>".
+
+class AcceleratorParser:
+
+    def __init__(self, s=None):
+        self.__key = None
+        self.__mods = 0
+
+        self.pattern = re.compile("<([a-z]+)+>", re.IGNORECASE)
+        self.parse(s)
+
+    def parse(self, s=None):
+        self.__key = None
+        self.__mods = 0
+
+        if not s:
+             return
+
+        mods = self.pattern.findall(s)
+        self.parse_mods(mods)
+
+        key = self.pattern.sub("", s)
+        self.parse_key(key)
+
+        # No key, no joy!
+        if not self.key():
+            self.mods = 0
+
+    def key(self):
+        return self.__key
+    def mods(self):
+        return self.__mods
+
+    ## End of public methods
+
+    def parse_mods(self, mods=None):
+        if not mods:
+            return
+
+        for m in mods:
+            m = m[0].lower()
+            if m == 's':
+                self.__mods |= gtk.gdk.SHIFT_MASK
+            elif m == 'c':
+                self.__mods |= gtk.gdk.CONTROL_MASK
+            elif m == 'a':
+                self.__mods |= gtk.gdk.MOD1_MASK
+
+    def parse_key(self, key):
+        if key:
+            self.__key = gtk.gdk.keyval_from_name(key)
+        else:
+            sel.__key = None
 
 class MenuBar(gtk.MenuBar):
 
@@ -25,6 +83,7 @@ class MenuBar(gtk.MenuBar):
         gobject.GObject.__init__(self)
 
         self.accel_group = accel_group
+        self.accel_parser = AcceleratorParser()
 
         self.constructed = 0
         self.pending_items = []
@@ -60,7 +119,8 @@ class MenuBar(gtk.MenuBar):
             radiogroup=None,
             radiotag=None,
             radio_get=None,
-            radio_set=None):
+            radio_set=None,
+            accelerator=None):
 
         if self.constructed:
             print "Can't add '%s' to an already-constructed menu bar." \
@@ -94,6 +154,7 @@ class MenuBar(gtk.MenuBar):
                 "radiotag":radiotag,
                 "radio_get":radio_get,
                 "radio_set":radio_set,
+                "accelerator":accelerator,
                 }
 
         self.pending_items.append(item)
@@ -208,6 +269,16 @@ class MenuBar(gtk.MenuBar):
                         "activate",
                         lambda x, i:i["callback"](self.user_data),
                         item)
+
+                if item["accelerator"]:
+                    self.accel_parser.parse(item["accelerator"])
+                    key = self.accel_parser.key()
+                    if key:
+                        mods = self.accel_parser.mods()
+                        menu_item.add_accelerator("activate",
+                                                  self.accel_group,
+                                                  key, mods,
+                                                  gtk.ACCEL_VISIBLE)
 
                 ###
                 ### If this item has special visibility, sensitivity or checked

@@ -175,6 +175,9 @@ class HistoryComponent(red_component.Component):
     def name(self):
         return "History"
 
+    def accelerator(self):
+        return "<Control>h"
+
     def long_name(self):
         return "Browse Packages History"
 
