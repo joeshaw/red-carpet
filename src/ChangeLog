@@ -1,3 +1,21 @@
+2003-02-24  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packageview.py (PackageView.do_popup): Commented out locking.
+
+	* red_appwindow.py (AppWindow.run_sensitive_cb): Get sensitivity
+	directly from pendingops, not from sidebar's run button. We happened
+	to get here before sidebar gets updated.
+
+	* red_menubar.py (MenuBar.__init__): Refresh menu items before before
+	giving control to AcceleratorGroup, otherwise some items' sensitivity
+	might be out of sync.
+
+	* red_sidebar.py (SideBar.pendingops_changed_cb): Don't rush with
+	updating, do it in the idle callback. Otherwise, with "Select all"
+	we updated ourself once for every package.
+
+	* red_toolbar.py (Toolbar.pendingops_changed): Ditto.
+
 2003-02-24  Jon Trowbridge  <trow@ximian.com>
 
 	* red_gettext.py (_): If we are in debug mode, replace strings by

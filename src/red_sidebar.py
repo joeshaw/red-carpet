@@ -33,6 +33,8 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         gtk.VBox.__init__(self, 0, 6)
         red_pendingops.PendingOpsListener.__init__(self)
 
+        self.update_pending = 0
+
         self.set_border_width(6)
 
         self.build()
@@ -116,15 +118,21 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
     # PendingOpsListener implementation
     def pendingops_changed(self, pkg, key, value, old_value):
-        if key == "action":
-            self.update_label()
-            if red_pendingops.pending_install_count() + \
-               red_pendingops.pending_remove_count():
-                self.run.set_sensitive(1)
-                self.details.set_sensitive(1)
-            else:
-                self.run.set_sensitive(0)
-                self.details.set_sensitive(0)
+        if not self.update_pending and key == "action":
+            self.update_pending = gtk.idle_add(self.pendingops_changed_cb)
+
+    def pendingops_changed_cb(self):
+        self.update_label()
+        if red_pendingops.pending_install_count() + \
+           red_pendingops.pending_remove_count():
+            self.run.set_sensitive(1)
+            self.details.set_sensitive(1)
+        else:
+            self.run.set_sensitive(0)
+            self.details.set_sensitive(0)
+
+        self.update_pending = 0
+        return 0
 
     def update_label(self):
         msg_list = []

@@ -218,25 +218,27 @@ class PackageView(red_thrashingtreeview.TreeView):
             item.connect("activate",
                          lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
 
-        item = gtk.SeparatorMenuItem()
-        item.show_all()
-        menu.append(item)
 
-        # Locking
-        if pkg["locked"]:
-            item = gtk.ImageMenuItem(_("Unlock"))
-        else:
-            item = gtk.ImageMenuItem(_("Lock"))
+        # FIXME: We don't want locking right now.
+##         item = gtk.SeparatorMenuItem()
+##         item.show_all()
+##         menu.append(item)
 
-        image = red_pixbuf.get_widget("lock")
-        item.set_image(image)
-        if not rcd_util.check_server_permission("lock"):
-            item.set_sensitive(0)
-        item.show_all()
-        menu.append(item)
+##         # Locking
+##         if pkg["locked"]:
+##             item = gtk.ImageMenuItem(_("Unlock"))
+##         else:
+##             item = gtk.ImageMenuItem(_("Lock"))
 
-        item.connect("activate",
-                     lambda x:red_locks.toggle_lock(pkg))
+##         image = red_pixbuf.get_widget("lock")
+##         item.set_image(image)
+##         if not rcd_util.check_server_permission("lock"):
+##             item.set_sensitive(0)
+##         item.show_all()
+##         menu.append(item)
+
+##         item.connect("activate",
+##                      lambda x:red_locks.toggle_lock(pkg))
 
 
         menu.popup(None, None, None, ev_button, ev_time)

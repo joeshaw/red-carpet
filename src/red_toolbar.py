@@ -27,6 +27,8 @@ class Toolbar(gtk.Toolbar, red_pendingops.PendingOpsListener):
         gtk.Toolbar.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
 
+        self.update_pending = 0
+
         self.items = []
 
     def add(self,
@@ -78,7 +80,9 @@ class Toolbar(gtk.Toolbar, red_pendingops.PendingOpsListener):
                 s = i["sensitive_fn"]()
 
             i["widget"].set_sensitive(s)
+        self.update_pending = 0
+        return 0
 
     def pendingops_changed(self, pkg, key, value, old_value):
-        if key == "action":
-            self.sensitize_toolbar_items()
+        if not self.update_pending and key == "action":
+            self.update_pending = gtk.idle_add(self.sensitize_toolbar_items)

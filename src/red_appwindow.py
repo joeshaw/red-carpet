@@ -595,7 +595,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             button = sidebar.get_run_button()
 
             return sidebar.get_property("sensitive") and \
-                   button.get_property("sensitive")
+                   red_pendingops.pending_install_count() + \
+                   red_pendingops.pending_remove_count()
 
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
