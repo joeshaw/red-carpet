@@ -1,3 +1,7 @@
+2004-10-18  James Willcox  <james@ximian.com>
+
+	* configure.in: bump to 2.4.2
+
 2004-09-30  James Willcox  <james@ximian.com>
 
 	* trayicon/red_icon_main.py:
