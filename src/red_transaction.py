@@ -74,7 +74,7 @@ def ok_to_quit(main_app_window):
     else:
         word = "are"
     count_msg  = "There %s currently %s.  If you quit now, all pending " \
-                 "actions will be lost." % (word, string.join(msgs, " and "))
+                 "operations will be lost." % (word, string.join(msgs, " and "))
 
     msg_lines = rcd_util.linebreak(count_msg, 40)
     msg_lines.append(_("Are you sure you want to quit?"))
@@ -114,10 +114,10 @@ def ok_to_quit(main_app_window):
 class TransactionComponent(red_component.Component):
 
     def name(self):
-        return _("Pending Transactions")
+        return _("Pending Operations")
 
     def long_name(self):
-        return _("Pending Transactions")
+        return _("Pending Operations")
 
     def access_key(self):
         return "P"

@@ -332,9 +332,11 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         if show_status_icon:
             render_icon = gtk.CellRendererPixbuf()
-            col.pack_start(render_icon, 0)
+            expand = not show_status_name
+            col.pack_start(render_icon, expand)
             col.set_attributes(render_icon,
                                pixbuf=red_packagearray.COLUMN_STATUS_ICON)
+            render_icon.set_property("xalign", 0.5)
 
         if show_status_name:
             render_text = gtk.CellRendererText()
@@ -367,9 +369,11 @@ class PackageView(red_thrashingtreeview.TreeView):
             render_icon = CellRendererActivatablePixbuf()
             if activatable:
                 render_icon.connect("activated", activated_cb, self)
-            col.pack_start(render_icon, 0)
+            expand = not show_action_name
+            col.pack_start(render_icon, expand)
             col.set_attributes(render_icon,
                                pixbuf=red_packagearray.COLUMN_ACTION_ICON)
+            render_icon.set_property("xalign", 0.5)
 
         if show_action_name:
             render_text = gtk.CellRendererText()
@@ -395,9 +399,11 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         if show_channel_icon:
             render_icon = gtk.CellRendererPixbuf()
-            col.pack_start(render_icon, 0)
+            expand = not show_channel_name
+            col.pack_start(render_icon, expand)
             col.set_attributes(render_icon,
                                pixbuf=red_packagearray.COLUMN_CH_ICON)
+            render_icon.set_property("xalign", 0.5)
 
         if show_channel_name:
             render_text = gtk.CellRendererText()

@@ -140,6 +140,10 @@ class DepComponent(gobject.GObject, red_component.Component):
                                                             parent=self.parent())
         trans_win.show()
 
+        # FIXME: Hold a reference to trans_win to work around
+        # pygtk bug 92955.
+        self.__scratch = trans_win
+
         def finished_cb(win, comp):
             comp.busy(0)
             comp.pop()

@@ -60,7 +60,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         self.pack_start(self.shortcut_bar, 0, 0)
 
         label = gtk.Label("")
-        label.set_markup("<b>%s</b>" % _("Pending Transactions"))
+        label.set_markup("<b>%s</b>" % _("Pending Operations"))
         label.set_alignment(0, 0.5)
         self.pack_start(label, 0, 1)
 
@@ -148,7 +148,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
                             (rem_count, (rem_count > 1 and "s") or ""))
 
         if not msg_list:
-            msg_list.append("No pending actions")
+            msg_list.append("No pending operations")
 
         msg = string.join(msg_list, "\n")
 

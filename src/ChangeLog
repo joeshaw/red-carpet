@@ -1,3 +1,28 @@
+2003-02-28  Jon Trowbridge  <trow@ximian.com>
+
+	* red_depcomponent.py (DepComponent.begin_transaction): A hack.
+	We hold a reference to our PendingView_Transaction window in
+	order to work around pygtk bug 92955 (a refcounting glitch).
+
+	* red_sidebar.py (SideBar.update_label): Again, "pending
+	operations" instead of "pending actions"
+
+	* red_transaction.py (TransactionComponent.name): Changed "Pending
+	Transactions" to "Pending Operations".
+	(TransactionComponent.long_name): Ditto.
+	(ok_to_quit): To be consistent, we call them "pending operations"
+	here instead of "pending actions".
+
+	* red_sidebar.py (SideBar.build): Changed "Pending Transactions"
+	to "Pending Operations".
+
+	* red_packageview.py (PackageView.append_status_column): If we
+	aren't displaying the status name, center the icon.
+	(PackageView.activated_cb): If we aren't displaying the action
+	name, center the icon.
+	(PackageView.append_channel_column): If we aren't displaying the
+	channel name, center the icon.
+
 2003-02-27  Tambet Ingo  <tambet@ximian.com>
 
 	* red_packagearray.py (sort_pkgs_by_action): Fixed an embarassing
