@@ -1,5 +1,16 @@
 2003-02-21  Tambet Ingo  <tambet@ximian.com>
 
+	* red_depcomponent.py (DepComponent.__init__): Set default values to
+	install_packages and remove_packages to [] (instead of None). It
+	caused problems when we try to add None and list types.
+
+	* red_prefs.py (PrefsView.build): Sensitize views correctly depending
+	on privileges.
+
+	* red_subscriptions.py (SubscriptionsView.__init__): Ditto.
+
+2003-02-21  Tambet Ingo  <tambet@ximian.com>
+
 	* red_users.py: Import ximian_xmlrpclib.
 
 	* red_appwindow.py (AppWindow.install_sensitive_cb): Check if user

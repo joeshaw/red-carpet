@@ -16,6 +16,7 @@
 ###
 
 import gtk
+import rcd_util
 import red_main
 import red_channelmodel
 
@@ -33,6 +34,7 @@ class SubscriptionsView(gtk.ScrolledWindow):
         view = red_channelmodel.make_channel_view(model)
 
         view.show_all()
+        view.set_sensitive(rcd_util.check_server_permission("subscribe"))
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)

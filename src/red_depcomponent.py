@@ -40,7 +40,7 @@ def filter_deps(dep_list):
 
 class DepComponent(red_component.Component):
 
-    def __init__(self, install_packages=None, remove_packages=None, verify=0):
+    def __init__(self, install_packages=[], remove_packages=[], verify=0):
         red_component.Component.__init__(self)
 
         self.server = rcd_util.get_server()

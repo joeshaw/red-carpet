@@ -55,6 +55,7 @@ class PrefsView(gtk.Notebook):
         for c in categories:
             model = PrefsModel(prefs, c)
             view = red_thrashingtreeview.TreeView(model)
+            view.set_sensitive(rcd_util.check_server_permission("superuser"))
 
             col = gtk.TreeViewColumn("Description",
                                      gtk.CellRendererText(),
