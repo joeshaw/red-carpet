@@ -1,5 +1,8 @@
 2003-03-05  Tambet Ingo  <tambet@ximian.com>
 
+	* red_news.py (NewsModel.__init__): Derive from ServerListener, update
+	on channels_changed event. Fixes #38860.
+
 	* red_history.py (HistoryComponent.activated): Fix my previous "fix".
 
 	* Makefile.am (red_carpetsupport_DATA): Added red_connection.py.

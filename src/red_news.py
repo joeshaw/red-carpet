@@ -21,6 +21,7 @@ import gobject, gtk, pango
 import red_component
 import red_listmodel
 import red_thrashingtreeview
+import red_serverlistener
 from red_gettext import _
 
 
@@ -61,10 +62,11 @@ for i in range(len(COLUMNS)):
     exec("COLUMN_%s = %d" % (name, i))
 
 
-class NewsModel(red_listmodel.ListModel):
+class NewsModel(red_listmodel.ListModel, red_serverlistener.ServerListener):
 
     def __init__(self):
-        red_listmodel.ListModel.__init__(self, None, None)
+        red_listmodel.ListModel.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
 
         self.__worker = None
         self.__worker_handler_id = 0
@@ -126,6 +128,9 @@ class NewsModel(red_listmodel.ListModel):
 
     def get_all(self):
         return self.__news
+
+    def channels_changed(self):
+        self.refresh()
 
 
 class NewsView(gtk.ScrolledWindow):
