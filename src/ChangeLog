@@ -1,5 +1,15 @@
 2003-03-26  Tambet Ingo  <tambet@ximian.com>
 
+	* red_users.py (UsersWindow.build): Removed all sensitizing from
+	here to sensitize method. Call sensitize method whenever users
+	option is changed.
+	(UsersWindow.users_changed): Don't try to be smart, just call the
+	sensitize method.
+	(UsersWindow.sensitize): New method. The man himself. Fixes couple
+	of sensitivity issues in users dialog.
+	(UsersOption.got_cb): Don't require users to be returned, zero is
+	fine too. Hopefully fixes #40245.
+
 	* red_searchbox.py (SearchBox.__emit): Don't call
 	self.get_filter() yet, assign it to filter_fn. Fixes #40291.
 

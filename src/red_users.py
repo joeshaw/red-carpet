@@ -297,8 +297,6 @@ class UsersWindow(gtk.Dialog,
         frame.add(opt)
         box.add(frame)
 
-        is_superuser = rcd_util.check_server_permission("superuser")
-
         button_box = gtk.VButtonBox()
         button_box.set_layout(gtk.BUTTONBOX_START)
         button_box.set_spacing(5)
@@ -306,7 +304,6 @@ class UsersWindow(gtk.Dialog,
 
         button = gtk.Button()
         button.set_label(_("Add"))
-        button.set_sensitive(is_superuser)
         button.connect("clicked", lambda x,y:UserAdd(y), opt)
         button_box.add(button)
         self.__add_button = button
@@ -327,7 +324,6 @@ class UsersWindow(gtk.Dialog,
 
         button = gtk.Button()
         button.set_label(_("Remove"))
-        button.set_sensitive(is_superuser)
         button.connect("clicked", remove_cb, opt)
         button_box.add(button)
         self.__remove_button = button
@@ -340,22 +336,15 @@ class UsersWindow(gtk.Dialog,
         left_box.pack_start(table, 0)
         self.__password_part = table
 
-        def sensitize_password_part_cb(opt, user, t):
-            is_superuser = rcd_util.check_server_permission("superuser")
-
-            is_me = 0
-            if user and user.name_get() == rcd_util.get_current_user():
-                is_me = 1
-            t.set_sensitive(is_superuser or is_me)
-        
-        opt.connect("selected", sensitize_password_part_cb, table)
-
         frame = gtk.Frame(_("Privileges"))
         view = PermissionsView(opt)
         view.set_border_width(6)
         frame.add(view)
-        frame.set_sensitive(is_superuser)
         main_box.add(frame)
+        self.__privileges_part = frame
+
+        self.opt.connect("selected", lambda x,y,z:z.sensitize(), self)
+        self.sensitize()
 
         main_box.show_all()
 
@@ -364,10 +353,26 @@ class UsersWindow(gtk.Dialog,
         button.connect("clicked", lambda x:self.destroy())
 
     def users_changed(self):
+        self.sensitize()
+
+    def sensitize(self):
         is_superuser = rcd_util.check_server_permission("superuser")
+        selected_user = self.opt.get_selected_user()
+        me = (selected_user and selected_user.name_get() == \
+              rcd_util.get_current_user())
+
         self.__add_button.set_sensitive(is_superuser)
-        self.__remove_button.set_sensitive(is_superuser)
-        self.__password_part.set_sensitive(is_superuser)
+
+        if selected_user:
+            self.opt.set_sensitive(1)
+            self.__remove_button.set_sensitive(is_superuser)
+            self.__password_part.set_sensitive(is_superuser or me)
+            self.__privileges_part.set_sensitive(is_superuser)
+        else:
+            self.opt.set_sensitive(0)
+            self.__remove_button.set_sensitive(0)
+            self.__password_part.set_sensitive(0)
+            self.__privileges_part.set_sensitive(0)
 
 class UserAdd(gtk.Dialog):
     def __init__(self, opt):
@@ -629,9 +634,9 @@ class UsersOption(gtk.OptionMenu, red_serverlistener.ServerListener):
                 except ximian_xmlrpclib.Fault, f:
                     rcd_util.dialog_from_fault(f)
                     return
-                if users:
-                    this.set_users(users)
-                    self.emit("updated")
+
+                this.set_users(users)
+                self.emit("updated")
 
         server = rcd_util.get_server_proxy()
         self.__worker = server.rcd.users.get_all()
