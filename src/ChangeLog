@@ -1,3 +1,12 @@
+2003-10-28  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (filter_package_dups): Remove this, it wasn't being
+	used anywhere.
+
+	* red_packagearray.py (UpdatedPackages.get_packages_from_daemon):
+	Filter out duplicates so we don't show two identical updates in
+	the list.  Needed for the change to libredcarpet.
+
 2003-10-17  Joe Shaw  <joe@ximian.com>
 
 	* red_pendingops.py (package_action): We need to compare package

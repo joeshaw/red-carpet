@@ -749,11 +749,27 @@ class UpdatedPackages(PackagesFromDaemon):
                 except ximian_xmlrpclib.Fault, f:
                     rcd_util.dialog_from_fault(f)
                 else:
+                    def pkg_to_key(p):
+                        return "%s:%d:%s:%s" % \
+                               (p["name"], p["epoch"],
+                                p["version"], p["release"])
+                    
+                    dup_dict = {}
+                    
                     for old_pkg, pkg, history in updates:
                         pkg["__old_package"] = old_pkg
                         pkg["__history"] = history
-                        packages.append(pkg)
+
+                        key = pkg_to_key(pkg)
+                        if not dup_dict.has_key(key):
+                            dup_dict[key] = pkg
+
+                    packages = dup_dict.values()
+
+                    del dup_dict
+                    
                 array.set_packages(packages)
+
             array.message_pop()
             self.refresh_end()
 

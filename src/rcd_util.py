@@ -312,27 +312,6 @@ def get_all_services():
 
 ###############################################################################
 
-def filter_package_dups(pkgs):
-
-    def pkg_to_key(p):
-        ch = p["channel"] or p.get("channel_guess", "");
-        return "%s:%s:%d:%s:%s" % \
-               (ch, p["name"], p["epoch"], p["version"], p["release"])
-
-    in_channel = {}
-    for p in pkgs:
-        if p["installed"] and p["channel"]:
-            in_channel[pkg_to_key(p)] = 1
-
-    filtered = []
-    for p in pkgs:
-        if p["channel"] or not in_channel.has_key(pkg_to_key(p)):
-            filtered.append(p)
-
-    return filtered
-
-###############################################################################
-
 def byte_size_to_string(sz):
     if sz <= 0:
         return ""
