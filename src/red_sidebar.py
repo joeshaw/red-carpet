@@ -21,8 +21,11 @@ import math, string
 import red_transaction
 import red_pixbuf
 import red_pendingops
+import red_settings
 
 class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
+
+    conf_str_hidden = "UI/sidebar_hidden"
 
     def __init__(self):
         gtk.VBox.__init__(self, 0, 6)
@@ -32,11 +35,21 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
         self.build()
 
+        config = red_settings.get_config()
+        if not int(config.get(self.conf_str_hidden + "=0")):
+            self.show_all()
+
     def change_visibility(self):
+        config = red_settings.get_config()
+
         if self.get_property("visible"):
+            config.set(self.conf_str_hidden, 1)
             self.hide()
         else:
-            self.show()
+            config.set(self.conf_str_hidden, 0)
+            self.show_all()
+
+        config.sync()
 
     def build(self):
         self.shortcut_bar = ShortcutBar()

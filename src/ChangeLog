@@ -1,3 +1,17 @@
+2003-02-10  Tambet Ingo  <tambet@ximian.com>
+
+	* red_appwindow.py (AppWindow.__init__): Don't show_all()
+	everything. show_all() main area, leave sidebar's visibility to
+	itself.
+	(refresh_cb): Don't block UI while getting list of channels.
+
+	* red_sidebar.py (SideBar.__init__): Read initial visibility from
+	config.
+	(SideBar.change_visibility): Save visibility.
+
+	* red_packagepage_info.py (pkg_description): Implement. We want
+	to format package descriptions.
+
 2003-02-07  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py: Move the install/remove/cancel/info

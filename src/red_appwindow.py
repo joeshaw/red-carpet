@@ -42,17 +42,29 @@ import red_packagearray
 import red_packagebook
 
 def refresh_cb(app):
+    server = rcd_util.get_server_proxy()
+
+    def got_channels_cb(worker, app):
+        if worker.is_cancelled():
+            return
+
+        stuff_to_poll = worker.get_result()
+        pend = red_pendingview.PendingView_Simple(title="Refreshing channel data",
+                                                  parent=app)
+        pend.set_label("Downloading channel information")
+        pend.show_all()
+        pend.set_pending_list(stuff_to_poll)
+
     try:
-        stuff_to_poll = app.server.rcd.packsys.refresh_all_channels()
+        worker = server.rcd.packsys.refresh_all_channels()
     except ximian_xmlrpclib.Fault, f:
         rcd_util.dialog_from_fault(f, parent=app)
         return
 
-    pend = red_pendingview.PendingView_Simple(title="Refreshing channel data",
-                                              parent=app)
-    pend.set_label("Downloading channel information")
-    pend.show_all()
-    pend.set_pending_list(stuff_to_poll)
+    rcd_util.server_proxy_dialog(worker,
+                                 callback=got_channels_cb,
+                                 user_data=app)
+
 
 def run_transaction_cb(app):
     install_packages = red_pendingops.packages_with_actions(
@@ -146,7 +158,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                              0, 0)
 
         main_box.pack_start(self.container, expand=1, fill=1)
-        hpaned.show_all()
+        main_box.show_all()
+        hpaned.show()
 
         self.statusbar.show()
         self.vbox.pack_start(self.statusbar, expand=0, fill=1)

@@ -15,6 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
+import re
 import gtk
 import rcd_util, red_packagepage
 
@@ -25,6 +26,8 @@ SPAN    = 1
 
 TYPE_TEXT   = 0
 TYPE_WIDGET = 1
+
+re_whitespace = re.compile("\s+")
 
 def pkg_element(pkg, pkg_info, key):
     return str(pkg.get(key, ""))
@@ -49,6 +52,14 @@ def pkg_section(pkg, pkg_info, key):
         box.pack_start(gtk.Label(label), 0, 0)
     return box
 
+def pkg_description(pkg, pkg_info, key):
+    txt = pkg_info_element(pkg, pkg_info, key)
+    txt = re.sub(re_whitespace, " ", txt.strip())
+    l = gtk.Label(txt)
+    l.set_alignment(0, 0.5)
+    l.set_property("wrap", 1)
+    return l
+
 _info_rows = (
     ("Name",           TYPE_TEXT,   pkg_element,      "name",           NO_SPAN),
     ("Version",        TYPE_TEXT,   pkg_element,      "version",        NO_SPAN),
@@ -57,7 +68,7 @@ _info_rows = (
     ("Installed Size", TYPE_TEXT,   pkg_size,         "installed_size", NO_SPAN),
     ("Section",        TYPE_WIDGET, pkg_section,      "section",        NO_SPAN),
     ("Summary",        TYPE_TEXT,   pkg_info_element, "summary",        NO_SPAN),
-    ("Description",    TYPE_TEXT,   pkg_info_element, "description",    SPAN),
+    ("Description",    TYPE_WIDGET, pkg_description,  "description",    SPAN),
     )
 
 def build_rows(table, pkg, pkg_info):
