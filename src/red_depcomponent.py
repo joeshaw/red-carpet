@@ -130,8 +130,9 @@ class DepComponent(red_component.Component):
         page.pack_start(buttons, 0, 0, 0)
 
         def continue_cb(b, dep_comp):
-            to_install = dep_comp.install_packages + dep_comp.dep_install
-            to_remove  = dep_comp.remove_packages + dep_comp.dep_remove
+            to_install = dep_comp.get_install_packages()
+            to_remove  = dep_comp.get_remove_packages()
+
             red_transaction.begin_transaction(to_install, to_remove,
                                               parent=dep_comp.parent())
             print "Install:", map(lambda x:x["name"], to_install)
