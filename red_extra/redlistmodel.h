@@ -25,6 +25,7 @@
 #ifndef __REDLISTMODEL_H__
 #define __REDLISTMODEL_H__
 
+#define NO_IMPORT_PYGOBJECT
 #include <Python.h>
 #include "pygobject.h"
 #include <gtk/gtk.h>

@@ -25,6 +25,7 @@
 #ifndef __REDLISTVIEW_H__
 #define __REDLISTVIEW_H__
 
+#define NO_IMPORT_PYGOBJECT
 #include <Python.h>
 #include "pygobject.h"
 #include <gtk/gtk.h>
