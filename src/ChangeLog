@@ -1,3 +1,8 @@
+2004-08-24  Tambet Ingo  <tambet@ximian.com>
+
+	* red_services.py (ServicesWindow.get_selected_service): It's ok
+	if there's nothing selected.
+
 2004-08-16  James Willcox  <james@ximian.com>
 
 	* Makefile.am: Install red_patches.py

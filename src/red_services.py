@@ -162,6 +162,8 @@ class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
 
     def get_selected_service(self):
         select = self.view.get_selection()
+        if select == None:
+            return None
 
         def selected_cb(model, path, iter, sl):
             service = model.get_value(iter, COLUMN_SERVICE)
