@@ -71,6 +71,8 @@ install-hook:
 install-exec-hook:
 if USE_KDESU
 	$(INSTALL_DATA) -m 0755 $(top_builddir)/src/kdesu-wrapper $(DESTDIR)$(bindir)/red-carpet
+
+	$(mkinstalldirs) $(DESTDIR)$(libexecdir)
 	$(INSTALL_DATA) -m 0755 $(top_builddir)/src/red-carpet $(DESTDIR)$(libexecdir)/red-carpet
 else
 	$(INSTALL_DATA) -m 0755 $(top_builddir)/src/red-carpet $(DESTDIR)$(bindir)/red-carpet
