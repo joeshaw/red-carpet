@@ -646,8 +646,9 @@ class PendingView_Transaction(PendingView):
                                         "completed successfully"))
                 pv.__finished = 1
             elif pending and pending["status"] == "failed":
-                msg = _("Transaction failed") + ": " + pending["error_msg"]
-                pv.transaction_finished(msg)
+                msg = _("Transaction failed") + ":\n" + pending["error_msg"]
+                pv.transaction_finished(msg,
+                                        title=_("Update Failed"))
                 pv.__finished = 1
 
         unused = PollPending_Transact(self.transact_id,

@@ -430,7 +430,8 @@ class SearchBox(gtk.VBox):
         channel_id = self.__ch_opt.get_channel_id()
         subd_dict = {}
         if channel_id == red_channeloption.MATCH_ANY_SUBD_CHANNEL:
-            subd_dict["foo"] = 1 # a hack
+            subd_dict[0] = 1  # We are always subscribed to channel 0
+                              # (i.e. system packages)
             for c in rcd_util.get_all_channels():
                 if c.get("subscribed"):
                     subd_dict[c["id"]] = 1
