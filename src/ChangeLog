@@ -1,3 +1,17 @@
+2003-02-26  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py: Change the "Channel Names" mnemonic.  Get rid
+	of the "access_key" hack, it's not going to work with i18n.  Just
+	get a "menu name" string from the component instead.
+
+	* red_component.py: Remove access_key(), add menu_name().
+	* red_history.py: Ditto.
+	* red_my_computer.py: Ditto.
+	* red_news.py: Ditto.
+	* red_search.py: Ditto.
+	* red_summary.py: Ditto.
+	* red_transaction.py: Ditto.
+
 2003-03-26  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (assemble_menubar): Fix a bug where a

@@ -114,11 +114,11 @@ class TransactionComponent(red_component.Component):
     def long_name(self):
         return _("Installations and Removals")
 
+    def menu_name(self):
+        return _("Installations and _Removals")
+
     def pixbuf(self):
         return "pending-transactions"
-
-    def access_key(self):
-        return "I"
 
     def accelerator(self):
         return "<Control>P"
