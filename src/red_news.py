@@ -115,6 +115,13 @@ class NewsModel(gtk.GenericTreeModel):
             return news_item["icon"]
         elif index == COLUMN_TITLE:
             summary = re.sub("\s+", " ", news_item["summary"])
+
+            # Break the news item up to make it easier to read.
+            # FIXME: It would be nice to actually wrap the text in
+            # some sort of intelligent way.
+            lines = rcd_util.linebreak(summary, 72)
+            summary = string.join(lines, "\n")
+            
             return "<b>" + news_item["title"] + "</b>\n<i>" + news_item["time_str"] + "</i>\n" + summary
         elif index == COLUMN_DATE:
             return "\n" + news_item["time_str"]

@@ -92,8 +92,6 @@ def poll_cb():
             global last_subscription_seqno
             global last_channel_seqno
 
-            print "Got world sequence numbers"
-
             curr_package_seqno, curr_channel_seqno, curr_subscription_seqno =\
                                 th.get_result()
 
@@ -127,7 +125,6 @@ def poll_cb():
             
             poll_count += 1
             
-        print "Getting world sequence numbers..."
         th = server.rcd.packsys.world_sequence_numbers()
         th.connect("ready", ready_cb)
 

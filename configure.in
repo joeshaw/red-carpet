@@ -32,7 +32,7 @@ sys.exit(version < required_version)"
 
 AC_MSG_CHECKING(for python >= $py_version)
 
-for cmd in "python" "python2"; do
+for cmd in "python" "python2" "python2.2"; do
     PYTHON=`which $cmd`
     if test x$PYTHON \!= x; then
         if $PYTHON -c "$py_ver_check" 1>&AC_FD_CC 2>&AC_FD_CC; then
@@ -87,7 +87,7 @@ sys.exit(0)"
  
 AC_MSG_CHECKING(for python distutils)
 have_distutils="no"
-if python -c "$distutils_check" 1>&AC_FD_CC 2>&AC_FD_CC; then
+if $PYTHON -c "$distutils_check" 1>&AC_FD_CC 2>&AC_FD_CC; then
    have_distutils="yes"
 fi
 AC_MSG_RESULT($have_distutils)
@@ -105,8 +105,13 @@ dnl **************************************************************************
 
 dnl This is stuff for building our pygtk extensions that are written in C
 
-dnl We'll hard-wire this for now.
-PYTHON_INCLUDES=-I/usr/include/python2.2
+find_pyprefix="
+import sys
+print sys.prefix"
+PYTHON_PREFIX=`$PYTHON -c "$find_pyprefix"`
+AC_SUBST(PYTHON_PREFIX)
+
+PYTHON_INCLUDES=-I$PYTHON_PREFIX/include/python2.2
 AC_SUBST(PYTHON_INCLUDES)
 
 PKG_CHECK_MODULES(GTK, gtk+-2.0)
