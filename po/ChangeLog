@@ -1,3 +1,8 @@
+2004-07-04  Christian Rose  <menthos@menthos.com>
+
+	* POTFILES.in: Added missing file and sorted the whole thing.
+	* sv.po: Updated Swedish translation.
+
 2004-07-01  Laurent Dhima  <laurenti@alblinux.net>
 
 	* sq.po: Translation updated.
