@@ -1,125 +1,64 @@
-# Catalan translation of Red Carpet.
-# Copyright © 2003 Free Software Foundation, Inc.
+# Catalan translation of red-carpet.
+# Copyright © 2003, 2004 Free Software Foundation, Inc.
 # This file is distributed under the same license as the red-carpet package.
-# Aleix Badia i Bosch <abadia@ica.es>
-#
+# Aleix Badia i Bosch <abadia@ica.es>, 2003, 2004.
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-23 14:10-0500\n"
-"PO-Revision-Date: 2004-01-25 15:47+0100\n"
+"POT-Creation-Date: 2004-02-24 20:13+0100\n"
+"PO-Revision-Date: 2004-02-24 20:16+0100\n"
 "Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. FIXME: we can do better than this...
-#. "All Animals Are Equal / But Some Are More Equal Than Others."
-#. ##############################################################################
-#. assert server
-#. Don't return None here, because we want an empty image to be
-#. scaled to the correct height.
-#. ##############################################################################
-#. ##############################################################################
-#. ##############################################################################
-#. ##############################################################################
-#. Gnome HIG says no titles on these sorts of dialogs
-#. Always run the dialog in the main thread.
-#. ##############################################################################
-#: src/rcd_util.py:398
+#: src/rcd_util.py:402
 msgid "Please wait while getting data."
 msgstr "Espereu mentre s'estan obtenint les dades, si us plau."
 
-#. ##############################################################################
-#: src/rcd_util.py:452 src/rcd_util.py:470
+#: src/rcd_util.py:456 src/rcd_util.py:474
 msgid "Please ensure that your network settings are correct."
 msgstr ""
 "Assegureu-vos que la vostra configuració de xarxa sigui correcta, si us plau."
 
-#: src/rcd_util.py:459
+#: src/rcd_util.py:463
 msgid "Refreshing channel data"
 msgstr "S'estan refrescant les dades del canal"
 
-#: src/rcd_util.py:461
+#: src/rcd_util.py:465
 msgid "Downloading channel information"
 msgstr "S'està baixant la informació del canal"
 
-#. ##############################################################################
-#. ##
-#. ## Format transaction status messages into readable text
-#. ##
-#: src/rcd_util.py:487
+#: src/rcd_util.py:491
 msgid "Verifying"
 msgstr "S'està verificant"
 
-#: src/rcd_util.py:488
+#: src/rcd_util.py:492
 msgid "Unable to verify package signature for"
 msgstr "No es pot verificar la signatura de paquet de"
 
-#: src/rcd_util.py:489
+#: src/rcd_util.py:493
 msgid "There is no package signature for"
 msgstr "No hi ha la signatura de paquet de"
 
-#: src/rcd_util.py:490
+#: src/rcd_util.py:494
 msgid "Preparing Transaction"
 msgstr "S'està preparant la transacció"
 
-#: src/rcd_util.py:491
+#: src/rcd_util.py:495
 msgid "Installing"
 msgstr "S'està instal·lant"
 
-#: src/rcd_util.py:492
+#: src/rcd_util.py:496
 msgid "Removing"
 msgstr "S'està suprimint"
 
-#: src/rcd_util.py:493
+#: src/rcd_util.py:497
 msgid "Configuring"
 msgstr "S'està configurant"
 
-#. ##############################################################################
-#. ## XML-RPC faults that we care about back from the daemon.
-#. ##
-#. ## KEEP THIS IN SYNC WITH RCD!
-#. matches xmlrpc-c
-#. matches xmlrpc-c
-#. matches xmlrpc-c
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Translators: you can translate these into any cute greetings in your own
-#. language.  Just nothing offensive please. :)
 #: src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "Us ho subministra:"
@@ -145,38 +84,6 @@ msgid "Licensed under the GNU General Public License, version 2"
 msgstr ""
 "Sota la llicència pública general GNU(General Public License), versió 2"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_activation.py:27
 msgid "Group Activation"
 msgstr "Activació del grup"
@@ -212,43 +119,12 @@ msgstr ""
 "Assegureu-vos que heu introduït correctament l'adreça de correu electrònic i "
 "el codi d'activació, si us plau"
 
-#. Store email to config.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. FIXME: This feels like a hack.  Go through the remove_packages and
-#. if any of them have an __old_package field, use that package for
-#. the removal instead of the actual package.  This is so you can right
-#. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
 #: src/red_appwindow.py:84
 msgid "C"
 msgstr "C"
 
-#. GNOME 2
-#. XD2 w/o yelp?
-#. RH 9
-#. KDE
-#. GNOME 1.x
-#. GNOME 1.x w/o help
-#. browser?
-#. dunno, but a sane
-#. fallback
-#. CDE
 #: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
@@ -264,27 +140,11 @@ msgstr ""
 "No es pot  mostrar l'ajuda perquè no hi ha cap aplicació per veure la "
 "disponible."
 
-#. Menubar
-#. # Toolbar
-#. # GtkSettings
-#. Ensure a sane width for the sidebar if visible
-#. # Actionbar
-#. Componentbook
-#. Clear the status bar, update the toolbar
-#. Show the new component, hide the old one
-#. # Statusbar
-#. # Geometry handling
-#. #
-#. # Toolbar and menubar callback and sensitivity functions
-#. #
 #: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Esteu segur d'obrir %d finestres d'informació de paquet?"
 
-#. #
-#. # Toolbar
-#. #
 #: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr "Executa ara"
@@ -309,9 +169,7 @@ msgstr "Refresca"
 msgid "Refresh channel data"
 msgstr "Refresca les dades del canal"
 
-#. #
-#. # Actionbar.
-#. #
+#. Install
 #: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Marca per la _instal·lació"
@@ -323,6 +181,7 @@ msgstr "Marca els paquets seleccionats per insta·lar"
 #. #
 #. # Remove Package
 #. #
+#. Remove
 #: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
@@ -332,9 +191,7 @@ msgstr "Marca per sup_rimir"
 msgid "Mark selected packages for removal"
 msgstr "Marca els paquets seleccionats per suprimir"
 
-#. #
-#. # Cancel Action
-#. #
+#. Cancel
 #: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
@@ -353,12 +210,6 @@ msgstr "I_nformació"
 msgid "Package information"
 msgstr "Informació del paquet"
 
-#. We want to revert to our old settings if we don't connect to
-#. a new daemon successfully.
-#. The return value is for the benefit of our delete_event handler.
-#. #
-#. # Menubar
-#. #
 #: src/red_appwindow.py:539
 msgid "_File"
 msgstr "_Fitxer"
@@ -367,11 +218,6 @@ msgstr "_Fitxer"
 msgid "_Edit"
 msgstr "_Edita"
 
-#. We need to make the component menu items checked
-#. instead of radio-style, because with a radio group you
-#. always have to have exactly one item set: when a non-navigable
-#. component is on the screen (like the dep resolution page),
-#. the component gets reset if you open any menu.
 #: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "_Visualitza"
@@ -382,7 +228,7 @@ msgstr "_Accions"
 
 #: src/red_appwindow.py:543
 msgid "_Help"
-msgstr "A_juda"
+msgstr "_Ajuda"
 
 #: src/red_appwindow.py:551
 msgid "Connect to daemon..."
@@ -408,9 +254,6 @@ msgstr "Instal·la des d'una _URL..."
 msgid "Install a package from a remote URL"
 msgstr "Instal·la un paquet des d'una URL remota"
 
-#. #
-#. # Mount command
-#. #
 #: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr "Directori de _muntatge..."
@@ -419,9 +262,6 @@ msgstr "Directori de _muntatge..."
 msgid "Mount a directory as a channel"
 msgstr "Munta un directori com un canal"
 
-#. #
-#. # Unmount command
-#. #
 #: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr "Desmu_nta el directori..."
@@ -430,9 +270,6 @@ msgstr "Desmu_nta el directori..."
 msgid "Unmount a directory"
 msgstr "Desmunta un directori"
 
-#. #
-#. # Activate
-#. #
 #: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr "_Activa..."
@@ -452,9 +289,6 @@ msgstr "Surt"
 msgid "Quit Red Carpet"
 msgstr "Surt del Red Carpet"
 
-#. #
-#. # Select all/none
-#. #
 #: src/red_appwindow.py:647
 msgid "Select _All"
 msgstr "Selecciona-ho _tot"
@@ -503,9 +337,6 @@ msgstr "_Usuaris..."
 msgid "Edit user permissions for this daemon"
 msgstr "Edita els permissos d'usuari per aquest dimoni"
 
-#. #
-#. # Sidebar
-#. #
 #: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr "_Barra lateral"
@@ -554,9 +385,6 @@ msgstr "No_tícies del Red Carpet"
 msgid "View the latest Red Carpet news"
 msgstr "Visualitza les últimes notícies del Red Carpet"
 
-#. #
-#. # Run Transaction
-#. #
 #: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr "Executa a_ra"
@@ -565,9 +393,6 @@ msgstr "Executa a_ra"
 msgid "Run the current transaction"
 msgstr "Executa la transacció actual"
 
-#. #
-#. # Verify System Dependencies
-#. #
 #: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
 msgstr "_Verifica les dependències del sistema"
@@ -595,9 +420,6 @@ msgstr "Marca aquest paquet per eliminar"
 msgid "Cancel installation or removal mark"
 msgstr "Cancel·la la marca d'instal·lació o supressió"
 
-#. #
-#. # Refresh Channel Data
-#. #
 #: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr "Re_fresca les dades del canal"
@@ -627,57 +449,6 @@ msgstr "Quan al Red Carpet"
 msgid "Go to the '%s' page"
 msgstr "Vés a la pàgina '%s'"
 
-#. ##
-#. ## Handlers for PendingOpsListener
-#. ##
-#. ##
-#. ## Handlers for Component signals (via the ComponentListener API)
-#. ##
-#. always pop off transient messages
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. FIXME: hackish evil to generate nicer fallback aliases.
-#. This should be removed once we actually get aliases
-#. into the channel XML.
-#. ##
-#. ## red_listmodel.ListModel implementation
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## Other methods
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "Tots els canals"
@@ -690,103 +461,6 @@ msgstr "Tots els canals subscrits"
 msgid "No Channel/Unknown Channel"
 msgstr "Cap canal/canal desconegut"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Clean any old widgets out of self.container,
-#. then stick in our new widget and show it.
-#. component
-#. list of packages
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Forces the component to emit a 'display' signal
-#. for the current widget (and causes the build method
-#. to be executed if no widget has been displayed yet).
-#. Change the component's visibility flag.  This doesn't
-#. actually make the component visible or invisible: instead,
-#. it tells the component whether or not it is currently being
-#. viewed.  If a component is hidden, we often want to do things
-#. like "freeze" views so that they don't respond to rcd changes.
-#. Ask the window embedding this component to switch to another
-#. component.
-#. Ask the window embedding this component to push the current
-#. component (i.e. ourselves) onto the component stack and to switch
-#. to another component.
-#. Ask the window embedding this component to pop a component off of
-#. the stack and switch to it.  If the stack is empty, this is a no-op.
-#. Send a status message to the window embedding this component.  The
-#. window is expected to do something reasonable with the message, like
-#. displaying it in a status bar.
-#. Pop the component's previous message off of the status bar.
-#. Signal our 'busy state' to the window embedding this component.
-#. When we tell the window we are busy (i.e. set the busy flag to
-#. 1), it should give some user feedback (i.e. throbbing a throbber
-#. or pulsing a progress bar) until we transmit a busy flag of 0.
-#. Pass a widget up to the window embedding this component.  This widget
-#. becomes the "view" on the component, replacing any previous widget.
-#. Proxy selected signals from package views
-#. Proxy busy and message signals from arrays.
-#. ##
-#. ## Virtual functions
-#. ##
-#. This should always be the same as the long name plus a menu mnemonic
-#. Always autoresize our connected views, since the treeview is
-#. stupid and doesn't work properly if the widget is hidden.
-#. ##
-#. ## Hints for setting up component navigation
-#. ##
-#. ##
-#. ## A convenience class that handles all of the signal connecting and
-#. ## disconnecting required to monitor a component.
-#. ##
-#. A paranoid check: make sure that a component matches what the
-#. ComponentListener thinks is the current component.
-#. Ugh... fractured English.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Required rcd versions
-#. Required protocol version
 #: src/red_connection.py:49
 #, python-format
 msgid ""
@@ -796,8 +470,6 @@ msgstr ""
 "No es pot connectar al dimoni:\n"
 " '%s'."
 
-#. Gnome HIG says no titles on these sorts of dialogs
-#. Guard for NoneType
 #: src/red_connection.py:67
 #, python-format
 msgid ""
@@ -807,7 +479,6 @@ msgstr ""
 "S'ha detectat la versió %d.%d.%d del dimoni del Red Carpet.\n"
 "Es necessita la versió %d.%d.%d (o més nova)"
 
-#. Assume protocol v1 if method not present.
 #: src/red_connection.py:93
 #, python-format
 msgid ""
@@ -817,19 +488,10 @@ msgstr ""
 "S'ha detectat la versió de protocol %d.  Es necessita la versió %d.  Heu "
 "d'actualitzar la versió del dimoni del Red Carpet."
 
-#. LSB compliant distros should have the
-#. following
 #: src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "S'està inicialitzant el dimoni..."
 
-#. child
-#. If we get here, the exec failed.
-#. parent
-#. Couldn't kill it, probably already dead
-#. File doesn't exist?
-#. FIXME: allow other paths?
-#. Give the rcd 20 seconds to start before we give up.
 #: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
@@ -838,11 +500,6 @@ msgstr ""
 "El Red Carpet necessita que s'estigui executant un dimoni del Red Carpet.\n"
 "Voleu inicialitzar-ne un de nou?"
 
-#. Conform to GNOME HIG
-#. This will block with a dialog.
-#. Prepend "https://" if it isn't already specified
-#. Append default port number (505) if one isn't specified
-#. NOTE: password must be md5ified.
 #: src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Connecta al sistema"
@@ -864,57 +521,18 @@ msgstr "Nom d'usuari:"
 msgid "Password:"
 msgstr "Contrasenya:"
 
-#. Don't activate the dropdown with enter
-#. desensitize the table by default.
 #: src/red_connection.py:401
 msgid "Connect"
 msgstr "Connecta"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_console.py:50
 msgid "Red Carpet Error Console"
 msgstr "Consola d'error del Red Carpet"
 
-#. We put the text into the console window in a timeout.  That
-#. way we can be sure that it happens in the main thread and
-#. that we don't have any gtk locking issues if another thread
-#. writes to stderr.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
 msgstr "S'ha restaurat la connexió al dimoni.\n"
 
-#. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
 msgstr "S'ha perdut el contacte amb el dimoni!"
@@ -923,30 +541,10 @@ msgstr "S'ha perdut el contacte amb el dimoni!"
 msgid "Exit Red Carpet"
 msgstr "Surt del Red Carpet"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Call get_deps in an idle so that we are fully initialized
-#. before we being our computation.  (In particular, the
-#. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
 msgstr "Resolució de la dependència"
 
-#. Clean up
 #: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "S'està verificant el sistema"
@@ -962,22 +560,14 @@ msgstr ""
 "Abans d'instal·lar aquest programa heu d'estar conformes amb la seva "
 "llicència."
 
-#. Try to estimate the size of the window we want.
-#. "W" being the widest glyph.
-#. Create a tag with our monospace font
-#. Get a mark to the start of the buffer and then scroll there
 #: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr "Hi estic d'acord"
 
-#. a hack to let history component know we are updated.
-#. FIXME: flags
-#. Assemble our warning banner
 #: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr "Ha fallat la resolució de la dependència"
 
-#. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr "S'ha verificat el sistema"
@@ -990,10 +580,6 @@ msgstr ""
 "Totes les dependències del paquets són correctes i no es necessita cap acció "
 "correctiva."
 
-#. Freeze the daemon listeners while we're doing a dependency
-#. resolution.  Otherwise we detect a change and slow things down.
-#. red_serverlistener.freeze_polling()
-#. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
 #: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Instal·lacions sol·licitades"
@@ -1014,26 +600,6 @@ msgstr "Supressions necessàries "
 msgid "Continue"
 msgstr "Continua"
 
-#. # That's all we can do here. We might (and usually don't)
-#. # have enough information here to decide what kind of page
-#. # to build.
-#. The section heading
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
@@ -1047,7 +613,6 @@ msgstr "Paquet"
 msgid "Current Version"
 msgstr "Versió actual"
 
-#. ## Main
 #: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
 #: src/red_updates.py:94
 msgid "New Version"
@@ -1057,76 +622,6 @@ msgstr "Nova versió"
 msgid "Size"
 msgstr "Mida"
 
-#. \u2022 is the unicode bullet
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. This is probably very, very bad because we're relying on some
-#. strange GTK behavior which might very well be a bug.  That is,
-#. if no file is selected and nothing is in the entry, it returns
-#. the current directory.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. No translation file for this language
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_history.py:113 src/red_users.py:30
 msgid "All"
 msgstr "Tot"
@@ -1151,15 +646,10 @@ msgstr "Usuari:"
 msgid "Timeframe (days):"
 msgstr "Segment de temps (days):"
 
-#. ##
-#. ## Sort functions
-#. ##
-#. # We want opposite order.
 #: src/red_history.py:279
 msgid "Searching..."
 msgstr "S'està cercant.."
 
-#. 10 years
 #: src/red_history.py:301 src/red_history.py:435
 msgid "Time"
 msgstr "Hora"
@@ -1168,7 +658,6 @@ msgstr "Hora"
 msgid "Action"
 msgstr "Acció"
 
-#. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
 msgid "User"
 msgstr "Usuari"
@@ -1177,8 +666,6 @@ msgstr "Usuari"
 msgid "Old Version"
 msgstr "Versió antiga"
 
-#. Define me!
-#. Define me!
 #: src/red_history.py:336 src/red_packagepage.py:45
 msgid "History"
 msgstr "Història"
@@ -1191,26 +678,6 @@ msgstr "_Història"
 msgid "No results found."
 msgstr "No s'ha trobat cap resultat."
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We need to do the stat check because if we select something in
-#. the filesel and then unselect it (with control-click), we'll
-#. get the parent directory for that file, not the file itself.
-#. File probably doesn't exist.
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
@@ -1224,7 +691,6 @@ msgstr "No hi ha paquets vàlids per instal·lar"
 msgid "Install from File"
 msgstr "Instal·la des d'un fitxer"
 
-#. need trailing /
 #: src/red_installfiles.py:119
 #, python-format
 msgid "Downloading %s..."
@@ -1238,142 +704,14 @@ msgstr "Instal·la des d'una URL"
 msgid "Package URL:"
 msgstr "URL del paquet:"
 
-#. replace - with _
-#. emit the signal in the main thread.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## ListModel: our magic-laden base class
-#. ##
-#. FIXME: We should just reverse our list if possible
-#. FIXME: Should throw a proper exception
-#. # Fallback implementation
-#. # Fallback implementation
-#. # Busy/message functions
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## This is some code to help us track down performance problems
-#. ## in GtkTreeView, etc.  Turned off by default.
-#. ##
-#. os.kill(os.getpid(), signal.SIGTRAP)
-#. os.kill(os.getpid(), signal.SIGTRAP)
-#. ##
-#. ## main
-#. ##
 #: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr "ERROR: No es poden utilitzar ambdues opcions, -h/--host i -l/--local"
 
-#. This'll always fail and pop up the dialog.
 #: src/red_main.py:137
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "ERROR: No podeu especificar un usuari a un dimoni local"
 
-#. Try the command-line options or the saved data first
-#. Enclosed in an empty try-except because we don't care about the
-#. error on the first connect.
-#. That failed, pop up the dialog
-#. This will terminate all our child threads without joining
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. # The format looks like "<Control>a" or "<Shift><Alt>F1.
-#. # The parser is fairly liberal and allows lower or upper case, and also
-#. # abbreviations such as "<Ctl>" and "<Ctrl>".
-#. No key, no joy!
-#. # End of public methods
-#. Automatically construct our menu items, and refresh the items,
-#. when we are realized.
-#. We can only be constructed once.
-#. ## Flag items that aren't hooked up to callbacks.
-#. assert item["radio_get"] and item["radio_set"]
-#. ## If this item is a leaf in our tree,
-#. ## hook up it's callback
-#. ##
-#. ## If this item has special visibility, sensitivity or checked
-#. ## functions, hook them up to listen for our refresh_items
-#. ## signals.
-#. ##
-#. ##
-#. ## If this item has subitems, construct the submenu
-#. ## and continue walking down the tree.
-#. ##
-#. Refresh the menu bar every time a top-level
-#. menu item is opened.
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Rèplica"
@@ -1386,24 +724,6 @@ msgstr "Ubicació"
 msgid "Choose a Mirror"
 msgstr "Escolliu una rèplica"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Handle ~ to mean $HOME
-#. Always run the dialog in the main thread
 #: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
@@ -1435,7 +755,7 @@ msgstr "Directori:"
 
 #: src/red_mount.py:168
 msgid "Look for packages recursively"
-msgstr "Cerca els paquets recursivament"
+msgstr ""
 
 #: src/red_mount.py:193
 msgid "Please choose the path for channel."
@@ -1449,47 +769,11 @@ msgstr "Desmunta el canal"
 msgid "Unmount?"
 msgstr "Desmuntar?"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Break the news item up to make it easier to read.
-#. FIXME: It would be nice to actually wrap the text in
-#. some sort of intelligent way.
-#. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
 #, python-format
 msgid "%s News"
 msgstr "Notícies %s"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
 msgstr "Connecta a una dimoni que s'està executant localment"
@@ -1526,22 +810,6 @@ msgstr "Imprimeix la versió de client i surt"
 msgid "Get usage information"
 msgstr "Obtenir la informació d'utilització"
 
-#. ##
-#. ## Expand our synthetic args.
-#. ## Then compile our list of arguments into something that getopt can
-#. ## understand.  Finally, call getopt on argv and massage the results
-#. ## in something easy-to-use.
-#. ##
-#. Just in case something strange went wrong and we weren't
-#. able to describe quite why the options parsing failed,
-#. we print a catch-all error message.
-#. ##
-#. ## Walk through our list of options and replace short options with the
-#. ## corresponding long option.
-#. ##
-#. ##
-#. ## Store our options in a dictionary
-#. ##
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
@@ -1551,27 +819,6 @@ msgstr "Utilització: %s <opcions> ..."
 msgid "The following options are understood:"
 msgstr "S'accepten les següents opcions:"
 
-#. By appending [0,0], we insure that this will work even if
-#. opt_list is empty (which it never should be)
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Callbacks for our ListModel
-#. ##
 #: src/red_packagearray.py:91
 msgid "installed"
 msgstr "instal·lat"
@@ -1589,10 +836,6 @@ msgstr "més vell "
 msgid "not installed"
 msgstr "no instal·lat"
 
-#. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
-#. __older_icon               = red_pixbuf.get_pixbuf("status-older")
-#. upgrade
-#. downgrade
 #: src/red_packagearray.py:123
 msgid "upgrade"
 msgstr "actualitza"
@@ -1609,31 +852,6 @@ msgstr "instal·la"
 msgid "remove"
 msgstr "suprimeix"
 
-#. ##
-#. ## Sort functions
-#. ##
-#. We want locked (1) to sort higher than unlocked (0), that's
-#. why the logic is backwards.
-#. upgrade
-#. downgrade
-#. ##
-#. ## PackageArray: our magic-laden base class
-#. ##
-#. # This function should take the data in the array and sort it according
-#. # to the specified function.  This is a "protected" function and
-#. # shouldn't be called by users of PackageArrays.
-#. def sort(self, sort_fn):
-#. assert 0, "PackageArray.sort not defined"
-#. # Find all instances of pkg in the PackageArray, and cause a
-#. # 'changed_one' signal to be emitted for each.
-#. # Implements PendingOpsListener
-#. ##############################################################################
-#. ##############################################################################
-#. ##############################################################################
-#. This is the method that derived classes need to implement
-#. The derived class should use this function to report the packages
-#. it received from the daemon.
-#. ##############################################################################
 #: src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
@@ -1647,57 +865,14 @@ msgstr "S'ha trobat un paquet que coincideix"
 msgid "No matching packages found"
 msgstr "No s'ha trobat cap paquet que coincidís"
 
-#. Find System packages
-#. Remove instelled Channel packages
-#. ##############################################################################
 #: src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "S'estan buscant les actualitzacions..."
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_packagebook.py:43
 msgid "Package Information"
 msgstr "Informació del paquet"
 
-#. grab_default() is not sufficient here.
-#. print "Built page %d: '%s'" % (num, page_box.page.name())
-#. If a page is currently set, remember it.
-#. We don't want to build page widgets if pages become visible
-#. as other pages are removed.
-#. If this is the page that was being displayed before,
-#. make it the current page.
-#. If no page was set previously, go to the first page.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Dependències"
@@ -1714,23 +889,6 @@ msgstr "Necessita"
 msgid "Conflicts With"
 msgstr "Entra en conflicte amb"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. evil magic failure code
 #: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Nom"
@@ -1767,23 +925,6 @@ msgstr "Descripció"
 msgid "Info"
 msgstr "Informació"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Define me!
 #: src/red_packagepage.py:32
 msgid "Unnamed"
 msgstr "Sense nom"
@@ -1796,76 +937,15 @@ msgstr "Estat"
 msgid "Importance"
 msgstr "Importància"
 
-#. button,
-#. time
-#. x coordinate
-#. y coordinate
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##############################################################################
-#. Remove package from list if threre's no more keys than "__package"
-#. ##############################################################################
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We don't really have any idea how long the transaction will take, but
-#. we'll guess that the download is 2/3 and the actual transaction 1/3.
-#. a few extra pixels...
-#. "W" being the widest glyph.
-#. # Guard for None
-#. keep window centered
-#. Try to set the scrollbox to a reasonable size, neither too big
-#. or too small. (We always want at least 3 lines of text to avoid
-#. "jumpyness".)
-#. keep window centered
-#. If our window has grown our shrunk, we want to make sure
-#. that it stays centered.
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% completat"
 
-#. Define me!
-#. If necessary, change the button from "Cancel"
-#. to "OK".  Make sure the button sensitive.
-#. gobject.type_register(PendingView)
-#. #############################################################################
-#. #############################################################################
 #: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Sistema d'actualització"
 
-#. this is a different kind of polling
-#. # FIXME: This is really ugly hack, but otherwise ui will be
-#. # unresponsive if connection with rcd is lost (even if rcd
-#. # comes back).
 #: src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "S'ha cancel·lat la baixada"
@@ -1874,12 +954,6 @@ msgstr "S'ha cancel·lat la baixada"
 msgid "Transaction cancelled"
 msgstr "S'ha cancel·lat la transacció"
 
-#. We can't cancel once the transaction begins
-#. We're in "download only" mode.
-#. Everything we wanted to download is already cached on the
-#. system.
-#.
-#. FIXME: Do something intelligent here?
 #: src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "S'ha finalitzat la transacció"
@@ -1900,8 +974,6 @@ msgstr "Error desconegut"
 msgid "Processing Transaction"
 msgstr "S'està processant la transacció"
 
-#. We don't get step_pending notification every time, but
-#. we never want to reduce the total progress bar
 #: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "La transacció ha finalitzat amb èxit"
@@ -1914,46 +986,9 @@ msgstr "Ha fallat la transacció"
 msgid "Transaction Failed"
 msgstr "Ha fallat la transacció"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. If this isn't a string, maybe it is a GdkPixbuf.  If so, just
-#. pass it through.  Otherwise something is very wrong, so we
-#. assert.
-#. FIXME: How do I check this type w/o the "try"?
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Title
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr "Interval per refrescar les dades del canal (en hores):"
+msgstr ""
 
 #. Packages section
 #: src/red_prefs.py:182
@@ -1970,7 +1005,7 @@ msgstr "Número de màxim de paquets a baixar en paral·lel:"
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr "Habilita les versions anteriors dels paquets"
+msgstr ""
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:210
@@ -1989,7 +1024,6 @@ msgstr "URL del proxy:"
 msgid "Username:"
 msgstr "Nom d'usuari: "
 
-#. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr ""
@@ -2033,13 +1067,11 @@ msgstr ""
 msgid "Empty Cache"
 msgstr "Buida la memòria cau"
 
-#. Have to do this after the other widgets are created
 #: src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
-#. Don't set the pref if we didn't change anything.
 #: src/red_prefs.py:443
 msgid "Value"
 msgstr "Valor"
@@ -2048,56 +1080,15 @@ msgstr "Valor"
 msgid "Loading preferences..."
 msgstr "S'estan carregant les preferències..."
 
-#. Remove the "loading" "page".
 #: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "%s Preferències"
 
-#. Should only be called for toggle renderer
-#. For some reason, event is None on keyboard events, and
-#. r.activate() complains about it.  Things seem to work
-#. if we just don't call this if it's None, though.
-#. Should only be called for text renderer
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. system packages and uninstalled packages are mutually exclusive
 #: src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Tots els paquets"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_searchbox.py:147 src/red_updates.py:31
 msgid "Updates"
 msgstr "Actualitzacions"
@@ -2185,39 +1176,6 @@ msgstr "Coincideix:"
 msgid "Channel:"
 msgstr "Canal:"
 
-#. ##
-#. ## Build the second row of the search UI, which contains the
-#. ## entry and some option menus.
-#. ##
-#. Make the lag longer if we haven't typed much yet.
-#. ##
-#. ## Create a box for our 'view' widget.
-#. ##
-#. ##
-#. ## Build our bottom row of advanced options.
-#. ##
-#. ##
-#. ## Assemble all of these pieces into our VBox.
-#. We are always subscribed to channel 0
-#. (i.e. system packages)
-#. query
-#. filter fn
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_search.py:35
 msgid "Search"
 msgstr "Cerca"
@@ -2226,8 +1184,6 @@ msgstr "Cerca"
 msgid "S_earch Packages"
 msgstr "C_erca els paquets"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
 msgid "Searching for matching packages..."
 msgstr "S'estan cercant paquets que coincideixin..."
@@ -2236,25 +1192,6 @@ msgstr "S'estan cercant paquets que coincideixin..."
 msgid "No matching packages found."
 msgstr "No s'ha trobat cap paquet que coincideixi."
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We only allow one server info window at a time
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
 msgstr "El dimoni s'identifica a si mateix com:"
@@ -2271,7 +1208,6 @@ msgstr "URL del servidor"
 msgid "Server supports enhanced features."
 msgstr "El servidor suporta característiques avançades."
 
-#. couldn't ping the server
 #: src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
 msgstr "No es pot contactar amb el dimoni."
@@ -2285,91 +1221,10 @@ msgstr "Volcar la informació del dimoni a un fitxer XML"
 msgid "Could not open file '%s': %s"
 msgstr "No s'ha pogut obrir el fitxer '%s': %s"
 
-#. We only allow one filesel window at a time
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
 msgstr "Escolliu el fitxer on escriure el XML"
 
-#. need trailing /
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Set up our polling timeout.  This should be the only place
-#. ## where we poll for the world sequence number.
-#. ##
-#. This lets us do the right thing if the server changes
-#. out from under us.
-#. Ignore any problems on the first poll, since we know we
-#. don't have valid server information before that point.
-#. We signal the listeners in an idle function so that
-#. it will always happen in the main thread.
-#. FIXME?  By doing nothing here, we keep the
-#. user from being hammered by a whole bunch of exceptions
-#. if something has gone badly wrong.
-#. FIXME?
-#. do the first poll immediately
-#. get poll timeout started again
-#. Start polling.  We skip our first poll, since we won't have made a
-#. connection to the server yet.
-#. ##############################################################################
-#. ##
-#. ##  The ServerListener class: a base class for objects that need to
-#. ## detect when the state of the world changes on the server
-#. ##
-#. These are the function that should be overrided in derived classes.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We want to emit our signal in the main thread.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## ListModel methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
 #: src/red_services.py:88
 msgid "Edit Services"
 msgstr "Edita els serveis"
@@ -2394,52 +1249,10 @@ msgstr "Afegeix un servei"
 msgid "Service URL"
 msgstr "URL del servei"
 
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. # Start of public API
-#. FIXME: This error message isn't great, but is better than a
-#. cryptic backtrace.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_sidebar.py:61 src/red_transaction.py:112
+#: src/red_sidebar.py:61 src/red_transaction.py:133
 msgid "Pending Actions"
 msgstr "Accions pendents"
 
-#. PendingOpsListener implementation
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
@@ -2464,22 +1277,6 @@ msgstr "%d supressions pendents"
 msgid "No pending actions"
 msgstr "No hi ha accions pendents"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_software.py:28
 msgid "Installed Software"
 msgstr "Programari instal·lat"
@@ -2488,8 +1285,6 @@ msgstr "Programari instal·lat"
 msgid "I_nstalled Software"
 msgstr "Programari i_nstal·lat"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_software.py:97
 msgid "Available Software"
 msgstr "Programari disponible"
@@ -2498,47 +1293,11 @@ msgstr "Programari disponible"
 msgid "A_vailable Software"
 msgstr "Programari di_sponible"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_statusbar.py:49
 #, python-format
 msgid "Connected to %s"
 msgstr "Connectat a %s"
 
-#. Pop off any old message
-#. # Proxy GtkStatusbar's interface
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "Subscrit"
@@ -2552,7 +1311,6 @@ msgstr "Nom del canal"
 msgid "%s Channel Subscriptions"
 msgstr "%s subscripcions al canal"
 
-#. FIXME: Make transient of app
 #: src/red_subscriptions.py:99
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
@@ -2561,69 +1319,15 @@ msgstr ""
 "No teniu permís per subscriure o cancel·lar la subscripció dels canals.  No "
 "podreu realitzar cap canvi a les subscripcions."
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We want (as many of) the same items to be selected even if
-#. we sort it differently.  We have to make two passes since
-#. setting the cursor after the selection seems to break some
-#. of the time.
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Sense títol"
 
-#. Fix the old column header
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ########################################################################
-#: src/red_transaction.py:75
+#: src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
 msgstr "Esteu segur de voler sortir?"
 
-#: src/red_transaction.py:115
+#: src/red_transaction.py:136
 msgid "_Pending Actions"
 msgstr "Accions _pendents"
 
@@ -2631,7 +1335,6 @@ msgstr "Accions _pendents"
 msgid "_Updates"
 msgstr "Act_ualitzacions"
 
-#. ## Update All button
 #: src/red_updates.py:77
 msgid "_Update All"
 msgstr "_Actualitza-ho tot"
@@ -2648,7 +1351,6 @@ msgstr "No hi ha cap actualitzacions de programari en els canals subscrits."
 msgid "Privilege"
 msgstr "Privilegi"
 
-#. Warn the user about removing their own superuser priv
 #: src/red_users.py:148
 msgid ""
 "If you remove superuser privileges from yourself, you will be unable to re-"
@@ -2660,7 +1362,6 @@ msgstr ""
 "\n"
 "Esteu segur de voler-ho fer?"
 
-#. We want opposite state
 #: src/red_users.py:166
 msgid "Enabled"
 msgstr "Habilitat"
@@ -2677,7 +1378,6 @@ msgstr "Confirmeu:"
 msgid "Set Password"
 msgstr "Especifica la contrasenya"
 
-#. else:
 #: src/red_users.py:246 src/red_users.py:422
 msgid "Password can not be empty."
 msgstr "La contrasenya no pot estar buida."
