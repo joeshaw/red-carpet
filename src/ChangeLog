@@ -1,3 +1,20 @@
+2003-03-13  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py: Don't connect to and change the sensitivity of
+	the sidebar buttons any more.
+
+	* red_main.py: Move the Installations/Removals component to the
+	end.
+
+	* red_sidebar.py: Nuke the details button.
+	(ShortcutBar): If there are an odd number of buttons, make the
+	last one span two columns.
+
+	* red_transaction.py (TransactionComponent): Give this a pixbuf
+	and show it in the shortcuts.
+
+	* rcd_util.py (fault): Add not_supported fault.
+
 2003-03-13  Tambet Ingo  <tambet@ximian.com>
 
 	* red_transaction.py (TransactionComponent.name): Fix inconsistency

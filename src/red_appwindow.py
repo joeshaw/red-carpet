@@ -147,10 +147,6 @@ class AppWindow(gtk.Window,
         self.sidebar = red_sidebar.SideBar()
         self.shortcut_bar = self.sidebar.get_shortcut_bar()
 
-        #  Connect sidebar's buttons later
-        # (when the components are registered)
-        gtk.idle_add(self.connect_sidebar_buttons, self.sidebar)
-
         self.hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
         main_box = gtk.VBox(0, 6)
@@ -230,17 +226,6 @@ class AppWindow(gtk.Window,
 
         if w:
             self.hpaned.set_position(w)
-
-    def connect_sidebar_buttons(self, bar):
-        ## Details button
-        details = bar.get_details_button()
-        for comp in self.components:
-            if isinstance(comp, red_transaction.TransactionComponent):
-                details.connect("clicked",
-                                lambda x,y:self.activate_component(y), comp)
-                return
-
-        details.set_sensitive(0)
 
     def create_throbber(self, height, width):
         self.throbber = red_throbber.Throbber(height, width)

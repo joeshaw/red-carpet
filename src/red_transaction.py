@@ -114,11 +114,17 @@ class TransactionComponent(red_component.Component):
     def long_name(self):
         return _("Installations and Removals")
 
+    def pixbuf(self):
+        return "pending-transactions"
+
     def access_key(self):
         return "I"
 
     def accelerator(self):
         return "<Control>P"
+
+    def show_in_shortcuts(self):
+        return 1
 
     def build(self):
         global model

@@ -76,32 +76,8 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         self.update_label()
         frame_content.pack_start(self.label, expand=0, fill=1)
 
-        bbox = gtk.HButtonBox()
-        bbox.set_spacing(6)
-        bbox.set_layout(gtk.BUTTONBOX_SPREAD)
-
-        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
-
-        ## Details Button
-        self.details = gtk.Button()
-        align = gtk.Alignment(0.5, 0.5, 0, 0)
-        self.details.add(align)
-        box = gtk.HBox(0, 2)
-        image = red_pixbuf.get_widget("pending-transactions",
-                                      width=width, height=height)
-        box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label(_("Show Details")), 0, 0)
-        align.add(box)
-        bbox.add(self.details)
-        self.details.set_sensitive(0)
-
-        frame_content.pack_start(bbox, 0, 1)
-
     def get_shortcut_bar(self):
         return self.shortcut_bar
-
-    def get_details_button(self):
-        return self.details
 
     # PendingOpsListener implementation
     def pendingops_changed(self, pkg, key, value, old_value):
@@ -226,8 +202,14 @@ class ShortcutBar(gtk.HBox):
             else:
                 x = 0
 
+            # Is this the last item and the only one on the row?
+            if x == 0 and (comp, callback) == components[-1]:
+                span = 2
+            else:
+                span = 1
+                
             table.attach(button,
-                         x, x+1, y, y+1,
+                         x, x+span, y, y+1,
                          gtk.FILL, 0, 0, 0)
 
             row += 0.5
