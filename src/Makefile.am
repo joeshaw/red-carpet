@@ -29,6 +29,7 @@ red_carpetsupport_DATA =	\
 	red_menubar.py				\
 	red_mount.py				\
 	red_news.py				\
+	red_option.py				\
 	red_packagearray.py			\
 	red_packagebook.py			\
 	red_packagepage.py			\
