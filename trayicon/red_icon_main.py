@@ -72,8 +72,6 @@ class UpdateIcon(red_tray.TrayIcon):
         if event.button == 1:
             print 'Launching red-carpet'
             f = os.popen('red-carpet', 'r')
-            f.close()
-
 
     def check_updates(self, icon):
         def query_finished_cb(worker, icon):
