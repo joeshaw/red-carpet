@@ -51,7 +51,6 @@ class AppWindow(gtk.Window):
         bar.add("/_Edit")
         bar.add("/_View")
         bar.add("/_Actions")
-        bar.add("/S_ubscriptions")
         bar.add("/_Settings")
         bar.add("/_Help")
 
@@ -61,10 +60,21 @@ class AppWindow(gtk.Window):
 
         bar.add("/Actions/Refresh Channel Data",
                 callback=refresh_cb)
+        bar.add("/Actions/sep", is_separator=1)
+
+        def set_show_sidebar_cb(x):
+            self.show_sidebar = x
+            if x:
+                self.sidebar.show_all()
+            else:
+                self.sidebar.hide()
+
+        bar.add("/View/Show Sidebar",
+                checked_get=lambda: self.show_sidebar,
+                checked_set=set_show_sidebar_cb)
         
         bar.add("/Edit/Foo")
-        bar.add("/View/Foo")
-        bar.add("/Subscriptions/Foo")
+
         bar.add("/Settings/Foo")
         bar.add("/Help/Foo")
 
@@ -75,11 +85,9 @@ class AppWindow(gtk.Window):
 
         self.server = server
 
-        self.paned = gtk.VPaned()
-        self.add(self.paned)
-
         self.table = gtk.Table(2, 6)
-        self.paned.pack1 (self.table, 1, 1)
+        self.add(self.table)
+        self.table.show()
 
         self.components = []
         self.current_comp = None
@@ -91,6 +99,8 @@ class AppWindow(gtk.Window):
         self.assemble_menubar(self.menubar)
         
         self.sidebar = red_sidebar.SideBar()
+        self.show_sidebar = 0
+        
         self.transactionbar = red_transaction.TransactionBar()
 
         self.statusbar = gtk.Statusbar()
@@ -109,31 +119,38 @@ class AppWindow(gtk.Window):
                           0, 2, 0, 1,
                           gtk.FILL, gtk.FILL,
                           0, 0)
+        self.menubar.show()
 
         self.table.attach(self.sidebar,
                           0, 1, 1, 5,
                           gtk.FILL, gtk.FILL,
                           0, 0)
-
+        if self.show_sidebar:
+            self.sidebar.show_all()
+            
         self.table.attach(self.header,
                           1, 2, 1, 2,
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
+        self.header.show()
 
         self.table.attach(self.upper,
                           1, 2, 2, 3,
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
+        self.upper.show()
 
         self.table.attach(self.main,
                           1, 2, 3, 4,
                           gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
                           0, 0)
+        self.main.show()
 
         self.table.attach(self.lower,
                           1, 2, 4, 5,
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
+        self.lower.show()
 
         south = gtk.HBox(0, 0)
         south.pack_start(self.transactionbar, 0, 1, 2)
@@ -143,6 +160,7 @@ class AppWindow(gtk.Window):
                           0, 2, 5, 6,
                           gtk.FILL, gtk.FILL,
                           0, 2)
+        south.show()
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
@@ -151,6 +169,12 @@ class AppWindow(gtk.Window):
         self.sidebar.add(label=comp.name(),
                          pixbuf=comp.pixbuf(),
                          callback=lambda: self.activate_component(comp))
+
+        self.menubar.add("/Actions/" + comp.long_name(),
+                         radiogroup="actions",
+                         radio_get=lambda x=comp: self.current_comp,
+                         radio_set=lambda x:self.activate_component(x),
+                         radiotag=comp)
 
         comp.set_server(self.server)
 

@@ -26,6 +26,9 @@ class SubscriptionsComponent(red_component.Component):
     def name(self):
         return "Subscriptions"
 
+    def long_name(self):
+        return "Manage Subscriptions"
+
     def pixbuf(self):
         return "subscribed"
 

@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
+import sys, string
 import gtk
 import rcd_util
 
@@ -59,11 +59,17 @@ class PageHistory(PackagePage):
         return pkg and pkg.has_key("__history")
 
     def build_widget(self, pkg, server):
-        box = gtk.VBox(0, 0)
-        for msg in pkg["__history"]:
-            box.pack_start(gtk.Label(msg), 0, 0, 2)
-        box.show_all()
-        return box
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        tv = gtk.TextView()
+        tv.set_editable(0)
+        tv.set_cursor_visible(0)
+        buf = tv.get_buffer()
+        buf.set_text(string.join(pkg["__history"] * 10, "\n"))
+        sw.add(tv)
+        sw.show_all()
+        return sw
+
 
 class PackageBook(gtk.Notebook):
 

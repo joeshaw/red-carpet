@@ -64,14 +64,15 @@ def main(version):
     server = connect_to_server()
 
     app = red_appwindow.AppWindow(server)
-    app.set_title(red_name)
-    app.show_all()
 
     app.register_component(red_summary.SummaryComponent())
     app.register_component(red_subscriptions.SubscriptionsComponent())
     app.register_component(red_channelbrowse.ChannelBrowseComponent())
     app.register_component(red_transaction.TransactionComponent())
     app.register_component(red_search.SearchComponent())
+
+    app.set_title(red_name)
+    app.show()
 
     gtk.main()
     

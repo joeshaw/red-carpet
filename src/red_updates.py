@@ -43,30 +43,8 @@ class SummaryComponent(red_component.Component):
                         "<b>%d updates</b>"
                         " available for your system." % self.array.len())
         vbox.pack_start(msg1, 1, 1, 0)
-        
-        vbox.show_all()
-        self.display("upper", vbox)
 
-
-        ### Main
-
-        browser = red_packagebrowser.PackageBrowser()
-
-        view = browser.get_view()
-        view.append_action_column()
-        view.append_importance_column()
-        view.append_channel_column(show_channel_name=0)
-        view.append_name_column()
-        view.append_version_column(column_title="New Version")
-        view.append_current_version_column()
-        view.append_size_column()
-        view.set_model(self.array)
-
-        browser.show()
-
-        self.display("main", browser)
-
-        lower = gtk.HBox(0, 0)
+        buttons = gtk.HBox(0, 0)
         sel = gtk.Button("Select All")
         unsel = gtk.Button("Unselect All")
         go = gtk.Button("Update All Now!")
@@ -86,11 +64,33 @@ class SummaryComponent(red_component.Component):
         unsel.connect("clicked", unsel_all_cb, self)
         go.connect("clicked", go_cb, self)
 
-        lower.pack_start(sel, 0, 0, 2)
-        lower.pack_start(unsel, 0, 0, 2)
-        lower.pack_end(go, 0, 0, 2)
-        lower.show_all()
-        self.display("lower", lower)
+        buttons.pack_start(sel, 0, 0, 2)
+        buttons.pack_start(unsel, 0, 0, 2)
+        buttons.pack_end(go, 0, 0, 2)
+        vbox.pack_start(buttons, 1, 1, 0)
+
+        vbox.show_all()
+        
+        self.display("upper", vbox)
+
+        ### Main
+
+        browser = red_packagebrowser.PackageBrowser()
+
+        view = browser.get_view()
+        view.append_action_column()
+        view.append_importance_column()
+        view.append_channel_column(show_channel_name=0)
+        view.append_name_column()
+        view.append_version_column(column_title="New Version")
+        view.append_current_version_column()
+        view.append_size_column()
+        view.set_model(self.array)
+
+        browser.show()
+
+        self.display("main", browser)
+
 
     def changed_visibility(self, flag):
         if flag:

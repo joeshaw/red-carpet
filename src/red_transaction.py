@@ -100,6 +100,9 @@ class TransactionComponent(red_component.Component):
     def name(self):
         return "Pending Transactions"
 
+    def long_name(self):
+        return "Manage Pending Transactions"
+
     def pixbuf(self):
         return "about-monkey"
 
