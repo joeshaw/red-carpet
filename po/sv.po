@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.12 2003/05/16 09:41:56 menthos Exp $
+# $Id: sv.po,v 1.13 2003/05/21 10:59:57 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-05-16 11:41+0200\n"
-"PO-Revision-Date: 2003-05-16 11:41+0200\n"
+"POT-Creation-Date: 2003-05-21 12:58+0200\n"
+"PO-Revision-Date: 2003-05-21 12:59+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:367
+#: src/rcd_util.py:376
 msgid "Please wait while getting data."
 msgstr "Var vänlig vänta vid hämtande av data."
 
@@ -52,31 +52,31 @@ msgstr "Var vänlig vänta vid hämtande av data."
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:416
+#: src/rcd_util.py:425
 msgid "Verifying"
 msgstr "Verifierar"
 
-#: src/rcd_util.py:417
+#: src/rcd_util.py:426
 msgid "Unable to verify package signature for"
 msgstr "Kan inte verifiera paketsignatur för"
 
-#: src/rcd_util.py:418
+#: src/rcd_util.py:427
 msgid "There is no package signature for"
 msgstr "Det finns ingen paketsignatur för"
 
-#: src/rcd_util.py:419
+#: src/rcd_util.py:428
 msgid "Preparing Transaction"
 msgstr "Förbereder transaktion"
 
-#: src/rcd_util.py:420
+#: src/rcd_util.py:429
 msgid "Installing"
 msgstr "Installerar"
 
-#: src/rcd_util.py:421
+#: src/rcd_util.py:430
 msgid "Removing"
 msgstr "Tar bort"
 
-#: src/rcd_util.py:422
+#: src/rcd_util.py:431
 msgid "Configuring"
 msgstr "Konfigurerar"
 
@@ -181,12 +181,21 @@ msgstr "Aktivera"
 msgid "Please fill in both email and activation code."
 msgstr "Fyll i både e-postadress och aktiveringskod."
 
-#: src/red_activation.py:95
+#: src/red_activation.py:91
+msgid "Unable to activate"
+msgstr "Kan inte aktivera"
+
+#: src/red_activation.py:92
+msgid "Please ensure you typed the email address and activation code correctly"
+msgstr ""
+"Försäkra dig om att du angav e-postadressen och aktiveringskoden korrekt"
+
+#: src/red_activation.py:100
 msgid "System successfully activated."
 msgstr "Systemet aktiverades framgångsrikt."
 
 #. Store email to config.
-#: src/red_activation.py:103
+#: src/red_activation.py:108
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
@@ -297,7 +306,7 @@ msgstr "Uppdatera kanaldata"
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:477
+#: src/red_appwindow.py:477 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Markera för _installation"
 
@@ -309,6 +318,7 @@ msgstr "Markera valda paket för installation"
 #. # Remove Package
 #. #
 #: src/red_appwindow.py:483 src/red_appwindow.py:757
+#: src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Markera för _borttagning"
 
@@ -320,6 +330,7 @@ msgstr "Markera valda paket för borttagning"
 #. # Cancel Action
 #. #
 #: src/red_appwindow.py:489 src/red_appwindow.py:769
+#: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -327,7 +338,8 @@ msgstr "_Avbryt"
 msgid "Cancel marked package actions"
 msgstr "Avbryt markerade paketåtgärder"
 
-#: src/red_appwindow.py:495
+#. Info
+#: src/red_appwindow.py:495 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformation"
 
@@ -709,7 +721,7 @@ msgstr "Server:"
 msgid "User name:"
 msgstr "Användarnamn:"
 
-#: src/red_connection.py:341 src/red_prefs.py:257 src/red_users.py:192
+#: src/red_connection.py:341 src/red_prefs.py:279 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Lösenord:"
@@ -886,15 +898,15 @@ msgstr "Fortsätt"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_depview.py:37 src/red_mount.py:226 src/red_packagepage_info.py:83
-#: src/red_packageview.py:359
+#: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:415
+#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "Paket"
 
-#: src/red_depview.py:43 src/red_packageview.py:454
+#: src/red_depview.py:43 src/red_packageview.py:462
 msgid "Current Version"
 msgstr "Aktuell version"
 
@@ -904,7 +916,7 @@ msgstr "Aktuell version"
 msgid "New Version"
 msgstr "Ny version"
 
-#: src/red_depview.py:49 src/red_packageview.py:490
+#: src/red_depview.py:49 src/red_packageview.py:498
 msgid "Size"
 msgstr "Storlek"
 
@@ -1018,7 +1030,7 @@ msgstr "Söker..."
 msgid "Time"
 msgstr "Tid"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:322
+#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
 msgid "Action"
 msgstr "Åtgärd"
 
@@ -1590,7 +1602,7 @@ msgstr "Är i konflikt med"
 msgid "Name"
 msgstr "Namn"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:444
+#: src/red_packagepage_info.py:79 src/red_packageview.py:452
 msgid "Version"
 msgstr "Version"
 
@@ -1614,7 +1626,7 @@ msgstr "Sektion"
 msgid "Summary"
 msgstr "Sammanfattning"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:438
+#: src/red_packagepage_info.py:86 src/red_prefs.py:455
 msgid "Description"
 msgstr "Beskrivning"
 
@@ -1643,57 +1655,11 @@ msgstr "Info"
 msgid "Unnamed"
 msgstr "Namnlös"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##############################################################################
-#. ##############################################################################
-#. This callback gets invoked before the selection has
-#. been updated, which causes get_selected to return
-#. out-of-date information unless we do the query in an
-#. idle callback.
-#. # This 'activated_fn' business is just a hack to get a call to
-#. # toggle_action to be the default behavior.
-#. print "selected %s (%d)" % (pkg["name"], i)
-#. print "activated %s (%d)" % (pkg["name"], i)
-#. Install
-#: src/red_packageview.py:224
-msgid "Mark for Installation"
-msgstr "Markera för installation"
-
-#. Remove
-#: src/red_packageview.py:237
-msgid "Mark for Removal"
-msgstr "Markera för borttagning"
-
-#. Cancel
-#: src/red_packageview.py:250
-msgid "Cancel"
-msgstr "Avbryt"
-
-#. Info
-#: src/red_packageview.py:268
-msgid "Information"
-msgstr "Information"
-
-#: src/red_packageview.py:293
+#: src/red_packageview.py:301
 msgid "Status"
 msgstr "Status"
 
-#: src/red_packageview.py:464
+#: src/red_packageview.py:472
 msgid "Importance"
 msgstr "Viktighet"
 
@@ -1842,114 +1808,114 @@ msgstr "Uppdatering misslyckades"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. Server frame
-#: src/red_prefs.py:141
+#. Title
+#. Server section
+#: src/red_prefs.py:160
 msgid "Server"
 msgstr "Server"
 
-#: src/red_prefs.py:148
+#: src/red_prefs.py:168
 msgid "Server URL:"
 msgstr "Server-URL:"
 
 #. manually force the value to update
-#: src/red_prefs.py:189
+#: src/red_prefs.py:209
 msgid "Mirrors"
 msgstr "Speglar"
 
-#: src/red_prefs.py:201
+#: src/red_prefs.py:221
 msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
 msgstr "Aktivera Premium-tjänster (Red Carpet Express eller Enterprise)"
 
-#. Packages frame
-#: src/red_prefs.py:208
+#. Packages section
+#: src/red_prefs.py:228
 msgid "Packages"
 msgstr "Paket"
 
-#: src/red_prefs.py:216
+#: src/red_prefs.py:237
 msgid "Require package signatures"
 msgstr "Kräv paketsignaturer"
 
-#: src/red_prefs.py:221
+#: src/red_prefs.py:242
 msgid "Maximum number of packages to download at once:"
 msgstr "Maximalt antal paket som ska hämtas på en gång:"
 
-#. Proxy frame - requires superuser
-#: src/red_prefs.py:231
+#. Proxy section - requires superuser
+#: src/red_prefs.py:252
 msgid "Proxy"
 msgstr "Proxyserver"
 
-#: src/red_prefs.py:239
+#: src/red_prefs.py:261
 msgid "Use a proxy"
 msgstr "Använd en proxyserver"
 
-#: src/red_prefs.py:243
+#: src/red_prefs.py:265
 msgid "Proxy URL:"
 msgstr "Proxyserver-URL:"
 
-#: src/red_prefs.py:250
+#: src/red_prefs.py:272
 msgid "Username:"
 msgstr "Användarnamn:"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:291
+#: src/red_prefs.py:312
 msgid "You do not have permissions to view proxy settings"
 msgstr "Du har inte rättigheter att granska proxyserverinställningarna"
 
-#: src/red_prefs.py:312
+#: src/red_prefs.py:336
 msgid "Cache downloaded packages and metadata"
 msgstr "Mellanlagra hämtade paket och metadata"
 
-#: src/red_prefs.py:318
+#: src/red_prefs.py:342
 msgid "Location of cached data:"
 msgstr "Plats för mellanlagrad data:"
 
-#. Expiration frame
-#: src/red_prefs.py:326
+#. Expiration section
+#: src/red_prefs.py:350
 msgid "Expiration"
 msgstr "Utgång"
 
-#. lame shim
-#: src/red_prefs.py:337
+#: src/red_prefs.py:354
 msgid "Cache expires"
 msgstr "Cachen utgår"
 
-#: src/red_prefs.py:343
+#: src/red_prefs.py:360
 msgid "Maximum age in days:"
 msgstr "Maximal ålder i dagar:"
 
-#: src/red_prefs.py:354
+#: src/red_prefs.py:371
 msgid "Maximum size in MB:"
 msgstr "Maximal storlek i MB:"
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:382
 msgid "Current cache size:"
 msgstr "Aktuell cachestorlek:"
 
-#: src/red_prefs.py:382
+#: src/red_prefs.py:399
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Är du säker på att du vill ta bort paketfilerna i din cache?"
 
-#: src/red_prefs.py:398
+#: src/red_prefs.py:415
 msgid "Empty Cache"
 msgstr "Töm cache"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:420
+#: src/red_prefs.py:437
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:468
+#: src/red_prefs.py:485
 msgid "Value"
 msgstr "Värde"
 
-#: src/red_prefs.py:481
+#: src/red_prefs.py:498
 msgid "Loading preferences..."
 msgstr "Läser in inställningar..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:541
+#: src/red_prefs.py:562
 #, python-format
 msgid "%s Preferences"
 msgstr "Inställningar för %s"
@@ -2370,7 +2336,7 @@ msgid "%s Channel Subscriptions"
 msgstr "Kanalprenumerationer på kanal %s"
 
 #. FIXME: Make transient of app
-#: src/red_subscriptions.py:95
+#: src/red_subscriptions.py:99
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
@@ -2541,6 +2507,23 @@ msgstr "Ogiltigt användarnamn."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
+
+#~ msgid ""
+#~ "Please ensure you typed the email address and activation code correctly."
+#~ msgstr ""
+#~ "Försäkra dig om att du angav e-postadressen och aktiveringskoden korrekt."
+
+#~ msgid "Mark for Installation"
+#~ msgstr "Markera för installation"
+
+#~ msgid "Mark for Removal"
+#~ msgstr "Markera för borttagning"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Information"
+#~ msgstr "Information"
 
 #~ msgid ""
 #~ "Unable to show help because it was not found or because you don't have "
