@@ -1,5 +1,18 @@
 2003-03-11  Joe Shaw  <joe@ximian.com>
 
+	* red_packagearray.py (pkg_is_name_installed): Changed this to
+	only check to see if the "name_installed" field is not 0.
+
+	* red_pendingops.py (can_perform_action_single): In the
+	to-be-removed case, due to the change above, check to see if the
+	package is either installed or name_installed.  In the
+	to-be-installed case, if the package is marked as installed, never
+	allow it to be installed again.
+
+	* red_summary.py (SummaryComponent.build): Show a blank updates
+	list instead of the no updates page by default so we don't get bad
+	flicker in the case where the user does have updates.
+
 	* rcd_util.py (fault): Add cant_activate fault.
 
 2003-03-10  Joe Shaw  <joe@ximian.com>

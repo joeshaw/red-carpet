@@ -140,7 +140,11 @@ class SummaryComponent(red_component.Component):
         page.pack_start(self.__have_updates, expand=1, fill=1)
         page.pack_start(self.__no_updates, expand=1, fill=1)
 
-        updates_changed_cb(self.array, self)
+        # Show a blank updates list by default until we get a changed
+        # signal, even if we don't have any updates, to reduce flicker
+        # at startup in the case where we do actually have updates.
+        self.__have_updates.show()
+        self.__no_updates.hide()
 
         return page
 

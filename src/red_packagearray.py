@@ -77,7 +77,7 @@ def pkg_is_installed(pkg):
     return pkg["installed"]
 
 def pkg_is_name_installed(pkg):
-    return pkg["name_installed"] or pkg["installed"]
+    return pkg["name_installed"] != 0
 
 def pkg_is_upgrade(pkg):
     return pkg["name_installed"] > 0

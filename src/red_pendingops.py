@@ -226,13 +226,17 @@ def can_perform_action_single(pkg, action):
         return 1
 
     if action == TO_BE_REMOVED:
-        if red_packagearray.pkg_is_name_installed(pkg) and \
+        if red_packagearray.pkg_is_installed(pkg) or \
+           red_packagearray.pkg_is_name_installed(pkg) and \
            rcd_util.check_server_permission("remove"):
             return 1
         else:
             return 0
 
     if action == TO_BE_INSTALLED:
+        if red_packagearray.pkg_is_installed(pkg):
+            return 0
+        
         if not red_packagearray.pkg_is_name_installed(pkg) and \
            rcd_util.check_server_permission("install"):
             return 1
