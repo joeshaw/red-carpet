@@ -15,7 +15,11 @@ SUBDIRS = $(UNMARSHALLER_DIR)	\
 #man_MANS = red-carpet.1
 #EXTRA_DIST = red-carpet.1
 
-EXTRA_DIST = red-carpet.console.in red-carpet.pam.rh7 red-carpet.pam.rh8
+desktopdir = $(datadir)/applications
+desktop_DATA = red-carpet.desktop
+
+EXTRA_DIST = red-carpet.console.in red-carpet.pam.rh7 red-carpet.pam.rh8 \
+	     $(desktop_DATA)
 
 if USERMODE
 consoledir = $(sysconfdir)/security/console.apps

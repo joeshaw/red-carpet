@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Red Carpet
+Comment=Software Updater
+Exec=red-carpet
+Icon=red-carpet.png
+Type=Application
+Categories=GTK;PackageManager;System;
