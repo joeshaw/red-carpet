@@ -1,3 +1,19 @@
+2003-02-19  Joe Shaw  <joe@ximian.com>
+
+	* configure.in: Get and substite a PYGTK_IMPORTDIR.  Add
+	--with-usermode-type which will install proper usermode files.
+	Print out configuration.
+
+	* Makefile.am: If --with-usermode-type was specified, install the
+	usermode files and set up a symlink of /usr/bin/consolehelper to
+	/usr/bin/red-carpet.
+
+	* red-carpet.console.in: Added.
+
+	* red-carpet.pam.rh7: Added.
+
+	* red-carpet.pam.rh8: Added.
+
 2003-02-11  Tambet Ingo  <tambet@ximian.com>
 
 	* art/uninstalled.png: New image.

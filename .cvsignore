@@ -1,7 +1,13 @@
 libtool
+ltmain.sh
 configure
 config.status
 config.log
+config.guess
+config.sub
 aclocal.m4
+autom4te-*.cache
 Makefile.in
 Makefile
+red-carpet.console
+

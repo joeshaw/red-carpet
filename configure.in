@@ -88,6 +88,9 @@ dnl FIXME: check that pygtk-codegen-2.0 actually exists!
 PYGTK_CODEGEN=$PYGTK_PREFIX/bin/pygtk-codegen-2.0
 AC_SUBST(PYGTK_CODEGEN)
 
+PYGTK_IMPORTDIR=$PYGTK_PREFIX/lib/python2.2/site-packages
+AC_SUBST(PYGTK_IMPORTDIR)
+
 dnl **************************************************************************
 
 AC_SUBST(PYTHON)
@@ -97,6 +100,23 @@ AC_SUBST(DDIR)
 LDIR=`echo $libdir | sed -e "s,"'${exec_prefix}'",$prefix,"`
 AC_SUBST(LDIR)
 
+AC_ARG_WITH(usermode-type,
+  [  --with-usermode-type=TYPE (redhat7, redhat8)],
+  with_usermode_type="$withval",
+  with_usermode_type="none")
+
+AM_CONDITIONAL(USERMODE, false)
+AM_CONDITIONAL(USERMODE_REDHAT7, false)
+AM_CONDITIONAL(USERMODE_REDHAT8, false)
+
+if test "x$with_usermode_type" = "xredhat7"; then
+  AM_CONDITIONAL(USERMODE, true)
+  AM_CONDITIONAL(USERMODE_REDHAT7, true)
+elif test "x$with_usermode_type" = "xredhat8"; then
+  AM_CONDITIONAL(USERMODE, true)
+  AM_CONDITIONAL(USERMODE_REDHAT8, true)
+fi
+
 AC_OUTPUT([
 Makefile
 art/Makefile
@@ -104,4 +124,16 @@ ximian_unmarshaller/Makefile
 red_extra/Makefile
 src/Makefile
 src/red-carpet
+red-carpet.console
 ])
+
+echo "
+
+Configuration:
+
+  Source code location: ${srcdir}
+  Prefix:               ${prefix}
+  
+  Usermode type:        ${with_usermode_type}
+
+"
