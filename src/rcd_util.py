@@ -320,3 +320,27 @@ def hexstr(s):
 
 def md5ify_password(pw):
     return hexstr(md5.new(pw).digest())
+
+###############################################################################
+
+### XML-RPC faults that we care about back from the daemon.
+###
+### KEEP THIS IN SYNC WITH RCD!
+
+class fault:
+    type_mismatch          = -501 # matches xmlrpc-c
+    invalid_stream_type    = -503 # matches xmlrpc-c
+    undefined_method       = -506 # matches xmlrpc-c
+    permission_denied      = -600
+    package_not_found      = -601
+    package_is_newest      = -602
+    failed_dependencies    = -603
+    invalid_search_type    = -604
+    invalid_package_file   = -605
+    invalid_channel        = -606
+    invalid_transaction_id = -607
+    invalid_preference     = -608
+    locked                 = -609
+    cant_authenticate      = -610
+    cant_refresh           = -611
+    no_icon                = -612

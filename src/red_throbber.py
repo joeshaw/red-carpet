@@ -18,31 +18,32 @@
 import gobject, gtk
 import red_pixbuf
 
-_throbber_pixbufs = ["throb-1",
-                     "throb-2",
-                     "throb-3",
-                     "throb-4",
-                     "throb-5",
-                     "throb-6",
-                     "throb-7",
-                     "throb-8",
-                     "throb-9",
-                     "throb-10"]
+#_throbber_pixbufs = ["throb-1",
+#                     "throb-2",
+#                     "throb-3",
+#                     "throb-4",
+#                     "throb-5",
+#                     "throb-6",
+#                     "throb-7",
+#                     "throb-8",
+#                     "throb-9",
+#                     "throb-10"]
+_throbber_pixbufs = ["app_icon", "download"]
 
 for i in range(len(_throbber_pixbufs)):
     _throbber_pixbufs[i] = red_pixbuf.get_pixbuf(_throbber_pixbufs[i])
                     
 class Throbber(gtk.EventBox):
 
-    def __init__(self):
+    def __init__(self, width=48, height=48):
         gtk.EventBox.__init__(self)
         self.__timeout = 0
         self.__interval = 100
         self.__throb_count = 0
         self.__frame = 0
 
-        self.__width = 48
-        self.__height = 48
+        self.__width = width
+        self.__height = height
         self.set_size_request(self.__width, self.__height)
 
         bg_color = self.get_colormap().alloc_color("white")
@@ -76,7 +77,10 @@ class Throbber(gtk.EventBox):
         return self.__throb_count > 0
 
     def __draw(self):
-        pixbuf = _throbber_pixbufs[self.__frame]
+        orig_pixbuf = _throbber_pixbufs[self.__frame]
+        pixbuf = orig_pixbuf.scale_simple(self.__width,
+                                          self.__height,
+                                          gtk.gdk.INTERP_BILINEAR)
         self.__img.set_from_pixbuf(pixbuf)
 
     def __throb(self):

@@ -25,6 +25,7 @@ import rcd_util
 import red_extra
 import red_menubar
 import red_transaction
+import red_installfiles
 import red_component
 import red_pendingview
 import red_pixbuf
@@ -145,7 +146,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
 
-        self.throbber = red_throbber.Throbber()
+        icon_size = self.toolbar.get_icon_size()
+        width, height = gtk.icon_size_lookup(icon_size)
+        self.throbber = red_throbber.Throbber(width, height)
 
         # A box to put component widgets in.  We use an EventBox
         # instead of just a [HV]Box so that we can control the
@@ -204,6 +207,15 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/_Actions")
         bar.add("/_Settings")
         bar.add("/_Help")
+
+        bar.add("/File/Install From File...",
+                callback=lambda x:red_installfiles.install_local())
+
+        bar.add("/File/Install From URL...",
+                callback=lambda x:red_installfiles.install_remote(),
+                sensitive_fn=red_installfiles.can_install_remote)
+
+        bar.add("/File/sep", is_separator=1)
 
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,
