@@ -367,7 +367,7 @@ def linebreak(in_str, width):
 
 ###############################################################################
 
-def dialog_from_fault(f, parent=None):
+def dialog_from_fault(f, parent=None, post_dialog_thunk=None):
     if not f:
         return
     lines = linebreak(f.faultString, 40)
@@ -377,22 +377,35 @@ def dialog_from_fault(f, parent=None):
                                gtk.BUTTONS_OK,
                                string.join(lines, "\n"))
     dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
-    dialog.show()
-    dialog.run()
-    dialog.destroy()
+
+    def idle_cb(d, thunk):
+        gtk.threads_enter()
+        d.show()
+        d.run()
+        d.destroy()
+        if thunk:
+            thunk()
+        gtk.threads_leave()
+
+    # Always run the dialog in the main thread.
+    gtk.idle_add(idle_cb, dialog, post_dialog_thunk)
 
 ###############################################################################
 
 def server_proxy_dialog(worker,
                         callback=None,
                         message=None,
-                        user_data=None):
+                        user_data=None,
+                        parent=None):
 
     if not message:
         message = "Please wait while getting data."
 
     dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
                                gtk.BUTTONS_CANCEL, message)
+
+    if parent:
+        dialog.set_transient_for(parent)
 
     def update_progressbar_cb(p):
         p.pulse()

@@ -185,16 +185,37 @@ def poll_cb():
         t2 = server.rcd.users.sequence_number()
         t3 = server.rcd.packsys.lock_sequence_number()
 
-        t1.connect("ready",
-                   lambda th, snc: apply(snc.set_world_seqnos,
-                                         th.get_result()),
-                   snc)
-        t2.connect("ready",
-                   lambda th, snc: snc.set_user_seqno(th.get_result()),
-                   snc)
-        t3.connect("ready",
-                   lambda th, snc: snc.set_lock_seqno(th.get_result()),
-                   snc)
+        def world_seqno_cb(th, snc):
+            try:
+                r = th.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                # FIXME?  By doing nothing here, we keep the
+                # user from being hammered by a whole bunch of exceptions
+                # if something has gone badly wrong.
+                pass
+            else:
+                apply(snc.set_world_seqnos, r)
+
+        def user_seqno_cb(th, snc):
+            try:
+                r = th.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                pass # FIXME?
+            else:
+                snc.set_user_seqno(r)
+
+        def lock_seqno_cb(th, snc):
+            try:
+                r = th.get_result()
+            except ximian_xmlrpclib.Fault,f:
+                pass # FIXME?
+            else:
+                snc.set_lock_seqno(r)
+            
+
+        t1.connect("ready", world_seqno_cb, snc)
+        t2.connect("ready", user_seqno_cb, snc)
+        t3.connect("ready", lock_seqno_cb, snc)
 
         missed_polls = 0
 

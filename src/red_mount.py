@@ -18,6 +18,7 @@
 import sys, os, string
 import gobject, gtk
 
+import ximian_xmlrpclib
 import rcd_util
 import red_channelmodel
 import red_dirselection
@@ -42,7 +43,12 @@ def mount_channel(path, name=None):
     mount_th = server.rcd.packsys.mount_directory(path, name, alias)
 
     def mount_cb(th, path):
-        cid = th.get_result()
+        try:
+            cid = th.get_result()
+        except ximian_xmlrpclib, f:
+            rcd_util.dialog_from_fault(f)
+            return
+        
         if not cid:
             msg = "Unable to mount %s as a channel" % path
             dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
@@ -59,7 +65,12 @@ def unmount_channel(cid):
     unmount_th = server.rcd.packsys.unmount_directory(cid)
 
     def unmount_cb(th, name):
-        success = th.get_result()
+        try:
+            success = th.get_result()
+        except ximian_xmlrpclib.Fault, f:
+            rcd_util.dialog_from_fault(f)
+            return
+        
         if not success:
             msg = "Unable to unmount %s" % name
             dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,

@@ -48,8 +48,12 @@ def refresh_cb(app):
     def got_channels_cb(worker, app):
         if worker.is_cancelled():
             return
-
-        stuff_to_poll = worker.get_result()
+        try:
+            stuff_to_poll = worker.get_result()
+        except ximian_xmlrpclib.Fault, f:
+            rcd_util.dialog_from_fault(f, parent=app)
+            return
+        
         pend = red_pendingview.PendingView_Simple(title="Refreshing channel data",
                                                   parent=app)
         pend.set_label("Downloading channel information")
@@ -64,7 +68,8 @@ def refresh_cb(app):
 
     rcd_util.server_proxy_dialog(worker,
                                  callback=got_channels_cb,
-                                 user_data=app)
+                                 user_data=app,
+                                 parent=app)
 
 
 def run_transaction_cb(app):
@@ -790,6 +795,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
     do_component_pop  = pop_component
 
     def do_component_message_push(self, msg, context_id):
+        self.statusbar.pop(0) # always pop off transient messages
         self.statusbar.push(context_id, msg)
 
     def do_component_message_pop(self, context_id):

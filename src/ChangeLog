@@ -1,3 +1,43 @@
+2003-02-19  Jon Trowbridge  <trow@ximian.com>
+
+	* red_serverlistener.py (poll_cb): Silently ignore xmlrpc faults
+	when polling sequence numbers.  This sort of sucks, but keeps
+	things from blowing up if something has gone terribly wrong
+	(with permissions, for example).
+
+	* red_packagearray.py (PackageArray.message_push): Support transient
+	mesages.
+	(PackagesFromQuery.set_packages): Display the number of matching
+	packages in a transient message.
+	(PackagesFromQuery.get_packages_from_daemon): Properly catch
+	xmlrpc faults.
+	(UpdatedPackages.get_packages_from_daemon): Properly catch
+	xmlrpc faults.
+
+	* red_mount.py (mount_cb): Catch xmlrpc faults and put up an error
+	dialog.
+	(unmount_cb): Ditto.
+
+	* red_depcomponent.py (DepComponent.__init__): Catch dependency
+	exceptions and show them in a dialog.  Pop the dependency
+	component in a post-dialog thunk.
+
+	* red_component.py (Component.message_push): Add support for
+	transient messages.
+
+	* red_appwindow.py (got_channels_cb): Catch xmlrpc faults and
+	put up an error dialog.  Set the parent window on the server
+	proxy dialog.
+	(AppWindow.do_component_message_push): Always pop off transient
+	messages when another message is pushed.
+
+	* red_activation.py (ActivationWindow.activate_finished_cb): Catch
+	xmlrpc faults and put up an error dialog.
+
+	* rcd_util.py (dialog_from_fault): Run our dialog in an idle
+	function.  Added support for a post-dialog thunk.
+	(server_proxy_dialog): Allow a parent window to be passed in.
+
 2003-02-19  Tambet Ingo  <tambet@ximian.com>
 
 	* red_news.py: Use red_listmodel.ListModel instead of home-grown

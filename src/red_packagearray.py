@@ -17,6 +17,7 @@
 
 import sys, string, time
 import gobject, gtk
+import ximian_xmlrpclib
 import rcd_util
 import red_listmodel
 import red_serverlistener, red_pixbuf
@@ -310,8 +311,10 @@ class PackageArray(red_listmodel.ListModel,
 
     ## Busy/message functions
 
-    def message_push(self, msg, context_id=-1):
-        if context_id < 0:
+    def message_push(self, msg, context_id=-1, transient=0):
+        if transient:
+            context_id = 0
+        elif context_id < 0:
             context_id = hash(self)
         self.emit("message_push", msg, context_id)
 
@@ -526,10 +529,22 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.__query_filter = None
         self.set_query(query)
 
+    def set_packages(self, pkgs, quiet=0):
+        if not quiet:
+            if len(pkgs) > 1:
+                msg = "Found %d matching packages" % len(pkgs)
+            elif len(pkgs) == 1:
+                msg = "Found 1 matching package"
+            else:
+                msg = "No matching packages found"
+            self.message_push(msg, transient=1)
+            
+        PackagesFromDaemon.set_packages(self, pkgs)
+
     def get_packages_from_daemon(self):
 
         if self.query is None:
-            self.set_packages([])
+            self.set_packages([], quiet=1)
             return
 
         cached = _get_query_from_cache(self.query)
@@ -548,28 +563,34 @@ class PackagesFromQuery(PackagesFromDaemon):
             self.__worker.cancel()
 
         def query_finished_cb(worker, array):
-            if not worker.is_cancelled():
-                packages = worker.get_result()
-                elapsed = time.time() - worker.t1
-                print "query time=%.2fs" % elapsed
-                print "got %d packages" % len(packages)
-
-                _cache_query_results(self.query, packages)
-
-                if self.__query_filter:
-                    packages = filter(self.__query_filter, packages)
-                packages = self.filter_duplicates(packages)
-                
-                array.set_packages(packages or [])
             array.message_pop()
             array.busy(0)
+
+            if not worker.is_cancelled():
+                try:
+                    packages = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    packages = []
+                else:
+                    elapsed = time.time() - worker.t1
+                    print "query time=%.2fs" % elapsed
+                    print "got %d packages" % len(packages)
+                    
+                    _cache_query_results(self.query, packages)
+
+                    if self.__query_filter:
+                        packages = filter(self.__query_filter, packages)
+                    packages = self.filter_duplicates(packages)
+
+                array.set_packages(packages or [])
 
 
         print "launching query"
         self.busy(1)
         if self.__query_msg:
             self.message_push(self.__query_msg)
-        self.set_packages([])
+        self.set_packages([], quiet=1)
 
         self.__worker = server.rcd.packsys.search(self.query)
         self.__worker.t1 = time.time()
@@ -641,12 +662,16 @@ class UpdatedPackages(PackagesFromDaemon):
 
         def query_finished_cb(worker, array):
             if not worker.is_cancelled():
-                updates = worker.get_result()
                 packages = []
-                for old_pkg, pkg, history in updates:
-                    pkg["__old_package"] = old_pkg
-                    pkg["__history"] = history
-                    packages.append(pkg)
+                try:
+                    updates = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                else:
+                    for old_pkg, pkg, history in updates:
+                        pkg["__old_package"] = old_pkg
+                        pkg["__history"] = history
+                        packages.append(pkg)
                 array.set_packages(packages)
             array.message_pop()
             array.busy(0)

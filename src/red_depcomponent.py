@@ -49,13 +49,20 @@ class DepComponent(red_component.Component):
         self.remove_packages = remove_packages
         self.verify = verify
 
-        if self.verify:
-            F = self.server.rcd.packsys.verify_dependencies()
-        else:
-            F = self.server.rcd.packsys.resolve_dependencies(
-                self.install_packages,
-                self.remove_packages,
-                [])
+        self.dep_install = []
+        self.dep_remove = []
+
+        try:
+            if self.verify:
+                F = self.server.rcd.packsys.verify_dependencies()
+            else:
+                F = self.server.rcd.packsys.resolve_dependencies(
+                    self.install_packages,
+                    self.remove_packages,
+                    [])
+        except ximian_xmlrpclib.Fault, f:
+            rcd_util.dialog_from_fault(f, post_dialog_thunk=lambda: self.pop())
+            return
             
         self.dep_install, self.dep_remove, dep_info = F
 

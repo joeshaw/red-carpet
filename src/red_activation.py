@@ -81,7 +81,12 @@ class ActivationWindow(gtk.Dialog):
             if worker.is_cancelled():
                 return
 
-            success = worker.get_result()
+            try:
+                success = worker.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                rcd_util.dialog_from_fault(f)
+                return
+            
             if success:
                 msg_type = gtk.MESSAGE_INFO
                 msg_txt = "System successfully activated."

@@ -76,8 +76,10 @@ class Component(gobject.GObject):
     # Send a status message to the window embedding this component.  The
     # window is expected to do something reasonable with the message, like
     # displaying it in a status bar.
-    def message_push(self, msg, context_id=-1):
-        if context_id < 0:
+    def message_push(self, msg, context_id=-1, transient=0):
+        if transient:
+            context_id = 0
+        elif context_id < 0:
             context_id = hash(self)
         self.emit("message_push", msg, context_id)
 
