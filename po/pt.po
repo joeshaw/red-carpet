@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"POT-Creation-Date: 2003-09-05 17:12-0400\n"
-"PO-Revision-Date: 2003-07-27 23:50+0000\n"
+"Report-Msgid-Bugs-To: Duarte Loreto <happyguy_pt@hotmail.com>\n"
+"POT-Creation-Date: 2003-09-09 13:54+0100\n"
+"PO-Revision-Date: 2003-09-09 13:55+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -802,6 +803,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"Detectada versão de protocolo %d.  É necessária a versão %d.  Tem de actualizar "
+"a sua versão do rcd."
 
 #. LSB compliant distros should have the
 #. following
