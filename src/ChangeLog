@@ -1,5 +1,12 @@
 2003-02-20  Tambet Ingo  <tambet@ximian.com>
 
+	* red_users.py (PrivilegesModel.request_update_cb): Implement.
+	Necessary to force the treeview update all cells if "superuser"
+	privilege is toggled.
+	(UsersOption): Added "updated" signal.
+
+2003-02-20  Tambet Ingo  <tambet@ximian.com>
+
 	* red_locks.py (toggle_lock): Catch exceptions, let user know
 	if something is wrong. Let serverlistener know we have updated.
 

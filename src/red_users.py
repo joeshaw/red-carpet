@@ -458,6 +458,7 @@ class PrivilegesModel(red_listmodel.ListModel):
         self.__worker_handler_id = 0
 
         opt.connect("selected", lambda x,y:self.refresh())
+        opt.connect("updated", lambda x:self.request_update())
 
         for name, callback, type in PRIVILEGE_COLUMNS:
             self.add_column(callback, type)
@@ -498,6 +499,11 @@ class PrivilegesModel(red_listmodel.ListModel):
         self.__worker_handler_id = self.__worker.connect("ready",
                                                          got_cb,
                                                          self)
+
+    def request_update(self):
+        def request_update_cb(self, path, iter):
+            self.row_changed(path[0])
+        self.foreach(request_update_cb)
 
     ###
     ### red_listmodel.ListModel implementation
@@ -612,6 +618,7 @@ class UsersOption(gtk.OptionMenu, red_serverlistener.ServerListener):
                     return
                 if users:
                     this.set_users(users)
+                    self.emit("updated")
 
         server = rcd_util.get_server_proxy()
         self.__worker = server.rcd.users.get_all()
@@ -626,3 +633,9 @@ gobject.signal_new("selected",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gobject.TYPE_PYOBJECT,))
+
+gobject.signal_new("updated",
+                   UsersOption,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   ())
