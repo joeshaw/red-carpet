@@ -262,7 +262,7 @@ def get_package_EVR(pkg):
     return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
 
 def package_is_patch(pkg):
-    if pkg.has_key("is_patch"):
+    if pkg.has_key("is_patch") and pkg["is_patch"]:
         return 1
 
 def get_package_info(pkg):

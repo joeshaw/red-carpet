@@ -121,6 +121,15 @@ def del_package(pkg):
         del package_data[pkg_key]
         signal_listeners()
 
+def patches_pending():
+    ## Is there pending operations where action is set and
+    ## "package" is actually patch.
+    for p in package_data.values():
+        if p.has_key("action") and p["action"] != NO_ACTION and \
+               p.has_key("__package") and \
+               rcd_util.package_is_patch(p["__package"]):
+            return 1
+
 def keys(pkg):
     pkg_key = rcd_util.get_package_key(pkg)
     dict = package_data.get(pkg_key)
@@ -230,6 +239,13 @@ def can_perform_action_single(pkg, action):
        pkg_action != NO_ACTION:
         return 1
 
+    ## Make sure there won't be both patches and packages pending.
+    if patches_pending():
+        if not rcd_util.package_is_patch(pkg):
+            return 0
+    elif pending_ops_exist() and rcd_util.package_is_patch(pkg):
+        return 0
+
     if action == TO_BE_REMOVED:
         if rcd_util.package_is_patch(pkg):
             return 0
@@ -259,6 +275,6 @@ def can_perform_action_single(pkg, action):
 
 def can_perform_action_multiple(pkgs, action):
     for p in pkgs:
-        if can_perform_action_single(p, action):
-            return 1
-    return 0
+        if not can_perform_action_single(p, action):
+            return 0
+    return 1

@@ -1,3 +1,15 @@
+2004-06-15  Tambet Ingo  <tambet@ximian.com>
+
+	* red_pendingops.py (patches_pending): Implement.
+	(can_perform_action_single): Make sure one transaction doesn't
+	have both patches and packages.
+
+	* rcd_util.py (package_is_patch): Make sure is_patch evaluates
+	to true.
+
+	* red_pendingops.py (can_perform_action_multiple): There was a
+	logic error: it only considered the first package.
+
 2004-06-14  Tambet Ingo  <tambet@ximian.com>
 
 	* rcd_util.py (server_has_patch_support): Query "rcd.you" module
