@@ -17,53 +17,43 @@
 
 import gtk
 import rcd_util
-import red_packagearray
-import red_history
+import red_packagepage
+import red_packagepage_deps
+import red_packagepage_info
 
-class PackagePage:
+package_infos = {}
 
-    def __init__(self):
-        pass
+def show_package_info(pkg):
 
-    # Define me!
-    def name(self):
-        return "Unnamed"
+    key = rcd_util.get_package_key(pkg)
+    if package_infos.has_key(key):
+        dialog = package_infos[key]
+        dialog.present()
+        return
 
-    # Define me!
-    def visible(self, pkg):
-        return 1
+    book = PackageBook()
+    book.set_tab_pos(gtk.POS_TOP)
+    book.add_page(red_packagepage_info.PackagePage_Info())
+    book.add_page(red_packagepage.PackagePage_History())
+    book.add_page(red_packagepage_deps.PackagePage_Deps())
 
-    # Define me!
-    def build_widget(self, pkg, server):
-        return gtk.Label("PackagePage.build_widget not implemented")
+    book.set_package(pkg)
 
-class PageSummary(PackagePage):
+    title = "Package Information: %s" % pkg["name"]
+    dialog = gtk.Dialog(title)
+    dialog.add_button(gtk.STOCK_OK, 0)
+    dialog.vbox.add(book)
+    dialog.connect("response", lambda d, code: d.destroy())
 
-    def name(self):
-        return "Summary"
+    def destroy_cb(dialog, key):
+        del package_infos[key]
 
-    def visible(self, pkg):
-        return pkg
+    package_infos[key] = dialog
+    dialog.connect("destroy", destroy_cb, key)
 
-    def build_widget(self, pkg, server):
-        info = rcd_util.get_package_info(pkg)
-        box = gtk.VBox(0,0)
-        box.pack_start(gtk.Label(info.get("summary", "")))
-        box.show_all()
-        return box
+    book.show_all()
+    dialog.show_all()
 
-class PageHistory(PackagePage):
-
-    def name(self):
-        return "History"
-
-    def visible(self, pkg):
-        return pkg and red_packagearray.pkg_name(pkg)
-
-    def build_widget(self, pkg, server):
-        pkg_name = red_packagearray.pkg_name(pkg)
-        if pkg_name:
-            return red_history.PackageHistory(pkg_name)
 
 class PackageBook(gtk.Notebook):
 

@@ -205,11 +205,8 @@ class DepComponent(red_component.Component):
 
     def activated(self):
         sidebar = self.parent().sidebar
-        sidebar.sensitize_run_button(0)
+        sidebar.set_sensitive(0)
 
     def deactivated(self):
         sidebar = self.parent().sidebar
-        if red_pendingops.packages_with_actions():
-            sidebar.sensitize_run_button(1)
-        else:
-            sidebar.sensitize_run_button(0)
+        sidebar.set_sensitive(1)

@@ -1,3 +1,54 @@
+2003-02-06  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (AppWindow.connect_sidebar_buttons): Don't
+	sensitize the details button.
+	(AppWindow.assemble_toolbar.info_cb): show_package_info() is in
+	red_packagebook now, not red_packagebrowser.
+
+	* red_channelbrowse.py (ChannelBrowseComponent.build): Go back to
+	using a PackageView.
+
+	* red_depcomponent.py (DepComponent.activated): Desensitize the
+	whole sidebar, not just the run button.
+
+	* red_packagebook.py: Move the PackagePage out of here and into
+	its own file, mainly for circular dependency reasons.
+	(show_package_info): Move this here.  Connect to the "destroy"
+	signal, not the "destroy_event" signal.
+
+	* red_packagebrowser.py: Deleted.  The show_package_info()
+	functionality has been moved to red_packagebook.py and the
+	popup functionality has been moved to red_packageview.py.
+
+	* red_packagepage.py: Added.  Contains the base PackagePage class
+	and the PackagePage_History class (formerly PageHistory).  Removed
+	the unused PageSummary class.
+
+	* red_packagepage_deps.py, red_packagepage_info.py: Fix up the
+	module references.
+
+	* red_packageview.py (PackageView.do_popup): Moved the code from
+	red_packagebrowser.py here.
+
+	* red_search.py (SearchComponent.build): Connect the view to the
+	component and go back to using PackageView.
+
+	* red_sidebar.py (SideBar): Derive also from
+	red_pendingops.PendingOpsListener.  Kill the transaction bar and
+	do it ourselves.  Get rid of the RunButton class.  Handle updating
+	the pending transactions label and the run button's sensitivity in
+	our pendingops_changed() implementation.
+
+	* red_summary.py, red_search.py: Go back to using PackageView.
+
+	* red_thrashingtreeview.py (post_thrash_model): If we don't have
+	any more items in our tree, our saved selpath will be invalid.
+	Catch the ValueError exception and happily go on.
+
+	* red_transaction.py (TransactionBar): Removed.  Equivalently
+	handled now by the sidebar.
+	(TransactionComponent.build): Connect the view to the component.
+
 2003-02-06  Tambet Ingo  <tambet@ximian.com>
 
 	* red_pixbuf.py: Added Peter Bowen's patch to append art

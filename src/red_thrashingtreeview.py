@@ -76,8 +76,14 @@ class TreeView(gtk.TreeView):
         model = self.saved_model
         gtk.TreeView.set_model(self, model)
         if selpath:
-            print "selpath: %s" % selpath
-            iter = model.get_iter(selpath)
+            try:
+                iter = model.get_iter(selpath)
+            except ValueError:
+                # If there's nothing left in the tree, we'll get a
+                # ValueError when we try to get an iter from the
+                # (now invalid) path.
+                iter = None
+                
             if iter:
                 select = self.get_selection()
                 select.select_iter(iter)

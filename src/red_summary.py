@@ -16,7 +16,7 @@
 ###
 
 import gtk
-import red_packagearray, red_packagebrowser
+import red_packagearray, red_packageview
 import red_pendingops
 import red_component
 import rcd_util
@@ -55,22 +55,24 @@ class SummaryComponent(red_component.Component):
 
         ### Main
 
-        browser = red_packagebrowser.PackageBrowser()
-
-        view = browser.get_view()
+        view = red_packageview.PackageView()
         self.connect_view(view)
+        
         col = view.append_importance_column()
         view.append_channel_column(show_channel_name=0)
         view.append_name_column()
         view.append_version_column(column_title="New Version")
         view.append_current_version_column()
-        view.set_model(self.array)
 
+        view.set_model(self.array)
         view.sort_by(col)
 
-        browser.show()
+        scrolled = gtk.ScrolledWindow()
+        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.add(view)
+        scrolled.show_all()
 
-        page.pack_start(browser, 1, 1)
+        page.pack_start(scrolled, expand=1, fill=1)
 
         return page
 

@@ -17,12 +17,12 @@
 
 import sys, gobject, gtk
 import red_extra
-import rcd_util, red_packagebook
+import rcd_util, red_packagepage
 
-class PackagePage_Deps(red_packagebook.PackagePage):
+class PackagePage_Deps(red_packagepage.PackagePage):
 
     def __init__(self):
-        red_packagebook.PackagePage.__init__(self)
+        red_packagepage.PackagePage.__init__(self)
 
     def name(self):
         return "Dependencies"

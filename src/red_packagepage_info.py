@@ -16,7 +16,7 @@
 ###
 
 import gtk
-import rcd_util, red_packagebook
+import rcd_util, red_packagepage
 
 NO_SPAN = 0
 SPAN    = 1
@@ -85,10 +85,10 @@ def build_rows(table, pkg, pkg_info):
             rindex = rindex + 2
 
 
-class PackagePage_Info(red_packagebook.PackagePage):
+class PackagePage_Info(red_packagepage.PackagePage):
 
     def __init__(self):
-        red_packagebook.PackagePage.__init__(self)
+        red_packagepage.PackagePage.__init__(self)
 
     def name(self):
         return "Info"

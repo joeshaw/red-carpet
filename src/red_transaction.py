@@ -46,43 +46,6 @@ class TransactionArray(red_packagearray.PackageArray,
 
 #########################################################################
 
-class TransactionBar(gtk.HBox,
-                     red_pendingops.PendingOpsListener):
-
-    no_action_str = "No Pending Actions"
-
-    def __init__(self):
-        gtk.HBox.__init__(self)
-        red_pendingops.PendingOpsListener.__init__(self)
-        self.label = gtk.Label(TransactionBar.no_action_str)
-        self.label.set_alignment(0.0, 0.5)
-        self.pack_end(self.label, 1, 1, 2)
-        self.label.show()
-
-    def update_label(self):
-        msg_list = []
-
-        ins_count = red_pendingops.pending_install_count()
-        if ins_count:
-            msg_list.append("%d pending install%s" %
-                            (ins_count,
-                             (ins_count > 1 and "s") or ""))
-
-        rem_count = red_pendingops.pending_remove_count()
-        if rem_count:
-            msg_list.append("%d pending removal%s" %
-                            (rem_count,
-                             (rem_count > 1 and "s") or ""))
-                
-        msg = string.join(msg_list, ",\n")
-        self.label.set_text(msg or TransactionBar.no_action_str)
-
-    def pendingops_changed(self, pkg, key, value, old_value):
-        if key == "action":
-            self.update_label()
-    
-#########################################################################
-
 def ok_to_quit(main_app_window):
 
     ins = red_pendingops.pending_install_count()
@@ -158,6 +121,8 @@ class TransactionComponent(red_component.Component):
         self.array = model
 
         view = red_packageview.PackageView()
+        self.connect_view(view)
+        
         view.append_action_column()
         view.append_name_column(show_channel_icon=1)
         view.append_version_column()

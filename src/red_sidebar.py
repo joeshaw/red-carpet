@@ -16,16 +16,18 @@
 ###
 
 import gtk
-import math
+import math, string
 
 import red_transaction
 import red_pixbuf
 import red_pendingops
 
-class SideBar(gtk.VBox):
+class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
     def __init__(self):
         gtk.VBox.__init__(self, 0, 6)
+        red_pendingops.PendingOpsListener.__init__(self)
+
         self.set_border_width(6)
 
         self.build()
@@ -48,15 +50,26 @@ class SideBar(gtk.VBox):
         view = red_transaction.TransactionSimple()
         self.pack_start(view, 1, 1)
 
-        transaction_bar = red_transaction.TransactionBar()
-        self.pack_start(transaction_bar, expand=0, fill=1)
+        self.label = gtk.Label("")
+        self.label.set_alignment(0.0, 0.5)
+        self.update_label()
+        self.pack_start(self.label, expand=0, fill=1)
 
         bbox = gtk.HButtonBox()
         bbox.set_spacing(6)
 
         ## Run button
-        self.run = RunButton()
+        self.run = gtk.Button()
+        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        self.run.add(align)
+        box = gtk.HBox(spacing=2)
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_BUTTON)
+        box.pack_start(image, expand=0, fill=0)
+        box.pack_start(gtk.Label("Run"), 0, 0)
+        align.add(box)
         bbox.add(self.run)
+        self.run.set_sensitive(0)
 
         ## Details Button
         self.details = gtk.Button()
@@ -69,6 +82,7 @@ class SideBar(gtk.VBox):
         box.pack_start(gtk.Label("Details"), 0, 0)
         align.add(box)
         bbox.add(self.details)
+        self.details.set_sensitive(0)
 
         self.pack_start(bbox, 0, 1)
 
@@ -84,6 +98,40 @@ class SideBar(gtk.VBox):
     def get_details_button(self):
         return self.details
 
+    # PendingOpsListener implementation
+    def pendingops_changed(self, pkg, key, value, old_value):
+        if key == "action":
+            self.update_label()
+            if red_pendingops.pending_install_count() + \
+               red_pendingops.pending_remove_count():
+                self.run.set_sensitive(1)
+                self.details.set_sensitive(1)
+            else:
+                self.run.set_sensitive(0)
+                self.details.set_sensitive(0)
+
+    def update_label(self):
+        msg_list = []
+
+        ins_count = red_pendingops.pending_install_count()
+        if ins_count:
+            msg_list.append("%d pending install%s" %
+                            (ins_count, (ins_count > 1 and "s") or ""))
+
+        rem_count = red_pendingops.pending_remove_count()
+        if rem_count:
+            msg_list.append("%d pending removal%s" %
+                            (rem_count, (rem_count > 1 and "s") or ""))
+
+        if not msg_list:
+            msg_list.append("No pending actions")
+
+        msg = string.join(msg_list, "\n")
+
+        for i in range(len(msg_list) - 2, 0):
+            msg += "\n"
+
+        self.label.set_text(msg)
 
 class ShortcutBar(gtk.HBox):
 
@@ -163,28 +211,3 @@ class ShortcutBar(gtk.HBox):
 
         self.pack_start(table)
         table.show_all()
-
-
-class RunButton(gtk.Button,
-                red_pendingops.PendingOpsListener):
-
-    def __init__(self):
-        gtk.Button.__init__(self)
-        red_pendingops.PendingOpsListener.__init__(self)
-
-        align = gtk.Alignment(0.5, 0.5, 0, 0)
-        self.add(align)
-        box = gtk.HBox(0, 2)
-        image = gtk.Image()
-        image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_BUTTON)
-        box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label("Run"), 0, 0)
-        align.add(box)
-
-    def pendingops_changed(self, pkg, key, value, old_value):
-        if key == "action":
-            if red_pendingops.pending_install_count() + \
-               red_pendingops.pending_remove_count() < 1:
-                self.set_sensitive(0)
-            else:
-                self.set_sensitive(1)

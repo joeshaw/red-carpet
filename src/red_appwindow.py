@@ -38,9 +38,8 @@ import red_mount
 import red_serverinfo
 import red_sidebar
 import red_toolbar
-
 import red_packagearray
-import red_packagebrowser
+import red_packagebook
 
 def refresh_cb(app):
     try:
@@ -166,7 +165,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             if isinstance(comp, red_transaction.TransactionComponent):
                 details.connect("clicked",
                                 lambda x,y:self.activate_component(y), comp)
-                details.set_sensitive(1)
                 return
 
         details.set_sensitive(0)
@@ -283,7 +281,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
             assert pkg is not None
 
-            red_packagebrowser.show_package_info(pkg)
+            red_packagebook.show_package_info(pkg)
         
         bar.info = bar.add(text="Info",
                            tooltip="Package Information",

@@ -16,8 +16,10 @@
 ###
 
 import gobject, gtk
+import rcd_util
 import red_pendingops, red_packagearray
 import red_pixbuf
+import red_packagebook
 import red_thrashingtreeview
 
 class PackageView(red_thrashingtreeview.TreeView):
@@ -94,7 +96,83 @@ class PackageView(red_thrashingtreeview.TreeView):
         #print "activated %s (%d)" % (pkg["name"], i)
 
     def do_popup(self, ev, i, ev_button, ev_time, pkg):
-        pass
+        menu = gtk.Menu()
+        menu.attach_to_widget(self, None)
+
+        item = gtk.ImageMenuItem("Package Info")
+        image = red_pixbuf.get_widget("info")
+        item.set_image(image)
+        item.show_all()
+        menu.append(item)
+
+        item.connect("activate",
+                     lambda x:red_packagebook.show_package_info(pkg))
+
+        item = gtk.SeparatorMenuItem()
+        item.show_all()
+        menu.append(item)
+
+        registered_action = red_pendingops.package_action(pkg)
+
+        if registered_action != red_pendingops.NO_ACTION:
+            item = gtk.MenuItem("Remove action")
+            item.show_all()
+            menu.append(item)
+
+            item.connect("activate",
+                         lambda x:red_pendingops.set_action(pkg, red_pendingops.NO_ACTION))
+
+        if red_packagearray.pkg_is_name_installed(pkg):
+            if registered_action != red_pendingops.TO_BE_REMOVED:
+                item = gtk.ImageMenuItem("Remove this package")
+                image = red_pixbuf.get_widget("to-be-removed")
+                item.set_image(image)
+                if not rcd_util.check_server_permission("remove"):
+                    item.set_sensitive(0)
+                item.show_all()
+                menu.append(item)
+
+                item.connect("activate",
+                             lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_REMOVED))
+        else:
+            if registered_action != red_pendingops.TO_BE_INSTALLED:
+                item = gtk.ImageMenuItem("Install this package")
+                image = red_pixbuf.get_widget("to-be-installed")
+                item.set_image(image)
+                if not rcd_util.check_server_permission("install"):
+                    item.set_sensitive(0)
+                item.show_all()
+                menu.append(item)
+
+                item.connect("activate",
+                             lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
+
+        if red_packagearray.pkg_is_upgrade(pkg) and \
+           registered_action != red_pendingops.TO_BE_INSTALLED:
+            item = gtk.ImageMenuItem("Upgrade")
+            image = red_pixbuf.get_widget("update")
+            item.set_image(image)
+            if not rcd_util.check_server_permission("upgrade"):
+                item.set_sensitive(0)
+            item.show_all()
+            menu.append(item)
+
+            item.connect("activate",
+                         lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
+        elif red_packagearray.pkg_is_downgrade(pkg) and \
+             registered_action != red_pendingops.TO_BE_INSTALLED:
+            item = gtk.ImageMenuItem("Downgrade")
+            image = red_pixbuf.get_widget("warning", width=24, height=24)
+            item.set_image(image)
+            if not rcd_util.check_server_permission("upgrade"):
+                item.set_sensitive(0)
+            item.show_all()
+            menu.append(item)
+
+            item.connect("activate",
+                         lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
+
+        menu.popup(None, None, None, ev_button, ev_time)
         #print "popup on %s (%d)" % (pkg["name"], i)
 
     def set_model(self, model):

@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_pixbuf, red_menubar
-import red_packagearray, red_packageview, red_packagebrowser
+import red_packagearray, red_packageview
 import red_component
 
 class SearchComponent(red_component.Component):
@@ -166,9 +166,9 @@ class SearchComponent(red_component.Component):
 
         ### Main
 
-        browser = red_packagebrowser.PackageBrowser()
+        view = red_packageview.PackageView()
+        self.connect_view(view)
 
-        view = browser.get_view()
         view.append_action_column()
         view.append_status_column()
         view.append_channel_column()
@@ -177,10 +177,12 @@ class SearchComponent(red_component.Component):
         view.append_version_column()
         view.set_model(self.array)
 
-        browser.show()
+        scrolled = gtk.ScrolledWindow()
+        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.add(view)
+        scrolled.show_all()
 
-        page.pack_start(browser, 1, 1, 0)
-        page.show()
+        page.pack_start(scrolled, expand=1, fill=1)
 
         return page
 
