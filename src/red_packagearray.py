@@ -555,6 +555,12 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
     def packages_changed(self):
         self.schedule_refresh()
 
+    def channels_changed(self):
+        self.schedule_refresh()
+
+    def subscriptions_changed(self):
+        self.schedule_refresh()
+
     def locks_changed(self):
         self.schedule_refresh()
 
@@ -683,7 +689,11 @@ class PackagesFromQuery(PackagesFromDaemon):
 
     def channels_changed(self):
         _reset_query_cache()
-        pass
+        PackagesFromDaemon.channels_changed(self)
+
+    def subscriptions_changed(self):
+        _reset_query_cache()
+        PackagesFromDaemon.subscriptions_changed(self)
 
     def locks_changed(self):
         _reset_query_cache()
@@ -748,14 +758,3 @@ class UpdatedPackages(PackagesFromDaemon):
         self.__worker_handler_id = self.__worker.connect("ready",
                                                          query_finished_cb,
                                                          self)
-
-    # The list of updates needs to refresh when the list of available
-    # channels or subscriptions change.
-    def subscriptions_changed(self):
-        self.schedule_refresh()
-
-    def channels_changed(self):
-        self.schedule_refresh()
-
-    def locks_changed(self):
-        self.schedule_refresh()

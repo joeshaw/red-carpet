@@ -1,5 +1,16 @@
 2003-03-25  Joe Shaw  <joe@ximian.com>
 
+	* red_packagearray.py (PackagesFromDaemon): Add channels_changed
+	and subscriptions_changed handlers because we'll need to update
+	our queries if channels or subscriptions changed.
+	(PackagesFromQuery): Chain up the channels_changed handler to
+	PackagesFromDaemon.  Add a subscriptions_changed handler.
+	(UpdatePackages): Delete the subscriptions_changed,
+	channels_changed, and locks_changed handlers; they're handed in
+	PackagesFromDaemon.
+
+2003-03-25  Joe Shaw  <joe@ximian.com>
+
 	* red_prefs.py: Fix some typos, change around some wording, and
 	kill the Daemon prefs tab.  (Fixes most of #40263)
 
