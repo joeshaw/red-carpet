@@ -246,13 +246,17 @@ class DaemonSettings(gtk.VBox):
         table.attach_defaults(l, 0, 1, 2, 3)
 
         self.url = gtk.Combo()
+        self.url.disable_activate() # Don't activate the dropdown with enter
+        self.url.entry.set_activates_default(1)
         table.attach_defaults(self.url, 1, 2, 0, 1)
 
         self.user = gtk.Entry()
+        self.user.set_activates_default(1)
         table.attach_defaults(self.user, 1, 2, 1, 2)
 
         self.password = gtk.Entry()
         self.password.set_visibility(0)
+        self.password.set_activates_default(1)
         table.attach_defaults(self.password, 1, 2, 2, 3)
         
         hbox = gtk.HBox()

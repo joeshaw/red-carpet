@@ -1,3 +1,9 @@
+2003-02-27  Joe Shaw  <joe@ximian.com>
+
+	* red_settings.py (DaemonSettings.build): Make enter in the
+	entries activate the default, and make it not activate the
+	drop-down box in the combo.
+
 2003-02-27  Jon Trowbridge  <trow@ximian.com>
 
 	* red_search.py (SearchComponent.activated): Have the SearchBox
