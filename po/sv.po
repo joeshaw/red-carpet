@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.23 2003/09/06 22:27:21 menthos Exp $
+# $Id: sv.po,v 1.24 2003/09/26 14:58:01 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-09-07 00:24+0200\n"
-"PO-Revision-Date: 2003-09-07 00:26+0200\n"
+"POT-Creation-Date: 2003-09-26 16:55+0200\n"
+"PO-Revision-Date: 2003-09-26 16:57+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,23 +41,24 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
+#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:381
+#: src/rcd_util.py:419
 msgid "Please wait while getting data."
 msgstr "Var vänlig vänta vid hämtande av data."
 
 #. ##############################################################################
-#: src/rcd_util.py:435 src/rcd_util.py:453
+#: src/rcd_util.py:473 src/rcd_util.py:491
 msgid "Please ensure that your network settings are correct."
 msgstr "Försäkra dig om att dina nätverksinställningar är korrekta."
 
-#: src/rcd_util.py:442
+#: src/rcd_util.py:480
 msgid "Refreshing channel data"
 msgstr "Uppdaterar kanaldata"
 
-#: src/rcd_util.py:444
+#: src/rcd_util.py:482
 msgid "Downloading channel information"
 msgstr "Hämtar kanalinformation"
 
@@ -65,31 +66,31 @@ msgstr "Hämtar kanalinformation"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:470
+#: src/rcd_util.py:508
 msgid "Verifying"
 msgstr "Verifierar"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:509
 msgid "Unable to verify package signature for"
 msgstr "Kan inte verifiera paketsignatur för"
 
-#: src/rcd_util.py:472
+#: src/rcd_util.py:510
 msgid "There is no package signature for"
 msgstr "Det finns ingen paketsignatur för"
 
-#: src/rcd_util.py:473
+#: src/rcd_util.py:511
 msgid "Preparing Transaction"
 msgstr "Förbereder transaktion"
 
-#: src/rcd_util.py:474
+#: src/rcd_util.py:512
 msgid "Installing"
 msgstr "Installerar"
 
-#: src/rcd_util.py:475
+#: src/rcd_util.py:513
 msgid "Removing"
 msgstr "Tar bort"
 
-#: src/rcd_util.py:476
+#: src/rcd_util.py:514
 msgid "Configuring"
 msgstr "Konfigurerar"
 
@@ -178,33 +179,37 @@ msgstr "Licensierat under GNU General Public License, version 2"
 msgid "Group Activation"
 msgstr "Gruppaktivering"
 
-#: src/red_activation.py:37
+#: src/red_activation.py:44
+msgid "Service:"
+msgstr "Tjänst:"
+
+#: src/red_activation.py:48
 msgid "Email:"
 msgstr "E-post:"
 
-#: src/red_activation.py:41
+#: src/red_activation.py:52
 msgid "Activation Code:"
 msgstr "Aktiveringskod:"
 
-#: src/red_activation.py:59
+#: src/red_activation.py:78
 msgid "Activate"
 msgstr "Aktivera"
 
-#: src/red_activation.py:76
+#: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
 msgstr "Fyll i både e-postadress och aktiveringskod."
 
-#: src/red_activation.py:91
+#: src/red_activation.py:114
 msgid "Unable to activate"
 msgstr "Kan inte aktivera"
 
-#: src/red_activation.py:92
+#: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
 "Försäkra dig om att du angav e-postadressen och aktiveringskoden korrekt"
 
 #. Store email to config.
-#: src/red_activation.py:110
+#: src/red_activation.py:133
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
@@ -232,7 +237,7 @@ msgstr ""
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:83
+#: src/red_appwindow.py:84
 msgid "C"
 msgstr "C"
 
@@ -246,7 +251,7 @@ msgstr "C"
 #. dunno, but a sane
 #. fallback
 #. CDE
-#: src/red_appwindow.py:120
+#: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -254,7 +259,7 @@ msgstr ""
 "Kan inte visa hjälp eftersom hjälpfilerna saknas. Rapportera detta till din "
 "leverantör."
 
-#: src/red_appwindow.py:130
+#: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
@@ -273,7 +278,7 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:405
+#: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Är du säker på att du vill öppna %d fönster med paketinformation?"
@@ -281,71 +286,71 @@ msgstr "Är du säker på att du vill öppna %d fönster med paketinformation?"
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr "Kör nu"
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:435
 msgid "Perform installations and removals"
 msgstr "Utför installationer och borttagningar"
 
-#: src/red_appwindow.py:441
+#: src/red_appwindow.py:442
 msgid "Channels"
 msgstr "Kanaler"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
 msgstr "Ändra dina kanalprenumerationer"
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:451
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:452
 msgid "Refresh channel data"
 msgstr "Uppdatera kanaldata"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:462 src/red_packageview.py:232
+#: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Markera för _installation"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:464
 msgid "Mark selected packages for installation"
 msgstr "Markera valda paket för installation"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:468 src/red_appwindow.py:763
+#: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Markera för _borttagning"
 
-#: src/red_appwindow.py:469
+#: src/red_appwindow.py:470
 msgid "Mark selected packages for removal"
 msgstr "Markera valda paket för borttagning"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:474 src/red_appwindow.py:776
+#: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: src/red_appwindow.py:475
+#: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
 msgstr "Avbryt markerade paketåtgärder"
 
 #. Info
-#: src/red_appwindow.py:480 src/red_packageview.py:276
+#: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformation"
 
-#: src/red_appwindow.py:481
+#: src/red_appwindow.py:482
 msgid "Package information"
 msgstr "Paketinformation"
 
@@ -355,11 +360,11 @@ msgstr "Paketinformation"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:538
+#: src/red_appwindow.py:539
 msgid "_File"
 msgstr "_Arkiv"
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:540
 msgid "_Edit"
 msgstr "_Redigera"
 
@@ -368,248 +373,256 @@ msgstr "_Redigera"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:540 src/red_appwindow.py:826
+#: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "_Visa"
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:542
 msgid "_Actions"
 msgstr "_Åtgärder"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:543
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/red_appwindow.py:550
+#: src/red_appwindow.py:551
 msgid "Connect to daemon..."
 msgstr "Anslut till demon..."
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
 msgstr "Anslut till en fjärrdemon"
 
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:562
 msgid "Install from _File..."
 msgstr "Installera från _fil..."
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:563
 msgid "Install a package from a local file"
 msgstr "Installera ett paket från en lokal fil"
 
-#: src/red_appwindow.py:571
+#: src/red_appwindow.py:572
 msgid "Install from _URL..."
 msgstr "Installera från _URL..."
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:573
 msgid "Install a package from a remote URL"
 msgstr "Installera ett paket från en fjärr-URL"
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:589
+#: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr "_Montera katalog..."
 
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:591
 msgid "Mount a directory as a channel"
 msgstr "Montera en katalog som en kanal"
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:606
+#: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr "A_vmontera katalog..."
 
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:608
 msgid "Unmount a directory"
 msgstr "Avmontera en katalog"
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:622
+#: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr "_Aktivera..."
 
-#: src/red_appwindow.py:623
+#: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
 "Aktivera demon mot Red Carpet Express eller Red Carpet Enterprise server"
 
-#: src/red_appwindow.py:629
+#: src/red_appwindow.py:631
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/red_appwindow.py:630
+#: src/red_appwindow.py:632
 msgid "Quit Red Carpet"
 msgstr "Avsluta Red Carpet"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:645
+#: src/red_appwindow.py:647
 msgid "Select _All"
 msgstr "Markera _alla"
 
-#: src/red_appwindow.py:646
+#: src/red_appwindow.py:648
 msgid "Select all items"
 msgstr "Markera alla objekt"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:653
 msgid "Select _None"
 msgstr "Markera _inga"
 
-#: src/red_appwindow.py:652
+#: src/red_appwindow.py:654
 msgid "Deselect all items"
 msgstr "Avmarkera alla objekt"
 
-#: src/red_appwindow.py:659
+#: src/red_appwindow.py:661
+msgid "Services..."
+msgstr "Tjänster..."
+
+#: src/red_appwindow.py:662
+msgid "Edit services"
+msgstr "Redigera tjänster"
+
+#: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
 msgstr "Kanal_prenumerationer..."
 
-#: src/red_appwindow.py:660
+#: src/red_appwindow.py:667
 msgid "Edit your channel subscriptions"
 msgstr "Redigera dina kanalprenumerationer"
 
-#: src/red_appwindow.py:665
+#: src/red_appwindow.py:672
 msgid "_Preferences..."
 msgstr "_Inställningar..."
 
-#: src/red_appwindow.py:666
+#: src/red_appwindow.py:673
 msgid "Edit your Red Carpet preferences"
 msgstr "Redigera dina Red Carpet-inställningar"
 
-#: src/red_appwindow.py:670
+#: src/red_appwindow.py:677
 msgid "_Users..."
 msgstr "_Användare..."
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
 msgstr "Redigera användarrättigheter för denna demon"
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr "_Sidopanel"
 
-#: src/red_appwindow.py:685
+#: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Dölj eller visa sidopanelen med förestående åtgärder"
 
-#: src/red_appwindow.py:689
+#: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
 msgstr "_Avancerade sökalternativ"
 
-#: src/red_appwindow.py:690
+#: src/red_appwindow.py:697
 msgid "Hide or show advanced search options"
 msgstr "Dölj eller visa avancerade sökalternativ"
 
-#: src/red_appwindow.py:694
+#: src/red_appwindow.py:701
 msgid "_Channel Names"
 msgstr "_Kanalnamn"
 
-#: src/red_appwindow.py:695
+#: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
 msgstr "Dölj eller visa kanalnamn i paketlistor"
 
-#: src/red_appwindow.py:701
+#: src/red_appwindow.py:708
 msgid "Package _Information..."
 msgstr "Paket_information..."
 
-#: src/red_appwindow.py:702
+#: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
 msgstr "Visa information om för tillfället markerade paket"
 
-#: src/red_appwindow.py:710
+#: src/red_appwindow.py:717
 msgid "_Daemon Information..."
 msgstr "_Demoninformation..."
 
-#: src/red_appwindow.py:711
+#: src/red_appwindow.py:718
 msgid "View information about this daemon"
 msgstr "Visa information om denna demon"
 
-#: src/red_appwindow.py:713
+#: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
 msgstr "Red Carpet-ny_heter..."
 
-#: src/red_appwindow.py:714
+#: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
 msgstr "Visa de senaste Red Carpet-nyheterna"
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:726
+#: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr "Kör _nu"
 
-#: src/red_appwindow.py:727
+#: src/red_appwindow.py:734
 msgid "Run the current transaction"
 msgstr "Kör den aktuella transaktionen"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:741
+#: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
 msgstr "_Verifiera systemberoenden"
 
-#: src/red_appwindow.py:742
+#: src/red_appwindow.py:749
 msgid "Verify that all system dependencies are met"
 msgstr "Verifiera att alla systemberoenden är lösta"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
 msgstr "Markera för i_nstallation"
 
-#: src/red_appwindow.py:754
+#: src/red_appwindow.py:761
 msgid "Mark this package for installation"
 msgstr "Markera detta paket för installation"
 
-#: src/red_appwindow.py:764
+#: src/red_appwindow.py:771
 msgid "Mark this package for removal"
 msgstr "Markera detta paket för borttagning"
 
-#: src/red_appwindow.py:777
+#: src/red_appwindow.py:784
 msgid "Cancel installation or removal mark"
 msgstr "Ta bort installations- eller borttagningsmarkering"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:791
+#: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr "_Uppdatera kanaldata"
 
-#: src/red_appwindow.py:792
+#: src/red_appwindow.py:799
 msgid "Download latest channel data"
 msgstr "Hämta senaste kanaldata"
 
-#: src/red_appwindow.py:801
+#: src/red_appwindow.py:808
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: src/red_appwindow.py:802
+#: src/red_appwindow.py:809
 msgid "View Red Carpet help"
 msgstr "Visa hjälp för Red Carpet"
 
-#: src/red_appwindow.py:807
+#: src/red_appwindow.py:814
 msgid "_About..."
 msgstr "_Om..."
 
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:815
 msgid "About Red Carpet"
 msgstr "Om Red Carpet"
 
-#: src/red_appwindow.py:827
+#: src/red_appwindow.py:834
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Gå till sidan \"%s\""
@@ -665,15 +678,15 @@ msgstr "Gå till sidan \"%s\""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_channeloption.py:50
+#: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "Alla kanaler"
 
-#: src/red_channeloption.py:55
+#: src/red_channeloption.py:69
 msgid "All Subscribed Channels"
 msgstr "Alla prenumererade kanaler"
 
-#: src/red_channeloption.py:60
+#: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
 msgstr "Ingen kanal/Okänd kanal"
 
@@ -846,7 +859,7 @@ msgstr "Server:"
 msgid "User name:"
 msgstr "Användarnamn:"
 
-#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Lösenord:"
@@ -929,7 +942,7 @@ msgstr "Avsluta Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:357
 msgid "Dependency Resolution"
 msgstr "Beroendeupplösning"
 
@@ -957,21 +970,21 @@ msgstr ""
 msgid "I Agree"
 msgstr "Jag accepterar"
 
-#. FIXME: flags
+#. FIXME: flags,
 #. FIXME: Hold a reference to trans_win to work around
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:261
+#: src/red_depcomponent.py:262
 msgid "Dependency Resolution Failed"
 msgstr "Beroendeupplösning misslyckades"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:311
+#: src/red_depcomponent.py:312
 msgid "System Verified"
 msgstr "Systemet verifierat"
 
-#: src/red_depcomponent.py:313
+#: src/red_depcomponent.py:314
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -982,23 +995,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:367
+#: src/red_depcomponent.py:368
 msgid "Requested Installations"
 msgstr "Begärda installationer"
 
-#: src/red_depcomponent.py:371
+#: src/red_depcomponent.py:372
 msgid "Requested Removals"
 msgstr "Begärda borttagningar"
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:376
 msgid "Required Installations"
 msgstr "Nödvändiga installationer"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:380
 msgid "Required Removals"
 msgstr "Nödvändiga borttagningar"
 
-#: src/red_depcomponent.py:405
+#: src/red_depcomponent.py:406
 msgid "Continue"
 msgstr "Fortsätt"
 
@@ -1022,7 +1035,7 @@ msgstr "Fortsätt"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanal"
@@ -1391,50 +1404,49 @@ msgstr "Välj en spegel"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Handle ~ to mean $HOME
-#: src/red_mount.py:61
-#, python-format
-msgid "Unable to mount '%s' as a channel"
-msgstr "Kan inte montera \"%s\" som en kanal"
-
 #. Always run the dialog in the main thread
-#: src/red_mount.py:91
+#: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Kan inte avmontera \"%s\""
 
-#: src/red_mount.py:117
+#: src/red_mount.py:116
 msgid "Browse..."
 msgstr "Bläddra..."
 
-#: src/red_mount.py:128
+#: src/red_mount.py:127
 msgid "Mount Directory"
 msgstr "Montera katalog"
 
-#: src/red_mount.py:141
+#: src/red_mount.py:140
 msgid "Mount channel"
 msgstr "Montera kanal"
 
-#: src/red_mount.py:145
+#: src/red_mount.py:144
 msgid "Mount a directory as channel"
 msgstr "Montera katalog som kanal"
 
-#: src/red_mount.py:153
+#: src/red_mount.py:152
 msgid "Channel Name:"
 msgstr "Kanalnamn:"
 
-#: src/red_mount.py:157
+#: src/red_mount.py:156
 msgid "Directory:"
 msgstr "Katalog:"
 
-#: src/red_mount.py:189
+#: src/red_mount.py:167
+msgid "Look for packages recursively"
+msgstr "Leta efter paket rekursivt"
+
+#: src/red_mount.py:192
 msgid "Please choose the path for channel."
 msgstr "Ange en sökväg för kanalen."
 
-#: src/red_mount.py:210
+#: src/red_mount.py:213
 msgid "Unmount Channel"
 msgstr "Avmontera kanal"
 
-#: src/red_mount.py:239
+#: src/red_mount.py:242
 msgid "Unmount?"
 msgstr "Avmontera?"
 
@@ -1748,7 +1760,7 @@ msgstr "Sektion"
 msgid "Summary"
 msgstr "Sammanfattning"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:478
+#: src/red_packagepage_info.py:86 src/red_prefs.py:413
 msgid "Description"
 msgstr "Beskrivning"
 
@@ -1940,113 +1952,103 @@ msgstr "Transaktion misslyckades"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Title
-#. Server section
-#: src/red_prefs.py:169
-msgid "Server"
-msgstr "Server"
-
-#: src/red_prefs.py:177
-msgid "Server URL:"
-msgstr "Server-URL:"
-
-#. manually force the value to update
-#: src/red_prefs.py:228
-msgid "Mirrors"
-msgstr "Speglar"
-
-#: src/red_prefs.py:240
-msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
-msgstr "Aktivera Premium-tjänster (Red Carpet Express eller Enterprise)"
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
+msgstr "Intervall för att uppdatera kanaldata (i timmar):"
 
 #. Packages section
-#: src/red_prefs.py:251
+#: src/red_prefs.py:182
 msgid "Packages"
 msgstr "Paket"
 
-#: src/red_prefs.py:260
+#: src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Kräv paketsignaturer"
 
-#: src/red_prefs.py:265
+#: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Maximalt antal paket som ska hämtas på en gång:"
 
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "Aktivera pakettillbakarullning"
+
 #. Proxy section - requires superuser
-#: src/red_prefs.py:275
+#: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxyserver"
 
-#: src/red_prefs.py:284
+#: src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Använd en proxyserver"
 
-#: src/red_prefs.py:288
+#: src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "Proxyserver-URL:"
 
-#: src/red_prefs.py:295
+#: src/red_prefs.py:230
 msgid "Username:"
 msgstr "Användarnamn:"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:335
+#: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr "Du har inte rättigheter att granska proxyserverinställningarna"
 
-#: src/red_prefs.py:359
+#: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Mellanlagra hämtade paket och metadata"
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Plats för mellanlagrad data:"
 
 #. Expiration section
-#: src/red_prefs.py:373
+#: src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Utgång"
 
-#: src/red_prefs.py:377
+#: src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Cachen utgår"
 
-#: src/red_prefs.py:383
+#: src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Maximal ålder i dagar:"
 
-#: src/red_prefs.py:394
+#: src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Maximal storlek i MB:"
 
-#: src/red_prefs.py:405
+#: src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Aktuell cachestorlek:"
 
-#: src/red_prefs.py:422
+#: src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Är du säker på att du vill ta bort paketfilerna i din cache?"
 
-#: src/red_prefs.py:438
+#: src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Töm cache"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:460
+#: src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:508
+#: src/red_prefs.py:443
 msgid "Value"
 msgstr "Värde"
 
-#: src/red_prefs.py:521
+#: src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Läser in inställningar..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:585
+#: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "Inställningar för %s"
@@ -2314,7 +2316,6 @@ msgstr "Välj fil att skriva XML till"
 #. FIXME?  By doing nothing here, we keep the
 #. user from being hammered by a whole bunch of exceptions
 #. if something has gone badly wrong.
-#. FIXME?
 #. FIXME?
 #. do the first poll immediately
 #. get poll timeout started again
@@ -2668,6 +2669,27 @@ msgstr "Ogiltigt användarnamn."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
+
+#~ msgid "Service"
+#~ msgstr "Tjänst"
+
+#~ msgid "Services"
+#~ msgstr "Tjänster"
+
+#~ msgid "Unable to mount '%s' as a channel"
+#~ msgstr "Kan inte montera \"%s\" som en kanal"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Server URL:"
+#~ msgstr "Server-URL:"
+
+#~ msgid "Mirrors"
+#~ msgstr "Speglar"
+
+#~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
+#~ msgstr "Aktivera Premium-tjänster (Red Carpet Express eller Enterprise)"
 
 #~ msgid "Connect..."
 #~ msgstr "Anslut..."
