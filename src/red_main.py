@@ -98,6 +98,10 @@ def ticker():
 ###
    
 def main(version):
+    print "Red Carpet Client %s" % version
+    print "Copyright (C) 2002 Ximian Inc."
+    print
+    
     server = connect_to_server()
 
     ticker()

@@ -92,6 +92,9 @@ class Component(gobject.GObject):
             self.__busy_flag = flag
             self.emit("busy", flag)
 
+    def is_busy(self):
+        return self.__busy_flag
+
     # Pass a widget up to the window embedding this component.  This widget
     # becomes the "view" on the component, replacing any previous widget.
     def display(self, widget):

@@ -161,6 +161,7 @@ class MenuBar(gtk.MenuBar):
                                                            item)
 
                     def radio_activate(mi, get_fn, set_fn, tag):
+                        print "activate", get_fn(), tag
                         if get_fn() != tag:
                             set_fn(tag)
 
@@ -237,6 +238,7 @@ class MenuBar(gtk.MenuBar):
                     radio_set = item["radio_set"]
                     if radiogroup and radiotag and radio_get and radio_set:
                         active_tag = radio_get()
+                        print radiotag, active_tag
                         widget.set_active(radiotag == active_tag)
 
                 if needs_refresh:

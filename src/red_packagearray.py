@@ -525,11 +525,13 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
 class PackagesFromQuery(PackagesFromDaemon):
 
-    def __init__(self, query=None):
+    def __init__(self, query=None, pre_query_fn=None, post_query_fn=None):
         PackagesFromDaemon.__init__(self)
         self.__worker = None
         self.__worker_handler_id = 0
         self.set_query(query)
+        self.__pre_query_fn = pre_query_fn
+        self.__post_query_fn = post_query_fn
 
     def get_packages_from_daemon(self):
         if 0:
@@ -571,6 +573,13 @@ class PackagesFromQuery(PackagesFromDaemon):
                         packages.remove(p)
                 
                 array.set_packages(packages or [])
+
+                if array.__post_query_fn:
+                    array.__post_query_fn(array)
+
+        print "launching query"
+        if self.__pre_query_fn:
+            self.__pre_query_fn(self)
             
         self.__worker = server.rcd.packsys.search(self.query)
         self.__worker.t1 = time.time()
@@ -595,10 +604,13 @@ class UpdatedPackages(PackagesFromDaemon):
     def get_packages_from_daemon(self):
         packages = []
         server = rcd_util.get_server()
+        t1 = time.time()
         for old_pkg, pkg, history in server.rcd.packsys.get_updates():
             pkg["__old_package"] = old_pkg
             pkg["__history"] = history
             packages.append(pkg)
+        t2 = time.time()
+        print "get_updates took %.2fs" % (t2-t1)
         self.set_packages(packages)
 
     # The list of updates needs to refresh when the list of available

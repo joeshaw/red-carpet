@@ -144,6 +144,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         red_component.ComponentListener.__init__(self)
 
         self.server = server
+        self.component_stack = []
+
+        self.busy_count = 0
+        self.busy_handler = 0
 
         self.table = gtk.Table(2, 6)
         self.add(self.table)
@@ -164,7 +168,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         
         self.transactionbar = red_transaction.TransactionBar(self)
 
+        self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
+
 
         self.header = gtk.EventBox()
 
@@ -200,6 +206,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         south = gtk.HBox(0, 0)
         south.pack_start(self.transactionbar, 0, 1, 2)
+        south.pack_start(self.progressbar, 0, 1, 2)
         south.pack_start(self.statusbar, 1, 1, 2)
         south.show_all()
         self.table.attach(south,
@@ -216,11 +223,20 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                          pixbuf=comp.pixbuf(),
                          callback=lambda: self.activate_component(comp))
 
+        # We need to make the component menu items checked
+        # instead of radio-style, because with a radio group you
+        # always have to have exactly one item set: when a non-navigable
+        # component is on the screen (like the dep resolution page),
+        # the component gets reset if you open any menu.
+        def checked_get_cb():
+            return id(self.get_component()) == id(comp)
+        def checked_set_cb(flag):
+            if flag:
+                self.activate_component(comp)
         self.menubar.add("/Actions/" + comp.long_name(),
-                         radiogroup="actions",
-                         radio_get=lambda x=comp: self.current_comp,
-                         radio_set=lambda x:self.activate_component(x),
-                         radiotag=comp)
+                         checked_get=checked_get_cb,
+                         checked_set=checked_set_cb)
+
 
         # We activate the first component that gets registered.
         if not self.components:
@@ -230,9 +246,17 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
 
     def activate_component(self, comp):
-
         old_comp = self.get_component()
+        if id(old_comp) == id(comp):
+            return
+
+        if comp.is_busy():
+            self.busy_start()
+
         self.set_component(comp)
+
+        if old_comp and old_comp.is_busy():
+            self.busy_stop()
 
         # Clear the status bar
         self.statusbar.pop(0)
@@ -255,7 +279,32 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         # it to get displayed.
         comp.pull_widget()
 
+    def push_component(self, new_comp):
+        old_comp = self.get_component()
+        if old_comp:
+            self.component_stack.append(old_comp)
+        self.activate_component(new_comp)
 
+    def pop_component(self):
+        if self.component_stack:
+            new_comp = self.component_stack.pop()
+            if new_comp:
+                self.activate_component(new_comp)
+
+    def busy_start(self):
+        def busy_cb(app):
+            if app.busy_count > 0:
+                app.progressbar.pulse()
+                return 1
+            app.progressbar.set_fraction(0)
+            return 0
+        gtk.timeout_add(100, busy_cb, self)
+        self.busy_count += 1
+
+    def busy_stop(self):
+        if self.busy_count > 0:
+            self.busy_count -= 1
+        
     ###
     ### Handlers for Component signals (via the ComponentListener API)
     ###
@@ -271,16 +320,16 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
     def do_component_switch(self, new_comp):
         self.activate_component(new_comp)
 
-    def do_component_push(self, new_comp):
-        print "Push!"
-
-    def do_component_pop(self):
-        print "Pop!"
+    do_component_push = push_component
+    do_component_pop  = pop_component
 
     def do_component_message(self, msg):
-        win.statusbar.push(0, msg)
+        self.statusbar.push(0, msg)
 
     def do_component_busy(self, flag):
-        print "busy=%d" % flag
+        if flag:
+            self.busy_start()
+        else:
+            self.busy_stop()
         
         

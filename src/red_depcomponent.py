@@ -116,6 +116,7 @@ class DepComponent(red_component.Component):
 
         sw = gtk.ScrolledWindow()
         sw.add(self.table)
+        sw.show()
 
         page.pack_start(sw, 1, 1, 0)
 
@@ -137,6 +138,10 @@ class DepComponent(red_component.Component):
             print "Remove:", map(lambda x:x["name"], to_remove)
 
         cont.connect("clicked", continue_cb, self)
+
+        def cancel_cb(b, dep_comp):
+            dep_comp.pop()
+        cancel.connect("clicked", cancel_cb, self)
 
         return page
 
