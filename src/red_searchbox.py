@@ -129,7 +129,7 @@ class SearchBox(gtk.VBox):
         def uninstalled_cb(p):
             return not p["installed"] and not p["name_installed"]
 
-        def upgrade_cb(p):
+        def update_cb(p):
             return p["name_installed"] > 0 and not p["installed"]
 
         def installed_cb(p):
@@ -140,9 +140,9 @@ class SearchBox(gtk.VBox):
         
         status_types = (
             (_("Uninstalled Packages"),  uninstalled_cb),
-            (_("Upgrades"),                upgrade_cb),
-            (_("Installed Packages"),      installed_cb),
-            (_("All Packages"),            all_cb)
+            (_("Updates"),               update_cb),
+            (_("Installed Packages"),    installed_cb),
+            (_("All Packages"),          all_cb)
             )
 
 

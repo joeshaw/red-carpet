@@ -53,14 +53,14 @@ class SubscriptionsView(gtk.ScrolledWindow):
 
         toggle = gtk.CellRendererToggle()
         toggle.set_property("activatable", 1)
-        col = gtk.TreeViewColumn(_("Sub'd"),
+        col = gtk.TreeViewColumn(_("Subscribed"),
                                  toggle,
                                  active=red_channelmodel.COLUMN_SUBSCRIBED)
         toggle.connect("toggled", toggle_cb, model)
         view.append_column(col)
 
         col = gtk.TreeViewColumn()
-        col.set_title(_("Channel"))
+        col.set_title(_("Channel Name"))
         r1 = gtk.CellRendererPixbuf()
         r2 = gtk.CellRendererText()
         col.pack_start(r1, 0)

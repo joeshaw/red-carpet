@@ -38,7 +38,7 @@ sys.path = additional_paths + sys.path
 
 import pygtk
 
-if (hasattr(sys, "frozen") and (sys.frozen == 1)):
+if not hasattr(sys, "frozen") or sys.frozen == 0:
     pygtk.require("2.0")
     
     # FIXME: This has a special check to allow us to run rc in-place

@@ -100,7 +100,7 @@ class SummaryComponent(red_component.Component):
 
         msg1 = "<span size=\"large\"><b>%s</b></span>" \
                % _("The system is up-to-date.")
-        msg2 = _("There are no software upgrades available in any subscribed channels.")
+        msg2 = _("There are no software updates available in any subscribed channels.")
         msg = msg1+"\n"+string.join(rcd_util.linebreak(msg2, width=30), "\n")
 
         self.__no_updates = red_emptypage.EmptyPage(pixbuf_name="verify",

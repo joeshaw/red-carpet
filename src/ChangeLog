@@ -1,3 +1,13 @@
+2003-03-17  Joe Shaw  <joe@ximian.com>
+
+	* red-carpet.in: Swap around some logic here.
+
+	* red_searchbox.py: s/upgrade/update
+
+	* red_subscriptions.py: s/Sub'd/Subscribed
+
+	* red_summary.py: s/upgrades/updates
+
 2003-03-17  Jon Trowbridge  <trow@ximian.com>
 
 	* red_search.py (SearchComponent.search_finished_cb): When we put
