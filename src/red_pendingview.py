@@ -115,6 +115,13 @@ class PendingView(gtk.Window):
                     pv.finished()
             self.button.connect("clicked", button_handler_cb, self)
 
+        def delete_event_cb(self, x):
+            if self.button and self.button.get_property("sensitive"):
+                self.button.emit("clicked")
+            return 1
+
+        self.connect("delete_event", delete_event_cb)
+
         self.ourframe.show_all()
 
     def set_icons(self, icons, interval=300):

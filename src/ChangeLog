@@ -1,3 +1,9 @@
+2003-02-26  Tambet Ingo  <tambet@ximian.com>
+
+	* red_pendingview.py (PendingView.delete_event_cb): Connect this
+	function to "delete_event" signal of the dialog. Basically, dialog's
+	"delete_event" == button's "clicked".
+
 2003-02-26  Jon Trowbridge  <trow@ximian.com>
 
 	* red_pendingview.py (PendingView_Transaction.cancelled): Chain
