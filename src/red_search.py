@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_header, red_pixbuf, red_menubar
-import red_packagearray, red_packageview
+import red_packagearray, red_packageview, red_packagebrowser
 import red_component
 
 class SearchComponent(red_component.Component):
@@ -160,7 +160,9 @@ class SearchComponent(red_component.Component):
 
         ### Main
 
-        view = red_packageview.PackageView()
+        browser = red_packagebrowser.PackageBrowser()
+
+        view = browser.get_view()
         view.append_action_column()
         view.append_status_column()
         view.append_channel_column(show_channel_name=0)
@@ -170,12 +172,9 @@ class SearchComponent(red_component.Component):
         view.append_size_column()
         view.set_model(self.array)
 
-        scrolled = gtk.ScrolledWindow()
-        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scrolled.add(view)
-        view.show_all()
+        browser.show()
 
-        self.display("main", scrolled)
+        self.display("main", browser)
 
     def changed_visibility(self, flag):
         if flag:
