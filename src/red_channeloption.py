@@ -59,7 +59,8 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         if self.__allow_no_channel:
             channels.append({"name": _("No Channel"),
                              "id": MATCH_NO_CHANNEL})
-        
+
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
         for c in channels:
             hbox = gtk.HBox(0, 0)
 
@@ -77,7 +78,7 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
             if c.get("subscribed"):
                 sub_img = red_pixbuf.get_widget("subscribed",
-                                                width=24, height=24)
+                                                width=width, height=height)
                 hbox.pack_end(sub_img, expand=0, fill=0, padding=2)
 
 

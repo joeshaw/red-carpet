@@ -76,13 +76,15 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         bbox.set_spacing(6)
         bbox.set_layout(gtk.BUTTONBOX_START)
 
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
+
         ## Details Button
         self.details = gtk.Button()
         align = gtk.Alignment(0.5, 0.5, 0, 0)
         self.details.add(align)
         box = gtk.HBox(0, 2)
         image = red_pixbuf.get_widget("pending-transactions",
-                                      width=24, height=24)
+                                      width=width, height=height)
         box.pack_start(image, 0, 0)
         box.pack_start(gtk.Label(_("Details")), 0, 0)
         align.add(box)
@@ -176,6 +178,8 @@ class ShortcutBar(gtk.HBox):
         table.set_col_spacings(6)
         table.set_row_spacings(6)
 
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
+
         row = 0
         for comp, callback in self.components:
             if comp.show_in_shortcuts():
@@ -192,12 +196,12 @@ class ShortcutBar(gtk.HBox):
                     stock_id = comp.stock()
                     
                     image = gtk.Image()
-                    image.set_from_stock(stock_id, gtk.ICON_SIZE_LARGE_TOOLBAR)
+                    image.set_from_stock(stock_id, gtk.ICON_SIZE_BUTTON)
                 
                 if comp.pixbuf():
                     assert not comp.stock()
                     image = red_pixbuf.get_widget(comp.pixbuf(),
-                                                  width=24, height=24)
+                                                  width=width, height=height)
 
 
                 if image:

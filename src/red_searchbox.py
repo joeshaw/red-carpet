@@ -185,12 +185,13 @@ class SearchBox(gtk.VBox):
                           )
 
         menu = gtk.Menu()
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
         for name, icon, code in section_table:
             hbox = gtk.HBox(0, 0)
 
             if icon:
                 icon = "section-" + icon
-                img = red_pixbuf.get_widget(icon, width=24, height=24)
+                img = red_pixbuf.get_widget(icon, width=width, height=height)
                 hbox.pack_start(img, expand=0, fill=0, padding=0)
 
             label = gtk.Label(name)

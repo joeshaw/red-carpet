@@ -1,5 +1,15 @@
 2003-03-07  Tambet Ingo  <tambet@ximian.com>
 
+	* red_appwindow.py (AppWindow.assemble_menubar): Get icon sizes from gtk
+	theme instead of magic "16".
+
+	* red_channeloption.py (ChannelOption.__assemble): Ditto.
+
+	* red_searchbox.py (SearchBox.__assemble_section_option): Ditto.
+
+	* red_sidebar.py (SideBar.build): Ditto.
+	(ShortcutBar.construct): Ditto.
+
 	* red_toolbar.py (Toolbar.add): Use large stock icons instead of small
 	which is Gtk's default toolbar icon size. Fixes part of #39136.
 

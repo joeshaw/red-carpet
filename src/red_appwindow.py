@@ -460,6 +460,8 @@ class AppWindow(gtk.Window,
 
     def assemble_menubar(self, bar):
 
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
+
         bar.add("/_File")
         bar.add("/_Edit")
         bar.add("/_View")
@@ -567,7 +569,7 @@ class AppWindow(gtk.Window,
         bar.add("/Edit/Channel _Subscriptions...",
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
                 pixbuf=red_pixbuf.get_pixbuf("subscribed",
-                                             width=16, height=16),
+                                             width=width, height=height),
                 accelerator="<Control>B")
 
         bar.add("/Edit/_Preferences...",
