@@ -25,7 +25,7 @@ import red_emptypage
 
 from red_gettext import _
 
-class SummaryComponent(red_component.Component):
+class UpdatesComponent(red_component.Component):
 
     def name(self):
         return _("Updates")

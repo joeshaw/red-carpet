@@ -30,12 +30,12 @@ import red_connection
 import red_console
 import red_appwindow
 import red_search
-import red_summary
+import red_updates
 import red_transaction
 import red_history
 import red_option
 import red_settings
-import red_my_computer
+import red_software
 
 red_running = 1
 
@@ -177,9 +177,9 @@ def main(version):
     app = red_appwindow.AppWindow(server)
     app.set_title(get_title())
 
-    app.register_component(red_summary.SummaryComponent())
-    app.register_component(red_my_computer.InstalledComponent())
-    app.register_component(red_my_computer.AvailableComponent())
+    app.register_component(red_updates.UpdatesComponent())
+    app.register_component(red_software.InstalledComponent())
+    app.register_component(red_software.AvailableComponent())
     app.register_component(red_search.SearchComponent())
     app.register_component(red_history.HistoryComponent())
     app.register_component(red_transaction.TransactionComponent())

@@ -33,7 +33,6 @@ red_carpetsupport_DATA =	\
 	red_menubar.py				\
 	red_mirrors.py				\
 	red_mount.py				\
-	red_my_computer.py			\
 	red_news.py				\
 	red_option.py				\
 	red_packagearray.py			\
@@ -53,12 +52,13 @@ red_carpetsupport_DATA =	\
 	red_serverproxy.py			\
 	red_settings.py				\
 	red_sidebar.py				\
+	red_software.py				\
 	red_statusbar.py			\
 	red_subscriptions.py			\
-	red_summary.py				\
 	red_thrashingtreeview.py		\
 	red_toolbar.py				\
 	red_transaction.py			\
+	red_updates.py				\
 	red_users.py				\
 	ximian_xmlrpclib.py
 
