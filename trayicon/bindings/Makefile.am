@@ -7,7 +7,10 @@ pkgpyexecdir = $(pythondir)/gtk-2.0
 
 red_trayexecdir = $(libdir)/red-carpet/red_tray
 red_trayexec_DATA = __init__.py
-EXTRA_DIST = __init__.py
+EXTRA_DIST =			\
+	__init__.py		\
+	red_tray.defs		\
+	red_tray.override
 
 red_trayexec_LTLIBRARIES = xxx_red_tray.la
 xxx_red_tray_la_CFLAGS = $(GTK_CFLAGS)
@@ -16,7 +19,8 @@ xxx_red_tray_la_LIBADD = $(GTK_LIBS)
 xxx_red_tray_la_SOURCES =	\
 	module.c		\
 	red_tray.c		\
-	eggtrayicon.c
+	eggtrayicon.c		\
+	eggtrayicon.h	
 
 red_tray.c: red_tray.defs red_tray.override
 	(cd $(srcdir) \
