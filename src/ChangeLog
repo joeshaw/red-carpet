@@ -3,6 +3,8 @@
 	* rcd_util.py (is_system_package): Implement.
 	(get_package_key): If the package is installed and has guessed channel,
 	use it in key composion.
+	(get_channel_icon): Show default channel icon for mounted and iconless
+	channels. Fixes part of #38833.
 
 	* red_packagearray.py (PackagesFromQuery.query_finished_cb): We _have_
 	to remove duplicates before applying other filters and saving to cahce.

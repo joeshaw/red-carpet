@@ -1,3 +1,7 @@
+2003-03-12  Tambet Ingo  <tambet@ximian.com>
+
+	* art/default-channel.png. New icon for mounted channels.
+
 2003-03-06  Joe Shaw  <joe@ximian.com>
 
 	* Makefile.am: Add po/ directory to SUBDIRS.

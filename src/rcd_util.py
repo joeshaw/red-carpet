@@ -189,7 +189,7 @@ def get_channel_icon(id, width=0, height=0):
             pixbuf = loader.get_pixbuf()
 
     if pixbuf is None:
-        pixbuf = red_pixbuf.get_pixbuf("empty", width, height)
+        pixbuf = red_pixbuf.get_pixbuf("default-channel", width, height)
 
     cached_channel_icons[key] = pixbuf
     return pixbuf
