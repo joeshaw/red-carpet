@@ -1,5 +1,6 @@
 src/rcd_util.py
 src/red_about.py
+src/red_actionbar.py
 src/red_activation.py
 src/red_appwindow.py
 src/red_channelmodel.py
@@ -11,6 +12,7 @@ src/red_deaddaemon.py
 src/red_depcomponent.py
 src/red_depview.py
 src/red_dirselection.py
+src/red_emptypage.py
 src/red_gettext.py
 src/red_history.py
 src/red_installfiles.py
@@ -42,7 +44,6 @@ src/red_sidebar.py
 src/red_subscriptions.py
 src/red_summary.py
 src/red_thrashingtreeview.py
-src/red_throbber.py
 src/red_toolbar.py
 src/red_transaction.py
 src/red_users.py
