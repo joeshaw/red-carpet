@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet 2.1.90\n"
-"POT-Creation-Date: 2003-10-30 22:10-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2003-10-21 15:05+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -941,7 +941,7 @@ msgstr "Red Carpet beenden"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
 msgstr "Abhängigkeitsauflösung"
 
@@ -972,16 +972,16 @@ msgstr "Ich stimme zu"
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr "Abhängigkeitsauflösung fehlgeschlagen"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr "System überprüft"
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -993,23 +993,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Angeforderte Installationen"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr "Angeforderte Entfernvorgänge"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
 msgstr "Erforderlich Installationen"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
 msgstr "Erforderliche Entfernvorgänge"
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr "Fortfahren"
 
@@ -1033,7 +1033,7 @@ msgstr "Fortfahren"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanal"
@@ -1406,49 +1406,49 @@ msgstr "Einen Spiegel wählen"
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "»%s« konnte nicht eingebunden werden"
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Auswählen..."
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Verzeichnis einbinden"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
 msgstr "Kanal einbinden"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr "Ein Verzeichnis als Kanal einbinden"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Kanalname:"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Verzeichnis:"
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Rekursiv nach Paketen suchen"
 
 # CHECK
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr "Bitte wählen Sie den Kanalpfad."
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
 msgstr "Kanal aushängen"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Aushängen?"
 
@@ -1735,7 +1735,7 @@ msgstr "Kollidiert mit"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Name"
 
@@ -1863,7 +1863,7 @@ msgstr "%.1f%% fertiggestellt"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "System wird aktualisiert"
 
@@ -1871,11 +1871,11 @@ msgstr "System wird aktualisiert"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Download abgebrochen"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transaktion abgebrochen"
 
@@ -1885,37 +1885,37 @@ msgstr "Transaktion abgebrochen"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transaktion abgeschlossen"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Pakete werden heruntergeladen"
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Download fehlgeschlagen"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Unbekannter Fehler"
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Transaktion wird verarbeitet"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "Die Transaktion wurde erfolgreich abgeschlossen"
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Transaktion fehlgeschlagen"
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transaktion fehlgeschlagen"
 
@@ -2063,6 +2063,9 @@ msgid "%s Preferences"
 msgstr "%s Einstellungen"
 
 #. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
 #. Should only be called for text renderer
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2356,6 +2359,58 @@ msgstr "XML-Ausgabedatei wählen"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. We want to emit our signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "Dienste bearbeiten"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "Dienst _entfernen"
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr "Dienst _hinzufügen"
+
+#: src/red_services.py:226
+msgid "Add Service"
+msgstr "Dienst hinzufügen"
+
+#: src/red_services.py:231
+msgid "Service URL"
+msgstr "Dienst-URL"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2682,24 +2737,6 @@ msgstr "Benutzername ungültig."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Benutzer »%s« existiert bereits."
-
-#~ msgid "Edit Services"
-#~ msgstr "Dienste bearbeiten"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "_Remove service"
-#~ msgstr "Dienst _entfernen"
-
-#~ msgid "_Add service"
-#~ msgstr "Dienst _hinzufügen"
-
-#~ msgid "Add Service"
-#~ msgstr "Dienst hinzufügen"
-
-#~ msgid "Service URL"
-#~ msgstr "Dienst-URL"
 
 #~ msgid ""
 #~ "System could not be activated: Invalid activation code or email address."

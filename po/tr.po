@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 0.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-28 21:51+0000\n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2001-03-20 08:01+0100\n"
 "Last-Translator: Ömer Fadıl USTA <omer_fad@hotmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -955,7 +955,7 @@ msgstr "Ximian Kırmızı Halı"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 #, fuzzy
 msgid "Dependency Resolution"
 msgstr "Bağlılık"
@@ -986,16 +986,16 @@ msgstr ""
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr ""
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr ""
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -1005,23 +1005,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr ""
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr ""
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
 msgstr ""
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
 msgstr ""
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr ""
 
@@ -1045,7 +1045,7 @@ msgstr ""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 #, fuzzy
 msgid "Channel"
@@ -1422,50 +1422,50 @@ msgstr ""
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr ""
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr ""
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr ""
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 #, fuzzy
 msgid "Mount channel"
 msgstr "Varsayılan altkanal:"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr ""
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 #, fuzzy
 msgid "Channel Name:"
 msgstr "Kanal Hakkında"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr ""
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr ""
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr ""
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
 msgstr ""
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr ""
 
@@ -1890,7 +1890,7 @@ msgstr ""
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr ""
 
@@ -1898,12 +1898,12 @@ msgstr ""
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 #, fuzzy
 msgid "Download cancelled"
 msgstr "Aşağı indir(çek)"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 #, fuzzy
 msgid "Transaction cancelled"
 msgstr "Aşağı indir(çek)"
@@ -1914,39 +1914,39 @@ msgstr "Aşağı indir(çek)"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 #, fuzzy
 msgid "Transaction Finished"
 msgstr "Güncellemeler"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr ""
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 #, fuzzy
 msgid "Download Failed"
 msgstr "Aşağı indir(çek)"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr ""
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr ""
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr ""
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr ""
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr ""
 

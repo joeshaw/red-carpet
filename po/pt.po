@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"Report-Msgid-Bugs-To: Duarte Loreto <happyguy_pt@hotmail.com>\n"
-"POT-Creation-Date: 2003-11-11 01:23+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2003-11-11 01:25+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -937,7 +937,7 @@ msgstr "Sair do Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
 msgstr "Resolução Dependências"
 
@@ -968,16 +968,16 @@ msgstr "Eu Concordo"
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr "Falha na Resolução Dependências"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr "Sistema Verificado"
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -989,23 +989,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Instalações Pedidas"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr "Remoções Pedidas"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
 msgstr "Instalações Obrigatórias"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
 msgstr "Remoções Obrigatórias"
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr "Continuar"
 
@@ -1029,7 +1029,7 @@ msgstr "Continuar"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Canal"
@@ -1399,48 +1399,48 @@ msgstr "Seleccione um Mirror"
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Incapaz de desmontar '%s'"
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Navegar..."
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Montar Directório"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
 msgstr "Montar canal"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr "Montar um directório como canal"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Nome Canal:"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Directório:"
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Procurar pacotes recursivamente"
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr "Seleccione o caminho para canal."
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
 msgstr "Desmontar Canal"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Desmontar?"
 
@@ -1853,7 +1853,7 @@ msgstr "%.1f%% completo"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "A Actualizar Sistema"
 
@@ -1861,11 +1861,11 @@ msgstr "A Actualizar Sistema"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Descarregar cancelado"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transacção cancelada"
 
@@ -1875,37 +1875,37 @@ msgstr "Transacção cancelada"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transacção Terminada"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "A descarregar pacotes"
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Descarregar Falhou"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Erro Desconhecido"
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "A Processar Transacção"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "A transacção terminou com sucesso"
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Transacção falhou"
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transacção Falhou"
 
@@ -2048,6 +2048,9 @@ msgid "%s Preferences"
 msgstr "Preferências %s"
 
 #. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
 #. Should only be called for text renderer
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.

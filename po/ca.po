@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-10-30 22:10-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2003-10-29 20:00+0100\n"
 "Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 0.9.5\n"
 
 #. ##
@@ -945,7 +945,7 @@ msgstr "Surt del Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
 msgstr "Resolució de la dependència"
 
@@ -976,16 +976,16 @@ msgstr "Hi estic d'acord"
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr "Ha fallat la resolució de la dependència"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr "S'ha verificat el sistema"
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -997,23 +997,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Instal·lacions sol·licitades"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr "Supressions sol·licitades"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
 msgstr "Instal·lacions necessàries"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
 msgstr "Supressions necessàries "
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr "Continua"
 
@@ -1037,7 +1037,7 @@ msgstr "Continua"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Canal"
@@ -1407,48 +1407,48 @@ msgstr "Escolliu una rèplica"
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "No es pot desmuntar '%s'"
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Navega..."
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Munta el directori"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
 msgstr "Munta el canal"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr "Munta un directori com a canal"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Nom del canal:"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Directori:"
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr ""
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr "Escolliu el camí del canal, si us plau"
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
 msgstr "Desmunta el canal"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Desmuntar?"
 
@@ -1734,7 +1734,7 @@ msgstr "Entra en conflicte amb"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Nom"
 
@@ -1861,7 +1861,7 @@ msgstr "%.1f%% completat"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Sistema d'actualització"
 
@@ -1869,11 +1869,11 @@ msgstr "Sistema d'actualització"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "S'ha cancel·lat la baixada"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "S'ha cancel·lat la transacció"
 
@@ -1883,37 +1883,37 @@ msgstr "S'ha cancel·lat la transacció"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "S'ha finalitzat la transacció"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "S'estan baixant paquets"
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Ha fallat la baixada"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Error desconegut"
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "S'està processant la transacció"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "La transacció ha finalitzat amb èxit"
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Ha fallat la transacció"
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Ha fallat la transacció"
 
@@ -2058,6 +2058,9 @@ msgid "%s Preferences"
 msgstr "%s Preferències"
 
 #. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
 #. Should only be called for text renderer
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2348,6 +2351,62 @@ msgstr "Escolliu el fitxer on escriure el XML"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. We want to emit our signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+#, fuzzy
+msgid "Edit Services"
+msgstr "Edita els usuaris"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr ""
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr ""
+
+#: src/red_services.py:146
+#, fuzzy
+msgid "_Add service"
+msgstr "Edita els usuaris"
+
+#: src/red_services.py:226
+#, fuzzy
+msgid "Add Service"
+msgstr "Servidor:"
+
+#: src/red_services.py:231
+#, fuzzy
+msgid "Service URL"
+msgstr "URL del servidor"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##

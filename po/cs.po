@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-23 17:47+0100\n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2003-12-24 01:29+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -205,7 +205,9 @@ msgstr "Nemohu aktivovat"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Zkontrolujte prosím, zda jste zadali e-mailovou adresu a aktivační kód správně"
+msgstr ""
+"Zkontrolujte prosím, zda jste zadali e-mailovou adresu a aktivační kód "
+"správně"
 
 #. Store email to config.
 #. ##
@@ -248,12 +250,16 @@ msgstr "C"
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
-msgstr "Nemohu zobrazit nápovědu, protože soubory nápovědy chybí. Ohlaste to prosím svému dodavateli."
+msgstr ""
+"Nemohu zobrazit nápovědu, protože soubory nápovědy chybí. Ohlaste to prosím "
+"svému dodavateli."
 
 #: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
-msgstr "Nemohu zobrazit nápovědu, protože pro zobrazení nápovědy nejsou k dispozici žádné aplikace."
+msgstr ""
+"Nemohu zobrazit nápovědu, protože pro zobrazení nápovědy nejsou k dispozici "
+"žádné aplikace."
 
 #. Menubar
 #. # Toolbar
@@ -431,7 +437,8 @@ msgstr "_Aktivovat..."
 #: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Aktivovat démona vůči serveru Red Carpet Express nebo Red Carpet Enterprise"
+msgstr ""
+"Aktivovat démona vůči serveru Red Carpet Express nebo Red Carpet Enterprise"
 
 #: src/red_appwindow.py:631
 msgid "Quit"
@@ -802,7 +809,9 @@ msgstr ""
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
-msgstr "Detekována verze protokolu %d. Je vyžadována verze %d. Musíte aktualizovat svou  verzi rcd."
+msgstr ""
+"Detekována verze protokolu %d. Je vyžadována verze %d. Musíte aktualizovat "
+"svou  verzi rcd."
 
 #. LSB compliant distros should have the
 #. following
@@ -929,7 +938,7 @@ msgstr "Ukončit Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
 msgstr "Řešení závislostí"
 
@@ -945,7 +954,9 @@ msgstr "Řeším závislosti"
 #: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
-msgstr "Před instalací tohoto software musíte souhlasit s licencemi, které se tohoto software týkají."
+msgstr ""
+"Před instalací tohoto software musíte souhlasit s licencemi, které se tohoto "
+"software týkají."
 
 #. Try to estimate the size of the window we want.
 #. "W" being the widest glyph.
@@ -958,42 +969,43 @@ msgstr "Souhlasím"
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr "Řešení závislostí selhalo"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr "Systém ověřen"
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
-msgstr "Všechny závislosti balíčků jsou splněny a nejsou potřeba žádné opravné akce."
+msgstr ""
+"Všechny závislosti balíčků jsou splněny a nejsou potřeba žádné opravné akce."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Vyžadované instalace"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr "Vyžadovaná odebrání"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
 msgstr "Vyžadované instalace"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
 msgstr "Vyžadovaná odebrání"
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr "Pokračovat"
 
@@ -1017,7 +1029,7 @@ msgstr "Pokračovat"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanál"
@@ -1387,48 +1399,48 @@ msgstr "Zvolte mirror"
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Nemohu odpojit '%s'"
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Procházet..."
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Připojit adresář"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
 msgstr "Připojit kanál"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr "Připojit adresář jako kanál"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Název kanálu:"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Adresář:"
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Rekurzivně hledat balíčky"
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr "Zvolte prosím cestu kanálu."
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
 msgstr "Odpojit kanál"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Odpojit?"
 
@@ -1841,7 +1853,7 @@ msgstr "dokončeno %.1f%%"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Aktualizuji systém"
 
@@ -1849,11 +1861,11 @@ msgstr "Aktualizuji systém"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Stahování zrušeno"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transakce zrušena"
 
@@ -1863,37 +1875,37 @@ msgstr "Transakce zrušena"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transakce dokončena"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Stahuji balíčky"
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Stahování selhalo"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Neznámá chyba"
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Zpracovávám transakci"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "Transakce byla úspěšně dokončena"
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Transakce selhala"
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transakce selhala"
 
@@ -2538,7 +2550,9 @@ msgstr "%s přihlášených kanálů"
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr "Nemáte oprávnění přihlásit se ke kanálům nebo se od nich odhlásit. Nebudete moci provádět změny v přihlášení."
+msgstr ""
+"Nemáte oprávnění přihlásit se ke kanálům nebo se od nich odhlásit. Nebudete "
+"moci provádět změny v přihlášení."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2635,7 +2649,8 @@ msgid ""
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
-"Pokud sobě odeberete oprávnění superuživatele, nebudete je moci znovu přidat.\n"
+"Pokud sobě odeberete oprávnění superuživatele, nebudete je moci znovu "
+"přidat.\n"
 "\n"
 "Jste si jisti, že to chcete udělat?"
 

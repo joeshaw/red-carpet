@@ -4,7 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ximian Red Carpet\n"
-"POT-Creation-Date: 2003-10-30 22:10-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2001-04-04 13:54+04:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -962,7 +963,7 @@ msgstr "Ximian Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 #, fuzzy
 msgid "Dependency Resolution"
 msgstr "Зависимости"
@@ -993,16 +994,16 @@ msgstr ""
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr ""
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr ""
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -1012,25 +1013,25 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Запрошенные установки"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr "Запрошенные удаления"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 #, fuzzy
 msgid "Required Installations"
 msgstr "Запрошенные установки"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 #, fuzzy
 msgid "Required Removals"
 msgstr "Запрошенные удаления"
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 #, fuzzy
 msgid "Continue"
 msgstr "девять"
@@ -1055,7 +1056,7 @@ msgstr "девять"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 #, fuzzy
 msgid "Channel"
@@ -1438,51 +1439,51 @@ msgstr ""
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr ""
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr ""
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr ""
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 #, fuzzy
 msgid "Mount channel"
 msgstr "Доп.канал по умолчанию:"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr ""
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 #, fuzzy
 msgid "Channel Name:"
 msgstr "Информация о канале"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr ""
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr ""
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr ""
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 #, fuzzy
 msgid "Unmount Channel"
 msgstr "Отписан от каналов"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr ""
 
@@ -1778,7 +1779,7 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Название"
 
@@ -1911,7 +1912,7 @@ msgstr ""
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr ""
 
@@ -1919,12 +1920,12 @@ msgstr ""
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 #, fuzzy
 msgid "Download cancelled"
 msgstr "Скачать"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 #, fuzzy
 msgid "Transaction cancelled"
 msgstr " Обновить пакеты "
@@ -1935,40 +1936,40 @@ msgstr " Обновить пакеты "
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 #, fuzzy
 msgid "Transaction Finished"
 msgstr "Обновления"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr ""
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 #, fuzzy
 msgid "Download Failed"
 msgstr "Скачать"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr ""
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 #, fuzzy
 msgid "Processing Transaction"
 msgstr "Возможные действия:"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr ""
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr ""
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr ""
 
@@ -2119,6 +2120,9 @@ msgid "%s Preferences"
 msgstr "Настройки"
 
 #. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
 #. Should only be called for text renderer
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2420,6 +2424,62 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. We want to emit our signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+#, fuzzy
+msgid "Edit Services"
+msgstr "Настройки"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr ""
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr ""
+
+#: src/red_services.py:146
+#, fuzzy
+msgid "_Add service"
+msgstr "Размер:"
+
+#: src/red_services.py:226
+#, fuzzy
+msgid "Add Service"
+msgstr "Размер:"
+
+#: src/red_services.py:231
+#, fuzzy
+msgid "Service URL"
+msgstr "Размер:"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##

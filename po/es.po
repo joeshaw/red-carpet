@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-21 23:20+0100\n"
+"POT-Creation-Date: 2004-01-23 14:10-0500\n"
 "PO-Revision-Date: 2003-12-21 23:22+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -262,7 +262,8 @@ msgstr ""
 "Informa de esto a su vendedor."
 
 #: src/red_appwindow.py:131
-msgid "Unable to show help because there are no applications available to view help."
+msgid ""
+"Unable to show help because there are no applications available to view help."
 msgstr ""
 "No se puede mostrar la ayuda porque no hay aplicaciones disponibles para ver "
 "la ayuda."
@@ -441,7 +442,8 @@ msgid "_Activate..."
 msgstr "_Activar..."
 
 #: src/red_appwindow.py:625
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr "Activar demonio contra un servidor Red Carpet Express o Enterprise"
 
 #: src/red_appwindow.py:631
@@ -942,7 +944,7 @@ msgstr "Salir de Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
 msgid "Dependency Resolution"
 msgstr "Resolución de dependencias"
 
@@ -956,7 +958,8 @@ msgid "Resolving Dependencies"
 msgstr "Resolviendo dependencias"
 
 #: src/red_depcomponent.py:144
-msgid "You must agree to the licenses covering this software before installing it."
+msgid ""
+"You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Debe estar de acuerdo con las licencias que cubren este software antes de "
 "instalarlo."
@@ -972,16 +975,16 @@ msgstr "De acuerdo"
 #. a hack to let history component know we are updated.
 #. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:269
+#: src/red_depcomponent.py:271
 msgid "Dependency Resolution Failed"
 msgstr "Falló la resolución de dependencias"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:319
+#: src/red_depcomponent.py:321
 msgid "System Verified"
 msgstr "Sistema verificado"
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:323
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -993,23 +996,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:377
 msgid "Requested Installations"
 msgstr "Instalaciones solicitadas"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:381
 msgid "Requested Removals"
 msgstr "Eliminaciones solicitadas"
 
-#: src/red_depcomponent.py:383
+#: src/red_depcomponent.py:385
 msgid "Required Installations"
 msgstr "Instalaciones requeridas"
 
-#: src/red_depcomponent.py:387
+#: src/red_depcomponent.py:389
 msgid "Required Removals"
 msgstr "Eliminaciones requeridas"
 
-#: src/red_depcomponent.py:413
+#: src/red_depcomponent.py:415
 msgid "Continue"
 msgstr "Continuar"
 
@@ -1033,7 +1036,7 @@ msgstr "Continuar"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Canal"
@@ -1403,48 +1406,48 @@ msgstr "Elija una réplica"
 #. ##
 #. Handle ~ to mean $HOME
 #. Always run the dialog in the main thread
-#: src/red_mount.py:90
+#: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "No se puede desmontar '%s'"
 
-#: src/red_mount.py:116
+#: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Buscar..."
 
-#: src/red_mount.py:127
+#: src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Montar directorio"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
 msgstr "Montar canal"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr "Montar un directorio como un canal"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Nombre del canal"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Directorio."
 
-#: src/red_mount.py:167
+#: src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "buscar paquetes recursivamente"
 
-#: src/red_mount.py:192
+#: src/red_mount.py:193
 msgid "Please choose the path for channel."
 msgstr "Por favor elija la ruta par el canal"
 
-#: src/red_mount.py:213
+#: src/red_mount.py:214
 msgid "Unmount Channel"
 msgstr "Desmontar canal"
 
-#: src/red_mount.py:242
+#: src/red_mount.py:243
 msgid "Unmount?"
 msgstr "¿Desmontar?"
 
@@ -1857,7 +1860,7 @@ msgstr "%.1f%% terminado"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:509
+#: src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Actualizando sistema"
 
@@ -1865,11 +1868,11 @@ msgstr "Actualizando sistema"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:582
+#: src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Descarga cancelada"
 
-#: src/red_pendingview.py:583
+#: src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transacción cancelada"
 
@@ -1879,37 +1882,37 @@ msgstr "Transacción cancelada"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:618
+#: src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transacción finalizada"
 
-#: src/red_pendingview.py:631
+#: src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Descargando paquetes"
 
-#: src/red_pendingview.py:644
+#: src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Falló la descarga"
 
-#: src/red_pendingview.py:645
+#: src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Error desconocido"
 
-#: src/red_pendingview.py:662
+#: src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Procesando la transacción"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "La transacción se ha terminado con éxito"
 
-#: src/red_pendingview.py:706
+#: src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "La transacción falló"
 
-#: src/red_pendingview.py:708
+#: src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transacción fallida"
 
@@ -2639,7 +2642,8 @@ msgstr "El sistema está actualizado"
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr "No hay disponibles actualizaciones de software en ningún canal suscrito"
+msgstr ""
+"No hay disponibles actualizaciones de software en ningún canal suscrito"
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -3541,4 +3545,3 @@ msgstr "El usuario «%s» ya existe."
 #~ msgstr ""
 #~ "No se ha podido encontrar '%s'.\n"
 #~ "Asegúrese que Red Carpet se ha instalado correctamente."
-
