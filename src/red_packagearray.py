@@ -645,16 +645,15 @@ class PackagesFromQuery(PackagesFromDaemon):
                     packages = []
                 else:
                     elapsed = time.time() - worker.t1
-                    
+
+                    packages = self.filter_duplicates(packages)
                     _cache_query_results(self.query, packages)
 
                     if self.__query_filter:
                         packages = filter(self.__query_filter, packages)
-                    packages = self.filter_duplicates(packages)
 
                 array.set_packages(packages or [])
             self.refresh_end()
-
 
         if self.__query_msg:
             self.message_push(self.__query_msg)
@@ -691,27 +690,19 @@ class PackagesFromQuery(PackagesFromDaemon):
         PackagesFromDaemon.locks_changed(self)
 
     def filter_duplicates(self, packages):
-        if self.query:
-            for r in self.query:
-                if r[0] == "package-installed":
-                    if r[2] == "false":
-                        # Shouldn't contain duplicates
-                        return packages
-                    else:
-                        break
-
+        # Find System packages
         in_system = {}
         for p in packages:
-            if p["installed"] and not p["channel"]:
-                # System package
-                key = "%s/%s" % (p["name"], rcd_util.get_package_EVR(p))
+            if rcd_util.is_system_package(p):
+                key = rcd_util.get_package_key(p)
                 in_system[key] = 1
 
+        # Remove instelled Channel packages
         for p in packages:
-            key = "%s/%s" % (p["name"], rcd_util.get_package_EVR(p))
-            if p["channel"] and in_system.has_key(key):
-                # Channel package, has system package.
-                packages.remove(p)
+            if not rcd_util.is_system_package(p):
+                key = rcd_util.get_package_key(p)
+                if in_system.has_key(key):
+                    packages.remove(p)
 
         return packages
 

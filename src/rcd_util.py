@@ -236,12 +236,22 @@ def get_package_info(pkg):
 def get_package_history(pkg):
     return server.rcd.log.query_log([["name", "=", pkg["name"]]])
 
+def is_system_package(pkg):
+    if pkg.get("channel", 0) == 0 or pkg.has_key("channel_quess"):
+        return 1
+    return 0
+
 def get_package_key(pkg):
     key = pkg.get("__key")
     if not key:
+        if is_system_package(pkg):
+            channel = pkg.get("channel_guess", 0)
+        else:
+            channel = pkg.get("channel")
+
         key = pkg["__key"] = "%s/%s/%d" % (pkg["name"],
                                            get_package_EVR(pkg),
-                                           pkg["channel"])
+                                           channel)
     return key
 
 def get_dep_EVR(dep):
