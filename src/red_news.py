@@ -19,20 +19,119 @@ import string, re
 import rcd_util
 import gobject, gtk, pango
 import red_component
+import red_listmodel
+import red_thrashingtreeview
 
-model = None
+
+def news_item_get_title(item):
+    summary = re.sub("\s+", " ", item["summary"])
+
+    # Break the news item up to make it easier to read.
+    # FIXME: It would be nice to actually wrap the text in
+    # some sort of intelligent way.
+    lines = rcd_util.linebreak(summary, 72)
+    summary = string.join(lines, "\n")
+
+    return "<b>" + item["title"] + "</b>\n<i>" + item["time_str"] + "</i>\n" + summary
+
+def news_item_get_date(item):
+    return "\n" + item["time_str"]
+
+COLUMNS = (
+    ("ITEM",
+     lambda x:x,
+     gobject.TYPE_PYOBJECT),
+
+    ("ICON",
+     lambda x:x["icon"],
+     gtk.gdk.Pixbuf),
+
+    ("TITLE",
+     lambda x:news_item_get_title(x),
+     gobject.TYPE_STRING),
+
+    ("DATE",
+     lambda x:news_item_get_date(x),
+     gobject.TYPE_STRING),
+    )
+
+for i in range(len(COLUMNS)):
+    name = COLUMNS[i][0]
+    exec("COLUMN_%s = %d" % (name, i))
+
+
+class NewsModel(red_listmodel.ListModel):
+
+    def __init__(self):
+        red_listmodel.ListModel.__init__(self, None, None)
+
+        self.__worker = None
+        self.__worker_handler_id = 0
+
+        for name, callback, type in COLUMNS:
+            self.add_column(callback, type)
+
+        self.refresh()
+
+    def set_news(self, news):
+        def set_news_cb(this, n):
+            this.__news = n
+        self.changed(set_news_cb, news)
+
+    def refresh(self):
+
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_is = 0
+            self.__worker.cancel()
+
+        def get_news_cb(worker, this):
+            if not worker.is_cancelled():
+                news = worker.get_result()
+                if news:
+                    for item in news:
+                        item["icon"] = this.get_icon(item["channel_name"])
+
+                    this.set_news(news)
+
+        self.set_news([])
+
+        server = rcd_util.get_server_proxy()
+        self.__worker = server.rcd.news.get_all()
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         get_news_cb,
+                                                         self)
+
+    def get_icon(self, name):
+        # FIXME: Special hacks for current (bad) news file
+        if name == "Ximian GNOME":
+            name = "Ximian Desktop"
+
+        if name == "OpenOffice":
+            name = "OpenOffice.org"
+
+        channels = rcd_util.get_all_channels()
+        for c in channels:
+            if c["name"] == name:
+                return rcd_util.get_channel_icon(c["id"])
+
+        return None
+
+
+    def get_all(self):
+        return self.__news
+
 
 class NewsView(gtk.ScrolledWindow):
 
     def __init__(self):
         gtk.ScrolledWindow.__init__(self)
 
-        global model
-        if not model:
-            server = rcd_util.get_server()
-            model = NewsModel(server)
+        model = NewsModel()
 
-        view = gtk.TreeView(model)
+        view = red_thrashingtreeview.TreeView()
+        view.set_model(model)
 
         view.set_headers_visible(0)
         view.set_rules_hint(1)
@@ -94,103 +193,3 @@ class NewsComponent(red_component.Component):
         page.pack_start(view, 1, 1)
 
         return page
-
-
-COLUMN_NEWS        = 0
-COLUMN_ICON        = 1
-COLUMN_TITLE       = 2
-COLUMN_DATE        = 3
-COLUMN_LAST        = 4
-
-
-class NewsModel(gtk.GenericTreeModel):
-
-    def __init__(self, server):
-        gtk.GenericTreeModel.__init__(self)
-        self.news = server.rcd.news.get_all()
-
-        for item in self.news:
-            item["icon"] = self.get_icon(item["channel_name"])
-
-    def get_icon(self, name):
-        # FIXME: Special hacks for current (bad) news file
-        if name == "Ximian GNOME":
-            name = "Ximian Desktop"
-
-        if name == "OpenOffice":
-            name = "OpenOffice.org"
-
-        channels = rcd_util.get_all_channels()
-        for c in channels:
-            if c["name"] == name:
-                return rcd_util.get_channel_icon(c["id"])
-
-        return None
-
-    def news_item_to_column(self, news_item, index):
-        if index == COLUMN_NEWS:
-            return news_item
-        elif index == COLUMN_ICON:
-            return news_item["icon"]
-        elif index == COLUMN_TITLE:
-            summary = re.sub("\s+", " ", news_item["summary"])
-
-            # Break the news item up to make it easier to read.
-            # FIXME: It would be nice to actually wrap the text in
-            # some sort of intelligent way.
-            lines = rcd_util.linebreak(summary, 72)
-            summary = string.join(lines, "\n")
-            
-            return "<b>" + news_item["title"] + "</b>\n<i>" + news_item["time_str"] + "</i>\n" + summary
-        elif index == COLUMN_DATE:
-            return "\n" + news_item["time_str"]
-
-    def on_get_flags(self):
-        return 0
-
-    def on_get_n_columns(self):
-        return COLUMN_LAST
-
-    def on_get_column_type(self, index):
-        if index == COLUMN_NEWS:
-            return gobject.TYPE_PYOBJECT
-        elif index == COLUMN_ICON:
-            return gtk.gdk.Pixbuf
-        else:
-            return gobject.TYPE_STRING
-
-    def on_get_path(self, node):
-        return node
-
-    def on_get_iter(self, path):
-        return path
-
-    def on_get_value(self, node, column):
-        news_item = self.news[node[0]]
-        if news_item:
-            return self.news_item_to_column(news_item, column)
-        return "???"
-
-    def on_iter_next(self, node):
-        next = node[0] + 1
-        if next >= len(self.news):
-            return None
-        return (next,)
-
-    def on_iter_children(self, node):
-        if node == None:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_has_child(self, node):
-        return 0;
-
-    def on_iter_nth_child(self, node, n):
-        if node == None and n == 0:
-            return (0,)
-        else:
-            return None
-
-    def on_iter_parent(self, node):
-        return None

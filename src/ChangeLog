@@ -1,3 +1,9 @@
+2003-02-19  Tambet Ingo  <tambet@ximian.com>
+
+	* red_news.py: Use red_listmodel.ListModel instead of home-grown
+	one. Also, use serverproxy to retrieve data.
+	(NewsView.__init__): Use thrashingview instead of standard treeview.
+
 2003-02-18  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (md5ify_password): Python 2.2's md5 module contains
