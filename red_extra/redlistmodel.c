@@ -37,6 +37,10 @@
 
 static GObjectClass *parent_class = NULL;
 
+/* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
+
+/* Implementation of the GtkTreeModel interface. */
+
 static guint
 red_list_model_get_flags (GtkTreeModel *tree_model)
 {
@@ -205,6 +209,53 @@ red_list_model_iter_parent (GtkTreeModel *tree_model,
 
 /* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
 
+/* Implementation of the GtkTreeSortable interface. */
+
+static gboolean
+red_list_model_sortable_get_sort_column_id (GtkTreeSortable *sortable,
+                                            gint            *sort_column_id,
+                                            GtkSortType     *order)
+{
+    /* FIXME */
+    return FALSE;
+}
+
+static void
+red_list_model_sortable_set_sort_column_id (GtkTreeSortable *sortable,
+                                            gint             sort_column_id,
+                                            GtkSortType      order)
+{
+    /* FIXME */
+}
+
+static void
+red_list_model_sortable_set_sort_func (GtkTreeSortable       *sortable,
+                                       gint                   sort_column_id,
+                                       GtkTreeIterCompareFunc func,
+                                       gpointer               data,
+                                       GtkDestroyNotify       destroy)
+{
+    /* FIXME */
+}
+
+static void
+red_list_model_sortable_set_default_sort_func (GtkTreeSortable       *sortable,
+                                               GtkTreeIterCompareFunc func,
+                                               gpointer               data,
+                                               GtkDestroyNotify       destroy)
+{
+    /* FIXME */
+}
+
+static gboolean
+red_list_model_sortable_has_default_sort_func (GtkTreeSortable *sortable)
+{
+    /* FIXME */
+    return FALSE;
+}
+
+/* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
+
 static void
 red_list_model_clear_columns (RedListModel *model)
 {
@@ -242,7 +293,7 @@ red_list_model_clear_array (RedListModel *model)
 
 /* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
 
-void
+static void
 red_list_model_finalize (GObject *obj)
 {
     RedListModel *model = RED_LIST_MODEL (obj);
@@ -287,6 +338,16 @@ red_list_model_iface_init (GtkTreeModelIface *iface)
     iface->iter_parent     = red_list_model_iter_parent;
 }
 
+static void
+red_list_model_sortable_iface_init (GtkTreeSortableIface *iface)
+{
+    iface->get_sort_column_id    = red_list_model_sortable_get_sort_column_id;
+    iface->set_sort_column_id    = red_list_model_sortable_set_sort_column_id;
+    iface->set_sort_func         = red_list_model_sortable_set_sort_func;
+    iface->set_default_sort_func = red_list_model_sortable_set_default_sort_func;
+    iface->has_default_sort_func = red_list_model_sortable_has_default_sort_func;
+}
+
 GType
 red_list_model_get_type (void)
 {
@@ -309,6 +370,11 @@ red_list_model_get_type (void)
             NULL, NULL
         };
 
+        static const GInterfaceInfo tree_sortable_info = {
+            (GInterfaceInitFunc) red_list_model_sortable_iface_init,
+            NULL, NULL
+        };
+
         object_type = g_type_register_static (G_TYPE_OBJECT,
                                               "RedListModel",
                                               &object_info, 0);
@@ -316,6 +382,10 @@ red_list_model_get_type (void)
         g_type_add_interface_static (object_type,
                                      GTK_TYPE_TREE_MODEL,
                                      &tree_model_info);
+
+        g_type_add_interface_static (object_type,
+                                     GTK_TYPE_TREE_SORTABLE,
+                                     &tree_sortable_info);
 
     }
 

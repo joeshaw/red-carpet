@@ -1,3 +1,4 @@
+;; This is a bit like -*- Scheme -*-
 
 (define-object ListModel
   (in-module "red_extra")
@@ -43,4 +44,41 @@
   (parameters
    '("gint" "row_number")
   )
+)
+
+
+(define-object ListView
+  (in-module "red_extra")
+  (parent "GtkTreeView")
+  (c-name "RedListView")
+  (gtype-id "RED_TYPE_LIST_VIEW")
+)
+
+(define-function red_list_view_new
+  (c-name "red_list_view_new")
+  (is-constructor-of RedListView)
+  (return-type "RedListView *")
+)
+
+(define-method add_spanner_with_background
+  (of-object "RedListView")
+  (c-name "red_list_view_add_spanner_with_background")
+  (return-type "none")
+  (parameters
+   '("gint" "row_number")
+   '("gint" "column_start")
+   '("gint" "column_end")
+   '("GtkCellRenderer*" "cell_renderer")
+   '("GdkColor*" "bg_color"))
+)
+
+(define-method add_spanner
+  (of-object "RedListView")
+  (c-name "red_list_view_add_spanner")
+  (return-type "none")
+  (parameters
+   '("gint" "row_number")
+   '("gint" "column_start")
+   '("gint" "column_end")
+   '("GtkCellRenderer*" "cell_renderer"))
 )

@@ -21,11 +21,13 @@ red_extraexec_LTLIBRARIES = xxx_red_extra.la
 xxx_red_extra_la_CFLAGS = $(GTK_CFLAGS)
 xxx_red_extra_la_LDFLAGS = -module -avoid-version -export-symbols-regex initxxx_red_extra
 xxx_red_extra_la_LIBADD = $(GTK_LIBS)
-xxx_red_extra_la_SOURCES =		\
+xxx_red_extra_la_SOURCES =	\
 	module.c		\
 	red_extra.c		\
-	redlistmodel.c	\
-	redlistmodel.h
+	redlistmodel.c		\
+	redlistmodel.h		\
+	redlistview.c		\
+	redlistview.h
 
 CLEANFILES = red_extra.c
 EXTRA_DIST += red_extra.override
@@ -34,6 +36,8 @@ red_extra.c: red_extra.defs red_extra.override
 	(cd $(srcdir) \
 	&& $(PYGTK_CODEGEN) \
 		--register $(PYGTK_DEFSDIR)/gtk-types.defs \
+		--register $(PYGTK_DEFSDIR)/gdk.defs \
+		--register $(PYGTK_DEFSDIR)/gdk-types.defs \
 		--override red_extra.override \
 		--prefix red \
 		red_extra.defs) > gen-red_extra.c \

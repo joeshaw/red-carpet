@@ -53,13 +53,6 @@ def connect_to_server():
 
     return server
 
-def opt_test(server):
-
-    opt = red_channeloption.ChannelOption()
-    app = red_appwindow.AppWindow()
-    app.show_all()
-    app.set_main_widget(opt)
-
 def main(version):
     server = connect_to_server()
 

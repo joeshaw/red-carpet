@@ -16,6 +16,7 @@
 ###
 
 import gobject, gtk
+import red_extra
 import red_pendingops, red_packagearray
 
 class PackageView(gtk.TreeView):
