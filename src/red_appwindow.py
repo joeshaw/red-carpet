@@ -100,8 +100,8 @@ def verify_deps_cb(app):
     app.componentbook.push_component(dep_comp)
 
 def help_cb(app):
-    # *Only* localize this to the language code if the Red Carpet help is
-    # localized.
+    # TRANSLATORS: *Only* localize this to the language code if the
+    # Red Carpet help is localized.
     help_locale = _("C")
 
     help_files = ("%s/%s/red-carpet.xml" % (red_main.help_path, help_locale),
