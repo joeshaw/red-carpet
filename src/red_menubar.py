@@ -283,10 +283,10 @@ class MenuBar(gtk.MenuBar):
 
                 if self.statusbar and item["description"]:
                     def select_cb(mi, sb, i):
-                        sb.push(hash(mi), i["description"])
+                        sb.push(abs(hash(mi)), i["description"])
 
                     def deselect_cb(mi, sb):
-                        sb.pop(hash(mi))
+                        sb.pop(abs(hash(mi)))
 
                     menu_item.connect("select", select_cb,
                                       self.statusbar, item)

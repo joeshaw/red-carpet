@@ -1,3 +1,16 @@
+2004-08-25  Tambet Ingo  <tambet@ximian.com>
+
+	* red_menubar.py (MenuBar.select_cb, MenuBar.deselect_cb): Use absolute
+	value of hash() function, since we need uint.
+
+	* red_statusbar.py (Statusbar.set_connected): Ditto.
+
+	* red_listmodel.py (ListModel.message_push): Ditto.
+	(ListModel.message_pop): Ditto.
+
+	* red_component.py (Component.message_pop): Ditto.
+	(Component.message_push): Ditto.
+
 2004-08-24  Tambet Ingo  <tambet@ximian.com>
 
 	* red_services.py (ServicesWindow.get_selected_service): It's ok
