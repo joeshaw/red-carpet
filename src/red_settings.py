@@ -98,6 +98,7 @@ def get_config():
 class DaemonData:
     def __init__(self):
         self.conf = get_config()
+        self.local = 1
         self.url = None
         self.user = None
         self.password = None
@@ -105,25 +106,30 @@ class DaemonData:
         self.from_config()
 
     def from_config(self):
-        self.url =      config.get("daemon/url=localhost")
+        self.local =    int(config.get("daemon/local=1"))
+        self.url =      config.get("daemon/url")
         self.user =     config.get("daemon/user")
         self.password = config.get_private("daemon/pass")
 
     def save_config(self):
+        self.conf.set("daemon/local", str(self.local))
         self.conf.set("daemon/url", self.url)
         self.conf.set("daemon/user", self.user)
         self.conf.set_private("daemon/pass", self.password)
 
         self.conf.sync()
 
+    def local_get(self):
+        return self.local
+
+    def local_set(self, local):
+        self.local = local
+
     def url_get(self):
-        host = self.url
-        if host == "" or host == "localhost" or string.find(host, "/") == 0:
-            local = 1
-        else:
-            local = 0
+        local = self.local
 
         if not local:
+            host = self.url
             # Prepend "https://" if it isn't already specified
             if string.find(host, "http://") == -1 \
                and string.find(host, "https://") == -1:
@@ -172,18 +178,25 @@ class DaemonData:
                 self.password_get())
 
 
-class DaemonSettings(gtk.Frame):
+class DaemonSettings(gtk.VBox):
 
     def __init__(self):
-        gtk.Frame.__init__(self)
+        gtk.VBox.__init__(self)
+
+        self.local = 1
 
         self.data = DaemonData()
         self.build()
         self.populate()
 
     def build(self):
-        self.set_border_width(5)
-        self.set_label("Connect to rcd daemon")
+        self.local_rb = gtk.RadioButton(None,
+                                        "Connect to daemon on this computer")
+        self.pack_start(self.local_rb)
+
+        self.remote_rb = gtk.RadioButton(self.local_rb,
+                                         "Connect to a remote daemon")
+        self.pack_start(self.remote_rb)
 
         table = gtk.Table(3, 2)
         table.set_border_width(5)
@@ -211,8 +224,22 @@ class DaemonSettings(gtk.Frame):
         self.password = gtk.Entry()
         self.password.set_visibility(0)
         table.attach_defaults(self.password, 1, 2, 2, 3)
+        
+        hbox = gtk.HBox()
+        hbox.pack_start(table, padding=20)
+        self.pack_start(hbox)
 
-        self.add(table)
+        # desensitize the table by default.
+        table.set_sensitive(0)
+
+        def toggled_cb(b, s):
+            s.local = b.get_active()
+        self.local_rb.connect("toggled", toggled_cb, self)
+
+        self.remote_rb.connect("toggled",
+                               lambda x,y:y.set_sensitive(x.get_active()),
+                               table)
+
         self.show_all()
 
     def populate(self):
@@ -228,10 +255,22 @@ class DaemonSettings(gtk.Frame):
         if buf:
             self.password.set_text(buf)
 
+        if self.data.local_get():
+            self.local_rb.set_active(1)
+        else:
+            self.remote_rb.set_active(1)
+
     def save(self):
-        self.data.url_set(self.url.get_text())
-        self.data.user_set(self.user.get_text())
-        self.data.password_set(self.password.get_text())
+        self.data.local_set(self.local)
+
+        if not self.local:
+            self.data.url_set(self.url.get_text())
+            self.data.user_set(self.user.get_text())
+            self.data.password_set(self.password.get_text())
+        else:
+            self.data.url_set("")
+            self.data.user_set("")
+            self.data.password_set("")
 
         self.data.save_config()
 

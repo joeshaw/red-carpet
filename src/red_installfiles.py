@@ -114,10 +114,10 @@ def install_remote():
                                                gtk.MESSAGE_ERROR,
                                                gtk.BUTTONS_OK,
                                                "%s is not a valid package" % dw.url)
+                    gtk.threads_enter()
                     dialog.run()
-                    dialog.destroy()
-                    # Fixme: This shouldn't be here, it should be fixed in pygtk.
                     gtk.threads_leave()
+                    dialog.destroy()
 
         download_watcher.connect("ready", ready_cb, dialog, timeout_id)
 
@@ -150,6 +150,14 @@ def install_remote():
     button = win.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
     button.grab_default()
     button.connect("clicked", get_file_cb, win, entry)
+    button.set_sensitive(0)
+
+    def changed_cb(e, b):
+        if string.strip(e.get_text()):
+            b.set_sensitive(1)
+        else:
+            b.set_sensitive(0)
+    entry.connect("changed", changed_cb, button)
 
     win.show()
 
@@ -176,7 +184,10 @@ class DownloadWatcher(threading.Thread, gobject.GObject):
         if not hasattr(urllib.URLopener, name):
             return None
 
-        u = urllib.URLopener().open(self.url)
+        try:
+            u = urllib.URLopener().open(self.url)
+        except IOError:
+            return None
 
         data = []
 

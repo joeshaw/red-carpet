@@ -76,7 +76,7 @@ def connect_to_server(force_dialog=0):
         d.run()
         url, username, password = d.get_server_info()
         d.destroy()
-        # Fixme: This shouldn't be here, it should be fixed in pygtk.
+        # FIXME: This shouldn't be here, it should be fixed in pygtk.
         gtk.threads_leave()
 
         if not url:
@@ -91,7 +91,9 @@ def connect_to_server(force_dialog=0):
                                    gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
                                    "Unable to connect to the daemon:\n '%s'." % err_msg)
         dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
+        gtk.threads_enter()
         dialog.run()
+        gtk.threads_leave()
         dialog.destroy()
 
 def register_server(srv):
