@@ -186,7 +186,7 @@ def packages_with_actions(*args):
 def package_action(pkg):
     for p in package_data.values():
         if pkg["name"] == p["__package"]["name"]:
-            return p["action"]
+            return p.get("action", NO_ACTION)
 
     return NO_ACTION
 

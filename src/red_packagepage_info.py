@@ -18,8 +18,13 @@
 import gtk
 import rcd_util, red_packagepage
 
+import red_pixbuf
+
 NO_SPAN = 0
 SPAN    = 1
+
+TYPE_TEXT   = 0
+TYPE_WIDGET = 1
 
 def pkg_element(pkg, pkg_info, key):
     return str(pkg.get(key, ""))
@@ -33,33 +38,47 @@ def pkg_size(pkg, pkg_info, key):
         size = 0
     return rcd_util.byte_size_to_string(size)
 
+def pkg_section(pkg, pkg_info, key):
+    box = gtk.HBox(0, 2)
+    icon = pkg.get("section_str", "")
+    if icon:
+        icon = "section-%s" % icon
+        box.pack_start(red_pixbuf.get_widget(icon, width=24, height=24), 0, 0)
+    label = pkg.get("section_user_str")
+    if label:
+        box.pack_start(gtk.Label(label), 0, 0)
+    return box
+
 _info_rows = (
-    ("Name", pkg_element, "name", NO_SPAN),
-    ("Version", pkg_element, "version", NO_SPAN),
-    ("Release", pkg_element, "release", NO_SPAN),
-    ("Package Size", pkg_size, "file_size", NO_SPAN),
-    ("Installed Size", pkg_size, "installed_size", NO_SPAN),
-    ("Section", pkg_info_element, "section", NO_SPAN),
-    ("Summary", pkg_info_element, "summary", NO_SPAN),
-    ("Description", pkg_info_element, "description", SPAN),
+    ("Name",           TYPE_TEXT,   pkg_element,      "name",           NO_SPAN),
+    ("Version",        TYPE_TEXT,   pkg_element,      "version",        NO_SPAN),
+    ("Release",        TYPE_TEXT,   pkg_element,      "release",        NO_SPAN),
+    ("Package Size",   TYPE_TEXT,   pkg_size,         "file_size",      NO_SPAN),
+    ("Installed Size", TYPE_TEXT,   pkg_size,         "installed_size", NO_SPAN),
+    ("Section",        TYPE_WIDGET, pkg_section,      "section",        NO_SPAN),
+    ("Summary",        TYPE_TEXT,   pkg_info_element, "summary",        NO_SPAN),
+    ("Description",    TYPE_TEXT,   pkg_info_element, "description",    SPAN),
     )
 
 def build_rows(table, pkg, pkg_info):
     rindex = 0
     for r in range(0, len(_info_rows)):
-        v = _info_rows[r][1](pkg, pkg_info, _info_rows[r][2])
+        v = _info_rows[r][2](pkg, pkg_info, _info_rows[r][3])
 
         if not v:
             continue
-        
+
         label = gtk.Label("")
         label.set_markup("<b>" + _info_rows[r][0] + ":</b>")
         label.set_alignment(0, 0.5)
 
-        value = gtk.Label(v)
-        value.set_alignment(0, 0.5)
+        if _info_rows[r][1] == TYPE_TEXT:
+            value = gtk.Label(v)
+            value.set_alignment(0, 0.5)
+        else:
+            value = v
 
-        if _info_rows[r][3] == NO_SPAN:
+        if _info_rows[r][4] == NO_SPAN:
             table.attach(label,
                          0, 1, rindex, rindex + 1,
                          gtk.FILL, gtk.FILL,

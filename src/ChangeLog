@@ -1,3 +1,11 @@
+2003-02-07  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packagepage_info.py (pkg_section): Implement.
+	(build_rows): Show icons and nicer text for package sections.
+
+	* red_pendingops.py (package_action): Use get method with default
+	value instead of [].
+
 2003-02-06  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (AppWindow.connect_sidebar_buttons): Don't
