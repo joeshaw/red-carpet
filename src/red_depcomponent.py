@@ -145,4 +145,8 @@ class DepComponent(red_component.Component):
 
         return page
 
+    def activated(self):
+        self.parent().sensitize_go_button(0)
 
+    def deactivated(self):
+        self.parent().sensitize_go_button(1)

@@ -212,6 +212,7 @@ def begin_transaction(install_packages, remove_packages, parent=None):
     trans_win.show()
 
     def finished_cb(w, p):
-        p.pop_component()
+        if p:
+            p.pop_component()
 
     trans_win.connect("finished", finished_cb, parent)

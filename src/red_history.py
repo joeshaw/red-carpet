@@ -210,6 +210,7 @@ class HistoryView(gtk.ScrolledWindow):
 
     def build(self):
         self.view = gtk.TreeView(self.model)
+        self.view.set_rules_hint(1)
 
         cols = [("Action",      COLUMN_ACTION,  1),
                 ("User",        COLUMN_USER,    1),
@@ -339,6 +340,7 @@ class PackageHistory(gtk.ScrolledWindow):
 
     def build(self):
         self.view = gtk.TreeView(self.model)
+        self.view.set_rules_hint(1)
 
         cols = [("Action",      COLUMN_ACTION),
                 ("User",        COLUMN_USER),

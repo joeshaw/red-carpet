@@ -144,6 +144,18 @@ class Component(gobject.GObject):
     def changed_visibility(self, flag):
         pass
 
+    def select_all(self):
+        pass
+
+    def unselect_all(self):
+        pass
+
+    def activated(self):
+        pass
+
+    def deactivated(self):
+        pass
+
     ###
     ### Hints for setting up component navigation
     ###

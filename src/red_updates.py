@@ -47,31 +47,6 @@ class SummaryComponent(red_component.Component):
         self.array.connect("changed", updates_changed_cb, msg1)
         vbox.pack_start(msg1, 1, 1, 0)
 
-        buttons = gtk.HBox(0, 0)
-        sel = gtk.Button("Select All")
-        unsel = gtk.Button("Unselect All")
-        go = gtk.Button("Update All Now!")
-
-        def sel_all_cb(b, summary):
-            for pkg in summary.array.get_all():
-                red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)
-
-        def unsel_all_cb(b, summary):
-            for pkg in summary.array.get_all():
-                red_pendingops.set_action(pkg, red_pendingops.NO_ACTION)
-
-        def go_cb(b, summary):
-            sel_all_cb(b, summary)
-
-        sel.connect("clicked", sel_all_cb, self)
-        unsel.connect("clicked", unsel_all_cb, self)
-        go.connect("clicked", go_cb, self)
-
-        buttons.pack_start(sel, 0, 0, 2)
-        buttons.pack_start(unsel, 0, 0, 2)
-        buttons.pack_end(go, 0, 0, 2)
-        vbox.pack_start(buttons, 1, 1, 0)
-
         vbox.show_all()
         
         page.pack_start(vbox, 0, 0)
@@ -102,3 +77,10 @@ class SummaryComponent(red_component.Component):
         else:
             self.array.freeze()
         
+    def select_all(self):
+        for pkg in self.array.get_all():
+            red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)
+
+    def unselect_all(self):
+        for pkg in self.array.get_all():
+            red_pendingops.set_action(pkg, red_pendingops.NO_ACTION)

@@ -202,6 +202,16 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             win.connect("destroy", remove_window_cb, self, type)
             win.show()
 
+    def select_all_cb(self, sel):
+        comp = self.get_component()
+        if not comp:
+            return
+        
+        if sel:
+            comp.select_all()
+        else:
+            comp.unselect_all()
+
     def assemble_menubar(self, bar):
 
         bar.add("/_File")
@@ -242,6 +252,14 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
+
+        bar.add("/Edit/Select All",
+                callback=lambda x:self.select_all_cb(1))
+
+        bar.add("/Edit/Select None",
+                callback=lambda x:self.select_all_cb(0))
+
+        bar.add("/Edit/sep", is_separator=1)
 
         bar.add("/Edit/Subscriptions...",
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
@@ -313,8 +331,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         # Show the new component, hide the old one.
         comp.visible(1)
         comp.set_parent(self)
+        comp.activated()
         if old_comp:
             old_comp.visible(0)
+            old_comp.deactivated()
             old_comp.set_parent(None)
 
         # Force the componet to emit a display event.  This causes
