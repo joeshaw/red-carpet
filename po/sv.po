@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.5 2003/04/17 07:29:12 menthos Exp $
+# $Id: sv.po,v 1.6 2003/04/17 21:04:37 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-04-17 09:27+0200\n"
-"PO-Revision-Date: 2003-04-17 09:28+0200\n"
+"POT-Creation-Date: 2003-04-17 23:02+0200\n"
+"PO-Revision-Date: 2003-04-17 23:04+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -824,7 +824,7 @@ msgstr "Aktuell version"
 
 #. ## Main
 #: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:439
-#: src/red_summary.py:74
+#: src/red_summary.py:94
 msgid "New Version"
 msgstr "Ny version"
 
@@ -1916,7 +1916,7 @@ msgstr "Avinstallerade paket"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_searchbox.py:142 src/red_summary.py:30
+#: src/red_searchbox.py:142 src/red_summary.py:31
 msgid "Updates"
 msgstr "Uppdateringar"
 
@@ -2269,15 +2269,20 @@ msgstr ""
 "Du har inte rättighet att prenumerera eller säga upp prenumerationer på "
 "kanaler. Du kommer inte att kunna göra ändringar i prenumerationer."
 
-#: src/red_summary.py:33
+#: src/red_summary.py:34
 msgid "_Updates"
 msgstr "_Uppdateringar"
 
-#: src/red_summary.py:89
+#. ## Update All button
+#: src/red_summary.py:77
+msgid "Update All"
+msgstr "Uppdatera alla"
+
+#: src/red_summary.py:109
 msgid "The system is up-to-date."
 msgstr "Systemet är aktuellt."
 
-#: src/red_summary.py:90
+#: src/red_summary.py:110
 msgid "There are no software updates available in any subscribed channels."
 msgstr "Det finns inga programvaruuppdateringar i några prenumererade kanaler."
 
