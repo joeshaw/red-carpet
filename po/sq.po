@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: red-carpet.HEAD\n"
+"Project-Id-Version: red-carpet HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-28 04:20+0200\n"
-"PO-Revision-Date: 2004-07-01 19:41+0200\n"
+"POT-Creation-Date: 2004-07-29 04:15+0200\n"
+"PO-Revision-Date: 2004-07-29 11:38+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -113,8 +113,7 @@ msgstr "Aktivimi nuk është i mundur"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr ""
-"Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
+msgstr "Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
@@ -131,12 +130,11 @@ msgstr ""
 "kontakt me shitësin tuaj."
 
 #: src/red_appwindow.py:139
-msgid ""
-"Unable to show help because there are no applications available to view help."
-msgstr ""
-"E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
+msgid "Unable to show help because there are no applications available to view help."
+msgstr "E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
 
 #: src/red_appwindow.py:414
+#, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Dëshironi të hapni dritaren e informacionit të pakos %d?"
 
@@ -270,10 +268,8 @@ msgid "_Activate..."
 msgstr "_Aktivo..."
 
 #: src/red_appwindow.py:633
-msgid ""
-"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr ""
-"Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
+msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr "Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
 
 #: src/red_appwindow.py:639
 msgid "Quit"
@@ -439,6 +435,7 @@ msgid "About Red Carpet"
 msgstr "Informacione mbi Red Carpet"
 
 #: src/red_appwindow.py:842
+#, python-format
 msgid "Go to the '%s' page"
 msgstr "Shko tek faqja '%s'"
 
@@ -455,6 +452,7 @@ msgid "No Channel/Unknown Channel"
 msgstr "Kanal jo ekzistues/Kanal i panjohur"
 
 #: src/red_connection.py:49
+#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
@@ -463,6 +461,7 @@ msgstr ""
 " '%s'."
 
 #: src/red_connection.py:67
+#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
@@ -471,6 +470,7 @@ msgstr ""
 "Nevoitet versioni %d.%d.%d (ose më i ri)"
 
 #: src/red_connection.py:93
+#, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
@@ -498,7 +498,6 @@ msgstr "Lidhu me këtë sistem"
 msgid "Connect to a remote system"
 msgstr "Lidhu me një sistem remot"
 
-#. GRUT modified this item
 #: src/red_connection.py:357
 msgid "Server:"
 msgstr "Serveri:"
@@ -545,8 +544,7 @@ msgid "Resolving Dependencies"
 msgstr "Duke zgjidhur varësitë"
 
 #: src/red_depcomponent.py:150
-msgid ""
-"You must agree to the licenses covering this software before installing it."
+msgid "You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a "
 "instaloni."
@@ -670,6 +668,7 @@ msgid "No results found."
 msgstr "Nuk u gjet asnjë rezultat."
 
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
+#, python-format
 msgid "%s is not a valid package"
 msgstr "%s nuk është një pako e vlefshme"
 
@@ -682,6 +681,7 @@ msgid "Install from File"
 msgstr "Instalo nga file"
 
 #: src/red_installfiles.py:119
+#, python-format
 msgid "Downloading %s..."
 msgstr "Duke shkarkuar %s..."
 
@@ -716,6 +716,7 @@ msgid "Choose a Mirror"
 msgstr "Zgjidh një Mirror"
 
 #: src/red_mount.py:91
+#, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Nuk arrij të zmontoj '%s'"
 
@@ -760,6 +761,7 @@ msgid "Unmount?"
 msgstr "Zmontoj?"
 
 #: src/red_news.py:174
+#, python-format
 msgid "%s News"
 msgstr "%s të reja"
 
@@ -800,6 +802,7 @@ msgid "Get usage information"
 msgstr "Merr informacionet mbi përdorimin"
 
 #: src/red_option.py:120
+#, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Përdorimi: %s <opcione> ..."
 
@@ -841,6 +844,7 @@ msgid "remove"
 msgstr "hiq"
 
 #: src/red_packagearray.py:614
+#, python-format
 msgid "Found %d matching packages"
 msgstr "U gjetën %d pako korrisponduese"
 
@@ -857,6 +861,7 @@ msgid "Looking for updates..."
 msgstr "Duke kontrolluar për versione të rinj..."
 
 #: src/red_packagearray.py:801
+#, python-format
 msgid "Found %d matching patches"
 msgstr "U gjetën %d korrigjime korrispondues"
 
@@ -937,25 +942,23 @@ msgid "Importance"
 msgstr "Rendësia"
 
 #: src/red_patches.py:35
-#, fuzzy
 msgid "Patches"
-msgstr "Pakot"
+msgstr "Korrigjime"
 
 #: src/red_patches.py:38
 msgid "YOU Patches"
-msgstr ""
+msgstr "Korrigjimet TUAJA"
 
 #: src/red_patches.py:72
-#, fuzzy
 msgid "Searching for matching patches..."
-msgstr "Duke kërkuar për pako korrisponduese..."
+msgstr "Duke kërkuar për korrigjime korrisponduese..."
 
 #: src/red_patches.py:111
-#, fuzzy
 msgid "No matching patches found."
-msgstr "Nuk u gjet asnjë korrigjim korrispondues"
+msgstr "Nuk u gjet asnjë korrigjim korrispondues."
 
 #: src/red_pendingview.py:347
+#, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% u kompletua"
 
@@ -1083,6 +1086,7 @@ msgid "Empty Cache"
 msgstr "Zbraz Cache"
 
 #: src/red_prefs.py:395
+#, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
@@ -1095,6 +1099,7 @@ msgid "Loading preferences..."
 msgstr "Duke ngarkuar preferimet..."
 
 #: src/red_prefs.py:520
+#, python-format
 msgid "%s Preferences"
 msgstr "Preferimet e %s"
 
@@ -1230,6 +1235,7 @@ msgid "Dump daemon info to XML file"
 msgstr "Dump i informacioneve mbi daemon në file XML"
 
 #: src/red_serverinfo.py:94
+#, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Nuk arrij të hap file '%s': %s"
 
@@ -1266,18 +1272,22 @@ msgid "Pending Actions"
 msgstr "Veprime në pritje"
 
 #: src/red_sidebar.py:89
+#, python-format
 msgid "%d pending install"
 msgstr "%d instalim në pritje"
 
 #: src/red_sidebar.py:91
+#, python-format
 msgid "%d pending installs"
 msgstr "%d instalime në pritje"
 
 #: src/red_sidebar.py:97
+#, python-format
 msgid "%d pending removal"
 msgstr "%d disinstalim në pritje"
 
 #: src/red_sidebar.py:99
+#, python-format
 msgid "%d pending removals"
 msgstr "%d disinstalime në pritje"
 
@@ -1302,6 +1312,7 @@ msgid "A_vailable Software"
 msgstr "Software në dis_pozicion"
 
 #: src/red_statusbar.py:49
+#, python-format
 msgid "Connected to %s"
 msgstr "Lidhur me %s"
 
@@ -1314,6 +1325,7 @@ msgid "Channel Name"
 msgstr "Emri i kanalit"
 
 #: src/red_subscriptions.py:78
+#, python-format
 msgid "%s Channel Subscriptions"
 msgstr "Nënshkrime tek kanali %s"
 
@@ -1394,6 +1406,7 @@ msgid "Passwords do not match."
 msgstr "Password-et nuk korrispondojnë."
 
 #: src/red_users.py:268
+#, python-format
 msgid "Set %s's password"
 msgstr "Vendos password-in e %s"
 
@@ -1406,6 +1419,7 @@ msgid "Add"
 msgstr "Shto"
 
 #: src/red_users.py:320
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Jeni i sigurt që dëshironi të hiqni '%s'?"
 
@@ -1426,6 +1440,7 @@ msgid "Invalid user name."
 msgstr "Emër përdoruesi i pasaktë."
 
 #: src/red_users.py:428
+#, python-format
 msgid "User '%s' already exists."
 msgstr "Përdoruesi '%s' ekziston."
 
