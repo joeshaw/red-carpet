@@ -1,3 +1,20 @@
+2003-03-14  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py: Don't capitalize the 'f' in "from", it's not
+	an important enough word.  Add the About stock icon from gnome.
+
+	* red_my_computer.py: Add an access_key and accelerator.
+
+	* red_packageview.py (button_clicked_for_popup_cb): Pass along the
+	x and y coordinates of the button press event to the popup signal,
+	so we can determine what row received the click.
+	(do_popup): If the popup is happening outside our current
+	selection, select that item and perform the action in the popup on
+	it rather than the old selection.
+
+	* red_summary.py: Change the long name from "Updates Summary" to
+	"Update Summary", as it makes more sense.
+
 2003-03-14  Frank Belew  <frb@ximian.com>
 
 	* red-carpet.in: don't muck with weird paths if we're inside a 

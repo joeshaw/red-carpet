@@ -33,6 +33,12 @@ class MyComputerComponent(red_component.Component):
     def pixbuf(self):
         return "my-computer"
 
+    def access_key(self):
+        return "m"
+
+    def accelerator(self):
+        return "<Control>m"
+
     def show_in_shortcuts(self):
         return 1
 

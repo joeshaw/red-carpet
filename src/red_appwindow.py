@@ -455,7 +455,7 @@ class AppWindow(gtk.Window,
         def install_file_sensitive_fn():
             return rcd_util.check_server_permission("install")
 
-        bar.add("/File/Install From _File...",
+        bar.add("/File/Install from _File...",
                 sensitive_fn=install_file_sensitive_fn,
                 callback=lambda x:red_installfiles.install_local(self))
 
@@ -463,7 +463,7 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("install") and \
                    red_installfiles.can_install_remote()
 
-        bar.add("/File/Install From _URL...",
+        bar.add("/File/Install from _URL...",
                 sensitive_fn=install_url_sensitive_fn,
                 callback=lambda x:red_installfiles.install_remote(self))
 
@@ -660,6 +660,7 @@ class AppWindow(gtk.Window,
                 accelerator="<Control>R")
 
         bar.add("/Help/_About...",
+                pixbuf_name="menu-about",
                 callback=lambda x:red_about.About().show())
 
         if red_main.debug:

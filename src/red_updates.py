@@ -30,7 +30,7 @@ class SummaryComponent(red_component.Component):
         return _("Updates")
 
     def long_name(self):
-        return _("Updates Summary")
+        return _("Update Summary")
 
     def pixbuf(self):
         return "summary"

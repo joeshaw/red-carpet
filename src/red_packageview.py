@@ -94,12 +94,13 @@ class PackageView(red_thrashingtreeview.TreeView):
                 return 1
 
             if ev.button == 3:
-                def clicked_idle_cb(view, ev, select, b, t):
-                    view.emit("popup", ev, b, t)
+                def clicked_idle_cb(view, ev, select, b, t, x, y):
+                    view.emit("popup", ev, b, t, x, y)
 
                 gtk.idle_add(clicked_idle_cb,
                              view, ev, select,
-                             ev.button, ev.time)
+                             ev.button, ev.time,
+                             ev.x, ev.y)
                 return 1
 
             return 0
@@ -148,11 +149,19 @@ class PackageView(red_thrashingtreeview.TreeView):
             red_pendingops.toggle_action(pkg)
         #print "activated %s (%d)" % (pkg["name"], i)
 
-    def do_popup(self, ev, ev_button, ev_time):
+    def do_popup(self, ev, ev_button, ev_time, ev_x, ev_y):
         menu = gtk.Menu()
         menu.attach_to_widget(self, None)
 
         pkgs = self.get_selected_packages()
+
+        path, column, cell_x, cell_y = self.get_path_at_pos(ev_x, ev_y)
+        model = self.get_model()
+        clicked_pkg = model.get_list_item(path[0])
+
+        if not clicked_pkg in pkgs:
+            pkgs = [clicked_pkg]
+            self.set_cursor(path, column)
 
         def set_package_action(pkgs, action):
             for pkg in pkgs:
@@ -434,5 +443,7 @@ gobject.signal_new("popup",
                    (gtk.gdk.Event.__gtype__,
                     gobject.TYPE_INT, # button,
                     gobject.TYPE_INT, # time
+                    gobject.TYPE_INT, # x coordinate
+                    gobject.TYPE_INT, # y coordinate
                     )
                    )
