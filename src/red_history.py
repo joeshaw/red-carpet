@@ -248,12 +248,7 @@ class HistoryModel(gtk.ListStore):
         # Get some result now
         search_bar.updated()
 
-    def update(self, search_bar, query):
-        if not query:
-            return
-
-        self.clear()
-        entries = self.server.rcd.log.query_log(query)
+    def add_rows(self, entries):
         for entry in entries:
             pkg_name = ""
             pkg_initial_ver = ""
@@ -278,5 +273,21 @@ class HistoryModel(gtk.ListStore):
                      COLUMN_VER_OLD, pkg_initial_ver,
                      COLUMN_VER_NEW, pkg_final_ver)
 
+    def update(self, search_bar, query):
+        if not query:
+            return
 
-        
+        rows_first = 25
+        rows_later = 15
+
+        self.clear()
+        entries = self.server.rcd.log.query_log(query)
+        if not entries:
+            return
+
+        self.add_rows(entries[:rows_first])
+        entries = entries[rows_first:]
+
+        while entries:
+            gtk.idle_add(self.add_rows, entries[:rows_later])
+            entries = entries[rows_later:]
