@@ -252,6 +252,7 @@ class PackageArray(red_extra.ListModel,
         self.__sort_fn = sort_pkgs_by_name
         self.__reverse_sort = 0
         self.__package_keys = {}
+        self.__busy_flag = 0
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
@@ -329,6 +330,23 @@ class PackageArray(red_extra.ListModel,
         for i in indices:
             self.changed_one(i)
 
+    ## Busy/message functions
+
+    def message_push(self, msg, context_id=-1):
+        if context_id < 0:
+            context_id = hash(self)
+        self.emit("message_push", msg, context_id)
+
+    def message_pop(self, context_id=-1):
+        if context_id < 0:
+            context_id = hash(self)
+        self.emit("message_pop", context_id)
+
+    def busy(self, flag):
+        if self.__busy_flag ^ flag:
+            self.__busy_flag = flag
+            self.emit("busy", flag)
+
     ## Implements PendingOpsListener
     def pendingops_changed(self, pkg, key, value, old_value):
         self.changed_one_by_package(pkg)
@@ -366,6 +384,23 @@ gobject.signal_new("changed_one",
                    gobject.TYPE_NONE,
                    (gobject.TYPE_INT,))
 
+gobject.signal_new("busy",
+                   PackageArray,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_BOOLEAN,))
+
+gobject.signal_new("message_push",
+                   PackageArray,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_STRING, gobject.TYPE_UINT))
+
+gobject.signal_new("message_pop",
+                   PackageArray,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_UINT,))
 
 ###############################################################################
 
@@ -525,13 +560,12 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
 class PackagesFromQuery(PackagesFromDaemon):
 
-    def __init__(self, query=None, pre_query_fn=None, post_query_fn=None):
+    def __init__(self, query=None):
         PackagesFromDaemon.__init__(self)
         self.__worker = None
         self.__worker_handler_id = 0
+        self.__query_msg = None
         self.set_query(query)
-        self.__pre_query_fn = pre_query_fn
-        self.__post_query_fn = post_query_fn
 
     def get_packages_from_daemon(self):
         if 0:
@@ -573,22 +607,25 @@ class PackagesFromQuery(PackagesFromDaemon):
                         packages.remove(p)
                 
                 array.set_packages(packages or [])
+            array.message_pop()
+            array.busy(0)
 
-                if array.__post_query_fn:
-                    array.__post_query_fn(array)
 
         print "launching query"
-        if self.__pre_query_fn:
-            self.__pre_query_fn(self)
-            
+        self.busy(1)
+        if self.__query_msg:
+            self.message_push(self.__query_msg)
+        self.set_packages([])
+
         self.__worker = server.rcd.packsys.search(self.query)
         self.__worker.t1 = time.time()
         self.__worker_handler_id = self.__worker.connect("ready",
                                                          query_finished_cb,
                                                          self)
         
-    def set_query(self, query):
+    def set_query(self, query, query_msg=None):
         self.query = query
+        self.__query_msg = query_msg
         self.schedule_refresh()
 
 

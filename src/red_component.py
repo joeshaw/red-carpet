@@ -80,8 +80,16 @@ class Component(gobject.GObject):
     # Send a status message to the window embedding this component.  The
     # window is expected to do something reasonable with the message, like
     # displaying it in a status bar.
-    def message(self, msg):
-        self.emit("message", msg)
+    def message_push(self, msg, context_id=-1):
+        if context_id < 0:
+            context_id = hash(self)
+        self.emit("message_push", msg, context_id)
+
+    # Pop the component's previous message off of the status bar.
+    def message_pop(self, context_id=-1):
+        if context_id < 0:
+            context_id = hash(self)
+        self.emit("message_pop", context_id)
 
     # Signal our 'busy state' to the window embedding this component.
     # When we tell the window we are busy (i.e. set the busy flag to
@@ -101,6 +109,21 @@ class Component(gobject.GObject):
         if id(self.__widget) != id(widget):
             self.__widget = widget
             self.emit("display", widget)
+
+    # Proxy busy and message signals from arrays.
+
+    def connect_array(self, array):
+        def proxy_busy_cb(array, flag, comp):
+            comp.busy(flag)
+        array.connect("busy", proxy_busy_cb, self)
+
+        def proxy_message_push_cb(array, msg, id, comp):
+            comp.message_push(msg, id)
+        array.connect("message_push", proxy_message_push_cb, self)
+
+        def proxy_message_pop_cb(array, id, comp):
+            comp.message_pop(id)
+        array.connect("message_pop", proxy_message_pop_cb, self)
 
     ###
     ### Virtual functions
@@ -156,11 +179,17 @@ gobject.signal_new("pop",
                    gobject.TYPE_NONE,
                    ())
 
-gobject.signal_new("message",
+gobject.signal_new("message_push",
                    Component,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
-                   (gobject.TYPE_STRING,))
+                   (gobject.TYPE_STRING, gobject.TYPE_UINT))
+
+gobject.signal_new("message_pop",
+                   Component,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_UINT, ))
 
 gobject.signal_new("busy",
                    Component,
@@ -198,8 +227,8 @@ class ComponentListener:
     def get_component(self):
         return self.__current_component
 
-    def set_component(self, component):
-        if id(self.__current_component) == id(component):
+    def set_component(self, comp):
+        if id(self.__current_component) == id(comp):
             return
 
         if self.__current_component:
@@ -207,12 +236,13 @@ class ComponentListener:
             self.__current_component.disconnect(self.__switch_id)
             self.__current_component.disconnect(self.__push_id)
             self.__current_component.disconnect(self.__pop_id)
-            self.__current_component.disconnect(self.__message_id)
+            self.__current_component.disconnect(self.__msgpush_id)
+            self.__current_component.disconnect(self.__msgpop_id)
             self.__current_component.disconnect(self.__busy_id)
 
         self.__clear_ids()
 
-        self.__current_component = component
+        self.__current_component = comp
 
         def display_cb(comp, widget, listener):
             listener.__check_component(comp)
@@ -230,21 +260,26 @@ class ComponentListener:
             listener.__check_component(comp)
             listener.do_component_pop()
 
-        def message_cb(comp, msg, listener):
+        def msg_push_cb(comp, msg, context_id, listener):
             listener.__check_component(comp)
-            listener.do_component_message(msg)
+            listener.do_component_message_push(msg, context_id)
+
+        def msg_pop_cb(comp, context_id, listener):
+            listener.__check_component(comp)
+            listener.do_component_message_pop(context_id)
 
         def busy_cb(comp, flag, listener):
             listener.__check_component(comp)
             listener.do_component_busy(flag)
 
-        if component:
-            self.__display_id = component.connect("display", display_cb, self)
-            self.__switch_id  = component.connect("switch",  switch_cb,  self)
-            self.__push_id    = component.connect("push",    push_cb,    self)
-            self.__pop_id     = component.connect("pop",     pop_cb,     self)
-            self.__message_id = component.connect("message", message_cb, self)
-            self.__busy_id    = component.connect("busy",    busy_cb,    self)
+        if comp:
+            self.__display_id = comp.connect("display",      display_cb,  self)
+            self.__switch_id  = comp.connect("switch",       switch_cb,   self)
+            self.__push_id    = comp.connect("push",         push_cb,     self)
+            self.__pop_id     = comp.connect("pop",          pop_cb,      self)
+            self.__msgpush_id = comp.connect("message_push", msg_push_cb, self)
+            self.__msgpop_id  = comp.connect("message_pop",  msg_pop_cb,  self)
+            self.__busy_id    = comp.connect("busy",         busy_cb,     self)
 
     def do_component_display(self, widget):
         pass
@@ -258,7 +293,10 @@ class ComponentListener:
     def do_component_pop(self, new_comp):
         pass
 
-    def do_component_message(self, msg):
+    def do_component_message_push(self, msg, context_id):
+        pass
+
+    def do_component_message_pop(self, context_id):
         pass
 
     def do_component_busy(self, flag):

@@ -350,11 +350,11 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
     do_component_push = push_component
     do_component_pop  = pop_component
 
-    def do_component_message(self, msg):
-        if not msg:
-            self.statusbar.pop(0)
-        else:
-            self.statusbar.push(0, msg)
+    def do_component_message_push(self, msg, context_id):
+        self.statusbar.push(context_id, msg)
+
+    def do_component_message_pop(self, context_id):
+        self.statusbar.pop(context_id)
 
     def do_component_busy(self, flag):
         if flag:

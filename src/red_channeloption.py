@@ -33,7 +33,7 @@ class ChannelOption(gtk.OptionMenu):
             img = gtk.Image()
             img.set_from_pixbuf(pixbuf)
 
-            label = gtk.Label(c["name"])
+            label = gtk.Label("%s (%d)" % (c["name"], c["id"]))
 
             hbox.pack_start(img, 0, 0, 0)
             hbox.pack_start(label, 0, 0, 0)

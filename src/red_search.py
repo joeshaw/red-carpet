@@ -98,18 +98,11 @@ class SearchComponent(red_component.Component):
         elif self.match_status == "uninstalled":
             query.append(["package-installed", "=", "false"])
             
-        self.array.set_query(query)
+        self.array.set_query(query, query_msg="Searching for packages...")
 
     def build(self):
-        def pre_query(x):
-            self.busy(1)
-            self.message("Searching for packages...")
-        def post_query(x):
-            self.busy(0)
-            self.message("")
-        
-        self.array = red_packagearray.PackagesFromQuery(pre_query_fn=pre_query,
-                                                        post_query_fn=post_query)
+        self.array = red_packagearray.PackagesFromQuery()
+        self.connect_array(self.array)
 
         page = gtk.VBox(0, 0)
 
