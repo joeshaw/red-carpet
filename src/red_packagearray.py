@@ -577,6 +577,9 @@ def _cache_query_results(query, results):
     key = _query_to_key(query)
     _query_cache[key] = results
 
+def _reset_query_cache():
+    _query_cache.clear()
+
 class PackagesFromQuery(PackagesFromDaemon):
 
     def __init__(self, query=None):
@@ -652,6 +655,14 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.query = query
         self.__query_msg = query_msg
         self.schedule_refresh()
+
+    def packages_changed(self, server):
+        _reset_query_cache()
+        pass
+
+    def channels_changed(self, server):
+        _reset_query_cache()
+        pass
 
 
 ###############################################################################

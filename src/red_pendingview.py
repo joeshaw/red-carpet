@@ -298,6 +298,13 @@ class PollPending_Thread(threading.Thread):
         self.step_pending     = s.rcd.system.poll_pending(self.__step_id)
 
 
+class PendingView_TransactionFailed(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __repr__(self):
+        return "<TransactionFailed '%s'>" % self.message
+
 class PendingView_Transaction(PendingView):
 
     def __init__(self, download_id, transact_id, step_id, parent=None):
@@ -356,7 +363,7 @@ class PendingView_Transaction(PendingView):
                     return 0
             else:
                 return self.update_transaction()
-        except red_transaction.TransactionFailed, e:
+        except PendingView_TransactionFailed, e:
             self.transaction_finished(msg=e.message, title="Update Failed")
             return 0
             
@@ -368,8 +375,7 @@ class PendingView_Transaction(PendingView):
         self.set_title(title)
         self.set_label(msg)
         self.update_fill()
-        red_serverlistener.thaw_polling()
-
+        red_serverlistener.thaw_polling(do_immediate_poll=1)
 
     def update_download(self):
         print "Update download"
@@ -385,7 +391,7 @@ class PendingView_Transaction(PendingView):
             self.update_fill()
         elif pending["status"] == "failed":
             self.download_complete = 1
-            raise red_transaction.TransactionFailed, "Download failed"
+            raise PendingView_TransactionFailed, "Download failed"
         
     def update_transaction(self):
         print "Update transaction"
@@ -423,7 +429,7 @@ class PendingView_Transaction(PendingView):
             self.transaction_finished(msg="The update has completed successfully")
             return 0
         elif pending["status"] == "failed":
-            raise red_transaction.TransactionFailed, "Transaction failed: %s" % pending["error_msg"]
+            raise PendingView_TransactionFailed, "Transaction failed: %s" % pending["error_msg"]
 
         return 1
 

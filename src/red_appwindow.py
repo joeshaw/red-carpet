@@ -22,7 +22,7 @@ import string
 import ximian_xmlrpclib
 
 import rcd_util
-import red_header, red_menubar, red_sidebar
+import red_header, red_menubar
 import red_transaction
 import red_component
 import red_pendingview
@@ -126,19 +126,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=refresh_cb)
         bar.add("/Actions/sep", is_separator=1)
 
-        def set_show_sidebar_cb(x):
-            self.show_sidebar = x
-            if x:
-                self.sidebar.show_all()
-            else:
-                self.sidebar.hide()
-
-        bar.add("/View/Show Sidebar",
-                checked_get=lambda: self.show_sidebar,
-                checked_set=set_show_sidebar_cb)
-
-        bar.add("/View/sep", is_separator=1)
-
         bar.add("/View/Server Information",
                 callback=view_server_info_cb)
         
@@ -157,9 +144,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.busy_count = 0
         self.busy_handler = 0
 
-        self.table = gtk.Table(2, 7)
-        self.add(self.table)
-        self.table.show()
+        self.vbox = gtk.VBox(0, 0)
+        self.add(self.vbox)
+        self.vbox.show()
 
         self.components = []
         self.current_comp = None
@@ -172,9 +159,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.assemble_menubar(self.menubar)
 
         self.toolbar = gtk.Toolbar()
-        
-        self.sidebar = red_sidebar.SideBar()
-        self.show_sidebar = 0
+        self.toolbar.set_style(gtk.TOOLBAR_BOTH_HORIZ)
+        print "icon size: %s" % self.toolbar.get_icon_size()
         
         self.transactionbar = red_transaction.TransactionBar(self)
 
@@ -189,35 +175,16 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         # background color if we want to.
         self.container = gtk.EventBox()
 
-        self.table.attach(self.menubar,
-                          0, 2, 0, 1,
-                          gtk.FILL, gtk.FILL,
-                          0, 0)
+        self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
 
-        self.table.attach(self.toolbar,
-                          0, 2, 1, 2,
-                          gtk.FILL, gtk.FILL,
-                          0, 0)
+        self.vbox.pack_start(self.toolbar, expand=0, fill=1)
         self.toolbar.show()
 
-        self.table.attach(self.sidebar,
-                          0, 1, 2, 6,
-                          gtk.FILL, gtk.FILL,
-                          0, 0)
-        if self.show_sidebar:
-            self.sidebar.show_all()
-            
-        self.table.attach(self.header,
-                          1, 2, 2, 3,
-                          gtk.FILL | gtk.EXPAND, gtk.FILL,
-                          0, 0)
+        self.vbox.pack_start(self.header, expand=0, fill=1)
         ## self.header.show()
 
-        self.table.attach(self.container,
-                          1, 2, 3, 6,
-                          gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
-                          0, 0)
+        self.vbox.pack_start(self.container, expand=1, fill=1)
         self.container.show()
 
         south = gtk.HBox(0, 0)
@@ -225,11 +192,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         south.pack_start(self.progressbar, 0, 1, 2)
         south.pack_start(self.statusbar, 1, 1, 2)
         south.show_all()
-        self.table.attach(south,
-                          0, 2, 6, 7,
-                          gtk.FILL, gtk.FILL,
-                          0, 2)
-        south.show()
+        self.vbox.pack_start(south, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
@@ -241,10 +204,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                                  red_pixbuf.get_widget(comp.pixbuf(), width=24, height=24),
                                  lambda x:self.activate_component(comp),
                                  None)
-
-        self.sidebar.add(label=comp.name(),
-                         pixbuf=comp.pixbuf(),
-                         callback=lambda: self.activate_component(comp))
 
         # We need to make the component menu items checked
         # instead of radio-style, because with a radio group you

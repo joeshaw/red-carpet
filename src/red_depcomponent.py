@@ -90,7 +90,7 @@ class DepComponent(red_component.Component):
         
         # Freeze the daemon listeners while we're doing a dependency
         # resolution.  Otherwise we detect a change and slow things down.
-        red_serverlistener.freeze_polling()
+        #red_serverlistener.freeze_polling()
         #self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
 
         self.install_packages, self.remove_packages, self.dep_install, self.dep_remove = red_pendingops.resolve_dependencies()

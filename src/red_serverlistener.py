@@ -92,6 +92,8 @@ def poll_cb():
             global last_subscription_seqno
             global last_channel_seqno
 
+            print "Got world sequence numbers"
+
             curr_package_seqno, curr_channel_seqno, curr_subscription_seqno =\
                                 th.get_result()
 
@@ -125,6 +127,7 @@ def poll_cb():
             
             poll_count += 1
             
+        print "Getting world sequence numbers..."
         th = server.rcd.packsys.world_sequence_numbers()
         th.connect("ready", ready_cb)
 
@@ -151,18 +154,20 @@ def reset_polling(do_immediate_poll=1):
 def freeze_polling():
     global freeze_count
     poll_lock.acquire()
+    print "Freeze count is %d pre-freeze" % freeze_count
     freeze_count += 1
     poll_lock.release()
 
-def thaw_polling():
+def thaw_polling(do_immediate_poll=0):
     global freeze_count
     poll_lock.acquire()
+    print "Freeze count is %d pre-thaw" % freeze_count
     if freeze_count > 0:
         freeze_count -= 1
     if freeze_count == 0:
         if missed_polls:
-            poll_cb()       # do the first poll right away
-            reset_polling() # and then get poll timeout started again
+            do_immediate_poll = 1
+        reset_polling(do_immediate_poll)    # get poll timeout started again
     poll_lock.release()
 
 
