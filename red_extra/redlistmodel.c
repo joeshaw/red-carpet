@@ -275,6 +275,7 @@ red_list_model_iface_init (GtkTreeModelIface *iface)
     iface->get_n_columns   = red_list_model_get_n_columns;
     iface->get_column_type = red_list_model_get_column_type;
     iface->get_iter        = red_list_model_get_iter;
+    iface->get_path        = red_list_model_get_path;
     iface->get_value       = red_list_model_get_value;
     iface->iter_next       = red_list_model_iter_next;
     iface->iter_children   = red_list_model_iter_children;
