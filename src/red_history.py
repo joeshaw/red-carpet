@@ -20,7 +20,7 @@ import rcd_util
 import red_packagearray
 import red_channeloption, red_sectionoption
 import red_component, red_packageview, red_packagebrowser
-import red_pendingops
+import red_pendingops, red_extra
 
 model = None
 
@@ -342,7 +342,8 @@ class PackageHistory(gtk.ScrolledWindow):
         self.build()
 
     def build(self):
-        self.view = gtk.TreeView(self.model)
+        self.view = red_extra.ListView()
+        self.view.set_model(self.model)
         self.view.set_rules_hint(1)
 
         cols = [("Action",      COLUMN_ACTION),
@@ -359,5 +360,15 @@ class PackageHistory(gtk.ScrolledWindow):
 
         self.view.show_all()
 
+        if not self.model.iter_n_children(None):
+            self.add_note("There is no record of this package ever being installed or removed.")
+
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(self.view)
+
+    def add_note(self, msg):
+        cell = gtk.CellRendererText()
+        cell.set_property("text", msg)
+        self.view.add_spanner(0, 0, -1, cell)
+
+        iter = self.model.append()

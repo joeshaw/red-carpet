@@ -28,12 +28,18 @@ def pkg_element(pkg, pkg_info, key):
 def pkg_info_element(pkg, pkg_info, key):
     return str(pkg_info.get(key, ""))
 
+def pkg_size(pkg, pkg_info, key):
+    size = pkg_info.get(key, "")
+    if not size:
+        size = 0
+    return rcd_util.byte_size_to_string(size)
+
 _info_rows = (
     ("Name", pkg_element, "name", NO_SPAN),
     ("Version", pkg_element, "version", NO_SPAN),
     ("Release", pkg_element, "release", NO_SPAN),
-    ("Package Size", pkg_info_element, "file_size", NO_SPAN),
-    ("Installed Size", pkg_info_element, "installed_size", NO_SPAN),
+    ("Package Size", pkg_size, "file_size", NO_SPAN),
+    ("Installed Size", pkg_size, "installed_size", NO_SPAN),
     ("Section", pkg_info_element, "section", NO_SPAN),
     ("Summary", pkg_info_element, "summary", NO_SPAN),
     ("Description", pkg_info_element, "description", SPAN),

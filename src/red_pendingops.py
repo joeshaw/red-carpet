@@ -183,6 +183,13 @@ def packages_with_actions():
                filter(lambda x: x.get("action", NO_ACTION) != NO_ACTION,
                       package_data.values()))
 
+def package_action(pkg):
+    for p in package_data.values():
+        if pkg["name"] == p["__package"]["name"]:
+            return p["action"]
+
+    return NO_ACTION
+
 def clear_action_cancellations():
     for pkg in packages_with_actions():
         act = get(pkg, "action", NO_ACTION)

@@ -100,7 +100,7 @@ class PermissionsView(gtk.ScrolledWindow):
 class UsersWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, "Users' Preferences")
+        gtk.Dialog.__init__(self, "Edit Users")
         self.build()
 
     def build_password_part(self):
@@ -423,19 +423,15 @@ class UsersModel(gtk.GenericTreeModel):
         if not user:
             return
 
-        if privilege == "superuser":
-            if not active:
-                user["privileges"] = []
-            else:
-                user["privileges"] = ["superuser"]
-            self.emit("changed", self.current_get())
+        if active:
+            if not privilege in user["privileges"]:
+                user["privileges"].append(privilege)
         else:
-            if active:
-                if not privilege in user["privileges"]:
-                    user["privileges"].append(privilege)
-            else:
-                if privilege in user["privileges"]:
-                    user["privileges"].remove(privilege)
+            if privilege in user["privileges"]:
+                user["privileges"].remove(privilege)
+
+        if privilege == "superuser":
+            self.emit("changed", self.current_get())
 
         self.current_update()
 

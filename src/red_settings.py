@@ -94,28 +94,43 @@ def get_config():
         config = RCConfig()
     return config
 
+MAX_SAVED_URLS = 5
 
 class DaemonData:
     def __init__(self):
         self.conf = get_config()
         self.local = 1
-        self.url = None
+        self.url = []
         self.user = None
         self.password = None
 
         self.from_config()
 
     def from_config(self):
+        user_path = "daemon/user"
+        if os.environ.has_key("USER"):
+            user_path += "=" + os.environ["USER"]
+
         self.local =    int(config.get("daemon/local=1"))
-        self.url =      config.get("daemon/url")
-        self.user =     config.get("daemon/user")
+        self.user =     config.get(user_path)
         self.password = config.get_private("daemon/pass")
+
+        for i in range(0, MAX_SAVED_URLS):
+            url = config.get("daemon/url" + str(i))
+            if not url:
+                break
+
+            self.url.append(url)
 
     def save_config(self):
         self.conf.set("daemon/local", str(self.local))
-        self.conf.set("daemon/url", self.url)
         self.conf.set("daemon/user", self.user)
         self.conf.set_private("daemon/pass", self.password)
+
+        i = 0
+        for u in self.url:
+            self.conf.set("daemon/url" + str(i), u)
+            i += 1
 
         self.conf.sync()
 
@@ -129,7 +144,10 @@ class DaemonData:
         local = self.local
 
         if not local:
-            host = self.url
+            if len(self.url):
+                host = self.url[0]
+            else:
+                host = ""
             # Prepend "https://" if it isn't already specified
             if string.find(host, "http://") == -1 \
                and string.find(host, "https://") == -1:
@@ -145,11 +163,12 @@ class DaemonData:
 
         return url
 
-    def url_get_for_ui(self):
+    def url_get_list(self):
         return self.url
 
     def url_set(self, text):
-        self.url = text
+        if not text in self.url:
+            self.url.insert(0, text)
 
     def user_get(self):
         return self.user
@@ -215,7 +234,7 @@ class DaemonSettings(gtk.VBox):
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 2, 3)
 
-        self.url = gtk.Entry()
+        self.url = gtk.Combo()
         table.attach_defaults(self.url, 1, 2, 0, 1)
 
         self.user = gtk.Entry()
@@ -243,9 +262,9 @@ class DaemonSettings(gtk.VBox):
         self.show_all()
 
     def populate(self):
-        buf = self.data.url_get_for_ui()
+        buf = self.data.url_get_list()
         if buf:
-            self.url.set_text(buf)
+            self.url.set_popdown_strings(buf)
 
         buf = self.data.user_get()
         if buf:
@@ -264,13 +283,9 @@ class DaemonSettings(gtk.VBox):
         self.data.local_set(self.local)
 
         if not self.local:
-            self.data.url_set(self.url.get_text())
+            self.data.url_set(self.url.entry.get_text())
             self.data.user_set(self.user.get_text())
             self.data.password_set(self.password.get_text())
-        else:
-            self.data.url_set("")
-            self.data.user_set("")
-            self.data.password_set("")
 
         self.data.save_config()
 
