@@ -628,7 +628,8 @@ class PackagesFromQuery(PackagesFromDaemon):
         cached = _get_query_from_cache(self.query)
         if cached is not None:
             if self.__query_filter:
-                cached = filter(self.__query_filter, cached)
+                filter_fn = self.__query_filter()
+                cached = filter(filter_fn, cached)
             self.set_packages(cached)
             self.refresh_end()
             return
@@ -657,7 +658,8 @@ class PackagesFromQuery(PackagesFromDaemon):
                     _cache_query_results(self.query, packages)
 
                     if self.__query_filter:
-                        packages = filter(self.__query_filter, packages)
+                        filter_fn = self.__query_filter()
+                        packages = filter(filter_fn, packages)
 
                 array.set_packages(packages or [])
             self.refresh_end()

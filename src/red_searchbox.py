@@ -94,7 +94,7 @@ class SearchBox(gtk.VBox):
 
     def __emit(self):
         query = self.get_query()
-        filter_fn = self.get_filter()
+        filter_fn = self.get_filter
         cid = self.__ch_opt.get_channel_id()
 
         if query != self.__last_query \

@@ -1,5 +1,13 @@
 2003-03-26  Tambet Ingo  <tambet@ximian.com>
 
+	* red_searchbox.py (SearchBox.__emit): Don't call
+	self.get_filter() yet, assign it to filter_fn. Fixes #40291.
+
+	* red_packagearray.py (PackagesFromQuery.get_packages_from_daemon):
+	Get the filter function by calling self.__query_filter(), then
+	use it for filtering.
+	(PackagesFromQuery.query_finished_cb): Ditto.
+
 	* red_thrashingtreeview.py (TreeView.add_column): Added a new
 	optional argument 'resizable' which defaults to true. If it's
 	set, set column resizable. Fixes #40246.
