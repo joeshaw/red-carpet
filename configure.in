@@ -48,25 +48,6 @@ fi
 
 AC_MSG_RESULT(found at $PYTHON)
 
-dnl Make sure we have the right gtk+ bindings
-
-py_gtk_version="2.0.0"
-py_gtk_version_check="
-import sys, string, pygtk
-pygtk.require(\"2.0\")
-import gtk
-required_version = map(int, string.split(\"$py_gtk_version\",\".\"))
-version = gtk.gtk_version
-sys.exit(version < required_version)"
-
-AC_MSG_CHECKING(for python gtk+ $py_gtk_version)
-if $PYTHON -c "$py_gtk_version_check" 1>&AC_FD_CC 2>&AC_FD_CC; then
-   AC_MSG_RESULT(found)
-else
-   AC_MSG_RESULT(not found)
-   AC_MSG_ERROR(Python gtk+ version $py_gtk_version or better is required)
-fi
-
 dnl **************************************************************************
 
 dnl Fast Unmarshaller Checks
