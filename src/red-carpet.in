@@ -17,66 +17,71 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
-import os
+try:
+    import sys
+    import os
 
-red_carpet_prefix = "@prefix@"
-red_carpet_datadir = "@DDIR@/red-carpet"
-red_carpet_libdir = "@LDIR@/red-carpet"
-red_carpet_version = "@VERSION@"
-red_carpet_pixbuf_path = "@DDIR@/pixmaps/red-carpet"
+    red_carpet_prefix = "@prefix@"
+    red_carpet_datadir = "@DDIR@/red-carpet"
+    red_carpet_libdir = "@LDIR@/red-carpet"
+    red_carpet_version = "@VERSION@"
+    red_carpet_pixbuf_path = "@DDIR@/pixmaps/red-carpet"
 
-# Magic that allows us to use red_extra and the unmarshaller w/o
-# having it installed and a pygtk installed into a different prefix.
+    # Magic that allows us to use red_extra and the unmarshaller w/o
+    # having it installed and a pygtk installed into a different prefix.
 
-additional_paths = ["..", "../red_extra/.libs", "@PYGTK_IMPORTDIR@",
-                    "../ximian_unmarshaller", "../sgmlop",
-                    "../sgmlop/build/lib.linux-i686-2.2",
-                    red_carpet_libdir]
+    additional_paths = ["..", "../red_extra/.libs", "@PYGTK_IMPORTDIR@",
+                        "../ximian_unmarshaller", "../sgmlop",
+                        "../sgmlop/build/lib.linux-i686-2.2",
+                        red_carpet_libdir]
 
-sys.path = additional_paths + sys.path
+    sys.path = additional_paths + sys.path
 
-import pygtk
+    import pygtk
 
-if not hasattr(sys, "frozen") or sys.frozen == 0:
-    pygtk.require("2.0")
-    
-    # FIXME: This has a special check to allow us to run rc in-place
-    # without having done a "make install".  We might want to take this
-    # out at some point.
-    
-    if not (os.path.isfile("./red_main.py") \
-            or (os.path.isdir(red_carpet_datadir) \
-                and os.path.isfile(red_carpet_datadir + "/red_main.py"))):
-        print "ERROR: The Red Carpet Graphical Client doesn't appear to be"
-        print "ERROR: installed properly.  Please check your installation."
+    if not hasattr(sys, "frozen") or sys.frozen == 0:
+        pygtk.require("2.0")
+
+        # FIXME: This has a special check to allow us to run rc in-place
+        # without having done a "make install".  We might want to take this
+        # out at some point.
+
+        if not (os.path.isfile("./red_main.py") \
+                or (os.path.isdir(red_carpet_datadir) \
+                    and os.path.isfile(red_carpet_datadir + "/red_main.py"))):
+            print "ERROR: The Red Carpet Graphical Client doesn't appear to be"
+            print "ERROR: installed properly.  Please check your installation."
+            sys.exit(1)
+
+    sys.path.append(red_carpet_datadir)
+
+    ###
+    ### Make sure we can import gtk.  This keeps us from getting
+    ### an error w/ an ugly backtrace if we can't open the DISPLAY.
+    ###
+    try:
+        import gtk
+    except RuntimeError, r:
+        sys.stderr.write("Error importing gtk: %s\n" % r)
+        sys.exit(1)
+    except:
+        sys.stderr.write("Error: Couldn't import gtk.\n")
         sys.exit(1)
 
-sys.path.append(red_carpet_datadir)
+    import red_pixbuf
+    red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)
 
-###
-### Make sure we can import gtk.  This keeps us from getting
-### an error w/ an ugly backtrace if we can't open the DISPLAY.
-###
-try:
-    import gtk
-except RuntimeError, r:
-    sys.stderr.write("Error importing gtk: %s\n" % r)
-    sys.exit(1)
-except:
-    sys.stderr.write("Error: Couldn't import gtk.\n")
-    sys.exit(1)
+    import red_main
 
-import red_pixbuf
-red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)
-
-import red_main
-
-if "--rc-profile" in sys.argv:
-    import profile
-    sys.stderr.write("*** Profiling Enabled ***\n")
-    sys.argv = filter(lambda x:x != "--rc-profile", sys.argv)
-    profile.run("red_main.main(red_carpet_version)")
-else:
-    red_main.main(red_carpet_version)
+    if "--rc-profile" in sys.argv:
+        import profile
+        sys.stderr.write("*** Profiling Enabled ***\n")
+        sys.argv = filter(lambda x:x != "--rc-profile", sys.argv)
+        profile.run("red_main.main(red_carpet_version)")
+    else:
+        red_main.main(red_carpet_version)
+except KeyboardInterrupt:
+    # Just quietly exit if we got a ^C
+    import sys
     
+    sys.exit(0)

@@ -1,5 +1,8 @@
 2003-03-20  Joe Shaw  <joe@ximian.com>
 
+	* red-carpet.in: Wrap everything in a try block so we can catch
+	KeyboardInterrupt and exit cleanly.
+
 	* red_pendingview.py (PendingView.build): Put the step_label in a
 	scrolled window so we'll scroll on very long messages.  (#40048)
 
