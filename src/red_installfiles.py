@@ -200,6 +200,10 @@ class DownloadWatcher(threading.Thread, gobject.GObject):
         except IOError:
             return None
 
+        if self.cancelled:
+            u.close()
+            return None
+
         data = []
 
         while 1:
@@ -210,6 +214,7 @@ class DownloadWatcher(threading.Thread, gobject.GObject):
             data += d
 
             if self.cancelled:
+                u.close()
                 return None
 
         pdata = ximian_xmlrpclib.Binary(data)

@@ -1,5 +1,13 @@
 2003-03-11  Joe Shaw  <joe@ximian.com>
 
+	* red_installfiles.py (DownloadWatcher.fetch_package): Check to
+	see if we've been cancelled immediately after we've successfully
+	opened the URL and close if we have.  When checking to see if
+	we've been cancelled during the read, close if we have.
+
+	* red_main.py: Exit the app using os._exit() so that we don't join
+	our threads and block on them finishing.
+
 	* red_packagearray.py (pkg_is_name_installed): Changed this to
 	only check to see if the "name_installed" field is not 0.
 

@@ -166,8 +166,11 @@ def main(version):
 
     global red_running
     red_running = 0
-    
+
     gtk.threads_leave()
+
+    # This will terminate all our child threads without joining
+    os._exit(0)
     
 
 
