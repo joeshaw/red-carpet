@@ -31,7 +31,7 @@ import red_subscriptions
 def connect_to_server():
     ## Make contact with the daemon.
     ## We assume local access only
-    url = "/var/run/rcd"
+    url = "/var/run/rcd/rcd"
     username = None
     password = None
 
