@@ -16,7 +16,7 @@
 ###
 
 import gtk
-import string
+import sys, string
 import rcd_util
 import ConfigParser
 import os
@@ -38,6 +38,9 @@ class RCConfig:
         self.__private_fn = self.__private_dir + "/" + fname
         self.__private = ConfigParser.ConfigParser()
         self.__private.read(self.__private_fn)
+
+        self.__show_pub_sync_error = 1
+        self.__show_priv_sync_error = 1
 
     def parse_path(self, str):
         section, option = string.split(str, "/", 2)
@@ -81,17 +84,35 @@ class RCConfig:
         return self.__private.set(section, option, value)
 
     def sync(self):
-        if not os.path.exists(self.__public_dir):
-            os.mkdir(self.__public_dir, 0755)
-        f = open(self.__public_fn, 'w')
-        self.__public.write(f)
-        f.close
+        # FIXME: This error message isn't great, but is better than a
+        # cryptic backtrace.
+        error_msg = "Sync failed: couldn't write to '%s'\n" \
+                    "This means that settings will not be saved!\n" \
+                    "Maybe some permissions are set incorrectly?\n"
+        
+        try:
+            if not os.path.exists(self.__public_dir):
+                os.mkdir(self.__public_dir, 0755)
+            f = open(self.__public_fn, 'w')
+            self.__public.write(f)
+            f.close()
+            self.__show_pub_sync_error = 1
+        except:
+            if self.__show_pub_sync_error:
+                sys.stderr.write(error_msg % self.__public_fn)
+                self.__show_pub_sync_error = 0
 
-        if not os.path.exists(self.__private_dir):
-            os.mkdir(self.__private_dir, 0700)
-        f = open(self.__private_fn, 'w')
-        self.__private.write(f)
-        f.close
+        try:
+            if not os.path.exists(self.__private_dir):
+                os.mkdir(self.__private_dir, 0700)
+            f = open(self.__private_fn, 'w')
+            self.__private.write(f)
+            f.close()
+            self.__show_priv_sync_error = 1
+        except:
+            if self.__show_priv_sync_error:
+                sys.stderr.write(error_msg % self.__private_fn)
+                self.__show_priv_sync_error = 0
 
 config = None
 

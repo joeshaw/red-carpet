@@ -1,3 +1,9 @@
+2003-03-19  Jon Trowbridge  <trow@ximian.com>
+
+	* red_settings.py (RCConfig.sync): Display a semi-clear error
+	message if we can't save our settings.  Also, actually close our
+	file objects after we are done with them.  Fixes #39976.
+
 2003-03-19  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py: Keep track of whether our server is local or
