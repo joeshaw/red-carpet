@@ -188,8 +188,10 @@ class DepComponent(red_component.Component):
         dialog.add_button(_("I Agree"), gtk.RESPONSE_OK)
         dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
 
+        gtk.threads_enter()
         response = dialog.run()
         dialog.destroy()
+        gtk.threads_leave()
         if response != gtk.RESPONSE_OK:
             self.pop()
             return 0

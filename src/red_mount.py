@@ -49,7 +49,8 @@ def mount_channel(path, name, recursive):
         name = path
 
     server = rcd_util.get_server_proxy()
-    mount_th = server.rcd.packsys.mount_directory(path, name, alias, recursive)
+    mount_th = server.rcd.packsys.mount_directory(path, name, alias,
+                                                  int(recursive))
 
     def mount_cb(th, path):
         try:

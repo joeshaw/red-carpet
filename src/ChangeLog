@@ -1,3 +1,23 @@
+2004-01-22  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (AppWindow.load_geometry): When setting the
+	window's default size, cast the result to int since we're
+	multiplying by a float.
+
+	* red_depcomponent.py (DepComponent.display_license_window): Wrap
+	the call to dialog.run() and dialog.destroy() in
+	gtk.threads_enter() and gtk.threads_leave().
+
+	* red_mount.py (mount_channel): Cast the recursive parameter to an
+	int since it's a boolean in python 2.3.
+
+	* red_pendingview.py (PendingView_Simple): Fix up the polling so
+	that it works better in Python 2.3 and doesn't excessively hit the
+	daemon.
+
+	* ximian_xmlrpclib.py (Marshaller): Marshal boolean values to make
+	Python 2.3 happy.
+
 2004-01-20  Joe Shaw  <joe@ximian.com>
 
 	* red_depcomponent.py (check_licenses): Call

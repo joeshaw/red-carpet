@@ -309,8 +309,8 @@ class AppWindow(gtk.Window,
             self.set_default_size(w, h)
         else:
             w, h = self.size_request()
-            w *= 1.3
-            h = w * .667
+            w = int(w * 1.3)
+            h = int(w * .667)
             self.set_default_size(w, h)
 
         w = int(conf.get("Geometry/sidebar_width=0"))

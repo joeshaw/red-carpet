@@ -400,6 +400,9 @@ class PendingView_Simple(PendingView):
 
         self.max_threads = 5
 
+        self.running_threads = []
+        self.running_threads_lock = threading.Lock()
+
         self.pending_countdown = 0
         self.poll_queue = []
         self.poll_results = {}
@@ -415,6 +418,26 @@ class PendingView_Simple(PendingView):
             self.finished()
             self.destroy()
 
+    def thread_space(self):
+        self.running_threads_lock.acquire()
+        num_threads = len(self.running_threads)
+        self.running_threads_lock.release()
+
+        if num_threads < self.max_threads:
+            return 1
+        else:
+            return 0
+
+    def add_thread(self, thread):
+        self.running_threads_lock.acquire()
+        self.running_threads.append(thread)
+        self.running_threads_lock.release()
+
+    def remove_thread(self, thread):
+        self.running_threads_lock.acquire()
+        self.running_threads.remove(thread)
+        self.running_threads_lock.release()
+
     def launch_poll_threads(self, launch_max=0):
         server = rcd_util.get_server_proxy()
 
@@ -422,20 +445,23 @@ class PendingView_Simple(PendingView):
         if launch_max:
             launch = self.max_threads
 
-        while launch > 0:
+        while launch > 0 and self.thread_space():
             if not self.poll_queue:
                 self.poll_queue = self.pending_list
             tid = self.poll_queue[0]
             self.poll_queue = self.poll_queue[1:]
             th = server.rcd.system.poll_pending(tid)
-            th.connect("ready",
-                       lambda x: self.process_pending(x.get_result()))
+            th.connect("ready", lambda x: self.process_pending(x))
+            self.add_thread(th)
             launch -= 1
         
 
-    def process_pending(self, pending):
+    def process_pending(self, th):
         if self.finished_polling:
+            self.remove_thread(th)
             return
+
+        pending = th.get_result()
         
         self.poll_results[pending["id"]] = pending
 
@@ -453,6 +479,7 @@ class PendingView_Simple(PendingView):
         else:
             self.update_pulse()
                         
+        self.remove_thread(th)
 
     def poll_worker(self):
 
