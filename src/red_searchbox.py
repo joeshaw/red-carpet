@@ -329,7 +329,7 @@ class SearchBox(gtk.VBox):
 
         self.__ch_opt = red_channeloption.ChannelOption(allow_any_channel=1,
                                                         allow_any_subd_channel=any_subd,
-                                                        allow_no_channel=0)
+                                                        allow_no_channel=1)
         self.__ch_opt.connect("selected",
                               lambda x, y, z: z.__changed(),
                               self)
@@ -458,6 +458,10 @@ class SearchBox(gtk.VBox):
                       subd_dict=subd_dict):
 
             if subd_dict and not subd_dict.has_key(p.get("channel")):
+                return 0
+
+            if channel_id == red_channeloption.MATCH_NO_CHANNEL \
+                   and (p.get("channel") != 0 or p.has_key("channel_guess")):
                 return 0
 
             if self.__system_packages_only \

@@ -57,7 +57,7 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
                              "subscribed": 1})
 
         if self.__allow_no_channel:
-            channels.append({"name": _("No Channel"),
+            channels.append({"name": _("No Channel/Unknown Channel"),
                              "id": MATCH_NO_CHANNEL})
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)

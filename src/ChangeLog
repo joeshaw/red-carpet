@@ -1,3 +1,16 @@
+2003-03-07  Jon Trowbridge  <trow@ximian.com>
+
+	* red_searchbox.py (SearchBox.__assemble): Enable the 'no channel'
+	flag on the ChannelOption.  This allows us to easily search for
+	locally installed rpms, etc.
+	(SearchBox.filter_fn): Tweaked to filter out packages with a
+	channel or guessed channel when the 'no channel' option is
+	selected.
+
+	* red_channeloption.py (ChannelOption.__assemble): Change the 'no
+	channel' option label to "No Channel/Unknown Channel".  We might
+	want to change this.
+
 2003-03-07  Tambet Ingo  <tambet@ximian.com>
    
 	* red_component.py (Component.__init__): current_pkgs is now an
