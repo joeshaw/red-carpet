@@ -1,5 +1,21 @@
 2003-02-24  Tambet Ingo  <tambet@ximian.com>
 
+	* red_pendingview.py (PendingView.__init__): Use PendingView class to
+	store the status about cancel button. It was giving some troubles when
+	we stored it in button.
+
+	* red_depcomponent.py (DepComponent.build_dep_error_page): Set the "OK"
+	button to be the default widget.
+	(DepComponent.build_verified_ok_page): Ditto.
+	(DepComponent.build_normal_page): Ditto for "Continue" button.
+
+	* red_pendingview.py (PendingView.calculate_required_width): Calculate
+	the width of glyphs using current gtk font.
+	(PendingView.__init__): Use calculated width instead of magical "350"
+	for PendingView dialog.
+	(PendingView.set_title): Since default "msg" is None we want to
+	convert it to empty string.
+
 	* red_packageview.py (PackageView.do_popup): Commented out locking.
 
 	* red_appwindow.py (AppWindow.run_sensitive_cb): Get sensitivity

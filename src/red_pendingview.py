@@ -15,13 +15,15 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string, threading, gobject, gtk
+import string, threading, gobject, gtk, pango
 import ximian_xmlrpclib
 import rcd_util
 import red_pendingops, red_serverlistener
 import red_pixbuf
 
 from red_gettext import _
+
+MAX_LABEL_LEN = 40
 
 class PendingView(gtk.Window):
 
@@ -32,7 +34,8 @@ class PendingView(gtk.Window):
                  self_destruct=0):
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 
-        self.set_default_size(350, -1)
+        width = self.calculate_required_width(MAX_LABEL_LEN)
+        self.set_default_size(width, -1)
         self.set_modal(is_modal)
 
         self.window_parent = parent
@@ -53,6 +56,7 @@ class PendingView(gtk.Window):
         self.show_size = show_size
         self.self_destruct = self_destruct
         self.allow_cancel = allow_cancel
+        self.cancel_button = 0
 
         self.ourframe = gtk.Frame()
         self.add(self.ourframe)
@@ -93,16 +97,15 @@ class PendingView(gtk.Window):
             mainbox.pack_end(bbox, 0, 0, 0)
             if self.allow_cancel:
                 self.button = gtk.Button(gtk.STOCK_CANCEL)
-                self.button.cancel = 1
+                self.cancel_button = 1
             else:
                 self.button = gtk.Button(gtk.STOCK_OK)
-                self.button.cancel = 0
                 self.button.set_sensitive(0)
             self.button.set_use_stock(1)
             bbox.pack_start(self.button, 0, 0, 0)
 
             def button_handler_cb(b, pv):
-                if b.cancel:
+                if pv.cancel_button:
                     pv.cancelled()
                 else:
                     pv.finished()
@@ -151,6 +154,16 @@ class PendingView(gtk.Window):
         else:
             self.set_position(gtk.WIN_POS_CENTER)
 
+    def calculate_required_width(self, max_len):
+        # "W" being the widest glyph.
+        buf = max_len * "W"
+
+        layout = pango.Layout(gtk.Label("").get_pango_context())
+        layout.set_text(buf, max_len)
+        (width, height) = layout.get_pixel_size()
+
+        return width
+
     def disable_cancellation(self):
         if self.allow_cancel:
             self.button.set_sensitive(0)
@@ -164,13 +177,15 @@ class PendingView(gtk.Window):
         self.destroy()
 
     def set_title(self, msg):
+        ## Guard for None
+        msg = msg or ""
         gtk.Window.set_title(self, msg)
         self.title_label.set_markup("<b><big>%s</big></b>" % (msg or ""))
         self.position_window() # keep window centered
 
     def set_label(self, msg):
         if msg:
-            lines = rcd_util.linebreak(msg, 40)
+            lines = rcd_util.linebreak(msg, MAX_LABEL_LEN)
             msg = string.join(lines, "\n")
         else:
             msg = ""
@@ -291,9 +306,9 @@ class PendingView(gtk.Window):
         return 0
 
     def switch_cancel_button_to_ok(self):
-        if self.button.cancel:
+        if self.cancel_button:
             self.button.set_label(gtk.STOCK_OK)
-            self.button.cancel = 0
+            self.cancel_button = 0
 
     def poll(self):
         polling = self.poll_worker()

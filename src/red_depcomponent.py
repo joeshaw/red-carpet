@@ -183,6 +183,9 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         page.pack_end(buttons, 0, 0, 2)
 
+        button.set_flags(gtk.CAN_DEFAULT)
+        button.grab_default()
+
         button.connect("clicked",
                        lambda x: self.pop())
 
@@ -208,6 +211,9 @@ class DepComponent(gobject.GObject, red_component.Component):
         buttons.add(button)
 
         page.pack_end(buttons, 0, 0, 0)
+
+        button.set_flags(gtk.CAN_DEFAULT)
+        button.grab_default()
 
         button.connect("clicked", lambda x:self.pop())
             
@@ -274,6 +280,10 @@ class DepComponent(gobject.GObject, red_component.Component):
         buttons.add(cont)
 
         page.pack_end(buttons, 0, 0, 0)
+
+        cont.set_flags(gtk.CAN_DEFAULT)
+        cont.grab_default()
+
         page.show_all()
 
         cont.connect("clicked", lambda x:self.begin_transaction())
