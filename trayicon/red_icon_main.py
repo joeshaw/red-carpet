@@ -42,7 +42,7 @@ import os
 
 red_running = 1
 
-POLL_INTERVAL = 1000*60*60 #one hour
+POLL_INTERVAL = 1000*60*30 #half an hour
 
 gtk.threads_init()
 
@@ -91,11 +91,10 @@ class UpdateIcon(red_tray.TrayIcon):
                             
                 if max_importance < 10:
                     self.image.set_from_pixbuf(self.imp_icons[importance_str])
+                    self.box.show ()
                     self.tooltips.set_tip(self.box, "Updates available")
                 else:
-                    self.image.set_from_stock(gtk.STOCK_OK,
-                                              gtk.ICON_SIZE_MENU)
-                    self.tooltips.set_tip(self.box, "No updates available")
+                    self.box.hide ()
                 
         server = rcd_util.get_server_proxy()
         

@@ -1,3 +1,9 @@
+2004-09-01  James Willcox  <james@ximian.com>
+
+	* trayicon/red_icon_main.py:
+
+	Don't show any icon at all if there are no updates available
+
 2004-08-30  James Willcox  <james@ximian.com>
 
 	* trayicon/bindings/Makefile.am: Fix 'make dist'
