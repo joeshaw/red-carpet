@@ -166,6 +166,10 @@ def get_package_key(pkg):
                          get_package_EVR(pkg),
                          pkg["channel"])
 
+def get_dep_EVR(dep):
+    evr = get_package_EVR(dep)
+    return dep["relation"] + " " + evr
+
 ###############################################################################
 
 def filter_package_dups(pkgs):

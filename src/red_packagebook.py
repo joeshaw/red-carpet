@@ -60,14 +60,14 @@ class PageHistory(PackagePage):
 
     def build_widget(self, pkg, server):
         sw = gtk.ScrolledWindow()
-        sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         tv = gtk.TextView()
         tv.set_editable(0)
         tv.set_cursor_visible(0)
-        buf = tv.get_buffer()
-        buf.set_text(string.join(pkg["__history"] * 10, "\n"))
         sw.add(tv)
-        sw.show_all()
+        tv.show()
+        buf = tv.get_buffer()
+        buf.set_text(string.join(pkg["__history"], "\n"))
         return sw
 
 
