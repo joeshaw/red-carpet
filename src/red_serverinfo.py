@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string, gtk, zlib
+import sys, os, string, gtk, zlib
 import rcd_util
 
 from red_gettext import _
@@ -133,6 +133,7 @@ def select_and_dump(parent):
         return
 
     filesel = gtk.FileSelection(_("Choose file to write XML to"))
+    filesel.set_filename(os.environ.get("HOME", "") + "/") # need trailing /
     filesel.ok_button.connect("clicked", get_file_cb, parent)
     filesel.cancel_button.connect("clicked", lambda x,y:filesel_destroy(y), parent)
     filesel.show()

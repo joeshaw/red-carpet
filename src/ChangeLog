@@ -1,5 +1,14 @@
 2003-04-01  Joe Shaw  <joe@ximian.com>
 
+	* red_installfiles.py (install_local): Begin the file selector in
+	the user's home directory.  (Fixes #40447)
+
+	* red_mount.py (FileEntry.browse): Ditto.
+
+	* red_serverinfo.py (select_and_dump): Ditto.
+
+2003-04-01  Joe Shaw  <joe@ximian.com>
+
 	Cleans up the relationship between server objects, making
 	connections to the daemon, and saving the settings.  Fixes #40396.
 

@@ -126,6 +126,7 @@ class FileEntry(gtk.HBox):
             self.dirsel.destroy()
 
         self.dirsel = red_dirselection.DirSelection(_("Mount Directory"))
+        self.dirsel.set_filename(os.environ.get("HOME", "") + "/")
         self.dirsel.set_select_multiple(0)
         self.dirsel.ok_button.connect("clicked", get_file_cb, self)
         self.dirsel.cancel_button.connect("clicked", lambda x,y:y.destroy(), self.dirsel)

@@ -100,6 +100,7 @@ def install_local(parent):
             
 
     filesel = gtk.FileSelection(_("Install from File"))
+    filesel.set_filename(os.environ.get("HOME", "") + "/") # need trailing /
     filesel.set_select_multiple(1)
     filesel.ok_button.connect("clicked", get_file_cb, filesel)
     filesel.cancel_button.connect("clicked", lambda x,y:y.destroy(), filesel)
