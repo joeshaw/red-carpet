@@ -73,7 +73,7 @@ class Toolbar(gtk.Toolbar, red_pendingops.PendingOpsListener):
         for i in self.items:
             s = 1
             if i["sensitive_fn"]:
-                s = i["sensitive_fn"](self)
+                s = i["sensitive_fn"]()
 
             i["widget"].set_sensitive(s)
 

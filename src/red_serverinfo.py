@@ -41,7 +41,7 @@ def view_server_info_cb(app):
     if results:
         dialog_type = gtk.MESSAGE_INFO
 
-        messages = ["The server identified itself as:", ""]
+        messages = ["The daemon identified itself as:", ""]
 
         if results.has_key("name"):
             messages.append("%s" % results["name"])
@@ -63,14 +63,14 @@ def view_server_info_cb(app):
     else: # couldn't ping the server
 
         dialog_type = gtk.MESSAGE_WARNING
-        messages = ["Unable to contact the server."]
+        messages = ["Unable to contact the daemon."]
 
     dialog = gtk.MessageDialog(app, 0, dialog_type, gtk.BUTTONS_OK,
                                string.join(messages, "\n"))
     if results:
         bbox = gtk.HButtonBox()
         dialog.vbox.add(bbox)
-        button = gtk.Button("Dump server info to XML file")
+        button = gtk.Button("Dump daemon info to XML file")
         button.connect("clicked", lambda x,y:select_and_dump(y), dialog)
         bbox.add(button)
 

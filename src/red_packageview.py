@@ -115,7 +115,9 @@ class PackageView(red_thrashingtreeview.TreeView):
         registered_action = red_pendingops.package_action(pkg)
 
         if registered_action != red_pendingops.NO_ACTION:
-            item = gtk.MenuItem("Remove action")
+            item = gtk.ImageMenuItem("Cancel action")
+            image = gtk.Image()
+            image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
             item.show_all()
             menu.append(item)
 
@@ -284,7 +286,7 @@ class PackageView(red_thrashingtreeview.TreeView):
     def append_action_column(self,
                              column_title="Action",
                              show_action_icon=1,
-                             show_action_name=1):
+                             show_action_name=0):
         col = gtk.TreeViewColumn()
         col.set_title(column_title)
 

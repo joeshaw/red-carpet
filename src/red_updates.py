@@ -57,7 +57,8 @@ class SummaryComponent(red_component.Component):
 
         view = red_packageview.PackageView()
         self.connect_view(view)
-        
+
+        view.append_action_column()
         col = view.append_importance_column()
         view.append_channel_column(show_channel_name=0)
         view.append_name_column()

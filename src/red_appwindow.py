@@ -179,123 +179,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         return throbbox
 
-    def assemble_toolbar(self, bar):
-
-        def set_package_action_cb(app, action):
-            comp = app.get_component()
-            pkg = comp.get_current_package()
-
-            assert pkg is not None
-
-            red_pendingops.set_action(pkg, action)
-
-        ## Install
-
-        def install_sensitive_cb(app):
-            comp = app.get_component()
-            pkg = comp.get_current_package()
-
-            if not pkg:
-                return 0
-
-            pkg_action = red_pendingops.package_action(pkg)
-
-            if pkg_action == red_pendingops.TO_BE_INSTALLED:
-                return 0
-            else:
-                if not red_packagearray.pkg_is_name_installed(pkg) \
-                       or red_packagearray.pkg_is_upgrade(pkg) \
-                       or red_packagearray.pkg_is_downgrade(pkg):
-                    return 1
-                else:
-                    return 0
-
-        bar.install = bar.add(text="Install",
-                              tooltip="Install selected package",
-                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
-                                                           width=16,
-                                                           height=16),
-                              sensitive_fn=lambda x:install_sensitive_cb(self),
-                              callback=lambda x:set_package_action_cb(self, red_pendingops.TO_BE_INSTALLED))
-
-        ## Remove
-
-        def remove_sensitive_cb(app):
-            comp = app.get_component()
-            pkg = comp.get_current_package()
-
-            if not pkg:
-                return 0
-
-            pkg_action = red_pendingops.package_action(pkg)
-
-            if pkg_action != red_pendingops.TO_BE_REMOVED \
-                   and red_packagearray.pkg_is_name_installed(pkg):
-                return 1
-            else:
-                return 0
-
-        bar.remove = bar.add(text="Remove",
-                             tooltip="Remove selected package",
-                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
-                                                          width=16, height=16),
-                             sensitive_fn=lambda x:remove_sensitive_cb(self),
-                             callback=lambda x:set_package_action_cb(self, red_pendingops.TO_BE_REMOVED))
-
-        ## Cancel
-        def cancel_sensitive_cb(app):
-            comp = app.get_component()
-            pkg = comp.get_current_package()
-
-            if not pkg:
-                return 0
-
-            pkg_action = red_pendingops.package_action(pkg)
-
-            if pkg_action != red_pendingops.NO_ACTION:
-                return 1
-            else:
-                return 0
-
-            assert pkg is not None
-
-        bar.cancel = bar.add(text="Cancel",
-                             tooltip="Cancel package action",
-                             stock=gtk.STOCK_CANCEL,
-                             sensitive_fn=lambda x:cancel_sensitive_cb(self),
-                             callback=lambda x:set_package_action_cb(self, red_pendingops.NO_ACTION))
-
-        ## Info
-        def info_sensitive_cb(app):
-            comp = app.get_component()
-            pkg = comp.get_current_package()
-
-            if not pkg:
-                return 0
-            else:
-                return 1
-        
-        def info_cb(app):
-            comp = app.get_component()
-            pkg = comp.get_current_package()
-
-            assert pkg is not None
-
-            red_packagebook.show_package_info(pkg)
-        
-        bar.info = bar.add(text="Info",
-                           tooltip="Package Information",
-                           pixbuf=red_pixbuf.get_pixbuf("info", width=16, height=16),
-                           sensitive_fn=lambda x:info_sensitive_cb(self),
-                           callback=lambda x:info_cb(self))
-
-        bar.append_space()
-
-        ## Subscriptions
-        bar.subs = bar.add(text="Subscriptions",
-                           tooltip="Change your subscription options",
-                           callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
-
     def set_title(self, title, component=None):
         buf = ""
         if component:
@@ -310,6 +193,148 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             buf += title
 
         gtk.Window.set_title(self, buf)
+
+    ##
+    ## Toolbar and menubar callback and sensitivity functions
+    ##
+    
+    def install_sensitive_cb(self):
+        comp = self.get_component()
+
+        if not comp:
+            return 0
+
+        pkg = comp.get_current_package()
+
+        if not pkg:
+            return 0
+
+        pkg_action = red_pendingops.package_action(pkg)
+
+        if pkg_action == red_pendingops.TO_BE_INSTALLED:
+            return 0
+        else:
+            if not red_packagearray.pkg_is_name_installed(pkg) \
+                   or red_packagearray.pkg_is_upgrade(pkg) \
+                   or red_packagearray.pkg_is_downgrade(pkg):
+                return 1
+            else:
+                return 0
+
+    def remove_sensitive_cb(self):
+        comp = self.get_component()
+
+        if not comp:
+            return 0
+        
+        pkg = comp.get_current_package()
+
+        if not pkg:
+            return 0
+
+        pkg_action = red_pendingops.package_action(pkg)
+
+        if pkg_action != red_pendingops.TO_BE_REMOVED \
+               and red_packagearray.pkg_is_name_installed(pkg):
+            return 1
+        else:
+            return 0
+
+
+    def cancel_sensitive_cb(self):
+        comp = self.get_component()
+
+        if not comp:
+            return 0
+        
+        pkg = comp.get_current_package()
+
+        if not pkg:
+            return 0
+
+        pkg_action = red_pendingops.package_action(pkg)
+
+        if pkg_action != red_pendingops.NO_ACTION:
+            return 1
+        else:
+            return 0
+
+        assert pkg is not None
+
+    def set_package_action_cb(self, action):
+        comp = self.get_component()
+
+        assert comp is not None
+        
+        pkg = comp.get_current_package()
+
+        assert pkg is not None
+
+        red_pendingops.set_action(pkg, action)
+
+    def info_sensitive_cb(self):
+        comp = self.get_component()
+
+        if not comp:
+            return 0
+        
+        pkg = comp.get_current_package()
+
+        if not pkg:
+            return 0
+        else:
+            return 1
+
+    def package_info_cb(self):
+        comp = self.get_component()
+
+        assert comp is not None
+        
+        pkg = comp.get_current_package()
+
+        assert pkg is not None
+
+        red_packagebook.show_package_info(pkg)
+
+    ##
+    ## Toolbar
+    ##
+
+    def assemble_toolbar(self, bar):
+
+        bar.install = bar.add(text="Install",
+                              tooltip="Install selected package",
+                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
+                                                           width=16,
+                                                           height=16),
+                              sensitive_fn=self.install_sensitive_cb,
+                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
+
+        bar.remove = bar.add(text="Remove",
+                             tooltip="Remove selected package",
+                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
+                                                          width=16, height=16),
+                             sensitive_fn=self.remove_sensitive_cb,
+                             callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
+
+        bar.cancel = bar.add(text="Cancel",
+                             tooltip="Cancel package action",
+                             stock=gtk.STOCK_CANCEL,
+                             sensitive_fn=self.cancel_sensitive_cb,
+                             callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
+
+        bar.info = bar.add(text="Info",
+                           tooltip="Package Information",
+                           pixbuf=red_pixbuf.get_pixbuf("info",
+                                                        width=16, height=16),
+                           sensitive_fn=self.info_sensitive_cb,
+                           callback=lambda x:self.package_info_cb())
+
+        bar.append_space()
+
+        bar.subs = bar.add(text="Subscriptions",
+                           tooltip="Change your subscription options",
+                           callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
     # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
@@ -339,11 +364,16 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         else:
             comp.unselect_all()
 
+    ##
+    ## Menubar
+    ##
+
     def assemble_menubar(self, bar):
 
         bar.add("/_File")
         bar.add("/_Edit")
         bar.add("/_View")
+        bar.add("/_Actions")
         bar.add("/_Help")
 
         bar.add("/File/Connect...",
@@ -411,15 +441,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow),
                 sensitive_fn=activate_sensitive_fn)
 
-        bar.add("/File/Refresh Channel Data",
-                callback=refresh_cb)
-
         bar.add("/File/sep4", is_separator=1)
-
-        bar.add("/File/Verify System Dependencies",
-                callback=verify_deps_cb)
-
-        bar.add("/File/sep5", is_separator=1)
         
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,
@@ -428,6 +450,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         ##
         ## Select all/none
+        ##
 
         def select_all_sensitive_cb():
             comp = self.get_component()
@@ -456,21 +479,107 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/Edit/Users...",
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
+        ##
         ## Sidebar
+        ##
+
         def checked_get_cb():
             return self.sidebar.get_property("visible")
         def checked_set_cb(flag):
             self.sidebar.change_visibility()
 
-        self.menubar.add("/View/Sidebar",
-                         checked_get=checked_get_cb,
-                         checked_set=checked_set_cb)
+        bar.add("/View/Sidebar",
+                checked_get=checked_get_cb,
+                checked_set=checked_set_cb)
 
         bar.add("/View/sep", is_separator=1)
 
-        bar.add("/View/Server Information...",
-                callback=red_serverinfo.view_server_info_cb)
+        bar.add("/View/Package Information...",
+                pixbuf_name="info",
+                callback=lambda x:self.package_info_cb(),
+                sensitive_fn=self.info_sensitive_cb)
+
         bar.add("/View/sep1", is_separator=1)
+
+        bar.add("/View/Daemon Information...",
+                callback=red_serverinfo.view_server_info_cb)
+        bar.add("/View/sep2", is_separator=1)
+
+        ##
+        ## Run Transaction
+        ##
+
+        def run_sensitive_cb():
+            sidebar = self.sidebar
+            button = sidebar.get_run_button()
+
+            return sidebar.get_property("sensitive") and \
+                   button.get_property("sensitive")
+
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
+
+        bar.add("/Actions/Run Transaction",
+                image=image,
+                callback=run_transaction_cb,
+                sensitive_fn=run_sensitive_cb)
+
+        ##
+        ## Verify System Dependencies
+        ##
+
+        def verify_and_refresh_sensitive_cb():
+            return self.sidebar.get_property("sensitive")
+                
+        bar.add("/Actions/Verify System Dependencies",
+                callback=verify_deps_cb,
+                sensitive_fn=verify_and_refresh_sensitive_cb)
+
+        bar.add("/Actions/sep1", is_separator=1)
+
+        ##
+        ## Install Package
+        ##
+
+        bar.add("/Actions/Install Package",
+                pixbuf_name="to-be-installed",
+                callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED),
+                sensitive_fn=self.install_sensitive_cb)
+
+        ##
+        ## Install Package
+        ##
+
+        bar.add("/Actions/Remove Package",
+                pixbuf_name="to-be-removed",
+                callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED),
+                sensitive_fn=self.remove_sensitive_cb)
+
+        ##
+        ## Install Package
+        ##
+
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
+
+        bar.add("/Actions/Cancel Action",
+                image=image,
+                callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION),
+                sensitive_fn=self.cancel_sensitive_cb)
+
+        bar.add("/Actions/sep2", is_separator=1)
+
+        ##
+        ## Refresh Channel Data
+        ##
+
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
+
+        bar.add("/Actions/Refresh Channel Data",
+                image=image,
+                callback=refresh_cb,
+                sensitive_fn=verify_and_refresh_sensitive_cb)
 
         bar.add("/Help/About...",
                 callback=lambda x:red_about.About().show())

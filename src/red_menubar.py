@@ -111,6 +111,7 @@ class MenuBar(gtk.MenuBar):
             visible_fn=None,
             sensitive_fn=None,
             stock=None,
+            image=None,
             pixbuf=None,
             pixbuf_name=None,
             checked_get=None, checked_set=None,
@@ -134,8 +135,13 @@ class MenuBar(gtk.MenuBar):
             assert 0
 
         if pixbuf_name:
-            assert not pixbuf
-            pixbuf = red_pixbuf.get_pixbuf(pixbuf_name)
+            assert not pixbuf and not image
+            image = red_pixbuf.get_widget(pixbuf_name)
+
+        if pixbuf:
+            assert not pixbuf_name and not image
+            image = gtk.Image()
+            image.set_from_pixbuf(pixbuf)
 
         item = {"path":path,
                 "name":name,
@@ -145,7 +151,7 @@ class MenuBar(gtk.MenuBar):
                 "visible_fn":visible_fn,
                 "sensitive_fn":sensitive_fn,
                 "stock":stock,
-                "pixbuf":pixbuf,
+                "image":image,
                 "checked_get":checked_get,
                 "checked_set":checked_set,
                 "radiogroup":radiogroup,
@@ -208,9 +214,9 @@ class MenuBar(gtk.MenuBar):
                 elif item["stock"]:
                     menu_item = gtk.ImageMenuItem(item["stock"],
                                                   self.accel_group)
-                elif item["pixbuf"]:
-                    menu_item = gtk.ImageMenuItem()
-                    menu_item.set_image(item["pixbuf"])
+                elif item["image"]:
+                    menu_item = gtk.ImageMenuItem(item["name"])
+                    menu_item.set_image(item["image"])
                 elif item["radiogroup"] and item["radiotag"]:
 
                     grp = radiogroups.get(item["radiogroup"])

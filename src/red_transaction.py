@@ -154,7 +154,7 @@ class TransactionSimple(gtk.ScrolledWindow):
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
 
         view = red_packageview.PackageView()
-        view.append_action_column()
+        view.append_action_column(show_action_name=1)
         view.append_name_column(show_channel_icon=1)
 
         global model

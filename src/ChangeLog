@@ -1,3 +1,37 @@
+2003-02-07  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py: Move the install/remove/cancel/info
+	sensitivity and activation callbacks out the toolbar's scope and
+	into the class's scope.  Add "Package Information" to the View
+	menu.  Add back the Actions menu and move "Refresh Channel Data"
+	and "Verify System Dependencies" there and add in "Run
+	Transaction", "Install Package", "Remove Package", and "Cancel
+	Action".
+
+	* red_menubar.py: Make the "pixbuf" argument mean a gtk.gdk.Pixbuf
+	and added an "image" argument which means a gtk.Image widget.
+	When the image is set, create the gtk.ImageMenuItem using the name
+	and the provided image.
+
+	* red_packageview.py (PackageView.do_popup): Change "Remove
+	action" to "Cancel action" to match the toolbar and remove
+	confusion over the work "Remove".
+	(PackageView.append_action_column): Don't show the action name by
+	default.
+
+	* red_serverinfo.py: Change some references of "server" to
+	"daemon".
+
+	* red_summary.py (SummaryComponent.build): Add back in the action
+	column.
+
+	* red_toolbar.py (Toolbar.sensitize_toolbar_items): Don't pass any
+	arguments to the sensitize function, to match the menubar
+	arguments.
+
+	* red_transaction.py (TransactionSimple.build): Show the action
+	name in this one.
+
 2003-02-07  Frank Belew  <frb@ximian.com>
 
 	* red-carpet.in: added red_carpet_pixbuf_path to fix art loading
