@@ -44,7 +44,7 @@ def check_rcd_version(major, minor, micro):
     version = (major * 100) + (minor * 10) + micro
 
     if version < req_version:
-        return _("Detected Red Carpet Daemon version %d.%d.%d.n"
+        return _("Detected Red Carpet Daemon version %d.%d.%d.\n"
                  "Version %d.%d.%d (or newer) is required.") % \
                  (major, minor, micro, req_major, req_minor, req_micro)
 

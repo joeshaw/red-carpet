@@ -614,14 +614,15 @@ class PendingView_Transaction(PendingView):
                 return
             if pending and step_pending:
                 pv.__working_query = 0
-                
+
             if pending and pending["messages"]:
                 msg = rcd_util.transaction_status(pending["messages"][-1])
                 pv.set_label(msg)
-            if step_pending and step_pending["status"] == "running":
-                pv.update_from_pending(step_pending, show_rate=0)
-            else:
-                pv.update_pulse()
+            if step_pending:
+                if step_pending["status"] == "running":
+                    pv.update_from_pending(step_pending, show_rate=0)
+                else:
+                    pv.update_pulse()
 
             if pending and pending["status"] == "finished":
                 red_pendingops.clear_packages_with_actions()

@@ -1,3 +1,11 @@
+2003-02-25  Tambet Ingo  <tambet@ximian.com>
+
+	* red_pendingview.py (PendingView_Transaction.update_pending_cb):
+	Don't just mindlessly pulse every time, it makes things too flashy.
+	Pulse only on unhandled step_pendings.
+
+	* rcd_util.py (check_rcd_version): When I said 'n' I meant '\n'.
+
 2003-02-25  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (check_rcd_version_: Require rcd 1.2.1.
