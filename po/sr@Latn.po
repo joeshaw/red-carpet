@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-08-15 14:46+0200\n"
-"PO-Revision-Date: 2003-08-15 14:26+0200\n"
+"POT-Creation-Date: 2003-08-25 14:37+0200\n"
+"PO-Revision-Date: 2003-08-25 14:36+0200\n"
 "Last-Translator: Slobodan Simic <slsimic@verat.net>\n"
 "Language-Team: Srpski <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -181,9 +181,8 @@ msgid "Group Activation"
 msgstr "Aktiviranje grupe"
 
 #: src/red_activation.py:37
-#, fuzzy
 msgid "Email:"
-msgstr "E-mail:"
+msgstr "E-pošta:"
 
 #: src/red_activation.py:41
 msgid "Activation Code:"
@@ -194,9 +193,8 @@ msgid "Activate"
 msgstr "Aktiviraj"
 
 #: src/red_activation.py:76
-#, fuzzy
 msgid "Please fill in both email and activation code."
-msgstr "Molim popunite i E-mail i aktivirajući kod."
+msgstr "Molim popunite i e-poštu i aktivirajući kod."
 
 #: src/red_activation.py:91
 msgid "Unable to activate"
@@ -205,15 +203,15 @@ msgstr "Ne mogu da aktiviram"
 #: src/red_activation.py:92
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
-"Proverite da li ste ispravno popunili E-mail adresu i aktivirajući kod."
+"Proverite da li ste ispravno popunili e-poštansku adresu i aktivirajući kod."
 
 #. Store email to config.
 #: src/red_activation.py:110
-#, fuzzy
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
-"Sistem se ne može aktivirati: Pogrešan aktivirajući kod ili E-mail adresa."
+"Sistem se ne može aktivirati: Pogrešan aktivirajući kod ili e-poštanska "
+"adresa."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -385,22 +383,20 @@ msgid "_Help"
 msgstr "P_omoć"
 
 #: src/red_appwindow.py:550
-#, fuzzy
 msgid "Connect to daemon..."
-msgstr "Povezujem se sa demonom..."
+msgstr "Povezujem se sa uslužnim programom..."
 
 #: src/red_appwindow.py:551
-#, fuzzy
 msgid "Connect to a remote daemon"
-msgstr "Povezujem se sa udaljenim demonom"
+msgstr "Povezujem se sa udaljenim uslužnim programom"
 
 #: src/red_appwindow.py:561
 msgid "Install from _File..."
-msgstr "Instaliraj iz _fajla..."
+msgstr "Instaliraj iz _datoteke..."
 
 #: src/red_appwindow.py:562
 msgid "Install a package from a local file"
-msgstr "Instalira paket iz fajla"
+msgstr "Instalira paket iz datoteke"
 
 #: src/red_appwindow.py:571
 msgid "Install from _URL..."
@@ -440,18 +436,17 @@ msgid "_Activate..."
 msgstr "_Aktiviraj..."
 
 #: src/red_appwindow.py:623
-#, fuzzy
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
-"Aktiviraj demona za Red Carpet Express ili Red Carpet Enterprise server"
+"Aktiviraj uslužni program za Red Carpet Express ili Red Carpet Enterprise "
+"server"
 
 #: src/red_appwindow.py:629
 msgid "Quit"
 msgstr "Završi"
 
 #: src/red_appwindow.py:630
-#, fuzzy
 msgid "Quit Red Carpet"
 msgstr "Izađi iz Red Carpet-a"
 
@@ -487,7 +482,6 @@ msgid "_Preferences..."
 msgstr "_Postavke..."
 
 #: src/red_appwindow.py:666
-#, fuzzy
 msgid "Edit your Red Carpet preferences"
 msgstr "Izmeni svoja podešavanja Red Carpet-a"
 
@@ -496,9 +490,8 @@ msgid "_Users..."
 msgstr "_Korisnici..."
 
 #: src/red_appwindow.py:671
-#, fuzzy
 msgid "Edit user permissions for this daemon"
-msgstr "Izmeni korisničke dozvole za ovaj demon"
+msgstr "Izmeni korisničke dozvole za ovaj uslužni program"
 
 #. #
 #. # Sidebar
@@ -536,22 +529,18 @@ msgid "View information about currently selected packages"
 msgstr "Pogledaj informacije o trenutno označenim paketima"
 
 #: src/red_appwindow.py:710
-#, fuzzy
 msgid "_Daemon Information..."
-msgstr "Informacije o demonu..."
+msgstr "Informacije o uslužnom programu..."
 
 #: src/red_appwindow.py:711
-#, fuzzy
 msgid "View information about this daemon"
-msgstr "Pogledaj informacije o ovom demonu"
+msgstr "Pogledaj informacije o ovom uslužnom programu"
 
 #: src/red_appwindow.py:713
-#, fuzzy
 msgid "Red Carpet Ne_ws..."
 msgstr "Novosti Red Carpet-a..."
 
 #: src/red_appwindow.py:714
-#, fuzzy
 msgid "View the latest Red Carpet news"
 msgstr "Pogledaj poslednje novosti Red Carpet-a"
 
@@ -612,16 +601,14 @@ msgid "_Contents"
 msgstr "_Sadržaj"
 
 #: src/red_appwindow.py:802
-#, fuzzy
 msgid "View Red Carpet help"
-msgstr "Pogledaj pomoć o Red Carpet-u"
+msgstr "Pogledaj pomoć za Red Carpet-a"
 
 #: src/red_appwindow.py:807
 msgid "_About..."
-msgstr "O..."
+msgstr "_O programu..."
 
 #: src/red_appwindow.py:808
-#, fuzzy
 msgid "About Red Carpet"
 msgstr "O Red Carpet-u"
 
@@ -789,31 +776,30 @@ msgstr "Nema kanala/Nepoznat kanal"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_connection.py:41
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
-"Ne mogu da se povežem sa demonom:\n"
-" '%s'."
+"Ne mogu da se povežem sa uslužnim programom:\n"
+" „%s“."
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
 #: src/red_connection.py:61
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
-"Verzija demona Red Carpet-a je %d.%d.%d.\n"
-"Verzija %d.%d.%d (ili novija) je potrebna."
+"Verzija uslužnog programa Red Carpet-a je %d.%d.%d.\n"
+"Neophodna je verzija %d.%d.%d (ili novija)."
 
 #. LSB compliant distros should have the
 #. following
 #: src/red_connection.py:99
-#, fuzzy
 msgid "Starting daemon..."
-msgstr "Pokrećem demona..."
+msgstr "Pokrećem uslužni program..."
 
 #. child
 #. If we get here, the exec failed.
@@ -823,12 +809,11 @@ msgstr "Pokrećem demona..."
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
 #: src/red_connection.py:173
-#, fuzzy
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
 msgstr ""
-"Red Carpet zahteva da Red Carpet demon bude pokrenut. \n"
+"Red Carpet zahteva da Red Carpet uslužni program bude pokrenut. \n"
 "Želite li da ga pokrenem odmah?"
 
 #. Conform to GNOME HIG
@@ -880,7 +865,6 @@ msgstr "Poveži se"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
 msgstr "Konzola grešaka Red Carpet-a"
 
@@ -905,18 +889,15 @@ msgstr "Konzola grešaka Red Carpet-a"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_deaddaemon.py:35
-#, fuzzy
 msgid "Connection to daemon restored.\n"
-msgstr "Veza sa demonom ponovo uspostavljena.\n"
+msgstr "Veza sa uslužnim programom je ponovo uspostavljena.\n"
 
 #. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
-#, fuzzy
 msgid "Lost contact with the daemon!"
-msgstr "Izgubljena veza sa demonom!"
+msgstr "Izgubljena veza sa uslužnim programom!"
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
 msgstr "Izađi iz Red Carpet-a"
 
@@ -1311,9 +1292,8 @@ msgstr "GREŠKA: Ne možete koristiti i -h/--host i -l/--local opcije"
 
 #. This'll always fail and pop up the dialog.
 #: src/red_main.py:137
-#, fuzzy
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr "GREŠKA: Ne možete navesti korisnika za lokalnog demona"
+msgstr "GREŠKA: Ne možete navesti korisnika za lokalni uslužni program"
 
 #. Try the command-line options or the saved data first
 #. Enclosed in an empty try-except because we don't care about the
@@ -1376,16 +1356,14 @@ msgstr "GREŠKA: Ne možete navesti korisnika za lokalnog demona"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_mirrors.py:76
-#, fuzzy
 msgid "Mirror"
 msgstr "Kopije servera"
 
 #: src/red_mirrors.py:81
 msgid "Location"
-msgstr "Mesto"
+msgstr "Adresa"
 
 #: src/red_mirrors.py:108
-#, fuzzy
 msgid "Choose a Mirror"
 msgstr "Izaberi kopiju servera"
 
@@ -1503,9 +1481,8 @@ msgid "hostname"
 msgstr "Ime domaćina"
 
 #: src/red_option.py:25
-#, fuzzy
 msgid "Contact daemon on specified host"
-msgstr "Kontaktiram demona na naznačenom serveru"
+msgstr "Kontaktiram uslužni program na naznačenom serveru"
 
 #: src/red_option.py:26
 msgid "username"
@@ -1656,7 +1633,6 @@ msgstr "Nisu nađeni odgovarajući paketi"
 #. Remove instelled Channel packages
 #. ##############################################################################
 #: src/red_packagearray.py:760
-#, fuzzy
 msgid "Looking for updates..."
 msgstr "Tražim novine..."
 
@@ -1865,7 +1841,6 @@ msgstr "%.1f%% završeno"
 #. #############################################################################
 #. #############################################################################
 #: src/red_pendingview.py:504
-#, fuzzy
 msgid "Updating System"
 msgstr "Osvežavam sistem"
 
@@ -1969,7 +1944,6 @@ msgstr "Adresa servera:"
 
 #. manually force the value to update
 #: src/red_prefs.py:228
-#, fuzzy
 msgid "Mirrors"
 msgstr "Kopije servera"
 
@@ -1992,19 +1966,16 @@ msgstr "Najveći broj paketa koji se preuzimaju odjednom:"
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:275
-#, fuzzy
 msgid "Proxy"
 msgstr "Posrednik"
 
 #: src/red_prefs.py:284
-#, fuzzy
 msgid "Use a proxy"
-msgstr "Koristi Posrednika"
+msgstr "Koristi posrednika"
 
 #: src/red_prefs.py:288
-#, fuzzy
 msgid "Proxy URL:"
-msgstr "Adresa Posrednika:"
+msgstr "Adresa posrednika:"
 
 #: src/red_prefs.py:295
 msgid "Username:"
@@ -2012,9 +1983,8 @@ msgstr "Korisničko ime:"
 
 #. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:335
-#, fuzzy
 msgid "You do not have permissions to view proxy settings"
-msgstr "Nemate dozvolu da vidite podešavanja Posrednika"
+msgstr "Nemate dozvolu da vidite podešavanja posrednika"
 
 #: src/red_prefs.py:359
 msgid "Cache downloaded packages and metadata"
@@ -2116,7 +2086,6 @@ msgstr "Svi paketi"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_searchbox.py:147 src/red_updates.py:31
-#, fuzzy
 msgid "Updates"
 msgstr "Novine"
 
@@ -2274,9 +2243,8 @@ msgstr "Nisu nađeni odgovarajući paketi."
 #. ##
 #. We only allow one server info window at a time
 #: src/red_serverinfo.py:46
-#, fuzzy
 msgid "The daemon identified itself as:"
-msgstr "Demon se predstavio kao:"
+msgstr "Uslužni program se predstavio kao:"
 
 #: src/red_serverinfo.py:57
 msgid "System type"
@@ -2292,24 +2260,22 @@ msgstr "Server podržava dodatne mogućnosti"
 
 #. couldn't ping the server
 #: src/red_serverinfo.py:68
-#, fuzzy
 msgid "Unable to contact the daemon."
-msgstr "Ne mogu da kontaktiram demona."
+msgstr "Ne mogu da kontaktiram uslužni program."
 
 #: src/red_serverinfo.py:76
-#, fuzzy
 msgid "Dump daemon info to XML file"
-msgstr "Ubaci info o demonu u XML fajl"
+msgstr "Ubaci podatke o uslužnom programu u XML datoteku"
 
 #: src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
-msgstr "Ne mogu da otvorim fajl '%s': %s"
+msgstr "Ne mogu da otvorim datoteku „%s“: %s"
 
 #. We only allow one filesel window at a time
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
-msgstr "Izaberite fajl da upišem XML"
+msgstr "Izaberite datoteku za upisivanje XML-a"
 
 #. need trailing /
 #. ##
@@ -2598,18 +2564,15 @@ msgid "_Pending Actions"
 msgstr "_Postupci koji slede"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "Novine"
+msgstr "_Novine"
 
 #. ## Update All button
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr "Obnovi sve"
+msgstr "Obnovi _sve"
 
 #: src/red_updates.py:109
-#, fuzzy
 msgid "The system is up-to-date."
 msgstr "Sistem je kao nov."
 
@@ -2618,7 +2581,6 @@ msgid "There are no software updates available in any subscribed channels."
 msgstr "Nema dostupnih programskih novina ni na jednom prijavljenom kanalu."
 
 #: src/red_users.py:131
-#, fuzzy
 msgid "Privilege"
 msgstr "Privilegije"
 
@@ -2684,7 +2646,6 @@ msgid "Remove"
 msgstr "Ukloni"
 
 #: src/red_users.py:339
-#, fuzzy
 msgid "Privileges"
 msgstr "Privilegije"
 
@@ -2700,10 +2661,6 @@ msgstr "Neispravno ime korisnika."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Korisnik '%s' već postoji."
-
-#, fuzzy
-#~ msgid "System successfully activated."
-#~ msgstr "Sistem uspešno aktiviran."
 
 #~ msgid ""
 #~ "Unable to show help because it was not found or because you don't have "
