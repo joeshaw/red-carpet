@@ -515,6 +515,8 @@ class PendingView_Transaction(PendingView):
             self.set_title(title)
 
     def cancelled(self):
+        PendingView.cancelled(self)
+        
         if self.download_id == -1 or self.download_complete:
             print "Can't abort transaction"
             return
