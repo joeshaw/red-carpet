@@ -24,6 +24,7 @@ import red_users
 import red_emptypage
 import red_listmodel
 import red_thrashingtreeview
+import ximian_xmlrpclib
 
 from red_gettext import _
 

@@ -1,3 +1,7 @@
+2004-08-16  Tambet Ingo  <tambet@ximian.com>
+
+	* red_history.py: Import ximian_xmlrpclib.
+
 2004-07-27  Tambet Ingo  <tambet@ximian.com>
 
 	* red_services.py (ServicesWindow.build): Disable "remove service"
