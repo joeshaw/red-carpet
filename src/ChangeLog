@@ -1,5 +1,12 @@
 2003-09-05  Joe Shaw  <joe@ximian.com>
 
+	* red-carpet.in: Get the locale dir and pass it into
+	red_gettext.py.
+
+	* red_gettext.py: Add an init function which takes the localedir
+	and sets up the translation class.  This should get i18n working
+	in more cases.  Call t.gettext() instead of t.ugettext().
+
 	* red_activation.py, red_connection.py, red_mount.py,
 	red_users.py: Replace calls to gtk.Table.attach_defaults() to
 	gtk.Table.attach() to avoid a deprecation warning.

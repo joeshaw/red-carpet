@@ -24,6 +24,8 @@ try:
     red_carpet_prefix = "@prefix@"
     red_carpet_datadir = "@DDIR@/red-carpet"
     red_carpet_libdir = "@LDIR@/red-carpet"
+    red_carpet_localedir = "@DDIR@/locale"
+
     red_carpet_version = "@VERSION@"
     red_carpet_pixbuf_path = "@DDIR@/pixmaps/red-carpet"
     red_carpet_help_path = "@DDIR@/gnome/help/red-carpet"
@@ -69,8 +71,12 @@ try:
         sys.stderr.write("Error: Couldn't import gtk.\n")
         sys.exit(1)
 
+    # Set up paths
     import red_pixbuf
     red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)
+
+    import red_gettext
+    red_gettext.init(red_carpet_localedir)
 
     import red_main
 
