@@ -293,7 +293,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         menu.popup(None, None, None, ev_button, ev_time)
 
     def set_model(self, model):
-        assert isinstance(model, red_packagearray.PackageArray)
+        ## assert isinstance(model, red_packagearray.PackageArray)
 
         red_thrashingtreeview.TreeView.set_model(self, model)
 

@@ -780,3 +780,122 @@ class UpdatedPackages(PackagesFromDaemon):
         self.__worker_handler_id = self.__worker.connect("ready",
                                                          query_finished_cb,
                                                          self)
+
+
+
+class PatchesFromQuery(PackagesFromDaemon):
+
+    def __init__(self, query=None):
+        PackagesFromDaemon.__init__(self)
+        self.__worker = None
+        self.__worker_handler_id = 0
+        self.__query_msg = None
+        self.__query_filter = None
+        self.query = None
+        if query:
+            self.set_query(query)
+
+    def set_packages(self, patches, quiet=0):
+        if not quiet:
+            if len(patches) > 1:
+                msg = _("Found %d matching patches") % len(patches)
+            elif len(patches) == 1:
+                msg = _("Found 1 matching patch")
+            else:
+                msg = _("No matching patches found")
+            self.message_push(msg, transient=1)
+            
+        PackagesFromDaemon.set_packages(self, patches)
+
+    def get_packages_from_daemon(self):
+
+        if self.query is None:
+            self.set_packages([], quiet=1)
+            self.refresh_end()
+            return
+
+        cached = _get_query_from_cache(self.query)
+        if cached is not None:
+            if self.__query_filter:
+                filter_fn = self.__query_filter()
+                cached = filter(filter_fn, cached)
+            self.set_packages(cached)
+            self.refresh_end()
+            return
+        
+        server = rcd_util.get_server_proxy()
+            
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_id = 0
+            self.__worker.cancel()
+
+        def query_finished_cb(worker, array):
+            array.message_pop()
+
+            if not worker.is_cancelled():
+                try:
+                    patches = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    patches = []
+                else:
+                    elapsed = time.time() - worker.t1
+
+                    patches = self.patchify(patches)
+                    patches = self.filter_duplicates(patches)
+                    _cache_query_results(self.query, patches)
+
+                    if self.__query_filter:
+                        filter_fn = self.__query_filter()
+                        patches = filter(filter_fn, patches)
+
+                array.set_packages(patches or [])
+            array.refresh_end()
+            array.__worker = None
+
+        if self.__query_msg:
+            self.message_push(self.__query_msg)
+
+        self.__worker = server.rcd.you.search(self.query)
+        self.__worker.t1 = time.time()
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         query_finished_cb,
+                                                         self)
+        
+    def set_query(self, query, query_msg=None, query_filter=None):
+        self.query = query
+        self.__query_msg = query_msg
+        self.__query_filter = query_filter
+
+        if self.__worker and self.__worker_handler_id:
+            self.__worker.disconnect(self.__worker_handler_id)
+            self.__worker.cancel()
+            self.__worker = None
+            self.__worker_handler_id = 0
+
+        self.schedule_refresh()
+
+    def packages_changed(self):
+        _reset_query_cache()
+        PackagesFromDaemon.packages_changed(self)
+
+    def channels_changed(self):
+        _reset_query_cache()
+        PackagesFromDaemon.channels_changed(self)
+
+    def subscriptions_changed(self):
+        _reset_query_cache()
+        PackagesFromDaemon.subscriptions_changed(self)
+
+    def filter_duplicates(self, patches):
+        return patches
+
+    def patchify(self, patches):
+        for p in patches:
+            if not p.has_key("name_installed"):
+                p["name_installed"] = 0
+            p["is_patch"] = 1
+
+        return patches

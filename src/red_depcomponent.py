@@ -43,7 +43,8 @@ def filter_deps(dep_list):
 
 class DepComponent(red_component.Component):
 
-    def __init__(self, install_packages=[], remove_packages=[], verify=0):
+    def __init__(self, install_packages=[], remove_packages=[],
+                 verify=0, patch_transaction=0):
         gobject.GObject.__init__(self)
         red_component.Component.__init__(self)
 
@@ -52,6 +53,11 @@ class DepComponent(red_component.Component):
         self.install_packages = install_packages
         self.remove_packages = remove_packages
         self.verify = verify
+        self.patch_transaction = patch_transaction
+
+        self.dep_install = []
+        self.dep_remove = []
+        self.dep_error = None
 
         self.__worker = None
         self.__worker_handler_id = 0
@@ -59,7 +65,11 @@ class DepComponent(red_component.Component):
         # Call get_deps in an idle so that we are fully initialized
         # before we being our computation.  (In particular, the
         # parent isn't properly set on the component at this point.)
-        gtk.idle_add(lambda comp: comp.get_deps(), self)
+        if not patch_transaction:
+            gtk.idle_add(lambda comp: comp.get_deps(), self)
+        else:
+            gtk.idle_add(lambda comp: comp.emit("got-results"), self)
+
 
     def name(self):
         return _("Dependency Resolution")
@@ -104,10 +114,6 @@ class DepComponent(red_component.Component):
 
 
             self.emit("got-results")
-
-        self.dep_install = []
-        self.dep_remove = []
-        self.dep_error = None
 
         self.busy(1)
 
@@ -215,9 +221,12 @@ class DepComponent(red_component.Component):
 
             dep_comp.begin_transaction()
 
-        worker = self.server.rcd.license.lookup_from_packages(packages)
+        if self.patch_transaction:
+            worker = self.server.you.licenses(packages)
+        else:
+            worker = self.server.rcd.license.lookup_from_packages(packages)
         worker.connect("ready", license_cb, self)
-        
+
     def begin_transaction(self):
         def transact_cb(worker, dep_comp):
             try:
@@ -251,13 +260,21 @@ class DepComponent(red_component.Component):
         install_packages = self.get_install_packages()
         remove_packages = self.get_remove_packages()
 
-        worker = self.server.rcd.packsys.transact(install_packages,
-                                                  remove_packages,
+        if self.patch_transaction:
+            worker = self.server.rcd.you.transact(install_packages,
                                                   0, # FIXME: flags
                                                   "",
                                                   red_main.red_name,
                                                   red_main.red_version)
+        else:
+            worker = self.server.rcd.packsys.transact(install_packages,
+                                                      remove_packages,
+                                                      0, # FIXME: flags
+                                                      "",
+                                                      red_main.red_name,
+                                                      red_main.red_version)
         worker.connect("ready", transact_cb, self)
+
 
     def build_dep_error_page(self):
         page = self.page
@@ -441,6 +458,9 @@ class DepComponent(red_component.Component):
         def build_cb(self):
             if self.dep_error:
                 self.build_dep_error_page()
+
+            if self.patch_transaction:
+                self.build_normal_page()
 
             elif self.verify and not self.dep_install and not self.dep_remove:
                 self.build_verified_ok_page()

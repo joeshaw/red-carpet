@@ -37,6 +37,8 @@ import red_option
 import red_settings
 import red_software
 
+import red_patches
+
 red_running = 1
 
 gtk.threads_init()
@@ -181,6 +183,10 @@ def main(version):
     app.register_component(red_software.InstalledComponent())
     app.register_component(red_software.AvailableComponent())
     app.register_component(red_search.SearchComponent())
+
+    if rcd_util.server_has_patch_support(server):
+        app.register_component(red_patches.PatchComponent())
+
     app.register_component(red_history.HistoryComponent())
     app.register_component(red_transaction.TransactionComponent())
 

@@ -50,6 +50,14 @@ def get_server_proxy():
 def get_server_local():
     return server_local
 
+def server_has_patch_support(server):
+    try:
+        server.rcd.you.ping()
+    except ximian_xmlrpclib.Fault, f:
+        if f.faultCode == fault.undefined_method:
+            return 0
+    return 1
+
 def reset_server_permissions():
     global server_permissions
     server_permissions = {}
@@ -258,9 +266,16 @@ def get_package_EVR(pkg):
         rel_str = "-%s" % pkg["release"]
     return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
 
+def package_is_patch(pkg):
+    if pkg.has_key("is_patch"):
+        return 1
+
 def get_package_info(pkg):
     if not pkg.has_key("__info"):
-        pkg["__info"] = server.rcd.packsys.package_info(pkg)
+        if package_is_patch(pkg):
+            pkg["__info"] = server.rcd.you.patch_info(pkg)
+        else:
+            pkg["__info"] = server.rcd.packsys.package_info(pkg)
     return pkg["__info"]
 
 def get_package_history(pkg):

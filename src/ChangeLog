@@ -1,3 +1,40 @@
+2004-06-11  Tambet Ingo  <tambet@ximian.com>
+
+	* red_patches.py: New file. Implements patch component.
+
+	* red_pendingops.py (can_perform_action_single): Handle patches.
+
+	* red_packageview.py (PackageView.set_model): Be happy with
+	PatchArrays too.
+
+	* red_packagebook.py (show_package_info): Add history page and
+	dependency page only for packages.
+
+	* red_packagearray.py (PatchesFromQuery): New class for patches.
+
+	* red_main.py (main): If server supports patches, add patch
+	component.
+
+	* red_depcomponent.py (DepComponent.__init__): Add an optional
+	argument to notify patch transactions. Don't run resolver on
+	patch transactions.
+	(DepComponent.license_cb): Call patch rpc method for patches.
+	(DepComponent.transact_cb): Ditto.
+	(DepComponent.build_cb): Handle patch transactions.
+
+	* red_appwindow.py (run_transaction_cb): Handle patches.
+
+	* rcd_util.py (server_has_patch_support): Implement.
+	(package_is_patch): Implement.
+	(get_package_info): Handle patches.
+
+2004-05-05  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packagepage_info.py (pkg_description): Use GtkTextView
+	intead of GtkLabel to show package descriptions. Some packages
+	have huge descriptions listing all authors for example, so the
+	information window filled the whole screen.
+
 2004-01-29  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (get_channel_icon): If we're requesting a scaled

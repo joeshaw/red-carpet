@@ -69,10 +69,22 @@ def pkg_section(pkg, pkg_info, key):
 def pkg_description(pkg, pkg_info, key):
     txt = pkg_info_element(pkg, pkg_info, key)
     txt = re.sub(re_whitespace, " ", txt.strip())
-    l = gtk.Label(txt)
-    l.set_alignment(0, 0.5)
-    l.set_property("wrap", 1)
-    return l
+
+    t = gtk.TextView()
+    t.set_editable(0)
+    t.set_cursor_visible(0)
+    t.set_wrap_mode(gtk.WRAP_WORD)
+
+    buf = t.get_buffer()
+    iter = buf.get_end_iter()
+    buf.insert(iter, txt)
+
+    sw = gtk.ScrolledWindow()
+    sw.add(t)
+    sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+    sw.set_shadow_type(gtk.SHADOW_IN)
+
+    return sw
 
 _info_rows = (
     (_("Name"),           TYPE_TEXT,   pkg_element,      "name",           NO_SPAN),
@@ -125,7 +137,7 @@ def build_rows(table, pkg, pkg_info):
 
                 table.attach(value,
                              0, 2, rindex + 1, rindex + 2,
-                             gtk.FILL, gtk.FILL,
+                             gtk.FILL, gtk.EXPAND | gtk.FILL,
                              5, 3)
 
             rindex = rindex + 2
