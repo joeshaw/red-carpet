@@ -1,7 +1,11 @@
+2003-04-24  Joe Shaw  <joe@ximian.com>
+
+	* art/about-monkey.png: Removed
+	* art/about.png: Added.
+
 2003-04-22  Aaron Weber  <aaron@ximian.com>
 
 	* help/C/red-carpet.xml: update for tabbed UI. Whoo!
-
 
 2003-04-16  Aaron Weber  <aaron@ximian.com>
 
