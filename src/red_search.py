@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_header, red_pixbuf, red_menubar
-import red_packagearray, red_channeloption, red_packagetable
+import red_packagearray, red_packageview
 import red_component
 
 class SearchComponent(red_component.Component):
@@ -175,14 +175,15 @@ class SearchComponent(red_component.Component):
 
         ### Main
 
-        ex = red_packagetable.PackageTable()
-        ex.set_exploder(by_channel=1)
-        ex.set_array(self.array)
+        view = red_packageview.PackageView()
+        view.append_channel_column()
+        view.append_name_column()
+        view.append_version_column()
+        view.append_size_column()
 
-        ex.connect("package_selected",
-                   lambda x,y,z:self.package_selected_cb(y,z))
+        view.set_model(self.array)
 
-        self.display("main", ex)
+        self.display("main", view)
 
     def changed_visibility(self, flag):
         if flag:

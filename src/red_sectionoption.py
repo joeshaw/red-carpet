@@ -44,6 +44,7 @@ class SectionOption(gtk.OptionMenu):
 
         sections.sort(lambda a, b: cmp(a[2], b[2]))
 
+        self.current_selection = -1
         self.item_num_list = []
 
         menu = gtk.Menu()
@@ -51,7 +52,7 @@ class SectionOption(gtk.OptionMenu):
             hbox = gtk.HBox(0, 0)
 
             if icon:
-                img = red_pixbuf.get_widget(icon, width=28, height=28)
+                img = red_pixbuf.get_widget(icon)
                 hbox.pack_start(img, 0, 0, 0)
 
             label = gtk.Label(name)
@@ -63,9 +64,12 @@ class SectionOption(gtk.OptionMenu):
 
             self.item_num_list.append(num)
 
-            item.connect("activate",
-                         lambda item, id:self.emit("selected", id),
-                         num)
+            def activate_cb(item, id, this):
+                if this.current_selection != id:
+                    this.emit("selected", id)
+                    this.current_selection = id
+
+            item.connect("activate", activate_cb, num, self)
 
             menu.append(item)
 

@@ -16,12 +16,13 @@
 ###
 
 import gobject, gtk
+import red_packagearray
 
 class PackageView(gtk.TreeView):
 
     def __init__(self):
         gtk.TreeView.__init__(self)
-        self.changed_id = 0
+        self.__changed_id = 0
         self.set_rules_hint(1)
 
     def thrash_model(self):
@@ -30,15 +31,122 @@ class PackageView(gtk.TreeView):
         gtk.TreeView.set_model(self, model)
 
     def set_model(self, model):
-        # FIXME: make sure that we are passing in a PackageArray
-        # for the model.
+        assert isinstance(model, red_packagearray.PackageArray)
         old_model = self.get_model()
-        if self.changed_id:
-            old_model.disconnect(self.changed_id)
-        self.changed_id = 0
+        if self.__changed_id:
+            old_model.disconnect(self.__changed_id)
+        self.__changed_id = 0
 
         gtk.TreeView.set_model(self, model)
-
+        
         if model:
-            self.changed_id = model.connect_after("changed",
-                                                  lambda x:self.thrash_model())
+            #self.set_headers_clickable(1)
+            self.__changed_id = model.connect_after("changed",
+                                                    lambda x:self.thrash_model())
+
+    def append_channel_column(self,
+                              column_title="Channel"):
+        col = gtk.TreeViewColumn()
+        col.set_title(column_title)
+
+        render_icon = gtk.CellRendererPixbuf()
+        col.pack_start(render_icon, 0)
+        col.set_attributes(render_icon,
+                           pixbuf=red_packagearray.COLUMN_CH_ICON)
+
+        render_text = gtk.CellRendererText()
+        col.pack_start(render_text, 1)
+        col.set_attributes(render_text,
+                           text=red_packagearray.COLUMN_CH_NAME)
+
+        def clicked_cb(foo, view):
+            array = view.get_model()
+            if array:
+                array.changed_sort_by_channel()
+        col.connect("clicked", clicked_cb, self)
+        col.set_clickable(1)
+
+        self.append_column(col)
+
+        return col
+
+    def append_name_column(self,
+                           column_title="Package",
+                           show_channel_icon=0,
+                           show_section_icon=0):
+        col = gtk.TreeViewColumn()
+        col.set_title(column_title)
+
+        if show_channel_icon:
+            render_icon = gtk.CellRendererPixbuf()
+            col.pack_start(render_icon, 0)
+            col.set_attributes(render_icon,
+                               pixbuf=red_packagearray.COLUMN_CH_ICON)
+
+        if show_section_icon:
+            render_icon = gtk.CellRendererPixbuf()
+            col.pack_start(render_icon, 0)
+            col.set_attributes(render_icon,
+                               pixbuf=red_packagearray.COLUMN_SEC_ICON)
+
+        render_text = gtk.CellRendererText()
+        col.pack_start(render_text, 1)
+        col.set_attributes(render_text, text=red_packagearray.COLUMN_NAME)
+
+        def clicked_cb(foo, view):
+            array = view.get_model()
+            if array:
+                array.changed_sort_by_name()
+        col.connect("clicked", clicked_cb, self)
+        col.set_clickable(1)
+
+        self.append_column(col)
+        return col
+
+    def append_version_column(self, column_title="Version"):
+        col = gtk.TreeViewColumn(column_title,
+                                 gtk.CellRendererText(),
+                                 text=red_packagearray.COLUMN_EVR)
+        self.append_column(col)
+        return col
+
+    def append_current_version_column(self, column_title="Current Version"):
+        col = gtk.TreeViewColumn(column_title,
+                                 gtk.CellRendererText(),
+                                 text=red_packagearray.COLUMN_OLD_EVR)
+        self.append_column(col)
+        return col
+
+    def append_importance_column(self, column_title="Importance"):
+        col = gtk.TreeViewColumn(column_title,
+                                 gtk.CellRendererText(),
+                                 text=red_packagearray.COLUMN_IMPORTANCE)
+
+        def clicked_cb(foo, view):
+            array = view.get_model()
+            if array:
+                array.changed_sort_by_importance()
+        col.connect("clicked", clicked_cb, self)
+        col.set_clickable(1)
+        
+        self.append_column(col)
+        return col
+        
+    def append_size_column(self, column_title="Size"):
+        col = gtk.TreeViewColumn(column_title,
+                                 gtk.CellRendererText(),
+                                 text=red_packagearray.COLUMN_SIZE)
+
+        def clicked_cb(foo, view):
+            array = view.get_model()
+            if array:
+                array.changed_sort_by_size()
+        col.connect("clicked", clicked_cb, self)
+        col.set_clickable(1)
+
+        self.append_column(col)
+        return col
+        
+
+        
+

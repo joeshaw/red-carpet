@@ -19,7 +19,7 @@ import string
 import gtk
 import rcd_util
 import red_header, red_pixbuf
-import red_packagearray, red_channeloption, red_packagetable
+import red_packagearray, red_packageview
 import red_component
 
 class SummaryComponent(red_component.Component):
@@ -59,14 +59,15 @@ class SummaryComponent(red_component.Component):
 
         ### Main
 
-        ex = red_packagetable.PackageTable()
-        ex.set_exploder(by_importance=1)
-        ex.set_array(self.array)
+        view = red_packageview.PackageView()
+        view.append_importance_column()
+        view.append_name_column(show_channel_icon=1)
+        view.append_version_column(column_title="New Version")
+        view.append_current_version_column()
+        view.append_size_column()
+        view.set_model(self.array)
 
-        ex.connect("package_selected",
-                   lambda x,y,z:self.package_selected_cb(y,z))
-
-        self.display("main", ex)
+        self.display("main", view)
 
     def changed_visibility(self, flag):
         if flag:

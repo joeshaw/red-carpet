@@ -15,11 +15,11 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string
+import sys, string, time
 import gobject, gtk
 import rcd_util
 import red_extra
-import red_serverlistener
+import red_serverlistener, red_pixbuf
 
 ###
 ### Callbacks for our ListModel
@@ -34,6 +34,12 @@ def pkg_name(pkg):
 def pkg_EVR(pkg):
     return rcd_util.get_package_EVR(pkg)
 
+def pkg_old_EVR(pkg):
+    old_pkg = pkg.get("old_package")
+    if old_pkg:
+        return rcd_util.get_package_EVR(old_pkg)
+    return ""
+
 def pkg_size(pkg):
     return rcd_util.byte_size_to_string(pkg["file_size"])
 
@@ -41,14 +47,17 @@ def pkg_ch_name(pkg):
     return rcd_util.get_package_channel_name(pkg)
 
 def pkg_ch_icon(pkg):
-    return rcd_util.get_package_channel_icon(pkg, 24, 24)
+    return rcd_util.get_package_channel_icon(pkg, width=24, height=24)
 
 def pkg_sec_name(pkg):
     return pkg["section_user_str"]
 
 def pkg_sec_icon(pkg):
     pixbuf_name = "section-" + pkg["section_str"]
-    return red_pixbuf.get_pixbuf(pixbuf_name, width=24, height=24)
+    return red_pixbuf.get_pixbuf(pixbuf_name, width=16, height=16)
+
+def pkg_importance(pkg):
+    return pkg.get("importance_str", "")
 
 def pkg_is_installed(pkg):
     return pkg["installed"]
@@ -62,23 +71,17 @@ def pkg_is_upgrade(pkg):
 def pkg_is_downgrade(pkg):
     return pkg["name_installed"] < 0
 
-# FIXME: This sorting function should be smarter, and should
-# sort lists into some sort of canonical form that will
-# make it inexpensive to figure out if two sorted lists of packages
-# are the same.
-
-def pkg_cmp(a,b):
-    return cmp(string.lower(a["name"]), string.lower(b["name"]))
-
 COLUMNS = (
     ("PKG",               pkg,                   gobject.TYPE_PYOBJECT),
     ("NAME",              pkg_name,              gobject.TYPE_STRING),
     ("EVR",               pkg_EVR,               gobject.TYPE_STRING),
+    ("OLD_EVR",           pkg_old_EVR,           gobject.TYPE_STRING),
     ("SIZE",              pkg_size,              gobject.TYPE_STRING),
     ("CH_NAME",           pkg_ch_name,           gobject.TYPE_STRING),
     ("CH_ICON",           pkg_ch_icon,           gtk.gdk.Pixbuf),
-    ("CH_SEC_NAME",       pkg_sec_name,          gobject.TYPE_STRING),
-    ("CH_SEC_ICON",       pkg_sec_icon,          gtk.gdk.Pixbuf),
+    ("SEC_NAME",          pkg_sec_name,          gobject.TYPE_STRING),
+    ("SEC_ICON",          pkg_sec_icon,          gtk.gdk.Pixbuf),
+    ("IMPORTANCE",        pkg_importance,        gobject.TYPE_STRING),
     ("IS_INSTALLED",      pkg_is_installed,      gobject.TYPE_BOOLEAN),
     ("IS_NAME_INSTALLED", pkg_is_name_installed, gobject.TYPE_BOOLEAN),
     ("IS_UPGRADE",        pkg_is_upgrade,        gobject.TYPE_BOOLEAN),
@@ -89,24 +92,80 @@ for i in range(len(COLUMNS)):
     name = COLUMNS[i][0]
     exec("COLUMN_%s = %d" % (name, i))
 
+
+###
+### Sort functions
+###
+
+def sort_pkgs_by_name(a, b):
+    return cmp(string.lower(a["name"]), string.lower(b["name"]))
+
+def sort_pkgs_by_size(a, b):
+    return cmp(a["file_size"], b["file_size"])
+
+def sort_pkgs_by_importance(a, b):
+    return cmp(a["importance_num"], b["importance_num"])
+
+def sort_pkgs_by_channel(a, b):
+    return cmp(rcd_util.get_package_channel_name(a),
+               rcd_util.get_package_channel_name(b))
+
+
+###
+### PackageArray: our magic-laden base class
+###
+
 class PackageArray(red_extra.ListModel):
 
     def __init__(self):
         gobject.GObject.__init__(self)
-        self.pending_changes = []
+        self.__pending_changes = []
+        self.__sort_fn = sort_pkgs_by_name
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
 
+    ## This function should take the data in the array and sort it according
+    ## to the specified function.  This is a "protected" function and
+    ## shouldn't be called by users of PackageArrays.
+    def sort(self, sort_fn):
+        assert 0, "PackageArray.sort not defined"
+
+    ## You shouldn't need to ever call this.
+    def request_sort(self):
+        if self.__sort_fn:
+            t1 = time.time()
+            self.sort(self.__sort_fn)
+            t2 = time.time()
+
     def do_changed(self):
-        operator, args = self.pending_changes.pop()
+        operator, args = self.__pending_changes.pop()
         if operator:
             apply(operator, (self,) + args)
+            self.request_sort()
             self.set_list(self.get_all())
 
     def changed(self, operator, *args):
-        self.pending_changes.append((operator, args))
+        self.__pending_changes.append((operator, args))
         self.emit("changed")
+
+    def changed_sort_fn(self, sort_fn):
+        def set_sort_fn(array, fn):
+            array.__sort_fn = fn
+        if self.__sort_fn != sort_fn:
+            self.changed(set_sort_fn, sort_fn)
+
+    def changed_sort_by_name(self):
+        self.changed_sort_fn(sort_pkgs_by_name)
+
+    def changed_sort_by_size(self):
+        self.changed_sort_fn(sort_pkgs_by_size)
+
+    def changed_sort_by_importance(self):
+        self.changed_sort_fn(sort_pkgs_by_importance)
+
+    def changed_sort_by_channel(self):
+        self.changed_sort_fn(sort_pkgs_by_channel)
 
     ## Fallback implementation
     def len(self):
@@ -143,29 +202,32 @@ class PackageStore(PackageArray):
 
     def __init__(self):
         PackageArray.__init__(self)
-        self.store = []
+        self.__store = []
+
+    def sort(self, sort_fn):
+        self.__store.sort(sort_fn)
 
     def get_all(self):
-        return self.store
+        return self.__store
 
     def clear(self):
         def clear_op(x):
-            x.store = []
+            x.__store = []
         self.changed(clear_op)
 
     def set(self, pkg_list):
         def set_op(x, pl):
-            x.store = pl
+            x.__store = pl
         self.changed(set_op, pkg_list)
 
     def add(self, pkg):
         def add_op(x, p):
-            x.store.append(p)
+            x.__store.append(p)
         self.changed(add_op, pkg)
 
     def remove(self, pkg):
         def remove_op(x, i):
-            del x.store[i]
+            del x.__store[i]
         self.changed(remove_op, 0)
 
         
@@ -176,69 +238,55 @@ class FilteredPackageArray(PackageArray):
 
     def __init__(self, target=None, filter=None):
         PackageArray.__init__(self)
-        self.cache_dirty = 1
-        self.ch_id = 0
-        self.cache = []
-        self.filter = filter
+        self.__ch_id = 0
+        self.__cache = []
+        self.__filter = filter
         if target:
             self.set_target(target)
 
-    def fpa_changed_cb(self):
-        # We don't need to do anything else, since our cache will
-        # get filled the first time we try to look at it.
-        self.cache_dirty = 1
+    def sort(self, sort_fn):
+        self.__cache.sort(sort_fn)
 
+    def fpa_changed_cb(self):
+        self.__cache = []
+        if not self.__target:
+            return
+        if self.__filter:
+            for pkg in self.__target.get_all():
+                if self.__filter(pkg):
+                    self.__cache.append(pkg)
+        else:
+            self.__cache = self.__target.get_all()
 
     def set_target(self, target):
-        if self.ch_id:
-            self.target.disconnect(self.ch_id)
-        self.ch_id = 0
+        if self.__ch_id:
+            self.__target.disconnect(self.__ch_id)
+        self.__ch_id = 0
 
-        self.target = target
+        self.__target = target
 
         def target_changed_cb(target, us):
             self.changed(lambda x:x.fpa_changed_cb())            
             
-        if self.target:
-            self.ch_id = self.target.connect("changed",
-                                             target_changed_cb,
-                                             self)
-
-        self.cache_dirty = 1
+        if self.__target:
+            self.__ch_id = self.__target.connect_after("changed",
+                                                       target_changed_cb,
+                                                       self)
         self.changed(lambda x:x.fpa_changed_cb())
 
     def set_filter(self, filter):
-        self.filter = filter
-        self.cache_dirty = 1
+        self.__filter = filter
         self.changed(lambda x:x.fpa_changed_cb())
 
-    def fill_cache(self):
-        self.cache = []
-        if not (self.cache_dirty and self.target):
-            return
-        if self.filter:
-            for pkg in self.target.get_all():
-                if self.filter(pkg):
-                    self.cache.append(pkg)
-        else:
-            self.cache = self.target.get_all()
-        self.cache_dirty = 0
-
     def len(self):
-        if self.cache_dirty:
-            self.fill_cache()
-        return len(self.cache)
+        return len(self.__cache)
 
     def get(self, i):
-        if self.cache_dirty:
-            self.fill_cache()
-        assert 0 <= i and i < self.len()
-        return self.cache[i]
+        assert 0 <= i < self.len()
+        return self.__cache[i]
 
     def get_all(self):
-        if self.cache_dirty:
-            self.fill_cache()
-            return self.cache
+        return self.__cache
 
 
 ###############################################################################
@@ -250,8 +298,10 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         PackageArray.__init__(self)
         red_serverlistener.ServerListener.__init__(self)
 
-        self.packages = []
-        self.seqno = -1
+        self.__packages = []
+
+    def sort(self, sort_fn):
+        self.__packages.sort(sort_fn)
 
     # This is the method that derived classes need to implement
     def get_packages_from_daemon(self, server):
@@ -261,26 +311,22 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
         packages = self.get_packages_from_daemon(server)
 
-        if packages:
-            packages.sort(pkg_cmp)
-
-        # FIXME: we should only emit if array.packages != packages
         def set_pkg_cb(array, p):
-            array.packages = p
+            array.__packages = p
         self.changed(set_pkg_cb, packages)
 
     def sync_with_daemon(self):
         self.server_changed(rcd_util.get_server())
 
     def len(self):
-        return len(self.packages)
+        return len(self.__packages)
 
     def get(self, i):
-        assert 0 <= i and i < self.len()
-        return self.packages[i]
+        assert 0 <= i < self.len()
+        return self.__packages[i]
 
     def get_all(self):
-        return self.packages
+        return self.__packages
 
 
 ###############################################################################
@@ -324,11 +370,11 @@ class UpdatedPackages(PackagesFromDaemon):
 
     def get_packages_from_daemon(self, server):
 
-        ## Since we might want to add extra methods for accessing
-        ## more of the update data later, there is no harm in keeping
-        ## the whole list of updates around.
-        self.updates = server.rcd.packsys.get_updates()
-        packages = map(lambda x: x[1], self.updates)
+        packages = []
+        for old_pkg, pkg, history in server.rcd.packsys.get_updates():
+            pkg["old_package"] = old_pkg
+            pkg["history"] = history
+            packages.append(pkg)
 
         return packages
 
