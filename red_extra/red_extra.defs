@@ -116,16 +116,3 @@
    '("gint" "column_end")
    '("GtkCellRenderer*" "cell_renderer"))
 )
-
-(define-object Toolbar
-  (in-module "red_extra")
-  (parent "GtkToolbar")
-  (c-name "RedToolbar")
-  (gtype-id "RED_TYPE_TOOLBAR")
-)
-
-(define-function red_toolbar_new
-  (c-name "red_toolbar_new")
-  (is-constructor-of RedToolbar)
-  (return-type "RedToolbar *")
-)

@@ -28,9 +28,7 @@ xxx_red_extra_la_SOURCES =	\
 	redlistmodel.c		\
 	redlistmodel.h		\
 	redlistview.c		\
-	redlistview.h		\
-	redtoolbar.c		\
-	redtoolbar.h
+	redlistview.h
 
 CLEANFILES = red_extra.c
 EXTRA_DIST += red_extra.override
