@@ -380,6 +380,48 @@ def dialog_from_fault(f, parent=None):
 
 ###############################################################################
 
+def server_proxy_dialog(worker,
+                        callback=None,
+                        message=None,
+                        user_data=None):
+
+    if not message:
+        message = "Please wait while getting data."
+
+    dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
+                               gtk.BUTTONS_CANCEL, message)
+
+    def update_progressbar_cb(p):
+        p.pulse()
+        return 1
+
+    progressbar = gtk.ProgressBar()
+    tid = gtk.timeout_add(100, update_progressbar_cb, progressbar)
+    progressbar.show()
+    dialog.vbox.add(progressbar)
+
+    def destroy_cb(x, y):
+        gtk.timeout_remove(y)
+        return 1
+
+    dialog.connect("destroy", destroy_cb, tid)
+
+    def cancel_cb(dialog, response, worker):
+        worker.cancel()
+        dialog.destroy()
+
+    dialog.connect("response", cancel_cb, worker)
+    dialog.show()
+
+    worker.connect("ready", lambda x,y:y.destroy(), dialog)
+    if callback:
+        if user_data:
+            worker.connect("ready", callback, user_data)
+        else:
+            worker.connect("ready", callback)
+
+###############################################################################
+
 ###
 ### Format transaction status messages into readable text
 ###

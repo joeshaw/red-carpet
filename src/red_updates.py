@@ -19,6 +19,7 @@ import gtk
 import red_packagearray, red_packagebrowser
 import red_pendingops
 import red_component
+import rcd_util
 
 class SummaryComponent(red_component.Component):
 
@@ -64,12 +65,14 @@ class SummaryComponent(red_component.Component):
 
         view = browser.get_view()
         view.append_action_column()
-        view.append_importance_column()
+        col = view.append_importance_column()
         view.append_channel_column()
         view.append_name_column()
         view.append_version_column(column_title="New Version")
         view.append_current_version_column()
         view.set_model(self.array)
+
+        view.sort_by(col)
 
         browser.show()
 
@@ -83,7 +86,10 @@ class SummaryComponent(red_component.Component):
             self.array.thaw()
         else:
             self.array.freeze()
-        
+
+    def select_all_sensitive(self):
+        return rcd_util.check_server_permission("upgrade")
+
     def select_all(self):
         for pkg in self.array.get_all():
             red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)

@@ -89,10 +89,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.show()
 
         self.components = []
-        self.current_comp = None
-        self.comp_display_id = 0
-        self.comp_message_id = 0
-        self.comp_switch_id = 0
 
         self.accel_group = gtk.AccelGroup()
         self.add_accel_group(self.accel_group)
@@ -261,8 +257,16 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/File/sep3", is_separator=1)
 
+        ##
+        ## Activate
+        ##
+
+        def activate_sensitive_fn():
+            return rcd_util.check_server_permission("superuser")
+
         bar.add("/File/Activate...",
-                callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow))
+                callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow),
+                sensitive_fn=activate_sensitive_fn)
 
         bar.add("/File/Refresh Channel Data",
                 callback=refresh_cb)
@@ -278,12 +282,24 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
 
+
+        ##
+        ## Select all/none
+
+        def select_all_sensitive_cb():
+            comp = self.get_component()
+            if not comp:
+                return 0
+            return comp.select_all_sensitive()
+
         bar.add("/Edit/Select All",
                 callback=lambda x:self.select_all_cb(1),
-                accelerator="<Control>a")
+                accelerator="<Control>a",
+                sensitive_fn=select_all_sensitive_cb)
 
         bar.add("/Edit/Select None",
-                callback=lambda x:self.select_all_cb(0))
+                callback=lambda x:self.select_all_cb(0),
+                sensitive_fn=select_all_sensitive_cb)
 
         bar.add("/Edit/sep", is_separator=1)
 

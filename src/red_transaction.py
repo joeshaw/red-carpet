@@ -26,7 +26,7 @@ class TransactionArray(red_packagearray.PackageArray,
                        red_pendingops.PendingOpsListener):
 
     def __init__(self):
-        self.packages = red_pendingops.packages()
+        self.packages = red_pendingops.packages_with_actions()
         red_packagearray.PackageArray.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
 

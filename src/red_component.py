@@ -142,6 +142,9 @@ class Component(gobject.GObject):
     def changed_visibility(self, flag):
         pass
 
+    def select_all_sensitive(self):
+        return 0
+
     def select_all(self):
         pass
 

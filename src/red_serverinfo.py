@@ -102,7 +102,9 @@ def dump_xml(filename):
         f.close()
 
     worker = server.rcd.packsys.dump()
-    show_server_proxy_dialog(worker, dump_finished_cb, f)
+    rcd_util.server_proxy_dialog(worker,
+                                 callback=dump_finished_cb,
+                                 user_data=f)
 
 
 def select_and_dump(parent):
@@ -129,35 +131,3 @@ def select_and_dump(parent):
     filesel.show()
 
     parent.__filesel = filesel
-
-
-def show_server_proxy_dialog(worker, callback, user_data):
-    worker.connect("ready", callback, user_data)
-
-    dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
-                               gtk.BUTTONS_CANCEL,
-                               "Please wait while getting data.")
-
-    def update_progressbar_cb(p):
-        p.pulse()
-        return 1
-
-    progressbar = gtk.ProgressBar()
-    tid = gtk.timeout_add(100, update_progressbar_cb, progressbar)
-    progressbar.show()
-    dialog.vbox.add(progressbar)
-
-    def cb(x, y):
-        gtk.timeout_remove(y)
-        return 1
-
-    dialog.connect("destroy", cb, tid)
-
-    def cancel_cb(dialog, response, worker):
-        worker.cancel()
-        dialog.destroy()
-
-    dialog.connect("response", cancel_cb, worker)
-    dialog.show()
-
-    worker.connect("ready", lambda x,y:y.destroy(), dialog)

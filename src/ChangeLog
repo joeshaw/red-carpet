@@ -1,3 +1,33 @@
+2003-02-03  Tambet Ingo  <tambet@ximian.com>
+
+	* red_activation.py (ActivationWindow.activate): Don't block
+	UI, use call rpc call through serverproxy. Fixed email storing
+	to conf on successful activation.
+
+	* rcd_util.py (server_proxy_dialog): Moved it from
+	red_serverinfo.py to here.
+
+	* red_serverinfo.py (dump_finished_cb): Use dialog from new
+	location.
+
+	* red_transaction.py (TransactionArray.__init__): Show packages
+	with actions only.
+
+	* red_summary.py (SummaryComponent.select_all_sensitive): Select
+	all/none are active only if user has "upgrade" privilege.
+	(SummaryComponent.updates_changed_cb): Sort by importance by
+	default.
+
+	* red_component.py (Component.select_all_sensitive): New method
+	to determine whether select all/none should be sensitve.
+
+	* red_appwindow.py (AppWindow.__init__): Removed some old unused
+	variables.
+	(AppWindow.select_all_sensitive_cb): Callback to sensitize Select
+	All/None menu items.
+	(AppWindow.activate_sensitive_fn): Activate is available only for
+	superuser.
+
 2003-01-31  Jon Trowbridge  <trow@ximian.com>
 
 	* Removed extraneous imports from lots of files.

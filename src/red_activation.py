@@ -75,33 +75,35 @@ class ActivationWindow(gtk.Dialog):
             dialog.destroy()
             return
 
-        server = rcd_util.get_server()
-        err = None
+        server = rcd_util.get_server_proxy()
 
-        try:
-            success = server.rcd.system.activate(code, email)
-        except ximian_xmlrpclib.Fault, f:
-            if f.faultCode == rcfault.undefined_method:
-                err = "This daemon does not support activation."
+        def activate_finished_cb(worker, this):
+            if worker.is_cancelled():
+                return
+
+            success = worker.get_result()
+            if success:
+                msg_type = gtk.MESSAGE_INFO
+                msg_txt = "System successfully activated."
+
+                # Store email to config.
+                config = red_settings.get_config()
+                config.set("Activation/email", this.email_to_save)
+                config.sync()
             else:
-                err = "Unknown error."
+                msg_type = gtk.MESSAGE_ERROR
+                msg_txt = "System could not be activated:" \
+                          " Invalid activation code or email address."
 
-        if err or not success:
-            if not err:
-                err = "System could not be activated: Invalid activation code or email address."
-
-            dialog = gtk.MessageDialog(self, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                       gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, err)
+            dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                       msg_type, gtk.BUTTONS_OK, msg_txt)
             dialog.run()
+            gtk.threads_leave()
             dialog.destroy()
-        else:
-            config = red_settings.get_config()
-            config.set("Activation/email", email)
-            dialog = gtk.MessageDialog(self, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                       gtk.MESSAGE_INFO, gtk.BUTTONS_OK,
-                                       "System successfully activated.")
-            dialog.run()
-            dialog.destroy()
-            rcd_util.reset_channels()
+            this.destroy()
 
-        self.destroy()
+        worker = server.rcd.system.activate(code, email)
+        self.email_to_save = email
+        rcd_util.server_proxy_dialog(worker,
+                                     callback=activate_finished_cb,
+                                     user_data=self)
