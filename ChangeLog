@@ -1,5 +1,9 @@
 2004-11-04  James Willcox  <james@ximian.com>
 
+	* configure.in: Bump to 2.4.4
+
+2004-11-04  James Willcox  <james@ximian.com>
+
 	* configure.in:
 	* po/nb.po: s/no/nb/, since apparently this changed.
 	* Makefile.am: remove the bogus $(DESTDIR) usage for the kde
