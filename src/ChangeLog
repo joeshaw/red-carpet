@@ -1,3 +1,28 @@
+2003-01-28  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py: Add a current_user global.
+	(register_server): Reset the current_user
+	(reset_current_user, get_current_user): Added.  Gets the current
+	user making the calls, so the client doesn't have to muck around
+	with transport details.
+
+	* red_users.py (User.update): Set the new password on the server
+	object.
+	(PermissionsView.__init__.activated_cb): If we're editing our own
+	privileges and we're disabling the superuser privilege, warn the
+	user because this is bad bad bad.
+	(UsersWindow.build): Connect to the model's changed signal and
+	sensitize the change password table if the current user is editing
+	himself or has superuser privileges.  This allows users to edit
+	their own passwords.
+
+	* ximian_xmlrpclib.py (Transport.request): Reset our tried_once
+	attribute to 0 once we've made our auth request.  This way, if our
+	password requirement changes, we'll try again before giving up.
+	(ServerProxy.set_username, ServerProxy.set_password): Added.
+	These methods allow setting of the username and password outside
+	of the constructor.
+
 2003-01-28  Tambet Ingo  <tambet@ximian.com>
 
 	* red_users.py: Rewrote models to make things (hopefully)

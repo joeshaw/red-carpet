@@ -933,9 +933,7 @@ class Transport:
         self.send_user_agent(h)
         if self.__auth_data:
             self.send_auth(h)
-            
-        #if username and password:
-        #    self.send_auth(h, username, password)
+
         self.send_content(h, request_body)
 
         errcode, errmsg, headers = h.getreply()
@@ -945,8 +943,10 @@ class Transport:
             if auth and username and password:
                 if self.generate_auth(auth, handler, username, password):
                     self.tried_once = 1
-                    return self.request(host, handler, request_body, verbose,
-                                        username, password)
+                    r = self.request(host, handler, request_body, verbose,
+                                     username, password)
+                    self.tried_once = 0
+                    return r
 
         if errcode != 200:
             raise ProtocolError(
@@ -1207,6 +1207,12 @@ class ServerProxy:
 
     # note: to call a remote object with an non-standard name, use
     # result getattr(server, "strange-python-name")(args)
+
+    def set_username(self, username):
+        self.__username = username
+
+    def set_password(self, password):
+        self.__password = password
 
 # compatibility
 Server = ServerProxy

@@ -74,6 +74,8 @@ class User:
                                 self.pwd_get(),
                                 privs_str)
 
+        server.set_password(self.pwd_get())
+
     def delete(self):
         server = rcd_util.get_server()
         server.rcd.users.remove(self.name_get())
@@ -215,6 +217,24 @@ class PermissionsView(gtk.ScrolledWindow):
             privilege = model.get_list_item(path[0])
             user = users_data.get_active_user()
             if user:
+                current_user = rcd_util.get_current_user()
+                if user.name_get() == current_user and privilege == "superuser":
+                    # Warn the user about removing their own superuser priv
+                    dialog = gtk.MessageDialog(None,
+                                               0,
+                                               gtk.MESSAGE_WARNING,
+                                               gtk.BUTTONS_YES_NO,
+                                               "If you remove superuser "
+                                               "privileges from yourself, you "
+                                               "will be unable to re-add them."
+                                               "\n\n"
+                                               "Are you sure you want to do "
+                                               "this?")
+                    response = dialog.run()
+                    dialog.destroy()
+                    if response == gtk.RESPONSE_NO or response == gtk.RESPONSE_DELETE_EVENT:
+                        return
+
                 # We want opposite state
                 active = not renderer.get_active()
                 user.privilege_set(privilege, active)
@@ -376,11 +396,23 @@ class UsersWindow(gtk.Dialog,
         table = self.build_password_part()
         left_box.pack_start(table, 0)
         self.__password_part = table
-        table.set_sensitive(is_superuser)
+
+        def sensitize_password_part_cb(ud, t):
+            is_superuser = rcd_util.check_server_permission("superuser")
+
+            is_me = 0
+            user = ud.get_active_user()
+            if user and user.name_get() == rcd_util.get_current_user():
+                is_me = 1
+            t.set_sensitive(is_superuser or is_me)
+        
+        users_data.connect("active-changed", sensitize_password_part_cb, table)
+        sensitize_password_part_cb(users_data, table)
 
         frame = gtk.Frame("Privileges")
         view = PermissionsView(users_data)
         frame.add(view)
+        frame.set_sensitive(is_superuser)
         main_box.add(frame)
 
         main_box.show_all()

@@ -27,6 +27,7 @@ import socket
 server = None
 server_proxy = None
 server_permissions = {}
+current_user = None
 
 # Tries to connect to server and get a result
 # to ping command.
@@ -98,10 +99,11 @@ def connect_to_server(force_dialog=0):
         dialog.destroy()
 
 def register_server(srv):
-    global server, server_proxy
+    global server, server_proxy, current_user
     server = srv
     server_proxy = red_serverproxy.ServerProxy(server)
     reset_server_permissions()
+    reset_current_user()
 
 def get_server():
     global server
@@ -133,7 +135,19 @@ def check_server_permission(perm):
 
     return server_permissions.get(perm, 0)
     
-    
+def reset_current_user():
+    global current_user
+    current_user = None
+
+def get_current_user():
+    global current_user
+
+    if current_user:
+        return current_user
+
+    server = get_server()
+    current_user = server.rcd.users.get_current_user()
+    return current_user
 
 ###############################################################################
 
