@@ -89,7 +89,6 @@ class PackageArray(gtk.GenericTreeModel):
 
     def changed(self, operator, *args):
         self.pending_changes.append((operator, args))
-        print "emitting changed: %s" % self
         self.emit("changed")
 
     ## Fallback implementation
@@ -212,9 +211,7 @@ class FilteredPackageArray(PackageArray):
     def fpa_changed_cb(self):
         # We don't need to do anything else, since our cache will
         # get filled the first time we try to look at it.
-        print "fpa changed"
         self.cache_dirty = 1
-        self.changed(lambda x:1)
 
     def set_target(self, target):
         if self.ch_id:
@@ -280,7 +277,6 @@ class PackageQuery(PackageArray):
         self.set_query(query)
 
     def sync_with_daemon(self):
-        print "Checking for a sync..."
         current_seqno = self.server.rcd.packsys.world_sequence_number()
         if current_seqno != self.seqno:
 
@@ -294,10 +290,7 @@ class PackageQuery(PackageArray):
             # FIXME: should only emit if packages != self.packages
             def set_pkgs_op(s, p):
                 s.packages = p
-            print "Emitting changed: %s" % self
             self.changed(set_pkgs_op, packages)
-
-        return 1
 
     def set_query(self, query):
         self.query = query
