@@ -29,6 +29,27 @@ current_user = None
 def md5ify_password(pw):
     return md5.new(pw).hexdigest()
 
+
+def check_rcd_version(major, minor, micro):
+    req_major = 1
+    req_minor = 2
+    req_micro = 0
+
+    # Guard for NoneType
+    major = major or 0
+    minor = minor or 0
+    micro = micro or 0
+
+    req_version = (req_major * 100) + (req_minor * 10) + req_micro
+    version = (major * 100) + (minor * 10) + micro
+
+    if version < req_version:
+        return _("Detected Red Carpet Daemon version %d.%d.%d.n"
+                 "Version %d.%d.%d (or newer) is required.") % \
+                 (major, minor, micro, req_major, req_minor, req_micro)
+
+    return None
+
 # Tries to connect to server and get a result
 # to ping command.
 # Returns (server, None) on success or
@@ -55,6 +76,10 @@ def connect_real(url, username=None, password=None):
             err_msg = f
         except ximian_xmlrpclib.Fault, f:
             err_msg = f.faultString
+        else:
+            err_msg = check_rcd_version(ping.get("major_version"),
+                                        ping.get("minor_version"),
+                                        ping.get("micro_version"))
 
     if err_msg:
         return (None, err_msg)

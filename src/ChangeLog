@@ -1,5 +1,8 @@
 2003-02-22  Tambet Ingo  <tambet@ximian.com>
 
+	* rcd_util.py (check_rcd_version): Implement.
+	(connect_real): Make sure we have recent enough daemon.
+
 	* Makefile.am (red_carpetsupport_DATA): Added red_console.py
 
 	* red_users.py (User.__init__): Added new parameter "any_user". This
