@@ -76,7 +76,7 @@ class TickThread(threading.Thread):
         self.last_block = 0
         while red_running:
             now = time.time()
-            if now - last_tick > 0.5:
+            if now - last_tick > 0.25:
                 if self.last_block == 0:
                     print "**** UI is blocking!"
                     #os.kill(os.getpid(), signal.SIGTRAP)

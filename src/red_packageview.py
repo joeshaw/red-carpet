@@ -43,7 +43,7 @@ class PackageView(gtk.TreeView):
             model, iter = select.get_selected()
             if iter:
                 path = model.get_path(iter)
-                pkg = model.get(path[0])
+                pkg = model.get_list_item(path[0])
                 self.emit("selected", path[0], pkg)
 
         # This callback gets invoked before the selection has
@@ -56,14 +56,14 @@ class PackageView(gtk.TreeView):
                     model, iter = select.get_selected()
                     if iter:
                         path = model.get_path(iter)
-                        pkg = model.get(path[0])
+                        pkg = model.get_list_item(path[0])
                         view.emit("popup", ev, path[0], pkg)
                     return 0
                 gtk.idle_add(clicked_idle_cb, view, ev, select)
 
         def row_activated_cb(view, path, col):
             model = view.get_model()
-            pkg = model.get(path[0])
+            pkg = model.get_list_item(path[0])
             self.emit("activated", path[0], pkg)
 
         select.connect("changed",

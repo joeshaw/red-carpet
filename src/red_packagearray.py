@@ -250,6 +250,7 @@ class PackageArray(red_extra.ListModel,
         red_pendingops.PendingOpsListener.__init__(self)
         self.__pending_changes = []
         self.__sort_fn = sort_pkgs_by_name
+        self.__filter_fn = None
         self.__reverse_sort = 0
         self.__package_keys = {}
         self.__busy_flag = 0
@@ -264,34 +265,31 @@ class PackageArray(red_extra.ListModel,
     def sort(self, sort_fn):
         assert 0, "PackageArray.sort not defined"
 
-    ## You shouldn't need to ever call this.
-    def request_sort(self):
-        if self.__sort_fn:
-            self.sort(self.__sort_fn, self.__reverse_sort)
-
     def do_changed(self):
         operator, args = self.__pending_changes.pop()
         if operator:
             apply(operator, (self,) + args)
-            self.request_sort()
-            all = self.get_all()
-            self.set_list(all)
 
-            #traceback.print_stack(sys.exc_info()[2])
-            #print "len=%d" % len(all)
-            #print "- " * 38
+            self.set_list(self.get_all())
+            self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
+            self.set_filter_magic(self.__filter_fn)
 
             self.__package_keys = {}
-            i = 0
-            for p in all:
+            for i in xrange(self.length()):
+                p = self.get_list_item(i)
                 key = rcd_util.get_package_key(p)
                 indices = self.__package_keys.setdefault(key, [])
                 indices.append(i)
-                i += 1
 
     def changed(self, operator, *args):
         self.__pending_changes.append((operator, args))
         self.emit("changed")
+
+    def changed_filter_fn(self, filter_fn):
+        def set_filter_fn(array, fn):
+            array.__filter_fn = fn
+        if self.__filter_fn != filter_fn:
+            self.changed(set_filter_fn, filter_fn)
 
     def changed_sort_fn(self, sort_fn, reverse=0):
         def set_sort_fn(array, fn, rev):
@@ -417,11 +415,6 @@ class PackageStore(PackageArray):
         PackageArray.__init__(self)
         self.__store = []
 
-    def sort(self, sort_fn, reverse):
-        self.__store.sort(sort_fn)
-        if reverse:
-            self._store.reverse()
-
     def get_all(self):
         return self.__store
 
@@ -459,11 +452,6 @@ class FilteredPackageArray(PackageArray):
         self.__target = None
         if target:
             self.set_target(target)
-
-    def sort(self, sort_fn, reverse):
-        self.__cache.sort(sort_fn)
-        if reverse:
-            self.__cache.reverse()
 
     def fpa_changed_cb(self):
         self.__cache = []
@@ -518,11 +506,6 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
         self.__packages = []
         self.pending_refresh = 0
-
-    def sort(self, sort_fn, reverse):
-        self.__packages.sort(sort_fn)
-        if reverse:
-            self.__packages.reverse()
 
 
     # This is the method that derived classes need to implement
