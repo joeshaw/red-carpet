@@ -28,6 +28,7 @@ class Component(gobject.GObject):
         self.__busy_flag = 0
         self.__parent = None
         self.__current_pkgs = []
+        self.__connected_view = None
 
 
     # Forces the component to emit a 'display' signal
@@ -126,6 +127,7 @@ class Component(gobject.GObject):
         def proxy_selected_cb(view, pkgs, comp):
             comp.packages_selected(pkgs)
         view.connect("selected", proxy_selected_cb, self)
+        self.__connected_view = view
 
     # Proxy busy and message signals from arrays.
 
@@ -180,7 +182,11 @@ class Component(gobject.GObject):
         pass
 
     def activated(self):
-        pass
+        if self.__connected_view:
+            # Always autoresize our connected views, since the treeview is
+            # stupid and doesn't work properly if the widget is hidden.
+            gtk.idle_add(lambda v: v.columns_autosize(),
+                         self.__connected_view)
 
     def deactivated(self):
         pass

@@ -98,7 +98,7 @@ class SearchComponent(red_component.Component):
 
         view.append_action_column()
         view.append_status_column()
-        view.append_channel_column()
+        view.append_channel_column(optionally_show_channel_name=1)
         view.append_locked_column()
         view.append_name_column()
         view.append_version_column()
@@ -129,3 +129,4 @@ class SearchComponent(red_component.Component):
     def activated(self):
         if self.__sbox:
             self.__sbox.try_to_grab_focus()
+        red_component.Component.activated(self)

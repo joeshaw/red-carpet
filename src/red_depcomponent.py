@@ -404,6 +404,7 @@ class DepComponent(gobject.GObject, red_component.Component):
     def activated(self):
         sidebar = self.parent().sidebar
         sidebar.set_sensitive(0)
+        red_component.Component.activated(self)
 
     def deactivated(self):
         sidebar = self.parent().sidebar

@@ -406,6 +406,7 @@ class HistoryComponent(red_component.Component):
             if update and self.filter:
                 parent.history_changed = None
                 self.filter.updated()
+        red_component.Component.activated(self)
 
 class PackageHistoryFilter(HistoryFilter):
     def __init__(self, pkg_name):

@@ -1,7 +1,28 @@
 2003-03-24  Jon Trowbridge  <trow@ximian.com>
 
+	* red_history.py (HistoryComponent.activated): Chain a call to
+	the base class 'activated' method.
+
+	* red_depcomponent.py (DepComponent.deactivated): Chain a call to
+	the base class 'activated' method.
+
+	* red_my_computer.py (MyComputerComponent.search_cb): Respect the
+	state of show-channel-name.
+
+	* red_search.py (SearchComponent.build): Respect the state of
+	show-channel-name.
+	(SearchComponent.activated): Chain a call to the base class
+	'activated' method.
+
+	* red_component.py (Component.__init__): Initialized
+	__connected_view to None.
+	(Component.connect_view): Store our connected view.
+	(Component.activated): Schedule a columns_autosize() for our
+	connected view.
+
 	* red_appwindow.py (AppWindow.assemble_menubar): Mark a bunch of
 	menu stuff for translation.  Add a View->Channel Names option.
+	(Fixes #38833)
 
 	* red_summary.py (SummaryComponent.updates_changed_cb): When
 	creating the channel column, make it pay attention to the

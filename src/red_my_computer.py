@@ -63,7 +63,7 @@ class MyComputerComponent(red_component.Component):
         self.view = view
 
         view.append_action_column()
-        view.append_channel_column()
+        view.append_channel_column(optionally_show_channel_name=1)
         view.append_locked_column()
         view.append_name_column()
         view.append_version_column()
