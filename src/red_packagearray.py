@@ -620,19 +620,39 @@ class UpdatedPackages(PackagesFromDaemon):
 
     def __init__(self):
         PackagesFromDaemon.__init__(self)
+        self.__worker = None
+        self.__worker_handler_id = 0
         self.refresh()
 
     def get_packages_from_daemon(self):
-        packages = []
-        server = rcd_util.get_server()
-        t1 = time.time()
-        for old_pkg, pkg, history in server.rcd.packsys.get_updates():
-            pkg["__old_package"] = old_pkg
-            pkg["__history"] = history
-            packages.append(pkg)
-        t2 = time.time()
-        print "get_updates took %.2fs" % (t2-t1)
-        self.set_packages(packages)
+
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_id = 0
+            self.__worker.cancel()
+
+        def query_finished_cb(worker, array):
+            if not worker.is_cancelled():
+                updates = worker.get_result()
+                packages = []
+                for old_pkg, pkg, history in updates:
+                    pkg["__old_package"] = old_pkg
+                    pkg["__history"] = history
+                    packages.append(pkg)
+                array.set_packages(packages)
+            array.message_pop()
+            array.busy(0)
+
+        self.busy(1)
+        self.message_push("Looking for updates...")
+        self.set_packages([])
+
+        server = rcd_util.get_server_proxy()
+        self.__worker = server.rcd.packsys.get_updates()
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         query_finished_cb,
+                                                         self)
 
     # The list of updates needs to refresh when the list of available
     # channels or subscriptions change.

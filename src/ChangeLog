@@ -1,5 +1,23 @@
 2003-02-18  Jon Trowbridge  <trow@ximian.com>
 
+	* red_pendingview.py (PendingView.set_label): Break up long
+	messages to span multiple lines.
+	(PollPending_Transact.finish): Call the callback when we are
+	partially finished, not just at the end.  This gives us better
+	interactive performance.
+	(PendingView_Transaction.poll_worker): Since we can't cancel a
+	transaction after the download is complete, desensitize the cancel
+	button from the start if there is nothing to download.
+	(PendingView_Transaction.update_pending_cb): Do the right thing
+	if we get called with partial results.
+
+	* red_depcomponent.py: Make the throbber throb during the
+	transaction.
+
+	* red_packagearray.py (PackagesFromQuery): Use ServerProxies.
+
+	* red_mount.py: Use ServerProxies.
+
 	* red_pendingview.py: A bunch of changes to
 	PendingView_Transaction to make it use ServerProxies.
 

@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import threading, gobject, gtk
+import string, threading, gobject, gtk
 import rcd_util
 import red_pendingops, red_serverlistener
 
@@ -115,7 +115,12 @@ class PendingView(gtk.Window):
         self.position_window() # keep window centered
 
     def set_label(self, msg):
-        self.step_label.set_text(msg or "")
+        if msg:
+            lines = rcd_util.linebreak(msg, 40)
+            msg = string.join(lines, "\n")
+        else:
+            msg = ""
+        self.step_label.set_text(msg)
         self.position_window() # keep window centered
 
     def start_polling(self):
@@ -380,8 +385,6 @@ class PollPending_Transact:
         self.finish()
 
     def finish(self):
-        if self.__count < 2:
-            return
         self.__callback(self.__transact_pending,
                         self.__step_pending,
                         *self.__cb_args)
@@ -436,7 +439,6 @@ class PendingView_Transaction(PendingView):
             self.set_title(title)
 
     def cancelled(self):
-
         if self.download_id == -1 or self.download_complete:
             print "Can't abort transaction"
             return
@@ -458,7 +460,7 @@ class PendingView_Transaction(PendingView):
             return 0
 
         # We can't cancel once the transaction begins
-        if self.download_complete:
+        if self.download_id == -1 or self.download_complete:
             self.disable_cancellation()
 
         if self.download_id != -1 and not self.download_complete:
@@ -518,23 +520,26 @@ class PendingView_Transaction(PendingView):
             return 1
 
         self.set_title("Processing Transaction")
+        self.set_label("Starting Transaction")
 
         def update_pending_cb(pending, step_pending, pv):
-            pv.__working_query = 0
-            if pending["messages"]:
+            if pending and step_pending:
+                pv.__working_query = 0
+                
+            if pending and pending["messages"]:
                 msg = rcd_util.transaction_status(pending["messages"][-1])
                 pv.set_label(msg)
-            if step_pending["status"] == "running":
+            if step_pending and step_pending["status"] == "running":
                 pv.update_from_pending(step_pending, show_rate=0)
             else:
                 pv.update_pulse()
 
-            if pending["status"] == "finished":
+            if pending and pending["status"] == "finished":
                 red_pendingops.clear_packages_with_actions()
                 pv.transaction_finished(msg="The update has " \
                                         "completed successfully")
                 pv.__finished = 1
-            elif pending["status"] == "failed":
+            elif pending and pending["status"] == "failed":
                 msg = "Transaction failed: %s" % pending["error_msg"]
                 pv.transaction_finished(msg)
                 self.__finished = 1

@@ -70,6 +70,7 @@ class DepComponent(red_component.Component):
 
 
     def begin_transaction(self):
+        self.busy(1)
         install_packages = self.get_install_packages()
         remove_packages = self.get_remove_packages()
         
@@ -81,6 +82,7 @@ class DepComponent(red_component.Component):
                                                           red_main.red_name,
                                                           red_main.red_version)
         except ximian_xmlrpclib.Fault, f:
+            self.busy(0)
             rcd_util.dialog_from_fault(f)
             return
 
@@ -90,7 +92,10 @@ class DepComponent(red_component.Component):
                                                             parent=self.parent())
         trans_win.show()
 
-        trans_win.connect("finished", lambda x,y:y.pop(), self)
+        def finished_cb(win, comp):
+            comp.busy(0)
+            comp.pop()
+        trans_win.connect("finished", finished_cb, self)
 
     def build(self):
 

@@ -24,8 +24,6 @@ import red_dirselection
 import red_thrashingtreeview
 
 def mount_channel(path, name=None):
-    server = rcd_util.get_server()
-
     path_base = os.path.basename(path)
     alias = string.lower(path_base)
 
@@ -40,25 +38,38 @@ def mount_channel(path, name=None):
     if not name:
         name = path
 
-    cid = server.rcd.packsys.mount_directory(path, name, alias)
+    server = rcd_util.get_server_proxy()
+    mount_th = server.rcd.packsys.mount_directory(path, name, alias)
 
-    if not cid:
-        dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
-                                   gtk.BUTTONS_OK,
-                                   "Unable to mount %s as a channel" % path)
-        dialog.run()
-        dialog.destroy()
+    def mount_cb(th, path):
+        cid = th.get_result()
+        if not cid:
+            msg = "Unable to mount %s as a channel" % path
+            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
+                                       gtk.BUTTONS_OK, msg)
+            dialog.run()
+            dialog.destroy()
+
+    mount_th.connect("ready", mount_cb, path)
+
 
 def unmount_channel(cid):
-    server = rcd_util.get_server()
 
-    success = server.rcd.packsys.unmount_directory(cid)
-    if not success:
-        dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
-                                   gtk.BUTTONS_OK,
-                                   "Unable to unmount %s" % rcd_util.get_channel_name(cid))
-        dialog.run()
-        dialog.destroy()
+    server = rcd_util.get_server_proxy()
+    unmount_th = server.rcd.packsys.unmount_directory(cid)
+
+    def unmount_cb(th, name):
+        success = th.get_result()
+        if not success:
+            msg = "Unable to unmount %s" % name
+            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
+                                       gtk.BUTTONS_OK, msg)
+            dialog.run()
+            dialog.destroy()
+
+    unmount_th.connect("ready", unmount_cb,
+                       rcd_util.get_channel_name(cid))
+
 
 def has_mounted_channels():
     return len([x["id"] for x in rcd_util.get_all_channels()
