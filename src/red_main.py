@@ -28,6 +28,9 @@ import red_search
 import red_transaction
 import red_subscriptions
 
+red_name = "Red Carpet 2: Electric Boogaloo"
+red_version = "0.0.1"
+
 def connect_to_server():
     ## Make contact with the daemon.
     ## We assume local access only
@@ -61,7 +64,7 @@ def main(version):
     server = connect_to_server()
 
     app = red_appwindow.AppWindow(server)
-    app.set_title("Red Carpet 2: Electric Boogaloo")
+    app.set_title(red_name)
     app.show_all()
 
     app.register_component(red_summary.SummaryComponent())

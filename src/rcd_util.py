@@ -205,11 +205,25 @@ def linebreak(in_str, width):
 
     return lines
 
-        
+###############################################################################
 
+###
+### Format transaction status messages into readable text
+###
 
+def transaction_status(message):
+    messages = {"verify"       : "Verifying",
+                "verify-undef" : "Unable to verify package signature for",
+                "verify-nosig" : "There is no package signature for",
+                "prepare"      : "Preparing Transaction",
+                "install"      : "Installing",
+                "remove"       : "Removing",
+                "configure"    : "Configuring"}
     
-    
+    status = string.split(message, ":", 1)
 
-
-
+    m = messages[status[0]]
+    if len(status) > 1:
+        return m + " " + status[1]
+    else:
+        return m

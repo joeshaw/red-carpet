@@ -21,6 +21,8 @@ import rcd_util
 import red_packagearray, red_packageview
 import red_pendingops
 import red_component
+import red_depwindow
+import red_main
 
 class TransactionArray(red_packagearray.PackageArray,
                        red_pendingops.PendingOpsListener):
@@ -61,7 +63,9 @@ class TransactionBar(gtk.HBox,
         self.label.show()
 
         def clicked_cb(x):
-            red_pendingops.resolve_dependencies()
+            depwindow = red_depwindow.DepWindow()
+            depwindow.show()
+            
         self.button.connect("clicked", clicked_cb)
 
     def update_label(self):
@@ -176,5 +180,130 @@ def ok_to_quit(main_app_window):
     dialog.destroy()
 
     return retval
-    
-    
+
+#########################################################################
+
+timeout_len = 400
+
+class TransactionWindow(gtk.Window):
+
+    def __init__(self, download_id, transact_id, step_id):
+
+        gtk.Window.__init__(self)
+
+        self.download_id = download_id
+        self.transact_id = transact_id
+        self.step_id = step_id
+
+        self.download_complete = 0
+
+        self.set_title("%s - Updating System" % red_main.red_name)
+        self.set_default_size(400, 250)
+        self.set_modal(1)
+
+        self.mainbox = gtk.VBox(0, 10)
+        self.add(self.mainbox)
+
+        label = gtk.Label("")
+        label.set_markup("<b><big>Updating System</big></b>")
+        label.set_alignment(0, 0.5)
+        self.mainbox.pack_start(label, 0, 0, 0)
+
+        self.step_label = gtk.Label("")
+        self.step_label.set_alignment(0, 0.5)
+        self.mainbox.pack_start(self.step_label, 0, 0, 0)
+
+        self.progress_bar = gtk.ProgressBar()
+        self.mainbox.pack_start(self.progress_bar, 0, 0, 0)
+
+        self.progress_text = gtk.Label("")
+        self.progress_text.set_alignment(0, 0.5)
+        self.mainbox.pack_start(self.progress_text, 0, 0, 0)
+
+        bbox = gtk.HButtonBox()
+        bbox.set_layout(gtk.BUTTONBOX_END)
+        self.mainbox.pack_end(bbox, 0, 0, 0)
+
+        self.button = gtk.Button(gtk.STOCK_CANCEL)
+        self.button.set_use_stock(1)
+        bbox.pack_start(self.button, 0, 0, 0)
+
+        self.show_all()
+
+        def poll_cb():
+            return self.poll_transaction()
+
+        self.poll_id = gtk.timeout_add(timeout_len, poll_cb)
+
+    def poll_transaction(self):
+
+        print "Polling..."
+
+        if self.download_id != -1 and not self.download_complete:
+            self.update_download()
+        elif self.transact_id == -1:
+            # We're in "download only" mode.
+            if self.download_complete:
+                return 0
+            elif self.download_id == -1:
+                # Everything we wanted to download is already cached on the
+                # system.
+                #
+                # FIXME: Do something intelligent here?
+                return 0
+        else:
+            return self.update_transaction()
+            
+        return 1
+
+    def update_progress_from_pending(self, pending):
+        if pending.has_key("completed_size") and pending.has_key("total_size"):
+            fraction = float(pending["completed_size"]) / float(pending["total_size"])
+            self.progress_bar.set_fraction(fraction)
+
+            cs = rcd_util.byte_size_to_string(pending["completed_size"])
+            ts = rcd_util.byte_size_to_string(pending["total_size"])
+            msg = "(%s/%s)" % (cs, ts)
+        else:
+            self.progress_bar.pulse()
+            msg = ""
+
+        self.progress_bar.set_text(msg)
+                                              
+
+    def update_download(self):
+        serv = rcd_util.get_server()
+        pending = serv.rcd.system.poll_pending(self.download_id)
+
+        self.step_label.set_text("Download packages")
+
+        self.update_progress_from_pending(pending)
+
+        if pending["status"] == "finished":
+            self.download_complete = 1
+        elif pending["status"] == "failed":
+            # FIXME
+            self.step_label.set_text("Download failed.  Nurr.")
+            self.download_complete = 1
+        
+    def update_transaction(self):
+        serv = rcd_util.get_server()
+        pending = serv.rcd.system.poll_pending(self.transact_id)
+        step_pending = serv.rcd.system.poll_pending(self.step_id)
+
+        self.step_label.set_text("Processing Transaction")
+        
+        self.progress_text.set_markup("<i>%s</i>" % rcd_util.transaction_status(pending["messages"][-1]))
+
+        if step_pending["status"] == "running":
+            self.update_progress_from_pending(step_pending)
+
+        if pending["status"] == "finished":
+            return 0
+        elif pending["status"] == "failed":
+            # FIXME
+            self.step_label.set_text(string.join(rcd_util.linebreak("Transaction failed: %s" % pending["error_msg"], 80), "\n"))
+            return 0
+        else:
+            return 1
+                

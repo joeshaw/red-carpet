@@ -17,7 +17,6 @@
 
 import sys, weakref
 import rcd_util
-import red_depwindow
 
 package_data = {}
 listeners = {}
@@ -203,10 +202,11 @@ def resolve_dependencies():
         elif action == TO_BE_REMOVED:
             remove_packages.append(dict["__package"])
 
-    if install_packages or remove_packages:
-        depwindow = red_depwindow.DepWindow(install_packages, remove_packages)
-        depwindow.show_all()
+    serv = rcd_util.get_server()
+    dep_install, dep_remove, dep_info = \
+                 serv.rcd.packsys.resolve_dependencies(install_packages,
+                                                       remove_packages,
+                                                       [])
 
-    
-
+    return install_packages, remove_packages, dep_install, dep_remove
 
