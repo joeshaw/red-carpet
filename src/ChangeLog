@@ -1,3 +1,14 @@
+2003-04-24  Joe Shaw  <joe@ximian.com>
+
+	* red_about.py (contributors): Add Jakub to the list.
+	(About): Try to make this a little less ugly.
+
+	* red_depcomponent.py (check_licenses): Check to see if we have to
+	agree to any licenses and pop up a dialog with the text if we do.
+	If the user agrees, proceed with the transaction.
+	(build_normal_page): When "Continue" is clicked check licenses,
+	don't run the transaction.
+
 2003-04-24  Tambet Ingo  <tambet@ximian.com>
 
 	* red_pendingview.py (PendingView_Transaction.update_transaction):

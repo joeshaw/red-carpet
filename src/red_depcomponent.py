@@ -18,6 +18,7 @@
 import string
 import gobject
 import gtk
+import pango
 
 import rcd_util
 import ximian_xmlrpclib
@@ -137,6 +138,74 @@ class DepComponent(gobject.GObject, red_component.Component):
     def get_remove_packages(self):
         return self.remove_packages + filter_deps(self.dep_remove)
 
+
+    def check_licenses(self):
+        packages = self.get_install_packages()
+        
+        try:
+            licenses = self.server.rcd.license.lookup_from_packages(packages)
+        except ximian_xmlrpclib.Fault,f :
+            if f.faultCode == rcd_util.fault.undefined_method:
+                licenses = []
+            else:
+                raise
+
+        if licenses:
+            dialog = gtk.MessageDialog(self.parent(), 0,
+                                       gtk.MESSAGE_INFO,
+                                       gtk.BUTTONS_NONE,
+                                       _("You must agree to the licenses "
+                                         "covering this software before "
+                                         "installing it."))
+
+            license_texts = string.join(licenses, "\n\n")
+
+            text = gtk.TextView()
+            text.set_editable(0)
+            text.set_cursor_visible(0)
+
+            buf = text.get_buffer()
+            buf.set_text(license_texts)
+
+            context = text.get_pango_context()
+            font_desc = context.get_font_description()
+            font_desc.set_family("monospace")
+
+            # Try to estimate the size of the window we want.
+            # "W" being the widest glyph.
+            s = ("W"*82 + "\n")*20
+            layout = pango.Layout(context)
+            layout.set_font_description(font_desc)
+            layout.set_text(s)
+            width, height = layout.get_pixel_size()
+            text.set_size_request(width, height)
+
+            # Create a tag with our monospace font
+            tag = buf.create_tag()
+            tag.set_property("font-desc", font_desc)
+            buf.apply_tag(tag, buf.get_start_iter(), buf.get_end_iter())
+
+            # Get a mark to the start of the buffer and then scroll there
+            iter = buf.get_start_iter()
+            mark = buf.create_mark("start", iter, left_gravity=1)
+            text.scroll_to_mark(mark, 0.0)
+
+            sw = gtk.ScrolledWindow()
+            sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            sw.add(text)
+            sw.show_all()
+            dialog.vbox.pack_start(sw, expand=1, fill=1)
+
+            dialog.add_button(_("I Agree"), gtk.RESPONSE_OK)
+            dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+
+            response = dialog.run()
+            dialog.destroy()
+            if response != gtk.RESPONSE_OK:
+                self.pop()
+                return
+
+        self.begin_transaction()
 
     def begin_transaction(self):
         self.busy(1)
@@ -341,7 +410,7 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         page.show_all()
 
-        cont.connect("clicked", lambda x:self.begin_transaction())
+        cont.connect("clicked", lambda x:self.check_licenses())
         cancel.connect("clicked", lambda x:self.pop())
 
 

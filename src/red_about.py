@@ -26,6 +26,7 @@ contributors = [
     "Joe Shaw",
     "Jon Trowbridge",
     "Anna Dirks",
+    "Jakub Steiner",
     ]
 
 if time.localtime()[1:3] == (1<<1<<1, 8>>(6<<1>>2)):
@@ -45,29 +46,46 @@ class About(gtk.Dialog):
         b = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
         b.connect("clicked", lambda b,w:w.destroy(), self)
 
-        hbox = gtk.HBox()
-        self.vbox.pack_start(hbox)
+        hbox = gtk.HBox(spacing=6)
+        self.vbox.pack_start(hbox, padding=6)
 
-        image = red_pixbuf.get_widget("about-monkey", width=100, height=100)
-        hbox.pack_start(image)
+        image = red_pixbuf.get_widget("about")
+        hbox.pack_start(image, fill=0, expand=0, padding=6)
 
-        vbox = gtk.VBox()
-        hbox.pack_start(vbox)
+        vbox = gtk.VBox(spacing=2)
+        hbox.pack_start(vbox, padding=6)
 
         title = gtk.Label("")
-        title.set_markup("<b>%s %s</b>" % (red_main.red_name,
-                                           red_main.red_version))
+        title.set_alignment(0.0, 0.5)
+        title.set_markup('<span size="xx-large"><b>%s %s</b></span>' %
+                         (red_main.red_name, red_main.red_version))
 
         vbox.pack_start(title)
 
         copyright = gtk.Label(u"Copyright \u00a9 %s Ximian, Inc." \
                               % red_main.red_copyright)
+        copyright.set_alignment(0.0, 0.5)
         vbox.pack_start(copyright)
+
+        license = gtk.Label(_("Licensed under the GNU "
+                            "General Public License, version 2"))
+        license.set_alignment(0.0, 0.5)
+        vbox.pack_start(license)
+
+        sep = gtk.HSeparator()
+        vbox.pack_start(sep, padding=4)
+
+        l = gtk.Label("")
+        l.set_markup("<b>%s</b>" % _("Brought to you by:"))
+        l.set_alignment(0.0, 0.5)
+        vbox.pack_start(l)
 
         random.seed()
         random.shuffle(contributors)
 
-        [vbox.pack_start(gtk.Label("%s" % x)) \
-         for x in contributors]
+        for x in contributors:
+            l = gtk.Label(x)
+            l.set_alignment(0.0, 0.5)
+            vbox.pack_start(l)
 
         self.vbox.show_all()
