@@ -10,7 +10,8 @@ endif
 SUBDIRS = $(UNMARSHALLER_DIR)	\
 	art			\
 	red_extra		\
-	src
+	src			\
+	po
 
 #man_MANS = red-carpet.1
 #EXTRA_DIST = red-carpet.1

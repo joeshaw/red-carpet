@@ -95,6 +95,11 @@ dnl **************************************************************************
 
 AC_SUBST(PYTHON)
 
+GETTEXT_PACKAGE=red-carpet
+AC_SUBST(GETTEXT_PACKAGE)
+ALL_LINGUAS="es"
+AM_GLIB_GNU_GETTEXT
+
 DDIR=`echo $datadir | sed -e "s,"'${prefix}'",$prefix,"`
 AC_SUBST(DDIR)
 LDIR=`echo $libdir | sed -e "s,"'${exec_prefix}'",$prefix,"`
@@ -119,6 +124,7 @@ fi
 
 AC_OUTPUT([
 Makefile
+po/Makefile.in
 art/Makefile
 ximian_unmarshaller/Makefile
 red_extra/Makefile

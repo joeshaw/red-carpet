@@ -1,12 +1,18 @@
+2003-03-06  Joe Shaw  <joe@ximian.com>
+
+	* Makefile.am: Add po/ directory to SUBDIRS.
+
+	* configure.in: Add gettext fu, add po/ to the output dir.
+
 2003-03-05  Peter Bowen  <pzb@ximian.com>
 
-    * red-carpet.console.in: contrary to the userhelper man page, it is 'true' 
-    not 'yes'
+	* red-carpet.console.in: contrary to the userhelper man page, it
+	is 'true'  not 'yes'
 
 2003-03-04  Jose Mercado    <jose@ximian.com>
 
-    * src/rcd_util.py (StartDaemon): Use /etc/init.d instead of
-    /sbin/service.
+	* src/rcd_util.py (StartDaemon): Use /etc/init.d instead of
+	/sbin/service.
 
 2003-02-25  Joe Shaw  <joe@ximian.com>
 
