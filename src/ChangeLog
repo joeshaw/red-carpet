@@ -1,3 +1,23 @@
+2003-03-27  Joe Shaw  <joe@ximian.com>
+
+	* red_packageview.py (PackageView.do_popup): If there's no valid
+	path at the mouse position, don't try to display a popup.  (Fixes
+	#40441)
+
+	* red_prefs.py (flush_cache_cb): Add a confirmation dialog before
+	flushing the cache.  (Fixes #40359)
+
+	* rcd_util.py (connect_to_server): Take an optional parent
+	argument and pass it off to red_connection.connect().
+
+	* red_appwindow.py: When File -> Connect is clicked, pass in the
+	appwindow as the parent.  (Fixes #40365)
+
+	* red_connection.py (get_credentials): Take a parent argument and
+	set the dialog transient for that parent if it's set.
+	(connection): Take an optional parent argument and pass it to
+	get_credentials().
+
 2003-03-27  Tambet Ingo  <tambet@ximian.com>
 
 	* red_sidebar.py (ShortcutBar.construct): Connect "toggled" signal,

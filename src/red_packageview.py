@@ -203,6 +203,10 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         pkgs = self.get_selected_packages()
 
+        path_info = self.get_path_at_pos(ev_x, ev_y)
+        if path_info is None:
+            return
+
         path, column, cell_x, cell_y = self.get_path_at_pos(ev_x, ev_y)
         model = self.get_model()
         clicked_pkg = model.get_list_item(path[0])
