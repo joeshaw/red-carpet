@@ -29,17 +29,14 @@ class SummaryComponent(red_component.Component):
     def name(self):
         return _("Updates")
 
-    def long_name(self):
-        return _("Update Summary")
-
     def menu_name(self):
-        return _("_Update Summary")
+        return _("_Updates")
 
     def pixbuf(self):
         return "updates"
 
     def accelerator(self):
-        return "<Control>s"
+        return "<Control>U"
 
     def show_in_shortcuts(self):
         return 1
@@ -63,16 +60,6 @@ class SummaryComponent(red_component.Component):
         self.array.connect_after("changed", updates_changed_cb, self)
 
         page = gtk.VBox(0, 6)
-
-        hbox = gtk.HBox(0, 6)
-
-        label = gtk.Label("")
-        label.set_alignment(0, 0.5)
-        label.set_markup("<b>" + self.long_name() + "</b>")
-        hbox.pack_start(label)
-
-        hbox.show_all()
-        page.pack_start(hbox, 0, 0)
 
         ### Main
 

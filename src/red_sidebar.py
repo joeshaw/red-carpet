@@ -58,7 +58,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
     def build(self):
         frame = gtk.Frame("")
         l = frame.get_label_widget()
-        l.set_markup("<b>%s</b>" % _("Installations and Removals"))
+        l.set_markup("<b>%s</b>" % _("Pending Actions"))
         self.pack_start(frame, 1, 1)
 
         frame_content = gtk.VBox(0, 6)

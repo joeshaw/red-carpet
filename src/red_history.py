@@ -350,11 +350,6 @@ class HistoryComponent(red_component.Component):
     def build(self):
         page = gtk.VBox(0, 6)
 
-        label = gtk.Label("")
-        label.set_alignment(0, 0.5)
-        label.set_markup("<b>" + self.long_name() + "</b>")
-        page.pack_start(label, 0, 0)
-
         hbox = gtk.HBox(0, 6)
         page.pack_start(hbox, 0, 0)
 

@@ -224,7 +224,9 @@ def get_package_channel_icon(pkg, width=0, height=0):
     elif pkg.has_key("channel_guess"):
         return get_channel_icon(pkg["channel_guess"], width, height)
     else:
-        return None
+        # Don't return None here, because we want an empty image to be
+        # scaled to the correct height.
+        return red_pixbuf.get_pixbuf("empty", width=width, height=height)
 
 def get_package_EVR(pkg):
     epoch_str = ""

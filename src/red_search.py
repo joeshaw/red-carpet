@@ -34,9 +34,6 @@ class SearchComponent(red_component.Component):
     def name(self):
         return _("Search")
 
-    def long_name(self):
-        return _("Search Packages")
-
     def menu_name(self):
         return _("S_earch Packages")
 
@@ -68,7 +65,7 @@ class SearchComponent(red_component.Component):
         self.array = red_packagearray.PackagesFromQuery()
         self.connect_array(self.array)
 
-        self.__sbox = red_searchbox.SearchBox(_("Search"))
+        self.__sbox = red_searchbox.SearchBox()
 
         def search_cb(sbox, query, filter):
             self.array.set_query(query,

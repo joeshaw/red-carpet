@@ -25,19 +25,16 @@ from red_gettext import _
 class MyComputerComponent(red_component.Component):
 
     def name(self):
-        return _("My Computer")
-
-    def long_name(self):
-        return _("My Computer")
+        return _("System Packages")
 
     def menu_name(self):
-        return _("_My Computer")
+        return _("S_ystem Packages")
 
     def pixbuf(self):
         return "my-computer"
 
     def accelerator(self):
-        return "<Control>m"
+        return "<Control>s"
 
     def show_in_shortcuts(self):
         return 1
@@ -46,8 +43,7 @@ class MyComputerComponent(red_component.Component):
         self.array = red_packagearray.PackagesFromQuery()
         self.connect_array(self.array)
 
-        self.__sbox = red_searchbox.SearchBox(_("My Computer"),
-                                              system_packages_only=1)
+        self.__sbox = red_searchbox.SearchBox(system_packages_only=1)
 
         def search_cb(sbox, query, filter):
             self.array.set_query(query,

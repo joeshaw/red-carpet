@@ -151,9 +151,6 @@ class Component(gobject.GObject):
     def name(self):
         return "?Unknown?"
 
-    def long_name(self):
-        return self.name()
-
     def pixbuf(self):
         return None
 

@@ -65,14 +65,12 @@ def show_advanced_set(x):
 
 class SearchBox(gtk.VBox):
 
-    def __init__(self, title,
+    def __init__(self,
                  allow_entry=1,
                  allow_advanced=1,
                  system_packages_only=0):
         gobject.GObject.__init__(self)
 
-        self.__title = title
-        
         self.__allow_entry          = allow_entry
         self.__allow_advanced       = allow_advanced
         self.__system_packages_only = system_packages_only
@@ -313,16 +311,11 @@ class SearchBox(gtk.VBox):
 
     def __assemble(self):
 
-        ###
-        ### Build the top row of search UI, which contains the title and
-        ### the channel option menu.
-        ###
-
         top_row = gtk.HBox(0, 0)
 
-        title_label = gtk.Label("")
-        title_label.set_markup("<b>%s</b>" % self.__title)
-        top_row.pack_start(title_label, expand=0, fill=0, padding=0)
+        channel_label = gtk.Label("")
+        channel_label.set_markup(_("Channel:"))
+        top_row.pack_start(channel_label, expand=0, fill=0, padding=2)
 
         any_subd = 1
         if self.__system_packages_only:
@@ -334,11 +327,7 @@ class SearchBox(gtk.VBox):
         self.__ch_opt.connect("selected",
                               lambda x, y, z: z.__changed(),
                               self)
-        top_row.pack_end(self.__ch_opt, expand=0, fill=0, padding=0)
-
-        channel_label = gtk.Label("")
-        channel_label.set_markup(_("Channel:"))
-        top_row.pack_end(channel_label, expand=0, fill=0, padding=2)
+        top_row.pack_start(self.__ch_opt, expand=1, fill=1, padding=0)
 
         top_row.show_all()
 

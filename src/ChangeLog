@@ -1,3 +1,42 @@
+2003-04-15  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (get_package_channel_icon): Use the empty icon
+	scaled to 24x24 if there isn't a channel for the package, so we
+	can ensure that all of our rows are the same size.
+
+	* red_appwindow.py (set_title): No real need to pass a title in
+	here, just get it from red_main.
+	(assemble_menubar): Update some accelerators and access keys.
+
+	* red_component.py: Get rid of the long_name(); we don't use it
+	anymore.
+
+	* red_depcomponent.py: Update for long_name change.
+
+	* red_history.py: Get rid of the component's bold title, it's
+	clear from the notebook now.
+
+	* red_my_computer.py: Change "My computer" to "System Packages",
+	don't pass in a title to the searchbox anymore.
+
+	* red_search.py: Get rid of the long name, don't pass title to
+	searchbox anymore.
+
+	* red_searchbox.py (SearchBox.__init__): Don't take a title
+	argument anymore, we don't need it.  Make the channel selector
+	fill the row... not sure if this is good yet or not.
+
+	* red_sidebar.py: Change "Installations and Removals" to "Pending
+	Actions".
+
+	* red_summary.py: Get rid of long name, update accelerator and get
+	rid of "Summary", since it's not a summary anymore.  Don't show a
+	title since it's clear from the notebook now.
+
+	* red_transaction.py: Change "Installations and Removals" to
+	"Pending Actions".  Get rid of the title since it's clear from the
+	notebook now.
+
 2003-04-15  Jon Trowbridge  <trow@ximian.com>
 
 	* red_appwindow.py (AppWindow.assemble_toolbar): Desensitize the

@@ -109,13 +109,10 @@ def ok_to_quit(main_app_window):
 class TransactionComponent(red_component.Component):
 
     def name(self):
-        return _("Installations and Removals")
-
-    def long_name(self):
-        return _("Installations and Removals")
+        return _("Pending Actions")
 
     def menu_name(self):
-        return _("Installations and _Removals")
+        return _("_Pending Actions")
 
     def pixbuf(self):
         return "pending-transactions"
@@ -134,11 +131,6 @@ class TransactionComponent(red_component.Component):
         self.array = model
 
         page = gtk.VBox(0, 6)
-
-        label = gtk.Label("")
-        label.set_alignment(0, 0.5)
-        label.set_markup("<b>" + self.long_name() + "</b>")
-        page.pack_start(label, 0, 0)
 
         view = red_packageview.PackageView(self.array)
         self.connect_view(view)

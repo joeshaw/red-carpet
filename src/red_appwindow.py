@@ -259,18 +259,12 @@ class AppWindow(gtk.Window,
         if w:
             self.hpaned.set_position(w)
 
-    def set_title(self, title, component=None):
+    def set_title(self, component=None):
         buf = ""
         if component:
             buf += component + " - "
 
-        if title == None:
-            title = self.__title
-        else:
-            self.__title = title
-
-        if title:
-            buf += title
+        buf += red_main.get_title()
 
         gtk.Window.set_title(self, buf)
 
@@ -550,7 +544,7 @@ class AppWindow(gtk.Window,
         bar.add("/%s/%s" % (file_str, _("U_nmount Directory...")),
                 callback=unmount_callback,
                 sensitive_fn=unmount_sensitive_fn,
-                accelerator="<Control>U")
+                accelerator="<Control>N")
         
 
         bar.add("/%s/sep3" % file_str, is_separator=1)
@@ -641,8 +635,9 @@ class AppWindow(gtk.Window,
 
         bar.add("/%s/%s" % (view_str, _("_Daemon Information...")),
                 callback=red_serverinfo.view_server_info_cb)
-        bar.add("/%s/%s" % (view_str, _("Red Carpet News...")),
-                callback=lambda x:self.open_or_raise_window(red_news.NewsWindow))
+        bar.add("/%s/%s" % (view_str, _("Red Carpet Ne_ws...")),
+                callback=lambda x:self.open_or_raise_window(red_news.NewsWindow),
+                accelerator="<Control>W")
 
         bar.add("/%s/sep2" % view_str, is_separator=1)
 

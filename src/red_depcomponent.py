@@ -279,7 +279,7 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         label = gtk.Label("")
         label.set_alignment(0, 0.5)
-        label.set_markup("<b>" + self.long_name() + "</b>")
+        label.set_markup("<b>" + _("Dependency Resolution") + "</b>")
         page.pack_start(label, 0, 0)
 
         # Freeze the daemon listeners while we're doing a dependency
