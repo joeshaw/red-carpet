@@ -197,8 +197,7 @@ class DepComponent(gobject.GObject, red_component.Component):
         hbox = gtk.HBox(0, 0)
         page.pack_start(hbox, expand=0, fill=0)
 
-        image = red_pixbuf.get_widget("progress-verify",
-                                      width=48, height=48)
+        image = red_pixbuf.get_widget("verify", width=48, height=48)
         hbox.pack_start(image, 0, 0, 0)
 
         label = gtk.Label(_("All package dependencies are satisfied"))

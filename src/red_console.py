@@ -25,7 +25,7 @@ class Console:
 
     def __init__(self):
 
-        img = red_pixbuf.get_widget("progress-config")
+        img = red_pixbuf.get_widget("console")
 
         box = gtk.HBox(0, 0)
         box.pack_start(img, expand=0, fill=0, padding=3)

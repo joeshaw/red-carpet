@@ -1,5 +1,12 @@
 2003-02-25  Joe Shaw  <joe@ximian.com>
 
+	* rcd_util.py: Get rid of the mono icon hack.
+
+	* red_console.py, red_depcomponent.py, red_packageview.py: Change
+	the names of some images.
+
+2003-02-25  Joe Shaw  <joe@ximian.com>
+
 	* rcd_util.py (StartDaemon): Remove some debugging output.
 
 2003-02-25  Tambet Ingo  <tambet@ximian.com>

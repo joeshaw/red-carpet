@@ -33,7 +33,7 @@ def md5ify_password(pw):
 def check_rcd_version(major, minor, micro):
     req_major = 1
     req_minor = 2
-    req_micro = 1
+    req_micro = 1 
 
     # Guard for NoneType
     major = major or 0
@@ -347,12 +347,6 @@ def get_channel_icon(id, width=0, height=0):
 
     else:
 
-        # FIXME: a hack until the mono icon gets fixed
-        if get_channel_name(id) == "mono":
-            pixbuf = red_pixbuf.get_pixbuf("mono-override")
-            cached_channel_icons[key] = pixbuf
-            return pixbuf
-            
         #assert server
         try:
             icon_data = server.rcd.packsys.get_channel_icon(id)

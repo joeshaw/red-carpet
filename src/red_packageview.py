@@ -208,7 +208,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         elif red_packagearray.pkg_is_downgrade(pkg) and \
              registered_action != red_pendingops.TO_BE_INSTALLED:
             item = gtk.ImageMenuItem(_("Downgrade"))
-            image = red_pixbuf.get_widget("warning", width=24, height=24)
+            image = red_pixbuf.get_widget("to-be-downgraded")
             item.set_image(image)
             if not rcd_util.check_server_permission("upgrade"):
                 item.set_sensitive(0)
