@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 2.0.0\n"
-"POT-Creation-Date: 2003-09-05 15:11-0400\n"
+"POT-Creation-Date: 2003-09-05 17:12-0400\n"
 "PO-Revision-Date: 2003-05-25\n"
 "Last-Translator: Danilo Bodei <dbodei@lombardiacom.it>\n"
 "Language-Team: italian <tp@lists.linux.it>\n"
@@ -1111,9 +1111,6 @@ msgstr "Dimensione"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. FIXME: We'll probably have to add in the localedir for things like
-#. Solaris which put locale files in /usr/lib/locale instead of
-#. /usr/share/locale; python looks in the latter.
 #. No translation file for this language
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.

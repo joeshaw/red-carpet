@@ -13,6 +13,8 @@ Red Carpet 2.0.3
 	* Replaced deprecated calls that would throw warnings with pygtk
 	  2.0.0.
 
+	* Fixed i18n
+
 Red Carpet 2.0.2
 ----------------
 8 July 2003
