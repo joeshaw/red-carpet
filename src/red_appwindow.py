@@ -31,6 +31,7 @@ import red_pixbuf
 import red_prefs
 import red_subscriptions
 import red_users
+import red_throbber
 import red_activation
 
 def refresh_cb(app):
@@ -144,6 +145,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
 
+        self.throbber = red_throbber.Throbber()
+
         # A box to put component widgets in.  We use an EventBox
         # instead of just a [HV]Box so that we can control the
         # background color if we want to.
@@ -152,15 +155,23 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
 
-        self.vbox.pack_start(self.toolbar, expand=0, fill=1)
-        self.toolbar.show()
+        throbbox = gtk.Frame(None)
+        throbbox.set_shadow_type(gtk.SHADOW_ETCHED_OUT)
+        throbbox.set_border_width(2)
+        throbbox.add(self.throbber)
+
+        toolbox = gtk.HBox()
+        toolbox.pack_start(self.toolbar, expand=1, fill=1)
+        toolbox.pack_end(throbbox, expand=0, fill=0)
+        toolbox.show_all()
+
+        self.vbox.pack_start(toolbox, expand=0, fill=1)
 
         self.vbox.pack_start(self.container, expand=1, fill=1)
         self.container.show()
 
         south = gtk.HBox(0, 0)
         south.pack_start(self.transactionbar, 0, 1, 2)
-        south.pack_start(self.progressbar, 0, 1, 2)
         south.pack_start(self.statusbar, 1, 1, 2)
         south.show_all()
         self.vbox.pack_start(south, expand=0, fill=1)
@@ -295,20 +306,14 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 self.activate_component(new_comp)
 
     def busy_start(self):
-        def busy_cb(app):
-            if app.busy_count > 0:
-                app.progressbar.pulse()
-                return 1
-            app.progressbar.set_fraction(0)
-            return 0
-        gtk.timeout_add(100, busy_cb, self)
+        self.throbber.start()
         self.busy_count += 1
         self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
 
     def busy_stop(self):
+        self.throbber.stop()
         if self.busy_count > 0:
             self.busy_count -= 1
-
         if self.busy_count == 0:
             self.window.set_cursor(None)
         
