@@ -8,55 +8,55 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 15:36+0200\n"
-"PO-Revision-Date: 2004-06-14 19:40+0200\n"
+"POT-Creation-Date: 2004-07-04 21:33+0200\n"
+"PO-Revision-Date: 2004-07-05 12:12+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/rcd_util.py:417
+#: src/rcd_util.py:412
 msgid "Please wait while getting data."
 msgstr "Počkejte prosím, než získám data."
 
-#: src/rcd_util.py:471 src/rcd_util.py:489
+#: src/rcd_util.py:466 src/rcd_util.py:484
 msgid "Please ensure that your network settings are correct."
 msgstr "Zkontrolujte prosím, zda jsou vaše nastavení sítě správně."
 
-#: src/rcd_util.py:478
+#: src/rcd_util.py:473
 msgid "Refreshing channel data"
 msgstr "Obnovuji data kanálu"
 
-#: src/rcd_util.py:480
+#: src/rcd_util.py:475
 msgid "Downloading channel information"
 msgstr "Stahuji informace o kanálu"
 
-#: src/rcd_util.py:506
+#: src/rcd_util.py:501
 msgid "Verifying"
 msgstr "Ověřuji"
 
-#: src/rcd_util.py:507
+#: src/rcd_util.py:502
 msgid "Unable to verify package signature for"
 msgstr "Nemohu ověřit podpis balíčku pro"
 
-#: src/rcd_util.py:508
+#: src/rcd_util.py:503
 msgid "There is no package signature for"
 msgstr "Chybí podpis balíčku pro"
 
-#: src/rcd_util.py:509
+#: src/rcd_util.py:504
 msgid "Preparing Transaction"
 msgstr "Připravuji transakci"
 
-#: src/rcd_util.py:510
+#: src/rcd_util.py:505
 msgid "Installing"
 msgstr "Instaluji"
 
-#: src/rcd_util.py:511
+#: src/rcd_util.py:506
 msgid "Removing"
 msgstr "Odstraňuji"
 
-#: src/rcd_util.py:512
+#: src/rcd_util.py:507
 msgid "Configuring"
 msgstr "Nastavuji"
 
@@ -883,6 +883,10 @@ msgstr "Nenalezeny žádné odpovídající záplaty"
 msgid "Package Information"
 msgstr "Informace o balíčku"
 
+#: src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "Nepojmenované"
+
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Závislosti"
@@ -935,10 +939,6 @@ msgstr "Popis"
 msgid "Info"
 msgstr "Informace"
 
-#: src/red_packagepage.py:32
-msgid "Unnamed"
-msgstr "Nepojmenované"
-
 #: src/red_packageview.py:301
 msgid "Status"
 msgstr "Stav"
@@ -946,6 +946,22 @@ msgstr "Stav"
 #: src/red_packageview.py:472
 msgid "Importance"
 msgstr "Důležitost"
+
+#: src/red_patches.py:35
+msgid "Patches"
+msgstr "Záplaty"
+
+#: src/red_patches.py:38
+msgid "YOU Patches"
+msgstr "Záplaty YOU"
+
+#: src/red_patches.py:72
+msgid "Searching for matching patches..."
+msgstr "Hledám odpovídající záplaty..."
+
+#: src/red_patches.py:111
+msgid "No matching patches found."
+msgstr "Nenalezeny žádné odpovídající záplaty."
 
 #: src/red_pendingview.py:347
 #, python-format
@@ -1093,6 +1109,22 @@ msgstr "Načítám nastavení..."
 msgid "%s Preferences"
 msgstr "Nastavení %s"
 
+#: src/red_search.py:35
+msgid "Search"
+msgstr "Hledat"
+
+#: src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "_Hledat balíčky"
+
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "Hledám odpovídající balíčky..."
+
+#: src/red_search.py:109
+msgid "No matching packages found."
+msgstr "Nenalezeny žádné odpovídající balíčky."
+
 #: src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Všechny balíčky"
@@ -1183,22 +1215,6 @@ msgstr "Hledat:"
 #: src/red_searchbox.py:322
 msgid "Channel:"
 msgstr "Kanál:"
-
-#: src/red_search.py:35
-msgid "Search"
-msgstr "Hledat"
-
-#: src/red_search.py:38
-msgid "S_earch Packages"
-msgstr "_Hledat balíčky"
-
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
-msgid "Searching for matching packages..."
-msgstr "Hledám odpovídající balíčky..."
-
-#: src/red_search.py:109
-msgid "No matching packages found."
-msgstr "Nenalezeny žádné odpovídající balíčky."
 
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
