@@ -1,5 +1,12 @@
 2003-06-03  Joe Shaw  <joe@ximian.com>
 
+	* red_appwindow.py (build): Get the GtkSettings and set the
+	toolbar style and icon sizes and connect to the notify signal for
+	those properties so we can automatically update whenever they're
+	changed.  Fixes the rest of #43231.
+
+2003-06-03  Joe Shaw  <joe@ximian.com>
+
 	* red_appwindow.py (build): Set the statusbar on the menubar.
 	(assemble_menubar): Set a description property for all the menu
 	items.

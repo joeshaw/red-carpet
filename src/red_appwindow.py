@@ -173,6 +173,22 @@ class AppWindow(gtk.Window,
         self.vbox.pack_start(self.toolbar, expand=0, fill=1)
         self.toolbar.show_all()
 
+        ## GtkSettings
+        settings = gtk.settings_get_default()
+        self.toolbar.set_style(settings.get_property("gtk-toolbar-style"))
+        self.toolbar.set_icon_size(settings.get_property("gtk-toolbar-icon-size"))
+
+        def settings_notify_toolbar_style_cb(set, pspec, app):
+            app.toolbar.set_style(set.get_property("gtk-toolbar-style"))
+
+        def settings_notify_toolbar_icon_size_cb(set, pspec, app):
+            app.toolbar.set_icon_size(settings.get_property("gtk-toolbar-icon-size"))
+        
+        settings.connect("notify::gtk-toolbar-style",
+                         settings_notify_toolbar_style_cb, self)
+        settings.connect("notify::gtk-toolbar-icon-size",
+                         settings_notify_toolbar_icon_size_cb, self)
+
         self.transient_windows = {}
 
         self.hpaned = gtk.HPaned()
