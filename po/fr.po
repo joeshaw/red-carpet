@@ -1,15 +1,16 @@
 # French translation of red-carpet.
-# Copyright (C) 2001-2002 Free Software Foundation, Inc.
-# Christophe Merlet (RedFox) <christophe@merlet.net>, 2001-2002.
+# Copyright (C) 2001-2003 Free Software Foundation, Inc.
+# Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2001-2003.
 # Stéphane Raimbault <stephane.raimbault@deesse.univ-lemans.fr>, 2002-2003.
+# Olivier Anh <olitech@ifrance.com>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: red-carpet 1.3\n"
-"POT-Creation-Date: 2003-09-05 17:12-0400\n"
-"PO-Revision-Date: 2003-05-04 17:30-0400\n"
-"Last-Translator: Stéphane Raimbault <stephane.raimbault@deesse.univ-lemans."
-"fr>\n"
+"Project-Id-Version: red-carpet 2.1.90\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-09 22:51+0200\n"
+"PO-Revision-Date: 2003-10-09 19:47+0200\n"
+"Last-Translator: Olivier Anh <olitech@ifrance.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,56 +42,56 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
+#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:381
+#: src/rcd_util.py:419
 msgid "Please wait while getting data."
 msgstr "Veuillez patienter pendant la récupération des données."
 
 #. ##############################################################################
-#: src/rcd_util.py:435 src/rcd_util.py:453
+#: src/rcd_util.py:473 src/rcd_util.py:491
 msgid "Please ensure that your network settings are correct."
-msgstr ""
+msgstr "Veuillez vérifier que les préférénces réseau sont correctes."
 
-#: src/rcd_util.py:442
+#: src/rcd_util.py:480
 msgid "Refreshing channel data"
-msgstr "Rafraîchissment des données canal"
+msgstr "Rafraîchissement des données du canal"
 
-#: src/rcd_util.py:444
-#, fuzzy
+#: src/rcd_util.py:482
 msgid "Downloading channel information"
-msgstr "Téléchargement d'infos sur le canal"
+msgstr "Téléchargement des informations du canal"
 
 #. ##############################################################################
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:470
+#: src/rcd_util.py:508
 msgid "Verifying"
 msgstr "Vérification"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:509
 msgid "Unable to verify package signature for"
-msgstr "Impossible de vérifier la signature du paquetage"
+msgstr "Impossible de vérifier la signature du paquet"
 
-#: src/rcd_util.py:472
+#: src/rcd_util.py:510
 msgid "There is no package signature for"
-msgstr "Il n'y a pas de signature de paquetage pour"
+msgstr "La signature du paquet est manquante pour"
 
-#: src/rcd_util.py:473
+#: src/rcd_util.py:511
 msgid "Preparing Transaction"
 msgstr "Transaction en préparation"
 
-#: src/rcd_util.py:474
+#: src/rcd_util.py:512
 msgid "Installing"
 msgstr "Installation"
 
-#: src/rcd_util.py:475
+#: src/rcd_util.py:513
 msgid "Removing"
 msgstr "Suppression"
 
-#: src/rcd_util.py:476
+#: src/rcd_util.py:514
 msgid "Configuring"
 msgstr "Configuration"
 
@@ -121,27 +122,27 @@ msgstr "Configuration"
 #. language.  Just nothing offensive please. :)
 #: src/red_about.py:41
 msgid "Brought to you by:"
-msgstr ""
+msgstr "Vous a été fournit par :"
 
 #: src/red_about.py:42
 msgid "With love from:"
-msgstr ""
+msgstr "Avec amour de la part de :"
 
 #: src/red_about.py:43
 msgid "Best wishes from:"
-msgstr ""
+msgstr "Meilleur voeux de la part de :"
 
 #: src/red_about.py:44
 msgid "Sincerely:"
-msgstr ""
+msgstr "Cordialement :"
 
 #: src/red_about.py:45
 msgid "Developed by chimps:"
-msgstr ""
+msgstr "Développé par les singes :"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr ""
+msgstr "Sous license General·Public·License GNU,·version·2"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -179,38 +180,38 @@ msgstr ""
 msgid "Group Activation"
 msgstr "Groupe d'activation"
 
-#: src/red_activation.py:37
+#: src/red_activation.py:44
+msgid "Service:"
+msgstr "Service :"
+
+#: src/red_activation.py:48
 msgid "Email:"
-msgstr "E-mail : "
+msgstr "Adresse électronique :"
 
-#: src/red_activation.py:41
+#: src/red_activation.py:52
 msgid "Activation Code:"
-msgstr "Code d'activation :"
+msgstr "Code d'activation :"
 
-#: src/red_activation.py:59
+#: src/red_activation.py:78
 msgid "Activate"
 msgstr "Activer"
 
-#: src/red_activation.py:76
+#: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
-msgstr "Veuillez remplir les champs e-mail et code d'activation."
+msgstr ""
+"Veuillez remplir les champs d'adresse électronique et le code d'activation."
 
-#: src/red_activation.py:91
-#, fuzzy
+#: src/red_activation.py:114
 msgid "Unable to activate"
-msgstr "Impossible de se connecter au démon."
+msgstr "Impossible d'activer"
 
-#: src/red_activation.py:92
-#, fuzzy
+#: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Veuillez remplir les champs e-mail et code d'activation."
+msgstr ""
+"Veuillez vérifiez que vous avez saisi l'adresse électronique et le code "
+"d'activation correctement"
 
 #. Store email to config.
-#: src/red_activation.py:110
-msgid ""
-"System could not be activated: Invalid activation code or email address."
-msgstr "Le système ne peut être activé : code d'activation ou e-mail invalide."
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -233,9 +234,9 @@ msgstr "Le système ne peut être activé : code d'activation ou e-mail invalide
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:83
+#: src/red_appwindow.py:84
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. GNOME 2
 #. XD2 w/o yelp?
@@ -247,16 +248,20 @@ msgstr ""
 #. dunno, but a sane
 #. fallback
 #. CDE
-#: src/red_appwindow.py:120
+#: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
 msgstr ""
+"Impossible d'afficher l'aide, car les fichiers d'aide sont manquant. "
+"Veuillez en informer votre vendeur"
 
-#: src/red_appwindow.py:130
+#: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
+"Impossible d'afficher l'aide, car il n'y a aucune application disponible "
+"pour afficher l'aide."
 
 #. Menubar
 #. # Toolbar
@@ -271,83 +276,82 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:405
+#: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr ""
-"Êtes-vous sûr de vouloir ouvrir %d fenêtres d'information sur les "
-"paquetages ?"
+"Êtes-vous sûr de vouloir ouvrir %d fenêtres d'informations sur les paquets ?"
 
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr "Exécuter maintenant"
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:435
 msgid "Perform installations and removals"
 msgstr "Effectuer les installations et les suppressions"
 
-#: src/red_appwindow.py:441
+#: src/red_appwindow.py:442
 msgid "Channels"
 msgstr "Canaux"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
 msgstr "Modifier vos inscriptions aux canaux"
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:451
 msgid "Refresh"
 msgstr "Rafraîchir"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:452
 msgid "Refresh channel data"
 msgstr "Rafraîchir les données du canal"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:462 src/red_packageview.py:232
+#: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
-msgstr "Marquer pour _Installation"
+msgstr "Marquer pour _installation"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:464
 msgid "Mark selected packages for installation"
-msgstr "Marquer les paquetages sélectionnés pour installation"
+msgstr "Marquer les paquets sélectionnés pour installation"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:468 src/red_appwindow.py:763
+#: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
-msgstr "Marquer pour supp_ression"
+msgstr "Marquer pour _suppression"
 
-#: src/red_appwindow.py:469
+#: src/red_appwindow.py:470
 msgid "Mark selected packages for removal"
-msgstr "Marquer les paquetages pour suppression"
+msgstr "Marquer les paquets pour suppression"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:474 src/red_appwindow.py:776
+#: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: src/red_appwindow.py:475
+#: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
-msgstr "Annuler les actions marquées sur les paquetages"
+msgstr "Annuler les actions marquées sur les paquets"
 
 #. Info
-#: src/red_appwindow.py:480 src/red_packageview.py:276
+#: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformation"
 
-#: src/red_appwindow.py:481
+#: src/red_appwindow.py:482
 msgid "Package information"
-msgstr "Information sur le paquetage"
+msgstr "Information sur le paquet"
 
 #. We want to revert to our old settings if we don't connect to
 #. a new daemon successfully.
@@ -355,11 +359,11 @@ msgstr "Information sur le paquetage"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:538
+#: src/red_appwindow.py:539
 msgid "_File"
 msgstr "_Fichier"
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:540
 msgid "_Edit"
 msgstr "_Édition"
 
@@ -368,273 +372,258 @@ msgstr "_Édition"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:540 src/red_appwindow.py:826
+#: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "Afficha_ge"
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:542
 msgid "_Actions"
 msgstr "A_ctions"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:543
 msgid "_Help"
 msgstr "_Aide"
 
-#: src/red_appwindow.py:550
-#, fuzzy
-msgid "Connect to daemon..."
-msgstr "Connexion au démon restauré.\n"
-
 #: src/red_appwindow.py:551
-#, fuzzy
+msgid "Connect to daemon..."
+msgstr "Connexion au démon..."
+
+#: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
 msgstr "Se connecter à un démon distant"
 
-#: src/red_appwindow.py:561
-msgid "Install from _File..."
-msgstr "Installation depuis _Fichier..."
-
 #: src/red_appwindow.py:562
-#, fuzzy
-msgid "Install a package from a local file"
-msgstr "Installer tous les paquets du répertoire"
+msgid "Install from _File..."
+msgstr "Installer depuis un _fichier..."
 
-#: src/red_appwindow.py:571
-msgid "Install from _URL..."
-msgstr "Installation depuis _URL..."
+#: src/red_appwindow.py:563
+msgid "Install a package from a local file"
+msgstr "Installer un paquet depuis un fichier local"
 
 #: src/red_appwindow.py:572
-#, fuzzy
+msgid "Install from _URL..."
+msgstr "Installer depuis une _URL..."
+
+#: src/red_appwindow.py:573
 msgid "Install a package from a remote URL"
-msgstr "Installer tous les paquets du répertoire"
+msgstr "Installer un paquet depuis une URL distante"
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:589
+#: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr "_Monter un répertoire..."
 
-#: src/red_appwindow.py:590
-#, fuzzy
+#: src/red_appwindow.py:591
 msgid "Mount a directory as a channel"
 msgstr "Monter un répertoire comme un canal"
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:606
+#: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr "_Démonter un répertoire..."
 
-#: src/red_appwindow.py:607
-#, fuzzy
+#: src/red_appwindow.py:608
 msgid "Unmount a directory"
-msgstr "_Démonter un répertoire..."
+msgstr "Démonter un répertoire"
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:622
+#: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr "_Activer..."
 
-#: src/red_appwindow.py:623
-#, fuzzy
+#: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Activer les services Premium (Red Carpet Express ou Entreprise)"
+msgstr "Activer le démon pour un serveur Red Carpet Express ou Entreprise"
 
-#: src/red_appwindow.py:629
+#: src/red_appwindow.py:631
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/red_appwindow.py:630
-#, fuzzy
+#: src/red_appwindow.py:632
 msgid "Quit Red Carpet"
 msgstr "Quitter Red Carpet"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:645
+#: src/red_appwindow.py:647
 msgid "Select _All"
 msgstr "_Tout sélectionner"
 
-#: src/red_appwindow.py:646
-#, fuzzy
+#: src/red_appwindow.py:648
 msgid "Select all items"
-msgstr "_Tout sélectionner"
+msgstr "Sélectionner tout les éléments"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:653
 msgid "Select _None"
 msgstr "_Aucune sélection"
 
-#: src/red_appwindow.py:652
+#: src/red_appwindow.py:654
 msgid "Deselect all items"
-msgstr ""
+msgstr "Déselectionner tous les items"
 
-#: src/red_appwindow.py:659
+#: src/red_appwindow.py:661
+msgid "Services..."
+msgstr "Services..."
+
+#: src/red_appwindow.py:662
+msgid "Edit services"
+msgstr "Modifier les services"
+
+#: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
 msgstr "_Inscriptions aux canaux..."
 
-#: src/red_appwindow.py:660
-#, fuzzy
+#: src/red_appwindow.py:667
 msgid "Edit your channel subscriptions"
 msgstr "Modifier vos inscriptions aux canaux"
 
-#: src/red_appwindow.py:665
+#: src/red_appwindow.py:672
 msgid "_Preferences..."
 msgstr "_Préférences..."
 
-#: src/red_appwindow.py:666
-#, fuzzy
+#: src/red_appwindow.py:673
 msgid "Edit your Red Carpet preferences"
-msgstr "Ximian Red Carpet - Préférences"
+msgstr "Modifier vos préférences Red Carpet"
 
-#: src/red_appwindow.py:670
+#: src/red_appwindow.py:677
 msgid "_Users..."
 msgstr "_Utilisateurs..."
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
-msgstr ""
+msgstr "Changer les permissions utilisateur pour ce démon"
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr "_Panneau latéral"
 
-#: src/red_appwindow.py:685
+#: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
-msgstr ""
+msgstr "Afficher/Cacher le panneau latéral de fil d'attente"
 
-#: src/red_appwindow.py:689
-#, fuzzy
+#: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
-msgstr "Options de recherche avancées"
+msgstr "Options de recherche _avancée"
 
-#: src/red_appwindow.py:690
-#, fuzzy
+#: src/red_appwindow.py:697
 msgid "Hide or show advanced search options"
-msgstr "Options de recherche avancées"
-
-#: src/red_appwindow.py:694
-#, fuzzy
-msgid "_Channel Names"
-msgstr "Noms des canaux"
-
-#: src/red_appwindow.py:695
-msgid "Hide or show channel names in package lists"
-msgstr ""
+msgstr "Afficher/Cacher les options de recherche avancée"
 
 #: src/red_appwindow.py:701
-msgid "Package _Information..."
-msgstr "_Information sur le paquetage..."
+msgid "_Channel Names"
+msgstr "Noms des _canaux"
 
 #: src/red_appwindow.py:702
-msgid "View information about currently selected packages"
-msgstr ""
+msgid "Hide or show channel names in package lists"
+msgstr "Afficher/Cacher les noms des canaux dans les listes des paquets"
 
-#: src/red_appwindow.py:710
+#: src/red_appwindow.py:708
+msgid "Package _Information..."
+msgstr "_Information sur le paquet..."
+
+#: src/red_appwindow.py:709
+msgid "View information about currently selected packages"
+msgstr "Voir les informations des paquets actuellement sélectionnés"
+
+#: src/red_appwindow.py:717
 msgid "_Daemon Information..."
 msgstr "Information sur le _démon..."
 
-#: src/red_appwindow.py:711
+#: src/red_appwindow.py:718
 msgid "View information about this daemon"
-msgstr ""
+msgstr "Voir les informations sur ce démon"
 
-#: src/red_appwindow.py:713
-#, fuzzy
+#: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
-msgstr "Nouveautés Red Carpet"
+msgstr "_Nouvelles de Red Carpet..."
 
-#: src/red_appwindow.py:714
+#: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
-msgstr ""
+msgstr "Voir les dernières informations sur Red Carpet"
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:726
+#: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr "Exécuter _maintenant"
 
-#: src/red_appwindow.py:727
+#: src/red_appwindow.py:734
 msgid "Run the current transaction"
-msgstr ""
+msgstr "Lancer la transaction courante"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:741
+#: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
 msgstr "_Vérifier les dépendances système"
 
-#: src/red_appwindow.py:742
-#, fuzzy
+#: src/red_appwindow.py:749
 msgid "Verify that all system dependencies are met"
-msgstr "_Vérifier les dépendances système"
+msgstr "Vérifier que toutes les dépendances système sont réunis"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
 msgstr "Marquer pour _installation"
 
-#: src/red_appwindow.py:754
-#, fuzzy
+#: src/red_appwindow.py:761
 msgid "Mark this package for installation"
-msgstr "Marquer les paquetages sélectionnés pour installation"
+msgstr "Marquer ce paquet pour installation"
 
-#: src/red_appwindow.py:764
-#, fuzzy
+#: src/red_appwindow.py:771
 msgid "Mark this package for removal"
-msgstr "Marquer les paquetages pour suppression"
+msgstr "Marquer ce paquet pour suppression"
 
-#: src/red_appwindow.py:777
-#, fuzzy
+#: src/red_appwindow.py:784
 msgid "Cancel installation or removal mark"
-msgstr "Effectuer les installations et les suppressions"
+msgstr "Annuler les marques d'installation ou de suppression"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:791
+#: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr "Ra_fraîchir le canal de données"
 
-#: src/red_appwindow.py:792
-#, fuzzy
+#: src/red_appwindow.py:799
 msgid "Download latest channel data"
-msgstr "Téléchargement du canal (%s)"
+msgstr "Téléchargement des dernières données du canal"
 
-#: src/red_appwindow.py:801
-#, fuzzy
+#: src/red_appwindow.py:808
 msgid "_Contents"
-msgstr "Connexion"
+msgstr "_Sommaire"
 
-#: src/red_appwindow.py:802
-#, fuzzy
+#: src/red_appwindow.py:809
 msgid "View Red Carpet help"
-msgstr "Quitter Red Carpet"
+msgstr "Voir l'aide de Red Carpet"
 
-#: src/red_appwindow.py:807
+#: src/red_appwindow.py:814
 msgid "_About..."
 msgstr "À _propos..."
 
-#: src/red_appwindow.py:808
-#, fuzzy
+#: src/red_appwindow.py:815
 msgid "About Red Carpet"
-msgstr "Quitter Red Carpet"
+msgstr "À propos de Red Carpet"
 
-#: src/red_appwindow.py:827
+#: src/red_appwindow.py:834
 #, python-format
 msgid "Go to the '%s' page"
-msgstr ""
+msgstr "Aller à la page « %s »"
 
 #. ##
 #. ## Handlers for PendingOpsListener
@@ -687,17 +676,17 @@ msgstr ""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_channeloption.py:50
+#: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "Tous les canaux"
 
-#: src/red_channeloption.py:55
+#: src/red_channeloption.py:69
 msgid "All Subscribed Channels"
 msgstr "Tous les canaux souscrits"
 
-#: src/red_channeloption.py:60
+#: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
-msgstr "Pas de canal/canal inconnu"
+msgstr "Aucun canal/canal inconnu"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -802,19 +791,19 @@ msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
-"Impossible de se connecter au démon :\n"
-" '%s'."
+"Impossible de se connecter au démon :\n"
+" « %s »."
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
 #: src/red_connection.py:67
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
-"Version de Red Carpet détectée %d.%d.%d.\n"
-"Version %d.%d.%d (ou plus récente) requise."
+"Version du démon Red Carpet détectée %d.%d.%d.\n"
+"Version %d.%d.%d (ou plus récente) est requise."
 
 #. Assume protocol v1 if method not present.
 #: src/red_connection.py:93
@@ -823,6 +812,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"Cersion du protocol détecté %d.  Version %d requis.  Vous devez mettre à "
+"jour votre version de rcd."
 
 #. LSB compliant distros should have the
 #. following
@@ -843,7 +834,7 @@ msgid ""
 "Would you like to start one now?"
 msgstr ""
 "Red Carpet nécessite un démon Red Carpet pour fonctionner.\n"
-"Acceptez-vous d'en lancer un maintenant ?"
+"Voulez-vous en lancer un maintenant ?"
 
 #. Conform to GNOME HIG
 #. This will block with a dialog.
@@ -851,24 +842,22 @@ msgstr ""
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
 #: src/red_connection.py:345
-#, fuzzy
 msgid "Connect to this system"
-msgstr "Se connecter au démon de cet ordinateur"
+msgstr "Se connecter à cet ordinateur"
 
 #: src/red_connection.py:349
-#, fuzzy
 msgid "Connect to a remote system"
 msgstr "Se connecter à un démon distant"
 
 #: src/red_connection.py:357
 msgid "Server:"
-msgstr "Serveur :"
+msgstr "Serveur :"
 
 #: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
-msgstr "Nom de l'utilisateur :"
+msgstr "Nom de l'utilisateur :"
 
-#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Mot de passe :"
@@ -926,7 +915,7 @@ msgstr "Connexion au démon restauré.\n"
 #. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr "Perte du contact avec le démon !"
+msgstr "Perte du contact avec le démon !"
 
 #: src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
@@ -951,75 +940,75 @@ msgstr "Quitter Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
 msgstr "Résolution des dépendances"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "Vérification du système"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
 msgstr "Résolution des dépendances"
 
-#: src/red_depcomponent.py:157
+#: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
+"Vous devez être d'accord avec les licenses couvrant ce logiciel avant de "
+"l'installer."
 
 #. Try to estimate the size of the window we want.
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
-msgstr ""
+msgstr "Je suis d'accord"
 
-#. FIXME: flags
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:261
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr "Échec des résolutions de dépendance"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:311
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr "Système vérifié"
 
-#: src/red_depcomponent.py:313
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
 msgstr ""
-"Toutes les dépendances de paquetages sont satisfaites, aucune action "
+"Toutes les dépendances des paquets sont satisfaites, aucune action "
 "correctrice n'est nécessaire."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:367
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Installations requises"
 
-#: src/red_depcomponent.py:371
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Suppressions requises"
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:383
 msgid "Required Installations"
 msgstr "Installations requises"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:387
 msgid "Required Removals"
 msgstr "Suppressions requises"
 
-#: src/red_depcomponent.py:405
+#: src/red_depcomponent.py:413
 msgid "Continue"
 msgstr "Poursuivre"
 
@@ -1043,14 +1032,14 @@ msgstr "Poursuivre"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Canal"
 
 #: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
-msgstr "Paquetage"
+msgstr "Paquet"
 
 #: src/red_depview.py:53 src/red_packageview.py:462
 msgid "Current Version"
@@ -1154,11 +1143,11 @@ msgstr "Mises à jour"
 
 #: src/red_history.py:121
 msgid "User:"
-msgstr "Utilisateur :"
+msgstr "Utilisateur :"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
-msgstr "Delai (jours) :"
+msgstr "Delai (jours) :"
 
 #. ##
 #. ## Sort functions
@@ -1170,7 +1159,6 @@ msgstr "Recherche..."
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:435
-#, fuzzy
 msgid "Time"
 msgstr "Durée"
 
@@ -1194,9 +1182,8 @@ msgid "History"
 msgstr "Historique"
 
 #: src/red_history.py:339
-#, fuzzy
 msgid "_History"
-msgstr "Historique"
+msgstr "_Historique"
 
 #: src/red_history.py:383
 msgid "No results found."
@@ -1225,15 +1212,15 @@ msgstr "Aucun résulat trouvé."
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
-msgstr "%s n'est pas un paquetage valide"
+msgstr "%s n'est pas un paquet valide"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
-msgstr "Il n'y a pas de paquetage valide à installer"
+msgstr "Il n'y a pas de paquet valide à installer"
 
 #: src/red_installfiles.py:102
 msgid "Install from File"
-msgstr "Installer depuis Fichier"
+msgstr "Installer depuis un fichier"
 
 #. need trailing /
 #: src/red_installfiles.py:119
@@ -1243,11 +1230,11 @@ msgstr "Téléchargement de %s..."
 
 #: src/red_installfiles.py:158
 msgid "Install from URL"
-msgstr "Installer depuis URL"
+msgstr "Installer depuis une URL"
 
 #: src/red_installfiles.py:163
 msgid "Package URL:"
-msgstr "URL du paquetage :"
+msgstr "URL du paquet :"
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1319,13 +1306,13 @@ msgstr "URL du paquetage :"
 #: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr ""
-"ERREUR : Vous ne pouvez spécifier à la fois les options -h/--host et -l/--"
+"ERREUR : Vous ne pouvez spécifier à la fois les options -h/--host et -l/--"
 "local"
 
 #. This'll always fail and pop up the dialog.
 #: src/red_main.py:137
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr "ERREUR : Vous ne pouvez spécifier un utilisateur à un démon local"
+msgstr "ERREUR : Vous ne pouvez spécifier un utilisateur à un démon local"
 
 #. Try the command-line options or the saved data first
 #. Enclosed in an empty try-except because we don't care about the
@@ -1392,13 +1379,12 @@ msgid "Mirror"
 msgstr "Miroir"
 
 #: src/red_mirrors.py:81
-#, fuzzy
 msgid "Location"
-msgstr "Action"
+msgstr "Lieu"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "Choisir un miroir"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1417,52 +1403,51 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Handle ~ to mean $HOME
-#: src/red_mount.py:61
-#, python-format
-msgid "Unable to mount '%s' as a channel"
-msgstr "Impossible de monter '%s' comme un canal"
-
 #. Always run the dialog in the main thread
-#: src/red_mount.py:91
+#: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
-msgstr "Impossible de démonter '%s'"
+msgstr "Impossible de démonter « %s »"
 
-#: src/red_mount.py:117
+#: src/red_mount.py:116
 msgid "Browse..."
 msgstr "Parcours..."
 
-#: src/red_mount.py:128
+#: src/red_mount.py:127
 msgid "Mount Directory"
 msgstr "Monter un répertoire"
 
-#: src/red_mount.py:141
+#: src/red_mount.py:140
 msgid "Mount channel"
 msgstr "Monter un canal"
 
-#: src/red_mount.py:145
+#: src/red_mount.py:144
 msgid "Mount a directory as channel"
 msgstr "Monter un répertoire comme un canal"
 
-#: src/red_mount.py:153
+#: src/red_mount.py:152
 msgid "Channel Name:"
-msgstr "Nom du canal :"
+msgstr "Nom du canal :"
 
-#: src/red_mount.py:157
+#: src/red_mount.py:156
 msgid "Directory:"
-msgstr "Répertoire :"
+msgstr "Répertoire :"
 
-#: src/red_mount.py:189
+#: src/red_mount.py:167
+msgid "Look for packages recursively"
+msgstr "Rechercher les paquets récursivement"
+
+#: src/red_mount.py:192
 msgid "Please choose the path for channel."
 msgstr "Veuillez choisir le chemin du canal."
 
-#: src/red_mount.py:210
+#: src/red_mount.py:213
 msgid "Unmount Channel"
 msgstr "Démonter un canal"
 
-#: src/red_mount.py:239
+#: src/red_mount.py:242
 msgid "Unmount?"
-msgstr "Démonter ?"
+msgstr "Démonter ?"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1485,9 +1470,9 @@ msgstr "Démonter ?"
 #. some sort of intelligent way.
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "%s News"
-msgstr "Nouveautés"
+msgstr "Nouvelles %s"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1511,7 +1496,7 @@ msgstr "Connexion à un démon exécuté localement"
 
 #: src/red_option.py:25
 msgid "hostname"
-msgstr "Nom d'hôte"
+msgstr "nom d'hôte"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
@@ -1519,7 +1504,7 @@ msgstr "Contacter le démon sur un port spécifique"
 
 #: src/red_option.py:26
 msgid "username"
-msgstr "Nom de l'utilisateur"
+msgstr "nom de l'utilisateur"
 
 #: src/red_option.py:26
 msgid "Specify user name"
@@ -1560,11 +1545,11 @@ msgstr "Fournit les informations d'utilisation"
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr "Utilisation : %s <options> ..."
+msgstr "Utilisation : %s <options> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
-msgstr "Les options suivantes sont disponibles :"
+msgstr "Les options suivantes sont disponibles :"
 
 #. By appending [0,0], we insure that this will work even if
 #. opt_list is empty (which it never should be)
@@ -1613,7 +1598,6 @@ msgid "upgrade"
 msgstr "mise à jour"
 
 #: src/red_packagearray.py:125
-#, fuzzy
 msgid "downgrade"
 msgstr "version précédente"
 
@@ -1653,15 +1637,15 @@ msgstr "supprimer"
 #: src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
-msgstr "%d paquetages correspondants trouvés"
+msgstr "%d paquets correspondants trouvés"
 
 #: src/red_packagearray.py:616
 msgid "Found 1 matching package"
-msgstr "Un paquetage correspondant trouvé"
+msgstr "Un paquet correspondant trouvé"
 
 #: src/red_packagearray.py:618
 msgid "No matching packages found"
-msgstr "Aucun paquetage correspondant trouvé"
+msgstr "Aucun paquet correspondant trouvé"
 
 #. Find System packages
 #. Remove instelled Channel packages
@@ -1688,7 +1672,7 @@ msgstr "Recherche de mises à jour..."
 #. ##
 #: src/red_packagebook.py:43
 msgid "Package Information"
-msgstr "Information sur le paquetage"
+msgstr "Information sur le paquet"
 
 #. grab_default() is not sufficient here.
 #. print "Built page %d: '%s'" % (num, page_box.page.name())
@@ -1757,15 +1741,15 @@ msgstr "Version"
 
 #: src/red_packagepage_info.py:80
 msgid "Release"
-msgstr "Version"
+msgstr "Sous-version"
 
 #: src/red_packagepage_info.py:81
 msgid "Package Size"
-msgstr "Taille du paquetage"
+msgstr "Taille du paquet"
 
 #: src/red_packagepage_info.py:82
 msgid "Installed Size"
-msgstr "Taille installé"
+msgstr "Taille installée"
 
 #: src/red_packagepage_info.py:84
 msgid "Section"
@@ -1775,7 +1759,7 @@ msgstr "Section"
 msgid "Summary"
 msgstr "Résumé"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:478
+#: src/red_packagepage_info.py:86 src/red_prefs.py:413
 msgid "Description"
 msgstr "Description"
 
@@ -1806,7 +1790,7 @@ msgstr "Sans nom"
 
 #: src/red_packageview.py:301
 msgid "Status"
-msgstr "Statut"
+msgstr "État"
 
 #: src/red_packageview.py:472
 msgid "Importance"
@@ -1866,7 +1850,7 @@ msgstr "Importance"
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr ""
+msgstr "%.1f%% de fait"
 
 #. Define me!
 #. If necessary, change the button from "Cancel"
@@ -1874,7 +1858,7 @@ msgstr ""
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr "Mise à jour du système"
 
@@ -1882,14 +1866,13 @@ msgstr "Mise à jour du système"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 msgid "Download cancelled"
 msgstr "Téléchargement annulé"
 
-#: src/red_pendingview.py:578
-#, fuzzy
+#: src/red_pendingview.py:583
 msgid "Transaction cancelled"
-msgstr "Échec de la transaction"
+msgstr "Transaction annulée"
 
 #. We can't cancel once the transaction begins
 #. We're in "download only" mode.
@@ -1897,40 +1880,37 @@ msgstr "Échec de la transaction"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
-#, fuzzy
+#: src/red_pendingview.py:618
 msgid "Transaction Finished"
-msgstr "Échec de la transaction"
+msgstr "Transaction terminée"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 msgid "Downloading packages"
-msgstr "Téléchargement des paquetages"
+msgstr "Téléchargement des paquets"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 msgid "Download Failed"
 msgstr "Échec du téléchargement"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
-msgstr "Erreur inconnu"
+msgstr "Erreur inconnue"
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 msgid "Processing Transaction"
 msgstr "Transaction en cours"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
-#, fuzzy
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr "La mise à jour s'est terminée avec succès"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 msgid "Transaction failed"
 msgstr "Échec de la transaction"
 
-#: src/red_pendingview.py:703
-#, fuzzy
+#: src/red_pendingview.py:708
 msgid "Transaction Failed"
 msgstr "Échec de la transaction"
 
@@ -1971,119 +1951,104 @@ msgstr "Échec de la transaction"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Title
-#. Server section
-#: src/red_prefs.py:169
-msgid "Server"
-msgstr "Serveur"
-
-#: src/red_prefs.py:177
-msgid "Server URL:"
-msgstr "URL du serveur :"
-
-#. manually force the value to update
-#: src/red_prefs.py:228
-#, fuzzy
-msgid "Mirrors"
-msgstr "Miroir"
-
-#: src/red_prefs.py:240
-msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
-msgstr "Activer les services Premium (Red Carpet Express ou Entreprise)"
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
+msgstr "Fréquence de rafraichissements des données des canaux (en heures) :"
 
 #. Packages section
-#: src/red_prefs.py:251
+#: src/red_prefs.py:182
 msgid "Packages"
-msgstr "Paquetages"
+msgstr "Paquets"
 
-#: src/red_prefs.py:260
+#: src/red_prefs.py:191
 msgid "Require package signatures"
-msgstr "Requiert les signatures du paquetage"
+msgstr "Requiert les signatures du paquet"
 
-#: src/red_prefs.py:265
+#: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
-msgstr "Nombre maximum de paquetages téléchargés à la fois :"
+msgstr "Nombre maximum de paquets téléchargés à la fois :"
+
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "Autoriser le retour en arrière des paquets"
 
 #. Proxy section - requires superuser
-#: src/red_prefs.py:275
+#: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:284
+#: src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Utiliser un proxy"
 
-#: src/red_prefs.py:288
+#: src/red_prefs.py:223
 msgid "Proxy URL:"
-msgstr "URL du proxy :"
+msgstr "URL du proxy :"
 
-#: src/red_prefs.py:295
+#: src/red_prefs.py:230
 msgid "Username:"
 msgstr "Nom de l'utilisateur"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:335
+#: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
-msgstr ""
-"Vous n'avez pas les permissions nécessaires à la consultation des réglages "
-"du proxy"
+msgstr "Vous n'avez pas le droit de consulter les réglages du proxy"
 
-#: src/red_prefs.py:359
+#: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
-msgstr "Conserver en cache les paquetages et méta-données téléchargés"
+msgstr "Conserver en cache les paquets et méta-données téléchargés"
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:300
 msgid "Location of cached data:"
-msgstr "Emplacement des données en cache :"
+msgstr "Emplacement des données en cache :"
 
 #. Expiration section
-#: src/red_prefs.py:373
+#: src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Expiration"
 
-#: src/red_prefs.py:377
+#: src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Expiration du cache"
 
-#: src/red_prefs.py:383
+#: src/red_prefs.py:318
 msgid "Maximum age in days:"
-msgstr "Âge maximum en jours :"
+msgstr "Âge maximum en jours :"
 
-#: src/red_prefs.py:394
+#: src/red_prefs.py:329
 msgid "Maximum size in MB:"
-msgstr "Taille maximum en Mo :"
+msgstr "Taille maximum en Mo :"
 
-#: src/red_prefs.py:405
+#: src/red_prefs.py:340
 msgid "Current cache size:"
-msgstr "Taille courante des données en cache :"
+msgstr "Taille courante des données en cache :"
 
-#: src/red_prefs.py:422
-#, fuzzy
+#: src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr ""
-"Êtes-vous sûr de vouloir ouvrir %d fenêtres d'information sur les "
-"paquetages ?"
+"Êtes-vous sûr de vouloir supprimer les fichiers de paquets de votre cache ?"
 
-#: src/red_prefs.py:438
+#: src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Cache vide"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:460
+#: src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d Mo"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:508
+#: src/red_prefs.py:443
 msgid "Value"
 msgstr "Valeur"
 
-#: src/red_prefs.py:521
+#: src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Chargement des préférences..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:585
+#: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "Préférences %s"
@@ -2109,7 +2074,7 @@ msgstr "Préférences %s"
 #. system packages and uninstalled packages are mutually exclusive
 #: src/red_searchbox.py:146
 msgid "All Packages"
-msgstr "Tous les paquetages"
+msgstr "Tous les paquets"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2135,77 +2100,71 @@ msgstr "Mises à jour"
 
 #: src/red_searchbox.py:148
 msgid "Uninstalled Packages"
-msgstr "Paquetages désinstallés"
+msgstr "Paquets désinstallés"
 
 #: src/red_searchbox.py:149
 msgid "Installed Packages"
-msgstr "Paquetages installés"
+msgstr "Paquets installés"
 
 #: src/red_searchbox.py:174
-#, fuzzy
 msgid "All Sections"
-msgstr "Actions"
+msgstr "Toutes les sections"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr ""
+msgstr "Productivité"
 
 #: src/red_searchbox.py:176
-#, fuzzy
 msgid "Imaging"
-msgstr "Restant"
+msgstr "Graphisme"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
-msgstr ""
+msgstr "Gestion des informations personnelles"
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr ""
+msgstr "X·Windows"
 
 #: src/red_searchbox.py:179
-#, fuzzy
 msgid "Games"
-msgstr "Nom"
+msgstr "Jeux"
 
 #: src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedia"
 
 #: src/red_searchbox.py:181
 msgid "Internet"
-msgstr ""
+msgstr "Internet"
 
 #: src/red_searchbox.py:182
 msgid "Utilities"
-msgstr ""
+msgstr "Utilitaires"
 
 #: src/red_searchbox.py:183
-#, fuzzy
 msgid "System"
-msgstr "Type de système"
+msgstr "Système"
 
 #: src/red_searchbox.py:184
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: src/red_searchbox.py:185
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliothèques"
 
 #: src/red_searchbox.py:186
-#, fuzzy
 msgid "Development"
-msgstr "Développeurs"
+msgstr "Développement"
 
 #: src/red_searchbox.py:187
-#, fuzzy
 msgid "Development Tools"
-msgstr "Développeurs"
+msgstr "Outils de développement"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Divers"
 
 #: src/red_searchbox.py:274
 msgid "Search descriptions"
@@ -2220,7 +2179,7 @@ msgstr "Correspondance :"
 
 #: src/red_searchbox.py:322
 msgid "Channel:"
-msgstr "Canal :"
+msgstr "Canal :"
 
 #. ##
 #. ## Build the second row of the search UI, which contains the
@@ -2260,19 +2219,18 @@ msgid "Search"
 msgstr "Rechercher"
 
 #: src/red_search.py:38
-#, fuzzy
 msgid "S_earch Packages"
-msgstr "Rechercher des paquetages"
+msgstr "_Rechercher des paquets"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
 msgid "Searching for matching packages..."
-msgstr "Recherche de paquetages correspondants..."
+msgstr "Recherche des paquets correspondants..."
 
 #: src/red_search.py:109
 msgid "No matching packages found."
-msgstr "Aucun paquetage correspondant trouvé."
+msgstr "Aucun paquet correspondant trouvé."
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2295,7 +2253,7 @@ msgstr "Aucun paquetage correspondant trouvé."
 #. We only allow one server info window at a time
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
-msgstr "Le démon s'identifie lui-même comme :"
+msgstr "Le démon s'identifie lui-même comme :"
 
 #: src/red_serverinfo.py:57
 msgid "System type"
@@ -2321,7 +2279,7 @@ msgstr "Dupliquer les infos du démon dans un fichier XML"
 #: src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
-msgstr "Ne peut ouvrir le fichier '%s' : %s"
+msgstr "Impossible d'ouvrir le fichier « %s » : %s"
 
 #. We only allow one filesel window at a time
 #: src/red_serverinfo.py:135
@@ -2358,7 +2316,6 @@ msgstr "Choisissez un fichier de destination XML"
 #. FIXME?  By doing nothing here, we keep the
 #. user from being hammered by a whole bunch of exceptions
 #. if something has gone badly wrong.
-#. FIXME?
 #. FIXME?
 #. do the first poll immediately
 #. get poll timeout started again
@@ -2423,34 +2380,33 @@ msgstr "Choisissez un fichier de destination XML"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_sidebar.py:61 src/red_transaction.py:112
-#, fuzzy
 msgid "Pending Actions"
-msgstr "Actions"
+msgstr "Actions en attente"
 
 #. PendingOpsListener implementation
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d installation en attente"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d installations en attente"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d suppression en attente"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d suppressions en attente"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "Aucune action en attente"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -2469,25 +2425,22 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_software.py:28
-#, fuzzy
 msgid "Installed Software"
-msgstr "Taille installé"
+msgstr "Logiciel installé"
 
 #: src/red_software.py:31
-#, fuzzy
 msgid "I_nstalled Software"
-msgstr "Taille installé"
+msgstr "Logiciel _installé"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_software.py:97
 msgid "Available Software"
-msgstr "Logiciels disponibles"
+msgstr "Logiciel disponible"
 
 #: src/red_software.py:100
-#, fuzzy
 msgid "A_vailable Software"
-msgstr "Logiciels disponibles"
+msgstr "Logiciel _disponible"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2508,9 +2461,9 @@ msgstr "Logiciels disponibles"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_statusbar.py:49
-#, fuzzy, python-format
+#, python-format
 msgid "Connected to %s"
-msgstr "Se connecter au démon de cet ordinateur"
+msgstr "Connecté à %s"
 
 #. Pop off any old message
 #. # Proxy GtkStatusbar's interface
@@ -2539,9 +2492,9 @@ msgid "Channel Name"
 msgstr "Nom du canal"
 
 #: src/red_subscriptions.py:78
-#, fuzzy, python-format
+#, python-format
 msgid "%s Channel Subscriptions"
-msgstr "%s canal inscriptions"
+msgstr "Inscriptions au canaux de %s"
 
 #. FIXME: Make transient of app
 #: src/red_subscriptions.py:99
@@ -2549,7 +2502,7 @@ msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
 msgstr ""
-"Vous n'avez pas les droits pour inscrire ou désincrire depuis les canaux. "
+"Vous n'avez pas le droits de vous inscrire ou de vous désincrire des canaux. "
 "Vous ne serez pas en mesure d'effectuer des changements dans les "
 "inscriptions."
 
@@ -2616,20 +2569,17 @@ msgid "Are you sure you want to quit?"
 msgstr "Êtes vous sûr de vouloir quitter ?"
 
 #: src/red_transaction.py:115
-#, fuzzy
 msgid "_Pending Actions"
-msgstr "A_ctions"
+msgstr "A_ctions en attente"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "Mises à jour"
+msgstr "Mises à jo_ur"
 
 #. ## Update All button
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr "Mise à jour annulée"
+msgstr "Tout mettre à jo_ur"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
@@ -2655,7 +2605,7 @@ msgstr ""
 "Si vous supprimez les privilèges super-utilisateur que vous possédez, vous "
 "ne serez pas en mesure de les restituer.\n"
 "\n"
-"Êtes-vous sûr que c'est ce que vous voulez ?"
+"Êtes-vous sûr que c'est ce que vous voulez ?"
 
 #. We want opposite state
 #: src/red_users.py:166
@@ -2699,7 +2649,7 @@ msgstr "Ajouter"
 #: src/red_users.py:320
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Êtes vous sûr de vouloir supprimer '%s' ?"
+msgstr "Êtes vous sûr de vouloir supprimer « %s » ?"
 
 #: src/red_users.py:326
 msgid "Remove"
@@ -2720,22 +2670,31 @@ msgstr "Nom d'utilisateur incorrect."
 #: src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
-msgstr "L'utilisateur '%s' existe déjà."
+msgstr "L'utilisateur « %s » existe déjà."
 
-#~ msgid "System successfully activated."
-#~ msgstr "Système activé avec succès."
+#~ msgid ""
+#~ "System could not be activated: Invalid activation code or email address."
+#~ msgstr ""
+#~ "Le système ne peut être activé : code d'activation ou e-mail invalide."
+
+#~ msgid "Unable to mount '%s' as a channel"
+#~ msgstr "Impossible de monter '%s' comme un canal"
+
+#~ msgid "Server"
+#~ msgstr "Serveur"
+
+#~ msgid "Server URL:"
+#~ msgstr "URL du serveur :"
+
+#, fuzzy
+#~ msgid "Mirrors"
+#~ msgstr "Miroir"
+
+#~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
+#~ msgstr "Activer les services Premium (Red Carpet Express ou Entreprise)"
 
 #~ msgid "Connect..."
 #~ msgstr "Connexion..."
-
-#~ msgid "Update cancelled"
-#~ msgstr "Mise à jour annulée"
-
-#~ msgid "Update Finished"
-#~ msgstr "Mise à jour terminée"
-
-#~ msgid "Update Failed"
-#~ msgstr "Échec de la mise à jour"
 
 #~ msgid "Mark for Installation"
 #~ msgstr "Marquer pour installation"
@@ -2752,9 +2711,6 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "File"
 #~ msgstr "Fichier"
 
-#~ msgid "Edit"
-#~ msgstr "Éditer"
-
 #~ msgid "View"
 #~ msgstr "Afficha_ge"
 
@@ -2764,26 +2720,14 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "My Computer"
 #~ msgstr "Mon ordinateur"
 
-#~ msgid "Searching system for matching packages..."
-#~ msgstr "Recherche sur le sytème de paquetages correspondants..."
-
 #~ msgid "Installations and Removals"
 #~ msgstr "Installations et suppressions"
-
-#~ msgid "Update Summary"
-#~ msgstr "Mise à jour du résumé"
 
 #~ msgid "Ximian Red Carpet"
 #~ msgstr "Ximian Red Carpet"
 
-#~ msgid "_Verify Installed Packages"
-#~ msgstr "_Vérifier les paquets installés"
-
 #~ msgid "_Install Local Packages..."
 #~ msgstr "_Installer des paquets locaux..."
-
-#~ msgid "_Unsubscribe"
-#~ msgstr "Se _désinscrire"
 
 #~ msgid "_Users Manual"
 #~ msgstr "Manuel _utilisateur"
@@ -2793,9 +2737,6 @@ msgstr "L'utilisateur '%s' existe déjà."
 
 #~ msgid "Pause"
 #~ msgstr "Pause"
-
-#~ msgid "Download"
-#~ msgstr "Télécharger"
 
 #~ msgid "OK"
 #~ msgstr "OK"
@@ -2809,17 +2750,11 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "Executive Summary"
 #~ msgstr "Tableau de bord"
 
-#~ msgid ""
-#~ "Update packages individually (NOTE: This is an unsupported operation)"
-#~ msgstr ""
-#~ "Mettre individuellement les paquets à jour (NOTE : Ceci une opération non "
-#~ "supportée)"
-
 #~ msgid "Actual widget tag"
 #~ msgstr "Balise actuelle du widget"
 
 #~ msgid "No Proxy"
-#~ msgstr "Pas de proxy"
+#~ msgstr "Aucun proxy"
 
 #~ msgid "HTTP Proxy"
 #~ msgstr "HTTP Proxy"
@@ -2830,41 +2765,17 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "SOCKS 5 Proxy"
 #~ msgstr "SOCKS 5 Proxy"
 
-#~ msgid "Host"
-#~ msgstr "Hôte"
-
 #~ msgid "Port"
 #~ msgstr "Port"
 
 #~ msgid "Authenticated Proxy"
 #~ msgstr "Proxy avec authentification"
 
-#~ msgid "Send requests using HTTP 1.0"
-#~ msgstr "Envoyer les requêtes en utilisant HTTP 1.0"
-
-#~ msgid "Enable caching of downloaded data"
-#~ msgstr "Activer la mise en mémoire cache des données téléchargées"
-
 #~ msgid "Clear cached packages on exit"
 #~ msgstr "Efface les paquets du cache en quittant"
 
-#~ msgid "Clear cached packages after a period of time"
-#~ msgstr "Efface les paquets du cache à l'expiration du délai"
-
-#~ msgid "Days:"
-#~ msgstr "Jours :"
-
 #~ msgid "User Interface"
 #~ msgstr "Interface utilisateur"
-
-#~ msgid "Show more descriptive package names instead of the actual names."
-#~ msgstr "Affiche des noms de paquets plus détaillés que les noms actuels."
-
-#~ msgid ""
-#~ "Ask before installing packages with signatures that cannot be verified."
-#~ msgstr ""
-#~ "Poser une question avant d'installer des paquets dont la signature ne "
-#~ "peut être vérifiée"
 
 #~ msgid "Red Carpet Premium Services"
 #~ msgstr "Services Red Carpet Premium"
@@ -2872,27 +2783,11 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "Enable Premium Services"
 #~ msgstr "Activer les services Premium"
 
-#~ msgid "General"
-#~ msgstr "Général"
-
 #~ msgid "Ximian Red Carpet - Search"
 #~ msgstr "Ximian Red Carpet - Rechercher"
 
-#~ msgid "Find text:"
-#~ msgstr "Rechercher le texte :"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Sensible à la casse"
-
 #~ msgid "Ximian Red Carpet - Please Wait"
-#~ msgstr "Ximian Red Carpet - Veuillez patientez"
-
-#~ msgid ""
-#~ "Please wait while Red Carpet downloads channel information relevant to "
-#~ "your system."
-#~ msgstr ""
-#~ "Veuillez patienter pendant le téléchargement des informations du canal "
-#~ "relatif à votre système."
+#~ msgstr "Ximian Red Carpet - Veuillez patienter"
 
 #~ msgid "%P%%"
 #~ msgstr "%P%%"
@@ -2900,368 +2795,44 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "%P%% (%V of %U)"
 #~ msgstr "%P%% (%V sur %U)"
 
-#~ msgid "Ximian Red Carpet - Verification"
-#~ msgstr "Ximian Red Carpet - Vérification"
-
-#~ msgid ""
-#~ "CAUTION: Red Carpet is unable to ensure the cryptographic integrity of "
-#~ "this package. The package might not be signed, or Red Carpet may not have "
-#~ "the key needed to verify this package. You may continue and install this "
-#~ "package, but Red Carpet cannot ensure that it is safe or from a trusted "
-#~ "source."
-#~ msgstr ""
-#~ "AVERTISSEMENT : Red Carpet est incapable d'assurer l'intégrité "
-#~ "cryptographique de ce paquet. Le paquet peut ne pas être signé, ou bien "
-#~ "Red Carpet peut ne pas avoir la clef nécessaire pour vérifier ce paquet. "
-#~ "Vous pouvez poursuivre et installer ce paquet mais Red Carpet ne peut "
-#~ "vous assurer qu'il est intègre ou provient d'une source de confiance."
-
-#~ msgid "Do you wish to install this package anyway?"
-#~ msgstr "Souhaitez installer ce paquet quoi qu'il en soit ?"
-
-#~ msgid "Do not show this warning again."
-#~ msgstr "Ne plus afficher cet avertissement à l'avenir."
-
-#~ msgid ""
-#~ "Warning! Removing this many packages can be dangerous\n"
-#~ "and should only be done if you know what you are doing.\n"
-#~ "\n"
-#~ "Are you sure you want to proceed with this transaction?"
-#~ msgstr ""
-#~ "Attention ! Supprimer tous ces paquets peut être dangereux\n"
-#~ "et ne doit être uniquement effectué si vous savez ce que vous faîtes.\n"
-#~ "\n"
-#~ "Êtes vous sûr de vouloir effectuer cette opération ?"
-
 #~ msgid "Red Carpet - Warning"
 #~ msgstr "Red Carpet - Avertissement"
-
-#~ msgid ""
-#~ "If you are behind a firewall and use a proxy to access web sites, you "
-#~ "should\n"
-#~ "enable proxy support here. If your proxy requires authentication, select\n"
-#~ "\"Use authentication\" and enter your username and password.\n"
-#~ "\n"
-#~ "You can change these settings in the future by selecting Preferences from "
-#~ "the\n"
-#~ "Settings menu. These settings are on the Proxy tab.\n"
-#~ "\n"
-#~ "When you have correctly entered your proxy information, click OK to "
-#~ "continue.\n"
-#~ msgstr ""
-#~ "Si vous êtes derrière un pare-feu et que vous utilisez une passerelle "
-#~ "pour\n"
-#~ "accéder aux sites web, activez ici le support de la passerelle.\n"
-#~ "Si vôtre passerelle nécessite une authentification, sélectionner "
-#~ "« Utiliser l'authentification » et saisissez votre identifiant et votre "
-#~ "mot de passe.\n"
-#~ "\n"
-#~ "Vous pouvez modifier ces paramètres ultérieurement en sélectionnant "
-#~ "Préférences depuis le menu Réglages. Ces réglages sont sur l'onglet "
-#~ "Passerelle.\n"
-#~ "\n"
-#~ "Quand vous avez correctement saisi les informations de votre passerelle, "
-#~ "cliquez sur OK pour continuer.\n"
 
 #~ msgid "Use authentication"
 #~ msgstr "Utiliser l'authentification"
 
-#~ msgid ""
-#~ "Hi. Thanks for testing out this beta version of Red Carpet.\n"
-#~ "This new version includes a number of improvements, including\n"
-#~ "improved dependency checking, RPM and dpkg backend\n"
-#~ "improvements for faster and more successful transactions,\n"
-#~ "a new and improved transfer layer, and more.\n"
-#~ "\n"
-#~ "Please keep in mind, however, that this version is not ready for\n"
-#~ "production use. You should expect things to break. If you\n"
-#~ "encounter a bug, please file it at the Ximian Bugzilla at\n"
-#~ "http://bugzilla.ximian.com and ensure that you file the bug\n"
-#~ "against the correct version (1.0.93). This will make everyone's\n"
-#~ "life easier. When reporting a bug via bugzilla or to the mailing\n"
-#~ "lists, please include the name and version of your distribution\n"
-#~ "and, if you encounter a problem when trying to install or remove\n"
-#~ "packages, the packages that you were trying to add or remove.\n"
-#~ "\n"
-#~ "Thanks again for testing Red Carpet; your contributions as\n"
-#~ "testers are paramount to its improvement.\n"
-#~ "\n"
-#~ "The Red Carpet team"
-#~ msgstr ""
-#~ "Bonjour,\n"
-#~ "\n"
-#~ "Merci de tester cette version bêta de Red Carpet.\n"
-#~ "Cette nouvelle version inclue de nombreuses améliorations,\n"
-#~ "dont la vérification des dépendances, l'optimisation des \n"
-#~ "moteurs RPM et dpkg pour la vitesse et les transactions à succès,\n"
-#~ "ainsi qu'une nouvelle couche de transfert plus rapide, et bien plus\n"
-#~ "encore.\n"
-#~ "\n"
-#~ "Gardez à l'esprit, cependant, que cette version n'est pas prête pour\n"
-#~ "une utilisation en production. Vous devez vous attendre à des bogues.\n"
-#~ "Si vous rencontrez un bogue, veuillez le décrire sur Ximian Bugzilla\n"
-#~ "à l'adresse suivante http://bugzilla.ximian.com et assurez vous que\n"
-#~ "vous associez ce bogue à la bonne version (1.0.93). Ceci rendra à \n"
-#~ "tout le monde la vie plus facile. Quand vous reportez un bogue via\n"
-#~ "bugzilla ou via les listes de diffusions, incluez s'il vous plaît\n"
-#~ "le nom et la version de votre distribution et si vous rencontrez un\n"
-#~ "problème quand vous tentez d'installer ou supprimer un paquet, le\n"
-#~ "nom du paquet que vous avez tenté d'installer ou supprimer.\n"
-#~ "\n"
-#~ "Merci encore de tester Red Carpet ; votre contribution en tant que\n"
-#~ "testeur est primordiale pour ces améliorations.\n"
-#~ "\n"
-#~ "L'équipe de Red Carpet"
-
-#~ msgid "Do not show this dialog again"
-#~ msgstr "Ne plus afficher ce message à l'avenir"
-
 #~ msgid "The password you have entered is incorrect."
 #~ msgstr "Le mot de passe que vous avez saisi est incorrect."
-
-#~ msgid ""
-#~ "For most operations, Red Carpet requires administrator privileges.\n"
-#~ "\n"
-#~ "To acquire such privileges, enter your root password below. If you don't\n"
-#~ "specify a password, you will be unable to update, install, or remove "
-#~ "software"
-#~ msgstr ""
-#~ "Pour la majorité des opérations, Red Carpet nécessite les privilèges\n"
-#~ "de l'admnistrateur.\n"
-#~ "\n"
-#~ "Afin d'obtenir ces privilèges, veuillez saisir le mot de passe de \n"
-#~ "l'administrateur ci-dessous. Si vous ne fournissez pas de mot de passe, \n"
-#~ "vous ne serez pas en mesure de mettre à jour, d'installer ou de \n"
-#~ "supprimer des logiciels"
-
-#~ msgid ""
-#~ "Red Carpet will generate the dependency information required to analyze "
-#~ "this failure and email it to Ximian, Inc.\n"
-#~ "\n"
-#~ "Please fill out the form below in the event that a follow-up is necessary "
-#~ "to further diagnose the problem."
-#~ msgstr ""
-#~ "Red Carpet va générer les informations de dépendances nécessaires pour "
-#~ "analyser cet échec et les envoyer à Ximian, Inc.\n"
-#~ "\n"
-#~ "Veuillez remplir le formulaire ci dessous dans le cas où des détails "
-#~ "supplémentaires seraient nécessaires au diagnostique du problème."
-
-#~ msgid "Name: "
-#~ msgstr "Nom : "
-
-#~ msgid "Progress: "
-#~ msgstr "Avancement : "
 
 #~ msgid "%P %%"
 #~ msgstr "%P %%"
 
-#~ msgid ""
-#~ "<p>If you select cancel, Red Carpet will skip this channel and it will be "
-#~ "unavailable for the rest of this session (or until you refresh the "
-#~ "channel list)."
-#~ msgstr ""
-#~ "<p>Si vous choisissez d'annuler, Red Carpet abandonnera ce canal et il ne "
-#~ "sera pas disponible durant cette session (ou jusqu'à ce que vous "
-#~ "rafraîchissiez la liste du canal)."
-
-#~ msgid ""
-#~ "<p>An error occured trying to parse channel information.</p><p>This may "
-#~ "be caused either by an old version of Red Carpet that is unable to read "
-#~ "newer data files or by an error on the server. If you cancel, Red Carpet "
-#~ "will skip this channel and it will be unavailable for the rest of this "
-#~ "session (or until you refresh the channel list).</p>"
-#~ msgstr ""
-#~ "<p>Une erreur a survenue en essayant de lire le canal d'information.</"
-#~ "p><p> Ceci peut être du à l'utilisation d'une ancienne version de Red "
-#~ "Carpet qui est incapable de lire le nouveau format de donnée ou à une "
-#~ "erreur du serveur. Si vous choisissez d'annuler, Red Carpet abandonnera "
-#~ "ce canal et il ne sera pas disponible durant cette session (ou jusqu'à ce "
-#~ "que vous rafraîchissiez la liste du canal).</p>"
-
-#~ msgid ""
-#~ "<p>An error has occurred while downloading channel data.</p><p>Red Carpet "
-#~ "was unable to fetch information for the \"%s\" channel from the server. "
-#~ "Red Carpet can continue without this information, but you will be unable "
-#~ "to access that channel during this session (unless you refresh).</p>"
-#~ msgstr ""
-#~ "<p>Une erreur a survenue durant le téléchargement du canal de donnée.</"
-#~ "p><p>Red Carpet a été incapable de récupérer les informations depuis le "
-#~ "canal « %s ». Red Carpet peut continuer sans cette information, mais vous "
-#~ "serez incapable d'accéder à ce canal durant cette session (à moins que "
-#~ "vous rafraîchissiez).</p>"
-
-#~ msgid "Downloading"
-#~ msgstr "Téléchargement"
-
-#~ msgid "First, the requested packages are downloaded from their source"
-#~ msgstr ""
-#~ "Dans un premier temps, les paquets requis seront téléchargés depuis leur "
-#~ "source"
-
-#~ msgid "Done"
-#~ msgstr "Effectué"
-
-#~ msgid "Percent Complete"
-#~ msgstr "Pourcentage complété"
-
-#~ msgid "Next, packages are verified to ensure cryptographic integrity"
-#~ msgstr "Ensuite, l'intégrité cryptographique des paquets sera controlée"
-
 #~ msgid "Transacting"
 #~ msgstr "Transaction en cours"
-
-#~ msgid "The new packages are installed and old packages are removed."
-#~ msgstr ""
-#~ "Les nouveaux paquets seront installés et les anciens seront supprimés"
 
 #~ msgid "Finishing up..."
 #~ msgstr "Finalisation..."
 
-#~ msgid ""
-#~ "The packages you requested are being downloaded and installed on your "
-#~ "system."
-#~ msgstr ""
-#~ "Les paquets que vous avez choisi ont été téléchargés et installés sur "
-#~ "votre système"
-
 #~ msgid "Total"
 #~ msgstr "Total"
-
-#~ msgid "The packages you selected are being removed from your system"
-#~ msgstr ""
-#~ "Les paquets que vous avez sélectionné ont été supprimés de votre système"
-
-#~ msgid "Removal has finished."
-#~ msgstr "La suppression est terminé"
-
-#~ msgid "The packages you selected are being removed from your system."
-#~ msgstr ""
-#~ "Les paquets que vous avez sélectionné ont été supprimés de votre système"
-
-#~ msgid "Keyword not found"
-#~ msgstr "Mot-clé non trouvé"
-
-#~ msgid "<!--html-->Failed Dependencies"
-#~ msgstr "<!--html-->Dépendances non résolues"
-
-#~ msgid ""
-#~ "<!--html-->Red Carpet was unable to successfully locate all the necessary "
-#~ "files to complete this request. The errors and conflicts that occured are "
-#~ "listed here, along with a suggested action to take."
-#~ msgstr ""
-#~ "<!--html-->Red Carpet a été incapable de localiser les fichiers "
-#~ "nécesaires pour accomplir cette demande. Les erreurs et conflits qui se "
-#~ "sont produits sont listés ici, ainsi qu'une action suggérée face au "
-#~ "problème."
-
-#~ msgid "Click here to send a dependency report"
-#~ msgstr "Cliquez ici pour envoyer un rapport de dépendances"
-
-#~ msgid "needed by: <b>%s</b>"
-#~ msgstr "requis par : <b>%s<b>"
 
 #~ msgid "conflicts with: <b>%s</b>"
 #~ msgstr "conflits avec <b>%s</b>"
 
-#~ msgid "depends on: <b>%s</b>"
-#~ msgstr "dépend de : <b>%s</b>"
-
 #~ msgid "needed by"
 #~ msgstr "requis par"
-
-#~ msgid "needs %s %s %s, which is being removed"
-#~ msgstr "nécessite %s %s %s, qui ont été supprimés"
-
-#~ msgid "needs %s %s %s, which cannot be found"
-#~ msgstr "nécessire %s %s %s, qui n'ont pas été trouvés"
 
 #~ msgid "conflicts with %s %s %s"
 #~ msgstr "conflits avec %s %s %s"
 
-#~ msgid "<!--html-->This package will be pulled in from the %s channel."
-#~ msgstr "<!--html-->Ce paquet sera récupéré depuis le canal %s."
-
-#~ msgid ""
-#~ "<!--html-->This package will be pulled in from the <b>unsubscribed</b> %s "
-#~ "channel."
-#~ msgstr ""
-#~ "<!--html-->Ce paquet sera récupéré depuis le canal <b>non souscrit</> %s."
-
 #~ msgid "<!--html-->Package Dependencies"
 #~ msgstr "<!--html-->Dependances des paquets"
-
-#~ msgid ""
-#~ "<!--html-->Your system's package database is valid!<br><br>Click the "
-#~ "Previous button to go back."
-#~ msgstr ""
-#~ "<!--html-->Votre base de données des paquets est valide !<br><br>Cliquez "
-#~ "sur le bouton Précédent pour revenir à la page principale."
 
 #~ msgid "<b>1</b> Requested Package"
 #~ msgstr "<b>1</b> Paquet requis"
 
 #~ msgid "<b>%d</b> Requested Packages"
 #~ msgstr "<b>%d</b> Paquets requis"
-
-#~ msgid "<b>1</b> Necessary Removal"
-#~ msgstr "<b>1</b> suppression nécessaire"
-
-#~ msgid "<b>%d</b> Necessary Removals"
-#~ msgstr "<b>%d</b> suppressions nécessaires"
-
-#~ msgid "<b>1</b> Necessary Installation"
-#~ msgstr ">b>1</b> installation nécessaire"
-
-#~ msgid "<b>%d</b> Necessary Installations"
-#~ msgstr "<b>%d</b> installations nécessaires"
-
-#~ msgid "<!--html--><b>%s</b> will need to be downloaded. "
-#~ msgstr "<!--html--><b>%s</b> sera nécessairement téléchargé. "
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be used."
-#~ msgstr ""
-#~ "<!--html-->Après les transactions, <b>%s</b> de l'espace disque seront "
-#~ "alloués."
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be freed."
-#~ msgstr ""
-#~ "<!--html-->Après les transactions, <b>%s</b> de l'espace disque seront "
-#~ "libérés."
-
-#~ msgid ""
-#~ "<!--html-->After operations, no additional space will be freed or used."
-#~ msgstr ""
-#~ "<!--html-->Après les transactions, aucun espace disque supplémentaire ne "
-#~ "sera alloué ou libéré."
-
-#~ msgid ""
-#~ "<!--html-->You have insufficient disk space to download the requested "
-#~ "packages. You must free up some disk space before you can continue. Some "
-#~ "options include:"
-#~ msgstr ""
-#~ "<!--html-->La capacité de votre disque dur est insuffisante pour "
-#~ "télécharger les paquets requis. Vous devez libérer de l'espace disque "
-#~ "afin de poursuivre. Options proposées : "
-
-#~ msgid "<!--html-->Removing some packages from your system"
-#~ msgstr "<!--html-->Supprimer des paquets de votre système"
-
-#~ msgid "Changing your <a href=\"updater:prefs_cache\">cache settings</a>."
-#~ msgstr ""
-#~ "Changer les <a href=\"updater:prefs_cache\">Paramètres du cache</a>."
-
-#~ msgid "<a href=\"updater:cache_clear\">Clearing your cache</a>."
-#~ msgstr "<a href=\"updater:cache_clear\">Effacer le cache</a>."
-
-#~ msgid ""
-#~ "<font color=#ff0000>Warning!</font> There may not be sufficient disk "
-#~ "space to install this package, and installation of this package may fail. "
-#~ "You should free up some disk space before continuing."
-#~ msgstr ""
-#~ "<font color=#ff0000>Attention !</font> Il n'y a pas suffisament d'espace "
-#~ "dique pour installer ce paquet et l'installation de ce paquet peut "
-#~ "échouer. Vous devez libérer de l'espace disque afin de continuer."
 
 #~ msgid "1&nbsp;Package"
 #~ msgstr "1&nbsp;paquet"
@@ -3272,761 +2843,7 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "<td width=25%>Old Version</td>"
 #~ msgstr "<td width=25%>Ancienne version</td>"
 
-#~ msgid "Necessary Removals"
-#~ msgstr "Suppressions nécessaires"
-
-#~ msgid "Necessary Installations"
-#~ msgstr "Installations nécessaires"
-
 #~ msgid "<html><body><b>Please wait, loading page...</b></body></html>"
 #~ msgstr ""
-#~ "<html><body><b>Veuillez patientez, chargement de la page...</b></body></"
+#~ "<html><body><b>Veuillez patienter, chargement de la page...</b></body></"
 #~ "html>"
-
-#~ msgid ""
-#~ "You have no packages from this channel currently installed on your system."
-#~ msgstr ""
-#~ "Vous n'avez pas de paquets de ce canal actuellement installés sur votre "
-#~ "système."
-
-#~ msgid ""
-#~ "You can visit the channel's <a href=\"updater:info_page\">about page</a> "
-#~ "to get more information about what software is available, or you can go "
-#~ "directly to the <a href=\"updater:available_page\">install page</a> to "
-#~ "install software."
-#~ msgstr ""
-#~ "Vous pouvez visiter la page <a href=\"updater:info_page\">À propos</a> "
-#~ "pour obtenir des informations supplémentaires au sujet des logiciels "
-#~ "disponibles, ou bien aller directement à la page <a href=\"updater:"
-#~ "available_page\">Installation</a> pour installer des logiciels."
-
-#~ msgid "View the <a href=\"updater:info_page\">about page</a>."
-#~ msgstr "Voir la page <a href=\"updater:info_page\">À propos</a>."
-
-#~ msgid "View the <a href=\"updater:available_page\">install page</a>."
-#~ msgstr "Voir la page <a href=\"updater:available_page\">Installation</a>."
-
-#~ msgid "Return to the <a href=\"updater:summary\">Summary</a>."
-#~ msgstr "Retour au <a href=\"updater:summary\">Résumé</a>."
-
-#~ msgid ""
-#~ "You don't have any packages installed from this channel. The following "
-#~ "pre-defined sets of packages are available, or you may select individual "
-#~ "packages from the <a href=updater:available_page>Install page</a>."
-#~ msgstr ""
-#~ "Vous n'avez aucun paquets installés depuis ce canal. Les groupes "
-#~ "prédéfinis de paquets suivants sont disponibles, vous pouvez aussi "
-#~ "sélectionner des paquets individuels depuis la page <a href=updater:"
-#~ "available_page>Installation</a>."
-
-#~ msgid "All of the software from this channel is up-to-date."
-#~ msgstr "Tous les logiciels de ce canal sont à jour."
-
-#~ msgid ""
-#~ "To install new software from this channel, visit the <a href=\"updater:"
-#~ "available_page\">install page</a>."
-#~ msgstr ""
-#~ "Pour installer des nouveaux logiciels depuis ce canal, visiter la page <a "
-#~ "href=\"updater:available_page\">Installation</a>."
-
-#~ msgid ""
-#~ "To remove already installed software from this channel, visit the <a href="
-#~ "\"updater:installed_page\">remove page</a>."
-#~ msgstr ""
-#~ "Pour supprimer des logiciels déjà installés depuis ce canal, visitez la "
-#~ "page <a href=\"updater:installed_page\">Suppression</a>."
-
-#~ msgid "<a href=\"updater:unsubscribe\">Unsubscribe</a> from this channel."
-#~ msgstr "<a href=\"updater:unsubscribe\">Se désinscrire</a> de ce canal."
-
-#~ msgid ""
-#~ "There is <b>1 update</b> available in this channel, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Il y a <b>1 mise à jour</b> disponible sur ce canal, totalisant <b>%s</b> "
-#~ "de données à télécharger."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available in this channel, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Il y a <b>%s mises à jour</b> disponible sur ce canal, totalisant <b>%s</"
-#~ "b> de données à télécharger."
-
-#~ msgid ""
-#~ "  You will not be able to update your system unless you run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "Vous ne serez pas capable de mettre à jour votre système à moins que vous "
-#~ "exécutiez Red Carpet en tant que root."
-
-#~ msgid "Essential Updates"
-#~ msgstr "Mises à jour essentielles"
-
-#~ msgid "Urgent Updates"
-#~ msgstr "Mises à jour urgentes"
-
-#~ msgid "Suggested Updates"
-#~ msgstr "Mises à jour suggérées"
-
-#~ msgid "Feature Enhancements"
-#~ msgstr "Fonctionnalités améliorées"
-
-#~ msgid "Minor Fixes/Updates"
-#~ msgstr "Corrections/Mise à jour mineures"
-
-#~ msgid "1 update"
-#~ msgstr "1 mise à jour"
-
-#~ msgid "%d updates"
-#~ msgstr "%d mises à jour"
-
-#~ msgid ""
-#~ "The following packages from this channel are currently installed on your "
-#~ "system."
-#~ msgstr "Les paquets suivants sont actuellement installés sur votre système."
-
-#~ msgid ""
-#~ "<!--html-->  To remove packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  Pour supprimer des paquets, vous devez exécuter Red Carpet "
-#~ "en tant que root."
-
-#~ msgid ""
-#~ "<p>All packages available in this channel are already installed on your "
-#~ "system.</p>"
-#~ msgstr ""
-#~ "<p>Tous les paquets disponibles sur ce canal sont déjà installés sur "
-#~ "votre système.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:update_page\">Update page</a> to "
-#~ "view available updates for your software in this channel, or return to "
-#~ "the <a href=\"updater:summary\">Summary</a> to view all available updates."
-#~ "</p>"
-#~ msgstr ""
-#~ "<p>Vous pouvez aller à la page de <a href=\"updater:update_page\">Mise à "
-#~ "jour</a> pour voir les mises à jour disponibles pour vos logiciels dans "
-#~ "ce canal, ou retourner à la page de <a href=\"updater:summary\">Résumé</"
-#~ "a> pour voir toutes les mises à jour disponibles.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:summary\">Summary</a> to view all "
-#~ "available updates for your system.</p>"
-#~ msgstr ""
-#~ "<p>Vous pouvez aller au <a href=\"updater:summary\">Résumé</a> pour voir "
-#~ "toutes les mises à jour disponibles pour votre système.</p>"
-
-#~ msgid ""
-#~ "<!--html-->The following packages from this channel are available for "
-#~ "installation."
-#~ msgstr ""
-#~ "<!--html-->Les paquets suivants de ce canal sont disponibles pour "
-#~ "l'installation."
-
-#~ msgid ""
-#~ " Package names that are in <font color=\"#777777\">gray</font> indicate "
-#~ "that a newer version of this package is already installed."
-#~ msgstr ""
-#~ "Les paquets dont les noms sont en <font color=\"#777777\">gris</font> "
-#~ "indiquent qu'une nouvelle version de ce paquet est déjà installée."
-
-#~ msgid ""
-#~ "<!--html-->  To install packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  Pour installer les paquets, vous devez exécuter Red Carpet "
-#~ "en tant que root."
-
-#~ msgid "Name:"
-#~ msgstr "Nom : "
-
-#~ msgid "Installed Version:"
-#~ msgstr "Version installée : "
-
-#~ msgid "Size:"
-#~ msgstr "Taille : "
-
-#~ msgid "bytes"
-#~ msgstr "octets"
-
-#~ msgid "Summary:"
-#~ msgstr "Résumé : "
-
-#~ msgid "or"
-#~ msgstr "ou"
-
-#~ msgid " Update Now! "
-#~ msgstr " Mettre à jour maintenant !"
-
-#~ msgid " Remove Packages "
-#~ msgstr " Supprimer les paquets "
-
-#~ msgid " Unsubscribe "
-#~ msgstr " Désinscrire "
-
-#~ msgid " Subscribe "
-#~ msgstr " Souscrire "
-
-#~ msgid "Keyword&nbsp;Search:"
-#~ msgstr "Recherche par mot-clé : "
-
-#~ msgid "Credits"
-#~ msgstr "Crédits"
-
-#~ msgid ""
-#~ "<p>Red Carpet is the Ximian package management system and software "
-#~ "portal, allowing you to install, upgrade, and remove packages on your "
-#~ "system. For more information, please visit the <a href=\"http://www."
-#~ "ximian.com/redcarpet/\">Red Carpet web site</a>.</p><p>We welcome your "
-#~ "feedback and bug reports, either through the <a href=\"http://bugzilla."
-#~ "ximian.com/\">Ximian Bugzilla</a>, or the Red Carpet mailing list at <a "
-#~ "href=\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-"
-#~ "carpet@ximian.com</a>.  Thank you!"
-#~ msgstr ""
-#~ "<p>Red Carpet est le gestionnaire de package et le portail logiciel de "
-#~ "Ximian, vous permettant d'installer, de mettre à jour et de supprimer des "
-#~ "paquets de votre système. Pour plus d'informations, veuillez visiter le "
-#~ "<a href=\"http://www.ximian.com/redcarpet/\"> site web Red Carpet</a>.</"
-#~ "p><p>Nous apprécions vos commentaires et vos rapports de bogues, soit par "
-#~ "le biais de <a href=\"http://bugzilla.ximian.com/\">Ximian Bugzilla</a>, "
-#~ "ou par celui de la mailing liste de Red Carpet à l'adresse <a href="
-#~ "\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian."
-#~ "com</a>. Merci !"
-
-#~ msgid "All links will open in an external browser window."
-#~ msgstr ""
-#~ "Tous les liens seront ouverts dans une fenêtre de navigateur externe."
-
-#~ msgid "The following channels are our featured channels!"
-#~ msgstr "Les canaux suivants sont nos canaux de fonctions !"
-
-#~ msgid "You are currently subscribed to all available channels!"
-#~ msgstr "Vous avez actuellement souscrit à tous les canaux disponibles !"
-
-#~ msgid ""
-#~ "We are constantly working on making more software available through Red "
-#~ "Carpet, so watch the <a href=\"updater:news_page\">News Page</a> and this "
-#~ "space for more channels to be added in the future!"
-#~ msgstr ""
-#~ "Nous travaillons constamment à mettre de nouveaux logiciels en accès sur "
-#~ "Red Carpet, gardez un oeil sur la <a href=\"updater:news_page\">Page "
-#~ "Nouveautés</a> pour être tenu au courant des nouveaux canaux ajoutés à "
-#~ "l'avenir !"
-
-#~ msgid "View my <a href=\"updater:subscribed_page\">subscribed channels</a>."
-#~ msgstr "Voir mes <a href=\"updater:subscribed_page\">canaux souscrits</a>."
-
-#~ msgid "View the <a href=\"updater:news_page\">News Page</a>."
-#~ msgstr "Voir la <a href=\"updater:news_page\">Page Nouveautés</a>."
-
-#~ msgid ""
-#~ "You are currently not subscribed to any channels!<p>We suggest that you "
-#~ "subscribe to the <a href=\"updater:channel_name?Ximian GNOME "
-#~ "Desktop#updater:info_page\">Ximian GNOME Desktop channel</a> to keep your "
-#~ "Ximian GNOME desktop running smoothly.  You can also view the software "
-#~ "channels available from Ximian and our Red Carpet partners on the <a href="
-#~ "\"updater:unsubscribed_page\">unsubscribed channels page</a>."
-#~ msgstr ""
-#~ "Vous avez actuellement souscrit à aucun canal !<p> Nous vous suggérons de "
-#~ "souscrire au <a href=\"updater:channel_name?Ximian GNOME Desktop#updater:"
-#~ "info_page\">canal Ximian GNOME Desktop</a> pour permettre à votre "
-#~ "environnement Ximian GNOME de fonctionner au mieux. Vous pouvez aussi "
-#~ "consulter la liste des canaux logiciels disponibles depuis Ximian et nos "
-#~ "partenaires sur la <a href=\"updater:unsubscribed_page\">page des canaux "
-#~ "non souscrits</a>."
-
-#~ msgid ""
-#~ "View <a href=\"updater:unsubscribed_page\">unsubscribed channels</a>."
-#~ msgstr ""
-#~ "Voir les <a href=\"updater:unsubscribed_page\">canaux non souscrits</a>."
-
-#~ msgid ""
-#~ "Return to the <a href=\"updater:summary\">introduction to Red Carpet</a>."
-#~ msgstr ""
-#~ "Retourner à <a href=\"updater:summary\">l'introduction de Red Carpet</a>."
-
-#~ msgid ""
-#~ "<font size=6><b>Welcome to Red Carpet!</b></font><p>Thank you for using "
-#~ "Red Carpet. From resolving package dependencies to ensuring cryptographic "
-#~ "security, Red Carpet takes the headache out of managing your GNOME "
-#~ "desktop system. Red Carpet is also an excellent way to keep on top of the "
-#~ "latest software offerings. The software available to you is organized "
-#~ "into channels; you choose the channels you want and we'll make sure "
-#~ "they're full of great programs.</p><p><font size=4><b>Subscribing to "
-#~ "Channels</b></font></p><p>Since you've just started running Red Carpet, "
-#~ "you aren't yet subscribed to any channels. On the left of the Red Carpet "
-#~ "window is the <b>Navigation Bar</b>, which allows you to access the main "
-#~ "pages of Red Carpet.</p><p>To browse available channels which you are not "
-#~ "subscribed to, click on the <b>Unsubscribed Channels</b> icon in the "
-#~ "navigation bar. After you've done that, to subscribe to a channel, click "
-#~ "on it and click on the <b>Subscribe</b> button in the bottom right corner "
-#~ "of the main content area or select <b>Subscribe</b> from the "
-#~ "Subscriptions menu.</p><p>We welcome your feedback and bug reports, "
-#~ "either through the <a href=\"http://bugzilla.ximian.com/\">Ximian "
-#~ "Bugzilla</a>, or the Red Carpet mailing list at <a href=\"http://lists."
-#~ "ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian.com</a>.  "
-#~ "Thank you!</p>"
-#~ msgstr ""
-#~ "<font size=6><b>Bienvenue dans Red Carpet !</b></font><p>Nous vous "
-#~ "remercions d'utiliser Red Carpet. Depuis la résolution des dépendances de "
-#~ "paquets jusqu'à la gestion de la sécurité cryptographique, Red Carpet "
-#~ "prend en charge la complexité de la maintenance de votre environnement de "
-#~ "bureau Gnome. Red Carpet est aussi une excellente façon de maintenir "
-#~ "constamment à jour votre environnement avec les dernières nouveautés. Le "
-#~ "logiciel mis à votre disposition est organisé sous forme de canaux; vous "
-#~ "choisissez les canaux que vous désirez et nous ferons en sorte que vous y "
-#~ "trouviez toujours des programmes interessants.</p><p><font "
-#~ "size=4><b>S'inscrire à des canaux</b></font><p><p>Lorsque vous commencer "
-#~ "à utiliser Red Carpet, vous n'êtes inscrit sur aucun canal. Dans la "
-#~ "partie gauche de la fenêtre se situe la barre de navigation, elle vous "
-#~ "permet d'accéder aux pages principales de Red Carpet.</p><p>Afin de "
-#~ "répertorier les canaux disponibles auxquels vous n'êtes pas encore "
-#~ "inscrit, cliquez sur l'icône <b>Canaux non enregistrés</b> dans la barre "
-#~ "de navigation. Ensuite, pour vous inscrire sur un canal, cliquez sur "
-#~ "l'icône du canal puis sur le bouton <b>S'inscrire</b>, dans le coin en "
-#~ "bas à droite de l'espace principal ou selectionnez <b>S'inscrire</b> "
-#~ "depuis le menu des inscriptions.</p><p>Vos commentaires et vos rapports "
-#~ "de bogues sont les bienvenus, soit à travers <a href=\"http://bugzilla."
-#~ "ximian.com/\">Ximian Bugzilla</a>, ou à travers la liste de diffusion de "
-#~ "Red Carpet à <a href=\"http://lists.ximian.com/mailman/listinfo/red-carpet"
-#~ "\">red-carpet@ximian.com</a>.\n"
-#~ "Merci !</p>"
-
-#~ msgid ""
-#~ "There is one <b>Essential Update</b> available for your system.  To "
-#~ "ensure that Ximian Red Carpet continues to function properly, you must "
-#~ "install this update before continuing.  After installing this update, "
-#~ "Ximian Red Carpet will automatically restart."
-#~ msgstr ""
-#~ "Il y a une <b>mise à jour essentielle</b> disponible pour votre système. "
-#~ "Pour pemettre à Ximian Red Carpet de continuer à fonctionner corectement, "
-#~ "vous devez installer cette mise à jour avant d'aller plus loin. Après "
-#~ "avoir installé cette mise à jour, Ximian Red Carpet va automatiquement "
-#~ "redémarré."
-
-#~ msgid ""
-#~ "There are %s <b>Essential Updates</b> available for your system.  To "
-#~ "ensure that Ximian Red Carpet continues to function properly, you must "
-#~ "install this update before continuing.  After installing this update, "
-#~ "Ximian Red Carpet will automatically restart."
-#~ msgstr ""
-#~ "Il y a %s <b>mises à jour essentielles</b> disponibles pour votre "
-#~ "système. Pour pemettre à Ximian Red Carpet de continuer à fonctionner "
-#~ "corectement, vous devez installer cette mise à jour avant d'aller plus "
-#~ "loin. Après avoir installé cette mise à jour, Ximian Red Carpet va "
-#~ "automatiquement redémarré."
-
-#~ msgid ""
-#~ "There is <b>one update</b> available for your system, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Il y a <b>une mise à jour</b> disponible pour votre système, totalisant "
-#~ "<b>%s</b> de données à télécharger."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available for your system, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Il y a <b>%s mises à jour</b> disponibles pour votre système, totalisant "
-#~ "<b>%s</b> de données à télécharger."
-
-#~ msgid ""
-#~ "<!--html-->  To update your system, you will have to run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "<!--html-->  Pour mettre à jour votre système, vous devrez exécuter Red "
-#~ "Carpet en tant qu'administrateur (root)."
-
-#~ msgid " Of these updates, <b>one</b> is <b>urgent</b>."
-#~ msgstr " Dans ces mises à jour, <b>une</b> est <b>urgente</b>."
-
-#~ msgid " Of these updates, <b>%s</b> are <b>urgent</b>."
-#~ msgstr " Dans ces mises à jour, <b>%s</b> sont <b>urgentes</b>."
-
-#~ msgid "1 other in the %s channel..."
-#~ msgstr "Une autre dans le canal %s ..."
-
-#~ msgid "%d others in the %s channel..."
-#~ msgstr "%d autres dans le canal %s ..."
-
-#~ msgid "Visible debugging level, ranges from 0 (nothing) to 6 (everything)"
-#~ msgstr "Niveau de débogage visuel, de 0 (rien) jusqu'à 6 (tout)"
-
-#~ msgid "Log file debugging level, ranges from 0 (nothing) to 6 (everything)"
-#~ msgstr "Niveau de débogage dans les fichiers, de 0 (rien jusqu'à 6 (tout)"
-
-#~ msgid "The XAuthority file (usually from GDM)"
-#~ msgstr "Le fichier XAuthority (issu généralement de GDM)"
-
-#~ msgid "Start up the Red Carpet client without premium services"
-#~ msgstr "Démarrage du client Red Capert sans les services premium"
-
-#~ msgid "(Re)configure proxy settings before starting"
-#~ msgstr "(Re)configurer les préférences proxy avant de poursuivre"
-
-#~ msgid ""
-#~ "Could not find '%s'.\n"
-#~ "Please make sure Red Carpet was installed correctly."
-#~ msgstr ""
-#~ "Ne peut trouver '%s'.\n"
-#~ "Vérifiez, s'il vous plaît, que Red Carpet à été correctement installé."
-
-#~ msgid ""
-#~ "Ximian Red Carpet was unable to determine what distribution you are on or "
-#~ "you are running an unsupported distribution. If you are running a "
-#~ "supported distribution, this is usually caused by some system file being "
-#~ "modified. A list of supported distributions is located <a href=\"http://"
-#~ "www.ximian.com/products/ximian_red_carpet/download.html\">on our web "
-#~ "site</a>."
-#~ msgstr ""
-#~ "Ximian Red Carpet est incapable de déterminer quelle distribution vous "
-#~ "utilisez ou bien vous utilisez une distribution non supportée. Si vous "
-#~ "utilisez une distribution supportée, le problème est généralement "
-#~ "engendré parce que des fichiers système ont été modifiés. Une liste de "
-#~ "distributions supportées est disponible <a href=\"http://www.ximian.com/"
-#~ "products/ximian_red_carpet/download.html\">sur notre site web</a>."
-
-#~ msgid ""
-#~ "Unable to access packaging subsystem:<br>%s<p>Please ensure that no other "
-#~ "package management programs are running, and try again."
-#~ msgstr ""
-#~ "Impossible d'accéder au gestionnaire de paquets : <br>%s<p>Veuillez vous "
-#~ "assurer qu'aucun autre gestionaire de paquets est actuellement en cours "
-#~ "d'exécution, et essayer de nouveau."
-
-#~ msgid "Downloading channel list..."
-#~ msgstr "Téléchargement de la liste du canal ..."
-
-#~ msgid "Downloading mirror list..."
-#~ msgstr "Téléchargement de la liste des mirroirs ..."
-
-#~ msgid "Downloading channel artwork..."
-#~ msgstr "Téléchargement des graphismes ..."
-
-#~ msgid ""
-#~ "You are not running Red Carpet as root.\n"
-#~ "\n"
-#~ "You will be unable to install or remove\n"
-#~ "packages from your system and subscription\n"
-#~ "information will not be saved during this\n"
-#~ "session."
-#~ msgstr ""
-#~ "Vous n'exécutez par Red Carpet en tant que root.\n"
-#~ "\n"
-#~ "Vous ne serez pas capable d'installer ou de \n"
-#~ "supprimer des paquets de votre système et\n"
-#~ "les informations d'inscription ne seront pas\n"
-#~ "enregistrées durant cette section."
-
-#~ msgid ""
-#~ "An error occurred trying to parse the channel list. You should ensure "
-#~ "that you are running a supported distribution and try again later."
-#~ msgstr ""
-#~ "Une erreur est intervenue durant l'analyse de la liste du canal. Vous "
-#~ "devez vous assurer que vous utilisez une distribution supportée et "
-#~ "essayer à nouveau plus tard."
-
-#~ msgid "Navigation"
-#~ msgstr "Navagation"
-
-#~ msgid "Premium Services"
-#~ msgstr "Services Premium"
-
-#~ msgid "Downloading mirrors..."
-#~ msgstr "Téléchargement des mirroirs ..."
-
-#~ msgid "packages"
-#~ msgstr "paquets"
-
-#~ msgid "%%p%%%% (%s of %s)"
-#~ msgstr "%%p%%%% (%s de %s)"
-
-#~ msgid "%s pulled from cache"
-#~ msgstr "%s extrait du cache"
-
-#~ msgid "%s downloaded %d bytes in %d seconds (%s/s)"
-#~ msgstr "%s téléchargé en %d octets durant %d secondes (%s/s)"
-
-#~ msgid "%p%% (%v of %u)"
-#~ msgstr "%p%% (%v de %u)"
-
-#~ msgid "Cryptographic verification of %s (%s) has FAILED."
-#~ msgstr "La vérification cryptographique de %s (%s) a ÉCHOUÉE."
-
-#~ msgid ""
-#~ "Red Carpet's cryptographic verification of %s (%s) has <b><font color="
-#~ "\"#ff0000\">failed</font></b>. This means that the security of this "
-#~ "package has somehow been compromised and Red Carpet will not install it. "
-#~ "The downloaded package may have been corrupted and downloading the "
-#~ "package again may fix the problem. If it doesn't, you can <a href="
-#~ "\"updater:send_bug_report\">send a problem report</a> to Ximian for "
-#~ "analysis.</p>"
-#~ msgstr ""
-#~ "La vérification cryptographique effectuée par Red Carpet de %s (%s) a "
-#~ "<b><font color=\"#ff0000\">échouée</font></b>. Cela signifie que la "
-#~ "sécurité de ce paquets a été compromise de quelque façon que ce soit et "
-#~ "que Red Carpet ne va pas l'installé. Le paquet téléchargé peut avoir été "
-#~ "corrompu et télécharger le paquet à nouveau peut résoudre le problème. Si "
-#~ "ce n'est pas le cas, vous pouvez <a href=\"updater:send_bug_report"
-#~ "\">adressez un rapport du problème</a> à Ximian pour analyse.</p>"
-
-#~ msgid ""
-#~ "INFO:\n"
-#~ "Name: %s (%s)\n"
-#~ "Version: %s\n"
-#~ "Release: %s\n"
-#~ "Package Filename:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "INFO :\n"
-#~ "Nom : %s (%s)\n"
-#~ "Version : %s\n"
-#~ "Révision : %s\n"
-#~ "Nom du paquet :\n"
-#~ "%s"
-
-#~ msgid "Verification of %s (%s) is inconclusive; aborting"
-#~ msgstr "La vérification de %s (%s) n'est pas concluante; abandon"
-
-#~ msgid "Verification of %s (%s) is inconclusive; continuing"
-#~ msgstr "La vérification de %s (%s) n'est pas concluante; poursuite"
-
-#~ msgid "%s (%s) has been verified as cryptographically secure by %s"
-#~ msgstr "%s (%s) a été vérifié comme cryptographiquement sûr par %s"
-
-#~ msgid "The integrity of %s (%s) has been confirmed."
-#~ msgstr "L'intégrité de %s (%s) a été confirmée."
-
-#~ msgid ""
-#~ "<p>A fatal error has occurred while Red Carpet was processing this "
-#~ "transaction. This is likely caused by an improperly built package.</"
-#~ "p><p>If this problem persists, please report it to the <a href=\"http://"
-#~ "bugzilla.ximian.com\">Ximian Bugzilla</a>.</p><p>Information from the "
-#~ "packaging system:<br>%s</p>"
-#~ msgstr ""
-#~ "<p>Une erreur fatale est intervenue pendant que Red Carpet effectuait la "
-#~ "transaction. Ceci peut être causé par un paquet mal construit.</p><p>Si "
-#~ "le problème persiste, veuillez adresser un rapport à <a href=\"http://"
-#~ "bugzilla.ximian.com\">Ximian Bugzilla</a>.</p><p>Information fournie par "
-#~ "le gestionnaire de paquets : <br>%s</p>"
-
-#~ msgid ""
-#~ "<p>An error has occurred while Red Carpet was processing this "
-#~ "transaction. This may be caused by an improperly built or corrupted "
-#~ "package. You may want to try the transaction again with fewer packages. "
-#~ "You can <a href=\"updater:send_bug_report\">send a problem report</a> to "
-#~ "Ximian for analysis.</p><p>Information from the packaging system:<br>%s</"
-#~ "p>"
-#~ msgstr ""
-#~ "Une erreur fatale est intervenue pendant que Red Carpet effectuait la "
-#~ "transaction. Ceci peut être causé par un paquet mal construit ou "
-#~ "corrompu. Vous pourriez tenter à nouveau la transaction avec un plus "
-#~ "petit nombre de paquets. Vous pouvez <a href=\"updater:send_bug_report"
-#~ "\">adresser un rapport du problème</a> à Ximian pour analyse. </"
-#~ "p><p>Information fournie par le gestionaire de paquet : <br>%s</p>"
-
-#~ msgid "Unable to create directory %s for local package storage"
-#~ msgstr ""
-#~ "Impossible de créer le répertoire %s nécessaire au stockage du paquet"
-
-#~ msgid "Download Log"
-#~ msgstr "Historique du téléchargement"
-
-#~ msgid "Verification Log"
-#~ msgstr "Historique des vérifications"
-
-#~ msgid "Premium services enabled"
-#~ msgstr "Services Premium activés"
-
-#~ msgid ""
-#~ "<p>Red Carpet encountered a network error while trying to submit your "
-#~ "activation information.  Please contact Ximian support for assistance.</"
-#~ "p><p>Details:<br>URL: %s<br>HTTP Response: %d %s<br>Soup Error: %d</p>"
-#~ msgstr ""
-#~ "<p>Red Carpet a rencontré une erreur réseau en tentant de soumettre vos "
-#~ "informations d'activation. Veuillez contacter le support Ximian pour "
-#~ "obtenir de l'assistance.</p><p>Détails : <br>URL : %s<br>Réponse HTTP : %"
-#~ "d %s<br>Erreur Soup : %d</p>"
-
-#~ msgid "Activate Premium Services"
-#~ msgstr "Activer les services Premium"
-
-#~ msgid ""
-#~ "Red Carpet is unable to create a necessary cookie for your machine used "
-#~ "in authenticating you when using the Red Carpet Premium Services because "
-#~ "a special \"no cookie\" file exists.  You will have to remove that file "
-#~ "before you can activate these services.  The file is /etc/ximian/no-"
-#~ "cookie."
-#~ msgstr ""
-#~ "Red Carpet est incapable de créer le cookie nécessaire à votre machine "
-#~ "durant l'authentification auprès des services Premium de Red Carpet car "
-#~ "le fichier spécial « no cookie » existe. Vous devez supprimer ce fichier "
-#~ "avant de pouvoir activer ces services. Le fichier est /etc/ximian/no-"
-#~ "cookie."
-
-#~ msgid "%.2f MB"
-#~ msgstr "%.2f Mo"
-
-#~ msgid "%d bytes"
-#~ msgstr "%d octets"
-
-#~ msgid "%%p%%%% (%s of %s) - %s/s"
-#~ msgstr "%%p%%%% (%s de %s) - %s/s"
-
-#~ msgid "%s - %s/s"
-#~ msgstr "%s - %s/s"
-
-#~ msgid "Downloading data..."
-#~ msgstr "Téléchargement de données ..."
-
-#~ msgid "%%p%%%% (%s of %s) - Paused"
-#~ msgstr "%%p%%%% (%s of %s) - En pause"
-
-#~ msgid "%s - Paused"
-#~ msgstr "%s - En pause"
-
-#~ msgid ""
-#~ "<p>Your account for Red Carpet Premium Services could not be verfified.</"
-#~ "p><p>Please make sure that your premium services account is enabled.</"
-#~ "p><p>To continue using Red Carpet without premium services, <a href="
-#~ "\"updater:disable_priority\">click here</a>. You can reenable it later by "
-#~ "choosing Settings->Preferences->General and checking the box labelled "
-#~ "\"Enable RC Premium Services\"</p>"
-#~ msgstr ""
-#~ "<p>Votre compte pour les services Red Carpet Premium ne peut être vérifié."
-#~ "</p><p>Veuillez vous assurer que votre compte des services Premium est "
-#~ "activé.</p><p>Pour continuer à utiliser Red Carpet sans les services "
-#~ "Premium, <a href=\"updater:disable_priority\">cliquez ici</a>. Vous "
-#~ "pourrez le réactiver plus tard en choissant Réglages->Préférences-"
-#~ ">Géneral et coché la boîte libellée « Activé les services RC Premium » </"
-#~ "p>"
-
-#~ msgid ""
-#~ "<p>Red Carpet was unable to complete a file transfer.</p>%s%s<p>Details:"
-#~ "<br>URL: %s<br>Error: %s</p>"
-#~ msgstr ""
-#~ "<p>Red Carpet est incapable de compléter le transfert du fichier.</p>%s%"
-#~ "s<p>Détails : <br>URL: %s<br>Erreur: %s</p>"
-
-#~ msgid "Red Carpet encountered an error querying your system:<br>%s"
-#~ msgstr ""
-#~ "Red Carpet a rencontré une erreur en interrogeant votre système : <br>%s"
-
-#~ msgid "%.2f%sMB"
-#~ msgstr "%.2f%sMo"
-
-#~ msgid "%d%sKB"
-#~ msgstr "%d%sKo"
-
-#~ msgid "%d%sbytes"
-#~ msgstr "%d%soctets"
-
-#~ msgid "zero"
-#~ msgstr "zéro"
-
-#~ msgid "one"
-#~ msgstr "un"
-
-#~ msgid "two"
-#~ msgstr "deux"
-
-#~ msgid "three"
-#~ msgstr "trois"
-
-#~ msgid "four"
-#~ msgstr "quatre"
-
-#~ msgid "five"
-#~ msgstr "cinq"
-
-#~ msgid "six"
-#~ msgstr "six"
-
-#~ msgid "seven"
-#~ msgstr "sept"
-
-#~ msgid "eight"
-#~ msgstr "huit"
-
-#~ msgid "Fatal Error"
-#~ msgstr "Erreur fatale"
-
-#~ msgid "Error"
-#~ msgstr "Erreur"
-
-#~ msgid ""
-#~ "Red Carpet has encountered an error while trying to process your request:"
-#~ msgstr ""
-#~ "Red Carpet a rencontré une erreur en essayant d'efectuer votre requête : "
-
-#~ msgid "Possible actions:"
-#~ msgstr "Actions possibles :"
-
-#~ msgid "<li>Click <b>Quit</b> to quit."
-#~ msgstr "<li>Cliquez sur <b>Quitter</b> pour quitter."
-
-#~ msgid "<li>Click <b>Retry</b> to retry."
-#~ msgstr "<li>Cliquez <b>Réessayer</b> pour réessayez."
-
-#~ msgid "<li>Click <b>Cancel</b> to cancel."
-#~ msgstr "<li>Cliquez <b>Annuler</b> pour annuler."
-
-#~ msgid "Retry"
-#~ msgstr "Réessayer"
-
-#~ msgid ""
-#~ "Red Carpet was unable to install the following packages.\n"
-#~ "Please ensure that they exist and are valid package files.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Red Carpet a été incapable d'installer les paquets suivants.\n"
-#~ "Veuillez vous assurer qu'ils existent et qu'ils sont valides.\n"
-#~ "\n"
-
-#~ msgid "Load file(s)"
-#~ msgstr "Chargement fichier(s)"
-
-#~ msgid "Close"
-#~ msgstr "Fermer"
-
-#~ msgid "Ximian Red Carpet will now restart."
-#~ msgstr "Ximian Red Carpet va maintenant redémarrer."
-
-#~ msgid "No mirror (always use default host)"
-#~ msgstr "Pas de miroir (toujours utiliser l'hôte par défaut)"
-
-#~ msgid "N/A"
-#~ msgstr "N/A"
-
-#~ msgid "Unable to parse mirror list."
-#~ msgstr "Incapable d'analyser la liste des miroirs"
-
-#~ msgid "Unable to save mirror list (%s)."
-#~ msgstr "Incapable d'enregistrer la liste des miroirs (%s)."
-
-#~ msgid "<p>You can continue without any mirrors by pressing \"Cancel\""
-#~ msgstr "<p>Vous pouvez continuer sans les miroirs en pressant « Annulez »"
-
-#~ msgid "Allowed cache difference:"
-#~ msgstr "Autorisé les différences de cache :"
-
-#~ msgid "seconds"
-#~ msgstr "seconds"
-
-#~ msgid "<b>%d</b> %s"
-#~ msgstr "<b>%d</b> %s"
-
-#~ msgid "Requested Packages"
-#~ msgstr "Paquets requis"
-
-#~ msgid "Prefs"
-#~ msgstr "Préfs"
-
-#~ msgid "User Interface Design"
-#~ msgstr "Conception de l'interface graphique"
-
-#~ msgid "Artwork"
-#~ msgstr "Graphisme"
-
-#~ msgid "File not found"
-#~ msgstr "Fichier non trouvé"
