@@ -101,22 +101,6 @@ def view_server_info_cb(app):
 
     app.server_info_window = dialog
 
-def connect_cb():
-    while 1:
-        d = red_settings.ConnectionWindow()
-        response = d.run()
-        if response == gtk.RESPONSE_ACCEPT:
-            url, username, password = d.get_server_info()
-
-            server = rcd_util.connect_to_server(url, username, password)
-
-            if isinstance(server, ximian_xmlrpclib.Server):
-                d.destroy()
-                break
-        else:
-            d.destroy()
-            break
-    
 class AppWindow(gtk.Window, red_component.ComponentListener):
 
     def __init__(self, server):
@@ -226,7 +210,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/_Help")
 
         bar.add("/File/Connect...",
-                callback=lambda x:connect_cb())
+                callback=lambda x:rcd_util.connect_to_server(1))
 
         bar.add("/File/sep", is_separator=1)
 

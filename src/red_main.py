@@ -84,7 +84,6 @@ def main(version):
     print "Copyright (C) 2002-2003 Ximian Inc."
     print
 
-    server = rcd_util.connect_to_server("/var/run/rcd/rcd")
     server = rcd_util.get_server()
 
     ticker()

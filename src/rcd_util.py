@@ -27,11 +27,15 @@ import socket
 server = None
 server_proxy = None
 
-def connect_to_server(url, username=None, password=None):
-
+# Tries to connect to server and get a result
+# to ping command.
+# Returns (server, None) on success or
+#         (None, error_msg) on failure.
+def connect_real(url, username=None, password=None):
     transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
 
     err_msg = None
+    server = None
     try:
         server = ximian_xmlrpclib.Server(url,
                                          auth_username=username,
@@ -49,18 +53,42 @@ def connect_to_server(url, username=None, password=None):
             err_msg = f
 
     if err_msg:
+        return (None, err_msg)
+
+    return (server, None)
+
+def connect_to_server(force_dialog=0):
+    if not force_dialog:
+        # Get stuff from config and try to connect.
+        data = red_settings.DaemonData()
+        url, username, password = data.data_get()
+        server, err_msg = connect_real(url, username, password)
+
+        if not err_msg:
+            register_server(server)
+            return server
+
+    # Ask for information.
+    while 1:
+        d = red_settings.ConnectionWindow()
+        d.run()
+        url, username, password = d.get_server_info()
+        d.destroy()
+        gtk.threads_leave()
+
+        if not url:
+            return None
+
+        server, err_msg = connect_real(url, username, password)
+        if not err_msg:
+            register_server(server)
+            return server
+
         dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
                                    gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
                                    "Unable to connect to the daemon:\n '%s'." % err_msg)
         dialog.run()
         dialog.destroy()
-
-        return None
-    else:
-        register_server(server)
-        print "Connected to %s\n%s" % (ping["name"], ping["copyright"])
-
-    return server
 
 def register_server(srv):
     global server, server_proxy
@@ -68,6 +96,13 @@ def register_server(srv):
     server_proxy = red_serverproxy.ServerProxy(server)
 
 def get_server():
+    global server
+    if not isinstance(server, ximian_xmlrpclib.Server):
+        server = connect_to_server()
+
+    if not isinstance(server, ximian_xmlrpclib.Server):
+        sys.exit(1)
+
     return server
 
 def get_server_proxy():
