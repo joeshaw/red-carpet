@@ -1,3 +1,17 @@
+2004-11-04  Tambet Ingo  <tambet@ximian.com>
+
+	* red_component.py (Component.message_push): Remove abs(), statusbar is
+	now smarter.
+	(Component.message_pop): ditto.
+
+	* red_listmodel.py (ListModel.message_push): ditto.
+	(ListModel.message_pop): ditto.
+
+	* red_menubar.py (MenuBar.deselect_cb): ditto.
+
+	* red_statusbar.py: Add a dictionary for statusbar ids. Just using
+	hash() function doesn't work in 64 bit platforms.
+
 2004-11-03  James Willcox  <james@ximian.com>
 
 	* red_menubar.py: make stuff work with pygtk 2.2.0+

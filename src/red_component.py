@@ -87,13 +87,13 @@ class Component(gobject.GObject):
         if transient:
             context_id = 0
         elif context_id < 0:
-            context_id = abs(hash(self))
+            context_id = hash(self)
         self.emit("message_push", msg, context_id)
 
     # Pop the component's previous message off of the status bar.
     def message_pop(self, context_id=-1):
         if context_id < 0:
-            context_id = abs(hash(self))
+            context_id = hash(self)
         self.emit("message_pop", context_id)
 
     # Signal our 'busy state' to the window embedding this component.

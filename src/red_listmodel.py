@@ -120,12 +120,12 @@ class ListModel(red_extra.ListModel):
         if transient:
             context_id = 0
         elif context_id < 0:
-            context_id = abs(hash(self))
+            context_id = hash(self)
         self.emit("message_push", msg, context_id)
 
     def message_pop(self, context_id=-1):
         if context_id < 0:
-            context_id = abs(hash(self))
+            context_id = hash(self)
         self.emit("message_pop", context_id)
 
     def busy(self, flag):

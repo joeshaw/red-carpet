@@ -23,6 +23,7 @@ from red_gettext import _
 class Statusbar(gtk.HBox):
     def __init__(self):
         gobject.GObject.__init__(self)
+        self.ctx_ids = {}
         self.build()
 
     def build(self):
@@ -48,8 +49,8 @@ class Statusbar(gtk.HBox):
     def set_connected(self, host):
         msg = _("Connected to %s" % host)
         self.tooltips.set_tip(self.connection, msg)
-        self.pop(abs(hash(self))) # Pop off any old message
-        self.push(abs(hash(self)), msg)
+        self.pop(hash(self)) # Pop off any old message
+        self.push(hash(self), msg)
 
     def connect_clicked(self):
         self.emit("connect")
@@ -57,11 +58,22 @@ class Statusbar(gtk.HBox):
     ## Proxy GtkStatusbar's interface
 
     def push(self, context_id, text):
-        self.message.push(context_id, text)
+        if not self.ctx_ids.has_key(context_id):
+            ids = self.ctx_ids.values()
+            if len(ids) < 1:
+                self.ctx_ids[context_id] = 1
+            else:
+                self.ctx_ids[context_id] = max(ids) + 1
+
+        self.message.push(self.ctx_ids[context_id], text)
     def pop(self, context_id):
-        self.message.pop(context_id)
+        if self.ctx_ids.has_key(context_id):
+            self.message.pop(self.ctx_ids[context_id])
+            del self.ctx_ids[context_id]
     def remove(self, context_id, message_id):
-        self.message.remove(context_id, message_id)
+        if self.ctx_ids.has_key(context_id):
+            self.message.remove(self.ctx_ids[context_id], message_id)
+            del self.ctx_ids[context_id]
 
 gobject.signal_new("connect",
                    Statusbar,
