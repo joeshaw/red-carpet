@@ -209,7 +209,14 @@ class ShortcutBar(gtk.HBox):
                          gtk.FILL, 0, 0, 0)
 
             row += 0.5
-            sid = button.connect("clicked", callback)
+
+            def toggled(button, callback):
+                if button.get_active():
+                    callback()
+                else:
+                    button.set_active(1)
+
+            sid = button.connect("toggled", toggled, callback)
 
             comp.connect("display", self.active_changed, button)
             self.buttons.append((button, sid))

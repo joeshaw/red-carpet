@@ -684,7 +684,7 @@ class AppWindow(gtk.Window,
     def register_component(self, comp):
 
         self.shortcut_bar.add(comp,
-                              lambda x:self.activate_component(comp))
+                              lambda :self.activate_component(comp))
 
         # We need to make the component menu items checked
         # instead of radio-style, because with a radio group you

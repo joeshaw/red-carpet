@@ -1,5 +1,12 @@
 2003-03-27  Tambet Ingo  <tambet@ximian.com>
 
+	* red_sidebar.py (ShortcutBar.construct): Connect "toggled" signal,
+	add a wrapper to callback to avoid inconsistent ui state.
+	Fixes #40367.
+
+	* red_appwindow.py (AppWindow.register_component): Don't hide
+	first argument of callback while registering components.
+
 	* red_my_computer.py (MyComputerComponent.search_cb): Assign method
 	instead of exectuing it. Doh. Fixes #40351.
 
