@@ -22,24 +22,35 @@ import red_main
 
 class PendingView(gtk.Window):
 
-    def __init__(self, title=None, timeout_len=400, show_rate=1, show_size=1):
-        gobject.GObject.__init__(self)
+    def __init__(self, title=None, label=None,
+                 parent=None,
+                 timeout_len=400, show_rate=1, show_size=1, is_modal=1):
+        gtk.Window.__init__(self, gtk.WINDOW_POPUP)
+
+        self.set_resizable(0)
+
+        self.set_modal(is_modal)
+
+        if parent:
+            self.set_transient_for(parent)
+            self.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        else:
+            self.set_position(gtk.WIN_POS_CENTER)
 
         self.pending_list = []
         self.polling_timeout = 0
-
-        if title:
-            self.set_title("%s - %s" % (red_main.red_name, title))
-        else:
-            self.set_title("%s" % red_main.red_name)
-        self.set_default_size(400, 250)
+        self.finished_lag = 600
 
         self.timeout_len = timeout_len
         self.show_rate = show_rate
         self.show_size = show_size
 
+        self.ourframe = gtk.Frame()
+        self.add(self.ourframe)
+
         self.mainbox = gtk.VBox(0, 10)
-        self.add(self.mainbox)
+        self.mainbox.set_border_width(10)
+        self.ourframe.add(self.mainbox)
 
         self.title_label = gtk.Label("")
         self.title_label.set_alignment(0, 0.5)
@@ -50,15 +61,14 @@ class PendingView(gtk.Window):
         self.step_label = gtk.Label("")
         self.step_label.set_alignment(0, 0.5)
         self.mainbox.pack_start(self.step_label, 0, 0, 0)
+        if label:
+            self.step_label.set_text(label)
 
         self.progress_bar = gtk.ProgressBar()
         self.mainbox.pack_start(self.progress_bar, 0, 0, 0)
 
-        self.progress_text = gtk.Label("")
-        self.progress_text.set_alignment(0, 0.5)
-        self.mainbox.pack_start(self.progress_text, 0, 0, 0)
-
-        self.show_all()
+        self.ourframe.show_all()
+        
 
     def start_timeout(self):
         if self.polling_timeout:
@@ -76,6 +86,8 @@ class PendingView(gtk.Window):
 
     def set_pending_list(self, list):
         self.pending_list = list
+        if list:
+            self.start_timeout()
         
     def update(self, percent,
                elapsed_sec, remaining_sec,
@@ -93,7 +105,7 @@ class PendingView(gtk.Window):
 
             msg = "%.1f%%" % percent
 
-            if self.show_rate and total_size > 0:
+            if self.show_rate and total_size > 0 and rate > 0:
                 rate_str = rcd_util.byte_size_to_string(rate) + "/s"
             else:
                 rate_str = None
@@ -110,14 +122,8 @@ class PendingView(gtk.Window):
 
             self.progress_bar.set_text(msg)
 
-        while gtk.events_pending():
-            gtk.main_iteration()
-
 
     def poll(self):
-
-        if not self.pending_list:
-            return 0
 
         polling = 0
         
@@ -134,38 +140,32 @@ class PendingView(gtk.Window):
 
             if pending["is_active"]:
                 percent = percent + pending["percent_complete"]
-                elapsed_sec = max(elapsed_sec,
-                                  pending.get("elapsed_sec", 0))
-                remaining_sec = max(remaining_sec,
-                                    pending.get("remaining_sec", 0))
                 polling = 1
             else:
                 percent = percent + 100
+
+            elapsed_sec = max(elapsed_sec,
+                              pending.get("elapsed_sec", 0))
+            remaining_sec = max(remaining_sec,
+                                pending.get("remaining_sec", 0))
 
             completed_size = completed_size + \
                              pending.get("completed_size", 0)
             total_size = total_size + \
                          pending.get("total_size", 0)
 
-        percent = percent / len(self.pending_list)
+        if self.pending_list:
+            percent = percent / len(self.pending_list)
+            self.update(percent, elapsed_sec, remaining_sec,
+                        completed_size, total_size)
 
-        self.update(percent, elapsed_sec, remaining_sec,
-                    completed_size, total_size)
-
-        # If we are finished, we emit our signal and return false so that
-        # the timeout goes away.
         if not polling:
+            def finished_cb(x):
+                x.destroy()
+                return 0
+            gtk.timeout_add(self.finished_lag, finished_cb, self)
             self.polling_timeout = 0
-            self.emit("finished")
+            return 0
         
-        return polling
+        return 1
 
-
-
-gobject.type_register(PendingView)
-
-gobject.signal_new("finished",
-                   PendingView,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   ())

@@ -29,53 +29,62 @@ def refresh_cb(app):
     # FIXME: this should be in a try
     stuff_to_poll = app.server.rcd.packsys.refresh_all_channels()
 
-    pend = red_pendingview.PendingView("Refreshing channel data", show_size=0)
-    pend.step_label.set_text("Downloading channel information")
-    pend.set_transient_for(app)
+    pend = red_pendingview.PendingView(title="Refreshing channel data",
+                                       label="Downloading channel information",
+                                       parent=app,
+                                       show_size=0)
     pend.show_all()
-
-    def finished_cb(p):
-        p.destroy()
-
-    pend.connect("finished", finished_cb)
-
     pend.set_pending_list(stuff_to_poll)
-    pend.start_timeout()
 
 def view_server_info_cb(app):
+
+    # We only allow one server info window at a time
+    if getattr(app, "server_info_window", None):
+        app.server_info_window.destroy()
+    
     server = rcd_util.get_server()
+    try:
+        results = server.rcd.system.ping()
+    except:
+        results = None
 
-    results = server.rcd.system.ping()
+    if results:
+        dialog_type = gtk.MESSAGE_INFO
 
-    # Couldn't ping the server.  Hmm.
-    # FIXME: This is probably not the right thing to do.
-    if not results:
-        assert 0
+        messages = ["The server identified itself as:", ""]
 
-    messages = ["The server identified itself as:", ""]
+        if results.has_key("name"):
+            messages.append("%s" % results["name"])
 
-    if results.has_key("name"):
-        messages.append("%s" % results["name"])
+        if results.has_key("copyright"):
+            messages.append(results["copyright"])
 
-    if results.has_key("copyright"):
-        messages.append(results["copyright"])
+        messages.append("")
 
-    messages.append("")
+        if results.has_key("distro_info"):
+            messages.append("System type: %s" % results["distro_info"])
 
-    if results.has_key("distro_info"):
-        messages.append("System type: %s" % results["distro_info"])
+        if results.has_key("server_url"):
+            messages.append("Server URL: %s" % results["server_url"])
 
-    if results.has_key("server_url"):
-        messages.append("Server URL: %s" % results["server_url"])
+        if results.get("server_premium", 0):
+            messages.append("Server supports enhanced features.")
 
-    if results.get("server_premium", 0):
-        messages.append("Server supports enhanced features.")
+    else: # couldn't ping the server
 
-    dialog = gtk.MessageDialog(app, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_OK,
+        dialog_type = gtk.MESSAGE_WARNING
+        messages = ["Unable to contact the server."]
+
+    dialog = gtk.MessageDialog(app, 0, dialog_type, gtk.BUTTONS_OK,
                                string.join(messages, "\n"))
 
-    dialog.connect("response", lambda x,y:x.destroy())
+    def destroy_cb(x, y, z):
+        z.server_info_window = None
+        x.destroy()
+    dialog.connect("response", destroy_cb, app)
     dialog.show_all()
+
+    app.server_info_window = dialog
 
 class AppWindow(gtk.Window):
 
