@@ -506,6 +506,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
         self.__packages = []
         self.pending_refresh = 0
+        self.__length = 0
 
 
     # This is the method that derived classes need to implement
@@ -515,6 +516,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
     # The derived class should use this function to report the packages
     # it received from the daemon.
     def set_packages(self, packages):
+        self.__length = len(packages)
         def set_pkg_cb(me, p):
             me.__packages = p
         self.changed(set_pkg_cb, packages)
@@ -534,7 +536,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         self.schedule_refresh()
 
     def len(self):
-        return len(self.__packages)
+        return self.__length
 
     def get(self, i):
         assert 0 <= i < self.len()

@@ -36,14 +36,15 @@ class SummaryComponent(red_component.Component):
 
         page = gtk.VBox(0, 0)
 
-        ### Upper
-        
         vbox = gtk.VBox(0,0)
 
+        def updates_changed_cb(array, label):
+            label.set_markup("There are "
+                             "<b>%d updates</b>"
+                             " available for your system." % array.len())
+
         msg1 = gtk.Label("")
-        msg1.set_markup("There are "
-                        "<b>%d updates</b>"
-                        " available for your system." % self.array.len())
+        self.array.connect("changed", updates_changed_cb, msg1)
         vbox.pack_start(msg1, 1, 1, 0)
 
         buttons = gtk.HBox(0, 0)
