@@ -284,32 +284,31 @@ class PrefsViewPage_Cache(PrefsViewPage):
         exp_vbox = gtk.VBox(spacing=5)
         hbox.pack_start(exp_vbox, padding=3)
 
-        self.cache_enabled_check = self.create_checkbox("cache-cleanup-enabled",
-                                                        _("Enable cache "
-                                                          "expiration"))
-        exp_vbox.pack_start(self.cache_enabled_check, expand=0, fill=1)
-
-        hbox = gtk.HBox(spacing=6)
-        exp_vbox.pack_start(hbox)
-        
-        label = gtk.Label(_("Maximum cache size (MB):"))
-        label.set_alignment(0.0, 0.5)
-        hbox.pack_start(label, expand=0, fill=1)
-
-        self.cache_size_spin = self.create_spinbutton("cache-max-size-in-mb",
-                                                      (0, 100000))
-        hbox.pack_start(self.cache_size_spin, expand=0, fill=1)
+        self.cache_cleanup_check = self.create_checkbox("cache-cleanup-enabled",
+                                                        _("Cache expires"))
+        exp_vbox.pack_start(self.cache_cleanup_check, expand=0, fill=1)
 
         hbox = gtk.HBox(spacing=6)
         exp_vbox.pack_start(hbox)
 
-        label = gtk.Label(_("Days a package may remain in cache before deletion:"))
+        label = gtk.Label(_("Maximum age in days:"))
         label.set_alignment(0.0, 0.5)
         hbox.pack_start(label, expand=0, fill=1)
 
         self.cache_age_spin = self.create_spinbutton("cache-max-age-in-days",
                                                      (0, 1460))
         hbox.pack_start(self.cache_age_spin, expand=0, fill=1)
+
+        hbox = gtk.HBox(spacing=6)
+        exp_vbox.pack_start(hbox)
+        
+        label = gtk.Label(_("Maximum size in MB:"))
+        label.set_alignment(0.0, 0.5)
+        hbox.pack_start(label, expand=0, fill=1)
+
+        self.cache_size_spin = self.create_spinbutton("cache-max-size-in-mb",
+                                                      (0, 100000))
+        hbox.pack_start(self.cache_size_spin, expand=0, fill=1)
 
         hbox = gtk.HBox(spacing=6)
         vbox.pack_start(hbox, expand=0, fill=1)
@@ -339,16 +338,16 @@ class PrefsViewPage_Cache(PrefsViewPage):
         hbox.pack_start(button, expand=0, fill=1)
 
         # Have to do this after the other widgets are created
-        def cache_enabled_toggled_cb(cb, p):
+        def cache_cleanup_toggled_cb(cb, p):
             sensitive = cb.get_active() and \
                         rcd_util.check_server_permission("superuser")
 
             p.cache_size_spin.set_sensitive(sensitive)
             p.cache_age_spin.set_sensitive(sensitive)
                 
-        self.cache_enabled_check.connect("toggled", cache_enabled_toggled_cb,
+        self.cache_cleanup_check.connect("toggled", cache_cleanup_toggled_cb,
                                          self)
-        self.cache_enabled_check.toggled()
+        self.cache_cleanup_check.toggled()
 
     def update_cache_size_label(self):
         def update_cb(th, page):
