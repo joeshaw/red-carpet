@@ -1,5 +1,17 @@
 2003-03-14  Tambet Ingo  <tambet@ximian.com>
 
+	* red_thrashingtreeview.py (TreeView.post_thrash_model): Resize
+	columns immediately.
+
+	* red_listmodel.py (ListModel.do_changed): Show busy cursor while
+	working with list.
+
+	* red_packagearray.py (PackagesFromQuery.query_finished_cb): Don't
+	empty model before search. It's not the best solution but otherwise
+	"empty page" will be visible during the search.
+	(PackagesFromDaemon.refresh_end): Release busy cursor in the idle
+	callback.
+
 	* red_emptypage.py: New file.
 
 	* Makefile.am (red_carpetsupport_DATA): Add red_emptypage.py

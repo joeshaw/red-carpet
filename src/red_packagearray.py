@@ -377,7 +377,6 @@ class PackageArray(red_listmodel.ListModel,
         red_pendingops.PendingOpsListener.__init__(self)
 
         self.__package_keys = {}
-        self.__busy_flag = 0
 
         self.add_columns(COLUMNS)
 
@@ -535,8 +534,8 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         self.pending_refresh = 1
 
     def refresh_end(self):
-        self.busy(0)
         self.pending_refresh = 0
+        gtk.idle_add(lambda x:x.busy(0), self)
 
     def refresh_pending(self):
         return self.pending_refresh
@@ -658,7 +657,6 @@ class PackagesFromQuery(PackagesFromDaemon):
 
         if self.__query_msg:
             self.message_push(self.__query_msg)
-        self.set_packages([], quiet=1)
 
         self.__worker = server.rcd.packsys.search(self.query)
         self.__worker.t1 = time.time()

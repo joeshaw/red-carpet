@@ -16,6 +16,7 @@
 ###
 
 import gobject
+import gtk
 import red_extra
 from red_gettext import _
 
@@ -45,11 +46,13 @@ class ListModel(red_extra.ListModel):
     def do_changed(self):
         operator, args = self.__pending_changes.pop()
         if operator:
+            self.busy(1)
             apply(operator, (self,) + args)
 
             self.set_list(self.get_all())
             self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
             self.set_filter_magic(self.__filter_fn)
+            gtk.idle_add(lambda x:x.busy(0), self)
 
         return (operator, args)
 
