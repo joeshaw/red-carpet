@@ -1,3 +1,10 @@
+2003-10-02  Joe Shaw  <joe@ximian.com>
+
+	* red_pendingview.py (PendingView.poll_worker): We want to assert
+	out if poll_worker() isn't defined, not just return 0.
+	(PendingView_Simple.set_pending_list): If the pending list we get
+	is empty, just finish right now, since we have nothing to poll.
+
 2003-09-25  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (get_channel_icon): Remove a FIXME and a hack around

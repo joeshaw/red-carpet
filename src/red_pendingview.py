@@ -348,7 +348,7 @@ class PendingView(gtk.Window):
 
     # Define me!
     def poll_worker(self):
-        return 0
+        assert 0
 
     def switch_cancel_button_to_ok(self):
         if self.cancel_button:
@@ -407,8 +407,13 @@ class PendingView_Simple(PendingView):
 
     def set_pending_list(self, pending_list):
         self.pending_list = pending_list
-        self.start_polling()
-        red_serverlistener.freeze_polling()
+
+        if self.pending_list:
+            self.start_polling()
+            red_serverlistener.freeze_polling()
+        else:
+            self.finished()
+            self.destroy()
 
     def launch_poll_threads(self, launch_max=0):
         server = rcd_util.get_server_proxy()
