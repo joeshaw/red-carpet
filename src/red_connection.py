@@ -44,9 +44,11 @@ def show_error_message(msg):
     dialog.destroy()
 
 
-def get_credentials(show_dialog):
+def get_credentials(show_dialog, parent):
     if show_dialog:
         dialog = red_settings.ConnectionWindow()
+        if parent:
+            dialog.set_transient_for(parent)
         dialog.run()
         gtk.threads_leave()
         uri, user, pwd, local = dialog.get_server_info()
@@ -227,7 +229,8 @@ def connect(local=0,
             host=None,
             user=None,
             password=None,
-            show_dialog=0):
+            show_dialog=0,
+            parent=None):
 
     server = None
     valid_credentials = 0
@@ -242,7 +245,7 @@ def connect(local=0,
 
     while 1:
         if not valid_credentials:
-            host, user, password, local = get_credentials(show_dialog)
+            host, user, password, local = get_credentials(show_dialog, parent)
 
         uri = munge_uri(local, host)
         valid_credentials = 0

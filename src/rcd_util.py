@@ -42,7 +42,8 @@ def register_server(srv, local):
 def connect_to_server(local=0,
                       uri=None,
                       user=None,
-                      password=None):
+                      password=None,
+                      parent=None):
     global server
     connected = 0
     if isinstance(server, ximian_xmlrpclib.Server):
@@ -51,7 +52,7 @@ def connect_to_server(local=0,
     # If we're not connected we want to try once with default parameters.
     show_dialog = connected
     server_info = red_connection.connect(local, uri, user,
-                                         password, show_dialog)
+                                         password, show_dialog, parent)
     if server_info is not None:
         s, is_local = server_info
         if isinstance(s, ximian_xmlrpclib.Server):

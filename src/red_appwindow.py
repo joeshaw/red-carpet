@@ -445,7 +445,7 @@ class AppWindow(gtk.Window,
         bar.add("/" + help_str)
 
         bar.add("/%s/%s" % (file_str, _("Connect...")),
-                callback=lambda x:rcd_util.connect_to_server(),
+                callback=lambda x:rcd_util.connect_to_server(parent=self),
                 pixbuf_name="connect",
                 accelerator="<Control>O")
 

@@ -322,6 +322,22 @@ class PrefsViewPage_Cache(PrefsViewPage):
         hbox.pack_start(self.cache_size_label, expand=0, fill=1)
 
         def flush_cache_cb(b):
+            parent_window = self.get_toplevel()
+            if not parent_window.flags() & gtk.TOPLEVEL:
+                parent_window = None
+                
+            dialog = gtk.MessageDialog(parent_window,
+                                       gtk.DIALOG_DESTROY_WITH_PARENT,
+                                       gtk.MESSAGE_QUESTION,
+                                       gtk.BUTTONS_YES_NO,
+                                       _("Are you sure you want to delete "
+                                         "the package files in your cache?"))
+            response = dialog.run()
+            dialog.destroy()
+
+            if response != gtk.RESPONSE_YES:
+                return
+            
             def flush_cb(th, page):
                 gtk.idle_add(page.update_cache_size_label)
             server = rcd_util.get_server_proxy()
