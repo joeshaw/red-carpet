@@ -174,24 +174,24 @@ class HistoryComponent(red_component.Component):
         return "<Control>h"
 
     def long_name(self):
-        return "Browse Packages History"
+        return "Browse Package History"
 
     def pixbuf(self):
         return "featured"
 
-    def show_on_toolbar(self):
+    def show_in_shortcuts(self):
         return 1
 
     def build(self):
         page = gtk.VBox(0, 6)
 
-        hbox = gtk.HBox(0, 6)
-        page.pack_start(hbox, 0, 0)
-
         label = gtk.Label("")
         label.set_alignment(0, 0.5)
         label.set_markup("<b>" + self.long_name() + "</b>")
-        hbox.pack_start(label, 0, 0)
+        page.pack_start(label, 0, 0)
+
+        hbox = gtk.HBox(0, 6)
+        page.pack_start(hbox, 0, 0)
 
         search_bar = HistorySearchBar(self.server)
         container = search_bar.container_get()

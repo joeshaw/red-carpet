@@ -26,6 +26,7 @@ class Component(gobject.GObject):
         self.__visible_flag = 0
         self.__busy_flag = 0
         self.__parent = None
+        self.__current_pkg = None
 
 
     # Forces the component to emit a 'display' signal
@@ -105,6 +106,19 @@ class Component(gobject.GObject):
             self.__widget = widget
             self.emit("display", widget)
 
+    def package_selected(self, pkg):
+        self.__current_pkg = pkg
+        self.emit("package_selected", pkg)
+
+    def get_current_package(self):
+        return self.__current_pkg
+
+    # Proxy selected signals from package views
+    def connect_view(self, view):
+        def proxy_selected_cb(view, path, pkg, comp):
+            comp.package_selected(pkg)
+        view.connect("selected", proxy_selected_cb, self)
+
     # Proxy busy and message signals from arrays.
 
     def connect_array(self, array):
@@ -157,7 +171,7 @@ class Component(gobject.GObject):
     def deactivated(self):
         pass
 
-    def show_on_toolbar(self):
+    def show_in_shortcuts(self):
         return 0
 
     ###
@@ -213,7 +227,11 @@ gobject.signal_new("busy",
                    gobject.TYPE_NONE,
                    (gobject.TYPE_BOOLEAN,))
 
-
+gobject.signal_new("package_selected",
+                   Component,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_PYOBJECT,))
 
 ###
 ### A convenience class that handles all of the signal connecting and
@@ -233,6 +251,7 @@ class ComponentListener:
         self.__pop_id     = 0
         self.__message_id = 0
         self.__busy_id    = 0
+        self.__pkgsel_id  = 0
 
     # A paranoid check: make sure that a component matches what the
     # ComponentListener thinks is the current component.
@@ -255,6 +274,7 @@ class ComponentListener:
             self.__current_component.disconnect(self.__msgpush_id)
             self.__current_component.disconnect(self.__msgpop_id)
             self.__current_component.disconnect(self.__busy_id)
+            self.__current_component.disconnect(self.__pkgsel_id)
 
         self.__clear_ids()
 
@@ -288,14 +308,19 @@ class ComponentListener:
             listener.__check_component(comp)
             listener.do_component_busy(flag)
 
+        def pkgsel_cb(comp, pkg, listener):
+            listener.__check_component(comp)
+            listener.do_component_package_selected(pkg)
+
         if comp:
-            self.__display_id = comp.connect("display",      display_cb,  self)
-            self.__switch_id  = comp.connect("switch",       switch_cb,   self)
-            self.__push_id    = comp.connect("push",         push_cb,     self)
-            self.__pop_id     = comp.connect("pop",          pop_cb,      self)
-            self.__msgpush_id = comp.connect("message_push", msg_push_cb, self)
-            self.__msgpop_id  = comp.connect("message_pop",  msg_pop_cb,  self)
-            self.__busy_id    = comp.connect("busy",         busy_cb,     self)
+            self.__display_id = comp.connect("display",          display_cb,  self)
+            self.__switch_id  = comp.connect("switch",           switch_cb,   self)
+            self.__push_id    = comp.connect("push",             push_cb,     self)
+            self.__pop_id     = comp.connect("pop",              pop_cb,      self)
+            self.__msgpush_id = comp.connect("message_push",     msg_push_cb, self)
+            self.__msgpop_id  = comp.connect("message_pop",      msg_pop_cb,  self)
+            self.__busy_id    = comp.connect("busy",             busy_cb,     self)
+            self.__pkgsel_id  = comp.connect("package_selected", pkgsel_cb,   self)
 
     def do_component_display(self, widget):
         pass
@@ -318,4 +343,5 @@ class ComponentListener:
     def do_component_busy(self, flag):
         pass
 
-        
+    def do_component_package_selected(self, pkg):
+        pass

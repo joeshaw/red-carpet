@@ -51,12 +51,12 @@ class TransactionBar(gtk.HBox,
 
     no_action_str = "No Pending Actions"
 
-    def __init__(self, app):
+    def __init__(self):
         gtk.HBox.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
-        self.app = app
         self.label = gtk.Label(TransactionBar.no_action_str)
-        self.pack_end(self.label, 0, 0, 2)
+        self.label.set_alignment(0.0, 0.5)
+        self.pack_end(self.label, 1, 1, 2)
         self.label.show()
 
     def update_label(self):
@@ -76,7 +76,6 @@ class TransactionBar(gtk.HBox,
                 
         msg = string.join(msg_list, ", ")
         self.label.set_text(msg or TransactionBar.no_action_str)
-        self.app.sensitize_go_button(msg != "")
 
     def pendingops_changed(self, pkg, key, value, old_value):
         if key == "action":

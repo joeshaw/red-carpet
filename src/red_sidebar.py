@@ -31,16 +31,19 @@ class SideBar(gtk.VBox):
         self.build()
 
     def build(self):
-        self.toolbar = Toolbar()
-        self.pack_start(self.toolbar, 0, 0)
+        self.shortcut_bar = ShortcutBar()
+        self.pack_start(self.shortcut_bar, 0, 0)
 
         label = gtk.Label("")
-        label.set_markup("<b>Pending Transactions:</b>")
+        label.set_markup("<b>Pending Transactions</b>")
         label.set_alignment(0, 0.5)
         self.pack_start(label, 0, 1)
 
         view = red_transaction.TransactionSimple()
         self.pack_start(view, 1, 1)
+
+        transaction_bar = red_transaction.TransactionBar()
+        self.pack_start(transaction_bar, expand=0, fill=1)
 
         bbox = gtk.HButtonBox()
         bbox.set_spacing(6)
@@ -61,8 +64,8 @@ class SideBar(gtk.VBox):
 
         self.pack_start(bbox, 0, 1)
 
-    def get_toolbar(self):
-        return self.toolbar
+    def get_shortcut_bar(self):
+        return self.shortcut_bar
 
     def get_run_button(self):
         return self.run
@@ -71,7 +74,7 @@ class SideBar(gtk.VBox):
         return self.details
 
 
-class Toolbar(gtk.HBox):
+class ShortcutBar(gtk.HBox):
 
     def __init__(self):
         gtk.HBox.__init__(self)
@@ -114,7 +117,7 @@ class Toolbar(gtk.HBox):
 
         row = 0
         for comp, callback in self.components:
-            if comp.show_on_toolbar():
+            if comp.show_in_shortcuts():
                 button = gtk.ToggleButton()
                 align = gtk.Alignment(0.5, 0.5, 0, 0)
                 button.add(align)

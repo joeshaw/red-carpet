@@ -37,6 +37,10 @@ import red_about
 import red_mount
 import red_serverinfo
 import red_sidebar
+import red_toolbar
+
+import red_packagearray
+import red_packagebrowser
 
 def refresh_cb(app):
     try:
@@ -99,8 +103,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         self.transient_windows = {}
 
-        self.transactionbar = red_transaction.TransactionBar(self)
-
         self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
 
@@ -112,44 +114,41 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
 
-        hbox = gtk.HBox()
-        self.vbox.pack_start(hbox, expand=1, fill=1)
+        hpaned = gtk.HPaned()
+        self.vbox.pack_start(hpaned, expand=1, fill=1)
 
         self.sidebar = red_sidebar.SideBar()
-        self.toolbar = self.sidebar.get_toolbar()
+        self.shortcut_bar = self.sidebar.get_shortcut_bar()
 
         self.go_button = self.sidebar.get_run_button()
         self.go_button.connect("clicked", lambda x,y:run_transaction_cb(y), self)
         self.sensitize_go_button(0)
 
-        hbox.pack_start(self.sidebar, 0, 1)
+        hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
         main_box = gtk.VBox(0, 6)
         main_box.set_border_width(6)
-        hbox.pack_start(main_box, 1, 1)
+        hpaned.pack2(main_box, resize=1, shrink=0)
 
-        ## Shortcut bar
-        shortcut_bar_box = gtk.HBox(0, 0)
-        main_box.pack_start(shortcut_bar_box, 0, 0)
+        ## Toolbar
+        toolbar_box = gtk.HBox(0, 0)
+        main_box.pack_start(toolbar_box, 0, 0)
 
-        self.shortcut_bar = gtk.Toolbar()
-        self.assemble_shortcut_bar(self.shortcut_bar)
-        shortcut_bar_box.pack_start(self.shortcut_bar, 1, 1)
+        self.toolbar = red_toolbar.Toolbar()
+        self.assemble_toolbar(self.toolbar)
+        toolbar_box.pack_start(self.toolbar, 1, 1)
 
         ## Throbber
-        icon_size = self.shortcut_bar.get_icon_size()
+        icon_size = self.toolbar.get_icon_size()
         width, height = gtk.icon_size_lookup(icon_size)
-        shortcut_bar_box.pack_end(self.create_throbber(width, height),
+        toolbar_box.pack_end(self.create_throbber(width, height),
                                   0, 0)
 
         main_box.pack_start(self.container, expand=1, fill=1)
-        hbox.show_all()
+        hpaned.show_all()
 
-        south = gtk.HBox(0, 0)
-        south.pack_start(self.transactionbar, 0, 1, 2)
-        south.pack_start(self.statusbar, 1, 1, 2)
-        south.show_all()
-        self.vbox.pack_start(south, expand=0, fill=1)
+        self.statusbar.show()
+        self.vbox.pack_start(self.statusbar, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
@@ -163,45 +162,121 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         return throbbox
 
-    def assemble_shortcut_bar(self, bar):
+    def assemble_toolbar(self, bar):
+
+        def set_package_action_cb(app, action):
+            comp = app.get_component()
+            pkg = comp.get_current_package()
+
+            assert pkg is not None
+
+            red_pendingops.set_action(pkg, action)
 
         ## Install
-        bar.install = bar.append_item("Install",
-                                      "Install selected package",
-                                      None,
-                                      red_pixbuf.get_widget("to-be-installed", width=16, height=16),
-                                      None)
-        bar.install.set_sensitive(0)
+
+        def install_sensitive_cb(app):
+            comp = app.get_component()
+            pkg = comp.get_current_package()
+
+            if not pkg:
+                return 0
+
+            pkg_action = red_pendingops.package_action(pkg)
+
+            if pkg_action == red_pendingops.TO_BE_INSTALLED:
+                return 0
+            else:
+                if not red_packagearray.pkg_is_name_installed(pkg) \
+                       or red_packagearray.pkg_is_upgrade(pkg) \
+                       or red_packagearray.pkg_is_downgrade(pkg):
+                    return 1
+                else:
+                    return 0
+
+        bar.install = bar.add(text="Install",
+                              tooltip="Install selected package",
+                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
+                                                           width=16,
+                                                           height=16),
+                              sensitive_fn=lambda x:install_sensitive_cb(self),
+                              callback=lambda x:set_package_action_cb(self, red_pendingops.TO_BE_INSTALLED))
 
         ## Remove
-        bar.remove = bar.append_item("Remove",
-                                     "Remove selected package",
-                                     None,
-                                     red_pixbuf.get_widget("to-be-removed", width=16, height=16),
-                                     None)
-        bar.remove.set_sensitive(0)
+
+        def remove_sensitive_cb(app):
+            comp = app.get_component()
+            pkg = comp.get_current_package()
+
+            if not pkg:
+                return 0
+
+            pkg_action = red_pendingops.package_action(pkg)
+
+            if pkg_action != red_pendingops.TO_BE_REMOVED \
+                   and red_packagearray.pkg_is_name_installed(pkg):
+                return 1
+            else:
+                return 0
+
+        bar.remove = bar.add(text="Remove",
+                             tooltip="Remove selected package",
+                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
+                                                          width=16, height=16),
+                             sensitive_fn=lambda x:remove_sensitive_cb(self),
+                             callback=lambda x:set_package_action_cb(self, red_pendingops.TO_BE_REMOVED))
+
+        ## Cancel
+        def cancel_sensitive_cb(app):
+            comp = app.get_component()
+            pkg = comp.get_current_package()
+
+            if not pkg:
+                return 0
+
+            pkg_action = red_pendingops.package_action(pkg)
+
+            if pkg_action != red_pendingops.NO_ACTION:
+                return 1
+            else:
+                return 0
+
+            assert pkg is not None
+
+        bar.cancel = bar.add(text="Cancel",
+                             tooltip="Cancel package action",
+                             stock=gtk.STOCK_CANCEL,
+                             sensitive_fn=lambda x:cancel_sensitive_cb(self),
+                             callback=lambda x:set_package_action_cb(self, red_pendingops.NO_ACTION))
+
+        ## Info
+        def info_sensitive_cb(app):
+            comp = app.get_component()
+            pkg = comp.get_current_package()
+
+            if not pkg:
+                return 0
+            else:
+                return 1
+        
+        def info_cb(app):
+            comp = app.get_component()
+            pkg = comp.get_current_package()
+
+            assert pkg is not None
+
+            red_packagebrowser.show_package_info(pkg)
+        
+        bar.info = bar.add(text="Info",
+                           tooltip="Package Information",
+                           sensitive_fn=lambda x:info_sensitive_cb(self),
+                           callback=lambda x:info_cb(self))
 
         bar.append_space()
 
-        ## Settings
-        image = gtk.Image()
-        image.set_from_stock(gtk.STOCK_PREFERENCES, gtk.ICON_SIZE_SMALL_TOOLBAR)
-        bar.settings = bar.append_item("Settings",
-                                       "Settings",
-                                       None,
-                                       image,
-                                       lambda x:self.open_or_raise_window(red_prefs.PrefsWindow),
-                                       None)
-
-        ## Help
-        image = gtk.Image()
-        image.set_from_stock(gtk.STOCK_HELP, gtk.ICON_SIZE_SMALL_TOOLBAR)
-        bar.help = bar.append_item("Help",
-                                   "Help",
-                                   None,
-                                   image,
-                                   None)
-        bar.help.set_sensitive(0)
+        ## Subscriptions
+        bar.subs = bar.add(text="Subscriptions",
+                           tooltip="Change your subscription options",
+                           callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
     def set_title(self, title, component=None):
         buf = ""
@@ -405,8 +480,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
     def register_component(self, comp):
 
-        self.toolbar.add(comp,
-                         lambda x:self.activate_component(comp))
+        self.shortcut_bar.add(comp,
+                              lambda x:self.activate_component(comp))
 
         # We need to make the component menu items checked
         # instead of radio-style, because with a radio group you
@@ -528,4 +603,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         else:
             self.busy_stop()
         
-        
+    def do_component_package_selected(self, pkg):
+        self.toolbar.sensitize_toolbar_items()
+

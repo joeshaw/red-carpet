@@ -27,7 +27,7 @@ class SummaryComponent(red_component.Component):
         return "Summary"
 
     def long_name(self):
-        return "Summary of Updates"
+        return "Update Summary"
 
     def pixbuf(self):
         return "summary"
@@ -35,7 +35,7 @@ class SummaryComponent(red_component.Component):
     def accelerator(self):
         return "<Control>s"
 
-    def show_on_toolbar(self):
+    def show_in_shortcuts(self):
         return 1
 
     def build(self):
@@ -58,9 +58,9 @@ class SummaryComponent(red_component.Component):
         browser = red_packagebrowser.PackageBrowser()
 
         view = browser.get_view()
-        view.append_action_column()
+        self.connect_view(view)
         col = view.append_importance_column()
-        view.append_channel_column()
+        view.append_channel_column(show_channel_name=0)
         view.append_name_column()
         view.append_version_column(column_title="New Version")
         view.append_current_version_column()

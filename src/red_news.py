@@ -66,7 +66,7 @@ class NewsComponent(red_component.Component):
     def long_name(self):
         return "Red Carpet News"
 
-    def show_on_toolbar(self):
+    def show_in_shortcuts(self):
         return 1
 
     def accelerator(self):

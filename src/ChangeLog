@@ -1,3 +1,48 @@
+2003-02-05  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py: Switch the naming of "toolbar" and "shortcut
+	bar"; the buttons that take the user to different components
+	should be the shortcut bar.  Also changed "show_on_toolbar" to
+	"show_in_shortcuts" throughout all the files.
+	(AppWindow): Remove the transactionbar from here.  It's in the
+	sidebar now.  Replace the hbox containing the sidebar and the main
+	area with an hpaned, so that it can be resized.  Make the toolbar
+	a red_toolbar.Toolbar.
+	(assemble_toolbar): Use the red_toolbar API, and hook up the
+	buttons.  Replace the Settings and Help icons with Cancel, Info,
+	and Subscriptions buttons.
+	(do_component_package_selected): Added, sensitize the toolbar
+	items.
+
+	* red_channelbrowse.py: Change the name to "Packages".  Connect
+	the view to the component so we can signal changes to the toolbar.
+
+	* red_component.py (Component): Add a package_selected, which
+	emits the new signal of same name.  Added a get_current_package
+	method which returns the last selected package.  Added a
+	connect_view method which proxies the view's selected signal to
+	the component's package_selected signal.
+	(ComponentListener): Add ids for the package_selected signal, add
+	a do_component_package_selected virtual method.
+
+	* red_history.py: Change some text, make the title text stand by
+	itself.
+
+	* red_sidebar.py: Toolbar -> ShortcutBar rename.  Add the
+	transaction bar here.
+
+	* red_summary.py: Don't show the action column, don't show the
+	channel name by default.  Connect the view to the component.
+
+	* red_system.py: Don't show this in the shortcut bar.
+
+	* red_toolbar.py: Added.  Listens to changes in the pending
+	operations and calls the sensitize functions as necessary.
+
+	* red_transaction.py (TransactionBar.__init__): Don't require the
+	AppWindow anymore.  This is such a simple piece of code, it should
+	probably just go away and be absorbed by the sidebar.
+
 2003-02-05  Tambet Ingo  <tambet@ximian.com>
 
 	* red_history.py (HistorySearchBar.build): Changed some labels.

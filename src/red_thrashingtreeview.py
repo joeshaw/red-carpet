@@ -76,6 +76,7 @@ class TreeView(gtk.TreeView):
         model = self.saved_model
         gtk.TreeView.set_model(self, model)
         if selpath:
+            print "selpath: %s" % selpath
             iter = model.get_iter(selpath)
             if iter:
                 select = self.get_selection()
