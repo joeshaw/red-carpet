@@ -18,6 +18,7 @@
 import sys, string
 import gobject, gtk
 import rcd_util
+import red_serverlistener
 
 # FIXME: This sorting function should be smarter, and should
 # sort lists into some sort of canonical form that will
@@ -27,7 +28,7 @@ def pkg_cmp(a,b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
 
-class PackageArray(gtk.GenericTreeModel):
+class PackageArray(gobject.GObject):
 
     def __init__(self):
         gobject.GObject.__init__(self)
@@ -175,71 +176,33 @@ class FilteredPackageArray(PackageArray):
 ###############################################################################
 
 
-class PackagesFromDaemon(PackageArray):
+class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
-    def __init__(self, server):
+    def __init__(self):
         PackageArray.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
 
-        self.server = server
         self.packages = []
         self.seqno = -1
-        self.timeout = 0
-        self.timeout_length = 10000
-        self.freeze_count = 0
-
-    # FIXME: We should probably disable the timeout when we are frozen
-    # and re-add it when we thaw.
-        
-    def freeze(self):
-        self.freeze_count = self.freeze_count + 1
-
-    def thaw(self):
-        if self.freeze_count > 0:
-            self.freeze_count = self.freeze_count - 1
-            if self.freeze_count == 0:
-                self.sync_with_daemon()
 
     # This is the method that derived classes need to implement
     def get_packages_from_daemon(self, server):
+        return []
 
-        assert 0
+    def server_changed(self, server):
 
-    def enable_sync(self):
-        if self.timeout:
-            gtk.timeout_remove(self.timeout)
-        self.sync_with_daemon()
-        self.timeout = gtk.timeout_add(self.timeout_length,
-                                       PackagesFromDaemon.sync_with_daemon,
-                                       self)
+        packages = self.get_packages_from_daemon(server)
 
-    def disable_sync(self):
-        if self.timeout:
-            gtk.timeout_remove(self.timeout)
-            self.timeout = 0
+        if packages:
+            packages.sort(pkg_cmp)
+
+        # FIXME: we should only emit if array.packages != packages
+        def set_pkg_cb(array, p):
+            array.packages = p
+        self.changed(set_pkg_cb, packages)
 
     def sync_with_daemon(self):
-
-        if self.freeze_count > 0:
-            return
-        
-        current_seqno = self.server.rcd.packsys.world_sequence_number()
-        if current_seqno != self.seqno:
-
-            self.seqno = current_seqno
-
-            packages = self.get_packages_from_daemon(self.server)
-
-            if packages:
-                packages.sort(pkg_cmp)
-
-            # FIXME: we should only emit if array.packages != packages
-            def set_pkg_cb(array, p):
-                array.packages = p
-            self.changed(set_pkg_cb, packages)
-
-        # Since this is used as a timeout function, we have to return TRUE
-        # to make sure that we don't just sync once.
-        return 1
+        self.server_changed(rcd_util.get_server())
 
     def len(self):
         return len(self.packages)
@@ -257,11 +220,14 @@ class PackagesFromDaemon(PackageArray):
 
 class PackagesFromQuery(PackagesFromDaemon):
 
-    def __init__(self, server, query=None):
-        PackagesFromDaemon.__init__(self, server)
+    def __init__(self, query=None):
+        PackagesFromDaemon.__init__(self)
         self.set_query(query)
 
     def get_packages_from_daemon(self, server):
+
+        if not self.query:
+            return []
 
         print "query:", self.query
         import time
@@ -276,12 +242,7 @@ class PackagesFromQuery(PackagesFromDaemon):
         
     def set_query(self, query):
         self.query = query
-        self.seqno = -1
-
-        if type(query) == type(None):
-            self.disable_sync()
-        else:
-            self.enable_sync()
+        self.sync_with_daemon()
 
 
 ###############################################################################
@@ -289,9 +250,9 @@ class PackagesFromQuery(PackagesFromDaemon):
 
 class UpdatedPackages(PackagesFromDaemon):
 
-    def __init__(self, server):
-        PackagesFromDaemon.__init__(self, server)
-        self.enable_sync()
+    def __init__(self):
+        PackagesFromDaemon.__init__(self)
+        self.sync_with_daemon()
 
     def get_packages_from_daemon(self, server):
 

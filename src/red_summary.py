@@ -37,7 +37,7 @@ class SummaryComponent(red_component.Component):
             self.transaction.add_install_package(pkg)
 
     def build(self):
-        self.array = red_packagearray.UpdatedPackages(self.server())
+        self.array = red_packagearray.UpdatedPackages()
 
         ### Upper
         

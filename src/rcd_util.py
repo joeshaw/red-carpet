@@ -22,21 +22,26 @@ import red_pixbuf
 
 server = None
 
-have_channels = 0
-cached_channels = {}
-
-cached_channel_icons = {}
-
 def register_server(srv):
     global server
     server = srv
     ping = server.rcd.system.ping()
     print "Connected to %s\n%s" % (ping["name"], ping["copyright"])
 
+def get_server():
+    return server
+
+###############################################################################
+
+have_channels = 0
+cached_channels = {}
+cached_channel_icons = {}
+
+def reset_channels():
+    have_channels = 0
 
 def fetch_all_channels():
-    global have_channels
-    global server
+    global have_channels, cached_channels
     
     if have_channels:
         return

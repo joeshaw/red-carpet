@@ -98,7 +98,7 @@ class SearchComponent(red_component.Component):
         self.array.set_query(query)
 
     def build(self):
-        self.array = red_packagearray.PackagesFromQuery(self.server())
+        self.array = red_packagearray.PackagesFromQuery()
 
         ### Upper
 
