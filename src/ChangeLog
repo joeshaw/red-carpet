@@ -1,5 +1,14 @@
 2003-03-05  Tambet Ingo  <tambet@ximian.com>
 
+	* Makefile.am (red_carpetsupport_DATA): Added red_connection.py.
+
+	* red_main.py (main): Fixed server/local command line argument parsing.
+
+	* rcd_util.py (md5ify_password): Use red_connection.
+
+	* red_connection.py: New file. Home of connecting to server and saving/
+	loading of credentials.
+
 	* red_depcomponent.py (DepComponent.finished_cb): Save temporary
 	variable to let history view know it should update itself.
 

@@ -100,27 +100,22 @@ def main(version):
         print _("ERROR: You cannot specify both -h/--host and -l/--local options")
         sys.exit(1)
 
+    local = 0
     host = None
     username = None
     password = None
 
-    local = 1
+    if opt_dict.has_key("local"):
+        local = 1
 
     if opt_dict.has_key("host"):
         host = opt_dict["host"]
         if host[0] == "/":
             local = 1
-        else:
-            local = 0
     elif opt_dict.has_key("user"):
         local = 0
 
-    if not local:
-        if opt_dict.has_key("host"):
-            host = opt_dict["host"]
-        else:
-            host = "localhost"
-
+    if host:
         if opt_dict.has_key("user"):
             username = opt_dict["user"]
         else:
@@ -139,15 +134,12 @@ def main(version):
         if opt_dict.has_key("host"):
             url = opt_dict["host"]
 
-    dd = red_settings.DaemonData()
-    dd.local_set(local)
-
-    if host:
-        dd.url_set(host)
-        dd.user_set(username)
-        dd.password_set(password)
-
-    dd.save_config()
+    if local or host:
+        success = rcd_util.connect_to_server(local, host, username, password)
+    else:
+        success = rcd_util.connect_to_server()
+    if not success:
+        sys.exit(1)
 
     server = rcd_util.get_server()
 

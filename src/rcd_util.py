@@ -19,6 +19,7 @@ import sys, os, errno, time, signal, string, md5, socket, gtk
 import ximian_xmlrpclib
 import red_pixbuf, red_serverproxy
 import red_settings
+import red_connection
 from red_gettext import _
 
 server = None
@@ -29,125 +30,6 @@ current_user = None
 def md5ify_password(pw):
     return md5.new(pw).hexdigest()
 
-
-def check_rcd_version(major, minor, micro):
-    req_major = 1
-    req_minor = 2
-    req_micro = 1 
-
-    # Guard for NoneType
-    major = major or 0
-    minor = minor or 0
-    micro = micro or 0
-
-    req_version = (req_major * 100) + (req_minor * 10) + req_micro
-    version = (major * 100) + (minor * 10) + micro
-
-    if version < req_version:
-        return _("Detected Red Carpet Daemon version %d.%d.%d.\n"
-                 "Version %d.%d.%d (or newer) is required.") % \
-                 (major, minor, micro, req_major, req_minor, req_micro)
-
-    return None
-
-# Tries to connect to server and get a result
-# to ping command.
-# Returns (server, None) on success or
-#         (None, error_msg) on failure.
-def connect_real(url, username=None, password=None):
-    transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
-
-    err_msg = None
-    server = None
-    try:
-        server = ximian_xmlrpclib.Server(url,
-                                         auth_username=username,
-                                         auth_password=password,
-                                         verbose=transport_debug)
-    except:
-        err_msg = _("Unable to connect to the daemon")
-
-    if not err_msg:
-        try:
-            ping = server.rcd.system.ping()
-        except socket.error, f:
-            err_msg = f[1]
-        except ximian_xmlrpclib.ProtocolError, f:
-            err_msg = f
-        except ximian_xmlrpclib.Fault, f:
-            err_msg = f.faultString
-        else:
-            err_msg = check_rcd_version(ping.get("major_version"),
-                                        ping.get("minor_version"),
-                                        ping.get("micro_version"))
-
-    if err_msg:
-        return (None, err_msg)
-
-    return (server, None)
-
-def connect_to_server(force_dialog=0):
-    if not force_dialog:
-        # Get stuff from config and try to connect.
-        data = red_settings.DaemonData()
-        url, username, password, local = data.data_get()
-        server, err_msg = connect_real(url, username, password)
-
-        if not err_msg:
-            register_server(server)
-            return server
-
-    # Ask for information.
-    while 1:
-        d = red_settings.ConnectionWindow()
-        d.run()
-        url, username, password, local = d.get_server_info()
-        d.destroy()
-        # FIXME: This shouldn't be here, it should be fixed in pygtk.
-        gtk.threads_leave()
-
-        if not url:
-            return None
-
-        server, err_msg = connect_real(url, username, password)
-        if not err_msg:
-            register_server(server)
-            return server
-
-        # Try to start an rcd.
-        if local and os.geteuid() == 0 and os.path.exists("/etc/init.d/rcd"):
-            dialog = gtk.MessageDialog(None,
-                                       gtk.DIALOG_MODAL,
-                                       gtk.MESSAGE_WARNING,
-                                       gtk.BUTTONS_YES_NO,
-                                       _("Red Carpet requires a Red Carpet "
-                                         "Daemon to be running.\n"
-                                         "Would you like to start one now?"))
-            dialog.set_title("") # Conform to GNOME HIG
-            gtk.threads_enter()
-            response = dialog.run()
-            gtk.threads_leave()
-            dialog.destroy()
-
-            if response == gtk.RESPONSE_YES:
-                sd = StartDaemon()
-                # This will block with a dialog.
-                server = sd.run()
-
-                if server is not None:
-                    register_server(server)
-                    return server
-        else:
-            dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
-                                       gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                       _("Unable to connect to the "
-                                       "daemon:\n '%s'.") % err_msg)
-            dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
-            gtk.threads_enter()
-            dialog.run()
-            gtk.threads_leave()
-            dialog.destroy()
-
 def register_server(srv):
     global server, server_proxy
     server = srv
@@ -155,13 +37,30 @@ def register_server(srv):
     reset_server_permissions()
     reset_current_user()
 
-def get_server():
+def connect_to_server(local=0,
+                      uri=None,
+                      user=None,
+                      password=None):
     global server
-    if not isinstance(server, ximian_xmlrpclib.Server):
-        server = connect_to_server()
+    connected = 0
+    if isinstance(server, ximian_xmlrpclib.Server):
+        connected = 1
 
+    # If we're not connected we want to try once with default parameters.
+    show_dialog = connected
+    s = red_connection.connect(local, uri, user, password, show_dialog)
+    if isinstance(s, ximian_xmlrpclib.Server):
+        server = s
+        register_server(server)
+        return 1
+
+    return 0
+
+def get_server():
     if not isinstance(server, ximian_xmlrpclib.Server):
-        sys.exit(1)
+        success = connect_to_server()
+        if not success:
+            sys.exit(1)
 
     return server
 
@@ -199,79 +98,6 @@ def get_current_user():
     current_user = server.rcd.users.get_current_user()
     return current_user
 
-class StartDaemon:
-    def __init__(self):
-        self.start_time = 0
-        self.service_pid = -1;
-        self.rcd_pid = -1;
-        self.server = None
-
-        # LSB compliant distros should have the
-        # following
-        self.cmd = "/etc/init.d/rcd"
-        self.args = (self.cmd, "start")
-
-    def run(self):
-        self.dialog = gtk.MessageDialog(None, 0,
-                                        gtk.MESSAGE_INFO,
-                                        gtk.BUTTONS_CANCEL,
-                                        _("Starting daemon..."))
-
-        child_pid = os.fork()
-        if child_pid == 0: # child
-            os.execv(self.cmd, self.args)
-            # If we get here, the exec failed.
-            return None
-
-        # parent
-        self.service_pid = child_pid
-
-        gtk.timeout_add(500, self.wait_for_daemon_cb)
-
-        gtk.threads_enter()
-        response = self.dialog.run()
-        gtk.threads_leave()
-        self.dialog.destroy()
-
-        if response == gtk.RESPONSE_CANCEL or \
-           response == gtk.RESPONSE_DELETE_EVENT:
-            if self.service_pid != -1:
-                os.kill(self.service_pid, signal.SIGKILL)
-            if self.rcd_pid != -1:
-                os.kill(self.rcd_pid, signal.SIGKILL)
-
-        return self.server
-
-    def wait_for_daemon_cb(self):
-        if self.service_pid != -1:
-            pid, status = os.waitpid(self.service_pid, os.WNOHANG)
-            if pid == self.service_pid:
-                self.service_pid = -1
-
-                pidfile = open("/var/run/rcd.pid")
-                pidstr = pidfile.read()
-                self.rcd_pid = int(pidstr)
-
-        if self.rcd_pid != -1:
-            # FIXME: allow other paths?
-            s = ximian_xmlrpclib.Server("/var/run/rcd/rcd")
-            try:
-                s.rcd.system.ping()
-            except:
-                if not self.start_time:
-                    self.start_time = time.time()
-                else:
-                    # Give the rcd 20 seconds to start before we give up.
-                    if time.time() - self.start_time >= 20:
-                        self.dialog.response(gtk.RESPONSE_CANCEL)
-                        return 0
-            else:
-                print "Contacted daemon"
-                self.dialog.response(gtk.RESPONSE_OK)
-                self.server = s
-                return 0
-
-        return 1
 
 ###############################################################################
 

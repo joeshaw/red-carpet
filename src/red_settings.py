@@ -149,27 +149,9 @@ class DaemonData:
         self.local = local
 
     def url_get(self):
-        local = self.local
-
-        if not local:
-            if len(self.url):
-                host = self.url[0]
-            else:
-                host = ""
-            # Prepend "https://" if it isn't already specified
-            if string.find(host, "http://") == -1 \
-               and string.find(host, "https://") == -1:
-                host = "https://" + host
-
-            # Append the port number (505) if one isn't specified
-            hparts = string.split(host, ":", 2)
-            if len(hparts) < 3:
-                hparts.append("505")
-            url = string.join(hparts, ":") + "/RPC2"
-        else:
-            url = "/var/run/rcd/rcd"
-
-        return url
+        if len(self.url):
+            return self.url[0]
+        return ""
 
     def url_get_list(self):
         return self.url

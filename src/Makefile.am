@@ -13,8 +13,9 @@ red_carpetsupport_DATA =	\
 	red_activation.py			\
 	red_appwindow.py			\
 	red_channelmodel.py			\
-	red_channeloption.py			\
+	red_channeloption.py		\
 	red_component.py			\
+	red_connection.py			\
 	red_console.py				\
 	red_deaddaemon.py			\
 	red_depcomponent.py			\
@@ -33,8 +34,8 @@ red_carpetsupport_DATA =	\
 	red_packagearray.py			\
 	red_packagebook.py			\
 	red_packagepage.py			\
-	red_packagepage_deps.py			\
-	red_packagepage_info.py			\
+	red_packagepage_deps.py		\
+	red_packagepage_info.py		\
 	red_packageview.py			\
 	red_pendingops.py			\
 	red_pendingview.py			\
@@ -43,14 +44,14 @@ red_carpetsupport_DATA =	\
 	red_search.py				\
 	red_searchbox.py			\
 	red_serverinfo.py			\
-	red_serverlistener.py			\
+	red_serverlistener.py		\
 	red_serverproxy.py			\
-	red_settings.py				\
+	red_settings.py			\
 	red_sidebar.py				\
-	red_subscriptions.py			\
+	red_subscriptions.py		\
 	red_summary.py				\
 	red_thrashingtreeview.py		\
-	red_throbber.py				\
+	red_throbber.py			\
 	red_toolbar.py				\
 	red_transaction.py			\
 	red_users.py				\

@@ -459,7 +459,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/_Help")
 
         bar.add("/File/_Connect...",
-                callback=lambda x:rcd_util.connect_to_server(1),
+                callback=lambda x:rcd_util.connect_to_server(),
                 pixbuf_name="connect",
                 accelerator="<Control>O")
 
