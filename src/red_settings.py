@@ -27,11 +27,13 @@ class RCConfig:
         path = os.path.expanduser('~/')
         fname = "red-carpet"
 
-        self.__public_fn = path + ".gnome2/" + fname
+        self.__public_dir = path + ".gnome2"
+        self.__public_fn = self.__public_dir + "/" + fname
         self.__public = ConfigParser.ConfigParser()
         self.__public.read(self.__public_fn)
 
-        self.__private_fn = path + ".gnome2_private/" + fname
+        self.__private_dir = path + ".gnome2_private"
+        self.__private_fn = self.__private_dir + "/" + fname
         self.__private = ConfigParser.ConfigParser()
         self.__private.read(self.__private_fn)
 
@@ -77,10 +79,14 @@ class RCConfig:
         return self.__private.set(section, option, value)
 
     def sync(self):
+        if not os.path.exists(self.__public_dir):
+            os.mkdir(self.__public_dir, 0755)
         f = open(self.__public_fn, 'w')
         self.__public.write(f)
         f.close
 
+        if not os.path.exists(self.__private_dir):
+            os.mkdir(self.__private_dir, 0700)
         f = open(self.__private_fn, 'w')
         self.__private.write(f)
         f.close

@@ -1,3 +1,8 @@
+2003-01-29  Joe Shaw  <joe@ximian.com>
+
+	* red_settings.py: If .gnome2 or .gnome2_private don't exist,
+	create them.
+
 2003-01-29  Tambet Ingo  <tambet@ximian.com>
 
 	* red_mount.py (select_and_mount): Removed, not used anymore.
