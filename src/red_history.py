@@ -19,6 +19,7 @@ import gobject, gtk
 import red_extra
 import rcd_util
 import red_component
+import red_users
 
 model = None
 
@@ -116,17 +117,7 @@ class HistorySearchBar(HistoryFilter):
 
         self.container.pack_start(gtk.Label("User:"), 0, 0, 0)
 
-        def get_users(server):
-            users = map(lambda x:x[0], server.rcd.users.get_all())
-            ret = []
-            for u in users:
-                ret.append((u, u))
-            ret.sort(lambda a, b: cmp(a[0], b[0]))
-            ret.insert(0, ("All Users", None))
-            return ret
-
-        users = get_users(self.server)
-        self.user_opt = HistoryOption(users)
+        self.user_opt = red_users.UsersOption(allow_all=1)
         self.container.pack_start(self.user_opt, 0, 0, 0)
         self.user_opt.connect("selected", lambda x, y:self.updated())
 
@@ -145,9 +136,9 @@ class HistorySearchBar(HistoryFilter):
 
     def updated(self):
         self.query_reset()
-        user = self.user_opt.get_active_item()
-        if user:
-            self.query.append(["user", "contains", user])
+        user = self.user_opt.get_selected_user()
+        if user and user.name_get() != "All":
+            self.query.append(["user", "contains", user.name_get()])
         action = self.action_opt.get_active_item()
         if action:
             self.query.append(["action", "contains", action])

@@ -1,3 +1,12 @@
+2003-02-20    <tambet@ximian.com>
+
+	* red_users.py: Changed users treeview to optionmenu. Use serverproxy
+	for getting users/privileges. It turned out to be almost a rewrite :)
+
+	* red_history.py (HistorySearchBar.build): Use UsersOption from
+	red_users.
+	(HistorySearchBar.updated): ditto.
+
 2003-02-19  Joe Shaw  <joe@ximian.com>
 
 	* Makefile.am: If we're installing usermode files, install into
