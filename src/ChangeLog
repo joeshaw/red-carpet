@@ -1,5 +1,8 @@
 2003-03-10  Joe Shaw  <joe@ximian.com>
 
+	* red_sidebar.py (construct): Calculate the number of rows based
+	on the number of visible, not total, components.
+
 	* red_appwindow.py: For the install/remove/cancel/info buttons,
 	check to make sure that any packages are selected.  If not,
 	desensitize them.

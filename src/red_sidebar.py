@@ -57,7 +57,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
     def build(self):
         self.shortcut_bar = ShortcutBar()
-        self.pack_start(self.shortcut_bar, 0, 0)
+        self.pack_start(self.shortcut_bar, expand=0, fill=0)
 
         frame = gtk.Frame("")
         l = frame.get_label_widget()
@@ -177,7 +177,10 @@ class ShortcutBar(gtk.HBox):
         if len(self.components) < 1:
             return
 
-        rows = int(math.ceil(len(self.components) / 2.0))
+        components = [(comp, callback) for comp, callback in self.components
+                      if comp.show_in_shortcuts()]
+
+        rows = int(math.ceil(len(components) / 2.0))
         table = gtk.Table(rows, 2, 1)
         table.set_col_spacings(6)
         table.set_row_spacings(6)
@@ -185,50 +188,46 @@ class ShortcutBar(gtk.HBox):
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
 
         row = 0
-        for comp, callback in self.components:
-            if comp.show_in_shortcuts():
-                button = gtk.ToggleButton()
-                align = gtk.Alignment(0.5, 0.5, 0, 0)
-                button.add(align)
-                box = gtk.HBox(0, 2)
+        for comp, callback in components:
+            button = gtk.ToggleButton()
+            align = gtk.Alignment(0.5, 0.5, 0, 0)
+            button.add(align)
+            box = gtk.HBox(0, 2)
 
-                image = None
+            image = None
 
-                if comp.stock():
-                    assert not comp.pixbuf()
+            if comp.stock():
+                assert not comp.pixbuf()
 
-                    stock_id = comp.stock()
-                    
-                    image = gtk.Image()
-                    image.set_from_stock(stock_id, gtk.ICON_SIZE_BUTTON)
-                
-                if comp.pixbuf():
-                    assert not comp.stock()
-                    image = red_pixbuf.get_widget(comp.pixbuf(),
-                                                  width=width, height=height)
+                stock_id = comp.stock()
+
+                image = gtk.Image()
+                image.set_from_stock(stock_id, gtk.ICON_SIZE_BUTTON)
+
+            if comp.pixbuf():
+                assert not comp.stock()
+                image = red_pixbuf.get_widget(comp.pixbuf(),
+                                              width=width, height=height)
 
 
-                if image:
-                    box.pack_start(image, 0, 0)
+            if image:
+                box.pack_start(image, 0, 0)
 
-                box.pack_start(gtk.Label(comp.name()), 0, 0)
-                align.add(box)
+            box.pack_start(gtk.Label(comp.name()), 0, 0)
+            align.add(box)
 
-                y = int(row)
-                if row > y:
-                    x = 1
-                else:
-                    x = 0
-
-                table.attach(button,
-                             x, x+1, y, y+1,
-                             gtk.FILL, 0, 0, 0)
-
-                row += 0.5
-                sid = button.connect("clicked", callback)
+            y = int(row)
+            if row > y:
+                x = 1
             else:
-                button = None
-                sid = 0
+                x = 0
+
+            table.attach(button,
+                         x, x+1, y, y+1,
+                         gtk.FILL, 0, 0, 0)
+
+            row += 0.5
+            sid = button.connect("clicked", callback)
 
             comp.connect("display", self.active_changed, button)
             self.buttons.append((button, sid))
