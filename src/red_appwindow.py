@@ -199,7 +199,7 @@ class AppWindow(gtk.Window,
         # Ensure a sane width for the sidebar if visible
         if self.sidebar.get_property("visible"):
             w, h = self.sidebar.size_request()
-            self.sidebar.set_size_request(w * 1.5, -1)
+            self.sidebar.set_size_request(int(w * 1.5), -1)
 
         self.hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
