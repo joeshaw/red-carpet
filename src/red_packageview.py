@@ -19,6 +19,7 @@ import time
 import gobject, gtk
 import red_extra
 import red_pendingops, red_packagearray
+import red_pixbuf
 
 class PackageView(gtk.TreeView):
 
@@ -166,12 +167,17 @@ class PackageView(gtk.TreeView):
                                                         lambda x:self.post_thrash_model())
 
     def add_column(self, column,
-                   title="Untitled",
+                   title=None,
+                   widget=None,
                    initially_visible=0,
                    sort_fn=None,
                    sort_callback=None):
 
+        if not title and not widget:
+            title = "Untitled"
+
         self.__column_info[column] = { "title":title,
+                                       "widget":widget,
                                        "visible":initially_visible,
                                        "sort_fn":sort_fn,
                                        "sort_callback":sort_callback,
@@ -179,7 +185,14 @@ class PackageView(gtk.TreeView):
 
         self.__column_order.append(column)
 
-        column.set_title(title)
+        if title:
+            column.set_title(title)
+            column.set_alignment(0.0)
+            
+        if widget:
+            column.set_widget(widget)
+            column.set_alignment(0.5)
+            
         column.set_visible(initially_visible)
         self.append_column(column)
 
@@ -367,11 +380,13 @@ class PackageView(gtk.TreeView):
         return col
 
     def append_locked_column(self):
-        col = gtk.TreeViewColumn("L",
+        col = gtk.TreeViewColumn(None,
                                  gtk.CellRendererPixbuf(),
                                  pixbuf=red_packagearray.COLUMN_LOCKED_ICON)
+        widget = red_pixbuf.get_widget("lock");
+        widget.show()
         self.add_column(col,
-                        title="L",
+                        widget=widget,
                         initially_visible=1)
         return col
 

@@ -3,6 +3,27 @@ import threading
 import ximian_xmlrpclib
 import gobject, gtk
 
+win = None
+
+def show_daemon_dialog():
+    def popup_warning_cb():
+        global win
+        if not win:
+            win = gtk.MessageDialog(type=gtk.MESSAGE_ERROR,
+                                    buttons=gtk.BUTTONS_OK,
+                                    message_format="Unable to connect to daemon")
+            win.set_modal(1)
+            gtk.threads_enter()
+            win.run()
+            gtk.threads_leave()
+            win.destroy()
+            win = None
+
+        return 0
+
+    # Popup the dialog in the main thread.
+    gtk.idle_add(popup_warning_cb)
+
 class ServerThread(threading.Thread, gobject.GObject):
 
     def __init__(self, server, method, args):
@@ -17,7 +38,20 @@ class ServerThread(threading.Thread, gobject.GObject):
         self.__cancelled = 0
 
     def run(self):
-        result = getattr(self.__server, self.__method)(*self.__args)
+        try:
+            result = getattr(self.__server, self.__method)(*self.__args)
+        except:
+            # FIXME: Handle the correct exceptions, not just this catch all.
+            show_daemon_dialog()
+            self.__lock.acquire()
+            if not self.__cancelled:
+                self.__ready = 1
+                self.__cancelled = 1
+                self.emit("ready")
+            self.__lock.release()
+            
+            return
+        
         self.__lock.acquire()
         if not self.__cancelled:
             self.__result = result
@@ -76,6 +110,9 @@ class ServerProxy:
 
     def __init__(self, server):
         self.__server = server
+
+    def __nonzero__(self):
+        return 1
 
     def __getattr__(self, method):
         return ServerMethod(self.__server, method)

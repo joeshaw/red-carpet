@@ -31,6 +31,9 @@ missed_polls = 0
 poll_timeout = 0
 timeout_len  = 3000
 
+worker            = None
+worker_handler_id = 0
+
 last_package_seqno      = -1
 last_channel_seqno      = -1
 last_subscription_seqno = -1
@@ -90,6 +93,7 @@ def poll_cb():
     global last_package_seqno
     global last_channel_seqno
     global last_subscription_seqno
+    global worker, worker_handler_id
 
     poll_count = poll_count + 1
     
@@ -97,31 +101,48 @@ def poll_cb():
 
         # This lets us do the right thing if the server changes
         # out from under us.
-        server = rcd_util.get_server()
+        server = rcd_util.get_server_proxy()
         if id(server) != last_server:
             last_package_seqno      = -1
             last_channel_seqno      = -1
             last_subscription_seqno = -1
         last_server = id(server)
 
-        if not server is None:
-            curr_package_seqno, curr_channel_seqno, curr_subscription_seqno \
-                                = server.rcd.packsys.world_sequence_numbers()
+        if worker:
+            if worker_handler_id:
+                worker.disconnect(worker_handler_id)
+                worker_handler_id = 0
+            worker.cancel()
 
-            if curr_channel_seqno != last_channel_seqno or \
-                   curr_subscription_seqno != last_subscription_seqno:
-                rcd_util.reset_channels()
+        def sequence_numbers_finished_cb(worker):
+            global last_package_seqno
+            global last_channel_seqno
+            global last_subscription_seqno
+            
+            if not worker.is_cancelled():
+                curr_package_seqno, curr_channel_seqno, curr_subscription_seqno \
+                                    = worker.get_result()
 
-            signal_listeners(server,
-                             curr_package_seqno != last_package_seqno,
-                             curr_subscription_seqno != last_subscription_seqno,
-                             curr_channel_seqno != last_channel_seqno)
+                
+                if curr_channel_seqno != last_channel_seqno or \
+                       curr_subscription_seqno != last_subscription_seqno:
+                    rcd_util.reset_channels()
 
-            last_package_seqno = curr_package_seqno
-            last_subscription_seqno = curr_subscription_seqno
-            last_channel_seqno = curr_channel_seqno
+                signal_listeners(server,
+                                 curr_package_seqno != last_package_seqno,
+                                 curr_subscription_seqno != last_subscription_seqno,
+                                 curr_channel_seqno != last_channel_seqno)
+
+                last_package_seqno = curr_package_seqno
+                last_subscription_seqno = curr_subscription_seqno
+                last_channel_seqno = curr_channel_seqno
         
-        missed_polls = 0
+            missed_polls = 0
+
+        if server:
+            worker = server.rcd.packsys.world_sequence_numbers()
+            worker_handler_id = worker.connect("ready",
+                                               sequence_numbers_finished_cb)
         
     else:
         missed_polls += 1
