@@ -25,6 +25,7 @@ import red_appwindow
 import red_channeloption
 import red_channelbrowse
 import red_summary
+import red_search
 
 def connect_to_server():
     ## Make contact with the daemon.
@@ -64,6 +65,7 @@ def main(version):
 
     app.register_component(red_summary.SummaryComponent())
     app.register_component(red_channelbrowse.ChannelBrowseComponent())
+    app.register_component(red_search.SearchComponent())
 
     gtk.main()
     
