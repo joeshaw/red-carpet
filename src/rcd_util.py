@@ -51,6 +51,8 @@ def connect_real(url, username=None, password=None):
             err_msg = f[1]
         except ximian_xmlrpclib.ProtocolError, f:
             err_msg = f
+        except ximian_xmlrpclib.Fault, f:
+            err_msg = f.faultString
 
     if err_msg:
         return (None, err_msg)
@@ -87,6 +89,7 @@ def connect_to_server(force_dialog=0):
         dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
                                    gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
                                    "Unable to connect to the daemon:\n '%s'." % err_msg)
+        dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
         dialog.run()
         dialog.destroy()
 
