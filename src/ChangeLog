@@ -1,3 +1,18 @@
+2004-01-29  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (get_channel_icon): If we're requesting a scaled
+	icon and we got None back, pass it through.  When getting the icon
+	from the daemon, handle an invalid_channel fault if we're
+	asynchronously requesting a channel icon for a channel that might
+	have disappeared.
+
+	* red_transaction.py (TransactionArray): Make this derive from a
+	ServerListener.
+	(TransactionArray.refresh): Added, removes any packages from the
+	pending ops if its channel is no longer there.
+	(TransactionArray.channels_changed,
+	TransactionArray.packages_changed): Added, calls self.refresh().
+
 2004-01-22  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (AppWindow.load_geometry): When setting the

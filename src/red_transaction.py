@@ -20,18 +20,21 @@ import rcd_util
 import red_packagearray, red_packageview
 import red_pendingops
 import red_component
+import red_serverlistener
 
 from red_gettext import _
 
 model = None
 
 class TransactionArray(red_packagearray.PackageArray,
-                       red_pendingops.PendingOpsListener):
+                       red_pendingops.PendingOpsListener,
+                       red_serverlistener.ServerListener):
 
     def __init__(self):
         self.packages = red_pendingops.packages_with_actions()
         red_packagearray.PackageArray.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
         self.__pending = 0
 
     def get_all(self):
@@ -47,6 +50,24 @@ class TransactionArray(red_packagearray.PackageArray,
 
         if not self.__pending:
             self.__pending = gtk.idle_add(pending_refresh_cb, self)
+
+    def refresh(self):
+        # We need to go through and delete packages in the pending actions
+        # if they were going to be installed from a channel which no longer
+        # exists.
+        actions = (red_pendingops.TO_BE_INSTALLED,
+                   red_pendingops.TO_BE_INSTALLED_CANCELLED)
+        for pkg in red_pendingops.packages_with_actions(*actions):
+            if not rcd_util.get_channel(pkg["channel"]):
+                red_pendingops.set_action(pkg, red_pendingops.NO_ACTION)
+
+        self.changed(lambda x:x) # noop
+
+    def channels_changed(self):
+        self.refresh()
+
+    def packages_changed(self):
+        self.refresh()
 
 #########################################################################
 

@@ -188,6 +188,10 @@ def get_channel_icon(id, width=0, height=0):
     if width > 0 and height > 0:
         
         original = get_channel_icon(id)
+
+        if not original:
+            return None
+        
         pixbuf = original.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
 
     else:
@@ -196,7 +200,7 @@ def get_channel_icon(id, width=0, height=0):
         try:
             icon_data = server.rcd.packsys.get_channel_icon(id)
         except ximian_xmlrpclib.Fault, f:
-            if f.faultCode == fault.no_icon:
+            if f.faultCode == fault.no_icon or f.faultCode == fault.invalid_channel:
                 icon_data = None
             else:
                 raise
