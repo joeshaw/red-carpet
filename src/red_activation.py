@@ -87,7 +87,12 @@ class ActivationWindow(gtk.Dialog):
             try:
                 success = worker.get_result()
             except ximian_xmlrpclib.Fault, f:
-                rcd_util.dialog_from_fault(f)
+                rcd_util.dialog_from_fault(f,
+                                           error_text=_("Unable to activate"),
+                                           additional_text=_("Please ensure "
+                                           "you typed the email address "
+                                           "and activation code correctly"),
+                                           parent=self)
                 return
             
             if success:

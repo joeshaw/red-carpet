@@ -331,15 +331,24 @@ def linebreak(in_str, width):
 
 ###############################################################################
 
-def dialog_from_fault(f, parent=None, post_dialog_thunk=None):
+def dialog_from_fault(f, error_text=None, additional_text=None,
+                      parent=None, post_dialog_thunk=None):
     if not f:
         return
-    lines = linebreak(f.faultString, 40)
-    lines.append("(fault %d)" % f.faultCode)
+
+    if error_text:
+        text = error_text + ": " + f.faultString
+    else:
+        text = f.faultString
+
+    if additional_text:
+        text = text + "\n\n" + additional_text
+    
+    text = text + "\n\n" + "(fault %d)" % f.faultCode
 
     dialog = gtk.MessageDialog(parent, 0, gtk.MESSAGE_WARNING,
                                gtk.BUTTONS_OK,
-                               string.join(lines, "\n"))
+                               text)
     dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
 
     def idle_cb(d, thunk):
@@ -454,3 +463,4 @@ class fault:
     no_icon                = -612
     cant_activate          = -613
     not_supported          = -614
+

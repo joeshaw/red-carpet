@@ -1,3 +1,14 @@
+2003-05-20  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py (dialog_from_fault): Take a generic "error_text"
+	argument to specify what the larger error is, and an
+	"additional_text" argument for additional info, like suggestions
+	on how to fix the problem.  Also don't do linebreaking ourselves,
+	the GtkMessageDialog will take care of that for us.
+
+	* red_activation.py (activate_finished_cb): Pass in some
+	error_text and additional_text to the fault dialog.
+
 2003-05-19  Joe Shaw  <joe@ximian.com>
 
 	This commit fixes most of #43231.
