@@ -352,11 +352,12 @@
         </varlistentry>
 
         <varlistentry>
-          <term>Installations and Removals</term>
+          <term>Pending Actions</term>
           <listitem>
             <para>
-              This displays pending software transactions. To perform
-              them, click the <guibutton>Run Now</guibutton> button.
+              This displays the upcoming software transactions you
+              have chosen. To perform them, click the <guibutton>Run
+              Now</guibutton> button.
             </para>
           </listitem>
         </varlistentry>
@@ -866,7 +867,7 @@
         a list of transactions you have selected, but it doesn't have
         room to give you a lot of detail. For more information about
         your pending transaction list, click the
-        <guibutton>Installations and Removals</guibutton> button.
+        <guibutton>Pending Actions</guibutton> button.
       </para>
       <para>
         In addition to the action and package name available in the

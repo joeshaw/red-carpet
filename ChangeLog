@@ -1,3 +1,12 @@
+2003-04-16  Aaron Weber  <aaron@ximian.com>
+
+	* help/C/red-carpet.xml: s/"Installations and Removals"/"Pending Actions/"
+
+2003-04-14  Aaron Weber  <aaron@ximian.com>
+
+	* help/C/red-carpet.xml: finished docs, i think. now mentions RCE,
+	fully describes RCX, promotes use of mirrors. 
+
 2003-04-11  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: Check for scrollkeeper-config, Add the help
