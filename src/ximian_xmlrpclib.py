@@ -1032,7 +1032,10 @@ class Transport:
         p, u = self.getparser()
 
         while 1:
-            response = f.read(1024)
+            # For non-local processing, we probably want to
+            # read the response in chunks.  Originally this code
+            # read 1024 bytes at a time.
+            response = f.read()
             if not response:
                 break
             if self.verbose:
@@ -1041,6 +1044,7 @@ class Transport:
 
         f.close()
         p.close()
+
 
         return u.close()
 
