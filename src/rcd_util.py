@@ -232,6 +232,22 @@ def linebreak(in_str, width):
 
 ###############################################################################
 
+def dialog_from_fault(f, parent=None):
+    if not f:
+        return
+    lines = linebreak(f.faultString, 40)
+    lines.append("(fault %d)" % f.faultCode)
+
+    dialog = gtk.MessageDialog(parent, 0, gtk.MESSAGE_WARNING,
+                               gtk.BUTTONS_OK,
+                               string.join(lines, "\n"))
+    dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
+    dialog.show()
+    dialog.run()
+    dialog.destroy()
+
+###############################################################################
+
 ###
 ### Format transaction status messages into readable text
 ###

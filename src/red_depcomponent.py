@@ -19,6 +19,7 @@ import string
 import gtk
 import red_serverlistener
 import red_component, red_pendingops, red_depview
+import red_transaction
 
 def filter_deps(dep_list):
     if not dep_list:
@@ -122,5 +123,14 @@ class DepComponent(red_component.Component):
         buttons.pack_end(cancel, 0, 0, 2)
         buttons.show_all()
         self.display("lower", buttons)
+
+        def continue_cb(b, dep_comp):
+            to_install = dep_comp.install_packages + dep_comp.dep_install
+            to_remove  = dep_comp.remove_packages + dep_comp.dep_remove
+            red_transaction.begin_transaction(to_install, to_remove)
+            print "Install:", map(lambda x:x["name"], to_install)
+            print "Remove:", map(lambda x:x["name"], to_remove)
+
+        cont.connect("clicked", continue_cb, self)
 
 

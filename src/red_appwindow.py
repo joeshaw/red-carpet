@@ -19,6 +19,8 @@ import sys
 import gobject, gtk
 import string
 
+import ximian_xmlrpclib
+
 import rcd_util
 import red_header, red_menubar, red_sidebar
 import red_transaction
@@ -26,13 +28,15 @@ import red_component
 import red_pendingview
 
 def refresh_cb(app):
-    # FIXME: this should be in a try
-    stuff_to_poll = app.server.rcd.packsys.refresh_all_channels()
+    try:
+        stuff_to_poll = app.server.rcd.packsys.refresh_all_channels()
+    except ximian_xmlrpclib.Fault, f:
+        rcd_util.dialog_from_fault(f, parent=app)
+        return
 
-    pend = red_pendingview.PendingView(title="Refreshing channel data",
-                                       label="Downloading channel information",
-                                       parent=app,
-                                       show_size=0)
+    pend = red_pendingview.PendingView_Simple(title="Refreshing channel data",
+                                              parent=app)
+    pend.set_label("Downloading channel information")
     pend.show_all()
     pend.set_pending_list(stuff_to_poll)
 

@@ -95,6 +95,7 @@ class Component(gobject.GObject):
     def changed_visibility(self, flag):
         pass
 
+
 gobject.type_register(Component)
 
 gobject.signal_new("display",
@@ -114,7 +115,6 @@ gobject.signal_new("switch",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gobject.TYPE_OBJECT,))
-
 
 gobject.signal_new("message",
                    Component,

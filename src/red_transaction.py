@@ -17,6 +17,7 @@
 
 import string
 import gobject, gtk
+import ximian_xmlrpclib
 import rcd_util
 import red_main
 import red_packagearray, red_packageview
@@ -48,42 +49,6 @@ class TransactionArray(red_packagearray.PackageArray,
         self.changed(refresh_op)
 
 #########################################################################
-
-def begin_transaction(install_packages, remove_packages):
-    serv = rcd_util.get_server()
-
-    download_id, transact_id, step_id = serv.rcd.packsys.transact(
-        install_packages,
-        remove_packages,
-        0, # FIXME: flags
-        red_main.red_name,
-        red_main.red_version)
-
-    print "download id: %d" % download_id
-    print "transact id: %d" % transact_id
-    print "step id: %d" % step_id
-
-    return download_id, transact_id, step_id
-
-def resolve_deps_and_transact(app):
-
-    deps = red_depcomponent.DepComponent()
-    app.activate_component(deps)
-
-#    if retval == gtk.RESPONSE_ACCEPT: # Go button
-#        serv = rcd_util.get_server()
-
-#        download_id, transact_id, step_id = begin_transaction(
-#            depwindow.get_install_packages(),
-#            depwindow.get_remove_packages())
-#
-#        transaction_window = TransactionWindow(download_id,
-#                                               transact_id,
-#                                              step_id)
-#
-#        transaction_window.show()
-#
-#    depwindow.destroy()
 
 class TransactionBar(gtk.HBox,
                      red_pendingops.PendingOpsListener):
@@ -126,48 +91,6 @@ class TransactionBar(gtk.HBox,
         if key == "action":
             self.update_label()
     
-
-#########################################################################
-
-class TransactionComponent(red_component.Component):
-
-    def name(self):
-        return "Pending Transactions"
-
-    def long_name(self):
-        return "Manage Pending Transactions"
-
-    def pixbuf(self):
-        return "about-monkey"
-
-    def build(self):
-        self.array = TransactionArray()
-
-        view = red_packageview.PackageView()
-        view.append_action_column()
-        view.append_name_column(show_channel_icon=1)
-        view.append_version_column()
-        view.append_size_column()
-
-        def act_cb(view, i, pkg):
-            red_pendingops.toggle_action_with_cancellation(pkg)
-        view.set_activated_fn(act_cb)
-        
-        view.set_model(self.array)
-
-        scrolled = gtk.ScrolledWindow()
-        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scrolled.add(view)
-        view.show()
-
-        self.display("main", scrolled)
-
-
-    def changed_visibility(self, flag):
-
-        if not flag:
-            red_pendingops.clear_action_cancellations()
-            
 #########################################################################
 
 def ok_to_quit(main_app_window):
@@ -223,6 +146,77 @@ def ok_to_quit(main_app_window):
     dialog.destroy()
 
     return retval
+
+#########################################################################
+
+class TransactionComponent(red_component.Component):
+
+    def name(self):
+        return "Pending Transactions"
+
+    def long_name(self):
+        return "Manage Pending Transactions"
+
+    def pixbuf(self):
+        return "about-monkey"
+
+    def build(self):
+        self.array = TransactionArray()
+
+        view = red_packageview.PackageView()
+        view.append_action_column()
+        view.append_name_column(show_channel_icon=1)
+        view.append_version_column()
+        view.append_size_column()
+
+        def act_cb(view, i, pkg):
+            red_pendingops.toggle_action_with_cancellation(pkg)
+        view.set_activated_fn(act_cb)
+        
+        view.set_model(self.array)
+
+        scrolled = gtk.ScrolledWindow()
+        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.add(view)
+        view.show()
+
+        self.display("main", scrolled)
+
+
+    def changed_visibility(self, flag):
+
+        if not flag:
+            red_pendingops.clear_action_cancellations()
+            
+#########################################################################
+
+def resolve_deps_and_transact(app):
+
+    deps = red_depcomponent.DepComponent()
+    app.activate_component(deps)
+
+def begin_transaction(install_packages, remove_packages):
+    serv = rcd_util.get_server()
+
+    try:
+        download_id, transact_id, step_id = serv.rcd.packsys.transact(
+            install_packages,
+            remove_packages,
+            0, # FIXME: flags
+            red_main.red_name,
+            red_main.red_version)
+    except ximian_xmlrpclib.Fault, f:
+        rcd_util.dialog_from_fault(f)
+        return
+
+    print "download id: %d" % download_id
+    print "transact id: %d" % transact_id
+    print "step id: %d" % step_id
+
+    trans_win = red_pendingview.PendingView_Transaction(download_id,
+                                                        transact_id,
+                                                        step_id)
+    trans_win.show()
 
 #########################################################################
 
