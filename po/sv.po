@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.8 2003/04/25 14:06:30 menthos Exp $
+# $Id: sv.po,v 1.9 2003/04/29 20:24:36 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-04-25 16:05+0200\n"
-"PO-Revision-Date: 2003-04-25 16:05+0200\n"
+"POT-Creation-Date: 2003-04-29 22:22+0200\n"
+"PO-Revision-Date: 2003-04-29 22:23+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -535,6 +535,26 @@ msgstr "Ingen kanal/Okänd kanal"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. Clean any old widgets out of self.container,
+#. then stick in our new widget and show it.
+#. component
+#. list of packages
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. Forces the component to emit a 'display' signal
 #. for the current widget (and causes the build method
 #. to be executed if no widget has been displayed yet).
@@ -739,7 +759,7 @@ msgstr "Avsluta Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:351
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:355
 msgid "Dependency Resolution"
 msgstr "Beroendeupplösning"
 
@@ -763,7 +783,7 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:199
+#: src/red_depcomponent.py:200
 msgid "I Agree"
 msgstr "Jag accepterar"
 
@@ -772,16 +792,16 @@ msgstr "Jag accepterar"
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:259
+#: src/red_depcomponent.py:260
 msgid "Dependency Resolution Failed"
 msgstr "Beroendeupplösning misslyckades"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:306
+#: src/red_depcomponent.py:310
 msgid "System Verified"
 msgstr "Systemet verifierat"
 
-#: src/red_depcomponent.py:308
+#: src/red_depcomponent.py:312
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -792,23 +812,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:362
+#: src/red_depcomponent.py:366
 msgid "Requested Installations"
 msgstr "Begärda installationer"
 
-#: src/red_depcomponent.py:366
+#: src/red_depcomponent.py:370
 msgid "Requested Removals"
 msgstr "Begärda borttagningar"
 
-#: src/red_depcomponent.py:370
+#: src/red_depcomponent.py:374
 msgid "Required Installations"
 msgstr "Nödvändiga installationer"
 
-#: src/red_depcomponent.py:374
+#: src/red_depcomponent.py:378
 msgid "Required Removals"
 msgstr "Nödvändiga borttagningar"
 
-#: src/red_depcomponent.py:400
+#: src/red_depcomponent.py:404
 msgid "Continue"
 msgstr "Fortsätt"
 
@@ -833,25 +853,25 @@ msgstr "Fortsätt"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_depview.py:37 src/red_mount.py:226 src/red_packagepage_info.py:83
-#: src/red_packageview.py:354
+#: src/red_packageview.py:359
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:410
+#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:415
 msgid "Package"
 msgstr "Paket"
 
-#: src/red_depview.py:43 src/red_packageview.py:449
+#: src/red_depview.py:43 src/red_packageview.py:454
 msgid "Current Version"
 msgstr "Aktuell version"
 
 #. ## Main
 #: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:439
-#: src/red_summary.py:94
+#: src/red_updates.py:94
 msgid "New Version"
 msgstr "Ny version"
 
-#: src/red_depview.py:49 src/red_packageview.py:485
+#: src/red_depview.py:49 src/red_packageview.py:490
 msgid "Size"
 msgstr "Storlek"
 
@@ -965,7 +985,7 @@ msgstr "Söker..."
 msgid "Time"
 msgstr "Tid"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:317
+#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:322
 msgid "Action"
 msgstr "Åtgärd"
 
@@ -1175,6 +1195,34 @@ msgstr "FEL: Du kan inte ange en användare till en lokal demon"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#: src/red_mirrors.py:76
+msgid "Mirror"
+msgstr "Spegel"
+
+#: src/red_mirrors.py:81
+msgid "Location"
+msgstr "Plats"
+
+#: src/red_mirrors.py:108
+msgid "Choose a Mirror"
+msgstr "Välj en spegel"
+
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. Handle ~ to mean $HOME
 #: src/red_mount.py:61
 #, python-format
@@ -1222,34 +1270,6 @@ msgstr "Avmontera kanal"
 #: src/red_mount.py:239
 msgid "Unmount?"
 msgstr "Avmontera?"
-
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_my_computer.py:28
-msgid "System Packages"
-msgstr "Systempaket"
-
-#: src/red_my_computer.py:31
-msgid "S_ystem Packages"
-msgstr "S_ystempaket"
-
-#: src/red_my_computer.py:50
-msgid "Searching system for matching packages..."
-msgstr "Söker efter matchande paket på systemet..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1537,7 +1557,7 @@ msgstr "Är i konflikt med"
 msgid "Name"
 msgstr "Namn"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:439
+#: src/red_packagepage_info.py:79 src/red_packageview.py:444
 msgid "Version"
 msgstr "Version"
 
@@ -1636,11 +1656,11 @@ msgstr "Avbryt"
 msgid "Information"
 msgstr "Information"
 
-#: src/red_packageview.py:288
+#: src/red_packageview.py:293
 msgid "Status"
 msgstr "Status"
 
-#: src/red_packageview.py:459
+#: src/red_packageview.py:464
 msgid "Importance"
 msgstr "Viktighet"
 
@@ -1699,7 +1719,7 @@ msgstr "Viktighet"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:493
+#: src/red_pendingview.py:494
 msgid "Updating System"
 msgstr "Uppdaterar system"
 
@@ -1707,11 +1727,11 @@ msgstr "Uppdaterar system"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:563
+#: src/red_pendingview.py:564
 msgid "Download cancelled"
 msgstr "Hämtning avbruten"
 
-#: src/red_pendingview.py:564
+#: src/red_pendingview.py:565
 msgid "Update cancelled"
 msgstr "Uppdatering avbruten"
 
@@ -1721,35 +1741,35 @@ msgstr "Uppdatering avbruten"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:599
+#: src/red_pendingview.py:600
 msgid "Update Finished"
 msgstr "Uppdatering slutförd"
 
-#: src/red_pendingview.py:612
+#: src/red_pendingview.py:613
 msgid "Downloading packages"
 msgstr "Hämtar paket"
 
-#: src/red_pendingview.py:624
+#: src/red_pendingview.py:625
 msgid "Download Failed"
 msgstr "Hämtning misslyckades"
 
-#: src/red_pendingview.py:625
+#: src/red_pendingview.py:626
 msgid "Unknown Error"
 msgstr "Okänt fel"
 
-#: src/red_pendingview.py:642
+#: src/red_pendingview.py:643
 msgid "Processing Transaction"
 msgstr "Bearbetar transaktion"
 
-#: src/red_pendingview.py:659
+#: src/red_pendingview.py:660
 msgid "The update has completed successfully"
 msgstr "Uppdateringen har färdigställts utan problem"
 
-#: src/red_pendingview.py:663
+#: src/red_pendingview.py:664
 msgid "Transaction failed"
 msgstr "Transaktion misslyckades"
 
-#: src/red_pendingview.py:665
+#: src/red_pendingview.py:666
 msgid "Update Failed"
 msgstr "Uppdatering misslyckades"
 
@@ -1919,7 +1939,8 @@ msgstr "Inställningar för %s"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_searchbox.py:141
+#. system packages and uninstalled packages are mutually exclusive
+#: src/red_searchbox.py:146
 msgid "Uninstalled Packages"
 msgstr "Avinstallerade paket"
 
@@ -1939,90 +1960,90 @@ msgstr "Avinstallerade paket"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_searchbox.py:142 src/red_summary.py:31
+#: src/red_searchbox.py:147 src/red_updates.py:31
 msgid "Updates"
 msgstr "Uppdateringar"
 
-#: src/red_searchbox.py:143
+#: src/red_searchbox.py:148
 msgid "Installed Packages"
 msgstr "Installerade paket"
 
-#: src/red_searchbox.py:144
+#: src/red_searchbox.py:149
 msgid "All Packages"
 msgstr "Alla paket"
 
-#: src/red_searchbox.py:169
+#: src/red_searchbox.py:174
 msgid "All Sections"
 msgstr "Alla sektioner"
 
-#: src/red_searchbox.py:170
+#: src/red_searchbox.py:175
 msgid "Productivity"
 msgstr "Produktivitet"
 
-#: src/red_searchbox.py:171
+#: src/red_searchbox.py:176
 msgid "Imaging"
 msgstr "Bildbehandling"
 
-#: src/red_searchbox.py:172
+#: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
 msgstr "Personlig informationshantering"
 
-#: src/red_searchbox.py:173
+#: src/red_searchbox.py:178
 msgid "X Windows"
 msgstr "X Windows"
 
-#: src/red_searchbox.py:174
+#: src/red_searchbox.py:179
 msgid "Games"
 msgstr "Spel"
 
-#: src/red_searchbox.py:175
+#: src/red_searchbox.py:180
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: src/red_searchbox.py:176
+#: src/red_searchbox.py:181
 msgid "Internet"
 msgstr "Internet"
 
-#: src/red_searchbox.py:177
+#: src/red_searchbox.py:182
 msgid "Utilities"
 msgstr "Verktyg"
 
-#: src/red_searchbox.py:178
+#: src/red_searchbox.py:183
 msgid "System"
 msgstr "System"
 
-#: src/red_searchbox.py:179
+#: src/red_searchbox.py:184
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: src/red_searchbox.py:180
+#: src/red_searchbox.py:185
 msgid "Libraries"
 msgstr "Bibliotek"
 
-#: src/red_searchbox.py:181
+#: src/red_searchbox.py:186
 msgid "Development"
 msgstr "Utveckling"
 
-#: src/red_searchbox.py:182
+#: src/red_searchbox.py:187
 msgid "Development Tools"
 msgstr "Utvecklingsverktyg"
 
-#: src/red_searchbox.py:183
+#: src/red_searchbox.py:188
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: src/red_searchbox.py:269
+#: src/red_searchbox.py:274
 msgid "Search descriptions"
 msgstr "Sök i beskrivningar"
 
 #. ##
 #. ## Match radio buttons
 #. ##
-#: src/red_searchbox.py:281
+#: src/red_searchbox.py:286
 msgid "Match:"
 msgstr "Matcha:"
 
-#: src/red_searchbox.py:317
+#: src/red_searchbox.py:322
 msgid "Channel:"
 msgstr "Kanal:"
 
@@ -2069,7 +2090,7 @@ msgstr "S_ök paket"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
-#: src/red_search.py:72
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:106
 msgid "Searching for matching packages..."
 msgstr "Söker efter matchande paket..."
 
@@ -2255,6 +2276,38 @@ msgid "No pending actions"
 msgstr "Inga förestående åtgärder"
 
 #. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_software.py:28
+msgid "Installed Software"
+msgstr "Installerad programvara"
+
+#: src/red_software.py:31
+msgid "I_nstalled Software"
+msgstr "I_nstallerad programvara"
+
+#: src/red_software.py:84
+msgid "Available Software"
+msgstr "Tillgängliga program"
+
+#: src/red_software.py:87
+msgid "A_vailable Software"
+msgstr "T_illgängliga program"
+
+#. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
 #. ## This program is free software; you can redistribute it and/or modify
@@ -2270,21 +2323,21 @@ msgstr "Inga förestående åtgärder"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_subscriptions.py:56
+#: src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "Prenumererad"
 
-#: src/red_subscriptions.py:63
+#: src/red_subscriptions.py:64
 msgid "Channel Name"
 msgstr "Kanalnamn"
 
-#: src/red_subscriptions.py:77
+#: src/red_subscriptions.py:78
 #, python-format
 msgid "%s Channel Subscriptions"
 msgstr "Kanalprenumerationer på kanal %s"
 
 #. FIXME: Make transient of app
-#: src/red_subscriptions.py:94
+#: src/red_subscriptions.py:95
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
@@ -2292,28 +2345,6 @@ msgstr ""
 "Du har inte rättighet att prenumerera eller säga upp prenumerationer på "
 "kanaler. Du kommer inte att kunna göra ändringar i prenumerationer."
 
-#: src/red_summary.py:34
-msgid "_Updates"
-msgstr "_Uppdateringar"
-
-#. ## Update All button
-#: src/red_summary.py:77
-msgid "Update All"
-msgstr "Uppdatera alla"
-
-#: src/red_summary.py:109
-msgid "The system is up-to-date."
-msgstr "Systemet är aktuellt."
-
-#: src/red_summary.py:110
-msgid "There are no software updates available in any subscribed channels."
-msgstr "Det finns inga programvaruuppdateringar i några prenumererade kanaler."
-
-#. Show a blank updates list by default until we get a changed
-#. signal, even if we don't have any updates, to reduce flicker
-#. at startup in the case where we do actually have updates.
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2378,6 +2409,23 @@ msgstr "Är du säker på att du vill avsluta?"
 #: src/red_transaction.py:115
 msgid "_Pending Actions"
 msgstr "_Förestående åtgärder"
+
+#: src/red_updates.py:34
+msgid "_Updates"
+msgstr "_Uppdateringar"
+
+#. ## Update All button
+#: src/red_updates.py:77
+msgid "_Update All"
+msgstr "_Uppdatera alla"
+
+#: src/red_updates.py:109
+msgid "The system is up-to-date."
+msgstr "Systemet är aktuellt."
+
+#: src/red_updates.py:110
+msgid "There are no software updates available in any subscribed channels."
+msgstr "Det finns inga programvaruuppdateringar i några prenumererade kanaler."
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -2461,6 +2509,18 @@ msgstr "Ogiltigt användarnamn."
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
 
+#~ msgid "Update All"
+#~ msgstr "Uppdatera alla"
+
+#~ msgid "System Packages"
+#~ msgstr "Systempaket"
+
+#~ msgid "S_ystem Packages"
+#~ msgstr "S_ystempaket"
+
+#~ msgid "Searching system for matching packages..."
+#~ msgstr "Söker efter matchande paket på systemet..."
+
 #~ msgid "Red Carpet Ne_ws"
 #~ msgstr "Red Carpet-ny_heter"
 
@@ -2503,9 +2563,6 @@ msgstr "Användaren \"%s\" finns redan."
 
 #~ msgid "Password"
 #~ msgstr "Lösenord"
-
-#~ msgid "Mirror"
-#~ msgstr "Spegel"
 
 #~ msgid "Username"
 #~ msgstr "Användarnamn"
@@ -2578,9 +2635,6 @@ msgstr "Användaren \"%s\" finns redan."
 
 #~ msgid "Executive Summary"
 #~ msgstr "Sammanfattning"
-
-#~ msgid "Available Software"
-#~ msgstr "Tillgängliga program"
 
 #~ msgid ""
 #~ "Update packages individually (NOTE: This is an unsupported operation)"
