@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-07 13:26+0200\n"
+"POT-Creation-Date: 2003-07-08 15:19-0400\n"
 "PO-Revision-Date: 2003-04-01 18:04+0100\n"
 "Last-Translator: Gahan Zwart <linux@innertruth.net>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -270,6 +270,7 @@ msgstr ""
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
 #: src/red_appwindow.py:405
+#, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr ""
 
@@ -622,6 +623,7 @@ msgid "About Red Carpet"
 msgstr "Sluit Red Carpet af"
 
 #: src/red_appwindow.py:827
+#, python-format
 msgid "Go to the '%s' page"
 msgstr ""
 
@@ -784,6 +786,7 @@ msgstr "Geen Kanaal/Onbekend Kanaal"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_connection.py:41
+#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
@@ -792,6 +795,7 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
 #: src/red_connection.py:61
+#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
@@ -1197,6 +1201,7 @@ msgstr "Geen resultaten gevonden."
 #. get the parent directory for that file, not the file itself.
 #. File probably doesn't exist.
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
+#, python-format
 msgid "%s is not a valid package"
 msgstr "%s is geen geldig pakket"
 
@@ -1210,7 +1215,7 @@ msgstr "Installeer vanaf Bestand"
 
 #. need trailing /
 #: src/red_installfiles.py:119
-#, fuzzy
+#, fuzzy, python-format
 msgid "Downloading %s..."
 msgstr "%s wordt binnengehaald"
 
@@ -1388,11 +1393,13 @@ msgstr ""
 #. ##
 #. Handle ~ to mean $HOME
 #: src/red_mount.py:61
+#, python-format
 msgid "Unable to mount '%s' as a channel"
 msgstr ""
 
 #. Always run the dialog in the main thread
 #: src/red_mount.py:91
+#, python-format
 msgid "Unable to unmount '%s'"
 msgstr ""
 
@@ -1456,7 +1463,7 @@ msgstr ""
 #. some sort of intelligent way.
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-#, fuzzy
+#, fuzzy, python-format
 msgid "%s News"
 msgstr "Nieuws"
 
@@ -1531,6 +1538,7 @@ msgstr "Informatie"
 #. ## Store our options in a dictionary
 #. ##
 #: src/red_option.py:120
+#, python-format
 msgid "Usage: %s <options> ..."
 msgstr ""
 
@@ -1622,7 +1630,7 @@ msgstr "verwijderen"
 #. it received from the daemon.
 #. ##############################################################################
 #: src/red_packagearray.py:614
-#, fuzzy
+#, fuzzy, python-format
 msgid "Found %d matching packages"
 msgstr "Pakketten worden verwijderd"
 
@@ -1843,6 +1851,7 @@ msgstr ""
 #. If our window has grown our shrunk, we want to make sure
 #. that it stays centered.
 #: src/red_pendingview.py:347
+#, python-format
 msgid "%.1f%% completed"
 msgstr ""
 
@@ -2048,7 +2057,7 @@ msgstr "Maak de buffer leeg"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:460
-#, fuzzy
+#, fuzzy, python-format
 msgid "%d MB"
 msgstr "%d KB"
 
@@ -2063,6 +2072,7 @@ msgstr "Bezig met voorkeuren ophalen..."
 
 #. Remove the "loading" "page".
 #: src/red_prefs.py:585
+#, python-format
 msgid "%s Preferences"
 msgstr "%s Voorkeuren"
 
@@ -2295,7 +2305,7 @@ msgid "Dump daemon info to XML file"
 msgstr ""
 
 #: src/red_serverinfo.py:94
-#, fuzzy
+#, fuzzy, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Kon het bestand niet openen voor schrijftoegang."
 
@@ -2405,18 +2415,22 @@ msgstr "Bezig met voorbereiden transactie "
 
 #. PendingOpsListener implementation
 #: src/red_sidebar.py:89
+#, python-format
 msgid "%d pending install"
 msgstr ""
 
 #: src/red_sidebar.py:91
+#, python-format
 msgid "%d pending installs"
 msgstr ""
 
 #: src/red_sidebar.py:97
+#, python-format
 msgid "%d pending removal"
 msgstr ""
 
 #: src/red_sidebar.py:99
+#, python-format
 msgid "%d pending removals"
 msgstr ""
 
@@ -2479,6 +2493,7 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_statusbar.py:49
+#, python-format
 msgid "Connected to %s"
 msgstr ""
 
@@ -2510,7 +2525,7 @@ msgid "Channel Name"
 msgstr "Kanaalnaam"
 
 #: src/red_subscriptions.py:78
-#, fuzzy
+#, fuzzy, python-format
 msgid "%s Channel Subscriptions"
 msgstr "A_bonnementen"
 
@@ -2649,6 +2664,7 @@ msgid "Passwords do not match."
 msgstr "Wachtwoorden zijn niet gelijk."
 
 #: src/red_users.py:268
+#, python-format
 msgid "Set %s's password"
 msgstr "Stel %s's wachtwoord in"
 
@@ -2661,7 +2677,7 @@ msgid "Add"
 msgstr "Toevoegen"
 
 #: src/red_users.py:320
-#, fuzzy
+#, fuzzy, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Weet u zeker dat u de huidige overdracht wilt annuleren?"
 
@@ -2683,5 +2699,6 @@ msgid "Invalid user name."
 msgstr "Ongeldige gebruikersnaam"
 
 #: src/red_users.py:428
+#, python-format
 msgid "User '%s' already exists."
 msgstr "Gebruiker '%s' bestaat al."

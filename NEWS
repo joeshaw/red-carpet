@@ -1,3 +1,43 @@
+Red Carpet 2.0.2
+----------------
+8 July 2003
+
+	* Fix a bug where the channel option box selection said
+	  "All channels" but it was only searching subscribed channels
+	  by default.
+
+	* Refresh the channel data after a successful RCX/RCE activation.
+	  (#43740)
+
+	* Refresh the channel data after the host has been changed. (#43740).
+
+	* Poll using a timeout, not an idle handler, so we're not polling
+	  the daemon several times a second. (#42931)
+
+	* When changing the sorting in a package list, keep the selection
+	  of the items themselves, and not the place in the list where they
+	  were previously. (#43543)
+
+	* Show the proper abbreviations for kB and MB. (#42283)
+
+	* Limit many of the exceptions that will cause the "dead daemon"
+	  dialog to pop up, in the hopes that it will help make bugs more
+	  apparent.
+
+	* Add Select All/Select None to most of the package views. (#43231)
+
+	* When mousing over items in the menubar, show a description of the
+	  action in the statusbar.  (#43231)
+
+	* Use GtkSettings to listen for changes in the toolbar style and
+	  icon sizes.  (#43231)
+
+	* Add a progress bar for the total progress of the transaction.
+	  (#40419)
+
+	* Change "Connect..." to "Connect to daemon..." to be more clear.
+	  (#40205)
+
 Red Carpet 2.0.1
 ----------------
 22 May 2003

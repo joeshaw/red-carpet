@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet.HEAD.es\n"
-"POT-Creation-Date: 2003-06-07 14:37+0200\n"
+"POT-Creation-Date: 2003-07-08 15:19-0400\n"
 "PO-Revision-Date: 2003-06-07 20:32+0000\n"
 "Last-Translator: Francisco Javier Fernández <serrador@arrakis.es>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -210,7 +210,8 @@ msgstr ""
 
 #. Store email to config.
 #: src/red_activation.py:110
-msgid "System could not be activated: Invalid activation code or email address."
+msgid ""
+"System could not be activated: Invalid activation code or email address."
 msgstr ""
 "El sistema no pudo ser activado: Código de activación inválido o dirección "
 "de correo errónea."
@@ -260,7 +261,8 @@ msgstr ""
 "Informa de esto a su vendedor."
 
 #: src/red_appwindow.py:130
-msgid "Unable to show help because there are no applications available to view help."
+msgid ""
+"Unable to show help because there are no applications available to view help."
 msgstr ""
 "No se puede mostrar la ayuda porque no hay aplicaciones disponibles para ver "
 "la ayuda."
@@ -386,8 +388,9 @@ msgid "_Help"
 msgstr "A_yuda"
 
 #: src/red_appwindow.py:550
-msgid "Connect..."
-msgstr "Conectar..."
+#, fuzzy
+msgid "Connect to daemon..."
+msgstr "Conectar a un demonio remoto"
 
 #: src/red_appwindow.py:551
 msgid "Connect to a remote daemon"
@@ -439,7 +442,8 @@ msgid "_Activate..."
 msgstr "_Activar..."
 
 #: src/red_appwindow.py:623
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr "Activar demonio contra un servidor Red Carpet Express o Enterprise"
 
 #: src/red_appwindow.py:629
@@ -934,7 +938,8 @@ msgid "Resolving Dependencies"
 msgstr "Resolviendo dependencias"
 
 #: src/red_depcomponent.py:157
-msgid "You must agree to the licenses covering this software before installing it."
+msgid ""
+"You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Debe estar de acuerdo con las licencias que cubren este software antes de "
 "instalarlo."
@@ -2579,7 +2584,8 @@ msgstr "El sistema está actualizado"
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr "No hay disponibles actualizaciones de software en ningún canal suscrito"
+msgstr ""
+"No hay disponibles actualizaciones de software en ningún canal suscrito"
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -2661,6 +2667,9 @@ msgstr "Nombre de usuario inválido"
 #, python-format
 msgid "User '%s' already exists."
 msgstr "El usuario «%s» ya existe."
+
+#~ msgid "Connect..."
+#~ msgstr "Conectar..."
 
 #~ msgid "System successfully activated."
 #~ msgstr "Sistema activado exitosamente"
@@ -3457,4 +3466,3 @@ msgstr "El usuario «%s» ya existe."
 #~ msgstr ""
 #~ "No se ha podido encontrar '%s'.\n"
 #~ "Asegúrese que Red Carpet se ha instalado correctamente."
-

@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-12 20:02+0200\n"
+"POT-Creation-Date: 2003-07-08 15:19-0400\n"
 "PO-Revision-Date: 2003-06-13 11:20+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.1\n"
 
 #. ##
@@ -201,11 +201,13 @@ msgstr "Aktivimi nuk është i mundur"
 
 #: src/red_activation.py:92
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
+msgstr ""
+"Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
 
 #. Store email to config.
 #: src/red_activation.py:110
-msgid "System could not be activated: Invalid activation code or email address."
+msgid ""
+"System could not be activated: Invalid activation code or email address."
 msgstr "Sistemi nuk do të aktivohet: Kod aktivimi apo adresë email e pasaktë."
 
 #. ##
@@ -249,12 +251,14 @@ msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
 msgstr ""
-"E pamundur hapja e ndihmës pasi mungojnë files e ndihmës.  Të lutem vihu "
-"në kontakt me shitësin tuaj."
+"E pamundur hapja e ndihmës pasi mungojnë files e ndihmës.  Të lutem vihu në "
+"kontakt me shitësin tuaj."
 
 #: src/red_appwindow.py:130
-msgid "Unable to show help because there are no applications available to view help."
-msgstr "E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr ""
+"E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
 
 #. Menubar
 #. # Toolbar
@@ -377,8 +381,9 @@ msgid "_Help"
 msgstr "_Ndihmë"
 
 #: src/red_appwindow.py:550
-msgid "Connect..."
-msgstr "Lidhu..."
+#, fuzzy
+msgid "Connect to daemon..."
+msgstr "Lidhu me një daemon remot"
 
 #: src/red_appwindow.py:551
 msgid "Connect to a remote daemon"
@@ -430,8 +435,10 @@ msgid "_Activate..."
 msgstr "_Aktivo..."
 
 #: src/red_appwindow.py:623
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr ""
+"Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
 
 #: src/red_appwindow.py:629
 msgid "Quit"
@@ -925,8 +932,11 @@ msgid "Resolving Dependencies"
 msgstr "Duke zgjidhur varësitë"
 
 #: src/red_depcomponent.py:157
-msgid "You must agree to the licenses covering this software before installing it."
-msgstr "Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a instaloni."
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr ""
+"Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a "
+"instaloni."
 
 #. Try to estimate the size of the window we want.
 #. "W" being the widest glyph.
@@ -1278,7 +1288,9 @@ msgstr "Adresa URL e pakos:"
 #. ##
 #: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
-msgstr "GABIM: nuk mund të specifikohen të dy opcionet së bashku -h/--host dhe -l/--lokal"
+msgstr ""
+"GABIM: nuk mund të specifikohen të dy opcionet së bashku -h/--host dhe -l/--"
+"lokal"
 
 #. This'll always fail and pop up the dialog.
 #: src/red_main.py:137
@@ -2484,8 +2496,8 @@ msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
 msgstr ""
-"Nuk ke të drejtë të regjistrohesh apo çregjistrohesh nga kanalet. Nuk do të kesh "
-"mundësi të kryesh asnjë lloj ndryshimi tek nënshkrimet."
+"Nuk ke të drejtë të regjistrohesh apo çregjistrohesh nga kanalet. Nuk do të "
+"kesh mundësi të kryesh asnjë lloj ndryshimi tek nënshkrimet."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2652,3 +2664,5 @@ msgstr "Emër përdoruesi i pasaktë."
 msgid "User '%s' already exists."
 msgstr "Përdoruesi '%s' ekziston."
 
+#~ msgid "Connect..."
+#~ msgstr "Lidhu..."

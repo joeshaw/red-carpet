@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-07-08 20:51+0200\n"
+"POT-Creation-Date: 2003-07-08 15:19-0400\n"
 "PO-Revision-Date: 2003-07-08 08:52+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"

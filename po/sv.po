@@ -2,12 +2,12 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.19 2003/06/21 22:55:10 menthos Exp $
+# $Id: sv.po,v 1.20 2003/07/08 19:27:40 joeshaw Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-06-22 00:53+0200\n"
+"POT-Creation-Date: 2003-07-08 15:19-0400\n"
 "PO-Revision-Date: 2003-06-22 00:54+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
