@@ -1,3 +1,9 @@
+2003-02-11  Tambet Ingo  <tambet@ximian.com>
+
+	* art/uninstalled.png: New image.
+
+	* art/Makefile.am (image_DATA): Add uninstalled.png to image_DATA.
+
 2003-02-07  Frank Belew  <frb@ximian.com>
 
 	* art/Makefile.am: added image_DATA to EXTRA_DIST because automake is
