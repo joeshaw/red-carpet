@@ -83,11 +83,11 @@
           <para>
             You have a choice between the graphical
             <systemitem>red-carpet</systemitem> program and the
-            command line <systemitem>rc</systemitem> tools. Both tools
+            command line <systemitem>rug</systemitem> tools. Both tools
             require the <systemitem>rcd</systemitem> package.   Detailed information about
-            <application>rc</application> and <application>rcd</application>
+            <application>rug</application> and <application>rcd</application>
             are available in their man pages (standard UNIX manuals). You
-            can read them by typing <userinput>man rc</userinput> or
+            can read them by typing <userinput>man rug</userinput> or
             <userinput>man rcd</userinput> at the command line. 
           </para>
         </listitem>
@@ -927,14 +927,15 @@
       <para>
         Red Carpet Enterprise allows you to run your own Ximian Red
         Carpet server and distribute software to your network in a
-        secure and convenient manner. Clients may connect with either Red
-        Carpet or the "rc" command line tool, simplifying automated
-        updates. The server includes a web interface and scriptable
-        command line tools.  You can use Red Carpet Enterprise to
-        manage installs and updates for internal or purchased software, plus
-        easy redistribution of software from Ximian, SuSE YaST, and the Red
-        Hat Network. For additional information, visit <ulink
-        url="http://ximian.com">http://ximian.com</ulink>. 
+        secure and convenient manner. Clients may connect with either
+        Red Carpet or the <command>rug</command> command line tool,
+        simplifying automated updates. The server includes a web
+        interface and scriptable command line tools.  You can use Red
+        Carpet Enterprise to manage installs and updates for internal
+        or purchased software, plus easy redistribution of software
+        from Ximian, SuSE YaST, and the Red Hat Network. For
+        additional information, visit <ulink
+        url="http://ximian.com">http://ximian.com</ulink>.
       </para>
     </note>
 
@@ -1191,7 +1192,7 @@
                If you require finer control over the operation
                of Ximian Red Carpet, you may wish to edit the
                configuration files, as described in the man pages for
-               <command>rc</command>, <command>rcd</command>, and
+               <command>rug</command>, <command>rcd</command>, and
                <command>rcd.conf</command>.
              </para>
            </sect2>
@@ -1250,9 +1251,9 @@
       to your account.
     </para>
     <para>
-      You can also use the <command>rc</command> command to administer
+      You can also use the <command>rug</command> command to administer
       a remote system. For information on the command line Red Carpet
-      tools, use the <command>man rc</command> command.
+      tools, use the <command>man rug</command> command.
     </para>
   </sect1>
 
