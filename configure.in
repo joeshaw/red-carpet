@@ -21,32 +21,9 @@ AM_PROG_LIBTOOL
 
 dnl **************************************************************************
 
-dnl Find Python 2.2
+dnl Check for Python 2.2
 
-py_version="2.2"
-py_ver_check="
-import sys, string
-required_version = map(int, string.split(\"$py_version\",\".\"))
-version = map(int, string.split(string.split(sys.version)[[0]], \".\"))
-sys.exit(version < required_version)"
-
-AC_MSG_CHECKING(for python >= $py_version)
-
-for cmd in "python" "python2" "python2.2"; do
-    PYTHON=`which $cmd`
-    if test x$PYTHON \!= x; then
-        if $PYTHON -c "$py_ver_check" 1>&AC_FD_CC 2>&AC_FD_CC; then
-	   found_py=yes
-	   break
-	fi
-    fi
-done
-
-if test x$found_py != xyes; then
-   	AC_MSG_ERROR(Couldn't find the right version of python in the path)
-fi
-
-AC_MSG_RESULT(found at $PYTHON)
+AM_PATH_PYTHON(2.2)
 
 dnl **************************************************************************
 
@@ -86,10 +63,7 @@ dnl **************************************************************************
 
 dnl This is stuff for building our pygtk extensions that are written in C
 
-find_pyprefix="
-import sys
-print sys.prefix"
-PYTHON_PREFIX=`$PYTHON -c "$find_pyprefix"`
+PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
 AC_SUBST(PYTHON_PREFIX)
 
 PYTHON_INCLUDES=-I$PYTHON_PREFIX/include/python2.2

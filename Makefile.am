@@ -1,3 +1,6 @@
+# require automake-1.6
+AUTOMAKE_OPTIONS = 1.6
+
 
 if FAST_UNMARSHALLER
 UNMARSHALLER_DIR = ximian_unmarshaller

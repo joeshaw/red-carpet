@@ -1,5 +1,12 @@
 2003-02-06  Frank Belew  <frb@ximian.com>
 
+	* Makefile.am: add requirement for automake 1.6 or better
+
+	* configure.in: use AM_PATH_PYTHON instead of homegrown version check
+	simplified setting of python prefix
+
+2003-02-06  Frank Belew  <frb@ximian.com>
+
 	* red_extra/Makefile.am: add __init__.py to EXTRA_DIST
 	moved extra modules to $(libdir)/red-carpet instead of datadir since 
 	they are binary.
