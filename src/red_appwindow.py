@@ -29,6 +29,8 @@ import red_installfiles
 import red_component
 import red_pendingview
 import red_pixbuf
+import red_pendingops
+import red_depcomponent
 import red_prefs
 import red_subscriptions
 import red_users
@@ -52,6 +54,18 @@ def refresh_cb(app):
     pend.show_all()
     pend.set_pending_list(stuff_to_poll)
 
+def run_transaction_cb(app):
+    install_packages = red_pendingops.packages_with_actions(
+        red_pendingops.TO_BE_INSTALLED)
+    remove_packages = red_pendingops.packages_with_actions(
+        red_pendingops.TO_BE_REMOVED)
+
+    dep_comp = red_depcomponent.DepComponent(install_packages, remove_packages)
+    app.push_component(dep_comp)
+
+def verify_deps_cb(app):
+    dep_comp = red_depcomponent.DepComponent(verify=1)
+    app.push_component(dep_comp)
 
 class AppWindow(gtk.Window, red_component.ComponentListener):
 
@@ -91,7 +105,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                                                   "Run transaction",
                                                   None,
                                                   red_pixbuf.get_widget("progress-config", width=24, height=24),
-                                                  lambda x:red_transaction.resolve_deps_and_transact(self),
+                                                  lambda x:run_transaction_cb(self),
                                                   None)
 
         self.sensitize_go_button(0)
@@ -251,6 +265,11 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=refresh_cb)
 
         bar.add("/File/sep4", is_separator=1)
+
+        bar.add("/File/Verify System Dependencies",
+                callback=verify_deps_cb)
+
+        bar.add("/File/sep5", is_separator=1)
         
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,

@@ -1,3 +1,28 @@
+2003-01-30  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (run_transaction_cb): Added.  Call this instead
+	of into some random function in red_transaction.py.
+	(verify_deps_cb): Added.
+	(assemble_menubar): Add "Verify System Dependencies"
+
+	* red_component.py: Remove some cruft.
+
+	* red_depcomponent.py: Unify the dependency resolution and
+	transaction in here.  We take a list of packages to install and
+	remove and whether this is a verification as arguments to the
+	constructor now, instead of asking red_pendingops.  Resolve deps
+	immediately and build the UI on the results, connect the continue
+	button to a method which runs the transaction and connects a
+	PendingView_Transaction window to it.
+
+	* red_pendingops.py (packages_with_actions): Take an optional
+	argument which is the list of actions to check for.  Use list
+	comprehension syntax to make it easier to read.
+	(resolve_dependencies): Removed.  Moved into red_depcomponent.py.
+
+	* red_transaction.py (resolve_deps_and_transact): Removed.
+	(begin_transaction): Ditto.  Moved into red_depcomponent.py.
+
 2003-01-30  Jon Trowbridge  <trow@ximian.com>
 
 	* red_serverlistener.py: Changes to make the sequence number

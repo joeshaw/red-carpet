@@ -185,37 +185,4 @@ class TransactionComponent(red_component.Component):
 
         if not flag:
             red_pendingops.clear_action_cancellations()
-            
-#########################################################################
 
-def resolve_deps_and_transact(app):
-
-    deps = red_depcomponent.DepComponent()
-    app.push_component(deps)
-
-def begin_transaction(install_packages, remove_packages, parent=None):
-    serv = rcd_util.get_server()
-
-    try:
-        download_id, transact_id, step_id = \
-                     serv.rcd.packsys.transact(install_packages,
-                                               remove_packages,
-                                               0, # FIXME: flags
-                                               red_main.red_name,
-                                               red_main.red_version)
-        
-    except ximian_xmlrpclib.Fault, f:
-        rcd_util.dialog_from_fault(f)
-        return
-
-    trans_win = red_pendingview.PendingView_Transaction(download_id,
-                                                        transact_id,
-                                                        step_id,
-                                                        parent=parent)
-    trans_win.show()
-
-    def finished_cb(w, p):
-        if p:
-            p.pop_component()
-
-    trans_win.connect("finished", finished_cb, parent)

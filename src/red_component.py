@@ -22,8 +22,6 @@ class Component(gobject.GObject):
     def __init__(self):
         gobject.GObject.__init__(self)
 
-        self.transaction = None
-
         self.__widget = None
         self.__visible_flag = 0
         self.__busy_flag = 0
@@ -57,9 +55,6 @@ class Component(gobject.GObject):
 
     def set_parent(self, p):
         self.__parent = p
-
-    def set_transaction(self, transaction):
-        self.transaction = transaction
 
     # Ask the window embedding this component to switch to another
     # component.

@@ -178,10 +178,10 @@ def toggle_action_with_cancellation(pkg):
     if new_act != act:
         set_action(pkg, new_act)
 
-def packages_with_actions():
-    return map(lambda x: x["__package"],
-               filter(lambda x: x.get("action", NO_ACTION) != NO_ACTION,
-                      package_data.values()))
+def packages_with_actions(*args):
+    return [x["__package"] for x in package_data.values()
+            if (not args and x.get("action", NO_ACTION) != NO_ACTION)
+            or (x.get("action", NO_ACTION) in args)]
 
 def package_action(pkg):
     for p in package_data.values():
@@ -215,29 +215,4 @@ def pending_remove_count():
             count += 1
     return count
 
-def resolve_dependencies():
-    install_packages = []
-    remove_packages = []
-    for dict in package_data.values():
-        action = dict.get("action", NO_ACTION)
-        if action == TO_BE_INSTALLED:
-            install_packages.append(dict["__package"])
-        elif action == TO_BE_REMOVED:
-            pkg = dict["__package"]
-            ## If __old_packge key exists then pkg is not installed and thus can't
-            ## be removed.
-            if pkg.has_key("__old_package"):
-                pkg = pkg["__old_package"]
-                print pkg
-
-            remove_packages.append(pkg)
-
-    serv = rcd_util.get_server()
-    F = serv.rcd.packsys.resolve_dependencies(install_packages,
-                                              remove_packages,
-                                              [])
-    print len(F)
-    dep_install, dep_remove, dep_info = F
-
-    return install_packages, remove_packages, dep_install, dep_remove
 
