@@ -92,12 +92,6 @@ class SummaryComponent(red_component.Component):
         lower.show_all()
         self.display("lower", lower)
 
-        def act_cb(view, i, pkg):
-            red_pendingops.toggle_action(pkg)
-            view.get_model().row_changed(i)
-
-        view.connect("activated", act_cb)
-
     def changed_visibility(self, flag):
         if flag:
             self.array.thaw()

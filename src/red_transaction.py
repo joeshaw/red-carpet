@@ -110,12 +110,12 @@ class TransactionComponent(red_component.Component):
         view.append_name_column(show_channel_icon=1)
         view.append_version_column()
         view.append_size_column()
-        view.set_model(self.array)
 
         def act_cb(view, i, pkg):
             red_pendingops.toggle_action_with_cancellation(pkg)
-            view.get_model().row_changed(i)
-        view.connect("activated", act_cb)
+        view.set_activated_fn(act_cb)
+        
+        view.set_model(self.array)
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)

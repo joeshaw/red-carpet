@@ -74,7 +74,7 @@ class PackageBook(gtk.Notebook):
             contents = page_box.page.build_widget(self.package,
                                                   rcd_util.get_server())
             page_box.add(contents)
-            print "Built page %d: '%s'" % (num, page_box.page.name())
+            #print "Built page %d: '%s'" % (num, page_box.page.name())
             contents.show()
             page_box.initialized = 1
 

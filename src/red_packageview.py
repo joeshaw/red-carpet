@@ -16,19 +16,21 @@
 ###
 
 import gobject, gtk
-import red_packagearray
+import red_pendingops, red_packagearray
 
 class PackageView(gtk.TreeView):
 
     def __init__(self):
         gobject.GObject.__init__(self)
         self.__changed_id = 0
+
         self.set_rules_hint(1)
 
         self.__column_info = {}
         self.__column_order = []
         self.__sorted_by = None
         self.__reverse_sort = 0
+        self.__activated_fn = None
 
         select = self.get_selection()
         select.set_mode(gtk.SELECTION_SINGLE)
@@ -69,15 +71,25 @@ class PackageView(gtk.TreeView):
                      button_clicked_for_popup_cb,
                      select)
 
+    ## This 'activated_fn' business is just a hack to get a call to
+    ## toggle_action to be the default behavior.
+    def set_activated_fn(self, fn):
+        self.__activated_fn = fn
 
     def do_selected(self, i, pkg):
-        print "selected %s (%d)" % (pkg["name"], i)
+        pass
+        #print "selected %s (%d)" % (pkg["name"], i)
 
     def do_activated(self, i, pkg):
-        print "activated %s (%d)" % (pkg["name"], i)
+        if self.__activated_fn:
+            self.__activated_fn(self, i, pkg)
+        else:
+            red_pendingops.toggle_action(pkg)
+        #print "activated %s (%d)" % (pkg["name"], i)
 
     def do_popup(self, ev, i, pkg):
-        print "popup on %s (%d)" % (pkg["name"], i)
+        pass
+        #print "popup on %s (%d)" % (pkg["name"], i)
 
     def thrash_model(self):
         model = self.get_model()

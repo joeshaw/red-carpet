@@ -196,13 +196,16 @@ def sort_pkgs_by_channel(a, b):
 ### PackageArray: our magic-laden base class
 ###
 
-class PackageArray(red_extra.ListModel):
+class PackageArray(red_extra.ListModel,
+                   red_pendingops.PendingOpsListener):
 
     def __init__(self):
         gobject.GObject.__init__(self)
+        red_pendingops.PendingOpsListener.__init__(self)
         self.__pending_changes = []
         self.__sort_fn = sort_pkgs_by_name
         self.__reverse_sort = 0
+        self.__package_keys = {}
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
@@ -216,16 +219,22 @@ class PackageArray(red_extra.ListModel):
     ## You shouldn't need to ever call this.
     def request_sort(self):
         if self.__sort_fn:
-            t1 = time.time()
             self.sort(self.__sort_fn, self.__reverse_sort)
-            t2 = time.time()
 
     def do_changed(self):
         operator, args = self.__pending_changes.pop()
         if operator:
             apply(operator, (self,) + args)
             self.request_sort()
+            all = self.get_all()
             self.set_list(self.get_all())
+            self.__package_keys = {}
+            i = 0
+            for p in all:
+                key = rcd_util.get_package_key(p)
+                indices = self.__package_keys.setdefault(key, [])
+                indices.append(i)
+                i += 1
 
     def changed(self, operator, *args):
         self.__pending_changes.append((operator, args))
@@ -249,6 +258,28 @@ class PackageArray(red_extra.ListModel):
 
     def changed_sort_by_channel(self, reverse=0):
         self.changed_sort_fn(sort_pkgs_by_channel, reverse)
+
+    def do_changed_one(self, i):
+        self.row_changed(i)
+
+    def changed_one(self, i):
+        if 0 <= i < self.len():
+            self.emit("changed_one", i)
+        else:
+            # FIXME: Should throw a proper exception
+            assert 0, "WARNING! Invalid index %d passed to change_one" % i
+
+    ## Find all instances of pkg in the PackageArray, and cause a
+    ## 'changed_one' signal to be emitted for each.
+    def changed_one_by_package(self, pkg):
+        key = rcd_util.get_package_key(pkg)
+        indices = self.__package_keys.get(key, [])
+        for i in indices:
+            self.changed_one(i)
+
+    ## Implements PendingOpsListener
+    def pendingops_changed(self, pkg, key, value, old_value):
+        self.changed_one_by_package(pkg)
 
     ## Fallback implementation
     def len(self):
@@ -276,6 +307,12 @@ gobject.signal_new("changed",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    ())
+
+gobject.signal_new("changed_one",
+                   PackageArray,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_INT,))
 
 
 ###############################################################################
