@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.2\n"
-"POT-Creation-Date: 2003-05-08 01:11+0100\n"
+"POT-Creation-Date: 2003-05-09 17:00-0400\n"
 "PO-Revision-Date: 2003-05-08 01:15+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -103,13 +103,31 @@ msgstr "A configurar"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_about.py:70
-msgid "Licensed under the GNU General Public License, version 2"
-msgstr "Licenciado sob a Licença Pública Geral GNU, versão 2"
-
-#: src/red_about.py:79
+#. Translators: you can translate these into any cute greetings in your own
+#. language.  Just nothing offensive please. :)
+#: src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "Trazido até si por:"
+
+#: src/red_about.py:42
+msgid "With love from:"
+msgstr ""
+
+#: src/red_about.py:43
+msgid "Best wishes from:"
+msgstr ""
+
+#: src/red_about.py:44
+msgid "Sincerely:"
+msgstr ""
+
+#: src/red_about.py:45
+msgid "Developed by chimps:"
+msgstr ""
+
+#: src/red_about.py:80
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "Licenciado sob a Licença Pública Geral GNU, versão 2"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -2253,27 +2271,27 @@ msgid "Pending Actions"
 msgstr "Acções Pendente"
 
 #. PendingOpsListener implementation
-#: src/red_sidebar.py:93
+#: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
 msgstr "%d instalação pendente"
 
-#: src/red_sidebar.py:95
+#: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
 msgstr "%d instalações pendentes"
 
-#: src/red_sidebar.py:101
+#: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
 msgstr "%d remoção pendente"
 
-#: src/red_sidebar.py:103
+#: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
 msgstr "%d remoções pendentes"
 
-#: src/red_sidebar.py:107
+#: src/red_sidebar.py:103
 msgid "No pending actions"
 msgstr "Nenhuma acção pendente"
 

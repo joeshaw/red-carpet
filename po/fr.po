@@ -6,9 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 1.3\n"
-"POT-Creation-Date: 2003-03-26 22:53+0100\n"
+"POT-Creation-Date: 2003-05-09 17:00-0400\n"
 "PO-Revision-Date: 2003-05-04 17:30-0400\n"
-"Last-Translator: Stéphane Raimbault <stephane.raimbault@deesse.univ-lemans.fr>\n"
+"Last-Translator: Stéphane Raimbault <stephane.raimbault@deesse.univ-lemans."
+"fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,10 +31,12 @@ msgstr ""
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. If we're not connected we want to try once with default parameters.
 #. FIXME: we can do better than this...
+#. "All Animals Are Equal / But Some Are More Equal Than Others."
 #. ##############################################################################
 #. assert server
+#. Don't return None here, because we want an empty image to be
+#. scaled to the correct height.
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
@@ -41,7 +44,7 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:365
+#: src/rcd_util.py:367
 msgid "Please wait while getting data."
 msgstr "Veuillez patienter pendant la récupération des données."
 
@@ -49,31 +52,31 @@ msgstr "Veuillez patienter pendant la récupération des données."
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:414
+#: src/rcd_util.py:416
 msgid "Verifying"
 msgstr "Vérification"
 
-#: src/rcd_util.py:415
+#: src/rcd_util.py:417
 msgid "Unable to verify package signature for"
 msgstr "Impossible de vérifier la signature du paquetage"
 
-#: src/rcd_util.py:416
+#: src/rcd_util.py:418
 msgid "There is no package signature for"
 msgstr "Il n'y a pas de signature de paquetage pour"
 
-#: src/rcd_util.py:417
+#: src/rcd_util.py:419
 msgid "Preparing Transaction"
 msgstr "Transaction en préparation"
 
-#: src/rcd_util.py:418
+#: src/rcd_util.py:420
 msgid "Installing"
 msgstr "Installation"
 
-#: src/rcd_util.py:419
+#: src/rcd_util.py:421
 msgid "Removing"
 msgstr "Suppression"
 
-#: src/rcd_util.py:420
+#: src/rcd_util.py:422
 msgid "Configuring"
 msgstr "Configuration"
 
@@ -100,6 +103,32 @@ msgstr "Configuration"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. Translators: you can translate these into any cute greetings in your own
+#. language.  Just nothing offensive please. :)
+#: src/red_about.py:41
+msgid "Brought to you by:"
+msgstr ""
+
+#: src/red_about.py:42
+msgid "With love from:"
+msgstr ""
+
+#: src/red_about.py:43
+msgid "Best wishes from:"
+msgstr ""
+
+#: src/red_about.py:44
+msgid "Sincerely:"
+msgstr ""
+
+#: src/red_about.py:45
+msgid "Developed by chimps:"
+msgstr ""
+
+#: src/red_about.py:80
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr ""
+
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
 #. ##
@@ -178,11 +207,11 @@ msgstr "Le système ne peut être activé : code d'activation ou e-mail invalide
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_appwindow.py:60
+#: src/red_appwindow.py:64
 msgid "Refreshing channel data"
 msgstr "Rafraîchissment des données canal"
 
-#: src/red_appwindow.py:62
+#: src/red_appwindow.py:66
 #, fuzzy
 msgid "Downloading channel information"
 msgstr "Téléchargement d'infos sur le canal"
@@ -191,265 +220,271 @@ msgstr "Téléchargement d'infos sur le canal"
 #. if any of them have an __old_package field, use that package for
 #. the removal instead of the actual package.  This is so you can right
 #. click on an upgrade and select "remove".
-#. A box to put component widgets in.  We use an EventBox
-#. instead of just a [HV]Box so that we can control the
-#. background color if we want to.
+#. TRANSLATORS: *Only* localize this to the language code if the
+#. Red Carpet help is localized.
+#: src/red_appwindow.py:105
+msgid "C"
+msgstr ""
+
+#. successfully spawned
+#. If we got here, we couldn't open any help file with any handler
+#: src/red_appwindow.py:129
+msgid ""
+"Unable to show help because it was not found or because you don't have any "
+"help viewers available."
+msgstr ""
+
+#. Menubar
 #. # Toolbar
+#. Ensure a sane width for the sidebar if visible
 #. # Actionbar
+#. Componentbook
+#. Clear the status bar, update the toolbar
+#. Show the new component, hide the old one
+#. # Statusbar
 #. # Geometry handling
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:314
+#: src/red_appwindow.py:387
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
-msgstr "Êtes-vous sûr de vouloir ouvrir %d fenêtres d'information sur les paquetages ?"
+msgstr ""
+"Êtes-vous sûr de vouloir ouvrir %d fenêtres d'information sur les "
+"paquetages ?"
 
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:342
+#: src/red_appwindow.py:415
 msgid "Run Now"
 msgstr "Exécuter maintenant"
 
-#: src/red_appwindow.py:343
+#: src/red_appwindow.py:416
 msgid "Perform installations and removals"
 msgstr "Effectuer les installations et les suppressions"
 
-#: src/red_appwindow.py:350
+#: src/red_appwindow.py:423
 msgid "Channels"
 msgstr "Canaux"
 
-#: src/red_appwindow.py:351
+#: src/red_appwindow.py:424
 msgid "Change your channel subscriptions"
 msgstr "Modifier vos inscriptions aux canaux"
 
-#: src/red_appwindow.py:356
+#: src/red_appwindow.py:432
 msgid "Refresh"
 msgstr "Rafraîchir"
 
-#: src/red_appwindow.py:357
+#: src/red_appwindow.py:433
 msgid "Refresh channel data"
 msgstr "Rafraîchir les données du canal"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:369
+#: src/red_appwindow.py:444
 msgid "Mark for _Installation"
 msgstr "Marquer pour _Installation"
 
-#: src/red_appwindow.py:370
+#: src/red_appwindow.py:445
 msgid "Mark selected packages for installation"
 msgstr "Marquer les paquetages sélectionnés pour installation"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:377 src/red_appwindow.py:635
+#: src/red_appwindow.py:450 src/red_appwindow.py:725
 msgid "Mark for _Removal"
 msgstr "Marquer pour supp_ression"
 
-#: src/red_appwindow.py:378
+#: src/red_appwindow.py:451
 msgid "Mark selected packages for removal"
 msgstr "Marquer les paquetages pour suppression"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:384 src/red_appwindow.py:647
+#: src/red_appwindow.py:456 src/red_appwindow.py:737
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: src/red_appwindow.py:385
+#: src/red_appwindow.py:457
 msgid "Cancel marked package actions"
 msgstr "Annuler les actions marquées sur les paquetages"
 
-#: src/red_appwindow.py:390
+#: src/red_appwindow.py:462
 msgid "I_nformation"
 msgstr "I_nformation"
 
-#: src/red_appwindow.py:391
+#: src/red_appwindow.py:463
 msgid "Package information"
 msgstr "Information sur le paquetage"
 
+#. We want to revert to our old settings if we don't connect to
+#. a new daemon successfully.
 #. The return value is for the benefit of our delete_event handler.
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:435
+#: src/red_appwindow.py:520
 msgid "_File"
 msgstr "_Fichier"
 
-#: src/red_appwindow.py:436
+#: src/red_appwindow.py:521
 msgid "_Edit"
 msgstr "_Édition"
-
-#: src/red_appwindow.py:437
-msgid "_View"
-msgstr "Afficha_ge"
-
-#: src/red_appwindow.py:438
-msgid "_Actions"
-msgstr "A_ctions"
-
-#: src/red_appwindow.py:439
-msgid "_Help"
-msgstr "_Aide"
-
-#: src/red_appwindow.py:441
-msgid "File"
-msgstr "Fichier"
-
-#: src/red_appwindow.py:443
-msgid "Connect..."
-msgstr "Connexion..."
-
-#: src/red_appwindow.py:453
-msgid "Install from _File..."
-msgstr "Installation depuis _Fichier..."
-
-#: src/red_appwindow.py:461
-msgid "Install from _URL..."
-msgstr "Installation depuis _URL..."
-
-#. #
-#. # Mount command
-#. #
-#: src/red_appwindow.py:477
-msgid "_Mount Directory..."
-msgstr "_Monter un répertoire..."
-
-#. #
-#. # Unmount command
-#. #
-#: src/red_appwindow.py:493
-msgid "U_nmount Directory..."
-msgstr "_Démonter un répertoire..."
-
-#. #
-#. # Activate
-#. #
-#: src/red_appwindow.py:508
-msgid "_Activate..."
-msgstr "_Activer..."
-
-#: src/red_appwindow.py:514
-msgid "Quit"
-msgstr "Quitter"
-
-#. #
-#. # Select all/none
-#. #
-#: src/red_appwindow.py:523
-msgid "Edit"
-msgstr "Éditer"
-
-#: src/red_appwindow.py:531
-msgid "Select _All"
-msgstr "_Tout sélectionner"
-
-#: src/red_appwindow.py:536
-msgid "Select _None"
-msgstr "_Aucune sélection"
-
-#: src/red_appwindow.py:543
-msgid "Channel _Subscriptions..."
-msgstr "_Inscriptions aux canaux..."
-
-#: src/red_appwindow.py:549
-msgid "_Preferences..."
-msgstr "_Préférences..."
-
-#: src/red_appwindow.py:553
-msgid "_Users..."
-msgstr "_Utilisateurs..."
-
-#. #
-#. # Sidebar
-#. #
-#: src/red_appwindow.py:565
-msgid "View"
-msgstr "Afficha_ge"
-
-#: src/red_appwindow.py:567
-msgid "_Sidebar"
-msgstr "_Panneau latéral"
-
-#: src/red_appwindow.py:571
-msgid "Advanced Search Options"
-msgstr "Options de recherche avancées"
-
-#: src/red_appwindow.py:575
-msgid "Channel Names"
-msgstr "Noms des canaux"
-
-#: src/red_appwindow.py:581
-msgid "Package _Information..."
-msgstr "_Information sur le paquetage..."
-
-#: src/red_appwindow.py:589
-msgid "_Daemon Information..."
-msgstr "Information sur le _démon..."
-
-#. #
-#. # Run Transaction
-#. #
-#: src/red_appwindow.py:600
-msgid "Actions"
-msgstr "Actions"
-
-#: src/red_appwindow.py:602
-msgid "Run _Now"
-msgstr "Exécuter _maintenant"
-
-#. #
-#. # Verify System Dependencies
-#. #
-#: src/red_appwindow.py:615
-msgid "_Verify System Dependencies"
-msgstr "_Vérifier les dépendances système"
-
-#. #
-#. # Install Package
-#. #
-#: src/red_appwindow.py:626
-msgid "Mark for I_nstallation"
-msgstr "Marquer pour _installation"
-
-#. #
-#. # Refresh Channel Data
-#. #
-#: src/red_appwindow.py:661
-msgid "Re_fresh Channel Data"
-msgstr "Ra_fraîchir le canal de données"
-
-#: src/red_appwindow.py:667
-msgid "Help"
-msgstr "Aide"
-
-#: src/red_appwindow.py:669
-msgid "_About..."
-msgstr "À _propos..."
 
 #. We need to make the component menu items checked
 #. instead of radio-style, because with a radio group you
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#. We activate the first component that gets registered.
-#. Clear the status bar, update toolbar
-#. Show the new component, hide the old one.
-#. Force the componet to emit a display event.  This causes
-#. it to get displayed.
+#: src/red_appwindow.py:522 src/red_appwindow.py:783
+msgid "_View"
+msgstr "Afficha_ge"
+
+#: src/red_appwindow.py:523
+msgid "_Actions"
+msgstr "A_ctions"
+
+#: src/red_appwindow.py:524
+msgid "_Help"
+msgstr "_Aide"
+
+#: src/red_appwindow.py:532
+msgid "Connect..."
+msgstr "Connexion..."
+
+#: src/red_appwindow.py:542
+msgid "Install from _File..."
+msgstr "Installation depuis _Fichier..."
+
+#: src/red_appwindow.py:551
+msgid "Install from _URL..."
+msgstr "Installation depuis _URL..."
+
+#. #
+#. # Mount command
+#. #
+#: src/red_appwindow.py:568
+msgid "_Mount Directory..."
+msgstr "_Monter un répertoire..."
+
+#. #
+#. # Unmount command
+#. #
+#: src/red_appwindow.py:584
+msgid "U_nmount Directory..."
+msgstr "_Démonter un répertoire..."
+
+#. #
+#. # Activate
+#. #
+#: src/red_appwindow.py:599
+msgid "_Activate..."
+msgstr "_Activer..."
+
+#: src/red_appwindow.py:605
+msgid "Quit"
+msgstr "Quitter"
+
+#. #
+#. # Select all/none
+#. #
+#: src/red_appwindow.py:620
+msgid "Select _All"
+msgstr "_Tout sélectionner"
+
+#: src/red_appwindow.py:625
+msgid "Select _None"
+msgstr "_Aucune sélection"
+
+#: src/red_appwindow.py:632
+msgid "Channel _Subscriptions..."
+msgstr "_Inscriptions aux canaux..."
+
+#: src/red_appwindow.py:637
+msgid "_Preferences..."
+msgstr "_Préférences..."
+
+#: src/red_appwindow.py:641
+msgid "_Users..."
+msgstr "_Utilisateurs..."
+
+#. #
+#. # Sidebar
+#. #
+#: src/red_appwindow.py:654
+msgid "_Sidebar"
+msgstr "_Panneau latéral"
+
+#: src/red_appwindow.py:658
+#, fuzzy
+msgid "_Advanced Search Options"
+msgstr "Options de recherche avancées"
+
+#: src/red_appwindow.py:662
+#, fuzzy
+msgid "_Channel Names"
+msgstr "Noms des canaux"
+
+#: src/red_appwindow.py:668
+msgid "Package _Information..."
+msgstr "_Information sur le paquetage..."
+
+#: src/red_appwindow.py:676
+msgid "_Daemon Information..."
+msgstr "Information sur le _démon..."
+
+#: src/red_appwindow.py:678
+#, fuzzy
+msgid "Red Carpet Ne_ws..."
+msgstr "Nouveautés Red Carpet"
+
+#. #
+#. # Run Transaction
+#. #
+#: src/red_appwindow.py:691
+msgid "Run _Now"
+msgstr "Exécuter _maintenant"
+
+#. #
+#. # Verify System Dependencies
+#. #
+#: src/red_appwindow.py:705
+msgid "_Verify System Dependencies"
+msgstr "_Vérifier les dépendances système"
+
+#. #
+#. # Install Package
+#. #
+#: src/red_appwindow.py:716
+msgid "Mark for I_nstallation"
+msgstr "Marquer pour _installation"
+
+#. #
+#. # Refresh Channel Data
+#. #
+#: src/red_appwindow.py:751
+msgid "Re_fresh Channel Data"
+msgstr "Ra_fraîchir le canal de données"
+
+#: src/red_appwindow.py:760
+#, fuzzy
+msgid "_Contents"
+msgstr "Connexion"
+
+#: src/red_appwindow.py:765
+msgid "_About..."
+msgstr "À _propos..."
+
 #. ##
 #. ## Handlers for PendingOpsListener
 #. ##
 #. ##
 #. ## Handlers for Component signals (via the ComponentListener API)
 #. ##
-#. Clean any old widgets out of self.container,
-#. then stick in our new widget and show it.
 #. always pop off transient messages
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -523,6 +558,26 @@ msgstr "Pas de canal/canal inconnu"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. Clean any old widgets out of self.container,
+#. then stick in our new widget and show it.
+#. component
+#. list of packages
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. Forces the component to emit a 'display' signal
 #. for the current widget (and causes the build method
 #. to be executed if no widget has been displayed yet).
@@ -553,6 +608,7 @@ msgstr "Pas de canal/canal inconnu"
 #. ##
 #. ## Virtual functions
 #. ##
+#. This should always be the same as the long name plus a menu mnemonic
 #. Always autoresize our connected views, since the treeview is
 #. stupid and doesn't work properly if the widget is hidden.
 #. ##
@@ -581,7 +637,7 @@ msgstr "Pas de canal/canal inconnu"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_connection.py:38
+#: src/red_connection.py:41
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -592,27 +648,29 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:85
-#, python-format
+#: src/red_connection.py:61
+#, fuzzy, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
-"Version %d.%d.%d (or newer) is required."
+"Version %d.%d.%d (or newer) is required"
 msgstr ""
 "Version de Red Carpet détectée %d.%d.%d.\n"
 "Version %d.%d.%d (ou plus récente) requise."
 
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:126
+#: src/red_connection.py:99
 msgid "Starting daemon..."
 msgstr "Lancement du démon..."
 
 #. child
 #. If we get here, the exec failed.
 #. parent
+#. Couldn't kill it, probably already dead
+#. File doesn't exist?
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:190
+#: src/red_connection.py:173
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -624,7 +682,36 @@ msgstr ""
 #. This will block with a dialog.
 #. Prepend "https://" if it isn't already specified
 #. Append default port number (505) if one isn't specified
-#. save_credentials(host, user, password, local)
+#. NOTE: password must be md5ified.
+#: src/red_connection.py:321
+#, fuzzy
+msgid "Connect to this system"
+msgstr "Se connecter au démon de cet ordinateur"
+
+#: src/red_connection.py:325
+#, fuzzy
+msgid "Connect to a remote system"
+msgstr "Se connecter à un démon distant"
+
+#: src/red_connection.py:333
+msgid "Server:"
+msgstr "Serveur :"
+
+#: src/red_connection.py:337 src/red_users.py:389
+msgid "User name:"
+msgstr "Nom de l'utilisateur :"
+
+#: src/red_connection.py:341 src/red_prefs.py:257 src/red_users.py:192
+#: src/red_users.py:395
+msgid "Password:"
+msgstr "Mot de passe :"
+
+#. Don't activate the dropdown with enter
+#. desensitize the table by default.
+#: src/red_connection.py:377
+msgid "Connect"
+msgstr "Connexion"
+
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
 #. ##
@@ -697,60 +784,75 @@ msgstr "Quitter Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:64
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:355
 msgid "Dependency Resolution"
 msgstr "Résolution des dépendances"
 
 #. Clean up
-#: src/red_depcomponent.py:116
+#: src/red_depcomponent.py:117
 msgid "Verifying System"
 msgstr "Vérification du système"
 
-#: src/red_depcomponent.py:122
+#: src/red_depcomponent.py:123
 msgid "Resolving Dependencies"
 msgstr "Résolution des dépendances"
+
+#: src/red_depcomponent.py:157
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr ""
+
+#. Try to estimate the size of the window we want.
+#. "W" being the widest glyph.
+#. Create a tag with our monospace font
+#. Get a mark to the start of the buffer and then scroll there
+#: src/red_depcomponent.py:200
+msgid "I Agree"
+msgstr ""
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:190
+#: src/red_depcomponent.py:260
 msgid "Dependency Resolution Failed"
 msgstr "Échec des résolutions de dépendance"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:237
+#: src/red_depcomponent.py:310
 msgid "System Verified"
 msgstr "Système vérifié"
 
-#: src/red_depcomponent.py:239
+#: src/red_depcomponent.py:312
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
-msgstr "Toutes les dépendances de paquetages sont satisfaites, aucune action correctrice n'est nécessaire."
+msgstr ""
+"Toutes les dépendances de paquetages sont satisfaites, aucune action "
+"correctrice n'est nécessaire."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:293
+#: src/red_depcomponent.py:366
 msgid "Requested Installations"
 msgstr "Installations requises"
 
-#: src/red_depcomponent.py:297
+#: src/red_depcomponent.py:370
 msgid "Requested Removals"
 msgstr "Suppressions requises"
 
-#: src/red_depcomponent.py:301
+#: src/red_depcomponent.py:374
 msgid "Required Installations"
 msgstr "Installations requises"
 
-#: src/red_depcomponent.py:305
+#: src/red_depcomponent.py:378
 msgid "Required Removals"
 msgstr "Suppressions requises"
 
-#: src/red_depcomponent.py:331
+#: src/red_depcomponent.py:404
 msgid "Continue"
 msgstr "Poursuivre"
 
@@ -774,26 +876,26 @@ msgstr "Poursuivre"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:37 src/red_mount.py:225 src/red_packagepage_info.py:83
-#: src/red_packageview.py:350
+#: src/red_depview.py:37 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_packageview.py:359
 msgid "Channel"
 msgstr "Canal"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:406
+#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:415
 msgid "Package"
 msgstr "Paquetage"
 
-#: src/red_depview.py:43 src/red_packageview.py:445
+#: src/red_depview.py:43 src/red_packageview.py:454
 msgid "Current Version"
 msgstr "Version courante"
 
 #. ## Main
-#: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:444
-#: src/red_summary.py:87
+#: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:439
+#: src/red_updates.py:94
 msgid "New Version"
 msgstr "Nouvelle version"
 
-#: src/red_depview.py:49 src/red_packageview.py:481
+#: src/red_depview.py:49 src/red_packageview.py:490
 msgid "Size"
 msgstr "Taille"
 
@@ -903,21 +1005,21 @@ msgid "Searching..."
 msgstr "Recherche..."
 
 #. 10 years
-#: src/red_history.py:301 src/red_history.py:440
+#: src/red_history.py:301 src/red_history.py:435
 #, fuzzy
 msgid "Time"
 msgstr "Durée"
 
-#: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:313
+#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:322
 msgid "Action"
 msgstr "Action"
 
 #. # Make sure we have at least 'view'
-#: src/red_history.py:303 src/red_history.py:442 src/red_users.py:113
+#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
 msgid "User"
 msgstr "Utilisateur"
 
-#: src/red_history.py:305 src/red_history.py:443
+#: src/red_history.py:305 src/red_history.py:438
 msgid "Old Version"
 msgstr "Ancienne version"
 
@@ -927,7 +1029,12 @@ msgstr "Ancienne version"
 msgid "History"
 msgstr "Historique"
 
-#: src/red_history.py:388
+#: src/red_history.py:339
+#, fuzzy
+msgid "_History"
+msgstr "Historique"
+
+#: src/red_history.py:383
 msgid "No results found."
 msgstr "Aucun résulat trouvé."
 
@@ -951,7 +1058,7 @@ msgstr "Aucun résulat trouvé."
 #. the filesel and then unselect it (with control-click), we'll
 #. get the parent directory for that file, not the file itself.
 #. File probably doesn't exist.
-#: src/red_installfiles.py:82 src/red_installfiles.py:141
+#: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
 msgstr "%s n'est pas un paquetage valide"
@@ -964,16 +1071,17 @@ msgstr "Il n'y a pas de paquetage valide à installer"
 msgid "Install from File"
 msgstr "Installer depuis Fichier"
 
-#: src/red_installfiles.py:118
+#. need trailing /
+#: src/red_installfiles.py:119
 #, python-format
 msgid "Downloading %s..."
 msgstr "Téléchargement de %s..."
 
-#: src/red_installfiles.py:157
+#: src/red_installfiles.py:158
 msgid "Install from URL"
 msgstr "Installer depuis URL"
 
-#: src/red_installfiles.py:162
+#: src/red_installfiles.py:163
 msgid "Package URL:"
 msgstr "URL du paquetage :"
 
@@ -1044,15 +1152,21 @@ msgstr "URL du paquetage :"
 #. ##
 #. ## main
 #. ##
-#: src/red_main.py:101
+#: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
-msgstr "ERREUR : Vous ne pouvez spécifier à la fois les options -h/--host et -l/--local"
+msgstr ""
+"ERREUR : Vous ne pouvez spécifier à la fois les options -h/--host et -l/--"
+"local"
 
 #. This'll always fail and pop up the dialog.
-#: src/red_main.py:132
+#: src/red_main.py:137
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "ERREUR : Vous ne pouvez spécifier un utilisateur à un démon local"
 
+#. Try the command-line options or the saved data first
+#. Enclosed in an empty try-except because we don't care about the
+#. error on the first connect.
+#. That failed, pop up the dialog
 #. This will terminate all our child threads without joining
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1109,6 +1223,35 @@ msgstr "ERREUR : Vous ne pouvez spécifier un utilisateur à un démon local"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#: src/red_mirrors.py:76
+msgid "Mirror"
+msgstr "Miroir"
+
+#: src/red_mirrors.py:81
+#, fuzzy
+msgid "Location"
+msgstr "Action"
+
+#: src/red_mirrors.py:108
+msgid "Choose a Mirror"
+msgstr ""
+
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. Handle ~ to mean $HOME
 #: src/red_mount.py:61
 #, python-format
@@ -1129,58 +1272,33 @@ msgstr "Parcours..."
 msgid "Mount Directory"
 msgstr "Monter un répertoire"
 
-#: src/red_mount.py:140
+#: src/red_mount.py:141
 msgid "Mount channel"
 msgstr "Monter un canal"
 
-#: src/red_mount.py:144
+#: src/red_mount.py:145
 msgid "Mount a directory as channel"
 msgstr "Monter un répertoire comme un canal"
 
-#: src/red_mount.py:152
+#: src/red_mount.py:153
 msgid "Channel Name:"
 msgstr "Nom du canal :"
 
-#: src/red_mount.py:156
+#: src/red_mount.py:157
 msgid "Directory:"
 msgstr "Répertoire :"
 
-#: src/red_mount.py:188
+#: src/red_mount.py:189
 msgid "Please choose the path for channel."
 msgstr "Veuillez choisir le chemin du canal."
 
-#: src/red_mount.py:209
+#: src/red_mount.py:210
 msgid "Unmount Channel"
 msgstr "Démonter un canal"
 
-#: src/red_mount.py:238
+#: src/red_mount.py:239
 msgid "Unmount?"
 msgstr "Démonter ?"
-
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_my_computer.py:28 src/red_my_computer.py:31
-#: src/red_my_computer.py:49
-msgid "My Computer"
-msgstr "Mon ordinateur"
-
-#: src/red_my_computer.py:54
-msgid "Searching system for matching packages..."
-msgstr "Recherche sur le sytème de paquetages correspondants..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1203,12 +1321,9 @@ msgstr "Recherche sur le sytème de paquetages correspondants..."
 #. some sort of intelligent way.
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-msgid "News"
+#, fuzzy, python-format
+msgid "%s News"
 msgstr "Nouveautés"
-
-#: src/red_news.py:177
-msgid "Red Carpet News"
-msgstr "Nouveautés Red Carpet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1325,22 +1440,24 @@ msgstr "plus ancien"
 msgid "not installed"
 msgstr "non installé"
 
+#. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
+#. __older_icon               = red_pixbuf.get_pixbuf("status-older")
 #. upgrade
 #. downgrade
-#: src/red_packagearray.py:121
+#: src/red_packagearray.py:123
 msgid "upgrade"
 msgstr "mise à jour"
 
-#: src/red_packagearray.py:123
+#: src/red_packagearray.py:125
 #, fuzzy
 msgid "downgrade"
 msgstr "version précédente"
 
-#: src/red_packagearray.py:125
+#: src/red_packagearray.py:127
 msgid "install"
 msgstr "installer"
 
-#: src/red_packagearray.py:132
+#: src/red_packagearray.py:134
 msgid "remove"
 msgstr "supprimer"
 
@@ -1369,23 +1486,23 @@ msgstr "supprimer"
 #. The derived class should use this function to report the packages
 #. it received from the daemon.
 #. ##############################################################################
-#: src/red_packagearray.py:612
+#: src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
 msgstr "%d paquetages correspondants trouvés"
 
-#: src/red_packagearray.py:614
+#: src/red_packagearray.py:616
 msgid "Found 1 matching package"
 msgstr "Un paquetage correspondant trouvé"
 
-#: src/red_packagearray.py:616
+#: src/red_packagearray.py:618
 msgid "No matching packages found"
 msgstr "Aucun paquetage correspondant trouvé"
 
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:756
+#: src/red_packagearray.py:760
 msgid "Looking for updates..."
 msgstr "Recherche de mises à jour..."
 
@@ -1470,7 +1587,7 @@ msgstr "Conflits avec"
 msgid "Name"
 msgstr "Nom"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:435
+#: src/red_packagepage_info.py:79 src/red_packageview.py:444
 msgid "Version"
 msgstr "Version"
 
@@ -1494,7 +1611,7 @@ msgstr "Section"
 msgid "Summary"
 msgstr "Résumé"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:372
+#: src/red_packagepage_info.py:86 src/red_prefs.py:438
 msgid "Description"
 msgstr "Description"
 
@@ -1550,30 +1667,30 @@ msgstr "Sans nom"
 #. print "selected %s (%d)" % (pkg["name"], i)
 #. print "activated %s (%d)" % (pkg["name"], i)
 #. Install
-#: src/red_packageview.py:220
+#: src/red_packageview.py:224
 msgid "Mark for Installation"
 msgstr "Marquer pour installation"
 
 #. Remove
-#: src/red_packageview.py:233
+#: src/red_packageview.py:237
 msgid "Mark for Removal"
 msgstr "Marquer pour suppression"
 
 #. Cancel
-#: src/red_packageview.py:246
+#: src/red_packageview.py:250
 msgid "Cancel"
 msgstr "Annuler"
 
 #. Info
-#: src/red_packageview.py:264
+#: src/red_packageview.py:268
 msgid "Information"
 msgstr "Information"
 
-#: src/red_packageview.py:284
+#: src/red_packageview.py:293
 msgid "Status"
 msgstr "Statut"
 
-#: src/red_packageview.py:455
+#: src/red_packageview.py:464
 msgid "Importance"
 msgstr "Importance"
 
@@ -1598,6 +1715,7 @@ msgstr "Importance"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. ##############################################################################
+#. Remove package from list if threre's no more keys than "__package"
 #. ##############################################################################
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1631,7 +1749,7 @@ msgstr "Importance"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:493
+#: src/red_pendingview.py:494
 msgid "Updating System"
 msgstr "Mise à jour du système"
 
@@ -1639,11 +1757,11 @@ msgstr "Mise à jour du système"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:563
+#: src/red_pendingview.py:564
 msgid "Download cancelled"
 msgstr "Téléchargement annulé"
 
-#: src/red_pendingview.py:564
+#: src/red_pendingview.py:565
 msgid "Update cancelled"
 msgstr "Mise à jour annulée"
 
@@ -1653,23 +1771,23 @@ msgstr "Mise à jour annulée"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:599
+#: src/red_pendingview.py:600
 msgid "Update Finished"
 msgstr "Mise à jour terminée"
 
-#: src/red_pendingview.py:611
+#: src/red_pendingview.py:613
 msgid "Downloading packages"
 msgstr "Téléchargement des paquetages"
 
-#: src/red_pendingview.py:623
+#: src/red_pendingview.py:625
 msgid "Download Failed"
 msgstr "Échec du téléchargement"
 
-#: src/red_pendingview.py:624
+#: src/red_pendingview.py:626
 msgid "Unknown Error"
 msgstr "Erreur inconnu"
 
-#: src/red_pendingview.py:641
+#: src/red_pendingview.py:643
 msgid "Processing Transaction"
 msgstr "Transaction en cours"
 
@@ -1722,109 +1840,119 @@ msgstr "Échec de la mise à jour"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Server frame
-#: src/red_prefs.py:138
+#: src/red_prefs.py:141
 msgid "Server"
 msgstr "Serveur"
 
-#: src/red_prefs.py:145
+#: src/red_prefs.py:148
 msgid "Server URL:"
 msgstr "URL du serveur :"
 
-#: src/red_prefs.py:153
+#. manually force the value to update
+#: src/red_prefs.py:189
+#, fuzzy
+msgid "Mirrors"
+msgstr "Miroir"
+
+#: src/red_prefs.py:201
 msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
 msgstr "Activer les services Premium (Red Carpet Express ou Entreprise)"
 
 #. Packages frame
-#: src/red_prefs.py:160
+#: src/red_prefs.py:208
 msgid "Packages"
 msgstr "Paquetages"
 
-#: src/red_prefs.py:168
+#: src/red_prefs.py:216
 msgid "Require package signatures"
 msgstr "Requiert les signatures du paquetage"
 
-#: src/red_prefs.py:173
+#: src/red_prefs.py:221
 msgid "Maximum number of packages to download at once:"
 msgstr "Nombre maximum de paquetages téléchargés à la fois :"
 
 #. Proxy frame - requires superuser
-#: src/red_prefs.py:183
+#: src/red_prefs.py:231
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:191
+#: src/red_prefs.py:239
 msgid "Use a proxy"
 msgstr "Utiliser un proxy"
 
-#: src/red_prefs.py:195
+#: src/red_prefs.py:243
 msgid "Proxy URL:"
 msgstr "URL du proxy :"
 
-#: src/red_prefs.py:202
+#: src/red_prefs.py:250
 msgid "Username:"
 msgstr "Nom de l'utilisateur"
 
-#: src/red_prefs.py:209 src/red_settings.py:247 src/red_users.py:192
-#: src/red_users.py:395
-msgid "Password:"
-msgstr "Mot de passe :"
-
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:243
+#: src/red_prefs.py:291
 msgid "You do not have permissions to view proxy settings"
-msgstr "Vous n'avez pas les permissions nécessaires à la consultation des réglages du proxy"
+msgstr ""
+"Vous n'avez pas les permissions nécessaires à la consultation des réglages "
+"du proxy"
 
-#: src/red_prefs.py:263
+#: src/red_prefs.py:312
 msgid "Cache downloaded packages and metadata"
 msgstr "Conserver en cache les paquetages et méta-données téléchargés"
 
-#: src/red_prefs.py:269
+#: src/red_prefs.py:318
 msgid "Location of cached data:"
 msgstr "Emplacement des données en cache :"
 
 #. Expiration frame
-#: src/red_prefs.py:277
+#: src/red_prefs.py:326
 msgid "Expiration"
 msgstr "Expiration"
 
 #. lame shim
-#: src/red_prefs.py:288
+#: src/red_prefs.py:337
 msgid "Cache expires"
 msgstr "Expiration du cache"
 
-#: src/red_prefs.py:294
+#: src/red_prefs.py:343
 msgid "Maximum age in days:"
 msgstr "Âge maximum en jours :"
 
-#: src/red_prefs.py:305
+#: src/red_prefs.py:354
 msgid "Maximum size in MB:"
 msgstr "Taille maximum en Mo :"
 
-#: src/red_prefs.py:316
+#: src/red_prefs.py:365
 msgid "Current cache size:"
 msgstr "Taille courante des données en cache :"
 
-#: src/red_prefs.py:333
+#: src/red_prefs.py:382
+#, fuzzy
+msgid "Are you sure you want to delete the package files in your cache?"
+msgstr ""
+"Êtes-vous sûr de vouloir ouvrir %d fenêtres d'information sur les "
+"paquetages ?"
+
+#: src/red_prefs.py:398
 msgid "Empty Cache"
 msgstr "Cache vide"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:355
+#: src/red_prefs.py:420
 #, python-format
 msgid "%d MB"
 msgstr "%d Mo"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:402
+#: src/red_prefs.py:468
 msgid "Value"
 msgstr "Valeur"
 
-#: src/red_prefs.py:413
+#: src/red_prefs.py:481
 msgid "Loading preferences..."
 msgstr "Chargement des préférences..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:473
+#: src/red_prefs.py:541
 #, python-format
 msgid "%s Preferences"
 msgstr "Préférences %s"
@@ -1847,7 +1975,8 @@ msgstr "Préférences %s"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_searchbox.py:143
+#. system packages and uninstalled packages are mutually exclusive
+#: src/red_searchbox.py:146
 msgid "Uninstalled Packages"
 msgstr "Paquetages désinstallés"
 
@@ -1867,34 +1996,96 @@ msgstr "Paquetages désinstallés"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_searchbox.py:144 src/red_summary.py:30
+#: src/red_searchbox.py:147 src/red_updates.py:31
 msgid "Updates"
 msgstr "Mises à jour"
 
-#: src/red_searchbox.py:145
+#: src/red_searchbox.py:148
 msgid "Installed Packages"
 msgstr "Paquetages installés"
 
-#: src/red_searchbox.py:146
+#: src/red_searchbox.py:149
 msgid "All Packages"
 msgstr "Tous les paquetages"
 
-#: src/red_searchbox.py:271
+#: src/red_searchbox.py:174
+#, fuzzy
+msgid "All Sections"
+msgstr "Actions"
+
+#: src/red_searchbox.py:175
+msgid "Productivity"
+msgstr ""
+
+#: src/red_searchbox.py:176
+#, fuzzy
+msgid "Imaging"
+msgstr "Restant"
+
+#: src/red_searchbox.py:177
+msgid "Personal Info. Mgmt"
+msgstr ""
+
+#: src/red_searchbox.py:178
+msgid "X Windows"
+msgstr ""
+
+#: src/red_searchbox.py:179
+#, fuzzy
+msgid "Games"
+msgstr "Nom"
+
+#: src/red_searchbox.py:180
+msgid "Multimedia"
+msgstr ""
+
+#: src/red_searchbox.py:181
+msgid "Internet"
+msgstr ""
+
+#: src/red_searchbox.py:182
+msgid "Utilities"
+msgstr ""
+
+#: src/red_searchbox.py:183
+#, fuzzy
+msgid "System"
+msgstr "Type de système"
+
+#: src/red_searchbox.py:184
+msgid "Documentation"
+msgstr ""
+
+#: src/red_searchbox.py:185
+msgid "Libraries"
+msgstr ""
+
+#: src/red_searchbox.py:186
+#, fuzzy
+msgid "Development"
+msgstr "Développeurs"
+
+#: src/red_searchbox.py:187
+#, fuzzy
+msgid "Development Tools"
+msgstr "Développeurs"
+
+#: src/red_searchbox.py:188
+msgid "Miscellaneous"
+msgstr ""
+
+#: src/red_searchbox.py:274
 msgid "Search descriptions"
 msgstr "Rechercher les descriptions"
 
 #. ##
 #. ## Match radio buttons
 #. ##
-#: src/red_searchbox.py:283
+#: src/red_searchbox.py:286
 msgid "Match:"
 msgstr "Correspondance :"
 
-#. ##
-#. ## Build the top row of search UI, which contains the title and
-#. ## the channel option menu.
-#. ##
-#: src/red_searchbox.py:340
+#: src/red_searchbox.py:322
 msgid "Channel:"
 msgstr "Canal :"
 
@@ -1931,19 +2122,22 @@ msgstr "Canal :"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_search.py:35 src/red_search.py:71
+#: src/red_search.py:35
 msgid "Search"
 msgstr "Rechercher"
 
 #: src/red_search.py:38
-msgid "Search Packages"
+#, fuzzy
+msgid "S_earch Packages"
 msgstr "Rechercher des paquetages"
 
-#: src/red_search.py:75
+#. In some cases, the selection's changed signal doesn't get
+#. emitted when we unselect_all on it.  I'm not sure why.
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:106
 msgid "Searching for matching packages..."
 msgstr "Recherche de paquetages correspondants..."
 
-#: src/red_search.py:113
+#: src/red_search.py:109
 msgid "No matching packages found."
 msgstr "Aucun paquetage correspondant trouvé."
 
@@ -1999,6 +2193,7 @@ msgstr "Ne peut ouvrir le fichier '%s' : %s"
 msgid "Choose file to write XML to"
 msgstr "Choisissez un fichier de destination XML"
 
+#. need trailing /
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2078,28 +2273,6 @@ msgstr "Choisissez un fichier de destination XML"
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
-#: src/red_settings.py:227
-msgid "Connect to daemon on this computer"
-msgstr "Se connecter au démon de cet ordinateur"
-
-#: src/red_settings.py:231
-msgid "Connect to a remote daemon"
-msgstr "Se connecter à un démon distant"
-
-#: src/red_settings.py:239
-msgid "Server:"
-msgstr "Serveur :"
-
-#: src/red_settings.py:243 src/red_users.py:389
-msgid "User name:"
-msgstr "Nom de l'utilisateur :"
-
-#. Don't activate the dropdown with enter
-#. desensitize the table by default.
-#: src/red_settings.py:323
-msgid "Connect"
-msgstr "Connexion"
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2116,12 +2289,71 @@ msgstr "Connexion"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_sidebar.py:64 src/red_transaction.py:112 src/red_transaction.py:115
-msgid "Installations and Removals"
-msgstr "Installations et suppressions"
+#: src/red_sidebar.py:61 src/red_transaction.py:112
+#, fuzzy
+msgid "Pending Actions"
+msgstr "Actions"
 
 #. PendingOpsListener implementation
-#. Is this the last item and the only one on the row?
+#: src/red_sidebar.py:89
+#, python-format
+msgid "%d pending install"
+msgstr ""
+
+#: src/red_sidebar.py:91
+#, python-format
+msgid "%d pending installs"
+msgstr ""
+
+#: src/red_sidebar.py:97
+#, python-format
+msgid "%d pending removal"
+msgstr ""
+
+#: src/red_sidebar.py:99
+#, python-format
+msgid "%d pending removals"
+msgstr ""
+
+#: src/red_sidebar.py:103
+msgid "No pending actions"
+msgstr ""
+
+#. ##
+#. ## Copyright (C) 2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#: src/red_software.py:28
+#, fuzzy
+msgid "Installed Software"
+msgstr "Taille installé"
+
+#: src/red_software.py:31
+#, fuzzy
+msgid "I_nstalled Software"
+msgstr "Taille installé"
+
+#: src/red_software.py:84
+msgid "Available Software"
+msgstr "Logiciels disponibles"
+
+#: src/red_software.py:87
+#, fuzzy
+msgid "A_vailable Software"
+msgstr "Logiciels disponibles"
+
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2138,43 +2370,29 @@ msgstr "Installations et suppressions"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_subscriptions.py:56
+#: src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "Souscrit"
 
-#: src/red_subscriptions.py:63
+#: src/red_subscriptions.py:64
 msgid "Channel Name"
 msgstr "Nom du canal"
 
-#: src/red_subscriptions.py:77
-#, python-format, fuzzy
+#: src/red_subscriptions.py:78
+#, fuzzy, python-format
 msgid "%s Channel Subscriptions"
 msgstr "%s canal inscriptions"
 
 #. FIXME: Make transient of app
-#: src/red_subscriptions.py:94
+#: src/red_subscriptions.py:95
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr "Vous n'avez pas les droits pour inscrire ou désincrire depuis les canaux. Vous ne serez pas en mesure d'effectuer des changements dans les inscriptions."
+msgstr ""
+"Vous n'avez pas les droits pour inscrire ou désincrire depuis les canaux. "
+"Vous ne serez pas en mesure d'effectuer des changements dans les "
+"inscriptions."
 
-#: src/red_summary.py:33
-msgid "Update Summary"
-msgstr "Mise à jour du résumé"
-
-#: src/red_summary.py:102
-msgid "The system is up-to-date."
-msgstr "Le système est à jour."
-
-#: src/red_summary.py:103
-msgid "There are no software updates available in any subscribed channels."
-msgstr "Il n'y a pas de mise à jour logicielle disponible dans les canaux souscrits."
-
-#. Show a blank updates list by default until we get a changed
-#. signal, even if we don't have any updates, to reduce flicker
-#. at startup in the case where we do actually have updates.
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2236,6 +2454,31 @@ msgstr "Sans titre"
 msgid "Are you sure you want to quit?"
 msgstr "Êtes vous sûr de vouloir quitter ?"
 
+#: src/red_transaction.py:115
+#, fuzzy
+msgid "_Pending Actions"
+msgstr "A_ctions"
+
+#: src/red_updates.py:34
+#, fuzzy
+msgid "_Updates"
+msgstr "Mises à jour"
+
+#. ## Update All button
+#: src/red_updates.py:77
+#, fuzzy
+msgid "_Update All"
+msgstr "Mise à jour annulée"
+
+#: src/red_updates.py:109
+msgid "The system is up-to-date."
+msgstr "Le système est à jour."
+
+#: src/red_updates.py:110
+msgid "There are no software updates available in any subscribed channels."
+msgstr ""
+"Il n'y a pas de mise à jour logicielle disponible dans les canaux souscrits."
+
 #: src/red_users.py:131
 msgid "Privilege"
 msgstr "Privilège"
@@ -2248,7 +2491,8 @@ msgid ""
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
-"Si vous supprimez les privilèges super-utilisateur que vous possédez, vous ne serez pas en mesure de les restituer.\n"
+"Si vous supprimez les privilèges super-utilisateur que vous possédez, vous "
+"ne serez pas en mesure de les restituer.\n"
 "\n"
 "Êtes-vous sûr que c'est ce que vous voulez ?"
 
@@ -2317,6 +2561,30 @@ msgstr "Nom d'utilisateur incorrect."
 msgid "User '%s' already exists."
 msgstr "L'utilisateur '%s' existe déjà."
 
+#~ msgid "File"
+#~ msgstr "Fichier"
+
+#~ msgid "Edit"
+#~ msgstr "Éditer"
+
+#~ msgid "View"
+#~ msgstr "Afficha_ge"
+
+#~ msgid "Help"
+#~ msgstr "Aide"
+
+#~ msgid "My Computer"
+#~ msgstr "Mon ordinateur"
+
+#~ msgid "Searching system for matching packages..."
+#~ msgstr "Recherche sur le sytème de paquetages correspondants..."
+
+#~ msgid "Installations and Removals"
+#~ msgstr "Installations et suppressions"
+
+#~ msgid "Update Summary"
+#~ msgstr "Mise à jour du résumé"
+
 #~ msgid "Ximian Red Carpet"
 #~ msgstr "Ximian Red Carpet"
 
@@ -2353,9 +2621,6 @@ msgstr "L'utilisateur '%s' existe déjà."
 #~ msgid "Executive Summary"
 #~ msgstr "Tableau de bord"
 
-#~ msgid "Available Software"
-#~ msgstr "Logiciels disponibles"
-
 #~ msgid ""
 #~ "Update packages individually (NOTE: This is an unsupported operation)"
 #~ msgstr ""
@@ -2367,9 +2632,6 @@ msgstr "L'utilisateur '%s' existe déjà."
 
 #~ msgid "Ximian Red Carpet - Preferences"
 #~ msgstr "Ximian Red Carpet - Préférences"
-
-#~ msgid "Mirror"
-#~ msgstr "Miroir"
 
 #~ msgid "No Proxy"
 #~ msgstr "Pas de proxy"
@@ -2657,9 +2919,6 @@ msgstr "L'utilisateur '%s' existe déjà."
 
 #~ msgid "Done"
 #~ msgstr "Effectué"
-
-#~ msgid "Remaining"
-#~ msgstr "Restant"
 
 #~ msgid "Percent Complete"
 #~ msgstr "Pourcentage complété"
@@ -3583,9 +3842,6 @@ msgstr "L'utilisateur '%s' existe déjà."
 
 #~ msgid "Prefs"
 #~ msgstr "Préfs"
-
-#~ msgid "Developers"
-#~ msgstr "Développeurs"
 
 #~ msgid "User Interface Design"
 #~ msgstr "Conception de l'interface graphique"
