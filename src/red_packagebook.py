@@ -59,26 +59,6 @@ class PageHistory(PackagePage):
         return "History"
 
     def visible(self, pkg):
-        return pkg and pkg.has_key("__history")
-
-    def build_widget(self, pkg, server):
-        sw = gtk.ScrolledWindow()
-        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        tv = gtk.TextView()
-        tv.set_editable(0)
-        tv.set_cursor_visible(0)
-        sw.add(tv)
-        tv.show()
-        buf = tv.get_buffer()
-        buf.set_text(string.join(pkg["__history"], "\n"))
-        return sw
-
-class PageHistory2(PackagePage):
-
-    def name(self):
-        return "History2"
-
-    def visible(self, pkg):
         return pkg and red_packagearray.pkg_name(pkg)
 
     def build_widget(self, pkg, server):

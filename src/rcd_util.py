@@ -27,14 +27,7 @@ import socket
 server = None
 server_proxy = None
 
-def connect_to_server():
-    d = red_settings.ConnectionWindow()
-    url, username, password = d.run()
-    d.destroy()
-    gtk.threads_leave()
-
-    if not url:
-        sys.exit(1)
+def connect_to_server(url, username=None, password=None):
 
     transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
 
@@ -62,9 +55,7 @@ def connect_to_server():
         dialog.run()
         dialog.destroy()
 
-        server = None
-        server_proxy = None
-        server = connect_to_server()
+        return None
     else:
         register_server(server)
         print "Connected to %s\n%s" % (ping["name"], ping["copyright"])
@@ -77,9 +68,6 @@ def register_server(srv):
     server_proxy = red_serverproxy.ServerProxy(server)
 
 def get_server():
-    global server
-    if not isinstance(server, ximian_xmlrpclib.Server):
-        server = connect_to_server()
     return server
 
 def get_server_proxy():
@@ -127,6 +115,13 @@ def get_channel_name(id):
     c = get_channel(id)
     if c:
         return c["name"]
+    else:
+        return "????"
+
+def get_channel_alias(id):
+    c = get_channel(id)
+    if c:
+        return c["alias"]
     else:
         return "????"
 

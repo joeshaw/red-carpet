@@ -35,6 +35,8 @@ import red_users
 import red_throbber
 import red_activation
 import red_about
+import red_settings
+import red_mount
 
 def refresh_cb(app):
     try:
@@ -98,6 +100,33 @@ def view_server_info_cb(app):
     dialog.show_all()
 
     app.server_info_window = dialog
+
+def connect_cb():
+    while 1:
+        d = red_settings.ConnectionWindow()
+        response = d.run()
+        if response == gtk.RESPONSE_ACCEPT:
+            url, username, password = d.get_server_info()
+
+            server = rcd_util.connect_to_server(url, username, password)
+
+            if isinstance(server, ximian_xmlrpclib.Server):
+                d.destroy()
+                break
+        else:
+            d.destroy()
+            break
+    
+def mount_cb():
+    def get_file_cb(b, fs):
+        # FIXME: Implement.
+        fs.destroy()
+    
+    filesel = gtk.FileSelection("Mount Directory")
+    filesel.set_select_multiple(1)
+    filesel.ok_button.connect("clicked", get_file_cb, filesel)
+    filesel.cancel_button.connect("clicked", lambda x,y:y.destroy(), filesel)
+    filesel.show()
 
 class AppWindow(gtk.Window, red_component.ComponentListener):
 
@@ -207,6 +236,11 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/_View")
         bar.add("/_Help")
 
+        bar.add("/File/Connect...",
+                callback=lambda x:connect_cb())
+
+        bar.add("/File/sep", is_separator=1)
+
         bar.add("/File/Install From File...",
                 callback=lambda x:red_installfiles.install_local())
 
@@ -214,7 +248,15 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=lambda x:red_installfiles.install_remote(),
                 sensitive_fn=red_installfiles.can_install_remote)
 
-        bar.add("/File/sep", is_separator=1)
+        bar.add("/File/sep2", is_separator=1)
+
+        bar.add("/File/Mount Directory...",
+                callback=lambda x:mount_cb())
+
+        bar.add("/File/Unmount Directory...",
+                callback=lambda x:self.open_or_raise_window(red_mount.UnmountWindow))
+
+        bar.add("/File/sep3", is_separator=1)
 
         bar.add("/File/Activate...",
                 callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow))
@@ -222,7 +264,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/File/Refresh Channel Data",
                 callback=refresh_cb)
 
-        bar.add("/File/sep2", is_separator=1)
+        bar.add("/File/sep4", is_separator=1)
         
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,

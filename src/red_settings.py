@@ -108,9 +108,6 @@ class DaemonSettings(gtk.Frame):
             text = ""
         self.password.set_text(text)
 
-
-RESPONSE_CONNECT = 1
-
 class ConnectionWindow(gtk.Dialog):
 
     def __init__(self):
@@ -122,13 +119,11 @@ class ConnectionWindow(gtk.Dialog):
         self.build()
 
     def build(self):
-        self.add_button(gtk.STOCK_QUIT, gtk.RESPONSE_NONE)
-        b = self.add_button("Connect", RESPONSE_CONNECT)
+        self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        b = self.add_button("Connect", gtk.RESPONSE_ACCEPT)
         b.grab_default()
         def response_cb(dialog, id, this):
-            if id != RESPONSE_CONNECT:
-                this.url = this.user = this.password = None
-            else:
+            if id == gtk.RESPONSE_ACCEPT:
                 buf = this.ui.url_get()
                 if buf:
                     this.url = buf
@@ -145,6 +140,5 @@ class ConnectionWindow(gtk.Dialog):
         self.vbox.add(self.ui)
         self.connect("response", response_cb, self)
 
-    def run(self):
-        gtk.Dialog.run(self)
+    def get_server_info(self):
         return (self.url, self.user, self.password)

@@ -30,6 +30,7 @@ import red_news
 import red_history
 
 red_name = "Red Carpet"
+red_version = None
 
 red_running = 1
 
@@ -76,13 +77,14 @@ def ticker():
 ###
    
 def main(version):
-    global red_name
-    red_name += " %s" % version
+    global red_version
+    red_version = version
     
     print "Red Carpet Client %s" % version
     print "Copyright (C) 2002 Ximian Inc."
     print
 
+    server = rcd_util.connect_to_server("/var/run/rcd/rcd")
     server = rcd_util.get_server()
 
     ticker()
@@ -97,7 +99,7 @@ def main(version):
     app.register_component(red_search.SearchComponent())
     app.register_component(red_history.HistoryComponent())
 
-    app.set_title(red_name)
+    app.set_title(red_name + " " + red_version)
     app.set_size_request(780, 550)
     app.show()
 
