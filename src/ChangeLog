@@ -1,3 +1,7 @@
+2003-03-17  Frank Belew  <frb@ximian.com>
+
+	* red-carpet.in: more robust check to see if we are standalone
+
 2003-03-14  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py: Don't capitalize the 'f' in "from", it's not
