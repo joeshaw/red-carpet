@@ -17,8 +17,8 @@
 
 import os, gobject, gtk, sys
 
-pixbuf_path = sys.path
-pixbuf_path.append("../art");
+pixbuf_path = [ "../art" ]
+
 pixbuf_cache = {}
 
 def get_pixbuf(name, fail_gracefully=0, width=0, height=0):

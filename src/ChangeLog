@@ -1,5 +1,13 @@
 2003-02-07  Frank Belew  <frb@ximian.com>
 
+	* red-carpet.in: added red_carpet_pixbuf_path to fix art loading
+
+	* red_pixbuf.py: fixed up pixbuf_path to fix art loading
+
+	* src/Makefile.am: added red_toolbar.py to red_carpetsupport_DATA
+
+2003-02-07  Frank Belew  <frb@ximian.com>
+
 	* red-carpet.in: added red_carpet_libdir to the path append so client
 	works after make install
 

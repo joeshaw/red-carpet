@@ -46,6 +46,7 @@ red_carpetsupport_DATA =	\
 	red_system.py				\
 	red_thrashingtreeview.py		\
 	red_throbber.py				\
+	red_toolbar.py				\
 	red_transaction.py			\
 	red_users.py				\
 	ximian_xmlrpclib.py

@@ -26,6 +26,7 @@ pygtk.require("2.0")
 red_carpet_dir = "@DDIR@/red-carpet"
 red_carpet_libdir = "@LDIR@/red-carpet"
 red_carpet_version = "@VERSION@"
+red_carpet_pixbuf_path = "@DDIR@/pixmaps/red-carpet"
 
 sys.path.insert(0, "../ximian_unmarshaller")
 sys.path.append("../sgmlop")
@@ -49,6 +50,10 @@ if not (os.path.isfile("./red_main.py") \
 
 
 sys.path.append(red_carpet_dir)
+
+import red_pixbuf
+red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)
+
 import red_main
 
 if "--rc-profile" in sys.argv:
