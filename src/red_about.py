@@ -28,9 +28,6 @@ contributors = [
     "Jon Trowbridge",
     ]
 
-def randomize(a, b):
-    return random.choice([-1, 0, 1])
-
 class About(gtk.Dialog):
 
     def __init__(self):
@@ -57,8 +54,9 @@ class About(gtk.Dialog):
 
         copyright = gtk.Label(u"Copyright \u00a9 2002-2003 Ximian, Inc.")
         vbox.pack_start(copyright)
-        
-        contributors.sort(randomize)
+
+        random.seed()
+        random.shuffle(contributors)
 
         [vbox.pack_start(gtk.Label("%s" % x)) \
          for x in contributors]
