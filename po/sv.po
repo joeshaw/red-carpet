@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.2 2003/03/29 16:14:35 menthos Exp $
+# $Id: sv.po,v 1.3 2003/03/29 22:24:20 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-03-29 17:12+0100\n"
-"PO-Revision-Date: 2002-03-29 17:13+0100\n"
+"POT-Creation-Date: 2003-03-29 23:22+0100\n"
+"PO-Revision-Date: 2002-03-29 23:24+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,9 +43,8 @@ msgstr ""
 #. Always run the dialog in the main thread.
 #. ##############################################################################
 #: src/rcd_util.py:366
-#, fuzzy
 msgid "Please wait while getting data."
-msgstr "Var vänlig vänta, läser in sidan..."
+msgstr "Var vänlig vänta vid hämtande av data."
 
 #. ##############################################################################
 #. ##
@@ -372,24 +371,20 @@ msgid "_Sidebar"
 msgstr "_Sidopanel"
 
 #: src/red_appwindow.py:571
-#, fuzzy
 msgid "_Advanced Search Options"
-msgstr "_Prenumerationer"
+msgstr "_Avancerade sökalternativ"
 
 #: src/red_appwindow.py:575
-#, fuzzy
 msgid "_Channel Names"
-msgstr "Kanalinfo"
+msgstr "_Kanalnamn"
 
 #: src/red_appwindow.py:581
-#, fuzzy
 msgid "Package _Information..."
-msgstr "Paketinstallation"
+msgstr "Paket_information..."
 
 #: src/red_appwindow.py:589
-#, fuzzy
 msgid "_Daemon Information..."
-msgstr "Information"
+msgstr "_Demoninformation..."
 
 #. #
 #. # Run Transaction
@@ -402,24 +397,22 @@ msgstr "Kör _nu"
 #. # Verify System Dependencies
 #. #
 #: src/red_appwindow.py:613
-#, fuzzy
 msgid "_Verify System Dependencies"
-msgstr "Misslyckade beroenden"
+msgstr "_Verifiera systemberoenden"
 
 #. #
 #. # Install Package
 #. #
 #: src/red_appwindow.py:624
-#, fuzzy
 msgid "Mark for I_nstallation"
-msgstr "Paketinstallation"
+msgstr "Markera för i_nstallation"
 
 #. #
 #. # Refresh Channel Data
 #. #
 #: src/red_appwindow.py:659
 msgid "Re_fresh Channel Data"
-msgstr ""
+msgstr "_Uppdatera kanaldata"
 
 #: src/red_appwindow.py:665
 msgid "_About..."
@@ -484,18 +477,16 @@ msgstr "_Om..."
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_channeloption.py:50
-#, fuzzy
 msgid "All Channels"
-msgstr "Kanaltips"
+msgstr "Alla kanaler"
 
 #: src/red_channeloption.py:55
-#, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Prenumererade kanaler"
+msgstr "Alla prenumererade kanaler"
 
 #: src/red_channeloption.py:60
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "Ingen kanal/Okänd kanal"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -578,6 +569,8 @@ msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
+"Kan inte ansluta till demonen:\n"
+" \"%s\"."
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
@@ -587,12 +580,14 @@ msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required."
 msgstr ""
+"Detekterade Red Carpet-demon version %d.%d.%d.\n"
+"Version %d.%d.%d (eller nyare) krävs."
 
 #. LSB compliant distros should have the
 #. following
 #: src/red_connection.py:128
 msgid "Starting daemon..."
-msgstr ""
+msgstr "Startar demon..."
 
 #. child
 #. If we get here, the exec failed.
@@ -604,6 +599,8 @@ msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
 msgstr ""
+"Red Carpet kräver att en Red Carpet-demon körs.\n"
+"Vill du starta en nu?"
 
 #. Conform to GNOME HIG
 #. This will block with a dialog.
@@ -627,9 +624,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Red Carpet Express/Corporate Connect"
+msgstr "Red Carpet-felkonsoll"
 
 #. We put the text into the console window in a timeout.  That
 #. way we can be sure that it happens in the main thread and
@@ -653,17 +649,16 @@ msgstr "Red Carpet Express/Corporate Connect"
 #. ##
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
-msgstr ""
+msgstr "Anslutningen till demonen återställd.\n"
 
 #. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr ""
+msgstr "Tappade kontakten med demonen!"
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Red Carpet"
+msgstr "Avsluta Red Carpet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -685,20 +680,17 @@ msgstr "Red Carpet"
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:64
-#, fuzzy
 msgid "Dependency Resolution"
-msgstr "Beroenden"
+msgstr "Beroendeupplösning"
 
 #. Clean up
 #: src/red_depcomponent.py:116
-#, fuzzy
 msgid "Verifying System"
-msgstr "Verifierar %s"
+msgstr "Verifierar system"
 
 #: src/red_depcomponent.py:122
-#, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Beroenden"
+msgstr "Löser beroenden"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
@@ -707,18 +699,19 @@ msgstr "Beroenden"
 #. Assemble our warning banner
 #: src/red_depcomponent.py:190
 msgid "Dependency Resolution Failed"
-msgstr ""
+msgstr "Beroendeupplösning misslyckades"
 
 #. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:237
 msgid "System Verified"
-msgstr ""
+msgstr "Systemet verifierat"
 
 #: src/red_depcomponent.py:239
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
 msgstr ""
+"Alla paketberoenden tillfredsställs och inga korrigeringsåtgärder behövs."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
@@ -733,19 +726,16 @@ msgid "Requested Removals"
 msgstr "Begärda borttagningar"
 
 #: src/red_depcomponent.py:301
-#, fuzzy
 msgid "Required Installations"
-msgstr "Begärda installationer"
+msgstr "Nödvändiga installationer"
 
 #: src/red_depcomponent.py:305
-#, fuzzy
 msgid "Required Removals"
-msgstr "Begärda borttagningar"
+msgstr "Nödvändiga borttagningar"
 
 #: src/red_depcomponent.py:331
-#, fuzzy
 msgid "Continue"
-msgstr "nio"
+msgstr "Fortsätt"
 
 #. # That's all we can do here. We might (and usually don't)
 #. # have enough information here to decide what kind of page
@@ -769,25 +759,22 @@ msgstr "nio"
 #. ##
 #: src/red_depview.py:37 src/red_mount.py:225 src/red_packagepage_info.py:83
 #: src/red_packageview.py:354
-#, fuzzy
 msgid "Channel"
-msgstr "Avbryt"
+msgstr "Kanal"
 
 #: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:410
 msgid "Package"
 msgstr "Paket"
 
 #: src/red_depview.py:43 src/red_packageview.py:449
-#, fuzzy
 msgid "Current Version"
-msgstr "Begärd version:"
+msgstr "Aktuell version"
 
 #. ## Main
 #: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:444
 #: src/red_summary.py:87
-#, fuzzy
 msgid "New Version"
-msgstr "Version"
+msgstr "Ny version"
 
 #: src/red_depview.py:49 src/red_packageview.py:485
 msgid "Size"
@@ -868,55 +855,49 @@ msgstr "Storlek"
 #. ##
 #: src/red_history.py:113 src/red_users.py:30
 msgid "All"
-msgstr ""
+msgstr "Alla"
 
 #: src/red_history.py:114
-#, fuzzy
 msgid "Installations"
-msgstr "Installerar"
+msgstr "Installationer"
 
 #: src/red_history.py:115
-#, fuzzy
 msgid "Removals"
-msgstr "Borttagningslogg"
+msgstr "Borttagningar"
 
 #: src/red_history.py:116
-#, fuzzy
 msgid "Upgrades"
-msgstr "Uppdateringar"
+msgstr "Uppgraderingar"
 
 #: src/red_history.py:121
 msgid "User:"
-msgstr ""
+msgstr "Användare:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "Tidsperiod (dagar):"
 
 #. ##
 #. ## Sort functions
 #. ##
 #. # We want opposite order.
 #: src/red_history.py:279
-#, fuzzy
 msgid "Searching..."
-msgstr "Sök"
+msgstr "Söker..."
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:440
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 #: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:317
-#, fuzzy
 msgid "Action"
-msgstr "Plats"
+msgstr "Åtgärd"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:442 src/red_users.py:113
-#, fuzzy
 msgid "User"
-msgstr "Användarnamn"
+msgstr "Användare"
 
 #: src/red_history.py:305 src/red_history.py:443
 msgid "Old Version"
@@ -926,15 +907,15 @@ msgstr "Gammal version"
 #. Define me!
 #: src/red_history.py:336 src/red_packagepage.py:45
 msgid "History"
-msgstr ""
+msgstr "Historik"
 
 #: src/red_history.py:339
 msgid "_History"
-msgstr ""
+msgstr "_Historik"
 
 #: src/red_history.py:388
 msgid "No results found."
-msgstr ""
+msgstr "Inga resultat hittades."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -959,31 +940,28 @@ msgstr ""
 #: src/red_installfiles.py:82 src/red_installfiles.py:141
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s är inte ett giltigt paket."
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
-msgstr ""
+msgstr "Det finns inga giltiga paket att installera"
 
 #: src/red_installfiles.py:102
-#, fuzzy
 msgid "Install from File"
-msgstr "Installerade program"
+msgstr "Installera från fil"
 
 #: src/red_installfiles.py:118
-#, fuzzy, python-format
+#, python-format
 msgid "Downloading %s..."
-msgstr "Hämtar %s"
+msgstr "Hämtar %s..."
 
 #: src/red_installfiles.py:157
-#, fuzzy
 msgid "Install from URL"
-msgstr "Installera"
+msgstr "Installera från URL"
 
 #: src/red_installfiles.py:162
-#, fuzzy
 msgid "Package URL:"
-msgstr "Paket"
+msgstr "Paket-URL:"
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1131,42 +1109,39 @@ msgstr ""
 
 #: src/red_mount.py:117
 msgid "Browse..."
-msgstr ""
+msgstr "Bläddra..."
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
-msgstr ""
+msgstr "Montera katalog"
 
 #: src/red_mount.py:140
-#, fuzzy
 msgid "Mount channel"
-msgstr "Standardunderkanal:"
+msgstr "Montera kanal"
 
 #: src/red_mount.py:144
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Montera katalog som kanal"
 
 #: src/red_mount.py:152
-#, fuzzy
 msgid "Channel Name:"
-msgstr "Kanalinfo"
+msgstr "Kanalnamn:"
 
 #: src/red_mount.py:156
 msgid "Directory:"
-msgstr ""
+msgstr "Katalog:"
 
 #: src/red_mount.py:188
 msgid "Please choose the path for channel."
-msgstr ""
+msgstr "Ange en sökväg för kanalen."
 
 #: src/red_mount.py:209
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "Oprenumererade kanaler"
+msgstr "Avmontera kanal"
 
 #: src/red_mount.py:238
 msgid "Unmount?"
-msgstr ""
+msgstr "Avmontera?"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1187,15 +1162,15 @@ msgstr ""
 #: src/red_my_computer.py:28 src/red_my_computer.py:31
 #: src/red_my_computer.py:49
 msgid "My Computer"
-msgstr ""
+msgstr "Den här datorn"
 
 #: src/red_my_computer.py:34
 msgid "_My Computer"
-msgstr ""
+msgstr "_Den här datorn"
 
 #: src/red_my_computer.py:54
 msgid "Searching system for matching packages..."
-msgstr ""
+msgstr "Söker efter matchande paket på systemet..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1226,9 +1201,8 @@ msgid "Red Carpet News"
 msgstr "Red Carpet-nyheter"
 
 #: src/red_news.py:180
-#, fuzzy
 msgid "Red Carpet _News"
-msgstr "Red Carpet-nyheter"
+msgstr "Red Carpet-_nyheter"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1248,43 +1222,39 @@ msgstr "Red Carpet-nyheter"
 #. ##
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr ""
+msgstr "Anslut till en demon som körs lokalt"
 
 #: src/red_option.py:25
 msgid "hostname"
-msgstr ""
+msgstr "värdnamn"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "Kontakta demon på angiven värd"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "username"
-msgstr "Användarnamn"
+msgstr "användarnamn"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "Specify user name"
-msgstr "Användarnamn"
+msgstr "Ange användarnamn"
 
 #: src/red_option.py:27
-#, fuzzy
 msgid "password"
-msgstr "Lösenord"
+msgstr "lösenord"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "Ange lösenord"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "Skriv ut klientversionsnummer och avsluta"
 
 #: src/red_option.py:29
-#, fuzzy
 msgid "Get usage information"
-msgstr "Information"
+msgstr "Hämta användningsinformation"
 
 #. ##
 #. ## Expand our synthetic args.
@@ -1305,11 +1275,11 @@ msgstr "Information"
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "Användning: %s <flaggor> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
-msgstr ""
+msgstr "Följande flaggor förstås:"
 
 #. By appending [0,0], we insure that this will work even if
 #. opt_list is empty (which it never should be)
@@ -1333,42 +1303,39 @@ msgstr ""
 #. ## Callbacks for our ListModel
 #. ##
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "Installera"
+msgstr "installerad"
 
 #. upgrade
 #: src/red_packagearray.py:93
 msgid "newer"
-msgstr ""
+msgstr "nyare"
 
 #: src/red_packagearray.py:95
 msgid "older"
-msgstr ""
+msgstr "äldre"
 
 #: src/red_packagearray.py:97
 msgid "not installed"
-msgstr ""
+msgstr "inte installerad"
 
 #. upgrade
 #. downgrade
 #: src/red_packagearray.py:121
 msgid "upgrade"
-msgstr ""
+msgstr "uppgradera"
 
 #: src/red_packagearray.py:123
 msgid "downgrade"
-msgstr ""
+msgstr "nedgradera"
 
 #: src/red_packagearray.py:125
-#, fuzzy
 msgid "install"
-msgstr "Installera"
+msgstr "installera"
 
 #: src/red_packagearray.py:132
-#, fuzzy
 msgid "remove"
-msgstr "Ta bort"
+msgstr "ta bort"
 
 #. ##
 #. ## Sort functions
@@ -1396,25 +1363,24 @@ msgstr "Ta bort"
 #. it received from the daemon.
 #. ##############################################################################
 #: src/red_packagearray.py:612
-#, fuzzy, python-format
+#, python-format
 msgid "Found %d matching packages"
-msgstr "Tar bort paket"
+msgstr "Hittade %d matchande paket"
 
 #: src/red_packagearray.py:614
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "Hittade 1 matchande paket"
 
 #: src/red_packagearray.py:616
-#, fuzzy
 msgid "No matching packages found"
-msgstr "Tar bort paket"
+msgstr "Inga matchande paket hittades"
 
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
 #: src/red_packagearray.py:756
 msgid "Looking for updates..."
-msgstr ""
+msgstr "Letar efter uppdateringar..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1433,9 +1399,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_packagebook.py:43
-#, fuzzy
 msgid "Package Information"
-msgstr "Paketinstallation"
+msgstr "Paketinformation"
 
 #. grab_default() is not sufficient here.
 #. print "Built page %d: '%s'" % (num, page_box.page.name())
@@ -1466,19 +1431,16 @@ msgid "Dependencies"
 msgstr "Beroenden"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "Tillhandahåller:"
+msgstr "Tillhandahållanden"
 
 #: src/red_packagepage_deps.py:70
-#, fuzzy
 msgid "Requires"
-msgstr "Kräver:"
+msgstr "Krav"
 
 #: src/red_packagepage_deps.py:73
-#, fuzzy
 msgid "Conflicts With"
-msgstr "Är i konflikt med:"
+msgstr "Är i konflikt med"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1506,19 +1468,16 @@ msgid "Version"
 msgstr "Version"
 
 #: src/red_packagepage_info.py:80
-#, fuzzy
 msgid "Release"
-msgstr "Fortsätt"
+msgstr ""
 
 #: src/red_packagepage_info.py:81
-#, fuzzy
 msgid "Package Size"
-msgstr "Paket"
+msgstr "Paketstorlek"
 
 #: src/red_packagepage_info.py:82
-#, fuzzy
 msgid "Installed Size"
-msgstr "Installerade program"
+msgstr "Installerad storlek"
 
 #: src/red_packagepage_info.py:84
 #, fuzzy
@@ -1530,9 +1489,8 @@ msgid "Summary"
 msgstr "Sammanfattning"
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:388
-#, fuzzy
 msgid "Description"
-msgstr "Beskrivning:"
+msgstr "Beskrivning"
 
 #: src/red_packagepage_info.py:140
 msgid "Info"
@@ -2408,6 +2366,15 @@ msgstr ""
 #, python-format
 msgid "User '%s' already exists."
 msgstr ""
+
+#~ msgid "Package Information..."
+#~ msgstr "Paketinformation..."
+
+#~ msgid "No Channel"
+#~ msgstr "Ingen kanal"
+
+#~ msgid "Unknown Channel"
+#~ msgstr "Okänd kanal"
 
 #~ msgid "Preferences"
 #~ msgstr "Inställningar"
