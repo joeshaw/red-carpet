@@ -105,6 +105,8 @@ class PendingView(gtk.Window):
                 self.button.set_sensitive(0)
             self.button.set_use_stock(1)
             bbox.pack_start(self.button, 0, 0, 0)
+            self.button.set_flags(gtk.CAN_DEFAULT)
+            self.button.grab_default()
 
             def button_handler_cb(b, pv):
                 if pv.cancel_button:

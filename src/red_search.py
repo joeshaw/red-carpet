@@ -97,3 +97,8 @@ class SearchComponent(red_component.Component):
         page.pack_start(scrolled, expand=1, fill=1)
         return page
  
+    def activated(self):
+        def activated_cb(this):
+            entry = this.__bar.get_search_entry()
+            entry.grab_focus()
+        gtk.idle_add(activated_cb, self)

@@ -96,7 +96,10 @@ class SearchBar(gtk.VBox):
 
     def get_filter(self):
         return self.__status_opt and self.__status_opt.get_current_filter()
-                
+
+    def get_search_entry(self):
+        return self.search_entry
+
     def __assemble(self):
 
         box1 = gtk.HBox(0, 0)

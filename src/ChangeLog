@@ -1,3 +1,13 @@
+2003-02-25  Tambet Ingo  <tambet@ximian.com>
+
+	* red_search.py (SearchComponent.activated): Add. Activate search entry
+	every time the SearchComponent is activated.
+
+	* red_searchbar.py (SearchBar.get_search_entry): Add.
+
+	* red_pendingview.py (PendingView.__init__): Give default focus to
+	Ok/Cancel button.
+
 2003-02-25  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py: Get rid of the mono icon hack.
