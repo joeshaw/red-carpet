@@ -22,7 +22,8 @@ import string
 import ximian_xmlrpclib
 
 import rcd_util
-import red_header, red_menubar
+import red_extra
+import red_menubar
 import red_transaction
 import red_component
 import red_pendingview
@@ -162,17 +163,24 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
 
-        self.toolbar = gtk.Toolbar()
+        self.toolbar = red_extra.Toolbar()
         self.toolbar.set_style(gtk.TOOLBAR_BOTH_HORIZ)
-        print "icon size: %s" % self.toolbar.get_icon_size()
+
+        self.go_button = self.toolbar.append_item("Go!",
+                                                  "Run transaction",
+                                                  None,
+                                                  red_pixbuf.get_widget("progress-config", width=24, height=24),
+                                                  lambda x:red_transaction.resolve_deps_and_transact(self),
+                                                  None)
+
+        self.sensitize_go_button(0)
+
+        self.toolbar.append_space()
         
         self.transactionbar = red_transaction.TransactionBar(self)
 
         self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
-
-
-        self.header = gtk.EventBox()
 
         # A box to put component widgets in.  We use an EventBox
         # instead of just a [HV]Box so that we can control the
@@ -185,9 +193,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(self.toolbar, expand=0, fill=1)
         self.toolbar.show()
 
-        self.vbox.pack_start(self.header, expand=0, fill=1)
-        ## self.header.show()
-
         self.vbox.pack_start(self.container, expand=1, fill=1)
         self.container.show()
 
@@ -199,6 +204,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(south, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+    def sensitize_go_button(self, en):
+        self.go_button.set_sensitive(en)
 
     def register_component(self, comp):
 
@@ -253,13 +261,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         if old_comp:
             old_comp.visible(0)
             old_comp.set_parent(None)
-
-        # Set the header
-        hdr = red_header.Header(comp.pixbuf(), comp.long_name())
-        hdr.show_all()
-        for c in self.header.get_children():
-            self.header.remove(c)
-        self.header.add(hdr)
 
         # Force the componet to emit a display event.  This causes
         # it to get displayed.

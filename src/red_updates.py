@@ -18,7 +18,7 @@
 import string
 import gtk
 import rcd_util
-import red_header, red_pixbuf
+import red_pixbuf
 import red_packagearray, red_packageview, red_packagebrowser, red_packagebook
 import red_pendingops
 import red_component
