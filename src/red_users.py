@@ -96,145 +96,6 @@ class PermissionsView(gtk.ScrolledWindow):
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
 
-PREFS_ADD = 0
-PREFS_EDIT = 1
-
-class PrefsWindow(gtk.Dialog):
-    def __init__(self, action):
-        gtk.Dialog.__init__(self, "Users' Preferences")
-        self.build()
-
-        if action == PREFS_EDIT:
-            self.fill()
-        elif action == PREFS_ADD:
-            self.add()
-
-    def build(self):
-        self.set_default_size(30, 450)
-
-        box = gtk.VBox(0, 5)
-        self.vbox.add(box)
-
-        frame = gtk.Frame("User Information")
-        frame.set_border_width(5)
-        box.pack_start(frame, 0)
-
-        table = gtk.Table(3, 2)
-        table.set_border_width(5)
-        table.set_col_spacings(5)
-        table.set_row_spacings(5)
-
-        l = gtk.Label("User:")
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
-        self.user_entry = gtk.Entry()
-        table.attach_defaults(self.user_entry, 1, 2, 0, 1)
-        
-        l = gtk.Label("Password:")
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
-
-        l = gtk.Label("Confirm:")
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 2, 3)
-
-        self.pwd1 = gtk.Entry()
-        self.pwd1.set_visibility(0)
-        table.attach_defaults(self.pwd1, 1, 2, 1, 2)
-        self.pwd2 = gtk.Entry()
-        self.pwd2.set_visibility(0)
-        table.attach_defaults(self.pwd2, 1, 2, 2, 3)
-
-        b = gtk.VBox(0, 5)
-        b.pack_start(table, 0)
-
-        b.add(gtk.HSeparator())
-
-        self.user_button = gtk.Button()
-        self.user_button.set_border_width(5)
-        b.pack_start(self.user_button, 0)
-
-        frame.add(b)
-
-        frame = gtk.Frame("Privileges")
-        frame.set_border_width(5)
-        box.add(frame)
-
-        view = PermissionsView()
-        view.set_border_width(5)
-        frame.add(view)
-
-        box.show_all()
-
-        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
-        button.connect("clicked", lambda x:self.destroy())
-
-    def make_update_button(self):
-        self.user_button.set_label("Update")
-
-        def update_cb(button, this):
-            p1 = this.pwd1.get_text()
-            p2 = this.pwd2.get_text()
-
-            if p1 != p2:
-                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                           "Passwords do not match.")
-                dialog.run()
-                dialog.destroy()
-            else:
-                if p1 != "-*-unchanged-*-":
-                    p1 = rcd_util.md5ify_password(p1)
-                    users_model.current_update(p1)
-
-        self.user_button.connect("clicked", update_cb, self)
-
-    def add(self):
-        self.user_button.set_label("Add")
-        users_model.current_set(None)
-
-        def add_cb(button, this):
-            name = this.user_entry.get_text()
-            p1 = this.pwd1.get_text()
-            p2 = this.pwd2.get_text()
-
-            msg = None
-            if p1 != p2:
-                msg = "Passwords do not match."
-            if not re.compile("^\w+$").match(name):
-                msg = "Invalid user name."
-            elif users_model.user_exists(name):
-                msg = "User '" + name + "' already exists."
-
-            if msg:
-                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                           msg)
-                dialog.run()
-                dialog.destroy()
-            else:
-                p1 = rcd_util.md5ify_password(p1)
-                if users_model.add(name, p1):
-                    id = this.get_data("add_signal_id")
-                    if id:
-                        this.user_button.disconnect(id)
-                    this.make_update_button()
-
-        id = self.user_button.connect("clicked", add_cb, self)
-        self.set_data("add_signal_id", id)
-
-    def fill(self):
-        user = users_model.current_get()
-        if not user:
-            return
-
-        self.user_entry.set_text(user["name"])
-        self.user_entry.set_sensitive(0)
-
-        self.pwd1.set_text("-*-unchanged-*-")
-        self.pwd2.set_text("-*-unchanged-*-")
-
-        self.make_update_button()
 
 class UsersWindow(gtk.Dialog):
 
@@ -242,32 +103,82 @@ class UsersWindow(gtk.Dialog):
         gtk.Dialog.__init__(self, "Users' Preferences")
         self.build()
 
+    def build_password_part(self):
+        table = gtk.Table(3, 2)
+        table.set_col_spacings(5)
+        table.set_row_spacings(5)
+
+        l = gtk.Label("Password")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 0, 1)
+
+        l = gtk.Label("Confirm:")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 1, 2)
+
+        self.pwd1 = gtk.Entry()
+        self.pwd1.set_visibility(0)
+        table.attach_defaults(self.pwd1, 1, 2, 0, 1)
+        self.pwd2 = gtk.Entry()
+        self.pwd2.set_visibility(0)
+        table.attach_defaults(self.pwd2, 1, 2, 1, 2)
+
+        def user_changed_cb(model, user, this):
+            this.pwd1.set_text("-*-unchanged-*-")
+            this.pwd2.set_text("-*-unchanged-*-")
+
+        users_model.connect("changed", user_changed_cb, self)
+
+        button_box = gtk.HButtonBox()
+        button_box.set_layout(gtk.BUTTONBOX_START)
+
+        button = gtk.Button()
+        button.set_label("Set Password")
+        button_box.add(button)
+        table.attach_defaults(button_box, 0, 2, 2, 3)
+
+        def password_update_cb(button, this):
+            p1 = this.pwd1.get_text()
+            p2 = this.pwd2.get_text()
+
+            msg = None
+            if not p1:
+                msg = "Password can not be empty."
+            elif p1 != p2:
+                msg = "Passwords do not match."
+
+            if msg:
+                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, msg)
+                dialog.run()
+                dialog.destroy()
+            else:
+                if p1 != "-*-unchanged-*-":
+                    p1 = rcd_util.md5ify_password(p1)
+                    users_model.current_update(p1)
+
+        button.connect("clicked", password_update_cb, self)
+
+        return table
+
     def build(self):
-        self.set_default_size(220, 200)
+        vbox = gtk.VBox(0, 5)
+        vbox.set_border_width(5)
+        self.vbox.add(vbox)
 
         box = gtk.HBox(0, 5)
-        self.vbox.add(box)
-
-
+        frame = gtk.Frame("Users")
         view = UsersView()
-        view.show()
-        box.pack_start(view)
+        frame.add(view)
+        box.add(frame)
 
         button_box = gtk.VButtonBox()
         button_box.set_layout(gtk.BUTTONBOX_START)
-        def prefs_cb(data, action):
-            win = PrefsWindow(action)
-            win.set_modal(0)
-            win.run()
+        button_box.set_spacing(5)
 
         button = gtk.Button()
-        button.set_label("Add...")
-        button.connect("clicked", prefs_cb, PREFS_ADD)
-        button_box.add(button)
-
-        button = gtk.Button()
-        button.set_label("Edit...")
-        button.connect("clicked", prefs_cb, PREFS_EDIT)
+        button.set_label("Add")
+        button.connect("clicked", lambda x:UserAdd())
         button_box.add(button)
 
         def remove_cb(button, this):
@@ -290,13 +201,92 @@ class UsersWindow(gtk.Dialog):
         button.set_label("Remove")
         button.connect("clicked", remove_cb, self)
         button_box.add(button)
+        box.pack_start(button_box, 0)
 
-        box.pack_start(button_box, 0, 0, 0)
+        vbox.add(box)
 
-        box.show_all()
+        table = self.build_password_part()
+        vbox.pack_start(table, 0)
+
+        frame = gtk.Frame("Privileges")
+        view = PermissionsView()
+        frame.add(view)
+        vbox.add(frame)
+
+        vbox.show_all()
 
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.connect("clicked", lambda x:self.destroy())
+
+class UserAdd(gtk.Dialog):
+    def __init__(self):
+        gtk.Dialog.__init__(self, "Add new user")
+
+        box = gtk.VBox(0, 5)
+        self.vbox.add(box)
+
+        table = gtk.Table(3, 2)
+        table.set_border_width(5)
+        table.set_col_spacings(5)
+        table.set_row_spacings(5)
+
+        l = gtk.Label("User name:")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 0, 1)
+        self.user_entry = gtk.Entry()
+        table.attach_defaults(self.user_entry, 1, 2, 0, 1)
+        
+        l = gtk.Label("Password:")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 1, 2)
+
+        l = gtk.Label("Confirm:")
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 2, 3)
+
+        self.pwd1 = gtk.Entry()
+        self.pwd1.set_visibility(0)
+        table.attach_defaults(self.pwd1, 1, 2, 1, 2)
+        self.pwd2 = gtk.Entry()
+        self.pwd2.set_visibility(0)
+        table.attach_defaults(self.pwd2, 1, 2, 2, 3)
+
+        box.add(table)
+
+        button = self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        button.connect("clicked", lambda x:self.destroy())
+
+        def add_cb(button, this):
+            name = this.user_entry.get_text()
+            p1 = this.pwd1.get_text()
+            p2 = this.pwd2.get_text()
+
+            msg = None
+            if not p1:
+                msg = "Password can not be empty."
+            elif p1 != p2:
+                msg = "Passwords do not match."
+            if not re.compile("^\w+$").match(name):
+                msg = "Invalid user name."
+            elif users_model.user_exists(name):
+                msg = "User '" + name + "' already exists."
+
+            if msg:
+                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                           msg)
+                dialog.run()
+                dialog.destroy()
+            else:
+                p1 = rcd_util.md5ify_password(p1)
+                if users_model.add(name, p1):
+                    this.destroy()
+
+        button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        button.connect("clicked", add_cb, self)
+
+        self.show_all()
+
 
 COLUMN_USER = 0
 COLUMN_NAME = 1
@@ -396,7 +386,7 @@ class UsersModel(gtk.GenericTreeModel):
 
     def current_set(self, node):
         self.current = node
-        self.emit("changed")
+        self.emit("changed", self.current_get())
 
     def current_get(self):
         if not self.current:
@@ -438,7 +428,7 @@ class UsersModel(gtk.GenericTreeModel):
                 user["privileges"] = []
             else:
                 user["privileges"] = ["superuser"]
-            self.emit("changed")
+            self.emit("changed", self.current_get())
         else:
             if active:
                 if not privilege in user["privileges"]:
@@ -463,7 +453,7 @@ gobject.signal_new("changed",
                    UsersModel,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
-                   ())
+                   (gobject.TYPE_PYOBJECT,))
 
 
 COL_PERM_USER =      0
@@ -542,7 +532,7 @@ class PrivilegesModel(gtk.GenericTreeModel):
 ## Additional methods
 
     # Refresh model
-    def refresh(self, data):
+    def refresh(self, model, user):
         def refresh_cb(self, path, iter):
             self.row_changed(path, iter)
         self.foreach(refresh_cb)
