@@ -140,4 +140,4 @@ gobject.signal_new("selected",
                    ChannelOption,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
-                   (gobject.TYPE_INT, ))
+                   (gobject.TYPE_STRING, ))

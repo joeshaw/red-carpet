@@ -1,4 +1,9 @@
-2003-04-29  Joe shaw  <joe@ximian.com>
+2003-04-30  Joe Shaw  <joe@ximian.com>
+
+	* red_channeloption.py: The channel ID parameter is a string in
+	libredcarpet/rcd HEAD, so change it in the signal definition.
+
+2003-04-29  Joe Shaw  <joe@ximian.com>
 
 	* red_my_computer.py: Renamed to red_software.py
 
