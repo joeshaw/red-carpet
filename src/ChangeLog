@@ -1,3 +1,11 @@
+2003-01-27  Jon Trowbridge  <trow@ximian.com>
+
+	* red_users.py: Rearranged the dialog a bit.  Made pretty much
+	everything in sight a ServerListener.  Added code so that stuff
+	will automatically refresh if the daemon reports a user change
+	while the dialog is open.  If the user doesn't have superuser
+	privileges, a bunch of the widgets will now be insensitive.
+
 2003-01-24  Joe Shaw  <joe@ximian.com>
 
 	* red_channelmodel.py: Change the ChannelModel to derive from

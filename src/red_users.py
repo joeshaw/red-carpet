@@ -21,6 +21,7 @@ import rcd_util
 import red_main
 import red_pixbuf
 import red_component
+import red_serverlistener
 import ximian_xmlrpclib
 
 users_model = None
@@ -38,6 +39,7 @@ class UsersView(gtk.ScrolledWindow):
 
         view = gtk.TreeView(users_model)
         view.set_headers_visible(0)
+        self.view = view
 
         col = gtk.TreeViewColumn("User",
                                  gtk.CellRendererText(),
@@ -59,18 +61,23 @@ class UsersView(gtk.ScrolledWindow):
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
 
-class PermissionsView(gtk.ScrolledWindow):
+class PermissionsView(gtk.ScrolledWindow,
+                      red_serverlistener.ServerListener):
 
     def __init__(self):
         gtk.ScrolledWindow.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
 
         global privileges_model
         if not privileges_model:
             server = rcd_util.get_server()
             privileges_model = PrivilegesModel(server, users_model)
 
+        is_superuser = rcd_util.check_server_permission("superuser")
+
         view = gtk.TreeView(privileges_model)
         view.set_headers_visible(0)
+        self.view = view
 
         col = gtk.TreeViewColumn("Privilege",
                                  gtk.CellRendererText(),
@@ -86,35 +93,59 @@ class PermissionsView(gtk.ScrolledWindow):
             users_model.current_set_privilege(privilege, active)
 
         r = gtk.CellRendererToggle()
-        r.set_property("activatable", 1)
+        self.__toggle = r
+
+        r.set_property("activatable", is_superuser)
         r.connect("toggled", activated_cb, privileges_model)
         col = gtk.TreeViewColumn("Enabled", r, active=COL_PERM_ENABLED)
         view.append_column(col)
+
+        sel = view.get_selection()
+        if is_superuser:
+            sel.set_mode(gtk.SELECTION_SINGLE)
+        else:
+            sel.set_mode(gtk.SELECTION_NONE)
 
         view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
 
+    def users_changed(self):
+        is_superuser = rcd_util.check_server_permission("superuser")
+        self.__toggle.set_property("activatable", is_superuser)
+        sel = self.view.get_selection()
+        if is_superuser:
+            sel.set_mode(gtk.SELECTION_SINGLE)
+        else:
+            sel.set_mode(gtk.SELECTION_NONE)
 
-class UsersWindow(gtk.Dialog):
+
+
+class UsersWindow(gtk.Dialog,
+                  red_serverlistener.ServerListener):
 
     def __init__(self):
         gtk.Dialog.__init__(self, "Edit Users")
+        red_serverlistener.ServerListener.__init__(self)
         self.build()
+        self.set_size_request(500, -1)
 
     def build_password_part(self):
         table = gtk.Table(3, 2)
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label("Password")
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
+        frame = gtk.Frame(None)
+        frame.add(table)
+
+        l = gtk.Label("Password:")
+        l.set_alignment(1.0, 0.5)
+        table.attach(l, 0, 1, 0, 1, 0, 0, 0, 0)
 
         l = gtk.Label("Confirm:")
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
+        l.set_alignment(1.0, 0.5)
+        table.attach(l, 0, 1, 1, 2, 0, 0, 0, 0)
 
         self.pwd1 = gtk.Entry()
         self.pwd1.set_visibility(0)
@@ -135,7 +166,7 @@ class UsersWindow(gtk.Dialog):
         button = gtk.Button()
         button.set_label("Set Password")
         button_box.add(button)
-        table.attach_defaults(button_box, 0, 2, 2, 3)
+        table.attach_defaults(button_box, 1, 2, 2, 3)
 
         def password_update_cb(button, this):
             p1 = this.pwd1.get_text()
@@ -159,18 +190,24 @@ class UsersWindow(gtk.Dialog):
 
         button.connect("clicked", password_update_cb, self)
 
-        return table
+        return frame
 
     def build(self):
-        vbox = gtk.VBox(0, 5)
-        vbox.set_border_width(5)
-        self.vbox.add(vbox)
+        main_box = gtk.HBox(0, 5)
+        main_box.set_border_width(5)
+        self.vbox.add(main_box)
+
+        left_box = gtk.VBox(0, 5)
+        main_box.add(left_box)
 
         box = gtk.HBox(0, 5)
         frame = gtk.Frame("Users")
         view = UsersView()
         frame.add(view)
         box.add(frame)
+        self.__users_view = view.view
+
+        is_superuser = rcd_util.check_server_permission("superuser")
 
         button_box = gtk.VButtonBox()
         button_box.set_layout(gtk.BUTTONBOX_START)
@@ -178,8 +215,10 @@ class UsersWindow(gtk.Dialog):
 
         button = gtk.Button()
         button.set_label("Add")
+        button.set_sensitive(is_superuser)
         button.connect("clicked", lambda x:UserAdd())
         button_box.add(button)
+        self.__add_button = button
 
         def remove_cb(button, this):
             user = users_model.current_get()
@@ -199,24 +238,56 @@ class UsersWindow(gtk.Dialog):
 
         button = gtk.Button()
         button.set_label("Remove")
+        button.set_sensitive(is_superuser)
         button.connect("clicked", remove_cb, self)
         button_box.add(button)
+        self.__remove_button = button
+        
         box.pack_start(button_box, 0)
 
-        vbox.add(box)
+        user_list_frame = gtk.Frame(None)
+        user_list_frame.add(box)
+
+        left_box.add(user_list_frame)
 
         table = self.build_password_part()
-        vbox.pack_start(table, 0)
+        left_box.pack_start(table, 0)
+        self.__password_part = table
+        table.set_sensitive(is_superuser)
 
         frame = gtk.Frame("Privileges")
         view = PermissionsView()
         frame.add(view)
-        vbox.add(frame)
+        main_box.add(frame)
+        self.__permissions_view = view.view
 
-        vbox.show_all()
+        main_box.show_all()
 
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.connect("clicked", lambda x:self.destroy())
+
+    def users_changed(self):
+        is_superuser = rcd_util.check_server_permission("superuser")
+        self.__add_button.set_sensitive(is_superuser)
+        self.__remove_button.set_sensitive(is_superuser)
+        self.__password_part.set_sensitive(is_superuser)
+
+        # Thrash our views so that changes in the model will be reflected.
+        # We do it in an idle function, so that the thrash won't happen
+        # until after all of the other users_changed handlers have
+        # executed.
+        def thrash_cb(user_win):
+            print "Thrash!"
+            m = user_win.__users_view.get_model()
+            user_win.__users_view.set_model(None)
+            user_win.__users_view.set_model(m)
+
+            m = user_win.__permissions_view.get_model()
+            user_win.__permissions_view.set_model(None)
+            user_win.__permissions_view.set_model(m)
+
+        gtk.idle_add(thrash_cb, self)
+        
 
 class UserAdd(gtk.Dialog):
     def __init__(self):
@@ -292,15 +363,19 @@ COLUMN_USER = 0
 COLUMN_NAME = 1
 COLUMN_LAST = 2
 
-class UsersModel(gtk.GenericTreeModel):
+class UsersModel(gtk.GenericTreeModel,
+                 red_serverlistener.ServerListener):
     def __init__ (self, server):
         gobject.GObject.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
 
         self.server = server
-        self.users = []
         self.current = None
-
-        users = server.rcd.users.get_all()
+        self.__fetch_user_info()
+        
+    def __fetch_user_info(self):
+        self.users = []
+        users = self.server.rcd.users.get_all()
         for u in users:
             user = {}
             user["name"] = u[0]
@@ -444,6 +519,11 @@ class UsersModel(gtk.GenericTreeModel):
             self.row_deleted(self.get_path(self.current))
             self.current_set(None)
 
+    def users_changed(self):
+        # Re-fetch the user information
+        self.__fetch_user_info()
+        
+
 gobject.type_register(UsersModel)
 gobject.signal_new("changed",
                    UsersModel,
@@ -457,9 +537,11 @@ COL_PERM_PRIVILEGE = 1
 COL_PERM_ENABLED =   2
 COL_PERM_LAST =      3
 
-class PrivilegesModel(gtk.GenericTreeModel):
+class PrivilegesModel(gtk.GenericTreeModel,
+                      red_serverlistener.ServerListener):
     def __init__ (self, server, users_model):
         gtk.GenericTreeModel.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
 
         self.users_model = users_model
         self.privileges = map(string.lower,
@@ -532,3 +614,6 @@ class PrivilegesModel(gtk.GenericTreeModel):
         def refresh_cb(self, path, iter):
             self.row_changed(path, iter)
         self.foreach(refresh_cb)
+
+    def users_changed(self):
+        pass
