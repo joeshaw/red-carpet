@@ -10,6 +10,7 @@ red_carpetsupportdir = $(datadir)/red-carpet
 red_carpetsupport_DATA =	\
 	rcd_util.py				\
 	red_about.py				\
+	red_actionbar.py			\
 	red_activation.py			\
 	red_appwindow.py			\
 	red_channelmodel.py			\

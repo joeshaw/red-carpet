@@ -82,7 +82,7 @@ class SubscriptionsWindow(gtk.Dialog):
         view.show()
         self.vbox.add(view)
 
-        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
         button.grab_default()
         button.connect("clicked", lambda x:self.destroy())
 

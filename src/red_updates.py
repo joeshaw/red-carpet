@@ -26,10 +26,10 @@ from red_gettext import _
 class SummaryComponent(red_component.Component):
 
     def name(self):
-        return _("Summary")
+        return _("Updates")
 
     def long_name(self):
-        return _("Update Summary")
+        return _("Updates Summary")
 
     def pixbuf(self):
         return "summary"

@@ -1,3 +1,28 @@
+2003-03-10  Tambet Ingo  <tambet@ximian.com>
+
+	* red_actionbar.py: Implement.
+
+	* Makefile.am (red_carpetsupport_DATA): Install red_actionbar.py.
+
+	* red_appwindow.py Import red_actionbar.
+	(AppWindow.assemble_toolbar): s/Run/Run Now/.
+	(AppWindow.__init__): Build "Actionbar".
+	(AppWindow.assemble_actionbar): Add items to actionbar. Use more
+	descriptive and longer labels.
+
+	* red_depcomponent.py (DepComponent.get_deps_cb): Removed some
+	debugging output.
+
+	* red_subscriptions.py (SubscriptionsWindow.__init__): Replace "Close"
+	button with "Ok" Button.
+
+	* red_summary.py (SummaryComponent.name): s/Summary/Updates/.
+	(SummaryComponent.long_name): s/Update/Updates/.
+
+	* red_sidebar.py (SideBar.build): Use frame to group pending ops.
+	Change label to "Installations and Removals". Change the label of
+	"Details" button, center it.
+
 2003-03-07  Jon Trowbridge  <trow@ximian.com>
 
 	* red_searchbox.py (SearchBox.__assemble): Enable the 'no channel'

@@ -42,6 +42,7 @@ import red_packagearray
 import red_packagebook
 import red_searchbox
 import red_settings
+import red_actionbar
 from red_gettext import _
 
 
@@ -169,6 +170,11 @@ class AppWindow(gtk.Window,
         width, height = gtk.icon_size_lookup(icon_size)
         toolbar_box.pack_end(self.create_throbber(width, height),
                              0, 0)
+
+        ## Actionbar
+        self.actionbar = red_actionbar.Actionbar()
+        self.assemble_actionbar(self.actionbar)
+        main_box.pack_end(self.actionbar, 0, 0)
 
         main_box.pack_start(self.container, expand=1, fill=1)
         main_box.show_all()
@@ -333,34 +339,13 @@ class AppWindow(gtk.Window,
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_LARGE_TOOLBAR)
 
-        bar.run = bar.add(text=_("Run"),
+        bar.run = bar.add(text=_("Run Now"),
                           tooltip=_("Perform Pending Operations"),
                           sensitive_fn=red_pendingops.pending_ops_exist,
                           stock=gtk.STOCK_EXECUTE,
                           callback=lambda x:run_transaction_cb(self))
 
         bar.append_space()
-
-        bar.install = bar.add(text=_("Install"),
-                              tooltip=_("Install selected packages"),
-                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
-                                                           width=width,
-                                                           height=height),
-                              sensitive_fn=self.install_sensitive_cb,
-                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
-
-        bar.remove = bar.add(text=_("Remove"),
-                             tooltip=_("Remove selected packages"),
-                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
-                                                          width=width, height=height),
-                             sensitive_fn=self.remove_sensitive_cb,
-                             callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
-
-        bar.cancel = bar.add(text=_("Cancel"),
-                             tooltip=_("Cancel package actions"),
-                             stock=gtk.STOCK_CANCEL,
-                             sensitive_fn=self.cancel_sensitive_cb,
-                             callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
 
         bar.info = bar.add(text=_("Info"),
                            tooltip=_("Package Information"),
@@ -381,6 +366,36 @@ class AppWindow(gtk.Window,
                               tooltip=_("Refresh Channel Data"),
                               stock = gtk.STOCK_REFRESH,
                               callback=lambda x:refresh_cb(self))
+
+    ##
+    ## Actionbar.
+    ##
+
+    def assemble_actionbar(self, bar):
+
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
+
+        bar.install = bar.add(text=_("Mark for Installation"),
+                              tooltip=_("Mark selected packages for installation"),
+                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
+                                                           width=width,
+                                                           height=height),
+                              sensitive_fn=self.install_sensitive_cb,
+                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
+
+        bar.remove = bar.add(text=_("Mark for Removal"),
+                             tooltip=_("Mark selected packages for removal"),
+                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
+                                                          width=width, height=height),
+                             sensitive_fn=self.remove_sensitive_cb,
+                             callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
+
+        bar.cancel = bar.add(text=_("Remove Marked Actions"),
+                             tooltip=_("Remove marked package actions"),
+                             stock=gtk.STOCK_CANCEL,
+                             sensitive_fn=self.cancel_sensitive_cb,
+                             callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
+
 
     # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
@@ -723,6 +738,7 @@ class AppWindow(gtk.Window,
         # Clear the status bar, update toolbar
         self.statusbar.pop(0)
         self.toolbar.sensitize_toolbar_items()
+        self.actionbar.sensitize_actionbar_items()
 
         # Show the new component, hide the old one.
         comp.visible(1)
@@ -817,4 +833,4 @@ class AppWindow(gtk.Window,
         
     def do_component_package_selected(self, pkg):
         self.toolbar.sensitize_toolbar_items()
-
+        self.actionbar.sensitize_actionbar_items()

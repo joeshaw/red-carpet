@@ -109,8 +109,6 @@ class DepComponent(gobject.GObject, red_component.Component):
             self.__worker = server.rcd.packsys.verify_dependencies()
             message = _("Verifying System")
         else:
-            print self.install_packages
-            print self.remove_packages
             self.__worker = server.rcd.packsys.resolve_dependencies(
                 self.install_packages,
                 self.remove_packages,

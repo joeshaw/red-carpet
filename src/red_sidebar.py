@@ -59,22 +59,26 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         self.shortcut_bar = ShortcutBar()
         self.pack_start(self.shortcut_bar, 0, 0)
 
-        label = gtk.Label("")
-        label.set_markup("<b>%s</b>" % _("Pending Operations"))
-        label.set_alignment(0, 0.5)
-        self.pack_start(label, 0, 1)
+        frame = gtk.Frame("")
+        l = frame.get_label_widget()
+        l.set_markup("<b>%s</b>" % _("Installations and Removals"))
+        self.pack_start(frame, 1, 1)
+
+        frame_content = gtk.VBox(0, 6)
+        frame_content.set_border_width(6)
+        frame.add(frame_content)
 
         view = red_transaction.TransactionSimple()
-        self.pack_start(view, 1, 1)
+        frame_content.pack_start(view, 1, 1)
 
         self.label = gtk.Label("")
         self.label.set_alignment(0.0, 0.5)
         self.update_label()
-        self.pack_start(self.label, expand=0, fill=1)
+        frame_content.pack_start(self.label, expand=0, fill=1)
 
         bbox = gtk.HButtonBox()
         bbox.set_spacing(6)
-        bbox.set_layout(gtk.BUTTONBOX_START)
+        bbox.set_layout(gtk.BUTTONBOX_SPREAD)
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
 
@@ -86,12 +90,12 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         image = red_pixbuf.get_widget("pending-transactions",
                                       width=width, height=height)
         box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label(_("Details")), 0, 0)
+        box.pack_start(gtk.Label(_("Show Details")), 0, 0)
         align.add(box)
         bbox.add(self.details)
         self.details.set_sensitive(0)
 
-        self.pack_start(bbox, 0, 1)
+        frame_content.pack_start(bbox, 0, 1)
 
     def get_shortcut_bar(self):
         return self.shortcut_bar
