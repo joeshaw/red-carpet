@@ -24,7 +24,6 @@ t = None
 def init(localedir):
     global t
     
-    print localedir
     try:
         t = gettext.translation("red-carpet", localedir)
     except IOError: # No translation file for this language
