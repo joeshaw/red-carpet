@@ -67,8 +67,4 @@ class About(gtk.Dialog):
         [vbox.pack_start(gtk.Label("%s" % x)) \
          for x in contributors]
 
-        l = gtk.Label("")
-        l.set_markup("<small>(this is really ugly and someone should fix it)</small>")
-        vbox.pack_start(l)
-
         self.vbox.show_all()

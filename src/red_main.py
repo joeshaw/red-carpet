@@ -17,6 +17,7 @@
 
 import os, time, threading, gtk
 import rcd_util
+import red_console
 import red_appwindow
 import red_search
 import red_summary
@@ -99,6 +100,7 @@ def main(version):
     app.show()
 
     gtk.threads_enter()
+
     gtk.main()
 
     global red_running

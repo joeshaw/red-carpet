@@ -1,3 +1,14 @@
+2003-02-22  Jon Trowbridge  <trow@ximian.com>
+
+	* red_about.py (About.__init__): Removed the "this is really ugly"
+	comment.  Hopefully the about box can get some design-love later
+	on.
+
+	* red_main.py: import red_console
+
+	* red_console.py: Added an error console, so that we can get
+	reasonable bug reports from people running rc from menus.
+
 2003-02-21  Tambet Ingo  <tambet@ximian.com>
 
 	* red_depcomponent.py (DepComponent.build_dep_error_page): Set
