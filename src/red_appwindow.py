@@ -18,7 +18,8 @@
 import sys
 import gobject, gtk
 
-import red_header, red_menubar, red_sidebar
+import red_header, red_menubar, red_sidebar, red_statusbar
+import red_transaction
 import red_component
 import red_pendingview
 
@@ -71,7 +72,7 @@ class AppWindow(gtk.Window):
 
         self.server = server
 
-        self.table = gtk.Table(2, 5)
+        self.table = gtk.Table(2, 6)
         self.add (self.table)
 
         self.components = []
@@ -88,6 +89,9 @@ class AppWindow(gtk.Window):
         self.upper  = gtk.EventBox()
         self.lower  = gtk.EventBox()
         self.main   = gtk.EventBox()
+
+        self.transaction = red_transaction.Transaction()
+        self.statusbar = red_statusbar.StatusBar(self.transaction)
 
         style = self.main.get_style().copy()
         color = self.main.get_colormap().alloc_color("white")
@@ -125,6 +129,11 @@ class AppWindow(gtk.Window):
 
         self.table.attach(self.lower,
                           1, 2, 4, 5,
+                          gtk.FILL | gtk.EXPAND, gtk.FILL,
+                          0, 0)
+
+        self.table.attach(self.statusbar,
+                          0, 2, 5, 6,
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
 
@@ -200,5 +209,3 @@ class AppWindow(gtk.Window):
             self.comp_display_id = comp.connect("display",
                                                 display_cb,
                                                 self)
-
-
