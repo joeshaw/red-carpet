@@ -1,3 +1,26 @@
+2003-01-24  Joe Shaw  <joe@ximian.com>
+
+	* red_channelmodel.py: Add a TRANSIENT column, take sort and
+	filter functions, make it pretty similar to a PackageArray so we
+	can share some code between them with an abstract class later.
+	Add a "changed" signal.  Make the view for subscriptions use the
+	ChannelModel and derive from a thrashing treeview.
+
+	* red_mount.py: Get rid of the mounted_channels global list.  We
+	don't really need it, and we'll just ask the daemon for our
+	transient channels instead.  Make the treeview in the unmount
+	window use a ChannelModel instead of a ListStore so it handles
+	channel and subscription changes correctly, don't create a column
+	for an icon, since mounted channels don't have icons.
+
+	* red_packageview.py: Make the PackageView derive from
+	red_thrashingtreeview.TreeView and move most of the thrashing code
+	into an abstract class so things can use it for ChannelModels too.
+
+	* red_thrashingtreeview.py: Abstract widget which derives from
+	gtk.TreeView and thrashes the model so changes are rendered
+	correctly.
+
 2003-01-24  Tambet Ingo  <tambet@ximian.com>
 
 	* red_appwindow.py (AppWindow.register_component): Put on the

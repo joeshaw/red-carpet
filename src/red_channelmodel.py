@@ -24,6 +24,7 @@ import gobject
 import rcd_util
 import red_extra
 import red_serverlistener
+import red_thrashingtreeview
 
 def get_alias(ch):
     if ch["alias"]:
@@ -64,7 +65,11 @@ COLUMNS = (
     
     ("SUBSCRIBED",
      lambda x:x["subscribed"],
-     gobject.TYPE_INT),
+     gobject.TYPE_BOOLEAN),
+
+    ("TRANSIENT",
+     lambda x:x["transient"],
+     gobject.TYPE_BOOLEAN),
     
     ("ICON",
      lambda x:rcd_util.get_channel_icon(x["id"], 28, 28),
@@ -79,17 +84,25 @@ for i in range(len(COLUMNS)):
     name = COLUMNS[i][0]
     exec("COLUMN_%s = %d" % (name, i))
 
-def channel_cmp(a,b):
+def sort_channels_by_name(a,b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
 class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
 
-    def __init__(self):
-        red_extra.ListModel.__init__(self)
+    def __init__(self, sort_fn=None, filter_fn=None):
+        gobject.GObject.__init__(self)
         red_serverlistener.ServerListener.__init__(self)
-        self.channels = rcd_util.get_all_channels()
-        self.channels.sort(channel_cmp)
-        self.set_list(self.channels)
+        self.__pending_changes = []
+        self.__sort_fn = sort_fn
+        if sort_fn is None:
+            self.__sort_fn = sort_channels_by_name
+        self.__reverse_sort = 0
+        self.__filter_fn = filter_fn
+        self.__channels = rcd_util.get_all_channels()
+
+        self.set_list(self.__channels)
+        self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
+        self.set_filter_magic(self.__filter_fn)
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
@@ -107,7 +120,7 @@ class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
         return all[i]
 
     def get_all(self):
-        return self.channels
+        return self.__channels
 
     def spew(self):
         for c in self.get_all():
@@ -127,39 +140,56 @@ class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
 
     def refresh(self):
         print "refreshing channels"
-        self.channels = rcd_util.get_all_channels()
-        self.channels.sort(channel_cmp)
-        self.set_list(self.get_all())
+        def refresh_cb(me):
+            me.__channels = rcd_util.get_all_channels()
+        self.changed(refresh_cb)
 
     ###
     ### Other methods
     ###
 
-    def set_subscribed(self, channel, flag):
-        if channel["subscribed"] ^ flag:
-            server = rcd_util.get_server()
+    def do_changed(self):
+        operator, args = self.__pending_changes.pop()
+        if operator:
+            apply(operator, (self,) + args)
 
-            if not server.rcd.users.has_privilege("subscribe"):
-                # User does not have privileges to (un)subscribe
-                return
+            self.set_list(self.get_all())
+            self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
+            self.set_filter_magic(self.__filter_fn)
             
-            channel["subscribed"] = (flag and 1) or 0
-            if flag:
-                server.rcd.packsys.subscribe(channel["id"])
-            else:
-                server.rcd.packsys.unsubscribe(channel["id"])
+    def changed(self, operator, *args):
+        self.__pending_changes.append((operator, args))
+        self.emit("changed")
 
     def toggle_subscribed(self, channel):
-        self.set_subscribed(channel, not channel["subscribed"])
+        def set_subscribed_fn(model, ch, flag):
+            server = rcd_util.get_server()
+
+            ch["subscribed"] = (flag and 1) or 0
+
+            if flag:
+                server.rcd.packsys.subscribe(ch["id"])
+            else:
+                server.rcd.packsys.unsubscribe(ch["id"])
+
+        self.changed(set_subscribed_fn, channel, not channel["subscribed"])
+
+gobject.type_register(ChannelModel)
+
+gobject.signal_new("changed",
+                   ChannelModel,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   ())
 
 
 def make_channel_view(model):
 
-    view = gtk.TreeView(model)
+    view = red_thrashingtreeview.TreeView(model)
 
     def toggle_cb(cr, path, model):
-        channel = model.channels[int(path)]
-        model.toggle_subscribed(channel)
+        c = model.get_list_item(int(path))
+        model.toggle_subscribed(c)
 
     toggle = gtk.CellRendererToggle()
     toggle.set_property("activatable", 1)

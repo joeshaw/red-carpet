@@ -20,13 +20,12 @@ import gobject, gtk
 import red_extra
 import red_pendingops, red_packagearray
 import red_pixbuf
+import red_thrashingtreeview
 
-class PackageView(gtk.TreeView):
+class PackageView(red_thrashingtreeview.TreeView):
 
     def __init__(self):
         gobject.GObject.__init__(self)
-        self.__pre_changed_id = 0
-        self.__post_changed_id = 0
 
         self.set_rules_hint(1)
 
@@ -99,74 +98,13 @@ class PackageView(gtk.TreeView):
         pass
         #print "popup on %s (%d)" % (pkg["name"], i)
 
-#    def thrash_model(self):
-#        model = self.get_model()
-#        selpath = None
-#
-#        if model:
-#            select = self.get_selection()
-#            m, iter = select.get_selected()
-#            if iter:
-#                selpath = m.get_path(iter)
-#
-#        gtk.TreeView.set_model(self, None)
-#        gtk.TreeView.set_model(self, model)
-#
-#        if selpath:
-#            iter = model.get_iter(selpath)
-#            if iter:
-#                select = self.get_selection()
-#                select.select_iter(iter)
-
-    def pre_thrash_model(self):
-        model = self.get_model()
-        selpath = None
-        if model:
-            select = self.get_selection()
-            m, iter = select.get_selected()
-            if iter:
-                selpath = m.get_path(iter)
-        self.saved_selpath = selpath
-        self.saved_model = model
-        gtk.TreeView.set_model(self, None)
-
-    def post_thrash_model(self):
-        selpath = self.saved_selpath
-        model = self.saved_model
-        gtk.TreeView.set_model(self, model)
-        if selpath:
-            iter = model.get_iter(selpath)
-            if iter:
-                select = self.get_selection()
-                select.select_iter(iter)
-
-    def thrash_model(self):
-        self.pre_thrash_model()
-        self.post_thrash_model()
-
     def set_model(self, model):
         assert isinstance(model, red_packagearray.PackageArray)
-        old_model = self.get_model()
-        if self.__pre_changed_id:
-            old_model.disconnect(self.__pre_changed_id)
-        if self.__post_changed_id:
-            old_model.disconnect(self.__post_changed_id)
 
-        self.__pre_changed_id = 0
-        self.__post_changed_id = 0
-
-        def no_op(array):
-            pass
-        model.changed(no_op)
+        red_thrashingtreeview.TreeView.set_model(self, model)
         
-        gtk.TreeView.set_model(self, model)
-        
-        if model:
-            #self.set_headers_clickable(1)
-            self.__pre_changed_id = model.connect("changed",
-                                                  lambda x:self.pre_thrash_model())
-            self.__post_changed_id = model.connect_after("changed",
-                                                        lambda x:self.post_thrash_model())
+        #if model:
+        #    self.set_headers_clickable(1)
 
     def add_column(self, column,
                    title=None,
