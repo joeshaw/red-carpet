@@ -123,7 +123,8 @@ class ConnectionWindow(gtk.Dialog):
 
     def build(self):
         self.add_button(gtk.STOCK_QUIT, gtk.RESPONSE_NONE)
-        self.add_button("Connect", RESPONSE_CONNECT)
+        b = self.add_button("Connect", RESPONSE_CONNECT)
+        b.grab_default()
         def response_cb(dialog, id, this):
             if id != RESPONSE_CONNECT:
                 this.url = this.user = this.password = None

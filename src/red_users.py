@@ -298,21 +298,6 @@ class UsersWindow(gtk.Dialog):
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.connect("clicked", lambda x:self.destroy())
 
-class UsersComponent(red_component.Component):
-
-    def name(self):
-        return "Users"
-
-    def pixbuf(self):
-        # fixme
-        return "summary"
-
-    def build(self):
-        view = UsersView()
-        view.show()
-
-        return view
-
 COLUMN_USER = 0
 COLUMN_NAME = 1
 COLUMN_LAST = 2

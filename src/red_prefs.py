@@ -25,52 +25,69 @@ import ximian_xmlrpclib
 
 model = None
 
-class PrefsView(gtk.ScrolledWindow):
+def build_categories(prefs):
+    categories = []
+    for x in prefs:
+        c = x.get("category", None)
+        if c and not c in categories:
+            categories.append(c)
+
+    return categories
+
+class PrefsView(gtk.Notebook):
 
     def __init__(self):
-        gtk.ScrolledWindow.__init__(self)
+        gtk.Notebook.__init__(self)
         
-        global model
-        if not model:
-            server = rcd_util.get_server()
-            model = PrefsModel(server)
+        server = rcd_util.get_server()
+        prefs = server.rcd.prefs.list_prefs()
+        categories = build_categories(prefs)
 
-        view = gtk.TreeView(model)
+        # Pre 1.2 daemons didn't have categories.
+        if not categories:
+            categories = [None]
+            self.set_show_tabs(0)
 
-        col = gtk.TreeViewColumn("Description",
-                                 gtk.CellRendererText(),
-                                 text=COLUMN_DESCRIPTION)
-        view.append_column(col)
+        for c in categories:
+            model = PrefsModel(prefs, c)
+            view = gtk.TreeView(model)
 
-        r = CellRendererPref()
+            col = gtk.TreeViewColumn("Description",
+                                     gtk.CellRendererText(),
+                                     text=COLUMN_DESCRIPTION)
+            view.append_column(col)
 
-        def activated_cb(r, pref):
-            opp = ximian_xmlrpclib.Boolean(not pref["value"])
-            
-            if rcd_util.set_pref(pref["name"], opp):
-                pref["value"] = opp
+            r = CellRendererPref()
+
+            def activated_cb(r, pref):
+                opp = ximian_xmlrpclib.Boolean(not pref["value"])
+
+                if rcd_util.set_pref(pref["name"], opp):
+                    pref["value"] = opp
+                else:
+                    print "Couldn't set preference!"
+
+            r.connect("activated", activated_cb)
+
+            def editing_done_cb(r, pref, value):
+                print "Setting '%s' to '%s'" % (pref["name"], str(value))
+                if rcd_util.set_pref(pref["name"], value):
+                    pref["value"] = value
+                else:
+                    print "Couldn't set preference!"
+
+            r.connect("editing_done", editing_done_cb)
+
+            col = gtk.TreeViewColumn("Value", r, value=COLUMN_VALUE)
+            view.append_column(col)
+
+            view.show_all()
+
+            if c:
+                label = gtk.Label(c)
             else:
-                print "Couldn't set preference!"
-
-        r.connect("activated", activated_cb)
-
-        def editing_done_cb(r, pref, value):
-            print "Setting '%s' to '%s'" % (pref["name"], str(value))
-            if rcd_util.set_pref(pref["name"], value):
-                pref["value"] = value
-            else:
-                print "Couldn't set preference!"
-                
-
-        r.connect("editing_done", editing_done_cb)
-
-        col = gtk.TreeViewColumn("Value", r, value=COLUMN_VALUE)
-        view.append_column(col)
-
-        view.show_all()
-
-        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.add(view)
+                label = gtk.Label("Settings")
+            self.append_page(view, label)
 
 class PrefsWindow(gtk.Dialog):
 
@@ -85,20 +102,6 @@ class PrefsWindow(gtk.Dialog):
 
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.connect("clicked", lambda x:self.destroy())
-
-class PrefsComponent(red_component.Component):
-
-    def name(self):
-        return "System Preferences"
-
-    def pixbuf(self):
-        return "summary"
-
-    def build(self):
-        view = PrefsView()
-        view.show()
-
-        return view
 
 class CellRendererPref(gtk.GenericCellRenderer):
     __gproperties__ = {
@@ -215,13 +218,20 @@ gobject.signal_new("editing_done",
 COLUMN_PREF        = 0
 COLUMN_NAME        = 1
 COLUMN_DESCRIPTION = 2
-COLUMN_VALUE       = 3
-COLUMN_LAST        = 4
+COLUMN_CATEGORY    = 3
+COLUMN_VALUE       = 4
+COLUMN_LAST        = 5
         
 class PrefsModel(gtk.GenericTreeModel):
-    def __init__(self, server):
+    def __init__(self, prefs, category=None):
+
         gtk.GenericTreeModel.__init__(self)
-        self.prefs = server.rcd.prefs.list_prefs()
+        
+        if category:
+            self.prefs = [x for x in prefs \
+                          if x.get("category", None) == category]
+        else:
+            self.prefs = prefs
 
     def pref_to_column(self, pref, index):
         if index == COLUMN_PREF:
@@ -229,7 +239,9 @@ class PrefsModel(gtk.GenericTreeModel):
         elif index == COLUMN_NAME:
             return pref["name"]
         elif index == COLUMN_DESCRIPTION:
-            return pref["description"]
+            return string.join(rcd_util.linebreak(pref["description"], 50), "\n")
+        elif index == COLUMN_CATEGORY:
+            return pref.get("category", "")
         elif index == COLUMN_VALUE:
             return pref["value"]
 

@@ -64,35 +64,6 @@ class SubscriptionsWindow(gtk.Dialog):
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.connect("clicked", lambda x:self.destroy())
 
-class SubscriptionsComponent(red_component.Component):
-
-    def name(self):
-        return "Subscriptions"
-
-    def long_name(self):
-        return "Manage Subscriptions"
-
-    def pixbuf(self):
-        return "subscribed"
-
-    def build(self):
-        view = SubscriptionsView()
-        view.show()
-
-        return view
-
-    first_time = 1
-    
-    def visible(self, flag):
-        if self.first_time:
-            self.first_time = 0
-
-            server = rcd_util.get_server()
-            if not server.rcd.users.has_privilege("subscribe"):
-                show_sub_privs_dialog()
-
-        return red_component.Component.visible(self, flag)
-
 def show_sub_privs_dialog():
     message_box = gtk.MessageDialog(None, # FIXME: Make transient of app
                                     0,

@@ -34,6 +34,7 @@ import red_subscriptions
 import red_users
 import red_throbber
 import red_activation
+import red_about
 
 def refresh_cb(app):
     try:
@@ -204,8 +205,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/_File")
         bar.add("/_Edit")
         bar.add("/_View")
-        bar.add("/_Actions")
-        bar.add("/_Settings")
         bar.add("/_Help")
 
         bar.add("/File/Install From File...",
@@ -217,32 +216,34 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/File/sep", is_separator=1)
 
+        bar.add("/File/Activate...",
+                callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow))
+
+        bar.add("/File/Refresh Channel Data",
+                callback=refresh_cb)
+
+        bar.add("/File/sep2", is_separator=1)
+        
         bar.add("/File/Quit",
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
 
-        bar.add("/Edit/Subscriptions",
+        bar.add("/Edit/Subscriptions...",
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
-        bar.add("/Edit/Activation",
-                callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow))
-
-        bar.add("/Edit/Preferences",
+        bar.add("/Edit/Preferences...",
                 stock=gtk.STOCK_PREFERENCES,
                 callback=lambda x:self.open_or_raise_window(red_prefs.PrefsWindow))
 
-        bar.add("/Edit/Users",
+        bar.add("/Edit/Users...",
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
-        bar.add("/Actions/Refresh Channel Data",
-                callback=refresh_cb)
-        bar.add("/Actions/sep", is_separator=1)
-
-        bar.add("/View/Server Information",
+        bar.add("/View/Server Information...",
                 callback=view_server_info_cb)
+        bar.add("/View/sep", is_separator=1)
         
-        bar.add("/Settings/Foo")
-        bar.add("/Help/Foo")
+        bar.add("/Help/About...",
+                callback=lambda x:red_about.About().show())
 
     def sensitize_go_button(self, en):
         self.go_button.set_sensitive(en)
@@ -266,7 +267,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def checked_set_cb(flag):
             if flag:
                 self.activate_component(comp)
-        self.menubar.add("/Actions/" + comp.long_name(),
+        self.menubar.add("/View/" + comp.long_name(),
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb)
 
