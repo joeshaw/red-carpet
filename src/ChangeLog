@@ -1,3 +1,15 @@
+2003-09-16  Joe Shaw  <joe@ximian.com>
+
+	Patch from Marcin Krzyzanowski <krzak@linux.net.pl>
+
+	* red_depcomponent.py (DepComponent): red_component.Component
+	already inherits from gobject.GObject, so don't do it again.
+
+	* red_settings.py (RCConfig): Add a getboolean method which
+	accepts "true", "on", "yes", "1".
+	(DaemonData): Call getboolean() for getting whether the daemon
+	we're talking to is local.
+
 2003-09-05  Joe Shaw  <joe@ximian.com>
 
 	* red-carpet.in: Get the locale dir and pass it into

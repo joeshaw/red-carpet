@@ -41,7 +41,7 @@ def filter_deps(dep_list):
     return map(filter_dep, dep_list)
 
 
-class DepComponent(gobject.GObject, red_component.Component):
+class DepComponent(red_component.Component):
 
     def __init__(self, install_packages=[], remove_packages=[], verify=0):
         gobject.GObject.__init__(self)

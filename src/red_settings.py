@@ -61,6 +61,16 @@ class RCConfig:
 
         return self.__public.get(section, option)
 
+    def getboolean(self, path):
+        section, option, default = self.parse_path(path)
+        if not self.__public.has_section(section) or \
+           not self.__public.has_option(section, option):
+            if default:
+                return default
+            return ""
+
+        return self.__public.getboolean(section, option)
+
     def set(self, path, value):
         section, option, default = self.parse_path(path)
         if not self.__public.has_section(section):
@@ -140,7 +150,7 @@ class DaemonData:
         if os.environ.has_key("USER"):
             user_path += "=" + os.environ["USER"]
 
-        self.local =    int(config.get("daemon/local=1"))
+        self.local =    config.getboolean("daemon/local=1")
         self.user =     config.get(user_path)
         self.password = config.get_private("daemon/pass")
 
