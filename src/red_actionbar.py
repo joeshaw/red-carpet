@@ -27,6 +27,7 @@ class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
         gtk.HBox.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
 
+        self.update_pending = 0
         self.set_spacing(6)
 
         self.tooltips = gtk.Tooltips()
@@ -98,8 +99,10 @@ class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
                 s = i["sensitive_fn"]()
 
             i["widget"].set_sensitive(s)
+
+        self.update_pending = 0
         return 0
 
     def pendingops_changed(self, pkg, key, value, old_value):
-        if key == "action":
+        if key == "action" and not self.update_pending:
             self.update_pending = gtk.idle_add(self.sensitize_actionbar_items)

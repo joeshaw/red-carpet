@@ -1,5 +1,9 @@
 2003-03-26  Tambet Ingo  <tambet@ximian.com>
 
+	* red_actionbar.py (Actionbar.pendingops_changed): Don't start
+	sensitize_actionbar_items for every single pendingops_changed.
+	Once is enough. Fixes #40308.
+
 	* red_users.py (UsersWindow.build): Removed all sensitizing from
 	here to sensitize method. Call sensitize method whenever users
 	option is changed.
