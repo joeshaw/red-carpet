@@ -3,6 +3,9 @@
 	* red_channeloption.py: The channel ID parameter is a string in
 	libredcarpet/rcd HEAD, so change it in the signal definition.
 
+	* red_searchbox.py (__assemble): Fix typo, we *don't* want the
+	"No/Unknown channel" option when browsing available software.
+
 2003-04-29  Joe Shaw  <joe@ximian.com>
 
 	* red_my_computer.py: Renamed to red_software.py

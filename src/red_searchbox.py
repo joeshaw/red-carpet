@@ -327,7 +327,7 @@ class SearchBox(gtk.VBox):
         if self.__system_packages_only:
             any_subd=0
         elif self.__uninstalled_packages_only:
-            no_chan = 1
+            no_chan = 0
 
         self.__ch_opt = red_channeloption.ChannelOption(allow_any_channel=1,
                                                         allow_any_subd_channel=any_subd,
