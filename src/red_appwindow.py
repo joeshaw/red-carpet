@@ -84,6 +84,7 @@ class AppWindow(gtk.Window):
         self.components = []
         self.current_comp = None
         self.comp_display_id = 0
+        self.comp_message_id = 0
 
         self.menubar = red_menubar.MenuBar()
         self.menubar.set_user_data(self)
@@ -91,6 +92,8 @@ class AppWindow(gtk.Window):
         
         self.sidebar = red_sidebar.SideBar()
         self.transactionbar = red_transaction.TransactionBar()
+
+        self.statusbar = gtk.Statusbar()
 
         self.header  = gtk.EventBox()
         self.upper   = gtk.EventBox()
@@ -132,7 +135,11 @@ class AppWindow(gtk.Window):
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
 
-        self.table.attach(self.transactionbar,
+        south = gtk.HBox(0, 0)
+        south.pack_start(self.transactionbar, 0, 1, 2)
+        south.pack_start(self.statusbar, 1, 1, 2)
+        south.show_all()
+        self.table.attach(south,
                           0, 2, 5, 6,
                           gtk.FILL, gtk.FILL,
                           0, 2)
@@ -184,6 +191,14 @@ class AppWindow(gtk.Window):
             self.current_comp.disconnect(self.comp_display_id)
             self.comp_display_id = 0
 
+        # Disconnect from the old component's message signal
+        if self.comp_message_id:
+            self.current_comp.disconnect(self.comp_message_id)
+            self.comp_message_id = 0
+
+        # Clear the status bar
+        self.statusbar.pop(0)
+
         # Show the new component, hide the old one.
         comp.visible(1)
         if self.current_comp:
@@ -203,8 +218,14 @@ class AppWindow(gtk.Window):
         def display_cb(c, type, w, win):
             win.switch_children(type, w)
 
-        # Listen for display signals from the the new component
+        def message_cb(c, msg, win):
+            win.statusbar.push(0, msg)
+
+        # Listen for display and message signals from the the new component
         if comp:
             self.comp_display_id = comp.connect("display",
                                                 display_cb,
+                                                self)
+            self.comp_message_id = comp.connect("message",
+                                                message_cb,
                                                 self)

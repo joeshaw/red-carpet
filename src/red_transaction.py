@@ -106,7 +106,7 @@ class TransactionComponent(red_component.Component):
         self.array = TransactionArray()
 
         view = red_packageview.PackageView()
-        view.append_action_column()
+        view.append_status_column()
         view.append_name_column(show_channel_icon=1)
         view.append_version_column()
         view.append_size_column()
@@ -120,6 +120,7 @@ class TransactionComponent(red_component.Component):
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scrolled.add(view)
+        view.show()
 
         self.display("main", scrolled)
 
@@ -273,7 +274,6 @@ class TransactionWindow(gtk.Window):
             msg = ""
 
         self.progress_bar.set_text(msg)
-                                              
 
     def update_download(self):
         serv = rcd_util.get_server()

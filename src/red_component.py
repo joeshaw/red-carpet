@@ -67,6 +67,9 @@ class Component(gobject.GObject):
     def set_transaction(self, transaction):
         self.transaction = transaction
 
+    def message(self, msg):
+        self.emit("message", msg)
+
     ###
     ### Virtual functions
     ###
@@ -99,3 +102,9 @@ gobject.signal_new("visible",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gobject.TYPE_BOOLEAN,))
+
+gobject.signal_new("message",
+                   Component,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_STRING, ))

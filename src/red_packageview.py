@@ -117,27 +117,6 @@ class PackageView(gtk.TreeView):
             self.__changed_id = model.connect_after("changed",
                                                     lambda x:self.thrash_model())
 
-    def append_action_column(self,
-                             column_title="Action",
-                             show_action_icon=1,
-                             show_action_name=1):
-        col = gtk.TreeViewColumn()
-        col.set_title(column_title)
-
-        if show_action_icon:
-            render_icon = gtk.CellRendererPixbuf()
-            col.pack_start(render_icon, 0)
-            col.set_attributes(render_icon,
-                               pixbuf=red_packagearray.COLUMN_ACTION_ICON)
-
-        if show_action_name:
-            render_text = gtk.CellRendererText()
-            col.pack_start(render_text, 0)
-            col.set_attributes(render_text,
-                               markup=red_packagearray.COLUMN_ACTION)
-
-        self.append_column(col)
-        return col
 
     def append_status_column(self,
                              column_title="Status",
@@ -195,11 +174,8 @@ class PackageView(gtk.TreeView):
             return
 
         # Fix the old column header
-        if self.__sorted_by and column != self.__sorted_by:
-            old_info = self.__column_info[self.__sorted_by]
-            w = gtk.Label(old_info["title"])
-            w.show()
-            self.__sorted_by.set_widget(w)
+        if self.__sorted_by:
+            self.__sorted_by.set_sort_indicator(0)
 
         info = self.__column_info[column]
         if not info:
@@ -212,19 +188,13 @@ class PackageView(gtk.TreeView):
         else:
             pass # FIXME: probably should throw an exception
 
-        # Assemble a new column header
-        w = gtk.HBox(0, 0)
-        label = gtk.Label(info["title"])
+        column.set_sort_indicator(1)
         if reverse:
-            arrow_type = gtk.ARROW_DOWN
+            order = gtk.SORT_DESCENDING
         else:
-            arrow_type = gtk.ARROW_UP
-        arrow = gtk.Arrow(arrow_type, gtk.SHADOW_NONE)
-        w.pack_start(label, 0, 0, 0)
-        w.pack_start(arrow, 0, 0, 0)
-        w.show_all()
-        column.set_widget(w)
-
+            order = gtk.SORT_ASCENDING
+        column.set_sort_order(order)
+                              
         self.__sorted_by = column
         self.__reverse_sort = reverse
         

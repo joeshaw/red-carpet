@@ -75,7 +75,7 @@ def pkg_is_installed(pkg):
     return pkg["installed"]
 
 def pkg_is_name_installed(pkg):
-    return pkg["name_installed"]
+    return pkg["name_installed"] or pkg["installed"]
 
 def pkg_is_upgrade(pkg):
     return pkg["name_installed"] > 0
@@ -85,34 +85,8 @@ def pkg_is_downgrade(pkg):
 
 def pkg_status(pkg):
 
-    if pkg["name_installed"] > 0: # upgrade
-        return "upgrade"
-    elif pkg["name_installed"] < 0:
-        return "newer version installed"
-    if pkg["installed"]:
-        return "installed"
-    else:
-        return ""
-
-__update_icon          = red_pixbuf.get_pixbuf("update")
-__downgrade_icon       = red_pixbuf.get_pixbuf("warning", 24, 24)
-__installed_icon       = red_pixbuf.get_pixbuf("installed")
-
-def pkg_status_icon(pkg):
-    if pkg["name_installed"] > 0: # upgrade
-        return __update_icon
-    elif pkg["name_installed"] < 0: # downgrade
-        return __downgrade_icon
-    elif pkg["installed"]:
-        return __installed_icon
-    return None
-
-# __pending 1 = to be installed
-# __pending 2 = to be uninstalled
-def pkg_action(pkg):
     pending = red_pendingops.get_action(pkg)
     if pending:
-
         if pending == red_pendingops.TO_BE_INSTALLED \
            or pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
             if pkg["name_installed"] > 0:
@@ -134,16 +108,25 @@ def pkg_action(pkg):
         
         else:
             return "?Unknown?"
+
+    if pkg["installed"]:
+        return "installed"
+    elif pkg["name_installed"] > 0: # upgrade
+        return "upgrade"
+    elif pkg["name_installed"] < 0:
+        return "downgrade"
     else:
         return ""
 
-__to_be_installed_icon = red_pixbuf.get_pixbuf("to-be-installed")
-__to_be_removed_icon   = red_pixbuf.get_pixbuf("to-be-removed")
-
+__to_be_installed_icon     = red_pixbuf.get_pixbuf("to-be-installed")
+__to_be_removed_icon       = red_pixbuf.get_pixbuf("to-be-removed")
 __to_be_installed_xxx_icon = red_pixbuf.get_pixbuf("to-be-installed-cancelled")
 __to_be_removed_xxx_icon   = red_pixbuf.get_pixbuf("to-be-removed-cancelled")
+__update_icon              = red_pixbuf.get_pixbuf("update")
+__downgrade_icon           = red_pixbuf.get_pixbuf("warning", width=24, height=24)
+__installed_icon           = red_pixbuf.get_pixbuf("installed")
 
-def pkg_action_icon(pkg):
+def pkg_status_icon(pkg):
     pending = red_pendingops.get_action(pkg)
     if pending:
         if pending == red_pendingops.TO_BE_INSTALLED:
@@ -156,8 +139,13 @@ def pkg_action_icon(pkg):
             return __to_be_removed_xxx_icon
         else:
             return None
-    else:
-        return None
+    if pkg["installed"]:
+        return __installed_icon
+    elif pkg["name_installed"] > 0: # upgrade
+        return __update_icon
+    elif pkg["name_installed"] < 0: # downgrade
+        return __downgrade_icon
+    return None
 
 COLUMNS = (
     ("PKG",               pkg,                   gobject.TYPE_PYOBJECT),
@@ -178,8 +166,6 @@ COLUMNS = (
     ("IS_DOWNGRADE",      pkg_is_downgrade,      gobject.TYPE_BOOLEAN),
     ("STATUS",            pkg_status,            gobject.TYPE_STRING),
     ("STATUS_ICON",       pkg_status_icon,       gtk.gdk.Pixbuf),
-    ("ACTION",            pkg_action,            gobject.TYPE_STRING),
-    ("ACTION_ICON",       pkg_action_icon,       gtk.gdk.Pixbuf),
     )
 
 for i in range(len(COLUMNS)):
@@ -400,6 +386,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         red_serverlistener.ServerListener.__init__(self)
 
         self.__packages = []
+        self.pending_refresh = 0
 
     def sort(self, sort_fn, reverse):
         self.__packages.sort(sort_fn)
@@ -410,15 +397,21 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
     def get_packages_from_daemon(self, server):
         return []
 
-    def packages_changed(self, server):
-        packages = self.get_packages_from_daemon(server)
-
-        def set_pkg_cb(array, p):
-            array.__packages = p
+    def refresh(self):
+        packages = self.get_packages_from_daemon(rcd_util.get_server())
+        def set_pkg_cb(me, p):
+            me.__packages = p
         self.changed(set_pkg_cb, packages)
+        self.pending_refresh = 0
 
-    def sync_with_daemon(self):
-        self.packages_changed(rcd_util.get_server())
+    def schedule_refresh(self):
+        if self.pending_refresh == 0:
+            self.pending_refresh = gtk.timeout_add(20,
+                                                   lambda s: s.refresh(),
+                                                   self)
+
+    def packages_changed(self, server):
+        self.schedule_refresh()
 
     def len(self):
         return len(self.__packages)
@@ -458,7 +451,7 @@ class PackagesFromQuery(PackagesFromDaemon):
         
     def set_query(self, query):
         self.query = query
-        self.sync_with_daemon()
+        self.schedule_refresh()
 
 
 ###############################################################################
@@ -468,7 +461,7 @@ class UpdatedPackages(PackagesFromDaemon):
 
     def __init__(self):
         PackagesFromDaemon.__init__(self)
-        self.sync_with_daemon()
+        self.refresh()
 
     def get_packages_from_daemon(self, server):
         packages = []
@@ -482,9 +475,9 @@ class UpdatedPackages(PackagesFromDaemon):
     # The list of updates needs to refresh when the list of available
     # channels or subscriptions change.
     def subscriptions_changed(self, server):
-        self.packages_changed(server)
+        self.schedule_refresh()
 
     def channels_changed(self, server):
-        self.packages_changed(server)
+        self.schedule_refresh()
 
 

@@ -128,12 +128,13 @@ def poll_cb():
         
     return 1
 
-def reset_polling():
+def reset_polling(do_immediate_poll=1):
     global poll_timeout
     if poll_timeout:
         gtk.timeout_remove(poll_timeout)
     # do the first poll immediately
-    poll_cb()
+    if do_immediate_poll:
+        poll_cb()
     poll_timeout = gtk.timeout_add(timeout_len, poll_cb)
 
 def freeze_polling():
@@ -150,8 +151,9 @@ def thaw_polling():
             reset_polling() # and then get poll timeout started again
 
 
-
-reset_polling() # Start polling
+# Start polling.  We skip our first poll, since we won't have made a
+# connection to the server yet.
+reset_polling(do_immediate_poll=0)
 
 ###############################################################################
 

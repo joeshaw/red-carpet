@@ -53,7 +53,7 @@ class SummaryComponent(red_component.Component):
         browser = red_packagebrowser.PackageBrowser()
 
         view = browser.get_view()
-        view.append_action_column()
+        view.append_status_column()
         view.append_importance_column()
         view.append_channel_column(show_channel_name=0)
         view.append_name_column()
@@ -65,6 +65,32 @@ class SummaryComponent(red_component.Component):
         browser.show()
 
         self.display("main", browser)
+
+        lower = gtk.HBox(0, 0)
+        sel = gtk.Button("Select All")
+        unsel = gtk.Button("Unselect All")
+        go = gtk.Button("Update All Now!")
+
+        def sel_all_cb(b, summary):
+            for pkg in summary.array.get_all():
+                red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)
+
+        def unsel_all_cb(b, summary):
+            for pkg in summary.array.get_all():
+                red_pendingops.set_action(pkg, red_pendingops.NO_ACTION)
+
+        def go_cb(b, summary):
+            sel_all_cb(b, summary)
+
+        sel.connect("clicked", sel_all_cb, self)
+        unsel.connect("clicked", unsel_all_cb, self)
+        go.connect("clicked", go_cb, self)
+
+        lower.pack_start(sel, 0, 0, 2)
+        lower.pack_start(unsel, 0, 0, 2)
+        lower.pack_end(go, 0, 0, 2)
+        lower.show_all()
+        self.display("lower", lower)
 
         def act_cb(view, i, pkg):
             red_pendingops.toggle_action(pkg)

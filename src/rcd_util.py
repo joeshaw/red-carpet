@@ -129,7 +129,7 @@ def get_channel_image(id, width=0, height=0):
     return img
 
 def get_package_channel_name(pkg):
-    if pkg.has_key("channel"):
+    if pkg.has_key("channel") and pkg["channel"] > 0:
         return get_channel_name(pkg["channel"])
     elif pkg.has_key("channel_guess"):
         return get_channel_name(pkg["channel_guess"])
@@ -137,7 +137,7 @@ def get_package_channel_name(pkg):
         return "????"
 
 def get_package_channel_icon(pkg, width=0, height=0):
-    if pkg.has_key("channel"):
+    if pkg.has_key("channel") and pkg["channel"] > 0:
         return get_channel_icon(pkg["channel"], width, height)
     elif pkg.has_key("channel_guess"):
         return get_channel_icon(pkg["channel_guess"], width, height)
@@ -165,6 +165,27 @@ def get_package_key(pkg):
     return "%s/%s/%d" % (pkg["name"],
                          get_package_EVR(pkg),
                          pkg["channel"])
+
+###############################################################################
+
+def filter_package_dups(pkgs):
+
+    def pkg_to_key(p):
+        ch = p["channel"] or p.get("channel_guess", 0);
+        return "%d:%s:%d:%s:%s" % \
+               (ch, p["name"], p["epoch"], p["version"], p["release"])
+
+    in_channel = {}
+    for p in pkgs:
+        if p["installed"] and p["channel"]:
+            in_channel[pkg_to_key(p)] = 1
+
+    filtered = []
+    for p in pkgs:
+        if p["channel"] != 0 or not in_channel.has_key(pkg_to_key(p)):
+            filtered.append(p)
+
+    return filtered
 
 ###############################################################################
 
