@@ -1017,7 +1017,7 @@ class Transport:
 
     def generate_digest(self, auth, handler, username, password):
         import md5
-        import rcutil
+        import rcd_util
         import os
 
         # FIXME: This only does the MD5 algorithm (not MD5-sess) and
@@ -1025,19 +1025,19 @@ class Transport:
 
         auth_info = parse_keqv_list(parse_http_list(auth))
 
-        A1 = rcutil.hexstr(md5.new(username + ":" +
-                                   auth_info["realm"] + ":" +
-                                   password).digest())
-        A2 = rcutil.hexstr(md5.new("POST:" + handler).digest())
+        A1 = rcd_util.hexstr(md5.new(username + ":" +
+                                     auth_info["realm"] + ":" +
+                                     password).digest())
+        A2 = rcd_util.hexstr(md5.new("POST:" + handler).digest())
 
-        cnonce = rcutil.hexstr(md5.new(
+        cnonce = rcd_util.hexstr(md5.new(
             "%s:%s:%s" % (str(self),
                           str(os.getpid()),
                           str(time.time()))).digest())
         
-        response = rcutil.hexstr(md5.new(A1 + ":" + auth_info["nonce"] +
-                                         ":00000001:" + cnonce +
-                                         ":auth:" + A2).digest())
+        response = rcd_util.hexstr(md5.new(A1 + ":" + auth_info["nonce"] +
+                                           ":00000001:" + cnonce +
+                                           ":auth:" + A2).digest())
 
         self.__auth_data = 'Digest username="%s", realm="%s", nonce="%s", ' \
                            'cnonce="%s", nc=00000001, qop=auth, uri="%s", ' \

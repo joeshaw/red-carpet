@@ -15,23 +15,71 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string
+import sys, os, string
 import md5
 import ximian_xmlrpclib
 import gobject, gtk
 import red_pixbuf, red_serverproxy
+import red_settings
+
+import socket
 
 server = None
 server_proxy = None
+
+def connect_to_server():
+    d = red_settings.ConnectionWindow()
+    url, username, password = d.run()
+    d.destroy()
+    gtk.threads_leave()
+
+    if not url:
+        sys.exit(1)
+
+    transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
+
+    err_msg = None
+    try:
+        server = ximian_xmlrpclib.Server(url,
+                                         auth_username=username,
+                                         auth_password=password,
+                                         verbose=transport_debug)
+    except:
+        err_msg = "Unable to connect to the daemon"
+
+    if not err_msg:
+        try:
+            ping = server.rcd.system.ping()
+        except socket.error, f:
+            err_msg = f[1]
+        except ximian_xmlrpclib.ProtocolError, f:
+            err_msg = f
+
+    if err_msg:
+        dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
+                                   gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                   "Unable to connect to the daemon:\n '%s'." % err_msg)
+        dialog.run()
+        dialog.destroy()
+
+        server = None
+        server_proxy = None
+        server = connect_to_server()
+    else:
+        register_server(server)
+        print "Connected to %s\n%s" % (ping["name"], ping["copyright"])
+
+    return server
 
 def register_server(srv):
     global server, server_proxy
     server = srv
     server_proxy = red_serverproxy.ServerProxy(server)
-    ping = server.rcd.system.ping()
-    print "Connected to %s\n%s" % (ping["name"], ping["copyright"])
 
 def get_server():
+    global server
+    if not isinstance(server, ximian_xmlrpclib.Server):
+        server = connect_to_server()
     return server
 
 def get_server_proxy():

@@ -35,28 +35,6 @@ red_running = 1
 
 gtk.threads_init()
 
-def connect_to_server():
-    ## Make contact with the daemon.
-    ## We assume local access only
-    url = "/var/run/rcd/rcd"
-    username = None
-    password = None
-
-    transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
-
-    try:
-        server = ximian_xmlrpclib.Server(url,
-                                         auth_username=username,
-                                         auth_password=password,
-                                         verbose=transport_debug)
-    except:
-        sys.stderr.write("Unable to connect to the daemon.\n")
-        sys.exit(1)
-
-    rcd_util.register_server(server)
-
-    return server
-
 ###
 ### This is some code to help us track down performance problems
 ### in GtkTreeView, etc.  Turned off by default.
@@ -102,7 +80,7 @@ def main(version):
     print "Copyright (C) 2002 Ximian Inc."
     print
     
-    server = connect_to_server()
+    server = rcd_util.get_server()
 
     ticker()
 
