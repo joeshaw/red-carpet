@@ -1,0 +1,39 @@
+Ximian Red Carpet is a graphical interface to the Red Carpet Daemon (rcd).
+
+ABOUT RED CARPET
+----------------
+To use Red Carpet, you will also need the Red Carpet Daemon (rcd),
+available in the "rcd" module in GNOME CVS (and probably from wherever
+you got this package).
+
+Red Carpet uses XML-RPC, either over unix domain sockets (for local
+connections) or secure HTTP (for remote connections).  Yes, Red Carpet
+can be used to manage systems remotely.  That's part of the reason why
+it's so cool.
+
+Security is handled by the Red Carpet Daemon.  Remote connections
+will require a username and password, whereas local connections are
+authorized by the kernel.  By default all local users have only viewing
+privileges (except root, which has superuser privileges); remote users
+have no privileges.
+
+
+BUILDING AND DEVELOPING
+-----------------------
+Red Carpet is written in Python and C.  It requires
+
+  * Python 2.2.2 or newer
+
+  * pygtk 1.99.15 or newer
+
+Red Carpet can only connect to rcd 1.2.1 or newer.
+
+If you have the necessary requirements, building Red Carpet is easy.
+It uses GNU autotools, so all you need to do is:
+
+  % ./configure   (or ./autogen.sh, if you are building from CVS)
+  % make
+  % make install
+
+We welcome contributors to Red Carpet.  Please see the HACKING file for
+more info on contributing.

@@ -1,0 +1,17 @@
+
+CONTRIBUTING
+------------
+
+Contributions to Red Carpet are more than welcome.  Red Carpet is
+written in Python and C.  It uses Gtk+ 2.2 and the pygtk, the Python
+Gtk+ bindings.
+
+Discussion takes place on the rc-devel@lists.ximian.com mailing list.
+Patches should be sent there, and should follow the existing stylistic
+conventions, be accompanied by a ChangeLog entry, and sent in GNU
+unified diff format (diff -u).
+
+Please DO NOT commit to CVS without approval from one of the
+maintainers.
+
+
