@@ -1,3 +1,8 @@
+2003-02-27  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packagearray.py (sort_pkgs_by_action): Fixed an embarassing
+	typo which crashed rc on sorting by "action".
+
 2003-02-27  Joe Shaw  <joe@ximian.com>
 
 	* red_settings.py (DaemonSettings.build): Make enter in the

@@ -258,7 +258,7 @@ def sort_pkgs_by_action(a, b):
                 else:
                     return 2
 
-            elif pending == red_pending.TO_BE_REMOVED \
+            elif pending == red_pendingops.TO_BE_REMOVED \
                  or pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
                 return 3
         else:
