@@ -29,6 +29,7 @@ class SearchComponent(red_component.Component):
 
     def __init__(self):
         red_component.Component.__init__(self)
+        self.__sbox = None
 
     def name(self):
         return _("Search")
@@ -93,11 +94,10 @@ class SearchComponent(red_component.Component):
         self.__sbox.set_widget(scrolled)
         self.__sbox.show()
 
+        self.__sbox.try_to_grab_focus()
+
         return self.__sbox
  
     def activated(self):
-        def activated_cb(this):
-            pass
-            #entry = this.__sbox.get_search_entry()
-            #entry.grab_focus()
-        gtk.idle_add(activated_cb, self)
+        if self.__sbox:
+            self.__sbox.try_to_grab_focus()

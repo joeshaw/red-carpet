@@ -1,5 +1,12 @@
 2003-02-27  Jon Trowbridge  <trow@ximian.com>
 
+	* red_search.py (SearchComponent.activated): Have the SearchBox
+	try to grab focus when the component is activated...
+	(SearchComponent.build): ...as well as when it is constructed.
+
+	* red_searchbox.py (SearchBox.try_to_grab_focus): Pick an
+	appropriate search-related widget and have it grab the focus.
+
 	* red_appwindow.py (AppWindow.assemble_toolbar): Add a
 	"refresh" item to the toolbar. (Fixes #38705)
 

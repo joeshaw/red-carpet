@@ -381,7 +381,12 @@ class SearchBox(gtk.VBox):
         self.pack_start(self.__adv_row, expand=0, fill=0, padding=2)
 
 
-        
+    def try_to_grab_focus(self):
+        if self.__allow_entry:
+            w = self.__entry
+        else:
+            w = self.__ch_opt
+        gtk.idle_add(lambda x: x.grab_focus(), w)
 
 
     def get_query(self):
