@@ -1,3 +1,7 @@
+2003-02-28  Tambet Ingo  <tambet@ximian.com>
+
+	* red_searchbox.py (SearchBox.__assemble): Added spacing for entry_row.
+
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
 	* red_thrashingtreeview.py (TreeView.post_thrash_model): Always

@@ -339,7 +339,7 @@ class SearchBox(gtk.VBox):
         ### entry and some option menus.
         ###
 
-        entry_row = gtk.HBox(0, 0)
+        entry_row = gtk.HBox(0, 6)
 
         sect_opt = self.__assemble_section_option()
         entry_row.pack_start(sect_opt, expand=0, fill=0, padding=0)
