@@ -1,3 +1,14 @@
+2003-02-22  Tambet Ingo  <tambet@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Added red_console.py
+
+	* red_users.py (User.__init__): Added new parameter "any_user". This
+	represents "All" users in History page.
+	(User.is_any_user): Return true for meta-user "All"
+
+	* red_history.py (HistorySearchBar.updated): Use is_any_user method
+	instead of string comparision.
+
 2003-02-22  Jon Trowbridge  <trow@ximian.com>
 
 	* Marked a whole bunch of strings for translation.  Made

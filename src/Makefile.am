@@ -15,6 +15,7 @@ red_carpetsupport_DATA =	\
 	red_channelmodel.py			\
 	red_channeloption.py			\
 	red_component.py			\
+	red_console.py				\
 	red_deaddaemon.py			\
 	red_depcomponent.py			\
 	red_depview.py				\

@@ -25,10 +25,14 @@ from red_gettext import _
 opt = None
 
 class User:
-    def __init__(self, name, pwd=None, privileges=[]):
+    def __init__(self, name=None, pwd=None, privileges=[], any_user=0):
+        if any_user:
+            name = _("All")
+
         self.name_set(name)
         self.pwd_set(pwd)
         self.privileges_set(privileges)
+        self.__any_user = any_user
 
     def __cmp__(self, other):
         if not isinstance(other, User):
@@ -97,6 +101,9 @@ class User:
         server = rcd_util.get_server_proxy()
         th = server.rcd.users.remove(self.name_get())
         th.connect("ready", self.rpc_call_ready_cb)
+
+    def is_any_user(self):
+        return self.__any_user
 
 
 def make_users_view(model):
@@ -538,7 +545,7 @@ class UsersOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         menu = gtk.Menu()
 
         if self.__allow_all:
-            u = User("All")
+            u = User(any_user=1)
             self.__users.insert(0, u)
 
         for u in self.__users:

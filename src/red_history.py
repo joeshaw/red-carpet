@@ -137,7 +137,7 @@ class HistorySearchBar(HistoryFilter):
     def updated(self):
         self.query_reset()
         user = self.user_opt.get_selected_user()
-        if user and user.name_get() != _("All"):
+        if user and not user.is_any_user():
             self.query.append(["user", "contains", user.name_get()])
         action = self.action_opt.get_active_item()
         if action:
