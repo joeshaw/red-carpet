@@ -116,8 +116,7 @@ class Component(gobject.GObject):
 
     def packages_selected(self, pkgs):
         self.__current_pkgs = pkgs
-        for pkg in pkgs:
-            self.emit("package_selected", pkg)
+        self.emit("packages_selected", pkgs)
 
     def get_current_packages(self):
         return self.__current_pkgs
@@ -242,7 +241,7 @@ gobject.signal_new("busy",
                    gobject.TYPE_NONE,
                    (gobject.TYPE_BOOLEAN,))
 
-gobject.signal_new("package_selected",
+gobject.signal_new("packages_selected",
                    Component,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
@@ -323,19 +322,19 @@ class ComponentListener:
             listener.__check_component(comp)
             listener.do_component_busy(flag)
 
-        def pkgsel_cb(comp, pkg, listener):
+        def pkgsel_cb(comp, pkgs, listener):
             listener.__check_component(comp)
-            listener.do_component_package_selected(pkg)
+            listener.do_component_packages_selected(pkgs)
 
         if comp:
-            self.__display_id = comp.connect("display",          display_cb,  self)
-            self.__switch_id  = comp.connect("switch",           switch_cb,   self)
-            self.__push_id    = comp.connect("push",             push_cb,     self)
-            self.__pop_id     = comp.connect("pop",              pop_cb,      self)
-            self.__msgpush_id = comp.connect("message_push",     msg_push_cb, self)
-            self.__msgpop_id  = comp.connect("message_pop",      msg_pop_cb,  self)
-            self.__busy_id    = comp.connect("busy",             busy_cb,     self)
-            self.__pkgsel_id  = comp.connect("package_selected", pkgsel_cb,   self)
+            self.__display_id = comp.connect("display",           display_cb,  self)
+            self.__switch_id  = comp.connect("switch",            switch_cb,   self)
+            self.__push_id    = comp.connect("push",              push_cb,     self)
+            self.__pop_id     = comp.connect("pop",               pop_cb,      self)
+            self.__msgpush_id = comp.connect("message_push",      msg_push_cb, self)
+            self.__msgpop_id  = comp.connect("message_pop",       msg_pop_cb,  self)
+            self.__busy_id    = comp.connect("busy",              busy_cb,     self)
+            self.__pkgsel_id  = comp.connect("packages_selected", pkgsel_cb,   self)
 
     def do_component_display(self, widget):
         pass
@@ -358,5 +357,5 @@ class ComponentListener:
     def do_component_busy(self, flag):
         pass
 
-    def do_component_package_selected(self, pkg):
+    def do_component_packages_selected(self, pkg):
         pass

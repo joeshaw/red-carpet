@@ -1,5 +1,16 @@
 2003-03-10  Joe Shaw  <joe@ximian.com>
 
+	* red_appwindow.py: For the install/remove/cancel/info buttons,
+	check to make sure that any packages are selected.  If not,
+	desensitize them.
+
+	* red_component.py (Component.packages_selected): Emit a single
+	signal with the entire list of selected packages, since doing an
+	emit per package is overkill and then we have no way of knowing
+	that there are no packages selected.
+	
+2003-03-10  Joe Shaw  <joe@ximian.com>
+
 	* red_actionbar.py (Actionbar): Make this an HBox instead of an
 	HButtonBox so we don't have to have homogeneous buttons.
 

@@ -278,6 +278,10 @@ class AppWindow(gtk.Window,
             return 0
 
         pkgs = comp.get_current_packages()
+
+        if not pkgs:
+            return 0
+        
         return red_pendingops.can_perform_action_multiple(
             pkgs, red_pendingops.TO_BE_INSTALLED)
 
@@ -288,6 +292,10 @@ class AppWindow(gtk.Window,
             return 0
 
         pkgs = comp.get_current_packages()
+
+        if not pkgs:
+            return 0
+        
         return red_pendingops.can_perform_action_multiple(
             pkgs, red_pendingops.TO_BE_REMOVED)
 
@@ -298,6 +306,10 @@ class AppWindow(gtk.Window,
             return 0
 
         pkgs = comp.get_current_packages()
+
+        if not pkgs:
+            return 0
+        
         return red_pendingops.can_perform_action_multiple(
             pkgs, red_pendingops.NO_ACTION)
 
@@ -844,6 +856,6 @@ class AppWindow(gtk.Window,
         else:
             self.busy_stop()
         
-    def do_component_package_selected(self, pkg):
+    def do_component_packages_selected(self, pkgs):
         self.toolbar.sensitize_toolbar_items()
         self.actionbar.sensitize_actionbar_items()
