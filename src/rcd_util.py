@@ -16,6 +16,7 @@
 ###
 
 import sys, string
+import md5
 import ximian_xmlrpclib
 import gobject, gtk
 import red_pixbuf, red_serverproxy
@@ -305,3 +306,17 @@ def set_pref(name, value):
             raise
     else:
         return 1
+
+###############################################################################
+
+# Python 1.5 doesn't have hexdigest() for md5.  blah.
+def hexstr(s):
+    h = string.hexdigits
+    r = ''
+    for c in s:
+        i = ord(c)
+        r = r + h[(i >> 4) & 0xF] + h[i & 0xF]
+    return r
+
+def md5ify_password(pw):
+    return hexstr(md5.new(pw).digest())

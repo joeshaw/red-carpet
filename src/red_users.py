@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string
+import string, re
 import gobject, gtk
 import rcd_util
 import red_main
@@ -80,7 +80,10 @@ class PermissionsView(gtk.ScrolledWindow):
         def activated_cb(renderer, path, model):
             path = (int(path),)
             privilege = model.privileges[path[0]]
-            users_model.current_set_privilege(privilege, renderer.get_active())
+
+            # We want opposite state
+            active = not renderer.get_active()
+            users_model.current_set_privilege(privilege, active)
 
         r = gtk.CellRendererToggle()
         r.set_property("activatable", 1)
@@ -103,9 +106,11 @@ class PrefsWindow(gtk.Dialog):
 
         if action == PREFS_EDIT:
             self.fill()
+        elif action == PREFS_ADD:
+            self.add()
 
     def build(self):
-        self.set_default_size(30, 400)
+        self.set_default_size(30, 450)
 
         box = gtk.VBox(0, 5)
         self.vbox.add(box)
@@ -139,9 +144,19 @@ class PrefsWindow(gtk.Dialog):
         self.pwd2 = gtk.Entry()
         self.pwd2.set_visibility(0)
         table.attach_defaults(self.pwd2, 1, 2, 2, 3)
-        frame.add(table)
 
-        frame = gtk.Frame("Privileges:")
+        b = gtk.VBox(0, 5)
+        b.pack_start(table, 0)
+
+        b.add(gtk.HSeparator())
+
+        self.user_button = gtk.Button()
+        self.user_button.set_border_width(5)
+        b.pack_start(self.user_button, 0)
+
+        frame.add(b)
+
+        frame = gtk.Frame("Privileges")
         frame.set_border_width(5)
         box.add(frame)
 
@@ -154,6 +169,60 @@ class PrefsWindow(gtk.Dialog):
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
         button.connect("clicked", lambda x:self.destroy())
 
+    def make_update_button(self):
+        self.user_button.set_label("Update")
+
+        def update_cb(button, this):
+            p1 = this.pwd1.get_text()
+            p2 = this.pwd2.get_text()
+
+            if p1 != p2:
+                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                           "Passwords do not match.")
+                dialog.run()
+                dialog.destroy()
+            else:
+                if p1 != "-*-unchanged-*-":
+                    p1 = rcd_util.md5ify_password(p1)
+                    users_model.current_update(p1)
+
+        self.user_button.connect("clicked", update_cb, self)
+
+    def add(self):
+        self.user_button.set_label("Add")
+        users_model.current_set(None)
+
+        def add_cb(button, this):
+            name = this.user_entry.get_text()
+            p1 = this.pwd1.get_text()
+            p2 = this.pwd2.get_text()
+
+            msg = None
+            if p1 != p2:
+                msg = "Passwords do not match."
+            if not re.compile("^\w+$").match(name):
+                msg = "Invalid user name."
+            elif users_model.user_exists(name):
+                msg = "User '" + name + "' already exists."
+
+            if msg:
+                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                           msg)
+                dialog.run()
+                dialog.destroy()
+            else:
+                p1 = rcd_util.md5ify_password(p1)
+                if users_model.add(name, p1):
+                    id = this.get_data("add_signal_id")
+                    if id:
+                        this.user_button.disconnect(id)
+                    this.make_update_button()
+
+        id = self.user_button.connect("clicked", add_cb, self)
+        self.set_data("add_signal_id", id)
+
     def fill(self):
         user = users_model.current_get()
         if not user:
@@ -164,6 +233,8 @@ class PrefsWindow(gtk.Dialog):
 
         self.pwd1.set_text("-*-unchanged-*-")
         self.pwd2.set_text("-*-unchanged-*-")
+
+        self.make_update_button()
 
 class UsersWindow(gtk.Dialog):
 
@@ -199,8 +270,25 @@ class UsersWindow(gtk.Dialog):
         button.connect("clicked", prefs_cb, PREFS_EDIT)
         button_box.add(button)
 
+        def remove_cb(button, this):
+            user = users_model.current_get()
+            if not user:
+                return
+
+            def remove_dialog_cb(dialog, id, user):
+                if id == gtk.RESPONSE_YES:
+                    users_model.current_delete()
+
+            dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                       gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
+                                       "Are you sure you want to delete '%s'?" % user["name"])
+            dialog.connect("response", remove_dialog_cb, user)
+            dialog.run()
+            dialog.destroy()
+
         button = gtk.Button()
         button.set_label("Remove")
+        button.connect("clicked", remove_cb, self)
         button_box.add(button)
 
         box.pack_start(button_box, 0, 0, 0)
@@ -298,44 +386,92 @@ class UsersModel(gtk.GenericTreeModel):
     def on_iter_parent(self, node):
         return None
 
+    def user_exists(self, name):
+        for u in self.users:
+            if u["name"] == name:
+                return 1
+        return 0
+
+    def add(self, name, pwd):
+        user = { "name" : name, "privileges" : [] }
+        self.users.append(user)
+
+        path = len(self.users) - 1
+        path = (path,)
+        node = self.get_iter(path)
+
+        self.row_inserted(path, node)
+        self.current_set(node)
+        if self.current_update(pwd):
+            return 1
+        else:
+            self.users.remove(user)
+            self.current_set(None)
+            return 0
+
     def current_set(self, node):
-        self.current = self.get_value(node, COLUMN_USER)
+        self.current = node
         self.emit("changed")
 
     def current_get(self):
-        return self.current
+        if not self.current:
+            return None
+        return self.get_value(self.current, COLUMN_USER)
 
     def current_has_privilege(self, privilege):
-        if not self.current:
+        user = self.current_get()
+        if not user:
             return 0
 
-        privs = self.current["privileges"]
+        privs = user["privileges"]
         if "superuser" in privs or privilege in privs:
             return 1
 
         return 0
 
+    def current_update(self, pwd=None):
+        user = self.current_get()
+        if not user:
+            return 0
+
+        if not pwd:
+            pwd = "-*-unchanged-*-"
+
+        new_privs_str = string.join(user["privileges"], ", ")
+        if self.server.rcd.users.update(user["name"], pwd, new_privs_str):
+            return 1
+        else:
+            return 0
+
     def current_set_privilege(self, privilege, active):
-        if not self.current:
+        user = self.current_get()
+        if not user:
             return
 
         if privilege == "superuser":
             if not active:
-                self.current["privileges"] = []
+                user["privileges"] = []
             else:
-                self.current["privileges"] = ["superuser"]
+                user["privileges"] = ["superuser"]
+            self.emit("changed")
         else:
-            if not active:
-                if not privilege in self.current["privileges"]:
-                    self.current["privileges"].append(privilege)
-                else:
-                    if privilege in self.current["privileges"]:
-                        self.current["privileges"].remove(privilege)
+            if active:
+                if not privilege in user["privileges"]:
+                    user["privileges"].append(privilege)
+            else:
+                if privilege in user["privileges"]:
+                    user["privileges"].remove(privilege)
 
-        new_password = "-*-unchanged-*-"
-        new_privs_str = string.join(self.current["privileges"], ", ")
+        self.current_update()
 
-        self.server.rcd.users.update(self.current["name"], new_password, new_privs_str)
+    def current_delete(self):
+        user = self.current_get()
+        if not user:
+            return
+        if self.server.rcd.users.remove(user["name"]):
+            self.users.remove(user)
+            self.row_deleted(self.get_path(self.current))
+            self.current_set(None)
 
 gobject.type_register(UsersModel)
 gobject.signal_new("changed",
