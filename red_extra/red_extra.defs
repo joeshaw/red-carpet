@@ -29,7 +29,7 @@
 (define-method add_column
   (of-object "RedListModel")
   (c-name "red_list_model_add_column")
-  (return-type "none")
+  (return-type "gint")
   (parameters
    '("PyObject*" "pylist")
    '("GType"     "type")

@@ -120,6 +120,14 @@ def get_channel_icon(id, width=0, height=0):
     return pixbuf
 
 
+def get_channel_image(id, width=0, height=0):
+    pixbuf = get_channel_icon(id, width, height)
+    if not pixbuf:
+        return None
+    img = gtk.Image()
+    img.set_from_pixbuf(pixbuf)
+    return img
+
 def get_package_channel_name(pkg):
     if pkg.has_key("channel"):
         return get_channel_name(pkg["channel"])

@@ -18,26 +18,87 @@
 import sys, string
 import gobject, gtk
 import rcd_util
+import red_extra
 import red_serverlistener
+
+###
+### Callbacks for our ListModel
+###
+
+def pkg_name(pkg):
+    return pkg["name"]
+
+def pkg_EVR(pkg):
+    return rcd_util.get_package_EVR(pkg)
+
+def pkg_size(pkg):
+    return rcd_util.byte_size_to_string(pkg["file_size"])
+
+def pkg_ch_name(pkg):
+    return rcd_util.get_package_channel_name(pkg)
+
+def pkg_ch_icon(pkg):
+    return rcd_util.get_package_channel_icon(pkg, 24, 24)
+
+def pkg_sec_name(pkg):
+    return pkg["section_user_str"]
+
+def pkg_sec_icon(pkg):
+    pixbuf_name = "section-" + pkg["section_str"]
+    return red_pixbuf.get_pixbuf(pixbuf_name, width=24, height=24)
+
+def pkg_is_installed(pkg):
+    return pkg["installed"]
+
+def pkg_is_name_installed(pkg):
+    return pkg["name_installed"]
+
+def pkg_is_upgrade(pkg):
+    return pkg["name_installed"] > 0
+
+def pkg_is_downgrade(pkg):
+    return pkg["name_installed"] < 0
 
 # FIXME: This sorting function should be smarter, and should
 # sort lists into some sort of canonical form that will
 # make it inexpensive to figure out if two sorted lists of packages
 # are the same.
+
 def pkg_cmp(a,b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
+COLUMNS = (
+    ("NAME",              pkg_name,              gobject.TYPE_STRING),
+    ("EVR",               pkg_EVR,               gobject.TYPE_STRING),
+    ("SIZE",              pkg_size,              gobject.TYPE_STRING),
+    ("CH_NAME",           pkg_ch_name,           gobject.TYPE_STRING),
+    ("CH_ICON",           pkg_ch_icon,           gtk.gdk.Pixbuf),
+    ("CH_SEC_NAME",       pkg_sec_name,          gobject.TYPE_STRING),
+    ("CH_SEC_ICON",       pkg_sec_icon,          gtk.gdk.Pixbuf),
+    ("IS_INSTALLED",      pkg_is_installed,      gobject.TYPE_BOOLEAN),
+    ("IS_NAME_INSTALLED", pkg_is_name_installed, gobject.TYPE_BOOLEAN),
+    ("IS_UPGRADE",        pkg_is_upgrade,        gobject.TYPE_BOOLEAN),
+    ("IS_DOWNGRADE",      pkg_is_downgrade,      gobject.TYPE_BOOLEAN),
+    )
 
-class PackageArray(gobject.GObject):
+for i in range(len(COLUMNS)):
+    name = COLUMNS[i][0]
+    exec("COLUMN_%s = %d" % (name, i))
+
+class PackageArray(red_extra.ListModel):
 
     def __init__(self):
         gobject.GObject.__init__(self)
         self.pending_changes = []
 
+        for name, callback, type in COLUMNS:
+            self.add_column(callback, type)
+
     def do_changed(self):
         operator, args = self.pending_changes.pop()
         if operator:
             apply(operator, (self,) + args)
+            self.set_list(self.get_all())
 
     def changed(self, operator, *args):
         self.pending_changes.append((operator, args))
@@ -149,11 +210,14 @@ class FilteredPackageArray(PackageArray):
 
     def fill_cache(self):
         self.cache = []
-        if not (self.cache_dirty and self.target and self.filter):
+        if not (self.cache_dirty and self.target):
             return
-        for pkg in self.target.get_all():
-            if self.filter(pkg):
-                self.cache.append(pkg)
+        if self.filter:
+            for pkg in self.target.get_all():
+                if self.filter(pkg):
+                    self.cache.append(pkg)
+        else:
+            self.cache = self.target.get_all()
         self.cache_dirty = 0
 
     def len(self):

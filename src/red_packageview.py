@@ -16,67 +16,30 @@
 ###
 
 import gobject, gtk
-import red_packagearray
+import red_packagemodel
 
 class PackageView(gtk.TreeView):
 
     def __init__(self):
         gtk.TreeView.__init__(self)
         self.changed_id = 0
-
-        self.constructed = 0
-        self.construct()
-        
-
-    def construct(self):
-        assert not self.constructed
-        self.constructed = 1
-        
-        self.chanpix_col = gtk.TreeViewColumn("",
-                                              gtk.CellRendererPixbuf(),
-                                              pixbuf=red_packagearray.COLUMN_CHANNEL_PIXBUF)
-        self.append_column(self.chanpix_col)
-
-        
-        self.name_col = gtk.TreeViewColumn("Name",
-                                           gtk.CellRendererText(),
-                                           markup=red_packagearray.COLUMN_NAME)
-        self.append_column(self.name_col)
-        
-
-        self.evr_col = gtk.TreeViewColumn("Version",
-                                           gtk.CellRendererText(),
-                                           markup=red_packagearray.COLUMN_EVR)
-        self.append_column(self.evr_col)
-
-        rdr = gtk.CellRendererText()
-        rdr.set_property("xalign", 1.0)
-        self.size_col = gtk.TreeViewColumn("Size",
-                                           rdr,
-                                           markup=red_packagearray.COLUMN_INSTALLED_SIZE_STRING)
-        self.append_column(self.size_col)
-
+        self.set_rules_hint(1)
 
     def thrash_model(self):
-        # FIXME: we will probably want to do something clever here
-        # to keep the selection from getting messed up.
         model = self.get_model()
         gtk.TreeView.set_model(self, None)
         gtk.TreeView.set_model(self, model)
 
     def set_model(self, model):
-
         # FIXME: make sure that we are passing in a PackageArray
         # for the model.
-
         old_model = self.get_model()
         if self.changed_id:
             old_model.disconnect(self.changed_id)
-            self.changed_id = 0
+        self.changed_id = 0
 
         gtk.TreeView.set_model(self, model)
 
         if model:
             self.changed_id = model.connect_after("changed",
                                                   lambda x:self.thrash_model())
-                                            

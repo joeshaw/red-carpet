@@ -20,12 +20,16 @@
 import sys
 import os
 
-red_carpet_dir = "@DDIR@/rc"
+red_carpet_dir = "@DDIR@/red-carpet"
 red_carpet_version = "@VERSION@"
 
 sys.path.insert(0, "../ximian_unmarshaller/build/lib.linux-i686-2.2")
 sys.path.append("../sgmlop")
 sys.path.append("../sgmlop/build/lib.linux-i686-2.2")
+
+# Magic that allows us use red_extra w/o having it installed.
+sys.path.insert(0, "..")
+sys.path.insert(0, "../red_extra/.libs")
 
 # FIXME: This has a special check to allow us to run rc in-place
 # without having done a "make install".  We might want to take this

@@ -73,15 +73,14 @@ red_list_model_get_iter (GtkTreeModel *tree_model,
     gint depth;
 
     model = RED_LIST_MODEL (tree_model);
+    if (red_list_model_length (model) == 0)
+        return FALSE;
 
-    indices = gtk_tree_path_get_indices (path);
     depth = gtk_tree_path_get_depth (path);
-    
     if (depth != 1)
         return FALSE;
 
-    if (red_list_model_length (model) == 0)
-        return FALSE;
+    indices = gtk_tree_path_get_indices (path);
 
     ITER_SET_INDEX(iter, indices[0]);
     return TRUE;
@@ -337,6 +336,8 @@ red_list_model_set_list (RedListModel *model,
     g_return_if_fail (RED_IS_LIST_MODEL (model));
     g_return_if_fail (pylist != NULL);
 
+    red_list_model_clear_array (model);
+
     N = PyList_Size (pylist);
 
     if (model->array == NULL)
@@ -349,7 +350,7 @@ red_list_model_set_list (RedListModel *model,
     }
 }
 
-void
+gint
 red_list_model_add_column (RedListModel *model,
                            PyObject     *pycallback,
                            GType         type)
@@ -370,4 +371,6 @@ red_list_model_add_column (RedListModel *model,
         model->columns = g_ptr_array_new ();
 
     g_ptr_array_add (model->columns, col);
+
+    return model->columns->len - 1;
 }

@@ -65,7 +65,7 @@ RedListModel *red_list_model_new (void);
 void red_list_model_set_list (RedListModel *model,
                               PyObject     *pylist);
 
-void red_list_model_add_column (RedListModel *model,
+gint red_list_model_add_column (RedListModel *model,
                                 PyObject     *pycallback,
                                 GType         type);
 

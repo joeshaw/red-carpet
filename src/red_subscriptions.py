@@ -18,7 +18,8 @@
 import sys, string
 import rcd_util
 import gobject, gtk
-import red_pixbuf, red_component
+import red_pixbuf, red_component, red_channelinfo
+import red_channelmodel
 
 class SubscriptionsComponent(red_component.Component):
 
@@ -80,12 +81,23 @@ class SubscriptionsComponent(red_component.Component):
                          gtk.FILL, gtk.FILL,
                          0, 0)
 
+            def popup(self, channel):
+                win = gtk.Window()
+                info = red_channelinfo.ChannelInfo()
+                info.set_channel(channel)
+                win.add(info)
+                win.show_all()
 
+            b.connect("clicked", popup, c)
+
+            
             r = r + 3
 
         table.show_all()
 
-        return table
+        model = red_channelmodel.ChannelModel()
+        view = red_channelmodel.make_channel_view(model)
+        return view
 
             
 
@@ -95,5 +107,3 @@ class SubscriptionsComponent(red_component.Component):
         
 
 
-        
-        
