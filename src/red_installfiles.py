@@ -116,6 +116,9 @@ def install_remote():
                                                "%s is not a valid package" % dw.url)
                     dialog.run()
                     dialog.destroy()
+                    # Fixme: This shouldn't be here, it should be fixed in pygtk.
+                    gtk.threads_leave()
+
         download_watcher.connect("ready", ready_cb, dialog, timeout_id)
 
         def cancel_clicked_cb(b, dw, d):
@@ -140,6 +143,9 @@ def install_remote():
 
     hbox.show_all()
     win.vbox.pack_start(hbox)
+
+    button = win.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+    button.connect("clicked", lambda x, y:y.destroy(), win)
 
     button = win.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
     button.grab_default()

@@ -76,6 +76,7 @@ def connect_to_server(force_dialog=0):
         d.run()
         url, username, password = d.get_server_info()
         d.destroy()
+        # Fixme: This shouldn't be here, it should be fixed in pygtk.
         gtk.threads_leave()
 
         if not url:
