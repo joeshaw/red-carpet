@@ -7,14 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-23 05:27+0200\n"
-"PO-Revision-Date: 2004-02-17 02:50+0100\n"
+"POT-Creation-Date: 2004-06-30 21:46+0200\n"
+"PO-Revision-Date: 2004-07-01 19:41+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3\n"
 
 #: src/rcd_util.py:412
 msgid "Please wait while getting data."
@@ -60,7 +59,6 @@ msgstr "Duke hequr"
 msgid "Configuring"
 msgstr "Duke konfiguruar"
 
-#. GRUT modified this item
 #: src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "Zhvilluar për ju nga:"
@@ -115,8 +113,7 @@ msgstr "Aktivimi nuk është i mundur"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr ""
-"Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
+msgstr "Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
@@ -133,12 +130,11 @@ msgstr ""
 "kontakt me shitësin tuaj."
 
 #: src/red_appwindow.py:139
-msgid ""
-"Unable to show help because there are no applications available to view help."
-msgstr ""
-"E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
+msgid "Unable to show help because there are no applications available to view help."
+msgstr "E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
 
 #: src/red_appwindow.py:414
+#, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Dëshironi të hapni dritaren e informacionit të pakos %d?"
 
@@ -215,7 +211,6 @@ msgstr "_File"
 msgid "_Edit"
 msgstr "_Ndrysho"
 
-#. GRUT modified this item
 #: src/red_appwindow.py:549 src/red_appwindow.py:841
 msgid "_View"
 msgstr "_Shfaq"
@@ -273,10 +268,8 @@ msgid "_Activate..."
 msgstr "_Aktivo..."
 
 #: src/red_appwindow.py:633
-msgid ""
-"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr ""
-"Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
+msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr "Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
 
 #: src/red_appwindow.py:639
 msgid "Quit"
@@ -286,7 +279,6 @@ msgstr "Dil"
 msgid "Quit Red Carpet"
 msgstr "Dalja nga Red Carpet"
 
-#. GRUT modified this item
 #: src/red_appwindow.py:655
 msgid "Select _All"
 msgstr "Zgjidh _gjithçka"
@@ -299,7 +291,6 @@ msgstr "Zgjidh të gjithë zërat"
 msgid "Select _None"
 msgstr "_Asnjë zgjedhje"
 
-#. GRUT modified this item
 #: src/red_appwindow.py:662
 msgid "Deselect all items"
 msgstr "Ç'zgjidh të gjithë zërat"
@@ -435,7 +426,6 @@ msgstr "_Përmbajtja"
 msgid "View Red Carpet help"
 msgstr "Shiko ndihmën e Red Carpet"
 
-#. GRUT modified this item
 #: src/red_appwindow.py:822
 msgid "_About..."
 msgstr "_Informacione..."
@@ -445,6 +435,7 @@ msgid "About Red Carpet"
 msgstr "Informacione mbi Red Carpet"
 
 #: src/red_appwindow.py:842
+#, python-format
 msgid "Go to the '%s' page"
 msgstr "Shko tek faqja '%s'"
 
@@ -461,6 +452,7 @@ msgid "No Channel/Unknown Channel"
 msgstr "Kanal jo ekzistues/Kanal i panjohur"
 
 #: src/red_connection.py:49
+#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
@@ -469,6 +461,7 @@ msgstr ""
 " '%s'."
 
 #: src/red_connection.py:67
+#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
@@ -477,6 +470,7 @@ msgstr ""
 "Nevoitet versioni %d.%d.%d (ose më i ri)"
 
 #: src/red_connection.py:93
+#, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
@@ -512,7 +506,6 @@ msgstr "Server-i:"
 msgid "User name:"
 msgstr "Emri i përdoruesit:"
 
-#. GRUT modified this item
 #: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
@@ -551,8 +544,7 @@ msgid "Resolving Dependencies"
 msgstr "Duke zgjidhur varësitë"
 
 #: src/red_depcomponent.py:150
-msgid ""
-"You must agree to the licenses covering this software before installing it."
+msgid "You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a "
 "instaloni."
@@ -602,7 +594,6 @@ msgstr "Vazhdo"
 msgid "Channel"
 msgstr "Kanali"
 
-#. GRUT modified this item
 #: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "Paketa"
@@ -677,6 +668,7 @@ msgid "No results found."
 msgstr "Nuk u gjet asnjë rezultat."
 
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
+#, python-format
 msgid "%s is not a valid package"
 msgstr "%s nuk është një pako e vlefshme"
 
@@ -689,6 +681,7 @@ msgid "Install from File"
 msgstr "Instalo nga file"
 
 #: src/red_installfiles.py:119
+#, python-format
 msgid "Downloading %s..."
 msgstr "Duke shkarkuar %s..."
 
@@ -710,12 +703,10 @@ msgstr ""
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "GABIM: nuk mund të specifikoni një përdorues daemon-it lokal"
 
-#. GRUT modified this item
 #: src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Pasqyrë"
 
-#. GRUT modified this item
 #: src/red_mirrors.py:81
 msgid "Location"
 msgstr "Vendodhja"
@@ -725,6 +716,7 @@ msgid "Choose a Mirror"
 msgstr "Zgjidh një Mirror"
 
 #: src/red_mount.py:91
+#, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Nuk arrij të zmontoj '%s'"
 
@@ -769,6 +761,7 @@ msgid "Unmount?"
 msgstr "Zmontoj?"
 
 #: src/red_news.py:174
+#, python-format
 msgid "%s News"
 msgstr "%s të reja"
 
@@ -809,6 +802,7 @@ msgid "Get usage information"
 msgstr "Merr informacionet mbi përdorimin"
 
 #: src/red_option.py:120
+#, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Përdorimi: %s <opcione> ..."
 
@@ -850,6 +844,7 @@ msgid "remove"
 msgstr "hiq"
 
 #: src/red_packagearray.py:614
+#, python-format
 msgid "Found %d matching packages"
 msgstr "U gjetën %d pako korrisponduese"
 
@@ -866,19 +861,17 @@ msgid "Looking for updates..."
 msgstr "Duke kontrolluar për versione të rinj..."
 
 #: src/red_packagearray.py:801
-#, fuzzy
+#, python-format
 msgid "Found %d matching patches"
-msgstr "U gjetën %d pako korrisponduese"
+msgstr "U gjetën %d korrigjime korrispondues"
 
 #: src/red_packagearray.py:803
-#, fuzzy
 msgid "Found 1 matching patch"
-msgstr "U gjet 1 pako korrisponduese"
+msgstr "U gjet 1 patch korrispondues"
 
 #: src/red_packagearray.py:805
-#, fuzzy
 msgid "No matching patches found"
-msgstr "Nuk u gjet asnjë pako korrisponduese"
+msgstr "Nuk u gjet asnjë korrigjim korrispondues"
 
 #: src/red_packagebook.py:44
 msgid "Package Information"
@@ -949,6 +942,7 @@ msgid "Importance"
 msgstr "Rendësia"
 
 #: src/red_pendingview.py:347
+#, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% u kompletua"
 
@@ -1076,6 +1070,7 @@ msgid "Empty Cache"
 msgstr "Zbraz Cache"
 
 #: src/red_prefs.py:395
+#, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
@@ -1088,6 +1083,7 @@ msgid "Loading preferences..."
 msgstr "Duke ngarkuar preferimet..."
 
 #: src/red_prefs.py:520
+#, python-format
 msgid "%s Preferences"
 msgstr "Preferimet e %s"
 
@@ -1159,7 +1155,6 @@ msgstr "Libreri"
 msgid "Development"
 msgstr "Zhvillim"
 
-#. GRUT modified this item
 #: src/red_searchbox.py:187
 msgid "Development Tools"
 msgstr "Instrumentë për zhvillim"
@@ -1172,7 +1167,6 @@ msgstr "Të ndryshme"
 msgid "Search descriptions"
 msgstr "Përshkrimi i kërkimit:"
 
-#. GRUT modified this item
 #. ##
 #. ## Match radio buttons
 #. ##
@@ -1225,6 +1219,7 @@ msgid "Dump daemon info to XML file"
 msgstr "Dump i informacioneve mbi daemon në file XML"
 
 #: src/red_serverinfo.py:94
+#, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Nuk arrij të hap file '%s': %s"
 
@@ -1261,18 +1256,22 @@ msgid "Pending Actions"
 msgstr "Veprime në pritje"
 
 #: src/red_sidebar.py:89
+#, python-format
 msgid "%d pending install"
 msgstr "%d instalim në pritje"
 
 #: src/red_sidebar.py:91
+#, python-format
 msgid "%d pending installs"
 msgstr "%d instalime në pritje"
 
 #: src/red_sidebar.py:97
+#, python-format
 msgid "%d pending removal"
 msgstr "%d disinstalim në pritje"
 
 #: src/red_sidebar.py:99
+#, python-format
 msgid "%d pending removals"
 msgstr "%d disinstalime në pritje"
 
@@ -1297,6 +1296,7 @@ msgid "A_vailable Software"
 msgstr "Software në dis_pozicion"
 
 #: src/red_statusbar.py:49
+#, python-format
 msgid "Connected to %s"
 msgstr "Lidhur me %s"
 
@@ -1309,6 +1309,7 @@ msgid "Channel Name"
 msgstr "Emri i kanalit"
 
 #: src/red_subscriptions.py:78
+#, python-format
 msgid "%s Channel Subscriptions"
 msgstr "Nënshkrime tek kanali %s"
 
@@ -1364,7 +1365,6 @@ msgstr ""
 "\n"
 "Jeni akoma i sigurt që doni t'a hiqni?"
 
-#. GRUT modified this item
 #: src/red_users.py:166
 msgid "Enabled"
 msgstr "Aktiv"
@@ -1390,6 +1390,7 @@ msgid "Passwords do not match."
 msgstr "Password-et nuk korrispondojnë."
 
 #: src/red_users.py:268
+#, python-format
 msgid "Set %s's password"
 msgstr "Vendos password-in e %s"
 
@@ -1402,10 +1403,10 @@ msgid "Add"
 msgstr "Shto"
 
 #: src/red_users.py:320
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Jeni i sigurt që dëshironi të hiqni '%s'?"
 
-#. GRUT modified this item
 #: src/red_users.py:326
 msgid "Remove"
 msgstr "Hiq"
@@ -1423,6 +1424,7 @@ msgid "Invalid user name."
 msgstr "Emër përdoruesi i pasaktë."
 
 #: src/red_users.py:428
+#, python-format
 msgid "User '%s' already exists."
 msgstr "Përdoruesi '%s' ekziston."
 
