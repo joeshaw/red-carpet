@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.9 2003/04/29 20:24:36 menthos Exp $
+# $Id: sv.po,v 1.10 2003/05/10 17:21:29 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-04-29 22:22+0200\n"
-"PO-Revision-Date: 2003-04-29 22:23+0200\n"
+"POT-Creation-Date: 2003-05-10 19:20+0200\n"
+"PO-Revision-Date: 2003-05-10 19:20+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -103,13 +103,31 @@ msgstr "Konfigurerar"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_about.py:70
-msgid "Licensed under the GNU General Public License, version 2"
-msgstr "Licensierat under GNU General Public License, version 2"
-
-#: src/red_about.py:79
+#. Translators: you can translate these into any cute greetings in your own
+#. language.  Just nothing offensive please. :)
+#: src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "Presenteras av:"
+
+#: src/red_about.py:42
+msgid "With love from:"
+msgstr "Kramar från:"
+
+#: src/red_about.py:43
+msgid "Best wishes from:"
+msgstr "Hälsningar från:"
+
+#: src/red_about.py:44
+msgid "Sincerely:"
+msgstr "Med vänliga hälsningar:"
+
+#: src/red_about.py:45
+msgid "Developed by chimps:"
+msgstr "Utvecklat av chimpanser:"
+
+#: src/red_about.py:80
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "Licensierat under GNU General Public License, version 2"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -220,6 +238,7 @@ msgstr ""
 
 #. Menubar
 #. # Toolbar
+#. Ensure a sane width for the sidebar if visible
 #. # Actionbar
 #. Componentbook
 #. Clear the status bar, update the toolbar
@@ -229,7 +248,7 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:380
+#: src/red_appwindow.py:387
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Är du säker på att du vill öppna %d fönster med paketinformation?"
@@ -237,68 +256,68 @@ msgstr "Är du säker på att du vill öppna %d fönster med paketinformation?"
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:408
+#: src/red_appwindow.py:415
 msgid "Run Now"
 msgstr "Kör nu"
 
-#: src/red_appwindow.py:409
+#: src/red_appwindow.py:416
 msgid "Perform installations and removals"
 msgstr "Utför installationer och borttagningar"
 
-#: src/red_appwindow.py:416
+#: src/red_appwindow.py:423
 msgid "Channels"
 msgstr "Kanaler"
 
-#: src/red_appwindow.py:417
+#: src/red_appwindow.py:424
 msgid "Change your channel subscriptions"
 msgstr "Ändra dina kanalprenumerationer"
 
-#: src/red_appwindow.py:425
+#: src/red_appwindow.py:432
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: src/red_appwindow.py:426
+#: src/red_appwindow.py:433
 msgid "Refresh channel data"
 msgstr "Uppdatera kanaldata"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:437
+#: src/red_appwindow.py:444
 msgid "Mark for _Installation"
 msgstr "Markera för _installation"
 
-#: src/red_appwindow.py:438
+#: src/red_appwindow.py:445
 msgid "Mark selected packages for installation"
 msgstr "Markera valda paket för installation"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:443 src/red_appwindow.py:718
+#: src/red_appwindow.py:450 src/red_appwindow.py:725
 msgid "Mark for _Removal"
 msgstr "Markera för _borttagning"
 
-#: src/red_appwindow.py:444
+#: src/red_appwindow.py:451
 msgid "Mark selected packages for removal"
 msgstr "Markera valda paket för borttagning"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:449 src/red_appwindow.py:730
+#: src/red_appwindow.py:456 src/red_appwindow.py:737
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:457
 msgid "Cancel marked package actions"
 msgstr "Avbryt markerade paketåtgärder"
 
-#: src/red_appwindow.py:455
+#: src/red_appwindow.py:462
 msgid "I_nformation"
 msgstr "I_nformation"
 
-#: src/red_appwindow.py:456
+#: src/red_appwindow.py:463
 msgid "Package information"
 msgstr "Paketinformation"
 
@@ -308,11 +327,11 @@ msgstr "Paketinformation"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:513
+#: src/red_appwindow.py:520
 msgid "_File"
 msgstr "_Arkiv"
 
-#: src/red_appwindow.py:514
+#: src/red_appwindow.py:521
 msgid "_Edit"
 msgstr "_Redigera"
 
@@ -321,138 +340,138 @@ msgstr "_Redigera"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:515 src/red_appwindow.py:776
+#: src/red_appwindow.py:522 src/red_appwindow.py:783
 msgid "_View"
 msgstr "_Visa"
 
-#: src/red_appwindow.py:516
+#: src/red_appwindow.py:523
 msgid "_Actions"
 msgstr "_Åtgärder"
 
-#: src/red_appwindow.py:517
+#: src/red_appwindow.py:524
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/red_appwindow.py:525
+#: src/red_appwindow.py:532
 msgid "Connect..."
 msgstr "Anslut..."
 
-#: src/red_appwindow.py:535
+#: src/red_appwindow.py:542
 msgid "Install from _File..."
 msgstr "Installera från _fil..."
 
-#: src/red_appwindow.py:544
+#: src/red_appwindow.py:551
 msgid "Install from _URL..."
 msgstr "Installera från _URL..."
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:568
 msgid "_Mount Directory..."
 msgstr "_Montera katalog..."
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:577
+#: src/red_appwindow.py:584
 msgid "U_nmount Directory..."
 msgstr "A_vmontera katalog..."
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:592
+#: src/red_appwindow.py:599
 msgid "_Activate..."
 msgstr "_Aktivera..."
 
-#: src/red_appwindow.py:598
+#: src/red_appwindow.py:605
 msgid "Quit"
 msgstr "Avsluta"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:613
+#: src/red_appwindow.py:620
 msgid "Select _All"
 msgstr "Markera _alla"
 
-#: src/red_appwindow.py:618
+#: src/red_appwindow.py:625
 msgid "Select _None"
 msgstr "Markera _inga"
 
-#: src/red_appwindow.py:625
+#: src/red_appwindow.py:632
 msgid "Channel _Subscriptions..."
 msgstr "Kanal_prenumerationer..."
 
-#: src/red_appwindow.py:630
+#: src/red_appwindow.py:637
 msgid "_Preferences..."
 msgstr "_Inställningar..."
 
-#: src/red_appwindow.py:634
+#: src/red_appwindow.py:641
 msgid "_Users..."
 msgstr "_Användare..."
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:647
+#: src/red_appwindow.py:654
 msgid "_Sidebar"
 msgstr "_Sidopanel"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:658
 msgid "_Advanced Search Options"
 msgstr "_Avancerade sökalternativ"
 
-#: src/red_appwindow.py:655
+#: src/red_appwindow.py:662
 msgid "_Channel Names"
 msgstr "_Kanalnamn"
 
-#: src/red_appwindow.py:661
+#: src/red_appwindow.py:668
 msgid "Package _Information..."
 msgstr "Paket_information..."
 
-#: src/red_appwindow.py:669
+#: src/red_appwindow.py:676
 msgid "_Daemon Information..."
 msgstr "_Demoninformation..."
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Red Carpet Ne_ws..."
 msgstr "Red Carpet-ny_heter..."
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "Run _Now"
 msgstr "Kör _nu"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:698
+#: src/red_appwindow.py:705
 msgid "_Verify System Dependencies"
 msgstr "_Verifiera systemberoenden"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:709
+#: src/red_appwindow.py:716
 msgid "Mark for I_nstallation"
 msgstr "Markera för i_nstallation"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:744
+#: src/red_appwindow.py:751
 msgid "Re_fresh Channel Data"
 msgstr "_Uppdatera kanaldata"
 
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: src/red_appwindow.py:758
+#: src/red_appwindow.py:765
 msgid "_About..."
 msgstr "_Om..."
 
@@ -2251,27 +2270,27 @@ msgid "Pending Actions"
 msgstr "Förestående åtgärder"
 
 #. PendingOpsListener implementation
-#: src/red_sidebar.py:93
+#: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
 msgstr "%d förestående installation"
 
-#: src/red_sidebar.py:95
+#: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
 msgstr "%d förestående installationer"
 
-#: src/red_sidebar.py:101
+#: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
 msgstr "%d förestående borttagning"
 
-#: src/red_sidebar.py:103
+#: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
 msgstr "%d förestående borttagningar"
 
-#: src/red_sidebar.py:107
+#: src/red_sidebar.py:103
 msgid "No pending actions"
 msgstr "Inga förestående åtgärder"
 
