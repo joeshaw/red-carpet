@@ -101,7 +101,15 @@ class SearchComponent(red_component.Component):
         self.array.set_query(query)
 
     def build(self):
-        self.array = red_packagearray.PackagesFromQuery()
+        def pre_query(x):
+            self.busy(1)
+            self.message("Searching for packages...")
+        def post_query(x):
+            self.busy(0)
+            self.message("")
+        
+        self.array = red_packagearray.PackagesFromQuery(pre_query_fn=pre_query,
+                                                        post_query_fn=post_query)
 
         page = gtk.VBox(0, 0)
 

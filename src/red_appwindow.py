@@ -27,6 +27,8 @@ import red_transaction
 import red_component
 import red_pendingview
 import red_pixbuf
+import red_prefs
+import red_subscriptions
 
 def refresh_cb(app):
     try:
@@ -113,6 +115,13 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 stock=gtk.STOCK_QUIT,
                 callback=lambda x:self.shutdown())
 
+        bar.add("/Edit/Subscriptions",
+                callback=lambda x:red_subscriptions.SubscriptionsWindow().show())
+
+        bar.add("/Edit/Preferences",
+                stock=gtk.STOCK_PREFERENCES,
+                callback=lambda x:red_prefs.PrefsWindow().show())
+
         bar.add("/Actions/Refresh Channel Data",
                 callback=refresh_cb)
         bar.add("/Actions/sep", is_separator=1)
@@ -133,8 +142,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/View/Server Information",
                 callback=view_server_info_cb)
         
-        bar.add("/Edit/Foo")
-
         bar.add("/Settings/Foo")
         bar.add("/Help/Foo")
 
@@ -344,7 +351,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
     do_component_pop  = pop_component
 
     def do_component_message(self, msg):
-        self.statusbar.push(0, msg)
+        if not msg:
+            self.statusbar.pop(0)
+        else:
+            self.statusbar.push(0, msg)
 
     def do_component_busy(self, flag):
         if flag:

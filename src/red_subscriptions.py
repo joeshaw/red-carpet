@@ -18,8 +18,51 @@
 import sys, string
 import rcd_util
 import gobject, gtk
+import red_main
 import red_pixbuf, red_component, red_channelinfo
 import red_channelmodel
+
+model = None
+
+class SubscriptionsView(gtk.ScrolledWindow):
+
+    def __init__(self):
+        gtk.ScrolledWindow.__init__(self)
+
+        global model
+        if not model:
+            model = red_channelmodel.ChannelModel()
+
+        view = red_channelmodel.make_channel_view(model)
+
+        select = view.get_selection()
+        select.set_mode(gtk.SELECTION_SINGLE)
+
+        def selection_changed_cb(select, component):
+            model, iter = select.get_selected()
+            if iter:
+                path = model.get_path(iter)
+                c = model.channels[path[0]]
+        select.connect("changed", selection_changed_cb, self)
+
+        view.show_all()
+
+        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.add(view)
+
+class SubscriptionsWindow(gtk.Dialog):
+
+    def __init__(self):
+        gtk.Dialog.__init__(self, "%s Channel Subscriptions" % red_main.red_name)
+
+        self.set_default_size(500, 300)
+
+        view = SubscriptionsView()
+        view.show()
+        self.vbox.add(view)
+
+        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        button.connect("clicked", lambda x:self.destroy())
 
 class SubscriptionsComponent(red_component.Component):
 
@@ -33,32 +76,10 @@ class SubscriptionsComponent(red_component.Component):
         return "subscribed"
 
     def build(self):
-        channels = rcd_util.get_all_channels()
+        view = SubscriptionsView()
+        view.show()
 
-        model = red_channelmodel.ChannelModel()
-        view = red_channelmodel.make_channel_view(model)
-
-        select = view.get_selection()
-        select.set_mode(gtk.SELECTION_SINGLE)
-
-        def selection_changed_cb(select, component):
-            model, iter = select.get_selected()
-            if iter:
-                path = model.get_path(iter)
-                c = model.channels[path[0]]
-                print c
-        select.connect("changed", selection_changed_cb, self)
-
-        box = gtk.HBox(0, 0)
-        self.infobox = gtk.VBox(0, 0)
-        scrolled = gtk.ScrolledWindow()
-        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scrolled.add(view)
-        box.pack_start(scrolled, 1, 1, 0)
-        box.pack_start(self.infobox, 0, 1, 0)
-        box.show_all()
-
-        return box
+        return view
 
     first_time = 1
     

@@ -49,16 +49,10 @@ class DepView(red_extra.ListView):
         self.append_column(col)
 
 
-    def add_row(self, icon, name, new_version, old_version, size, bold=0):
+    def add_row(self, icon, name, new_version, old_version, size):
 
         if icon is None:
             icon = red_pixbuf.get_pixbuf("empty")
-
-        if bold:
-            name        = "<b>%s</b>" % name
-            old_version = "<b>%s</b>" % old_version
-            new_version = "<b>%s</b>" % new_version
-            size        = "<b>%s</b>" % size
 
         iter = self.store.append()
         self.store.set(iter, 0, icon, 1, name, 2, old_version, 3, new_version, 4, size)
@@ -86,7 +80,8 @@ class DepView(red_extra.ListView):
 
     def add_note(self, msg):
         cell = gtk.CellRendererText()
-        cell.set_property("markup", "* " + msg)
+        # \u2022 is the unicode bullet
+        cell.set_property("markup", u"    <i>\u2022 " + msg + "</i>")
 
         self.add_spanner(self.row, 1, -1, cell)
         self.add_empty_row()
@@ -107,7 +102,7 @@ class DepView(red_extra.ListView):
             size = rcd_util.byte_size_to_string(pkg.get("installed_size"))
             
 
-        self.add_row(ch_icon, name, old_evr, new_evr, size, bold=1)
+        self.add_row(ch_icon, name, old_evr, new_evr, size)
         
         
     

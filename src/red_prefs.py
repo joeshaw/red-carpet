@@ -18,21 +18,23 @@
 import string
 import gobject, gtk
 import rcd_util
+import red_main
 import red_header, red_pixbuf
 import red_component
 import ximian_xmlrpclib
 
-class PrefsComponent(red_component.Component):
+model = None
 
-    def name(self):
-        return "System Preferences"
+class PrefsView(gtk.ScrolledWindow):
 
-    def pixbuf(self):
-        return "summary"
+    def __init__(self):
+        gtk.ScrolledWindow.__init__(self)
+        
+        global model
+        if not model:
+            server = rcd_util.get_server()
+            model = PrefsModel(server)
 
-    def build(self):
-        server = rcd_util.get_server()
-        model = PrefsModel(server)
         view = gtk.TreeView(model)
 
         col = gtk.TreeViewColumn("Description",
@@ -65,17 +67,38 @@ class PrefsComponent(red_component.Component):
         col = gtk.TreeViewColumn("Value", r, value=COLUMN_VALUE)
         view.append_column(col)
 
-        
-
         view.show_all()
 
-        scrolled = gtk.ScrolledWindow()
-        scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scrolled.add(view)
-        scrolled.show()
+        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.add(view)
 
-        return scrolled
-    
+class PrefsWindow(gtk.Dialog):
+
+    def __init__(self):
+        gtk.Dialog.__init__(self, "%s Preferences" % red_main.red_name)
+
+        self.set_default_size(550, 400)
+
+        view = PrefsView()
+        view.show()
+        self.vbox.add(view)
+
+        button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        button.connect("clicked", lambda x:self.destroy())
+
+class PrefsComponent(red_component.Component):
+
+    def name(self):
+        return "System Preferences"
+
+    def pixbuf(self):
+        return "summary"
+
+    def build(self):
+        view = PrefsView()
+        view.show()
+
+        return view
 
 class CellRendererPref(gtk.GenericCellRenderer):
     __gproperties__ = {
