@@ -1,3 +1,9 @@
+2004-01-15  Joe Shaw  <joe@ximian.com>
+
+	* red_about.py, red_depview.py: Explicitly encode some python
+	unicode strings as UTF-8 since they're not automatically encoded
+	by pygtk on RHEL 3.0 for some reason.
+
 2004-01-14  Joe Shaw  <joe@ximian.com>
 
 	* red_packageview.py (_ShowChannelNames.__init__): Use

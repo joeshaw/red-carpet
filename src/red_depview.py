@@ -92,9 +92,9 @@ class DepView(red_extra.ListView):
     def add_note(self, msg):
         cell = gtk.CellRendererText()
         # \u2022 is the unicode bullet
-        cell.set_property("markup", u"    <i>\u2022 %s</i>" %
-                          escape_markup(msg))
-
+        s = u"    <i>\u2022 %s</i>" % escape_markup(msg)
+        cell.set_property("markup", s.encode("utf-8"))
+        
         self.add_spanner(self.row, 1, -1, cell)
         self.add_empty_row()
 

@@ -72,8 +72,8 @@ class About(gtk.Dialog):
 
         vbox.pack_start(title)
 
-        copyright = gtk.Label(u"Copyright \u00a9 %s Ximian, Inc." \
-                              % red_main.red_copyright)
+        s = u"Copyright \u00a9 %s Ximian, Inc." % red_main.red_copyright
+        copyright = gtk.Label(s.encode("utf-8"))
         copyright.set_alignment(0.0, 0.5)
         vbox.pack_start(copyright)
 
