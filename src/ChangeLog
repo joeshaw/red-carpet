@@ -1,3 +1,14 @@
+2003-02-28  Jon Trowbridge  <trow@ximian.com>
+
+	* red_channeloption.py (ChannelOption.__assemble): Put the
+	subscription icon in option menu entries that correspond to
+	subscribed channels. (Fixes #38899)
+
+	* red_appwindow.py (AppWindow.assemble_menubar): Changed
+	Edit->Subscriptions to Edit->Channel Subscriptions to be more
+	consistent with the language in the toolbar (and hopefully clearer
+	too).  Added the subscription icon to the menu item.
+
 2003-02-28  Tambet Ingo  <tambet@ximian.com>
 
 	* red_searchbox.py (SearchBox.__assemble): Added spacing for entry_row.

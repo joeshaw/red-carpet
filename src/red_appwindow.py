@@ -556,8 +556,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.add("/Edit/sep", is_separator=1)
 
-        bar.add("/Edit/_Subscriptions...",
+        bar.add("/Edit/Channel _Subscriptions...",
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
+                pixbuf=red_pixbuf.get_pixbuf("subscribed",
+                                             width=16, height=16),
                 accelerator="<Control>B")
 
         bar.add("/Edit/_Preferences...",

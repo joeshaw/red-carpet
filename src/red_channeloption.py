@@ -16,7 +16,7 @@
 ###
 
 import rcd_util, gobject, gtk
-import red_serverlistener
+import red_serverlistener, red_pixbuf
 import string
 from red_gettext import _
 
@@ -53,7 +53,8 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         if self.__allow_any_subd_channel:
             channels.insert(0,
                             {"name": _("All Subscribed Channels"),
-                             "id": MATCH_ANY_SUBD_CHANNEL})
+                             "id": MATCH_ANY_SUBD_CHANNEL,
+                             "subscribed": 1})
 
         if self.__allow_no_channel:
             channels.append({"name": _("No Channel"),
@@ -73,6 +74,12 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
             hbox.pack_start(img, 0, 0, 0)
             hbox.pack_start(label, 0, 0, 4)
+
+            if c.get("subscribed"):
+                sub_img = red_pixbuf.get_widget("subscribed",
+                                                width=24, height=24)
+                hbox.pack_end(sub_img, expand=0, fill=0, padding=2)
+
 
             item = gtk.MenuItem()
             item.add(hbox)
@@ -120,6 +127,9 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         self.__assemble()
         if id is not None and id in self.item_id_list:
             self.set_channel_by_id(id)
+
+    def subscriptions_changed(self):
+        self.channels_changed()
                 
         
         
