@@ -39,34 +39,7 @@ def register_server(srv, local):
     reset_server_permissions()
     reset_current_user()
 
-def connect_to_server(local=0,
-                      uri=None,
-                      user=None,
-                      password=None,
-                      parent=None):
-    global server
-    connected = 0
-    if isinstance(server, ximian_xmlrpclib.Server):
-        connected = 1
-
-    # If we're not connected we want to try once with default parameters.
-    show_dialog = connected
-    server_info = red_connection.connect(local, uri, user,
-                                         password, show_dialog, parent)
-    if server_info is not None:
-        s, is_local = server_info
-        if isinstance(s, ximian_xmlrpclib.Server):
-            register_server(s, is_local)
-            return 1
-
-    return 0
-
 def get_server():
-    if not isinstance(server, ximian_xmlrpclib.Server):
-        success = connect_to_server()
-        if not success:
-            sys.exit(1)
-
     return server
 
 def get_server_proxy():

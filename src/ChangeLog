@@ -1,3 +1,51 @@
+2003-04-01  Joe Shaw  <joe@ximian.com>
+
+	Cleans up the relationship between server objects, making
+	connections to the daemon, and saving the settings.  Fixes #40396.
+
+	* rcd_util.py (connect_to_server): Nuke this.
+	(get_server): Don't try to do any connection stuff, just return
+	the server object.
+
+	* red_appwindow.py (connect_to_daemon): Added.  Pops up a
+	connection window and registers the new server object if it was
+	successful.  Otherwise, it sets the settings back to what they
+	were.
+	(assemble_menubar): Call connect_to_daemon().
+
+	* red_connection.py (show_error_message): Take an optional parent
+	window parameter.
+	(get_credentials, save_credentials): Nuke these.
+	(check_rcd_version): Remove the empty try-except block.
+	(can_start_daemon): Added.  Checks a few variables to see if we
+	can start a daemon on this machine
+	(ConnectException): Added.
+	(connect): Make the parameters required and mostly rewrite to be
+	much simpler; basically try to make the connection and raise a
+	ConnectException if we fail for any reason with the error message.
+	(connect_from_window): Added.  Pops up a ConnectionWindow and
+	loops until the user cancels or successfully connects.  Returns a
+	server object and whether its local.
+	(ConnectionWindow): Moved here from red_settings.py and unified
+	with the DaemonSettings widget for simplicity.
+
+	* red_main.py: Clean up the connection and server management a
+	lot.  First try to connect with the command-line parameters we
+	were given, otherwise use the last saved data.  If that failed, go
+	to the connection dialog.  If the user cancels out of that, exit,
+	otherwise register the server and go on about our business.
+
+	* red_pendingops.py (UnknownPackage, UnknownKey): Fix typo in
+	__repr__ function definition.
+
+	* red_settings.py (data_get): Reorder the layout of the tuple so
+	it can be passed into red_connection.connect() with the *
+	operator.
+	(data_set): Added.  Takes a tuple in the form of data_get() and
+	sets the settings.
+	(DaemonSettings, ConnectionWindow): Merged and moved to
+	red_connection.py.
+
 2003-04-01  Tambet Ingo  <tambet@ximian.com>
 
 	* ximian_xmlrpclib.py: XML-RPC methods can be cancelled now!

@@ -24,6 +24,7 @@ debug         = os.getenv("RC_GUI_DEBUG")
 
 from red_gettext import _
 import rcd_util
+import red_connection
 import red_console
 import red_appwindow
 import red_search
@@ -135,16 +136,36 @@ def main(version):
         if opt_dict.has_key("host"):
             url = opt_dict["host"]
 
-    if local or host:
-        success = rcd_util.connect_to_server(local, host, username, password)
-    else:
-        success = rcd_util.connect_to_server()
-    if not success:
-        sys.stderr.write("Unable to connect to server.\n")
-        sys.stderr.write("You might need to run red-carpet as root.\n")
+    # Try the command-line options or the saved data first
+    # Enclosed in an empty try-except because we don't care about the
+    # error on the first connect.
+    server = None
+    dd = red_settings.DaemonData()
+    try:
+        if local or host:
+            if password:
+                pw_md5 = rcd_util.md5ify_password(password)
+            else:
+                pw_md5 = None
+            
+            dd.data_set((local, host, username, password))
+
+            server = red_connection.connect(local, host, username, pw_md5)
+        else:
+            connect_info = dd.data_get()
+            local = connect_info[0]
+            server = red_connection.connect(*connect_info)
+    except:
+        pass
+
+    # That failed, pop up the dialog
+    if server is None:
+        server, local = red_connection.connect_from_window()
+
+    if server is None:
         sys.exit(1)
 
-    server = rcd_util.get_server()
+    rcd_util.register_server(server, local)
 
     if debug:
         ticker()
@@ -162,14 +183,14 @@ def main(version):
     app.set_size_request(780, 550)
     app.show()
 
-    gtk.threads_enter()
+    #gtk.threads_enter()
 
     gtk.main()
 
     global red_running
     red_running = 0
 
-    gtk.threads_leave()
+    #gtk.threads_leave()
 
     # This will terminate all our child threads without joining
     os._exit(0)

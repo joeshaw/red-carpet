@@ -32,43 +32,14 @@ class IncorrectVersionError(exceptions.Exception):
         self.args = args
 
 
-def show_error_message(msg):
-    dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
+def show_error_message(msg, parent=None):
+    dialog = gtk.MessageDialog(parent, gtk.DIALOG_MODAL,
                                gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
                                _("Unable to connect to the "
                                  "daemon:\n '%s'.") % msg)
     dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
-    gtk.threads_enter()
     dialog.run()
-    gtk.threads_leave()
     dialog.destroy()
-
-
-def get_credentials(show_dialog, parent):
-    if show_dialog:
-        dialog = red_settings.ConnectionWindow()
-        if parent:
-            dialog.set_transient_for(parent)
-        dialog.run()
-        gtk.threads_leave()
-        uri, user, pwd, local = dialog.get_server_info()
-        dialog.destroy()
-        if not uri:
-            return (None, None, None, None)
-        return (uri, user, pwd, local)
-
-    else:
-        data = red_settings.DaemonData()
-        return data.data_get()
-
-def save_credentials(uri, user, password, local):
-    data = red_settings.DaemonData()
-
-    data.local_set(local)
-    data.url_set(uri)
-    data.user_set(user)
-    data.password_set(password)
-    data.save_config()
 
 def check_rcd_version(major, minor, micro):
     req_major = 1
@@ -85,7 +56,7 @@ def check_rcd_version(major, minor, micro):
 
     if version < req_version:
         raise IncorrectVersionError, _("Detected Red Carpet Daemon version %d.%d.%d.\n"
-                                       "Version %d.%d.%d (or newer) is required.") % \
+                                       "Version %d.%d.%d (or newer) is required") % \
                                        (major, minor, micro, req_major, req_minor, req_micro)
 
     return 1
@@ -93,18 +64,15 @@ def check_rcd_version(major, minor, micro):
 def connect_real(uri, user=None, password=None):
     transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
 
-    try:
-        server = ximian_xmlrpclib.Server(uri,
-                                         auth_username=user,
-                                         auth_password=password,
-                                         verbose=transport_debug)
+    server = ximian_xmlrpclib.Server(uri,
+                                     auth_username=user,
+                                     auth_password=password,
+                                     verbose=transport_debug)
 
-        ping = server.rcd.system.ping()
-        check_rcd_version(ping.get("major_version"),
-                          ping.get("minor_version"),
-                          ping.get("micro_version"))
-    except:
-        raise
+    ping = server.rcd.system.ping()
+    check_rcd_version(ping.get("major_version"),
+                      ping.get("minor_version"),
+                      ping.get("micro_version"))
 
     return server
 
@@ -138,9 +106,7 @@ class StartDaemon:
 
         gtk.timeout_add(500, self.wait_for_daemon_cb)
 
-        gtk.threads_enter()
         response = self.dialog.run()
-        gtk.threads_leave()
         self.dialog.destroy()
 
         if response == gtk.RESPONSE_CANCEL or \
@@ -184,6 +150,9 @@ class StartDaemon:
         return 1
 
 
+def can_start_daemon():
+    return os.geteuid() == 0 and os.path.exists("/etc/init.d/rcd")
+
 def start_daemon():
     dialog = gtk.MessageDialog(None,
                                gtk.DIALOG_MODAL,
@@ -193,9 +162,7 @@ def start_daemon():
                                  "Daemon to be running.\n"
                                  "Would you like to start one now?"))
     dialog.set_title("") # Conform to GNOME HIG
-    gtk.threads_enter()
     response = dialog.run()
-    gtk.threads_leave()
     dialog.destroy()
 
     if response == gtk.RESPONSE_YES:
@@ -224,68 +191,179 @@ def munge_uri(local, uri):
 
     return uri
 
+class ConnectException(Exception):
 
-def connect(local=0,
-            host=None,
-            user=None,
-            password=None,
-            show_dialog=0,
-            parent=None):
+    def __init__(self, err_msg):
+        self.err_msg = err_msg
+    def __repr__(self):
+        return "<ConnectException '%s'>" % self.err_msg
 
+# NOTE: password must be md5ified.
+def connect(local, host, user, password):
     server = None
-    valid_credentials = 0
 
-    if local:
-        valid_credentials = 1
+    uri = munge_uri(local, host)
 
-    if host:
-        valid_credentials = 1
-        if password:
+    err_msg = None
+    try:
+        server = connect_real(uri, user, password)
+    except IncorrectVersionError, f:
+        err_msg = f
+    except socket.error, f:
+        err_msg = f[1]
+    except ximian_xmlrpclib.ProtocolError, f:
+        err_msg = f
+    except ximian_xmlrpclib.Fault, f:
+        err_msg = f.faultString
+    except:
+        raise
+
+    if err_msg:
+        raise ConnectException(err_msg)
+
+    return server
+
+def connect_from_window(parent=None):
+    server = None
+    local = 0
+
+    while server is None:
+        window = ConnectionWindow()
+        if parent:
+            window.set_transient_for(parent)
+        response = window.run()
+
+        connect_info = window.get_daemon_info()
+        local = connect_info[0]
+        window.destroy()
+
+        if response != gtk.RESPONSE_ACCEPT:
+            return None, 0
+
+        try:
+            server = connect(*connect_info)
+        except ConnectException, e:
+            if local and can_start_daemon():
+                server = connect(*connect_info)
+            else:
+                show_error_message(e.err_msg, parent=parent)
+
+    return server, local
+
+class ConnectionWindow(gtk.Dialog):
+
+    def __init__(self):
+        gtk.Dialog.__init__(self)
+
+        self.local = 1
+
+        self.data = red_settings.DaemonData()
+        self.build()
+        self.populate()
+
+    def build(self):
+        self.local_rb = gtk.RadioButton(None,
+                                        _("Connect to daemon on this computer"))
+        self.vbox.pack_start(self.local_rb)
+
+        self.remote_rb = gtk.RadioButton(self.local_rb,
+                                         _("Connect to a remote daemon"))
+        self.vbox.pack_start(self.remote_rb)
+
+        table = gtk.Table(3, 2)
+        table.set_border_width(5)
+        table.set_col_spacings(5)
+        table.set_row_spacings(5)
+
+        l = gtk.Label(_("Server:"))
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 0, 1)
+
+        l = gtk.Label(_("User name:"))
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 1, 2)
+
+        l = gtk.Label(_("Password:"))
+        l.set_alignment(0, 0.5)
+        table.attach_defaults(l, 0, 1, 2, 3)
+
+        self.url = gtk.Combo()
+        self.url.disable_activate() # Don't activate the dropdown with enter
+        self.url.entry.set_activates_default(1)
+        table.attach_defaults(self.url, 1, 2, 0, 1)
+
+        self.user = gtk.Entry()
+        self.user.set_activates_default(1)
+        table.attach_defaults(self.user, 1, 2, 1, 2)
+
+        self.password = gtk.Entry()
+        self.password.set_visibility(0)
+        self.password.set_activates_default(1)
+        table.attach_defaults(self.password, 1, 2, 2, 3)
+        
+        hbox = gtk.HBox()
+        hbox.pack_start(table, padding=20)
+        self.vbox.pack_start(hbox)
+
+        self.vbox.show_all()
+
+        # desensitize the table by default.
+        table.set_sensitive(0)
+
+        def toggled_cb(b, s):
+            s.local = b.get_active()
+        self.local_rb.connect("toggled", toggled_cb, self)
+
+        self.remote_rb.connect("toggled",
+                               lambda x,y:y.set_sensitive(x.get_active()),
+                               table)
+
+        self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        b = self.add_button(_("Connect"), gtk.RESPONSE_ACCEPT)
+        b.grab_default()
+        def response_cb(dialog, id, this):
+            if id == gtk.RESPONSE_ACCEPT:
+                this.save()
+
+        self.connect("response", response_cb, self)
+
+    def populate(self):
+        buf = self.data.url_get_list()
+        if buf:
+            self.url.set_popdown_strings(buf)
+
+        buf = self.data.user_get()
+        if buf:
+            self.user.set_text(buf)
+
+        buf = self.data.password_get_for_ui()
+        if buf:
+            self.password.set_text(buf)
+
+        if self.data.local_get():
+            self.local_rb.set_active(1)
+        else:
+            self.remote_rb.set_active(1)
+
+    def save(self):
+        self.data.local_set(self.local)
+
+        if not self.local:
+            self.data.url_set(self.url.entry.get_text())
+            self.data.user_set(self.user.get_text())
+            self.data.password_set(self.password.get_text())
+
+        self.data.save_config()
+
+    def get_daemon_info(self):
+        local = self.local_rb.get_active()
+        url = self.url.entry.get_text()
+        user = self.user.get_text()
+        password = self.password.get_text()
+
+        if password == "-*-unchanged-*-":
+            password = self.data.password_get()
+        else:
             password = rcd_util.md5ify_password(password)
 
-    while 1:
-        if not valid_credentials:
-            host, user, password, local = get_credentials(show_dialog, parent)
-
-        uri = munge_uri(local, host)
-        valid_credentials = 0
-
-        if not uri:
-            break
-
-        err_msg = None
-        try:
-            server = connect_real(uri, user, password)
-        except IncorrectVersionError, f:
-            show_error_message(f)
-            show_dialog = 1
-            continue
-        except socket.error, f:
-            err_msg = f[1]
-        except ximian_xmlrpclib.ProtocolError, f:
-            err_msg = f
-        except ximian_xmlrpclib.Fault, f:
-            err_msg = f.faultString
-        except:
-            raise
-
-        else:
-            break
-
-        if not show_dialog:
-            show_dialog = 1
-            continue
-
-        elif local and os.geteuid() == 0 and os.path.exists("/sbin/service"):
-            if start_daemon():
-                valid_credentials = 1
-                continue
-
-        show_error_message(err_msg)
-
-
-    if isinstance(server, ximian_xmlrpclib.Server):
-#        save_credentials(host, user, password, local)
-        return server, local
-
-    return None
+        return (local, url, user, password)

@@ -42,6 +42,7 @@ import red_packagebook
 import red_searchbox
 import red_settings
 import red_actionbar
+import red_connection
 from red_gettext import _
 
 
@@ -395,6 +396,20 @@ class AppWindow(gtk.Window,
                            callback=lambda x:self.package_info_cb())
 
 
+    def connect_to_daemon(self):
+        # We want to revert to our old settings if we don't connect to
+        # a new daemon successfully.
+        daemon_data = red_settings.DaemonData()
+        old_settings = daemon_data.data_get()
+        
+        server, local = red_connection.connect_from_window(self)
+
+        if server is None:
+            daemon_data.data_set(old_settings)
+            return
+
+        rcd_util.register_server(server, local)
+
     # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
         if red_transaction.ok_to_quit(self):
@@ -445,7 +460,7 @@ class AppWindow(gtk.Window,
         bar.add("/" + help_str)
 
         bar.add("/%s/%s" % (file_str, _("Connect...")),
-                callback=lambda x:rcd_util.connect_to_server(parent=self),
+                callback=lambda x:self.connect_to_daemon(),
                 pixbuf_name="connect",
                 accelerator="<Control>O")
 

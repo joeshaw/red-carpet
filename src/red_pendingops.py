@@ -64,14 +64,14 @@ def signal_listeners(pkg, key, value, old_value):
 class UnknownPackage(Exception):
     def __init__(self, pkg):
         self.pkg = pkg
-    def __repr_(self):
+    def __repr__(self):
         return "<UnknownPackage '%s'>" % self.pkg
 
 class UnknownKey(Exception):
     def __init__(self, key, pkg):
         self.key = key
         self.pkg = pkg
-    def __repr_(self):
+    def __repr__(self):
         return "<UnknownKey '%s' for package '%s'>" % (self.key, self.pkg)
 
 class __NoDefault:

@@ -205,134 +205,18 @@ class DaemonData:
         self.password = text
 
     def data_get(self):
-        return (self.url_get(),
+        return (self.local_get(),
+                self.url_get(),
                 self.user_get(),
-                self.password_get(),
-                self.local_get())
+                self.password_get())
 
+    def data_set(self, data):
+        local, url, user, password = data
+        self.local_set(local)
 
-class DaemonSettings(gtk.VBox):
+        if not local:
+            self.url_set(url)
+            self.user_set(user)
+            self.password_set(password)
 
-    def __init__(self):
-        gtk.VBox.__init__(self)
-
-        self.local = 1
-
-        self.data = DaemonData()
-        self.build()
-        self.populate()
-
-    def build(self):
-        self.local_rb = gtk.RadioButton(None,
-                                        _("Connect to daemon on this computer"))
-        self.pack_start(self.local_rb)
-
-        self.remote_rb = gtk.RadioButton(self.local_rb,
-                                         _("Connect to a remote daemon"))
-        self.pack_start(self.remote_rb)
-
-        table = gtk.Table(3, 2)
-        table.set_border_width(5)
-        table.set_col_spacings(5)
-        table.set_row_spacings(5)
-
-        l = gtk.Label(_("Server:"))
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
-
-        l = gtk.Label(_("User name:"))
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
-
-        l = gtk.Label(_("Password:"))
-        l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 2, 3)
-
-        self.url = gtk.Combo()
-        self.url.disable_activate() # Don't activate the dropdown with enter
-        self.url.entry.set_activates_default(1)
-        table.attach_defaults(self.url, 1, 2, 0, 1)
-
-        self.user = gtk.Entry()
-        self.user.set_activates_default(1)
-        table.attach_defaults(self.user, 1, 2, 1, 2)
-
-        self.password = gtk.Entry()
-        self.password.set_visibility(0)
-        self.password.set_activates_default(1)
-        table.attach_defaults(self.password, 1, 2, 2, 3)
-        
-        hbox = gtk.HBox()
-        hbox.pack_start(table, padding=20)
-        self.pack_start(hbox)
-
-        # desensitize the table by default.
-        table.set_sensitive(0)
-
-        def toggled_cb(b, s):
-            s.local = b.get_active()
-        self.local_rb.connect("toggled", toggled_cb, self)
-
-        self.remote_rb.connect("toggled",
-                               lambda x,y:y.set_sensitive(x.get_active()),
-                               table)
-
-        self.show_all()
-
-    def populate(self):
-        buf = self.data.url_get_list()
-        if buf:
-            self.url.set_popdown_strings(buf)
-
-        buf = self.data.user_get()
-        if buf:
-            self.user.set_text(buf)
-
-        buf = self.data.password_get_for_ui()
-        if buf:
-            self.password.set_text(buf)
-
-        if self.data.local_get():
-            self.local_rb.set_active(1)
-        else:
-            self.remote_rb.set_active(1)
-
-    def save(self):
-        self.data.local_set(self.local)
-
-        if not self.local:
-            self.data.url_set(self.url.entry.get_text())
-            self.data.user_set(self.user.get_text())
-            self.data.password_set(self.password.get_text())
-
-        self.data.save_config()
-
-    def get_daemon_info(self):
-        return self.data.data_get()
-
-
-class ConnectionWindow(gtk.Dialog):
-
-    def __init__(self):
-        gtk.Dialog.__init__(self)
-        self.accepted = 0
-        self.build()
-
-    def build(self):
-        self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
-        b = self.add_button(_("Connect"), gtk.RESPONSE_ACCEPT)
-        b.grab_default()
-        def response_cb(dialog, id, this):
-            if id == gtk.RESPONSE_ACCEPT:
-                this.ui.save()
-                this.accepted = 1
-
-        self.ui = DaemonSettings()
-        self.vbox.add(self.ui)
-        self.connect("response", response_cb, self)
-
-    def get_server_info(self):
-        if self.accepted:
-            return self.ui.get_daemon_info()
-
-        return (None, None, None, 0)
+        self.save_config()
