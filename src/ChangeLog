@@ -1,3 +1,13 @@
+2003-02-20  Tambet Ingo  <tambet@ximian.com>
+
+	* red_users.py (UsersWindow.password_update_cb): Reset password
+	entries after successful password update.
+	(PrivilegesModel.got_cb): Catch possible exception.
+	(User.update): Use serverproxy for update.
+	(User.delete): Use serverrpoxy for delete.
+
+	* red_history.py: Cleaned up some unused stuff from last commit.
+
 2003-02-20  Jon Trowbridge  <trow@ximian.com>
 
 	* red_depcomponent.py: If we get a dependency error, show it in
@@ -12,7 +22,7 @@
 
 	* red_search.py: Replaced with red_browse.py.
 
-2003-02-20    <tambet@ximian.com>
+2003-02-20  Tambet Ingo  <tambet@ximian.com>
 
 	* red_users.py: Changed users treeview to optionmenu. Use serverproxy
 	for getting users/privileges. It turned out to be almost a rewrite :)

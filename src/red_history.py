@@ -99,9 +99,8 @@ gobject.signal_new("selected",
 
 
 class HistorySearchBar(HistoryFilter):
-    def __init__(self, server):
+    def __init__(self):
         HistoryFilter.__init__(self)
-        self.server = server
         self.build()
 
     def build(self):
@@ -156,8 +155,6 @@ class HistoryComponent(red_component.Component):
     def __init__(self):
         red_component.Component.__init__(self)
 
-        self.server = rcd_util.get_server()
-
     def name(self):
         return "History"
 
@@ -181,7 +178,7 @@ class HistoryComponent(red_component.Component):
         hbox = gtk.HBox(0, 6)
         page.pack_start(hbox, 0, 0)
 
-        search_bar = HistorySearchBar(self.server)
+        search_bar = HistorySearchBar()
         container = search_bar.container_get()
         hbox.pack_start(container, 0, 0)
         hbox.show_all()
@@ -257,7 +254,6 @@ class HistoryModel(gtk.ListStore):
         self.__worker = None
         self.__worker_handler_id = 0
 
-        self.server = rcd_util.get_server()
         self.filter = filter
         filter.connect("updated", self.update)
 
@@ -298,25 +294,6 @@ class HistoryModel(gtk.ListStore):
                      COLUMN_PACKAGE, pkg_name,
                      COLUMN_VER_OLD, pkg_initial_ver,
                      COLUMN_VER_NEW, pkg_final_ver)
-
-    def update(self, filter, query):
-        if not query:
-            return
-
-        rows_first = 25
-        rows_later = 15
-
-        self.clear()
-        entries = self.server.rcd.log.query_log(query)
-        if not entries:
-            return
-
-        self.add_rows(entries[:rows_first])
-        entries = entries[rows_first:]
-
-        while entries:
-            gtk.idle_add(self.add_rows, entries[:rows_later])
-            entries = entries[rows_later:]
 
     def get_worker(self):
         return self.__worker

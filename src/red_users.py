@@ -70,20 +70,31 @@ class User:
 
         self.update()
 
-    def update(self):
-        server = rcd_util.get_server()
-        privs_str = string.join(self.privileges_get(), ", ")
-        server.rcd.users.update(self.name_get(),
-                                self.pwd_get(),
-                                privs_str)
+    def rpc_call_ready_cb(self, th, reset_polling=1):
+        try:
+            success = th.get_result()
+        except ximian_xmlrpclib.Fault, f:
+            rcd_util.dialog_from_fault(f)
+            return
 
-        server.set_password(self.pwd_get())
-        red_serverlistener.reset_polling(1)
+        if reset_polling:
+            red_serverlistener.reset_polling(1)
+
+    def update(self):
+        server = rcd_util.get_server_proxy()
+        privs_str = string.join(self.privileges_get(), ", ")
+        th = server.rcd.users.update(self.name_get(),
+                                     self.pwd_get(),
+                                     privs_str)
+        th.connect("ready", self.rpc_call_ready_cb, 0)
+
+        th = server.set_password(self.pwd_get())
+        th.connect("ready", self.rpc_call_ready_cb)
 
     def delete(self):
-        server = rcd_util.get_server()
-        server.rcd.users.remove(self.name_get())
-        red_serverlistener.reset_polling(1)
+        server = rcd_util.get_server_proxy()
+        th = server.rcd.users.remove(self.name_get())
+        th.connect("ready", self.rpc_call_ready_cb)
 
 
 def make_users_view(model):
@@ -183,11 +194,11 @@ class UsersWindow(gtk.Dialog,
         self.pwd2.set_visibility(0)
         table.attach_defaults(self.pwd2, 1, 2, 1, 2)
 
-        def user_changed_cb(model, user, this):
+        def init_pwd_entries(this):
             this.pwd1.set_text("-*-unchanged-*-")
             this.pwd2.set_text("-*-unchanged-*-")
 
-        self.opt.connect("selected", user_changed_cb, self)
+        self.opt.connect("selected", lambda x,y,z:init_pwd_entries(z), self)
 
         button_box = gtk.HButtonBox()
         button_box.set_layout(gtk.BUTTONBOX_START)
@@ -236,6 +247,7 @@ class UsersWindow(gtk.Dialog,
                     user = this.opt.get_selected_user()
                     user.pwd_set(p1)
                     user.update()
+                    init_pwd_entries(this)
 
         button.connect("clicked", password_update_cb, self)
 
@@ -467,7 +479,11 @@ class PrivilegesModel(red_listmodel.ListModel):
 
         def got_cb(worker, this):
             if not worker.is_cancelled():
-                privs = worker.get_result()
+                try:
+                    privs = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    return
                 if privs:
                     privs = map(string.lower, privs)
                     privs.sort()
