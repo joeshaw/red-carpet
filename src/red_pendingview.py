@@ -34,8 +34,6 @@ class PendingView(gtk.Window):
                  self_destruct=0):
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 
-        width = self.calculate_required_width(MAX_LABEL_LEN)
-        self.set_default_size(width, -1)
         self.set_modal(is_modal)
 
         self.window_parent = parent
@@ -80,6 +78,9 @@ class PendingView(gtk.Window):
 
         self.step_label = gtk.Label("")
         self.step_label.set_alignment(0, 0.5)
+        (width, height) = self.calculate_required_text_size(MAX_LABEL_LEN)
+        self.step_label.set_size_request(width, height)
+
         textbox.pack_start(self.step_label, 0, 0, 0)
         if label:
             self.set_label(label)
@@ -154,15 +155,17 @@ class PendingView(gtk.Window):
         else:
             self.set_position(gtk.WIN_POS_CENTER)
 
-    def calculate_required_width(self, max_len):
+    def calculate_required_text_size(self, max_len):
         # "W" being the widest glyph.
-        buf = max_len * "W"
+        # Text is usually split to two lines, add another one just
+        # to make sure we have enough space.
+        buf = max_len * "W" + "\n\n"
 
         layout = pango.Layout(gtk.Label("").get_pango_context())
-        layout.set_text(buf, max_len)
+        layout.set_text(buf, max_len + 2)
         (width, height) = layout.get_pixel_size()
 
-        return width
+        return (width, height)
 
     def disable_cancellation(self):
         if self.allow_cancel:
@@ -452,6 +455,7 @@ class PollPending_Transact:
         self.finish()
 
     def finish(self):
+        print "finished"
         self.__callback(self.__transact_pending,
                         self.__step_pending,
                         *self.__cb_args)
@@ -604,6 +608,8 @@ class PendingView_Transaction(PendingView):
         self.set_label(_("Starting Transaction"))
 
         def update_pending_cb(pending, step_pending, pv):
+            if pv.__finished:
+                return
             if pending and step_pending:
                 pv.__working_query = 0
                 
@@ -623,7 +629,7 @@ class PendingView_Transaction(PendingView):
             elif pending and pending["status"] == "failed":
                 msg = _("Transaction failed") + ": " + pending["error_msg"]
                 pv.transaction_finished(msg)
-                self.__finished = 1
+                pv.__finished = 1
 
         unused = PollPending_Transact(self.transact_id,
                                       self.step_id,
@@ -631,5 +637,3 @@ class PendingView_Transaction(PendingView):
                                       self)
 
         return 1
-
-                       

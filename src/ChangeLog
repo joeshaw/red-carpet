@@ -1,3 +1,13 @@
+2003-02-25  Tambet Ingo  <tambet@ximian.com>
+
+	* red_pendingview.py (PendingView.calculate_required_text_size):
+	Calculate height also, renamved from (calculate_required_width).
+	(PendingView.__init__): Set required size to label, not to whole
+	dialog.
+	(PendingView_Transaction.update_pending_cb): If we're already finished,
+	we don't want to update anything anymore. Caused lots'n'lots
+	Gdk-CRITICAL warnings (progressbar pulse).
+
 2003-02-25  Jon Trowbridge  <trow@ximian.com>
 
 	* red_gettext.py: Don't import red_main.  Instead of using the
