@@ -131,6 +131,11 @@ class PackageBook(gtk.Notebook):
                     self.set_current_page(page_count)
                 page_count += 1
 
+        # If no page was set previously, go to the first page.
+        if current_page is None:
+            self.set_current_page(0)
+
+
     def set_package(self, package):
         self.package = package
         self.build_pages()

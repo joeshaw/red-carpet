@@ -20,6 +20,9 @@
 import sys
 import os
 
+import pygtk
+pygtk.require("2.0")
+
 red_carpet_dir = "@DDIR@/red-carpet"
 red_carpet_version = "@VERSION@"
 
