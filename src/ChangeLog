@@ -1,3 +1,28 @@
+2003-02-12  Jon Trowbridge  <trow@ximian.com>
+
+	* red_searchbar.py: Lots of hacking.
+
+	* red_packagepage_info.py (_info_rows): Add a "Channel" row.
+	(build_rows): If our row value is a widget, and the function that
+	builds the row returns None, just drop the whole row.
+
+	* red_packagearray.py (PackagesFromQuery.set_query): Add an
+	optional query_filter argument.
+	(PackagesFromQuery.query_finished_cb): Filter our list of packages
+	using the query_filter function.  Cache the results of the query
+	before we do any filtering.
+	(PackagesFromQuery.get_packages_from_daemon): Do the right thing
+	if we are handed the empty query.
+
+	* red_statusoption.py: Various changes for the Browse component.
+
+	* red_channeloption.py: Various changes for the Browse component.
+
+	* red_about.py (contributors): Credit where credit is due.
+
+	* red_browse.py: Added.  First version of a unified search
+	component.
+
 2003-02-12  Tambet Ingo  <tambet@ximian.com>
 
 	* red_packagearray.py (PackagesFromQuery.filter_duplicates):

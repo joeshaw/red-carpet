@@ -20,11 +20,13 @@ import red_serverlistener
 
 class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
-    def __init__(self, allow_any_channel=0):
+    def __init__(self, allow_any_channel=0, allow_no_channel=0):
         gobject.GObject.__init__(self)
         red_serverlistener.ServerListener.__init__(self)
         self.__allow_any_channel=allow_any_channel
+        self.__allow_no_channel=allow_no_channel
         self.__assemble()
+        self.__last_id = None
 
     def __assemble(self):
         self.item_id_list = []
@@ -34,6 +36,9 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
         if self.__allow_any_channel:
             channels.insert(0, {"name": "Any Channel", "id": -1})
+
+        if self.__allow_no_channel:
+            channels.append({"name": "No Channel", "id": -2})
         
         for c in channels:
             hbox = gtk.HBox(0, 0)
@@ -56,9 +61,11 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
             self.item_id_list.append(c["id"])
 
-            item.connect("activate",
-                         lambda item, id:self.emit("selected", id),
-                         c["id"])
+            def activate_cb(item, id, opt):
+                if id != self.__last_id:
+                    opt.__last_id = id
+                    opt.emit("selected", id)
+            item.connect("activate", activate_cb, c["id"], self)
             
             menu.append(item)
 

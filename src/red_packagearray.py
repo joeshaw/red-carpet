@@ -116,18 +116,18 @@ def pkg_action(pkg):
         if pending == red_pendingops.TO_BE_INSTALLED \
            or pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
             if pkg["name_installed"] > 0:
-                str = "to upgrade"
+                str = "upgrade"
             elif pkg["name_installed"] < 0:
-                str = "to <b>downgrade</b>"
+                str = "<b>downgrade</b>"
             else:
-                str = "to install"
+                str = "install"
             if pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
                 str = "<s>%s</s>" % str
             return str
         
         elif pending == red_pendingops.TO_BE_REMOVED \
              or pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
-            str = "to remove"
+            str = "remove"
             if pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
                 str = "<s>%s</s>" % str
             return str
@@ -514,20 +514,19 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.__worker = None
         self.__worker_handler_id = 0
         self.__query_msg = None
+        self.__query_filter = None
         self.set_query(query)
 
     def get_packages_from_daemon(self):
-        if 0:
-            self.set_packages([{'section_num': 13, 'installed_size': 0, 'name': 'aspell-deblah blah blah', 'importance_str':
-'suggested', 'name_installed': 0, 'importance_num': 2, 'locked': 0, 'installed': 0, 'epoch': 0, 'version': '0.1.1', 'section_str': 'misc', 'file_size': 4645873, 'release': '12', 'section_user_str': 'Miscellaneous', 'has_epoch': 1, 'channel': 20450}] * 10000)
-            return
 
-        if not self.query:
+        if self.query is None:
             self.set_packages([])
             return
 
         cached = _get_query_from_cache(self.query)
         if cached is not None:
+            if self.__query_filter:
+                cached = filter(self.__query_filter, cached)
             self.set_packages(cached)
             return
         
@@ -546,8 +545,12 @@ class PackagesFromQuery(PackagesFromDaemon):
                 print "query time=%.2fs" % elapsed
                 print "got %d packages" % len(packages)
 
-                packages = self.filter_duplicates(packages)
                 _cache_query_results(self.query, packages)
+
+                if self.__query_filter:
+                    packages = filter(self.__query_filter, packages)
+                packages = self.filter_duplicates(packages)
+                
                 array.set_packages(packages or [])
             array.message_pop()
             array.busy(0)
@@ -565,9 +568,10 @@ class PackagesFromQuery(PackagesFromDaemon):
                                                          query_finished_cb,
                                                          self)
         
-    def set_query(self, query, query_msg=None):
+    def set_query(self, query, query_msg=None, query_filter=None):
         self.query = query
         self.__query_msg = query_msg
+        self.__query_filter = query_filter
         self.schedule_refresh()
 
     def packages_changed(self):

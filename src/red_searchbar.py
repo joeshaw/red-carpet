@@ -15,6 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
+import string
 import gobject, gtk
 import red_menubar
 import red_channeloption, red_sectionoption, red_statusoption
@@ -30,10 +31,8 @@ class SearchBar(gtk.VBox):
         
     def __emit_search(self):
         self.emit("search",
-                  self.get_match_anyall(),
-                  self.get_match_word(),
-                  self.get_search_descriptions(),
-                  self.get_search_text())
+                  self.get_query(),
+                  self.get_filter())
 
     def get_match_anyall(self):
         return self.match_anyall
@@ -64,6 +63,37 @@ class SearchBar(gtk.VBox):
     def get_search_text(self):
         return self.search_entry.get_text()
 
+    def get_query(self):
+        query = []
+
+        if self.search_desc:
+            search_key = "text"
+        else:
+            search_key = "name"
+
+        if self.match_substr == "substr":
+            search_match = "contains"
+        else:
+            search_match = "contains_word"
+
+        text = self.get_search_text()
+        if text:
+            for t in string.split(text):
+                query.append([search_key, search_match, t])
+
+        if query and self.match_anyall == "any":
+            query.insert(0, ["", "begin-or", ""])
+            query.append(["", "end-or", ""])
+
+        id = self.__channel_opt.get_channel_id()
+        if id >= 0:
+            query.append(["channel", "is", str(id)])
+
+        return query
+
+    def get_filter(self):
+        return self.__status_opt and self.__status_opt.get_current_filter()
+                
     def __assemble(self):
 
         box1 = gtk.HBox(0, 0)
@@ -73,45 +103,80 @@ class SearchBar(gtk.VBox):
         ### Build the top row of the bar, where we can filter by
         ### channel, status, etc.
 
-        box1.pack_start(gtk.Label("Foo!"), expand=0, fill=0)
+        # When the string is marked for translation, the magic codes allow
+        # the menu items to be reordered.
+        txt = "Search for %status packages in %channel"
 
-        ch_opt   = red_channeloption.ChannelOption(allow_any_channel=1)
-        sect_opt = red_sectionoption.SectionOption()
+        txt_parsed = []
+        while txt:
+            i = txt.find("%")
+            if i < 0:
+                fragment = txt
+                txt = ""
+            elif i == 0:
+                j = txt.find(" ")
+                if j >= 0:
+                    fragment = txt[:j]
+                    txt = txt[j:]
+                else:
+                    fragment = txt
+                    txt = ""
+            else:
+                fragment = txt[:i]
+                txt = txt[i:]
+
+            fragment = fragment.strip()
+            if fragment:
+                txt_parsed.append(fragment)
+
+        ch_opt   = red_channeloption.ChannelOption(allow_any_channel=1,
+                                                   allow_no_channel=0)
         stat_opt = red_statusoption.StatusOption()
 
-        box1.pack_start(ch_opt, expand=0, fill=0)
-        box1.pack_start(sect_opt, expand=0, fill=0)
-        box1.pack_start(stat_opt, expand=0, fill=0)
-        
-        
+        ch_opt.connect_after("selected",
+                             lambda chopt, id, bar: bar.__emit_search(),
+                             self)
+        stat_opt.connect_after("selected",
+                               lambda statopt, fn, bar: bar.__emit_search(),
+                               self)
+
+        for fragment in txt_parsed:
+            if fragment == "%channel":
+                box1.pack_start(ch_opt, expand=0, fill=0, padding=3)
+            elif fragment == "%status":
+                box1.pack_start(stat_opt, expand=0, fill=0, padding=3)
+            else:
+                box1.pack_start(gtk.Label(fragment), expand=0, fill=0)
 
         ###
         ### Put together second row, with the search entry and dropdown
         ### button w/ search characteristics.
         ###
 
-        bar = red_menubar.MenuBar()
-        bar.add("/Search", with_dropdown_arrow=1)
+        dropdown = "/" + "Containing"
 
-        bar.add("/Search/Match All Words",
+        bar = red_menubar.MenuBar()
+        bar.add(dropdown, with_dropdown_arrow=1)
+
+        bar.add(dropdown+"/"+"Match All Words",
                 radiogroup="anyall", radiotag="all",
                 radio_get=lambda: self.get_match_anyall(),
                 radio_set=lambda x: self.set_match_anyall(x))
-        bar.add("/Search/Match Any Word",
+        bar.add(dropdown+"/"+"Match Any Word",
                 radiogroup="anyall", radiotag="any")
 
-        bar.add("/Search/Sep1", is_separator=1)
+        bar.add(dropdown+"/Sep1", is_separator=1)
 
-        bar.add("/Search/Match Substrings",
+        bar.add(dropdown+"/"+"Match Substrings",
                 radiogroup="words", radiotag="substr",
                 radio_get=lambda: self.get_match_word(),
                 radio_set=lambda x: self.set_match_word(x))
-        bar.add("/Search/Match Whole Words",
+        bar.add(dropdown+"/"+"Match Whole Words",
                 radiogroup="words", radiotag="whole")
 
-        bar.add("/Search/Sep2", is_separator=1)
+        bar.add(dropdown+"/Sep2", is_separator=1)
 
-        bar.add("/Search/Search Descriptions",
+        bar.add(dropdown+"/"+"Search Descriptions",
                 checked_get = lambda: self.get_search_descriptions(),
                 checked_set = lambda x: self.set_search_descriptions(x))
 
@@ -130,6 +195,9 @@ class SearchBar(gtk.VBox):
 
         box1.show_all()
         box2.show_all()
+
+        self.__status_opt = stat_opt
+        self.__channel_opt = ch_opt
         
 
 gobject.type_register(SearchBar)
@@ -137,7 +205,6 @@ gobject.signal_new("search",
                    SearchBar,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
-                   (gobject.TYPE_STRING,
-                    gobject.TYPE_STRING,
-                    gobject.TYPE_BOOLEAN,
-                    gobject.TYPE_STRING))
+                   (gobject.TYPE_PYOBJECT,  # query
+                    gobject.TYPE_PYOBJECT)) # filter
+

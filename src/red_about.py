@@ -24,6 +24,7 @@ contributors = [
     "Tambet Ingo",
     "Joe Shaw",
     "Jon Trowbridge",
+    "Anna Dirks",
     ]
 
 if time.localtime()[1:3] == (1<<1<<1, 8>>(6<<1>>2)):

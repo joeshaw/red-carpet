@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import gtk
+import gobject, gtk
 
 _status_types = (
     ("Uninstalled", lambda p: not p["installed"] and not p["name_installed"]),
@@ -27,7 +27,7 @@ _status_types = (
 class StatusOption(gtk.OptionMenu):
 
     def __init__(self):
-        gtk.OptionMenu.__init__(self)
+        gobject.GObject.__init__(self)
         self.__current_filter = _status_types[0][1] # the default setting
 
         menu = gtk.Menu()
@@ -38,7 +38,9 @@ class StatusOption(gtk.OptionMenu):
             menu.append(item)
 
             def activate_cb(item, opt, fn):
-                opt.__current_filter = fn
+                if opt.__current_filter != fn:
+                    opt.__current_filter = fn
+                    opt.emit("selected", fn)
             item.connect("activate", activate_cb, self, filter_fn)
 
         menu.show()
@@ -48,3 +50,10 @@ class StatusOption(gtk.OptionMenu):
         return self.__current_filter
         
 
+gobject.type_register(StatusOption)
+
+gobject.signal_new("selected",
+                   StatusOption,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_PYOBJECT, ))

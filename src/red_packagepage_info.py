@@ -41,6 +41,20 @@ def pkg_size(pkg, pkg_info, key):
         size = 0
     return rcd_util.byte_size_to_string(size)
 
+def pkg_channel(pkg, pkg_info, key):
+    name = rcd_util.get_package_channel_name(pkg)
+    if not name or name == "????": # evil magic failure code
+        return None
+    icon = rcd_util.get_package_channel_icon(pkg, width=24, height=24)
+    box = gtk.HBox(0, 2)
+    if icon:
+        img = gtk.Image()
+        img.set_from_pixbuf(icon)
+        box.pack_start(img, 0, 0)
+    label = gtk.Label(name)
+    box.pack_start(label, 0, 0)
+    return box
+
 def pkg_section(pkg, pkg_info, key):
     box = gtk.HBox(0, 2)
     icon = pkg.get("section_str", "")
@@ -66,6 +80,7 @@ _info_rows = (
     ("Release",        TYPE_TEXT,   pkg_element,      "release",        NO_SPAN),
     ("Package Size",   TYPE_TEXT,   pkg_size,         "file_size",      NO_SPAN),
     ("Installed Size", TYPE_TEXT,   pkg_size,         "installed_size", NO_SPAN),
+    ("Channel",        TYPE_WIDGET, pkg_channel,      "channel",        NO_SPAN),
     ("Section",        TYPE_WIDGET, pkg_section,      "section",        NO_SPAN),
     ("Summary",        TYPE_TEXT,   pkg_info_element, "summary",        NO_SPAN),
     ("Description",    TYPE_WIDGET, pkg_description,  "description",    SPAN),
@@ -89,28 +104,29 @@ def build_rows(table, pkg, pkg_info):
         else:
             value = v
 
-        if _info_rows[r][4] == NO_SPAN:
-            table.attach(label,
-                         0, 1, rindex, rindex + 1,
-                         gtk.FILL, gtk.FILL,
-                         5, 3)
+        if value is not None:
+            if _info_rows[r][4] == NO_SPAN:
+                table.attach(label,
+                             0, 1, rindex, rindex + 1,
+                             gtk.FILL, gtk.FILL,
+                             5, 3)
 
-            table.attach(value,
-                         1, 2, rindex, rindex + 1,
-                         gtk.EXPAND | gtk.FILL, gtk.FILL,
-                         5, 3)
+                table.attach(value,
+                             1, 2, rindex, rindex + 1,
+                             gtk.EXPAND | gtk.FILL, gtk.FILL,
+                             5, 3)
 
-            rindex = rindex + 1
-        else:
-            table.attach(label,
-                         0, 2, rindex, rindex + 1,
-                         gtk.FILL, gtk.FILL,
-                         5, 3)
+                rindex = rindex + 1
+            else:
+                table.attach(label,
+                             0, 2, rindex, rindex + 1,
+                             gtk.FILL, gtk.FILL,
+                             5, 3)
 
-            table.attach(value,
-                         0, 2, rindex + 1, rindex + 2,
-                         gtk.FILL, gtk.FILL,
-                         5, 3)
+                table.attach(value,
+                             0, 2, rindex + 1, rindex + 2,
+                             gtk.FILL, gtk.FILL,
+                             5, 3)
 
             rindex = rindex + 2
 
