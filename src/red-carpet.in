@@ -26,6 +26,7 @@ try:
     red_carpet_libdir = "@LDIR@/red-carpet"
     red_carpet_version = "@VERSION@"
     red_carpet_pixbuf_path = "@DDIR@/pixmaps/red-carpet"
+    red_carpet_help_path = "@DDIR@/gnome/help/red-carpet"
 
     # Magic that allows us to use red_extra and the unmarshaller w/o
     # having it installed and a pygtk installed into a different prefix.
@@ -72,6 +73,8 @@ try:
     red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)
 
     import red_main
+
+    red_main.help_path = red_carpet_help_path
 
     if "--rc-profile" in sys.argv:
         import profile

@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string, sys, gtk
+import os, string, sys, gtk
 
 import ximian_xmlrpclib
 import rcd_util
@@ -99,6 +99,39 @@ def verify_deps_cb(app):
     dep_comp = red_depcomponent.DepComponent(verify=1)
     app.componentbook.push_component(dep_comp)
 
+def help_cb(app):
+    # *Only* localize this to the language code if the Red Carpet help is
+    # localized.
+    help_locale = _("C")
+
+    help_files = ("%s/%s/red-carpet.xml" % (red_main.help_path, help_locale),
+                  "%s/C/red-carpet.xml" % red_main.help_path)
+
+    url_handlers = ("gnome-url-show", "gnome-moz-remote")
+
+    for f in help_files:
+        if not os.path.exists(f):
+            continue
+
+        url = "ghelp://" + f
+
+        for u in url_handlers:
+            ret = os.spawnvp(os.P_WAIT, u, (u, url))
+
+            if ret == 0: # successfully spawned
+                return
+
+    # If we got here, we couldn't open any help file with any handler
+
+    dialog = gtk.MessageDialog(app, 0,
+                               gtk.MESSAGE_ERROR,
+                               gtk.BUTTONS_OK,
+                               _("Unable to show help because it was not "
+                                 "found or because you don't have any help "
+                                 "viewers available."))
+    dialog.run()
+    dialog.destroy()
+            
 class AppWindow(gtk.Window,
                 red_component.ComponentListener,
                 red_pendingops.PendingOpsListener):
@@ -713,6 +746,14 @@ class AppWindow(gtk.Window,
                 callback=refresh_cb,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
                 accelerator="<Control>R")
+
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_HELP, gtk.ICON_SIZE_MENU)
+
+        bar.add("/%s/%s" % (help_str, _("_Contents")),
+                image=image,
+                callback=help_cb,
+                accelerator="F1")
 
         bar.add("/%s/%s" % (help_str, _("_About...")),
                 pixbuf_name="menu-about",

@@ -1,3 +1,14 @@
+2003-04-16  Joe Shaw  <joe@ximian.com>
+
+	* red-carpet.in: Set up the help path, and set it in red_main.
+
+	* red_appwindow.py (help_cb): Added.  Tries to launch a help
+	browser application with the help in the user's locale.
+	(assemble_menubar): Add a "Contents" item to the "Help" menu.
+
+	* red_main.py: Add a help_path parameter, set by red-carpet.in and
+	read by red_appwindow.py:help_cb().
+
 2003-04-15  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (get_package_channel_icon): Use the empty icon

@@ -22,6 +22,8 @@ red_version   = None
 red_copyright = "2002-2003"
 debug         = os.getenv("RC_GUI_DEBUG")
 
+help_path     = None
+
 from red_gettext import _
 import rcd_util
 import red_connection
