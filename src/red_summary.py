@@ -34,6 +34,8 @@ class SummaryComponent(red_component.Component):
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
 
+        page = gtk.VBox(0, 0)
+
         ### Upper
         
         vbox = gtk.VBox(0,0)
@@ -71,7 +73,7 @@ class SummaryComponent(red_component.Component):
 
         vbox.show_all()
         
-        self.display("upper", vbox)
+        page.pack_start(vbox, 0, 0)
 
         ### Main
 
@@ -89,7 +91,9 @@ class SummaryComponent(red_component.Component):
 
         browser.show()
 
-        self.display("main", browser)
+        page.pack_start(browser, 1, 1)
+
+        return page
 
 
     def changed_visibility(self, flag):

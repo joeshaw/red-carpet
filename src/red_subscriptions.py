@@ -32,7 +32,7 @@ class SubscriptionsComponent(red_component.Component):
     def pixbuf(self):
         return "subscribed"
 
-    def construct(self):
+    def build(self):
         channels = rcd_util.get_all_channels()
 
         model = red_channelmodel.ChannelModel()
@@ -59,10 +59,6 @@ class SubscriptionsComponent(red_component.Component):
         box.show_all()
 
         return box
-
-    def build(self):
-        widget = self.construct()
-        self.display("main", widget)
 
     first_time = 1
     

@@ -32,6 +32,8 @@ import red_prefs
 red_name = "Red Carpet 2: Electric Boogaloo"
 red_version = "0.0.1"
 
+red_running = 1
+
 gtk.threads_init()
 
 def connect_to_server():
@@ -64,23 +66,28 @@ def connect_to_server():
 last_tick = time.time()
 def tick_cb():
     global last_tick
-    now = time.time()
-    if now - last_tick > 0.5:
-        print "***"
-        print "*** UI was blocked for %.2fs" % (now-last_tick)
-        print "***"
-    last_tick = now
+    last_tick = time.time()
     return 1
 
 class TickThread(threading.Thread):
 
     def run(self):
-        while 1:
+        self.last_tick = last_tick
+        self.last_block = 0
+        while red_running:
             now = time.time()
-            if now - last_tick > 2:
-                print "UI blocked for %.2fs" % (now-last_tick)
-                os.kill(os.getpid(), signal.SIGTRAP)
-            time.sleep(1)
+            if now - last_tick > 0.5:
+                if self.last_block == 0:
+                    print "**** UI is blocking!"
+                self.last_block = now
+                self.last_tick = last_tick
+            else:
+                if self.last_block:
+                    t = self.last_block - self.last_tick
+                    print "**** UI blocked for approx %.2fs" % t
+                self.last_block = 0
+                #os.kill(os.getpid(), signal.SIGTRAP)
+            time.sleep(0.1)
 
 def ticker():
     gtk.timeout_add(50, tick_cb);
@@ -93,7 +100,7 @@ def ticker():
 def main(version):
     server = connect_to_server()
 
-    #ticker()
+    ticker()
 
     app = red_appwindow.AppWindow(server)
 
@@ -111,6 +118,10 @@ def main(version):
 
     gtk.threads_enter()
     gtk.main()
+
+    global red_running
+    red_running = 0
+    
     gtk.threads_leave()
     
 

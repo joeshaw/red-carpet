@@ -180,7 +180,7 @@ class TransactionComponent(red_component.Component):
         scrolled.add(view)
         view.show()
 
-        self.display("main", scrolled)
+        return scrolled
 
 
     def changed_visibility(self, flag):

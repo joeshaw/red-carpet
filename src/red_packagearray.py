@@ -532,6 +532,11 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.set_query(query)
 
     def get_packages_from_daemon(self):
+        if 0:
+            self.set_packages([{'section_num': 13, 'installed_size': 0, 'name': 'aspell-deblah blah blah', 'importance_str':
+'suggested', 'name_installed': 0, 'importance_num': 2, 'locked': 0, 'installed': 0, 'epoch': 0, 'version': '0.1.1', 'section_str': 'misc', 'file_size': 4645873, 'release': '12', 'section_user_str': 'Miscellaneous', 'has_epoch': 1, 'channel': 20450}] * 10000)
+            return
+
         if not self.query:
             self.set_packages([])
             return
@@ -554,19 +559,15 @@ class PackagesFromQuery(PackagesFromDaemon):
                 # Remove duplicates in which a package is installed on
                 # the system and matches a package in a channel.
                 # We'll just show the channel package.
-                
-                def pkg_to_key(p):
-                    ch = p["channel"] or p.get("channel_guess", 0)
-                    return "%d:%s:%d:%s:%s" % \
-                           (ch, p["name"], p["epoch"], p["version"], p["release"])
 
                 in_channel = {}
                 for p in packages:
                     if p["installed"] and p["channel"]:
-                        in_channel[pkg_to_key(p)] = 1
+                        in_channel[rcd_util.get_package_key(p)] = 1
 
                 for p in packages:
-                    if p["channel"] == 0 and in_channel.has_key(pkg_to_key(p)):
+                    key = rcd_util.get_package_key(p)
+                    if p["channel"] == 0 and in_channel.has_key(key):
                         packages.remove(p)
                 
                 array.set_packages(packages or [])

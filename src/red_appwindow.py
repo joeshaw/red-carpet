@@ -90,7 +90,7 @@ def view_server_info_cb(app):
 
     app.server_info_window = dialog
 
-class AppWindow(gtk.Window):
+class AppWindow(gtk.Window, red_component.ComponentListener):
 
     # The return value is for the benefit of our delete_event handler.
     def shutdown(self):
@@ -141,6 +141,7 @@ class AppWindow(gtk.Window):
     def __init__(self, server):
 
         gtk.Window.__init__(self)
+        red_component.ComponentListener.__init__(self)
 
         self.server = server
 
@@ -165,15 +166,12 @@ class AppWindow(gtk.Window):
 
         self.statusbar = gtk.Statusbar()
 
-        self.header  = gtk.EventBox()
-        self.upper   = gtk.EventBox()
-        self.lower   = gtk.EventBox()
-        self.main    = gtk.EventBox()
+        self.header = gtk.EventBox()
 
-        style = self.main.get_style().copy()
-        color = self.main.get_colormap().alloc_color("white")
-        style.bg[gtk.STATE_NORMAL] = color
-        self.main.set_style(style)
+        # A box to put component widgets in.  We use an EventBox
+        # instead of just a [HV]Box so that we can control the
+        # background color if we want to.
+        self.container = gtk.EventBox()
 
         self.table.attach(self.menubar,
                           0, 2, 0, 1,
@@ -194,23 +192,11 @@ class AppWindow(gtk.Window):
                           0, 0)
         self.header.show()
 
-        self.table.attach(self.upper,
-                          1, 2, 2, 3,
-                          gtk.FILL | gtk.EXPAND, gtk.FILL,
-                          0, 0)
-        self.upper.show()
-
-        self.table.attach(self.main,
-                          1, 2, 3, 4,
+        self.table.attach(self.container,
+                          1, 2, 2, 5,
                           gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
                           0, 0)
-        self.main.show()
-
-        self.table.attach(self.lower,
-                          1, 2, 4, 5,
-                          gtk.FILL | gtk.EXPAND, gtk.FILL,
-                          0, 0)
-        self.lower.show()
+        self.container.show()
 
         south = gtk.HBox(0, 0)
         south.pack_start(self.transactionbar, 0, 1, 2)
@@ -236,8 +222,6 @@ class AppWindow(gtk.Window):
                          radio_set=lambda x:self.activate_component(x),
                          radiotag=comp)
 
-        comp.set_server(self.server)
-
         # We activate the first component that gets registered.
         if not self.components:
             self.activate_component(comp)
@@ -245,45 +229,10 @@ class AppWindow(gtk.Window):
         self.components.append(comp)
 
 
-    def switch_children(self, type, widget):
-        if type == "header":
-            box = self.header
-        elif type == "upper":
-            box = self.upper
-        elif type == "lower":
-            box = self.lower
-        elif type == "main":
-            box = self.main
-        else:
-            print "Unknown type '%s'" % type
-            assert 0
-            
-        for c in box.get_children():
-            box.remove(c)
-            
-        if not widget:
-            widget = gtk.EventBox()
-            
-        box.add(widget)
-        widget.show()
-
-
     def activate_component(self, comp):
 
-        # Disconnect from the old component's display signal
-        if self.comp_display_id:
-            self.current_comp.disconnect(self.comp_display_id)
-            self.comp_display_id = 0
-
-        # Disconnect from the old component's message signal
-        if self.comp_message_id:
-            self.current_comp.disconnect(self.comp_message_id)
-            self.comp_message_id = 0
-
-        # Disconnect from the old component's switch signal
-        if self.comp_switch_id:
-            self.current_comp.disconnect(self.comp_switch_id)
-            self.comp_switch_id = 0
+        old_comp = self.get_component()
+        self.set_component(comp)
 
         # Clear the status bar
         self.statusbar.pop(0)
@@ -291,38 +240,47 @@ class AppWindow(gtk.Window):
         # Show the new component, hide the old one.
         comp.visible(1)
         comp.set_parent(self)
-        if self.current_comp:
-            self.current_comp.visible(0)
-            self.current_comp.set_parent(None)
-
-        self.current_comp = comp
+        if old_comp:
+            old_comp.visible(0)
+            old_comp.set_parent(None)
 
         # Set the header
         hdr = red_header.Header(comp.pixbuf(), comp.long_name())
         hdr.show_all()
-        self.switch_children("header", hdr)
+        for c in self.header.get_children():
+            self.header.remove(c)
+        self.header.add(hdr)
 
-        # Handle all of the widget reparenting
-        for t in red_component.valid_widget_types:
-            self.switch_children(t, comp.get(t))
+        # Force the componet to emit a display event.  This causes
+        # it to get displayed.
+        comp.pull_widget()
 
-        def display_cb(c, type, w, win):
-            win.switch_children(type, w)
 
-        def message_cb(c, msg, win):
-            win.statusbar.push(0, msg)
+    ###
+    ### Handlers for Component signals (via the ComponentListener API)
+    ###
 
-        def switch_cb(c, win):
-            win.activate_component(c)
+    def do_component_display(self, widget):
+        # Clean any old widgets out of self.container,
+        # then stick in our new widget and show it.
+        for c in self.container.get_children():
+            self.container.remove(c)
+        self.container.add(widget)
+        widget.show()
 
-        # Listen for display and message signals from the the new component
-        if comp:
-            self.comp_display_id = comp.connect("display",
-                                                display_cb,
-                                                self)
-            self.comp_message_id = comp.connect("message",
-                                                message_cb,
-                                                self)
-            self.comp_switch_id = comp.connect("switch",
-                                               switch_cb,
-                                               self)
+    def do_component_switch(self, new_comp):
+        self.activate_component(new_comp)
+
+    def do_component_push(self, new_comp):
+        print "Push!"
+
+    def do_component_pop(self):
+        print "Pop!"
+
+    def do_component_message(self, msg):
+        win.statusbar.push(0, msg)
+
+    def do_component_busy(self, flag):
+        print "busy=%d" % flag
+        
+        

@@ -103,7 +103,9 @@ class SearchComponent(red_component.Component):
     def build(self):
         self.array = red_packagearray.PackagesFromQuery()
 
-        ### Upper
+        page = gtk.VBox(0, 0)
+
+        ### Search bar
 
         hbox = gtk.HBox(0,0)
 
@@ -155,8 +157,8 @@ class SearchComponent(red_component.Component):
         button.connect("clicked", lambda x:self.do_query())
         
         hbox.show_all()
-        self.display("upper", hbox)
 
+        page.pack_start(hbox, 0, 0, 0)
 
         ### Main
 
@@ -174,7 +176,10 @@ class SearchComponent(red_component.Component):
 
         browser.show()
 
-        self.display("main", browser)
+        page.pack_start(browser, 1, 1, 0)
+        page.show()
+
+        return page
 
     def changed_visibility(self, flag):
         if flag:

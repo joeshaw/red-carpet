@@ -85,6 +85,9 @@ class DepComponent(red_component.Component):
 
 
     def build(self):
+
+        page = gtk.VBox(0, 0)
+        
         # Freeze the daemon listeners while we're doing a dependency
         # resolution.  Otherwise we detect a change and slow things down.
         red_serverlistener.freeze_polling()
@@ -113,8 +116,8 @@ class DepComponent(red_component.Component):
 
         sw = gtk.ScrolledWindow()
         sw.add(self.table)
-        
-        self.display("main", sw)
+
+        page.pack_start(sw, 1, 1, 0)
 
         buttons = gtk.HBox(0, 0)
         cancel = gtk.Button("Cancel")
@@ -122,7 +125,8 @@ class DepComponent(red_component.Component):
         buttons.pack_end(cont, 0, 0, 2)
         buttons.pack_end(cancel, 0, 0, 2)
         buttons.show_all()
-        self.display("lower", buttons)
+
+        page.pack_start(buttons, 0, 0, 0)
 
         def continue_cb(b, dep_comp):
             to_install = dep_comp.install_packages + dep_comp.dep_install
@@ -133,5 +137,7 @@ class DepComponent(red_component.Component):
             print "Remove:", map(lambda x:x["name"], to_remove)
 
         cont.connect("clicked", continue_cb, self)
+
+        return page
 
 

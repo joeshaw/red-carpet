@@ -69,12 +69,13 @@ class PrefsComponent(red_component.Component):
 
         view.show_all()
 
-        ### Main
-
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scrolled.add(view)
-        self.display("main", scrolled)
+        scrolled.show()
+
+        return scrolled
+    
 
 class CellRendererPref(gtk.GenericCellRenderer):
     __gproperties__ = {
