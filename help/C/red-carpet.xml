@@ -130,7 +130,7 @@
       <para>
         To subscribe to a channel, select    <menuchoice>
         <guimenu>Edit</guimenu><guimenuitem>Channel Subscriptions</guimenuitem>
-        </menuchoice> or press the <guibutton>Channels</guibutton> button
+        </menuchoice> or click the <guibutton>Channels</guibutton> button
         in the toolbar. A window will open to show you the list of
         available channels. Check the box next to a channel to subscribe.
       </para>
@@ -248,7 +248,9 @@
     <para>
       To mark a package for installation or removal, click the
       <guibutton>Mark for Installation</guibutton> or <guibutton>Mark
-      for Removal</guibutton> buttons at the bottom of the screen.
+      for Removal</guibutton> buttons at the bottom of the screen. You
+      can also click the <guilabel>Action</guilabel> column to choose
+      an action for each package.
     </para>
 
     <note id="transaction-types">
@@ -305,8 +307,8 @@
     <title>Five Ways of Looking at Software</title>
    
     <para>
-      At the top left of the Ximian Red Carpet window are five buttons
-      that display five different views of the software world: 
+      Along the top of the right side of the window are five tabs that
+      give you different views of your system:
     </para>
     <variablelist>
         <varlistentry>
@@ -355,9 +357,10 @@
           <term>Pending Actions</term>
           <listitem>
             <para>
-              This displays the upcoming software transactions you
-              have chosen. To perform them, click the <guibutton>Run
-              Now</guibutton> button.
+              This displays a detailed list of upcoming software
+              transactions you have chosen. To perform them, click the
+              <guibutton>Run Now</guibutton> button in the upper left
+              hand corner of the window.
             </para>
           </listitem>
         </varlistentry>
@@ -476,9 +479,17 @@
         <title>Remove Software on My Computer</title>
         <para>
           To uninstall software that is on your computer now, click
-          the <guilabel>My Computer</guilabel> button. Red Carpet will
+          the <guilabel>My Computer</guilabel> tab. Red Carpet will
           display a list of the software that is on your system now.
         </para>
+        <para>
+          Select packages for removal and click <guibutton>Mark for
+        Removal</guibutton> or click the space next to the package in
+        the <guilabel>Action</guilabel> column. When you are finished,
+        click the <guibutton>Run Now</guibutton> button, or select
+        another view to choose more transactions.
+        </para>
+
         <para>
           Each package is displayed with the following information:
         </para>
@@ -605,7 +616,7 @@
           <para>
             To look at the broadest possible range of software, and to
             find new software to install, click the <guibutton>Search</guibutton>
-            button. This will <emphasis>not</emphasis> immediately display a list of all
+            tab. This will <emphasis>not</emphasis> immediately display a list of all
             available software.  You must first search for the software
             you want to see. If you really wish to see every available
             piece of software, enter a blank search in the search
@@ -867,7 +878,7 @@
         a list of transactions you have selected, but it doesn't have
         room to give you a lot of detail. For more information about
         your pending transaction list, click the
-        <guibutton>Pending Actions</guibutton> button.
+        <guibutton>Pending Actions</guibutton> tab.
       </para>
       <para>
         In addition to the action and package name available in the
