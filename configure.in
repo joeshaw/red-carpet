@@ -31,15 +31,18 @@ dnl Check for existance of Gordon Installer
 
 AC_ARG_ENABLE(standalone,
 	[   --enable-standalone       use standalone build],
-	use_standalone="false")
-AM_CONDITIONAL(STANDALONE, test x"use_standalone" != x"false")
+	use_standalone="yes", use_standalone="no")
+
+AC_MSG_CHECKING(whether to build a standalone binary)
+AC_MSG_RESULT($use_standalone)
+
+AM_CONDITIONAL(STANDALONE, test "x$use_standalone" = "xyes")
 
 dnl Fast Unmarshaller Checks
 
-use_fast_unmarshaller=yes
 AC_ARG_ENABLE(unmarshaller,
         [   --disable-unmarshaller    does not build the fast unmarshaller], 
-        use_fast_unmarshaller="disabled") 
+        use_fast_unmarshaller="disabled", use_fast_unmarshaller="yes") 
 
 dnl Check for python distutils --- we need them to build the fast
 dnl unmarshaller.  They should be distributed along w/ python 2.x, but
@@ -61,7 +64,7 @@ if test "x$have_distutils" = "xno"; then
    use_fast_unmarshaller="requires distutils"
 fi
 
-AM_CONDITIONAL(FAST_UNMARSHALLER, test x"$use_fast_unmarshaller" = "xyes")
+AM_CONDITIONAL(FAST_UNMARSHALLER, test "x$use_fast_unmarshaller" = "xyes")
 
 AC_MSG_CHECKING(for fast unmarshaller support)
 AC_MSG_RESULT($use_fast_unmarshaller)
@@ -167,5 +170,7 @@ Configuration:
   Prefix:               ${prefix}
   
   Usermode type:        ${with_usermode_type}
+  Standalone binary:    ${use_standalone}
+  Fast unmarshaller:    ${use_fast_unmarshaller}
 
 "
