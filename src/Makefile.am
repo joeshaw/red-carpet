@@ -64,14 +64,14 @@ red_carpetsupport_DATA =	\
 	red_users.py				\
 	ximian_xmlrpclib.py
 
-EXTRA_DIST = $(red_carpetsupport_DATA)
+EXTRA_DIST = $(red_carpetsupport_DATA) red-carpet.in kdesu-wrapper.in
 
 install-hook:
 
 install-exec-hook:
 if USE_KDESU
-	$(INSTALL_DATA) -m 0755 $(srcdir)/kdesu-wrapper $(DESTDIR)$(bindir)/red-carpet
-	$(INSTALL_DATA) -m 0755 $(srcdir)/red-carpet $(DESTDIR)$(libexecdir)/red-carpet
+	$(INSTALL_DATA) -m 0755 $(top_builddir)/src/kdesu-wrapper $(DESTDIR)$(bindir)/red-carpet
+	$(INSTALL_DATA) -m 0755 $(top_builddir)/src/red-carpet $(DESTDIR)$(libexecdir)/red-carpet
 else
-	$(INSTALL_DATA) -m 0755 $(srcdir)/red-carpet $(DESTDIR)$(bindir)/red-carpet
+	$(INSTALL_DATA) -m 0755 $(top_builddir)/src/red-carpet $(DESTDIR)$(bindir)/red-carpet
 endif
