@@ -40,6 +40,7 @@ src/red_search.py
 src/red_serverinfo.py
 src/red_serverlistener.py
 src/red_serverproxy.py
+src/red_services.py
 src/red_settings.py
 src/red_sidebar.py
 src/red_software.py

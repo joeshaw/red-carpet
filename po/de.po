@@ -5,15 +5,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Red Carpet 2.0.2\n"
-"POT-Creation-Date: 2003-09-05 17:12-0400\n"
-"PO-Revision-Date: 2003-07-21 20:14+0100\n"
+"Project-Id-Version: Red Carpet 2.1.90\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-21 15:08+0200\n"
+"PO-Revision-Date: 2003-10-21 15:05+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -41,24 +41,25 @@ msgstr ""
 #. ##############################################################################
 #. ##############################################################################
 #. ##############################################################################
+#. ##############################################################################
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:381
+#: src/rcd_util.py:419
 msgid "Please wait while getting data."
 msgstr "Bitte warten, Daten werden abgerufen."
 
 #. ##############################################################################
-#: src/rcd_util.py:435 src/rcd_util.py:453
+#: src/rcd_util.py:473 src/rcd_util.py:491
 msgid "Please ensure that your network settings are correct."
 msgstr ""
 "Bitte stellen Sie sicher, dass Ihre Netzwerkeinstellungen korrekt sind."
 
-#: src/rcd_util.py:442
+#: src/rcd_util.py:480
 msgid "Refreshing channel data"
 msgstr "Kanaldaten werden aufgefrischt"
 
-#: src/rcd_util.py:444
+#: src/rcd_util.py:482
 msgid "Downloading channel information"
 msgstr "Kanalinformationen werden heruntergeladen"
 
@@ -66,31 +67,31 @@ msgstr "Kanalinformationen werden heruntergeladen"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:470
+#: src/rcd_util.py:508
 msgid "Verifying"
 msgstr "Überprüfen"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:509
 msgid "Unable to verify package signature for"
 msgstr "Paketsignatur konnte nicht überprüft werden für"
 
-#: src/rcd_util.py:472
+#: src/rcd_util.py:510
 msgid "There is no package signature for"
 msgstr "Es existiert keine Paketsignatur für"
 
-#: src/rcd_util.py:473
+#: src/rcd_util.py:511
 msgid "Preparing Transaction"
 msgstr "Übertragung wird vorbereitet"
 
-#: src/rcd_util.py:474
+#: src/rcd_util.py:512
 msgid "Installing"
 msgstr "Installieren"
 
-#: src/rcd_util.py:475
+#: src/rcd_util.py:513
 msgid "Removing"
 msgstr "Entfernen"
 
-#: src/rcd_util.py:476
+#: src/rcd_util.py:514
 msgid "Configuring"
 msgstr "Konfigurieren"
 
@@ -179,40 +180,37 @@ msgstr "Lizensiert unter der GNU General Public License, Version 2"
 msgid "Group Activation"
 msgstr "Gruppenaktivierung"
 
-#: src/red_activation.py:37
+#: src/red_activation.py:44
+msgid "Service:"
+msgstr "Dienst:"
+
+#: src/red_activation.py:48
 msgid "Email:"
 msgstr "E-Mail:"
 
-#: src/red_activation.py:41
+#: src/red_activation.py:52
 msgid "Activation Code:"
 msgstr "Aktivierungscode:"
 
-#: src/red_activation.py:59
+#: src/red_activation.py:78
 msgid "Activate"
 msgstr "Aktivieren"
 
-#: src/red_activation.py:76
+#: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
 msgstr "Bitte geben Sie sowohl E-Mail als auch Aktivierungscode an."
 
-#: src/red_activation.py:91
+#: src/red_activation.py:114
 msgid "Unable to activate"
 msgstr "Aktivierung nicht möglich"
 
-#: src/red_activation.py:92
+#: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
 "Bitte stellen Sie sicher, dass Sie die E-Mail-Adresse und den "
 "Aktivierungscode fehlerfrei eingegeben haben."
 
 #. Store email to config.
-#: src/red_activation.py:110
-msgid ""
-"System could not be activated: Invalid activation code or email address."
-msgstr ""
-"System konnte nicht aktiviert werden: Aktivierungscode oder E-Mail-Adresse "
-"ungültig."
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -235,7 +233,7 @@ msgstr ""
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:83
+#: src/red_appwindow.py:84
 msgid "C"
 msgstr "C"
 
@@ -249,7 +247,7 @@ msgstr "C"
 #. dunno, but a sane
 #. fallback
 #. CDE
-#: src/red_appwindow.py:120
+#: src/red_appwindow.py:121
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -257,7 +255,7 @@ msgstr ""
 "Die Hilfe konnte nicht angezeigt werden, da die Hilfedateien fehlten. Bitte "
 "berichten Sie dies Ihrem Anbieter."
 
-#: src/red_appwindow.py:130
+#: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
@@ -277,7 +275,7 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:405
+#: src/red_appwindow.py:406
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Sind Sie sicher, dass Sie %d Paketinformationsfenster öffnen wollen?"
@@ -285,71 +283,71 @@ msgstr "Sind Sie sicher, dass Sie %d Paketinformationsfenster öffnen wollen?"
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:434
 msgid "Run Now"
 msgstr "Jetzt ausführen"
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:435
 msgid "Perform installations and removals"
 msgstr "Installations- und Entfernvorgänge durchführen"
 
-#: src/red_appwindow.py:441
+#: src/red_appwindow.py:442
 msgid "Channels"
 msgstr "Kanäle"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:443
 msgid "Change your channel subscriptions"
 msgstr "Ihre Kanalabonnements ändern"
 
-#: src/red_appwindow.py:450
+#: src/red_appwindow.py:451
 msgid "Refresh"
 msgstr "Auffrischen"
 
-#: src/red_appwindow.py:451
+#: src/red_appwindow.py:452
 msgid "Refresh channel data"
 msgstr "Kanaldaten auffrischen"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:462 src/red_packageview.py:232
+#: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Zur _Installation vormerken"
 
-#: src/red_appwindow.py:463
+#: src/red_appwindow.py:464
 msgid "Mark selected packages for installation"
 msgstr "Die gewählten Pakte zur Installation vormerken"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:468 src/red_appwindow.py:763
+#: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Zum _Entfernen vormerken"
 
-#: src/red_appwindow.py:469
+#: src/red_appwindow.py:470
 msgid "Mark selected packages for removal"
 msgstr "Die gewählten Pakte zum Entfernen vormerken"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:474 src/red_appwindow.py:776
+#: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: src/red_appwindow.py:475
+#: src/red_appwindow.py:476
 msgid "Cancel marked package actions"
 msgstr "Vorgemerkte Paketaktionen abbrechen"
 
 #. Info
-#: src/red_appwindow.py:480 src/red_packageview.py:276
+#: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformationen"
 
-#: src/red_appwindow.py:481
+#: src/red_appwindow.py:482
 msgid "Package information"
 msgstr "Paketinformationen"
 
@@ -359,11 +357,11 @@ msgstr "Paketinformationen"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:538
+#: src/red_appwindow.py:539
 msgid "_File"
 msgstr "_Datei"
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:540
 msgid "_Edit"
 msgstr "_Bearbeiten"
 
@@ -372,250 +370,258 @@ msgstr "_Bearbeiten"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:540 src/red_appwindow.py:826
+#: src/red_appwindow.py:541 src/red_appwindow.py:833
 msgid "_View"
 msgstr "_Ansicht"
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:542
 msgid "_Actions"
 msgstr "A_ktionen"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:543
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: src/red_appwindow.py:550
+#: src/red_appwindow.py:551
 msgid "Connect to daemon..."
 msgstr "Mit Daemon verbinden..."
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:552
 msgid "Connect to a remote daemon"
 msgstr "Mit einem entfernten Daemon verbinden"
 
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:562
 msgid "Install from _File..."
 msgstr "Aus _Datei installieren..."
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:563
 msgid "Install a package from a local file"
 msgstr "Ein Paket aus einer lokalen Datei installieren"
 
-#: src/red_appwindow.py:571
+#: src/red_appwindow.py:572
 msgid "Install from _URL..."
 msgstr "Aus _URL installieren..."
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:573
 msgid "Install a package from a remote URL"
 msgstr "Ein Paket aus einer lokalen URL installieren"
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:589
+#: src/red_appwindow.py:590
 msgid "_Mount Directory..."
 msgstr "Verzeichnis _einbinden..."
 
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:591
 msgid "Mount a directory as a channel"
 msgstr "Ein Verzeichnis als Kanal einbinden"
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:606
+#: src/red_appwindow.py:607
 msgid "U_nmount Directory..."
 msgstr "Verzeichnis _aushängen..."
 
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:608
 msgid "Unmount a directory"
 msgstr "Ein Verzeichnis aushängen"
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:622
+#: src/red_appwindow.py:624
 msgid "_Activate..."
 msgstr "_Aktivieren..."
 
-#: src/red_appwindow.py:623
+#: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
 "Daemon gegen einen Red Carpet Express- oder Red Carpet Enterprise-Server "
 "aktivieren"
 
-#: src/red_appwindow.py:629
+#: src/red_appwindow.py:631
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/red_appwindow.py:630
+#: src/red_appwindow.py:632
 msgid "Quit Red Carpet"
 msgstr "Red Carpet beenden"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:645
+#: src/red_appwindow.py:647
 msgid "Select _All"
 msgstr "_Alles auswählen"
 
-#: src/red_appwindow.py:646
+#: src/red_appwindow.py:648
 msgid "Select all items"
 msgstr "Alle Objekte auswählen"
 
-#: src/red_appwindow.py:651
+#: src/red_appwindow.py:653
 msgid "Select _None"
 msgstr "_Nichts auswählen"
 
-#: src/red_appwindow.py:652
+#: src/red_appwindow.py:654
 msgid "Deselect all items"
 msgstr "Alle Objekte abwählen"
 
-#: src/red_appwindow.py:659
+#: src/red_appwindow.py:661
+msgid "Services..."
+msgstr "Dienste..."
+
+#: src/red_appwindow.py:662
+msgid "Edit services"
+msgstr "Dienste bearbeiten"
+
+#: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
 msgstr "Kanal_abonnements..."
 
-#: src/red_appwindow.py:660
+#: src/red_appwindow.py:667
 msgid "Edit your channel subscriptions"
 msgstr "Ihre Kanalabonnements bearbeiten"
 
-#: src/red_appwindow.py:665
+#: src/red_appwindow.py:672
 msgid "_Preferences..."
 msgstr "_Einstellungen..."
 
-#: src/red_appwindow.py:666
+#: src/red_appwindow.py:673
 msgid "Edit your Red Carpet preferences"
 msgstr "Ihre Red Carpet-Einstellungen bearbeiten"
 
-#: src/red_appwindow.py:670
+#: src/red_appwindow.py:677
 msgid "_Users..."
 msgstr "_Benutzer..."
 
-#: src/red_appwindow.py:671
+#: src/red_appwindow.py:678
 msgid "Edit user permissions for this daemon"
 msgstr "Zugriffsrechte der Benutzer auf diesen Daemon bearbeiten"
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:684
+#: src/red_appwindow.py:691
 msgid "_Sidebar"
 msgstr "_Seitenleiste"
 
-#: src/red_appwindow.py:685
+#: src/red_appwindow.py:692
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Die Seitenleiste »ausstehende Aktionen« anzeigen/verbergen"
 
-#: src/red_appwindow.py:689
+#: src/red_appwindow.py:696
 msgid "_Advanced Search Options"
 msgstr "_Komplexe Suchoptionen"
 
-#: src/red_appwindow.py:690
+#: src/red_appwindow.py:697
 msgid "Hide or show advanced search options"
 msgstr "Komplexe Suchoptionen anzeigen/verbergen"
 
-#: src/red_appwindow.py:694
+#: src/red_appwindow.py:701
 msgid "_Channel Names"
 msgstr "_Kanalnamen"
 
-#: src/red_appwindow.py:695
+#: src/red_appwindow.py:702
 msgid "Hide or show channel names in package lists"
 msgstr "Kanalnamen in Paketlisten anzeigen/verbergen"
 
-#: src/red_appwindow.py:701
+#: src/red_appwindow.py:708
 msgid "Package _Information..."
 msgstr "Paket_informationen..."
 
-#: src/red_appwindow.py:702
+#: src/red_appwindow.py:709
 msgid "View information about currently selected packages"
 msgstr "Informationen zu den momentan gewählten Paketen anzeigen"
 
-#: src/red_appwindow.py:710
+#: src/red_appwindow.py:717
 msgid "_Daemon Information..."
 msgstr "_Daemon-Informationen..."
 
-#: src/red_appwindow.py:711
+#: src/red_appwindow.py:718
 msgid "View information about this daemon"
 msgstr "Informationen zu diesem Daemon anzeigen"
 
-#: src/red_appwindow.py:713
+#: src/red_appwindow.py:720
 msgid "Red Carpet Ne_ws..."
 msgstr "Red Carpet _aktuell..."
 
-#: src/red_appwindow.py:714
+#: src/red_appwindow.py:721
 msgid "View the latest Red Carpet news"
 msgstr "Aktuelle Informationen zu Red Carpet anzeigen"
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:726
+#: src/red_appwindow.py:733
 msgid "Run _Now"
 msgstr "_Jetzt ausführen"
 
 # CHECK
-#: src/red_appwindow.py:727
+#: src/red_appwindow.py:734
 msgid "Run the current transaction"
 msgstr "Die derzeitige Transaktion ausführen"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:741
+#: src/red_appwindow.py:748
 msgid "_Verify System Dependencies"
 msgstr "Systemabhängigkeiten ü_berprüfen"
 
-#: src/red_appwindow.py:742
+#: src/red_appwindow.py:749
 msgid "Verify that all system dependencies are met"
 msgstr "Überprüfen, ob alle Systemabhängigkeiten erfüllt sind"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:753
+#: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
 msgstr "Zur I_nstallation vormerken"
 
-#: src/red_appwindow.py:754
+#: src/red_appwindow.py:761
 msgid "Mark this package for installation"
 msgstr "Dieses Paket zur Installation vormerken"
 
-#: src/red_appwindow.py:764
+#: src/red_appwindow.py:771
 msgid "Mark this package for removal"
 msgstr "Dieses Paket zum Entfernen vormerken"
 
-#: src/red_appwindow.py:777
+#: src/red_appwindow.py:784
 msgid "Cancel installation or removal mark"
 msgstr "Vormerkung zur Installation oder zum Entfernen verwerfen"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:791
+#: src/red_appwindow.py:798
 msgid "Re_fresh Channel Data"
 msgstr "Kanaldaten auf_frischen"
 
-#: src/red_appwindow.py:792
+#: src/red_appwindow.py:799
 msgid "Download latest channel data"
 msgstr "Jüngste Kanaldaten herunterladen"
 
-#: src/red_appwindow.py:801
+#: src/red_appwindow.py:808
 msgid "_Contents"
 msgstr "_Inhalt"
 
-#: src/red_appwindow.py:802
+#: src/red_appwindow.py:809
 msgid "View Red Carpet help"
 msgstr "Hilfe zu Red Carpet anzeigen"
 
-#: src/red_appwindow.py:807
+#: src/red_appwindow.py:814
 msgid "_About..."
 msgstr "_Info..."
 
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:815
 msgid "About Red Carpet"
 msgstr "Info zu Red Carpet"
 
-#: src/red_appwindow.py:827
+#: src/red_appwindow.py:834
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Zur »%s«-Seite gehen"
@@ -671,15 +677,15 @@ msgstr "Zur »%s«-Seite gehen"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_channeloption.py:50
+#: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "Alle Kanäle"
 
-#: src/red_channeloption.py:55
+#: src/red_channeloption.py:69
 msgid "All Subscribed Channels"
 msgstr "Alle abonnierten Kanäle"
 
-#: src/red_channeloption.py:60
+#: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
 msgstr "Kein/unbekannter Kanal"
 
@@ -807,6 +813,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"Protokollversion %d erkannt. Version %d ist erforderlich. Sie müssen Ihre "
+"rcd-Version aktualisieren."
 
 #. LSB compliant distros should have the
 #. following
@@ -851,7 +859,7 @@ msgstr "Server:"
 msgid "User name:"
 msgstr "Benutzername:"
 
-#: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
+#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Passwort:"
@@ -934,20 +942,20 @@ msgstr "Red Carpet beenden"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
 msgstr "Abhängigkeitsauflösung"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "System wird überprüft"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
 msgstr "Abhängigkeiten werden aufgelöst"
 
-#: src/red_depcomponent.py:157
+#: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
@@ -958,25 +966,23 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr "Ich stimme zu"
 
-#. FIXME: flags
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:261
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr "Abhängigkeitsauflösung fehlgeschlagen"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:311
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr "System überprüft"
 
-#: src/red_depcomponent.py:313
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -988,23 +994,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:367
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Angeforderte Installationen"
 
-#: src/red_depcomponent.py:371
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Angeforderte Entfernvorgänge"
 
-#: src/red_depcomponent.py:375
+#: src/red_depcomponent.py:383
 msgid "Required Installations"
 msgstr "Erforderlich Installationen"
 
-#: src/red_depcomponent.py:379
+#: src/red_depcomponent.py:387
 msgid "Required Removals"
 msgstr "Erforderliche Entfernvorgänge"
 
-#: src/red_depcomponent.py:405
+#: src/red_depcomponent.py:413
 msgid "Continue"
 msgstr "Fortfahren"
 
@@ -1028,7 +1034,7 @@ msgstr "Fortfahren"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:229 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Kanal"
@@ -1400,51 +1406,50 @@ msgstr "Einen Spiegel wählen"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Handle ~ to mean $HOME
-#: src/red_mount.py:61
-#, python-format
-msgid "Unable to mount '%s' as a channel"
-msgstr "»%s« konnte nicht als Kanal eingebunden werden"
-
 #. Always run the dialog in the main thread
-#: src/red_mount.py:91
+#: src/red_mount.py:90
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "»%s« konnte nicht eingebunden werden"
 
-#: src/red_mount.py:117
+#: src/red_mount.py:116
 msgid "Browse..."
 msgstr "Auswählen..."
 
-#: src/red_mount.py:128
+#: src/red_mount.py:127
 msgid "Mount Directory"
 msgstr "Verzeichnis einbinden"
 
-#: src/red_mount.py:141
+#: src/red_mount.py:140
 msgid "Mount channel"
 msgstr "Kanal einbinden"
 
-#: src/red_mount.py:145
+#: src/red_mount.py:144
 msgid "Mount a directory as channel"
 msgstr "Ein Verzeichnis als Kanal einbinden"
 
-#: src/red_mount.py:153
+#: src/red_mount.py:152
 msgid "Channel Name:"
 msgstr "Kanalname:"
 
-#: src/red_mount.py:157
+#: src/red_mount.py:156
 msgid "Directory:"
 msgstr "Verzeichnis:"
 
+#: src/red_mount.py:167
+msgid "Look for packages recursively"
+msgstr "Rekursiv nach Paketen suchen"
+
 # CHECK
-#: src/red_mount.py:189
+#: src/red_mount.py:192
 msgid "Please choose the path for channel."
 msgstr "Bitte wählen Sie den Kanalpfad."
 
-#: src/red_mount.py:210
+#: src/red_mount.py:213
 msgid "Unmount Channel"
 msgstr "Kanal aushängen"
 
-#: src/red_mount.py:239
+#: src/red_mount.py:242
 msgid "Unmount?"
 msgstr "Aushängen?"
 
@@ -1731,7 +1736,7 @@ msgstr "Kollidiert mit"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Name"
 
@@ -1739,10 +1744,9 @@ msgstr "Name"
 msgid "Version"
 msgstr "Version"
 
-# CHECK
 #: src/red_packagepage_info.py:80
 msgid "Release"
-msgstr "Veröffentlichung"
+msgstr "Release"
 
 #: src/red_packagepage_info.py:81
 msgid "Package Size"
@@ -1760,7 +1764,7 @@ msgstr "Sektion"
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:478
+#: src/red_packagepage_info.py:86 src/red_prefs.py:413
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -1860,7 +1864,7 @@ msgstr "%.1f%% fertiggestellt"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr "System wird aktualisiert"
 
@@ -1868,11 +1872,11 @@ msgstr "System wird aktualisiert"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 msgid "Download cancelled"
 msgstr "Download abgebrochen"
 
-#: src/red_pendingview.py:578
+#: src/red_pendingview.py:583
 msgid "Transaction cancelled"
 msgstr "Transaktion abgebrochen"
 
@@ -1882,37 +1886,37 @@ msgstr "Transaktion abgebrochen"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
+#: src/red_pendingview.py:618
 msgid "Transaction Finished"
 msgstr "Transaktion abgeschlossen"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 msgid "Downloading packages"
 msgstr "Pakete werden heruntergeladen"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 msgid "Download Failed"
 msgstr "Download fehlgeschlagen"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
 msgstr "Unbekannter Fehler"
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 msgid "Processing Transaction"
 msgstr "Transaktion wird verarbeitet"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr "Die Transaktion wurde erfolgreich abgeschlossen"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 msgid "Transaction failed"
 msgstr "Transaktion fehlgeschlagen"
 
-#: src/red_pendingview.py:703
+#: src/red_pendingview.py:708
 msgid "Transaction Failed"
 msgstr "Transaktion fehlgeschlagen"
 
@@ -1953,117 +1957,108 @@ msgstr "Transaktion fehlgeschlagen"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. Title
-#. Server section
-#: src/red_prefs.py:169
-msgid "Server"
-msgstr "Server"
-
-#: src/red_prefs.py:177
-msgid "Server URL:"
-msgstr "Server-URL:"
-
-#. manually force the value to update
-#: src/red_prefs.py:228
-msgid "Mirrors"
-msgstr "Spiegel"
-
-#: src/red_prefs.py:240
-msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
-msgstr "Premiumdienste aktivieren (Red Carpet Express oder Enterprise)"
+#: src/red_prefs.py:171
+msgid "Interval to refresh channel data (in hours):"
+msgstr "Auffrischintervall für Kanaldaten (in Stunden):"
 
 #. Packages section
-#: src/red_prefs.py:251
+#: src/red_prefs.py:182
 msgid "Packages"
 msgstr "Pakete"
 
-#: src/red_prefs.py:260
+#: src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Paketsignaturen erforderlich machen"
 
-#: src/red_prefs.py:265
+#: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Maximal gleichzeitig herunterzuladende Pakete:"
 
+# CHECK
+#: src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "Zurückrollen von Paketen zulassen"
+
 #. Proxy section - requires superuser
-#: src/red_prefs.py:275
+#: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:284
+#: src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Einen Proxy verwenden"
 
-#: src/red_prefs.py:288
+#: src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "Proxy-URL:"
 
-#: src/red_prefs.py:295
+#: src/red_prefs.py:230
 msgid "Username:"
 msgstr "Benutzername:"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:335
+#: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr ""
 "Sie haben nicht die erforderlichen Zugriffsrechte, um die Proxy-"
 "Einstellungen anzuzeigen"
 
-#: src/red_prefs.py:359
+#: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Heruntergeladene Pakete und Metadaten zwischenspeichern"
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Speicherort der zwischengespeicherten Daten:"
 
 #. Expiration section
-#: src/red_prefs.py:373
+#: src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Läuft aus"
 
-#: src/red_prefs.py:377
+#: src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Zwischenspeicher läuft aus"
 
-#: src/red_prefs.py:383
+#: src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Maximales Alter in Tagen:"
 
-#: src/red_prefs.py:394
+#: src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Maximale Größe in MB:"
 
-#: src/red_prefs.py:405
+#: src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Derzeitige Zwischenspeichergröße:"
 
-#: src/red_prefs.py:422
+#: src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr ""
 "Sind Sie sicher, dass Sie die Paketdateien in Ihrem Zwischenspeicher löschen "
 "wollen?"
 
-#: src/red_prefs.py:438
+#: src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Leerer Zwischenspeicher"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:460
+#: src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:508
+#: src/red_prefs.py:443
 msgid "Value"
 msgstr "Wert"
 
-#: src/red_prefs.py:521
+#: src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Einstellungen werden geladen..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:585
+#: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "%s Einstellungen"
@@ -2335,7 +2330,6 @@ msgstr "XML-Ausgabedatei wählen"
 #. user from being hammered by a whole bunch of exceptions
 #. if something has gone badly wrong.
 #. FIXME?
-#. FIXME?
 #. do the first poll immediately
 #. get poll timeout started again
 #. Start polling.  We skip our first poll, since we won't have made a
@@ -2363,6 +2357,58 @@ msgstr "XML-Ausgabedatei wählen"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. We want to emit our signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "Dienste bearbeiten"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "Dienst _entfernen"
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr "Dienst _hinzufügen"
+
+#: src/red_services.py:226
+msgid "Add Service"
+msgstr "Dienst hinzufügen"
+
+#: src/red_services.py:231
+msgid "Service URL"
+msgstr "Dienst-URL"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -2689,3 +2735,24 @@ msgstr "Benutzername ungültig."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Benutzer »%s« existiert bereits."
+
+#~ msgid ""
+#~ "System could not be activated: Invalid activation code or email address."
+#~ msgstr ""
+#~ "System konnte nicht aktiviert werden: Aktivierungscode oder E-Mail-"
+#~ "Adresse ungültig."
+
+#~ msgid "Unable to mount '%s' as a channel"
+#~ msgstr "»%s« konnte nicht als Kanal eingebunden werden"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Server URL:"
+#~ msgstr "Server-URL:"
+
+#~ msgid "Mirrors"
+#~ msgstr "Spiegel"
+
+#~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
+#~ msgstr "Premiumdienste aktivieren (Red Carpet Express oder Enterprise)"
