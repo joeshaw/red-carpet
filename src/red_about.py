@@ -38,7 +38,9 @@ class About(gtk.Dialog):
 
     def __init__(self):
 
-        gtk.Dialog.__init__(self)
+        gtk.Dialog.__init__(self, red_main.get_title())
+
+        self.set_icon(red_pixbuf.get_pixbuf("red-carpet"))
 
         b = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
         b.connect("clicked", lambda b,w:w.destroy(), self)

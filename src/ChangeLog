@@ -1,3 +1,15 @@
+2003-04-01  Joe Shaw  <joe@ximian.com>
+
+	* red_about.py (About): Set the window title and icon.
+
+	* red_appwindow.py (assemble_menubar): Only show the about box
+	once.  (Fixes #40640)
+
+	* red_connection.py (ConnectionWindow): Set the window title and
+	icon.
+
+	* red_main.py: Add a get_title() method.
+
 2003-04-01  Jon Trowbridge  <trow@ximian.com>
 
 	* red_mirrors.py: Added.  Code for the mirrors dialog.

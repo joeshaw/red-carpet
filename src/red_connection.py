@@ -24,6 +24,8 @@ import time
 import gtk
 import ximian_xmlrpclib
 import rcd_util
+import red_main
+import red_pixbuf
 import red_settings
 from red_gettext import _
 
@@ -253,7 +255,9 @@ def connect_from_window(parent=None):
 class ConnectionWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self)
+        gtk.Dialog.__init__(self, red_main.get_title())
+
+        self.set_icon(red_pixbuf.get_pixbuf("red-carpet"))
 
         self.local = 1
 

@@ -679,7 +679,7 @@ class AppWindow(gtk.Window,
 
         bar.add("/%s/%s" % (help_str, _("_About...")),
                 pixbuf_name="menu-about",
-                callback=lambda x:red_about.About().show())
+                callback=lambda x:self.open_or_raise_window(red_about.About))
 
         if red_main.debug:
             self.assemble_debug_menubar(bar)

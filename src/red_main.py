@@ -76,6 +76,9 @@ def ticker():
     gtk.timeout_add(50, tick_cb);
     TickThread().start()
 
+def get_title():
+    return red_name + " " + red_version
+
 ###
 ### main
 ###
@@ -171,7 +174,7 @@ def main(version):
         ticker()
 
     app = red_appwindow.AppWindow(server)
-    app.set_title(red_name + " " + red_version)
+    app.set_title(get_title())
 
     app.register_component(red_summary.SummaryComponent())
     app.register_component(red_my_computer.MyComputerComponent())
@@ -183,14 +186,10 @@ def main(version):
     app.set_size_request(780, 550)
     app.show()
 
-    #gtk.threads_enter()
-
     gtk.main()
 
     global red_running
     red_running = 0
-
-    #gtk.threads_leave()
 
     # This will terminate all our child threads without joining
     os._exit(0)
