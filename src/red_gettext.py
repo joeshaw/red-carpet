@@ -17,13 +17,27 @@
 
 import os
 
+import gettext
+
+# FIXME: We'll probably have to add in the localedir for things like
+# Solaris which put locale files in /usr/lib/locale instead of
+# /usr/share/locale; python looks in the latter.
+t = None
+try:
+    t = gettext.translation("red-carpet", "/opt/rc2/share/locale")
+except IOError: # No translation file for this language
+    pass
+
 debug = os.getenv("RC_GUI_TRANSLATION_DEBUG")
 
 def _(msg):
     if debug:
         return "((%s))" % msg
     else:
-        return msg
+        if t:
+            return t.ugettext(msg)
+        else:
+            return msg
 
 
 

@@ -1,3 +1,7 @@
+2003-03-06  Joe Shaw  <joe@ximian.com>
+
+	* red_gettext.py: Hook this stuff up to the python gettext stuff.
+
 2003-03-06  Jon Trowbridge  <trow@ximian.com>
 
 	* red_packageview.py (PackageView.append_status_column): Turn
