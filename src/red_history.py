@@ -262,6 +262,10 @@ class HistoryModel(gtk.ListStore):
                                gobject.TYPE_STRING,
                                gobject.TYPE_STRING,
                                gobject.TYPE_STRING)
+
+        self.__worker = None
+        self.__worker_handler_id = 0
+
         self.server = rcd_util.get_server()
         self.filter = filter
         filter.connect("updated", self.update)
@@ -323,6 +327,45 @@ class HistoryModel(gtk.ListStore):
             gtk.idle_add(self.add_rows, entries[:rows_later])
             entries = entries[rows_later:]
 
+    def get_worker(self):
+        return self.__worker
+
+    def update(self, filter, query):
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_is = 0
+            self.__worker.cancel()
+
+        if not query:
+            return
+
+        def get_history_cb(worker, this):
+            if not worker.is_cancelled():
+                try:
+                    entries = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    return
+
+                if entries:
+                    rows_first = 25
+                    rows_later = 15
+
+                    this.add_rows(entries[:rows_first])
+                    entries = entries[rows_first:]
+
+                    while entries:
+                        gtk.idle_add(this.add_rows, entries[:rows_later])
+                        entries = entries[rows_later:]
+
+        self.clear()
+
+        server = rcd_util.get_server_proxy()
+        self.__worker = server.rcd.log.query_log(query)
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         get_history_cb,
+                                                         self)
 
 class PackageHistoryFilter(HistoryFilter):
     def __init__(self, pkg_name):
@@ -367,8 +410,20 @@ class PackageHistory(gtk.ScrolledWindow):
 
         self.view.show_all()
 
-        if not self.model.iter_n_children(None):
-            self.add_note("There is no record of this package ever being installed or removed.")
+        def got_results_cb(worker, this):
+            rows = 0
+            if not worker.is_cancelled():
+                try:
+                    entries = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    return
+                rows = len(entries)
+            if not rows:
+                this.add_note("There is no record of this package ever being installed or removed.")
+
+        worker = self.model.get_worker()
+        worker.connect("ready", got_results_cb, self)
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(self.view)

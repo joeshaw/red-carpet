@@ -88,7 +88,11 @@ class NewsModel(red_listmodel.ListModel):
 
         def get_news_cb(worker, this):
             if not worker.is_cancelled():
-                news = worker.get_result()
+                try:
+                    news = worker.get_result()
+                except ximian_xmlrpclib.Fault, f:
+                    rcd_util.dialog_from_fault(f)
+                    return
                 if news:
                     for item in news:
                         item["icon"] = this.get_icon(item["channel_name"])

@@ -1,3 +1,9 @@
+2003-02-19  Tambet Ingo  <tambet@ximian.com>
+
+	* red_news.py (NewsModel.get_news_cb): Catch xmlrpc faults.
+
+	* red_history.py (HistoryModel): Use serverproxy.
+
 2003-02-19  Jon Trowbridge  <trow@ximian.com>
 
 	* red_serverlistener.py (poll_cb): Silently ignore xmlrpc faults
