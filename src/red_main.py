@@ -18,6 +18,7 @@
 import sys
 import os
 import gtk
+import gtk.glade
 import ximian_xmlrpclib
 import packagemodel
 
@@ -26,6 +27,8 @@ def thrash_model(source,view):
     view.set_model(source)
 
 def main(version):
+    xml = gtk.glade.XML ("red-carpet.glade")
+
     ## Make contact with the daemon.
     ## We assume local access only
     url = "/tmp/rcd"
@@ -46,7 +49,8 @@ def main(version):
     store = packagemodel.PackageModel(server)
     store.set_query([["name", "contains", "gnome"]])
 
-    view = gtk.TreeView(store)
+    view = xml.get_widget("package_tree")
+    view.set_model(store)
 
     col = gtk.TreeViewColumn("Installed",
                              gtk.CellRendererText(),
@@ -74,12 +78,7 @@ def main(version):
     # hopefully it will be get fixed for gtk+ 2.2.)
     store.connect("sync", thrash_model, view)
 
-    sw = gtk.ScrolledWindow()
-    sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-    sw.add(view)
-
-    win = gtk.Window()
-    win.add(sw)
+    win = xml.get_widget("main_window")
 
     win.show_all()
     win.connect("delete_event",
