@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.24 2003/09/26 14:58:01 menthos Exp $
+# $Id: sv.po,v 1.25 2003/10/24 00:29:11 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-09-26 16:55+0200\n"
-"PO-Revision-Date: 2003-09-26 16:57+0200\n"
+"POT-Creation-Date: 2003-10-24 02:27+0200\n"
+"PO-Revision-Date: 2003-10-24 02:28+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -209,12 +209,6 @@ msgstr ""
 "Försäkra dig om att du angav e-postadressen och aktiveringskoden korrekt"
 
 #. Store email to config.
-#: src/red_activation.py:133
-msgid ""
-"System could not be activated: Invalid activation code or email address."
-msgstr ""
-"Systemet kunde inte aktiveras: Ogiltig aktiveringskod eller e-postadress."
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -942,20 +936,20 @@ msgstr "Avsluta Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:357
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
 msgstr "Beroendeupplösning"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "Verifierar system"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
 msgstr "Löser beroenden"
 
-#: src/red_depcomponent.py:157
+#: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
@@ -966,25 +960,23 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr "Jag accepterar"
 
-#. FIXME: flags,
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:262
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr "Beroendeupplösning misslyckades"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:312
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr "Systemet verifierat"
 
-#: src/red_depcomponent.py:314
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -995,23 +987,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:368
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Begärda installationer"
 
-#: src/red_depcomponent.py:372
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Begärda borttagningar"
 
-#: src/red_depcomponent.py:376
+#: src/red_depcomponent.py:383
 msgid "Required Installations"
 msgstr "Nödvändiga installationer"
 
-#: src/red_depcomponent.py:380
+#: src/red_depcomponent.py:387
 msgid "Required Removals"
 msgstr "Nödvändiga borttagningar"
 
-#: src/red_depcomponent.py:406
+#: src/red_depcomponent.py:413
 msgid "Continue"
 msgstr "Fortsätt"
 
@@ -1732,7 +1724,7 @@ msgstr "Är i konflikt med"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Namn"
 
@@ -1859,7 +1851,7 @@ msgstr "%.1f%% klart"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr "Uppdaterar system"
 
@@ -1867,11 +1859,11 @@ msgstr "Uppdaterar system"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 msgid "Download cancelled"
 msgstr "Hämtning avbruten"
 
-#: src/red_pendingview.py:578
+#: src/red_pendingview.py:583
 msgid "Transaction cancelled"
 msgstr "Transaktion avbruten"
 
@@ -1881,37 +1873,37 @@ msgstr "Transaktion avbruten"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
+#: src/red_pendingview.py:618
 msgid "Transaction Finished"
 msgstr "Transaktion slutförd"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 msgid "Downloading packages"
 msgstr "Hämtar paket"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 msgid "Download Failed"
 msgstr "Hämtning misslyckades"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
 msgstr "Okänt fel"
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 msgid "Processing Transaction"
 msgstr "Bearbetar transaktion"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr "Transaktionen har färdigställts utan problem"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 msgid "Transaction failed"
 msgstr "Transaktion misslyckades"
 
-#: src/red_pendingview.py:703
+#: src/red_pendingview.py:708
 msgid "Transaction Failed"
 msgstr "Transaktion misslyckades"
 
@@ -2360,6 +2352,58 @@ msgstr "Välj fil att skriva XML till"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "Redigera tjänster"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "_Ta bort tjänst"
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr "_Lägg till tjänst"
+
+#: src/red_services.py:226
+msgid "Add Service"
+msgstr "Lägg till tjänst"
+
+#: src/red_services.py:231
+msgid "Service URL"
+msgstr "Tjänst-URL"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
@@ -2670,8 +2714,25 @@ msgstr "Ogiltigt användarnamn."
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
 
-#~ msgid "Service"
-#~ msgstr "Tjänst"
+#~ msgid "Edit services..."
+#~ msgstr "Redigera tjänster..."
+
+#~ msgid "_Edit services"
+#~ msgstr "_Redigera tjänster"
+
+#~ msgid "Remove service"
+#~ msgstr "Ta bort tjänst"
+
+#~ msgid "Remove Service"
+#~ msgstr "Ta bort tjänst"
+
+#~ msgid "Add service"
+#~ msgstr "Lägg till tjänst"
+
+#~ msgid ""
+#~ "System could not be activated: Invalid activation code or email address."
+#~ msgstr ""
+#~ "Systemet kunde inte aktiveras: Ogiltig aktiveringskod eller e-postadress."
 
 #~ msgid "Services"
 #~ msgstr "Tjänster"
