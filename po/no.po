@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet 0.9\n"
-"POT-Creation-Date: 2003-07-08 15:19-0400\n"
-"PO-Revision-Date: 2002-02-23 13:20+0100\n"
+"POT-Creation-Date: 2003-08-24 23:14+0200\n"
+"PO-Revision-Date: 2003-08-24 23:38+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -42,56 +42,52 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:376
-#, fuzzy
+#: src/rcd_util.py:381
 msgid "Please wait while getting data."
-msgstr "Vennligst vent, laster siden..."
+msgstr "Vennligst vent, henter data."
 
 #. ##############################################################################
-#: src/rcd_util.py:430 src/rcd_util.py:448
+#: src/rcd_util.py:435 src/rcd_util.py:453
 msgid "Please ensure that your network settings are correct."
 msgstr ""
 
-#: src/rcd_util.py:437
-#, fuzzy
+#: src/rcd_util.py:442
 msgid "Refreshing channel data"
-msgstr "Laster ned kanaldata..."
+msgstr "Oppdaterer kanaldata"
 
-#: src/rcd_util.py:439
-#, fuzzy
+#: src/rcd_util.py:444
 msgid "Downloading channel information"
-msgstr "Laster ned kanaldata..."
+msgstr "Laster ned informasjon om kanal"
 
 #. ##############################################################################
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:465
+#: src/rcd_util.py:470
 msgid "Verifying"
 msgstr "Verifiserer"
 
-#: src/rcd_util.py:466
+#: src/rcd_util.py:471
 msgid "Unable to verify package signature for"
 msgstr ""
 
-#: src/rcd_util.py:467
+#: src/rcd_util.py:472
 msgid "There is no package signature for"
 msgstr ""
 
-#: src/rcd_util.py:468
-#, fuzzy
+#: src/rcd_util.py:473
 msgid "Preparing Transaction"
-msgstr "Starter transaksjon..."
+msgstr "Forbereder transaksjon"
 
-#: src/rcd_util.py:469
+#: src/rcd_util.py:474
 msgid "Installing"
 msgstr "Installerer"
 
-#: src/rcd_util.py:470
+#: src/rcd_util.py:475
 msgid "Removing"
 msgstr "Fjerner"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:476
 msgid "Configuring"
 msgstr "Konfigurerer"
 
@@ -280,65 +276,58 @@ msgstr ""
 #. #
 #: src/red_appwindow.py:433
 msgid "Run Now"
-msgstr ""
+msgstr "Kjør nå"
 
 #: src/red_appwindow.py:434
 msgid "Perform installations and removals"
-msgstr ""
+msgstr "Utfør installasjoner og fjerning av pakker"
 
 #: src/red_appwindow.py:441
-#, fuzzy
 msgid "Channels"
-msgstr "Avbryt"
+msgstr "Kanaler"
 
 #: src/red_appwindow.py:442
 msgid "Change your channel subscriptions"
 msgstr ""
 
 #: src/red_appwindow.py:450
-#, fuzzy
 msgid "Refresh"
-msgstr "Gjenoppf_risk"
+msgstr "Oppdater"
 
 #: src/red_appwindow.py:451
 msgid "Refresh channel data"
-msgstr ""
+msgstr "Oppdater kanaldata"
 
 #. #
 #. # Actionbar.
 #. #
 #: src/red_appwindow.py:462 src/red_packageview.py:232
-#, fuzzy
 msgid "Mark for _Installation"
-msgstr "Installasjon av pakker"
+msgstr "Merk for _installasjon"
 
 #: src/red_appwindow.py:463
-#, fuzzy
 msgid "Mark selected packages for installation"
-msgstr "Tøm mellomlagrede pakker ved oppstart"
+msgstr "Merk valgte pakker for installasjon"
 
 #. #
 #. # Remove Package
 #. #
 #: src/red_appwindow.py:468 src/red_appwindow.py:763
 #: src/red_packageview.py:245
-#, fuzzy
 msgid "Mark for _Removal"
-msgstr "Fjerning av pakker"
+msgstr "Merk for fje_rning"
 
 #: src/red_appwindow.py:469
-#, fuzzy
 msgid "Mark selected packages for removal"
-msgstr "Installer valgte pakker"
+msgstr "Merk valgte pakker for fjerning"
 
 #. #
 #. # Cancel Action
 #. #
 #: src/red_appwindow.py:474 src/red_appwindow.py:776
 #: src/red_packageview.py:258
-#, fuzzy
 msgid "_Cancel"
-msgstr "Avbryt"
+msgstr "_Avbryt"
 
 #: src/red_appwindow.py:475
 msgid "Cancel marked package actions"
@@ -346,14 +335,12 @@ msgstr ""
 
 #. Info
 #: src/red_appwindow.py:480 src/red_packageview.py:276
-#, fuzzy
 msgid "I_nformation"
-msgstr "Informasjon"
+msgstr "I_nformasjon"
 
 #: src/red_appwindow.py:481
-#, fuzzy
 msgid "Package information"
-msgstr "Installasjon av pakker"
+msgstr "Pakkeinformasjon"
 
 #. We want to revert to our old settings if we don't connect to
 #. a new daemon successfully.
@@ -363,11 +350,11 @@ msgstr "Installasjon av pakker"
 #. #
 #: src/red_appwindow.py:538
 msgid "_File"
-msgstr ""
+msgstr "_Fil"
 
 #: src/red_appwindow.py:539
 msgid "_Edit"
-msgstr ""
+msgstr "R_ediger"
 
 #. We need to make the component menu items checked
 #. instead of radio-style, because with a radio group you
@@ -379,51 +366,47 @@ msgid "_View"
 msgstr "_Vis"
 
 #: src/red_appwindow.py:541
-#, fuzzy
 msgid "_Actions"
-msgstr "A_bonnement"
+msgstr "H_andlinger"
 
 #: src/red_appwindow.py:542
 msgid "_Help"
-msgstr ""
+msgstr "_Hjelp"
 
 #: src/red_appwindow.py:550
 msgid "Connect to daemon..."
-msgstr ""
+msgstr "Koble til daemon..."
 
 #: src/red_appwindow.py:551
 msgid "Connect to a remote daemon"
-msgstr ""
+msgstr "Koble til en ekstern daemon"
 
 #: src/red_appwindow.py:561
 msgid "Install from _File..."
-msgstr ""
+msgstr "Installer fra _fil..."
 
 #: src/red_appwindow.py:562
-#, fuzzy
 msgid "Install a package from a local file"
-msgstr "Installer alle pakker i katalogen"
+msgstr "Installer en pakke fra en lokal fil"
 
 #: src/red_appwindow.py:571
 msgid "Install from _URL..."
-msgstr ""
+msgstr "Installer fra _URL..."
 
 #: src/red_appwindow.py:572
-#, fuzzy
 msgid "Install a package from a remote URL"
-msgstr "Installer alle pakker i katalogen"
+msgstr "Installer en pakke fra en ekstern URL"
 
 #. #
 #. # Mount command
 #. #
 #: src/red_appwindow.py:589
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "_Monter katalog..."
 
 #: src/red_appwindow.py:590
-#, fuzzy
 msgid "Mount a directory as a channel"
-msgstr "Forvalgt underkanal:"
+msgstr "Monter en katalog som en kanal"
 
 #. #
 #. # Unmount command
@@ -441,7 +424,7 @@ msgstr ""
 #. #
 #: src/red_appwindow.py:622
 msgid "_Activate..."
-msgstr ""
+msgstr "_Aktiver..."
 
 #: src/red_appwindow.py:623
 msgid ""
@@ -453,55 +436,47 @@ msgid "Quit"
 msgstr "Avslutt"
 
 #: src/red_appwindow.py:630
-#, fuzzy
 msgid "Quit Red Carpet"
-msgstr "Ximian Red Carpet"
+msgstr "Avslutt Red Carpet"
 
 #. #
 #. # Select all/none
 #. #
 #: src/red_appwindow.py:645
-#, fuzzy
 msgid "Select _All"
 msgstr "Velg _alle "
 
 #: src/red_appwindow.py:646
-#, fuzzy
 msgid "Select all items"
-msgstr "Velg _alle "
+msgstr "Velg alle oppføringene"
 
 #: src/red_appwindow.py:651
-#, fuzzy
 msgid "Select _None"
 msgstr "Velg i_ngen "
 
 #: src/red_appwindow.py:652
 msgid "Deselect all items"
-msgstr ""
+msgstr "Velg bort alle oppføringene"
 
 #: src/red_appwindow.py:659
-#, fuzzy
 msgid "Channel _Subscriptions..."
-msgstr "A_bonnement"
+msgstr "A_bonnement på kanaler..."
 
 #: src/red_appwindow.py:660
-#, fuzzy
 msgid "Edit your channel subscriptions"
-msgstr "A_bonnement"
+msgstr "Rediger dine abonnement på kanaler"
 
 #: src/red_appwindow.py:665
-#, fuzzy
 msgid "_Preferences..."
-msgstr "Brukervalg"
+msgstr "_Brukervalg..."
 
 #: src/red_appwindow.py:666
-#, fuzzy
 msgid "Edit your Red Carpet preferences"
-msgstr "Ximian Red Carpet - Brukervalg"
+msgstr "Rediger brukervalg for Red Carpet"
 
 #: src/red_appwindow.py:670
 msgid "_Users..."
-msgstr ""
+msgstr "Br_ukere..."
 
 #: src/red_appwindow.py:671
 msgid "Edit user permissions for this daemon"
@@ -512,53 +487,47 @@ msgstr ""
 #. #
 #: src/red_appwindow.py:684
 msgid "_Sidebar"
-msgstr ""
+msgstr "_Sidelinje"
 
 #: src/red_appwindow.py:685
 msgid "Hide or show the Pending Actions sidebar"
 msgstr ""
 
 #: src/red_appwindow.py:689
-#, fuzzy
 msgid "_Advanced Search Options"
-msgstr "A_bonnement"
+msgstr "_Avanserte søkealternativer"
 
 #: src/red_appwindow.py:690
-#, fuzzy
 msgid "Hide or show advanced search options"
-msgstr "A_bonnement"
+msgstr "Vis eller skjul avanserte søkealternativer"
 
 #: src/red_appwindow.py:694
-#, fuzzy
 msgid "_Channel Names"
-msgstr "Kanal-info"
+msgstr "Kanalnavn"
 
 #: src/red_appwindow.py:695
 msgid "Hide or show channel names in package lists"
 msgstr ""
 
 #: src/red_appwindow.py:701
-#, fuzzy
 msgid "Package _Information..."
-msgstr "Installasjon av pakker"
+msgstr "Pakke_informasjon..."
 
 #: src/red_appwindow.py:702
 msgid "View information about currently selected packages"
 msgstr ""
 
 #: src/red_appwindow.py:710
-#, fuzzy
 msgid "_Daemon Information..."
-msgstr "Informasjon"
+msgstr "Informasjon om _daemon...<"
 
 #: src/red_appwindow.py:711
 msgid "View information about this daemon"
 msgstr ""
 
 #: src/red_appwindow.py:713
-#, fuzzy
 msgid "Red Carpet Ne_ws..."
-msgstr "Red Carpet nyheter"
+msgstr "Red Carpet n_yheter..."
 
 #: src/red_appwindow.py:714
 msgid "View the latest Red Carpet news"
@@ -569,7 +538,7 @@ msgstr ""
 #. #
 #: src/red_appwindow.py:726
 msgid "Run _Now"
-msgstr ""
+msgstr "Kjør _nå"
 
 #: src/red_appwindow.py:727
 msgid "Run the current transaction"
@@ -579,37 +548,31 @@ msgstr ""
 #. # Verify System Dependencies
 #. #
 #: src/red_appwindow.py:741
-#, fuzzy
 msgid "_Verify System Dependencies"
-msgstr "Feilede avhengigheter"
+msgstr "_Verifiser systemavhengigheter"
 
 #: src/red_appwindow.py:742
-#, fuzzy
 msgid "Verify that all system dependencies are met"
-msgstr "Feilede avhengigheter"
+msgstr "Verifiser at alle systemavhengigheter er møtt"
 
 #. #
 #. # Install Package
 #. #
 #: src/red_appwindow.py:753
-#, fuzzy
 msgid "Mark for I_nstallation"
-msgstr "Installasjon av pakker"
+msgstr "Merk for i_nstallasjon"
 
 #: src/red_appwindow.py:754
-#, fuzzy
 msgid "Mark this package for installation"
-msgstr "Tøm mellomlagrede pakker ved oppstart"
+msgstr "Merk denne pakken for installasjon"
 
 #: src/red_appwindow.py:764
-#, fuzzy
 msgid "Mark this package for removal"
-msgstr "Installer valgte pakker"
+msgstr "Merk denne pakken for fjerning"
 
 #: src/red_appwindow.py:777
-#, fuzzy
 msgid "Cancel installation or removal mark"
-msgstr "Installasjonen er fullført."
+msgstr "Avbryt merking for installasjon eller fjerning"
 
 #. #
 #. # Refresh Channel Data
@@ -619,28 +582,24 @@ msgid "Re_fresh Channel Data"
 msgstr ""
 
 #: src/red_appwindow.py:792
-#, fuzzy
 msgid "Download latest channel data"
-msgstr "Laster ned kanaldata (%s)"
+msgstr "Last ned nyeste kanaldata"
 
 #: src/red_appwindow.py:801
 msgid "_Contents"
-msgstr ""
+msgstr "_Innhold"
 
 #: src/red_appwindow.py:802
-#, fuzzy
 msgid "View Red Carpet help"
-msgstr "Ximian Red Carpet"
+msgstr "Vis hjelp for Red Carpet"
 
 #: src/red_appwindow.py:807
-#, fuzzy
 msgid "_About..."
-msgstr "Om"
+msgstr "_Om..."
 
 #: src/red_appwindow.py:808
-#, fuzzy
 msgid "About Red Carpet"
-msgstr "Ximian Red Carpet"
+msgstr "Om Red Carpet"
 
 #: src/red_appwindow.py:827
 #, python-format
@@ -703,13 +662,12 @@ msgid "All Channels"
 msgstr ""
 
 #: src/red_channeloption.py:55
-#, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Abonnerte kanaler"
+msgstr "Alle abonnerte kanaler"
 
 #: src/red_channeloption.py:60
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "Ingen kanal/ukjent kanal"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -826,7 +784,7 @@ msgstr ""
 #. following
 #: src/red_connection.py:99
 msgid "Starting daemon..."
-msgstr ""
+msgstr "Starter daemon..."
 
 #. child
 #. If we get here, the exec failed.
@@ -856,12 +814,11 @@ msgstr ""
 
 #: src/red_connection.py:333
 msgid "Server:"
-msgstr ""
+msgstr "Tjener:"
 
 #: src/red_connection.py:337 src/red_users.py:389
-#, fuzzy
 msgid "User name:"
-msgstr "Brukernavn"
+msgstr "Brukernavn:"
 
 #: src/red_connection.py:341 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
@@ -872,7 +829,7 @@ msgstr "Passord:"
 #. desensitize the table by default.
 #: src/red_connection.py:377
 msgid "Connect"
-msgstr ""
+msgstr "Koble til"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -891,9 +848,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Red Carpet - Passord"
+msgstr "Red Carpet feilkonsoll"
 
 #. We put the text into the console window in a timeout.  That
 #. way we can be sure that it happens in the main thread and
@@ -925,9 +881,8 @@ msgid "Lost contact with the daemon!"
 msgstr ""
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Ximian Red Carpet"
+msgstr "Avslutt Red Carpet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -949,20 +904,17 @@ msgstr "Ximian Red Carpet"
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:65 src/red_depcomponent.py:356
-#, fuzzy
 msgid "Dependency Resolution"
-msgstr "Avhengigheter"
+msgstr "Løsing av avhengigheter"
 
 #. Clean up
 #: src/red_depcomponent.py:117
-#, fuzzy
 msgid "Verifying System"
-msgstr "Verifiserer %s"
+msgstr "Verifiserer systemet"
 
 #: src/red_depcomponent.py:123
-#, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Avhengigheter"
+msgstr "Løser avhengigheter"
 
 #: src/red_depcomponent.py:157
 msgid ""
@@ -989,7 +941,7 @@ msgstr ""
 #. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:311
 msgid "System Verified"
-msgstr ""
+msgstr "Systemet er verifisert"
 
 #: src/red_depcomponent.py:313
 msgid ""
@@ -1010,19 +962,16 @@ msgid "Requested Removals"
 msgstr "Forespurt fjernet"
 
 #: src/red_depcomponent.py:375
-#, fuzzy
 msgid "Required Installations"
-msgstr "Forespurt installert"
+msgstr "Nødvendige installasjoner"
 
 #: src/red_depcomponent.py:379
-#, fuzzy
 msgid "Required Removals"
 msgstr "Forespurt fjernet"
 
 #: src/red_depcomponent.py:405
-#, fuzzy
 msgid "Continue"
-msgstr "ni"
+msgstr "Fortsett"
 
 #. # That's all we can do here. We might (and usually don't)
 #. # have enough information here to decide what kind of page
@@ -1046,25 +995,22 @@ msgstr "ni"
 #. ##
 #: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
-#, fuzzy
 msgid "Channel"
-msgstr "Avbryt"
+msgstr "Kanal"
 
 #: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "Pakke"
 
 #: src/red_depview.py:53 src/red_packageview.py:462
-#, fuzzy
 msgid "Current Version"
-msgstr "Forespurt versjon:"
+msgstr "Nåværende versjon"
 
 #. ## Main
 #: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
 #: src/red_updates.py:94
-#, fuzzy
 msgid "New Version"
-msgstr "Versjon"
+msgstr "Ny versjon"
 
 #: src/red_depview.py:59 src/red_packageview.py:498
 msgid "Size"
@@ -1145,55 +1091,49 @@ msgstr "Størrelse"
 #. ##
 #: src/red_history.py:113 src/red_users.py:30
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: src/red_history.py:114
-#, fuzzy
 msgid "Installations"
-msgstr "Installerer"
+msgstr "Installert"
 
 #: src/red_history.py:115
-#, fuzzy
 msgid "Removals"
-msgstr "Fjern"
+msgstr "Fjernet"
 
 #: src/red_history.py:116
-#, fuzzy
 msgid "Upgrades"
 msgstr "Oppdateringer"
 
 #: src/red_history.py:121
 msgid "User:"
-msgstr ""
+msgstr "Bruker:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "Tidsramme (dager):"
 
 #. ##
 #. ## Sort functions
 #. ##
 #. # We want opposite order.
 #: src/red_history.py:279
-#, fuzzy
 msgid "Searching..."
-msgstr "Søk"
+msgstr "Søker..."
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:435
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 #: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
-#, fuzzy
 msgid "Action"
-msgstr "Plassering"
+msgstr "Handling"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
-#, fuzzy
 msgid "User"
-msgstr "Brukernavn"
+msgstr "Bruker"
 
 #: src/red_history.py:305 src/red_history.py:438
 msgid "Old Version"
@@ -1203,15 +1143,15 @@ msgstr "Gammel versjon"
 #. Define me!
 #: src/red_history.py:336 src/red_packagepage.py:45
 msgid "History"
-msgstr ""
+msgstr "Historikk"
 
 #: src/red_history.py:339
 msgid "_History"
-msgstr ""
+msgstr "_Historikk"
 
 #: src/red_history.py:383
 msgid "No results found."
-msgstr ""
+msgstr "Ingen resultater funnet."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1236,32 +1176,29 @@ msgstr ""
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s er ikke en gyldig pakke"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
-msgstr ""
+msgstr "Det finnes ingen gyldige pakker å installere"
 
 #: src/red_installfiles.py:102
-#, fuzzy
 msgid "Install from File"
-msgstr "Installert programvare"
+msgstr "Installer fra fil"
 
 #. need trailing /
 #: src/red_installfiles.py:119
-#, fuzzy, python-format
+#, python-format
 msgid "Downloading %s..."
-msgstr "Laster ned %s"
+msgstr "Laster ned %s..."
 
 #: src/red_installfiles.py:158
-#, fuzzy
 msgid "Install from URL"
-msgstr "Installer"
+msgstr "Installer fra URL"
 
 #: src/red_installfiles.py:163
-#, fuzzy
 msgid "Package URL:"
-msgstr "Pakke"
+msgstr "Pakkens URL:"
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1404,13 +1341,12 @@ msgid "Mirror"
 msgstr "Speil"
 
 #: src/red_mirrors.py:81
-#, fuzzy
 msgid "Location"
-msgstr "Plassering"
+msgstr "Lokasjon"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "Velg et speil"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1442,42 +1378,39 @@ msgstr ""
 
 #: src/red_mount.py:117
 msgid "Browse..."
-msgstr ""
+msgstr "Bla gjennom..."
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
-msgstr ""
+msgstr "Monter katalog"
 
 #: src/red_mount.py:141
-#, fuzzy
 msgid "Mount channel"
-msgstr "Forvalgt underkanal:"
+msgstr "Monter kanal"
 
 #: src/red_mount.py:145
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Monter en katalog som en kanal"
 
 #: src/red_mount.py:153
-#, fuzzy
 msgid "Channel Name:"
-msgstr "Kanal-info"
+msgstr "Kanalnavn:"
 
 #: src/red_mount.py:157
 msgid "Directory:"
-msgstr ""
+msgstr "Katalog:"
 
 #: src/red_mount.py:189
 msgid "Please choose the path for channel."
-msgstr ""
+msgstr "Vennligst velg stien til kanalen."
 
 #: src/red_mount.py:210
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "Slettet abonnement fra kanaler"
+msgstr "Avmonter kanal"
 
 #: src/red_mount.py:239
 msgid "Unmount?"
-msgstr ""
+msgstr "Avmonter?"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1500,9 +1433,9 @@ msgstr ""
 #. some sort of intelligent way.
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "%s News"
-msgstr "Nyheter"
+msgstr "%s nyheter"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1526,39 +1459,35 @@ msgstr ""
 
 #: src/red_option.py:25
 msgid "hostname"
-msgstr ""
+msgstr "vertsnavn"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
 msgstr ""
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "username"
-msgstr "Brukernavn"
+msgstr "brukernavn"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "Specify user name"
-msgstr "Brukernavn"
+msgstr "Oppgi brukernavn"
 
 #: src/red_option.py:27
-#, fuzzy
 msgid "password"
-msgstr "Passord"
+msgstr "passord"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "Oppgi passord"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
 msgstr ""
 
 #: src/red_option.py:29
-#, fuzzy
 msgid "Get usage information"
-msgstr "Informasjon"
+msgstr "Hent informasjon om bruk"
 
 #. ##
 #. ## Expand our synthetic args.
@@ -1579,7 +1508,7 @@ msgstr "Informasjon"
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "Bruk: %s <flagg> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
@@ -1607,22 +1536,21 @@ msgstr ""
 #. ## Callbacks for our ListModel
 #. ##
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "Installer"
+msgstr "installert"
 
 #. upgrade
 #: src/red_packagearray.py:93
 msgid "newer"
-msgstr ""
+msgstr "nyere"
 
 #: src/red_packagearray.py:95
 msgid "older"
-msgstr ""
+msgstr "eldre"
 
 #: src/red_packagearray.py:97
 msgid "not installed"
-msgstr ""
+msgstr "ikke installert"
 
 #. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
 #. __older_icon               = red_pixbuf.get_pixbuf("status-older")
@@ -1630,21 +1558,19 @@ msgstr ""
 #. downgrade
 #: src/red_packagearray.py:123
 msgid "upgrade"
-msgstr ""
+msgstr "oppgrader"
 
 #: src/red_packagearray.py:125
 msgid "downgrade"
-msgstr ""
+msgstr "nedgrader"
 
 #: src/red_packagearray.py:127
-#, fuzzy
 msgid "install"
-msgstr "Installer"
+msgstr "installer"
 
 #: src/red_packagearray.py:134
-#, fuzzy
 msgid "remove"
-msgstr "Fjern"
+msgstr "fjern"
 
 #. ##
 #. ## Sort functions
@@ -1672,25 +1598,24 @@ msgstr "Fjern"
 #. it received from the daemon.
 #. ##############################################################################
 #: src/red_packagearray.py:614
-#, fuzzy, python-format
+#, python-format
 msgid "Found %d matching packages"
-msgstr " Fjerner pakker"
+msgstr " Fant %d passende pakker"
 
 #: src/red_packagearray.py:616
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "Fant en passende pakke"
 
 #: src/red_packagearray.py:618
-#, fuzzy
 msgid "No matching packages found"
-msgstr " Fjerner pakker"
+msgstr "Ingen passende pakker funnet"
 
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
 #: src/red_packagearray.py:760
 msgid "Looking for updates..."
-msgstr ""
+msgstr "Ser etter oppdateringer..."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1709,9 +1634,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_packagebook.py:43
-#, fuzzy
 msgid "Package Information"
-msgstr "Installasjon av pakker"
+msgstr "Pakkeinformasjon"
 
 #. grab_default() is not sufficient here.
 #. print "Built page %d: '%s'" % (num, page_box.page.name())
@@ -1742,19 +1666,16 @@ msgid "Dependencies"
 msgstr "Avhengigheter"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "Gir:"
+msgstr "Gir"
 
 #: src/red_packagepage_deps.py:70
-#, fuzzy
 msgid "Requires"
-msgstr "Krever:"
+msgstr "Krever"
 
 #: src/red_packagepage_deps.py:73
-#, fuzzy
 msgid "Conflicts With"
-msgstr "Konflikter:"
+msgstr "I konflikt med"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1782,33 +1703,28 @@ msgid "Version"
 msgstr "Versjon"
 
 #: src/red_packagepage_info.py:80
-#, fuzzy
 msgid "Release"
-msgstr "Gjenoppta"
+msgstr "Utgave"
 
 #: src/red_packagepage_info.py:81
-#, fuzzy
 msgid "Package Size"
-msgstr "Pakke"
+msgstr "Pakkestørrelse"
 
 #: src/red_packagepage_info.py:82
-#, fuzzy
 msgid "Installed Size"
-msgstr "Installert programvare"
+msgstr "Installert størrelse"
 
 #: src/red_packagepage_info.py:84
-#, fuzzy
 msgid "Section"
-msgstr "Plassering"
+msgstr "Seksjon"
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
 msgstr "Sammendrag"
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:478
-#, fuzzy
 msgid "Description"
-msgstr "Beskrivelse:"
+msgstr "Beskrivelse"
 
 #: src/red_packagepage_info.py:140
 msgid "Info"
@@ -1832,17 +1748,16 @@ msgstr "Info"
 #. ##
 #. Define me!
 #: src/red_packagepage.py:32
-#, fuzzy
 msgid "Unnamed"
-msgstr "Brukernavn"
+msgstr "Uten navn"
 
 #: src/red_packageview.py:301
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: src/red_packageview.py:472
 msgid "Importance"
-msgstr ""
+msgstr "Viktighet"
 
 #. button,
 #. time
@@ -1898,7 +1813,7 @@ msgstr ""
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr ""
+msgstr "%.1f%% fullført"
 
 #. Define me!
 #. If necessary, change the button from "Cancel"
@@ -1908,21 +1823,19 @@ msgstr ""
 #. #############################################################################
 #: src/red_pendingview.py:504
 msgid "Updating System"
-msgstr ""
+msgstr "Oppdaterer systemet"
 
 #. this is a different kind of polling
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
 #: src/red_pendingview.py:577
-#, fuzzy
 msgid "Download cancelled"
-msgstr "Laster ned kanaldata..."
+msgstr "Nedlasting avbrutt"
 
 #: src/red_pendingview.py:578
-#, fuzzy
 msgid "Transaction cancelled"
-msgstr "Utfører transaksjoner"
+msgstr "Transaksjon avbrutt"
 
 #. We can't cancel once the transaction begins
 #. We're in "download only" mode.
@@ -1931,44 +1844,38 @@ msgstr "Utfører transaksjoner"
 #.
 #. FIXME: Do something intelligent here?
 #: src/red_pendingview.py:613
-#, fuzzy
 msgid "Transaction Finished"
-msgstr "Utfører transaksjoner"
+msgstr "Transaksjon fullført"
 
 #: src/red_pendingview.py:626
-#, fuzzy
 msgid "Downloading packages"
-msgstr "Laster ned %s"
+msgstr "Laster ned pakker"
 
 #: src/red_pendingview.py:639
-#, fuzzy
 msgid "Download Failed"
-msgstr "Laster ned filer"
+msgstr "Nedlasting feilet"
 
 #: src/red_pendingview.py:640
 msgid "Unknown Error"
-msgstr ""
+msgstr "Ukjent feil"
 
 #: src/red_pendingview.py:657
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "Starter transaksjon..."
+msgstr "Arbeider med transaksjon"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
 #: src/red_pendingview.py:696
 msgid "The transaction has completed successfully"
-msgstr ""
+msgstr "Transaksjonen er fullført uten feil"
 
 #: src/red_pendingview.py:701
-#, fuzzy
 msgid "Transaction failed"
-msgstr "Utfører transaksjoner"
+msgstr "Transaksjon feilet"
 
 #: src/red_pendingview.py:703
-#, fuzzy
 msgid "Transaction Failed"
-msgstr "Utfører transaksjoner"
+msgstr "Transaksjon feilet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2010,15 +1917,14 @@ msgstr "Utfører transaksjoner"
 #. Server section
 #: src/red_prefs.py:169
 msgid "Server"
-msgstr ""
+msgstr "Tjener"
 
 #: src/red_prefs.py:177
 msgid "Server URL:"
-msgstr ""
+msgstr "Tjeners URL:"
 
 #. manually force the value to update
 #: src/red_prefs.py:228
-#, fuzzy
 msgid "Mirrors"
 msgstr "Speil"
 
@@ -2028,14 +1934,12 @@ msgstr ""
 
 #. Packages section
 #: src/red_prefs.py:251
-#, fuzzy
 msgid "Packages"
-msgstr "Pakke"
+msgstr "Pakker"
 
 #: src/red_prefs.py:260
-#, fuzzy
 msgid "Require package signatures"
-msgstr "Pakkesignaturer"
+msgstr "Krev pakkesignaturer"
 
 #: src/red_prefs.py:265
 msgid "Maximum number of packages to download at once:"
@@ -2048,17 +1952,15 @@ msgstr "Proxy"
 
 #: src/red_prefs.py:284
 msgid "Use a proxy"
-msgstr ""
+msgstr "Bruk en proxy"
 
 #: src/red_prefs.py:288
-#, fuzzy
 msgid "Proxy URL:"
-msgstr "Proxy"
+msgstr "Proxy-URL:"
 
 #: src/red_prefs.py:295
-#, fuzzy
 msgid "Username:"
-msgstr "Brukernavn"
+msgstr "Brukernavn:"
 
 #. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:335
@@ -2095,36 +1997,33 @@ msgid "Current cache size:"
 msgstr ""
 
 #: src/red_prefs.py:422
-#, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr "Er du sikker på at du ønsker å avbryte pågående overføring?"
+msgstr "Er du sikker på at du ønsker å slette pakkefilene i din buffer?"
 
 #: src/red_prefs.py:438
-#, fuzzy
 msgid "Empty Cache"
-msgstr "Cache"
+msgstr "Tom buffer"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:460
-#, fuzzy, python-format
+#, python-format
 msgid "%d MB"
-msgstr "%d KB"
+msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
 #: src/red_prefs.py:508
 msgid "Value"
-msgstr ""
+msgstr "Verdi"
 
 #: src/red_prefs.py:521
-#, fuzzy
 msgid "Loading preferences..."
-msgstr "Laster ned nyheter..."
+msgstr "Laster brukervalg..."
 
 #. Remove the "loading" "page".
 #: src/red_prefs.py:585
-#, fuzzy, python-format
+#, python-format
 msgid "%s Preferences"
-msgstr "Brukervalg"
+msgstr "%s brukervalg"
 
 #. Should only be called for toggle renderer
 #. Should only be called for text renderer
@@ -2146,9 +2045,8 @@ msgstr "Brukervalg"
 #. ##
 #. system packages and uninstalled packages are mutually exclusive
 #: src/red_searchbox.py:146
-#, fuzzy
 msgid "All Packages"
-msgstr "Pakke"
+msgstr "Alle pakker"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2173,97 +2071,87 @@ msgid "Updates"
 msgstr "Oppdateringer"
 
 #: src/red_searchbox.py:148
-#, fuzzy
 msgid "Uninstalled Packages"
-msgstr " Installer pakker "
+msgstr "Avinstallerte pakker"
 
 #: src/red_searchbox.py:149
-#, fuzzy
 msgid "Installed Packages"
-msgstr " Installer pakker "
+msgstr "Installerte pakker"
 
 #: src/red_searchbox.py:174
-#, fuzzy
 msgid "All Sections"
-msgstr "Plassering"
+msgstr "Alle seksjoner"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr ""
+msgstr "Produktivitet"
 
 #: src/red_searchbox.py:176
-#, fuzzy
 msgid "Imaging"
-msgstr "Gjenstår"
+msgstr "Bildebehandling"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
-msgstr ""
+msgstr "Håndtering av personlig informasjon"
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr ""
+msgstr "X Windows"
 
 #: src/red_searchbox.py:179
-#, fuzzy
 msgid "Games"
-msgstr "Navn"
+msgstr "Spill"
 
 #: src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedia"
 
 #: src/red_searchbox.py:181
 msgid "Internet"
-msgstr ""
+msgstr "Internett"
 
 #: src/red_searchbox.py:182
 msgid "Utilities"
-msgstr ""
+msgstr "Verktøy"
 
 #: src/red_searchbox.py:183
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: src/red_searchbox.py:184
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentasjon"
 
 #: src/red_searchbox.py:185
 msgid "Libraries"
-msgstr ""
+msgstr "Biblioteker"
 
 #: src/red_searchbox.py:186
-#, fuzzy
 msgid "Development"
-msgstr "Utviklere"
+msgstr "Utvikling"
 
 #: src/red_searchbox.py:187
-#, fuzzy
 msgid "Development Tools"
-msgstr "Utviklere"
+msgstr "Verktøy for utviklere"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Forskjellig"
 
 #: src/red_searchbox.py:274
-#, fuzzy
 msgid "Search descriptions"
-msgstr "A_bonnement"
+msgstr ""
 
 #. ##
 #. ## Match radio buttons
 #. ##
 #: src/red_searchbox.py:286
-#, fuzzy
 msgid "Match:"
-msgstr "Sti:"
+msgstr "Treff:"
 
 #: src/red_searchbox.py:322
-#, fuzzy
 msgid "Channel:"
-msgstr "Avbryt"
+msgstr "Kanal"
 
 #. ##
 #. ## Build the second row of the search UI, which contains the
@@ -2303,9 +2191,8 @@ msgid "Search"
 msgstr "Søk"
 
 #: src/red_search.py:38
-#, fuzzy
 msgid "S_earch Packages"
-msgstr "Pakke"
+msgstr "Søk etter pakker"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2466,9 +2353,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_sidebar.py:61 src/red_transaction.py:112
-#, fuzzy
 msgid "Pending Actions"
-msgstr "Plassering"
+msgstr "Utestående handlinger"
 
 #. PendingOpsListener implementation
 #: src/red_sidebar.py:89
@@ -2493,7 +2379,7 @@ msgstr ""
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "Ingen utestående handlinger"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -2512,14 +2398,12 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_software.py:28
-#, fuzzy
 msgid "Installed Software"
 msgstr "Installert programvare"
 
 #: src/red_software.py:31
-#, fuzzy
 msgid "I_nstalled Software"
-msgstr "Installert programvare"
+msgstr "I_nstallert programvare"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2528,9 +2412,8 @@ msgid "Available Software"
 msgstr "Tilgjengelig programvare"
 
 #: src/red_software.py:100
-#, fuzzy
 msgid "A_vailable Software"
-msgstr "Tilgjengelig programvare"
+msgstr "Til_gjengelig programvare"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2553,7 +2436,7 @@ msgstr "Tilgjengelig programvare"
 #: src/red_statusbar.py:49
 #, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "Koblet til %s"
 
 #. Pop off any old message
 #. # Proxy GtkStatusbar's interface
@@ -2574,19 +2457,17 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_subscriptions.py:57
-#, fuzzy
 msgid "Subscribed"
-msgstr "A_bonner"
+msgstr "Abonnert"
 
 #: src/red_subscriptions.py:64
-#, fuzzy
 msgid "Channel Name"
-msgstr "Kanal-info"
+msgstr "Kanalnavn"
 
 #: src/red_subscriptions.py:78
-#, fuzzy, python-format
+#, python-format
 msgid "%s Channel Subscriptions"
-msgstr "A_bonnement"
+msgstr "%s abonnement på kanaler"
 
 #. FIXME: Make transient of app
 #: src/red_subscriptions.py:99
@@ -2617,7 +2498,7 @@ msgstr ""
 #. of the time.
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
-msgstr ""
+msgstr "Uten navn"
 
 #. Fix the old column header
 #. ##
@@ -2654,38 +2535,33 @@ msgstr ""
 #. ##
 #. ########################################################################
 #: src/red_transaction.py:75
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "Er du sikker på at du ønsker å avbryte pågående overføring?"
+msgstr "Er du sikker på at du ønsker å avslutte?"
 
 #: src/red_transaction.py:115
-#, fuzzy
 msgid "_Pending Actions"
-msgstr "A_bonnement"
+msgstr "_Utestående handlinger"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "Oppdateringer"
+msgstr "_Oppdateringer"
 
 #. ## Update All button
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr " Oppdater pakker "
+msgstr "_Oppdater alle"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
-msgstr ""
+msgstr "Systemet er oppdatert."
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
 msgstr ""
 
 #: src/red_users.py:131
-#, fuzzy
 msgid "Privilege"
-msgstr "Kjør uten privilegier"
+msgstr "Rettigheter"
 
 #. Warn the user about removing their own superuser priv
 #: src/red_users.py:148
@@ -2699,621 +2575,64 @@ msgstr ""
 #. We want opposite state
 #: src/red_users.py:166
 msgid "Enabled"
-msgstr ""
+msgstr "Aktivert"
 
 #: src/red_users.py:181
 msgid "Edit Users"
-msgstr ""
+msgstr "Rediger brukere"
 
 #: src/red_users.py:196 src/red_users.py:399
-#, fuzzy
 msgid "Confirm:"
-msgstr "Konflikter:"
+msgstr "Bekreft:"
 
 #: src/red_users.py:217
-#, fuzzy
 msgid "Set Password"
-msgstr "Passord"
+msgstr "Sett passord"
 
 #. else:
 #: src/red_users.py:246 src/red_users.py:422
 msgid "Password can not be empty."
-msgstr ""
+msgstr "Passordet kan ikke være tomt."
 
 #: src/red_users.py:248 src/red_users.py:424
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Passordene er ikke like"
 
 #: src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
-msgstr ""
+msgstr "Sett passord for %s"
 
 #: src/red_users.py:289
 msgid "Users"
-msgstr ""
+msgstr "Brukere"
 
 #: src/red_users.py:306
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: src/red_users.py:320
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Er du sikker på at du ønsker å avbryte pågående overføring?"
+msgstr "Er du sikker på at du ønsker å slette «%s»?"
 
 #: src/red_users.py:326
 msgid "Remove"
 msgstr "Fjern"
 
 #: src/red_users.py:339
-#, fuzzy
 msgid "Privileges"
-msgstr "Gir:"
+msgstr "Rettigheter"
 
 #: src/red_users.py:379
 msgid "Add new user"
-msgstr ""
+msgstr "Legg til ny bruker"
 
 #: src/red_users.py:426
 msgid "Invalid user name."
-msgstr ""
+msgstr "Ugyldig brukernavn."
 
 #: src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
-msgstr ""
-
-#, fuzzy
-#~ msgid "Update cancelled"
-#~ msgstr " Oppdater pakker "
-
-#, fuzzy
-#~ msgid "Update Finished"
-#~ msgstr "Oppdateringer"
-
-#, fuzzy
-#~ msgid "Update Failed"
-#~ msgstr "Oppdater"
-
-#, fuzzy
-#~ msgid "Mark for Installation"
-#~ msgstr "Installasjon av pakker"
-
-#, fuzzy
-#~ msgid "Mark for Removal"
-#~ msgstr "Fjerning av pakker"
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
-
-#~ msgid "Information"
-#~ msgstr "Informasjon"
-
-#, fuzzy
-#~ msgid "View"
-#~ msgstr "_Vis"
-
-#, fuzzy
-#~ msgid "Update Summary"
-#~ msgstr "Sammendrag"
-
-#~ msgid "_Verify Installed Packages"
-#~ msgstr "_Verifiser installerte pakker..."
-
-#~ msgid "_Install Local Packages..."
-#~ msgstr "_Installer lokale pakker..."
-
-#~ msgid "_Unsubscribe"
-#~ msgstr "F_jern abonnement"
-
-#~ msgid "_Users Manual"
-#~ msgstr "Br_ukerhåndbok"
-
-#~ msgid "Main Page"
-#~ msgstr "Hovedside"
-
-#~ msgid "Pause"
-#~ msgstr "Pause"
-
-#~ msgid "Download"
-#~ msgstr "Last ned"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Error Page"
-#~ msgstr "Feilside"
-
-#~ msgid "Misc Page"
-#~ msgstr "Forskjellig"
-
-#~ msgid "Executive Summary"
-#~ msgstr "Sammendrag"
-
-#~ msgid ""
-#~ "Update packages individually (NOTE: This is an unsupported operation)"
-#~ msgstr ""
-#~ "Oppdater pakker individuelt (MERK: Denne operasjonen er ikke støttet)"
-
-#~ msgid "Actual widget tag"
-#~ msgstr "Virkelig widget-etikett"
-
-#~ msgid "No Proxy"
-#~ msgstr "Ingen proxy"
-
-#~ msgid "HTTP Proxy"
-#~ msgstr "HTTP-proxy"
-
-#~ msgid "SOCKS 4 Proxy"
-#~ msgstr "SOCKS 4-proxy"
-
-#~ msgid "SOCKS 5 Proxy"
-#~ msgstr "SOCKS 5-proxy"
-
-#~ msgid "Host"
-#~ msgstr "Vert"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Authenticated Proxy"
-#~ msgstr "Autentisert proxy"
-
-#~ msgid "Send requests using HTTP 1.0"
-#~ msgstr "Send forespørsler med HTTP 1.0"
-
-#~ msgid "Enable caching of downloaded data"
-#~ msgstr "Aktiver mellomlagring av nedlastede data"
-
-#~ msgid "Clear cached packages on exit"
-#~ msgstr "Tøm mellomlagrede pakker ved avslutting"
-
-#~ msgid "Clear cached packages after a period of time"
-#~ msgstr "Tøm mellomlagrede pakker etter en tid"
-
-#~ msgid "Days:"
-#~ msgstr "Dager"
-
-#~ msgid "User Interface"
-#~ msgstr "Brukergrensesnitt"
-
-#~ msgid "Show more descriptive package names instead of the actual names."
-#~ msgstr ""
-#~ "Vis mer beskrivende pakkenavn i stedet for de virkelige pakkenavnene."
-
-#~ msgid ""
-#~ "Ask before installing packages with signatures that cannot be verified."
-#~ msgstr ""
-#~ "Spør før installasjon av pakker med signaturer som ikke kan verifiseres."
-
-#~ msgid "Red Carpet Premium Services"
-#~ msgstr "Red Carpet Premium Services"
-
-#~ msgid "Enable Premium Services"
-#~ msgstr "Aktiver «Premium Services»"
-
-#~ msgid "General"
-#~ msgstr "Generelt"
-
-#~ msgid "Ximian Red Carpet - Search"
-#~ msgstr "Ximian Red Carpet - Søk"
-
-#~ msgid "Find text:"
-#~ msgstr "Finn tekst:"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Skill mellom store/små bokstaver"
-
-#~ msgid "Ximian Red Carpet - Please Wait"
-#~ msgstr "Ximian Red Carpet - Vennligst vent"
-
-#~ msgid ""
-#~ "Please wait while Red Carpet downloads channel information relevant to "
-#~ "your system."
-#~ msgstr ""
-#~ "Vennligst vent mens Red Carpet laster ned kanalinformasjon som er "
-#~ "relevant for  ditt system."
-
-#~ msgid "%P%%"
-#~ msgstr "%P%%"
-
-#~ msgid "%P%% (%V of %U)"
-#~ msgstr "%P%% (%V av %U)"
-
-#~ msgid "Ximian Red Carpet - Verification"
-#~ msgstr "Ximian Red Carpet - Verifisering"
-
-#~ msgid ""
-#~ "CAUTION: Red Carpet is unable to ensure the cryptographic integrity of "
-#~ "this package. The package might not be signed, or Red Carpet may not have "
-#~ "the key needed to verify this package. You may continue and install this "
-#~ "package, but Red Carpet cannot ensure that it is safe or from a trusted "
-#~ "source."
-#~ msgstr ""
-#~ "FORSIKTIG: Red Carpet kan ikke verifisere den kryptografiske integriteten "
-#~ "for denne pakken. Pakken er kanskje ikke signert, eller kanskje Red "
-#~ "Carpet mangler nøkkelen som er nødvendig for å verifisere pakken. Du kan "
-#~ "fortsette med installasjonen av denne pakken, men Red Carpet kan ikke "
-#~ "sikre at det er trygt eller fra en trygg kilde."
-
-#~ msgid "Do you wish to install this package anyway?"
-#~ msgstr "Vil du installere denne pakken likevel?"
-
-#~ msgid "Do not show this warning again."
-#~ msgstr "Ikke vis denne advarselen igjen."
-
-#~ msgid ""
-#~ "Warning! Removing this many packages can be dangerous\n"
-#~ "and should only be done if you know what you are doing.\n"
-#~ "\n"
-#~ "Are you sure you want to proceed with this transaction?"
-#~ msgstr ""
-#~ "Advarsel! Fjerning av så mange pakker kan være farlig\n"
-#~ "og bør kun gjøres hvis du vet hva du gjør.\n"
-#~ "\n"
-#~ "Er du sikker på at du vil fortsette med transaksjonen?"
-
-#~ msgid "Red Carpet - Warning"
-#~ msgstr "Red Carpet - Advarsel"
-
-#~ msgid "Use authentication"
-#~ msgstr "Bruk autentisering"
-
-#~ msgid "Do not show this dialog again"
-#~ msgstr "Ikke vis denne dialogen igjen"
-
-#~ msgid "The password you have entered is incorrect."
-#~ msgstr "Passordet du oppga er ikke korrekt."
-
-#~ msgid "Downloading"
-#~ msgstr "Laster ned"
-
-#~ msgid "Done"
-#~ msgstr "Ferdig"
-
-#~ msgid "Percent Complete"
-#~ msgstr "Prosent fullført"
-
-#~ msgid "Finishing up..."
-#~ msgstr "Fullfører..."
-
-#~ msgid ""
-#~ "The packages you requested are being downloaded and installed on your "
-#~ "system."
-#~ msgstr "Pakkene du etterspurte lastes ned og installeres på ditt system."
-
-#~ msgid "Total"
-#~ msgstr "Totalt"
-
-#~ msgid "The packages you selected are being removed from your system"
-#~ msgstr "Pakkene du valgte fjernes nå fra ditt system"
-
-#~ msgid "Removal has finished."
-#~ msgstr "Fjerning er fullført."
-
-#~ msgid "The packages you selected are being removed from your system."
-#~ msgstr "Pakkene du valgte fjernes nå fra ditt system."
-
-#~ msgid "Keyword not found"
-#~ msgstr "Nøkkelord ikke funnet"
-
-#~ msgid "<!--html-->Failed Dependencies"
-#~ msgstr "<!--html-->Feilede avhengigheter"
-
-#~ msgid "needed by"
-#~ msgstr "som kreves av"
-
-#~ msgid "needs %s %s %s, which is being removed"
-#~ msgstr "krever %s %s %s, som er i ferd med å bli fjernet"
-
-#~ msgid "needs %s %s %s, which cannot be found"
-#~ msgstr "krever %s %s %s, som ikke kan finnes"
-
-#~ msgid "conflicts with %s %s %s"
-#~ msgstr "er i konflikt med %s %s %s"
-
-#~ msgid "<!--html-->Package Dependencies"
-#~ msgstr "<!--html-->Pakkeavhengigheter"
-
-#~ msgid ""
-#~ "<!--html-->Your system's package database is valid!<br><br>Click the "
-#~ "Previous button to go back."
-#~ msgstr ""
-#~ "<!--html>Pakkedatabasen på ditt system er gyldig!<br><br>Klikk på Forrige-"
-#~ "knappen for å gå tilbake."
-
-#~ msgid "<b>1</b> Requested Package"
-#~ msgstr "<b>1</b> forespurt pakke"
-
-#~ msgid "<b>%d</b> Requested Packages"
-#~ msgstr "<b>%d</b> forespurte pakker"
-
-#~ msgid "<b>1</b> Necessary Removal"
-#~ msgstr "<b>1</b> Kreves fjernet"
-
-#~ msgid "<b>%d</b> Necessary Removals"
-#~ msgstr "<b>%d</b> Kreves fjernet"
-
-#~ msgid "<b>1</b> Necessary Installation"
-#~ msgstr "<b>1</b> Kreves installert"
-
-#~ msgid "<b>%d</b> Necessary Installations"
-#~ msgstr "<b>%d</b> Kreves installert"
-
-#~ msgid "<!--html--><b>%s</b> will need to be downloaded. "
-#~ msgstr "<!--html--><b>%s</b> må lastes ned. "
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be used."
-#~ msgstr "<!--html-->Etter dette vil <b>%s</b> med diskplass være brukt."
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be freed."
-#~ msgstr "<!--html-->Etter dette vil <b>%s</b> med diskplass være frigjort."
-
-#~ msgid ""
-#~ "<!--html-->After operations, no additional space will be freed or used."
-#~ msgstr ""
-#~ "<!--html-->Operasjonene vil ikke medføre endringer i bruk av diskplass."
-
-#~ msgid "<!--html-->Removing some packages from your system"
-#~ msgstr "<!--html-->Fjerner noen pakker fra ditt system"
-
-#~ msgid "Changing your <a href=\"updater:prefs_cache\">cache settings</a>."
-#~ msgstr ""
-#~ "Endrer dine <a href=\"updater:prefs_cache\">cache-innstillinger</a>."
-
-#~ msgid "<a href=\"updater:cache_clear\">Clearing your cache</a>."
-#~ msgstr "<a href=\"updater:cache_clear\">Tømmer din cache</a>."
-
-#~ msgid "1&nbsp;Package"
-#~ msgstr "1&nbsp;pakke"
-
-#~ msgid "%d&nbsp;Packages"
-#~ msgstr "%d&nbsp;pakker"
-
-#~ msgid "Necessary Removals"
-#~ msgstr "Kreves fjernet"
-
-#~ msgid "Necessary Installations"
-#~ msgstr "Kreves installert"
-
-#~ msgid "<html><body><b>Please wait, loading page...</b></body></html>"
-#~ msgstr "<html><body><b>Vennligst vent, laster siden...</b></body></html>"
-
-#~ msgid ""
-#~ "You have no packages from this channel currently installed on your system."
-#~ msgstr "Du har ingen pakker fra denne kanalen installert på ditt system."
-
-#~ msgid "View the <a href=\"updater:info_page\">about page</a>."
-#~ msgstr "Vis <a href=\"updater:info_page\">informasjonssiden</a>."
-
-#~ msgid "View the <a href=\"updater:available_page\">install page</a>."
-#~ msgstr "Vis <a href=\"updater:available_page\">installasjonssiden</a>."
-
-#~ msgid "Return to the <a href=\"updater:summary\">Summary</a>."
-#~ msgstr "Gå tilbake til <a href=\"updater:summary\">Sammendrag</a>."
-
-#~ msgid "All of the software from this channel is up-to-date."
-#~ msgstr "All programvaren fra denne kanalen er oppdatert."
-
-#~ msgid "Essential Updates"
-#~ msgstr "Strengt nødvendige oppdateringer"
-
-#~ msgid "Urgent Updates"
-#~ msgstr "Viktige oppdateringer"
-
-#~ msgid "Suggested Updates"
-#~ msgstr "Anbefalte oppdateringer"
-
-#~ msgid "Feature Enhancements"
-#~ msgstr "Forbedringer i funksjonalitet"
-
-#~ msgid "Minor Fixes/Updates"
-#~ msgstr "Mindre feilopprettinger/oppdateringer"
-
-#~ msgid "1 update"
-#~ msgstr "1 oppdatering"
-
-#~ msgid "%d updates"
-#~ msgstr "%d oppdateringer"
-
-#~ msgid ""
-#~ "The following packages from this channel are currently installed on your "
-#~ "system."
-#~ msgstr "Følgende pakker fra denne kanalen er installert på ditt system."
-
-#~ msgid ""
-#~ "<!--html-->  To remove packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  For å fjerne pakker vil du måtte kjøre Red Carpet som root."
-
-#~ msgid ""
-#~ "<p>All packages available in this channel are already installed on your "
-#~ "system.</p>"
-#~ msgstr ""
-#~ "<p>Alle pakker som er tilgjengelig i denne kanalen er allerede installert "
-#~ "på ditt system.</p>"
-
-#~ msgid ""
-#~ "<!--html-->  To install packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  For å installere pakker vil du måtte kjøre Red Carpet som "
-#~ "root."
-
-#~ msgid "Name:"
-#~ msgstr "Navn:"
-
-#~ msgid "Installed Version:"
-#~ msgstr "Installert versjon:"
-
-#~ msgid "Size:"
-#~ msgstr "Størrelse:"
-
-#~ msgid "bytes"
-#~ msgstr "bytes"
-
-#~ msgid "Summary:"
-#~ msgstr "Sammendrag:"
-
-#~ msgid "or"
-#~ msgstr "eller"
-
-#~ msgid " Update Now! "
-#~ msgstr " Oppdater nå! "
-
-#~ msgid " Remove Packages "
-#~ msgstr " Fjern pakker "
-
-#~ msgid " Unsubscribe "
-#~ msgstr " Slett abonnement "
-
-#~ msgid " Subscribe "
-#~ msgstr " Abonner "
-
-#~ msgid "Keyword&nbsp;Search:"
-#~ msgstr "Nøkkelordsøk:"
-
-#~ msgid "Prefs"
-#~ msgstr "Brukervalg"
-
-#~ msgid "User Interface Design"
-#~ msgstr "Brukergrensesnittutforming"
-
-#~ msgid "Artwork"
-#~ msgstr "Kunst"
-
-#~ msgid "All links will open in an external browser window."
-#~ msgstr "Alle lenker vil åpnes i et eksternt nettleservindu."
-
-#~ msgid "You are currently subscribed to all available channels!"
-#~ msgstr "Du abonnerer på alle tilgjengelige kanaler!"
-
-#~ msgid " Of these updates, <b>one</b> is <b>urgent</b>."
-#~ msgstr " <b>Én</b> av disse oppdateringene er <b>viktig</b>."
-
-#~ msgid "1 other in the %s channel..."
-#~ msgstr "1 annen i %s-kanalen..."
-
-#~ msgid "%d others in the %s channel..."
-#~ msgstr "%d andre i %s-kanalen..."
-
-#~ msgid ""
-#~ "Could not find '%s'.\n"
-#~ "Please make sure Red Carpet was installed correctly."
-#~ msgstr ""
-#~ "Kunne ikke finne '%s'.\n"
-#~ "Vennligst sjekk at Red Carpet er installert korrekt."
-
-#~ msgid "Downloading mirror list..."
-#~ msgstr "Laster ned liste over speil..."
-
-#~ msgid "Downloading channel list..."
-#~ msgstr "Laster ned kanalliste..."
-
-#~ msgid "Downloading channel artwork..."
-#~ msgstr "Laster ned kunst for kanaler..."
-
-#~ msgid "Navigation"
-#~ msgstr "Navigering"
-
-#~ msgid "Downloading mirrors..."
-#~ msgstr "Laster ned speil..."
-
-#~ msgid "packages"
-#~ msgstr "pakker"
-
-#~ msgid "%%p%%%% (%s of %s)"
-#~ msgstr "%%p%%%% (%s av %s)"
-
-#~ msgid "%s pulled from cache"
-#~ msgstr "%s hentet fra buffer"
-
-#~ msgid "%p%% (%v of %u)"
-#~ msgstr "%p%% (%v av %u)"
-
-#~ msgid "Download Log"
-#~ msgstr "Nedlastingslogg"
-
-#~ msgid "%.2f MB"
-#~ msgstr "%.2f MB"
-
-#~ msgid "%d bytes"
-#~ msgstr "%d bytes"
-
-#~ msgid "%s - %s/s"
-#~ msgstr "%s - %s/s"
-
-#~ msgid "Downloading data..."
-#~ msgstr "Laster ned data..."
-
-#~ msgid "%s - Paused"
-#~ msgstr "%s - Pause"
-
-#~ msgid "%d%sbytes"
-#~ msgstr "%d%sbytes"
-
-#~ msgid "zero"
-#~ msgstr "null"
-
-#~ msgid "one"
-#~ msgstr "en"
-
-#~ msgid "two"
-#~ msgstr "to"
-
-#~ msgid "three"
-#~ msgstr "tre"
-
-#~ msgid "four"
-#~ msgstr "fire"
-
-#~ msgid "five"
-#~ msgstr "fem"
-
-#~ msgid "six"
-#~ msgstr "seks"
-
-#~ msgid "seven"
-#~ msgstr "syv"
-
-#~ msgid "eight"
-#~ msgstr "åtte"
-
-#~ msgid "Fatal Error"
-#~ msgstr "Fatal feil"
-
-#~ msgid "Error"
-#~ msgstr "Feil"
-
-#~ msgid "Possible actions:"
-#~ msgstr "Mulige handlinger:"
-
-#~ msgid "<li>Click <b>Quit</b> to quit."
-#~ msgstr "<li>Klikk <b>Avslutt</b> for å avslutte."
-
-#~ msgid "<li>Click <b>Retry</b> to retry."
-#~ msgstr "<li>Klikk <b>Prøv igjen</b> for å prøve på nytt."
-
-#~ msgid "<li>Click <b>Cancel</b> to cancel."
-#~ msgstr "<li>Klikk <b>Avbryt</b> for å avbryte."
-
-#~ msgid "Retry"
-#~ msgstr "Prøv igjen"
-
-#~ msgid "Load file(s)"
-#~ msgstr "Last fil(er)"
-
-#~ msgid "Close"
-#~ msgstr "Lukk"
-
-#~ msgid "Ximian Red Carpet will now restart."
-#~ msgstr "Ximian Red Carpet vil nå starte på nytt."
-
-#~ msgid "N/A"
-#~ msgstr "I/T"
-
-#~ msgid "Unable to parse mirror list."
-#~ msgstr "Kan ikke lese listen over speil."
-
-#~ msgid "Unable to save mirror list (%s)."
-#~ msgstr "Kan ikke lagre listen over speil (%s)."
+msgstr "Bruker «%s» eksisterer allerede."
