@@ -82,6 +82,9 @@ red_list_model_build_index (RedListModel *model)
     
     len = red_list_model_array_length (model);
 
+    if (!len)
+        return;
+
     /* We allocate the full length of the array, which is probably more
        space than we will actually need.  Oh well. */
     model->index = g_new (gint, len);
