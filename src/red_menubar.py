@@ -81,7 +81,11 @@ class MenuBar(gtk.MenuBar):
         gobject.GObject.__init__(self)
 
         self.accel_group = accel_group
-        if accel_group:
+        if accel_group and gtk.pygtk_version[1] >= 2:
+            gobject.GObject.connect(accel_group,"accel-activate",
+                                    lambda g,o,x,y,this:this.refresh_items(),
+                                    self)
+        elif accel_group:
             accel_group.connect("accel-activate",
                                 lambda g,o,x,y,this:this.refresh_items(),
                                 self)
