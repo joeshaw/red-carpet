@@ -1,5 +1,8 @@
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
+	* red_searchbox.py (_ShowAdvanced): Store the state of
+	'view->advanced search options' in the config.
+
 	* red_summary.py (SummaryComponent.build): Added a "the system
 	is up-to-date" page that gets displayed if there are no updates.
 

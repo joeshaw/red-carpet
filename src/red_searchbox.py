@@ -17,7 +17,7 @@
 
 import string, gobject, gtk
 import rcd_util, red_pixbuf
-import red_channeloption
+import red_channeloption, red_settings
 
 from red_gettext import _
 
@@ -28,13 +28,18 @@ MATCH_SUBSTRINGS  = 1
 
 class _ShowAdvanced(gobject.GObject):
 
+    conf_str = "UI/show_advanced_search_options"
+
     def __init__(self):
         gobject.GObject.__init__(self)
-        self.__show = 0
+        config = red_settings.get_config()
+        self.__show = int(config.get(self.conf_str + "=0"))
 
     def set(self, x):
         if self.__show ^ x:
             self.__show = x
+            config = red_settings.get_config()
+            config.set(self.conf_str, x)
             self.emit("changed", x)
 
     def get(self):
