@@ -1,3 +1,31 @@
+2003-03-19  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py: Keep track of whether our server is local or
+	remote.
+	(register_server): Take a second "is_local" argument, and set the
+	server_local global variable.
+	(connect_to_server): Get a tuple from red_connection.connect()
+	containing (server, is_local).
+	(get_server_local): Added.
+
+	* red_connection.py (connect_real): Fix a typo in
+	RC_TRANSPORT_DEBUG.
+	(connect): Return a tuple of the sever and whether its local.
+
+	* red_installfiles.py (install_local): Handle streaming packages
+	to a remote daemon. (#39977)
+
+	* red_prefs.py (create_entry): Connect to the "focus_out_event"
+	instead of "changed" so we don't send pref changed events to the
+	daemon for every keypress.  Also conforms better with the HIG
+	(#39945).
+	(PrefsViewPage_Cache): The "cache enabled" and "cache cleanup
+	enabled" were swapped at the backend.
+
+	* red_serverproxy.py (ServerThread.run): If the
+	RC_ALWAYS_RAISE_FAULTS environment variable is set, raise a fault
+	instead of showing the dead daemon dialog.
+
 2003-03-19  Jon Trowbridge  <trow@ximian.com>
 
 	* red-carpet.in: Check to make sure that we can import gtk, and

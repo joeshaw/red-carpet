@@ -57,14 +57,14 @@ class PrefsViewPage(gtk.HBox):
                 self.queued_id = gtk.idle_add(self.apply_prefs)
 
     def create_entry(self, name):
-        def entry_changed_cb(e, p, n):
+        def entry_focus_out_cb(e, ev, p, n):
             p.prefs[n]["value"] = e.get_text()
             self.enqueue(n)
-            
+        
         entry = gtk.Entry()
         entry.set_text(self.prefs[name]["value"])
         entry.set_activates_default(1)
-        entry.connect("changed", entry_changed_cb, self, name)
+        entry.connect("focus_out_event", entry_focus_out_cb, self, name)
 
         self.handled_prefs.append(name)
 
@@ -242,7 +242,7 @@ class PrefsViewPage_Cache(PrefsViewPage):
         table.set_row_spacings(5)
         vbox.pack_start(table, expand=0, fill=1)
 
-        self.enable_cache_check = self.create_checkbox("cache-cleanup-enabled",
+        self.enable_cache_check = self.create_checkbox("cache-enabled",
                                                        _("Cache downloaded "
                                                          "packages and "
                                                          "metadata"))
@@ -267,7 +267,7 @@ class PrefsViewPage_Cache(PrefsViewPage):
         exp_vbox = gtk.VBox(spacing=5)
         hbox.pack_start(exp_vbox, padding=3)
 
-        self.cache_enabled_check = self.create_checkbox("cache-enabled",
+        self.cache_enabled_check = self.create_checkbox("cache-cleanup-enabled",
                                                         _("Enable cache "
                                                           "expiration"))
         exp_vbox.pack_start(self.cache_enabled_check, expand=0, fill=1)

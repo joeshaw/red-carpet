@@ -89,7 +89,7 @@ def check_rcd_version(major, minor, micro):
     return 1
 
 def connect_real(uri, user=None, password=None):
-    transport_debug = os.environ.has_key("RC_TRANSAPOR_DEBUG")
+    transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
 
     try:
         server = ximian_xmlrpclib.Server(uri,
@@ -283,6 +283,6 @@ def connect(local=0,
 
     if isinstance(server, ximian_xmlrpclib.Server):
 #        save_credentials(host, user, password, local)
-        return server
+        return server, local
 
     return None

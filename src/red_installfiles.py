@@ -36,7 +36,6 @@ def can_install_remote():
     return have_urllib
 
 def install_local(parent):
-    # FIXME: Add remote daemon support
     
     def get_file_cb(b, fs):
         server = rcd_util.get_server()
@@ -55,8 +54,24 @@ def install_local(parent):
                 except OSError, e:
                     # File probably doesn't exist.
                     return 0
+
+            def query_file(x):
+                is_local = rcd_util.get_server_local()
+                if is_local:
+                    pdata = os.path.abspath(x)
+                else:
+                    pdata = ximian_xmlrpclib.Binary(open(x).read())
+
+                p = server.rcd.packsys.query_file(pdata)
+
+                if is_local:
+                    p["package_filename"] = pdata
+                else:
+                    p["package_data"] = pdata
+
+                return p
             
-            plist = [server.rcd.packsys.query_file(x) \
+            plist = [query_file(x) \
                      for x in fs.get_selections() \
                      if not is_valid(x)]
         except ximian_xmlrpclib.Fault, f:

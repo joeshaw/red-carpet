@@ -24,16 +24,18 @@ from red_gettext import _
 
 server = None
 server_proxy = None
+server_local = 0
 server_permissions = {}
 current_user = None
 
 def md5ify_password(pw):
     return md5.new(pw).hexdigest()
 
-def register_server(srv):
-    global server, server_proxy
+def register_server(srv, local):
+    global server, server_proxy, server_local
     server = srv
     server_proxy = red_serverproxy.ServerProxy(server)
+    server_local = local
     reset_server_permissions()
     reset_current_user()
 
@@ -48,11 +50,13 @@ def connect_to_server(local=0,
 
     # If we're not connected we want to try once with default parameters.
     show_dialog = connected
-    s = red_connection.connect(local, uri, user, password, show_dialog)
-    if isinstance(s, ximian_xmlrpclib.Server):
-        server = s
-        register_server(server)
-        return 1
+    server_info = red_connection.connect(local, uri, user,
+                                         password, show_dialog)
+    if server_info is not None:
+        s, is_local = server_info
+        if isinstance(s, ximian_xmlrpclib.Server):
+            register_server(s, is_local)
+            return 1
 
     return 0
 
@@ -66,6 +70,9 @@ def get_server():
 
 def get_server_proxy():
     return server_proxy
+
+def get_server_local():
+    return server_local
 
 def reset_server_permissions():
     global server_permissions

@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import threading, gobject, gtk
+import os, threading, gobject, gtk
 import red_deaddaemon
 import ximian_xmlrpclib
 
@@ -44,6 +44,8 @@ class ServerThread(threading.Thread, gobject.GObject):
         except:
             # FIXME: Handle the correct exceptions, not just this catch-all.
             # We will re-start the thread if the server comes back.
+            if os.getenv("RC_ALWAYS_RAISE_FAULTS"):
+                raise
             red_deaddaemon.show_daemon_dialog()
             return
 
