@@ -3,21 +3,23 @@
 # Simos Xenitellis <simos@hellug.gr>, 2001.
 # Dimitris Kamenopoulos <el97146@mail.ntua.gr>, 2001.
 # Alejandros Diamandidis <adia@egnatia.ee.auth.gr>, 2001.
-# 
+#
 # 20Sep2001: 220 messages, initial translation, simos
 # 25Sep2001: 220 messages, updates from comments by dimitris/alejandros, simos
 # 20Dec2001: 263 messages, more messages translated, simos
+# 15Sep2003: 215 messages, 15 messages stayed same since 2001. simos
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: red-carpet 1.0x\n"
+"Project-Id-Version: red-carpet 2.0.3\n"
 "POT-Creation-Date: 2003-09-12 17:09+0100\n"
-"PO-Revision-Date: 2001-12-20 14:35+0000\n"
-"Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
+"PO-Revision-Date: 2003-09-12 21:17+0100\n"
+"Last-Translator: Simos Xenitellis <simos74@gmx.net>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -55,7 +57,7 @@ msgstr "Παρακαλώ περιμένετε όσο γίνεται η λήψη 
 #. ##############################################################################
 #: src/rcd_util.py:435 src/rcd_util.py:453
 msgid "Please ensure that your network settings are correct."
-msgstr ""
+msgstr "Παρακαλώ επιβεβαιώστε ότι οι ρυθμίσεις δικτύου είναι σωστές."
 
 #: src/rcd_util.py:442
 msgid "Refreshing channel data"
@@ -124,7 +126,7 @@ msgstr "Γίνεται ρύθμιση"
 #. language.  Just nothing offensive please. :)
 #: src/red_about.py:41
 msgid "Brought to you by:"
-msgstr ""
+msgstr "Σας το φέρνουν οι:"
 
 #: src/red_about.py:42
 msgid "With love from:"
@@ -144,7 +146,7 @@ msgstr "Δημιουργήθηκε από χιμπατζήδες:"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr ""
+msgstr "Κάτω από την άδεια χρήσης GNU General Public License, έκδοση 2"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -180,38 +182,36 @@ msgstr ""
 #. ##
 #: src/red_activation.py:27
 msgid "Group Activation"
-msgstr ""
+msgstr "Ενεργοποίηση Ομάδας"
 
 #: src/red_activation.py:37
 msgid "Email:"
-msgstr ""
+msgstr "Ηλεκ. Διεύθυνση:"
 
 #: src/red_activation.py:41
 msgid "Activation Code:"
-msgstr ""
+msgstr "Κωδικός Ενεργοποίησης:"
 
 #: src/red_activation.py:59
 msgid "Activate"
-msgstr ""
+msgstr "Ενεργοποίηση"
 
 #: src/red_activation.py:76
 msgid "Please fill in both email and activation code."
-msgstr ""
+msgstr "Παρακαλώ συμπληρώστε ηλεκ. διεύθυνση και κωδικό ενεργοποίησης."
 
 #: src/red_activation.py:91
-#, fuzzy
 msgid "Unable to activate"
 msgstr "Αποτυχία ενεργοποίησης"
 
 #: src/red_activation.py:92
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr ""
+msgstr "Παρακαλώ επιβεβαιώστε ότι η ηλεκ. διεύθυνση και ο κωδικός ενεργοποίησης έχουν πληκτρολογηθεί σωστά"
 
 #. Store email to config.
 #: src/red_activation.py:110
-msgid ""
-"System could not be activated: Invalid activation code or email address."
-msgstr ""
+msgid "System could not be activated: Invalid activation code or email address."
+msgstr "Το σύστημα δε μπόρεσε να ενεργοποιηθεί: Ακατάλληλος κωδικός ενεργοποίησης ή ηλεκ. διεύθυνση."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -237,7 +237,7 @@ msgstr ""
 #. Red Carpet help is localized.
 #: src/red_appwindow.py:83
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. GNOME 2
 #. XD2 w/o yelp?
@@ -256,8 +256,7 @@ msgid ""
 msgstr ""
 
 #: src/red_appwindow.py:130
-msgid ""
-"Unable to show help because there are no applications available to view help."
+msgid "Unable to show help because there are no applications available to view help."
 msgstr ""
 
 #. Menubar
@@ -287,7 +286,7 @@ msgstr "Εκτέλεση Τώρα"
 
 #: src/red_appwindow.py:434
 msgid "Perform installations and removals"
-msgstr ""
+msgstr "Κάνει εγκαταστάσεις και απεγκαταστάσεις"
 
 #: src/red_appwindow.py:441
 msgid "Channels"
@@ -295,7 +294,7 @@ msgstr "Κανάλια"
 
 #: src/red_appwindow.py:442
 msgid "Change your channel subscriptions"
-msgstr ""
+msgstr "Αλλαγή των συνδρομών σε κανάλια"
 
 #: src/red_appwindow.py:450
 msgid "Refresh"
@@ -313,9 +312,8 @@ msgid "Mark for _Installation"
 msgstr "Σήμανση για _Εγκατάσταση"
 
 #: src/red_appwindow.py:463
-#, fuzzy
 msgid "Mark selected packages for installation"
-msgstr "Καθαρισμός των ήδη μεταφορτωμένων πακέτων κατά την εκκίνηση"
+msgstr "Σήμανση των επιλεγμένων πακέτων για εγκατάσταση"
 
 #. #
 #. # Remove Package
@@ -326,9 +324,8 @@ msgid "Mark for _Removal"
 msgstr "Σήμανση για _Απεγκατάσταση"
 
 #: src/red_appwindow.py:469
-#, fuzzy
 msgid "Mark selected packages for removal"
-msgstr "Εγκατάσταση επιλεγμένων πακέτων"
+msgstr "Σήμανση των επιλεγμένων πακέτων για απεγκατάσταση"
 
 #. #
 #. # Cancel Action
@@ -348,9 +345,8 @@ msgid "I_nformation"
 msgstr "_Πληροφορίες"
 
 #: src/red_appwindow.py:481
-#, fuzzy
 msgid "Package information"
-msgstr "Εγκατάσταση Πακέτου"
+msgstr "Πληροφορίες πακέτου"
 
 #. We want to revert to our old settings if we don't connect to
 #. a new daemon successfully.
@@ -389,59 +385,55 @@ msgstr "Σύνδεση στην υπηρεσία..."
 
 #: src/red_appwindow.py:551
 msgid "Connect to a remote daemon"
-msgstr ""
+msgstr "Σύνδεση σε απομακρυσμένη υπηρεσία"
 
 #: src/red_appwindow.py:561
 msgid "Install from _File..."
 msgstr "Εγκατάσταση από _Αρχείο..."
 
 #: src/red_appwindow.py:562
-#, fuzzy
 msgid "Install a package from a local file"
-msgstr "Εγκατάσταση όλων των πακέτων του καταλόγου"
+msgstr "Εγκατάσταση πακέτου από τοπικό αρχείο"
 
 #: src/red_appwindow.py:571
 msgid "Install from _URL..."
 msgstr "Εγκατάσταση από _URL..."
 
 #: src/red_appwindow.py:572
-#, fuzzy
 msgid "Install a package from a remote URL"
-msgstr "Εγκατάσταση όλων των πακέτων του καταλόγου"
+msgstr "Εγκατάσταση πακέτου από απομακρυσμένο URL"
 
 #. #
 #. # Mount command
 #. #
 #: src/red_appwindow.py:589
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "_Προσάρτηση Καταλόγου..."
 
 #: src/red_appwindow.py:590
-#, fuzzy
 msgid "Mount a directory as a channel"
-msgstr "Εξ' ορισμού υποκανάλι:"
+msgstr "Προσάρτηση καταλόγου ως κανάλι"
 
 #. #
 #. # Unmount command
 #. #
 #: src/red_appwindow.py:606
 msgid "U_nmount Directory..."
-msgstr ""
+msgstr "_Αποπροσάρτηση Καταλόγου..."
 
 #: src/red_appwindow.py:607
 msgid "Unmount a directory"
-msgstr ""
+msgstr "Αποπροσάρτηση καταλόγου"
 
 #. #
 #. # Activate
 #. #
 #: src/red_appwindow.py:622
 msgid "_Activate..."
-msgstr ""
+msgstr "_Ενεργοποίηση..."
 
 #: src/red_appwindow.py:623
-msgid ""
-"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
 
 #: src/red_appwindow.py:629
@@ -449,9 +441,8 @@ msgid "Quit"
 msgstr "Έξοδος"
 
 #: src/red_appwindow.py:630
-#, fuzzy
 msgid "Quit Red Carpet"
-msgstr "Ximian Red Carpet"
+msgstr "Έξοδος από το Red Carpet"
 
 #. #
 #. # Select all/none
@@ -461,9 +452,8 @@ msgid "Select _All"
 msgstr "_Επιλογή Όλων"
 
 #: src/red_appwindow.py:646
-#, fuzzy
 msgid "Select all items"
-msgstr "_Επιλογή Όλων"
+msgstr "Επιλογή όλων των αντικειμένων"
 
 #: src/red_appwindow.py:651
 msgid "Select _None"
@@ -471,7 +461,7 @@ msgstr "Επιλογή _Κανενός"
 
 #: src/red_appwindow.py:652
 msgid "Deselect all items"
-msgstr ""
+msgstr "Αφεπιλογή όλων των αντικειμένων"
 
 #: src/red_appwindow.py:659
 #, fuzzy
@@ -484,9 +474,8 @@ msgid "Edit your channel subscriptions"
 msgstr "Εγγρα_φές"
 
 #: src/red_appwindow.py:665
-#, fuzzy
 msgid "_Preferences..."
-msgstr "Προτιμήσεις"
+msgstr "_Προτιμήσεις..."
 
 #: src/red_appwindow.py:666
 #, fuzzy
@@ -495,7 +484,7 @@ msgstr "Ximian Red Carpet - Προτιμήσεις"
 
 #: src/red_appwindow.py:670
 msgid "_Users..."
-msgstr ""
+msgstr "_Χρήστες..."
 
 #: src/red_appwindow.py:671
 msgid "Edit user permissions for this daemon"
@@ -506,16 +495,15 @@ msgstr ""
 #. #
 #: src/red_appwindow.py:684
 msgid "_Sidebar"
-msgstr ""
+msgstr "_Πλευρική μπάρα"
 
 #: src/red_appwindow.py:685
 msgid "Hide or show the Pending Actions sidebar"
 msgstr ""
 
 #: src/red_appwindow.py:689
-#, fuzzy
 msgid "_Advanced Search Options"
-msgstr "Εγγρα_φές"
+msgstr "_Προχωρημένες Επιλογές Αναζήτησης"
 
 #: src/red_appwindow.py:690
 #, fuzzy
@@ -523,36 +511,32 @@ msgid "Hide or show advanced search options"
 msgstr "Εγγρα_φές"
 
 #: src/red_appwindow.py:694
-#, fuzzy
 msgid "_Channel Names"
-msgstr "Πληροφορίες Καναλιού"
+msgstr "Ονόματα _Καναλιών"
 
 #: src/red_appwindow.py:695
 msgid "Hide or show channel names in package lists"
 msgstr ""
 
 #: src/red_appwindow.py:701
-#, fuzzy
 msgid "Package _Information..."
-msgstr "Εγκατάσταση Πακέτου"
+msgstr "_Πληροφορίες Πακέτου..."
 
 #: src/red_appwindow.py:702
 msgid "View information about currently selected packages"
 msgstr ""
 
 #: src/red_appwindow.py:710
-#, fuzzy
 msgid "_Daemon Information..."
-msgstr "Πληροφορίες"
+msgstr "Πληροφορίες _Υπηρεσίας..."
 
 #: src/red_appwindow.py:711
 msgid "View information about this daemon"
 msgstr ""
 
 #: src/red_appwindow.py:713
-#, fuzzy
 msgid "Red Carpet Ne_ws..."
-msgstr "Νέα του Red Carpet"
+msgstr "_Νέα του Red Carpet..."
 
 #: src/red_appwindow.py:714
 msgid "View the latest Red Carpet news"
@@ -586,9 +570,8 @@ msgstr "Αποτυχημένες Εξαρτήσεις"
 #. # Install Package
 #. #
 #: src/red_appwindow.py:753
-#, fuzzy
 msgid "Mark for I_nstallation"
-msgstr "Εγκατάσταση Πακέτου"
+msgstr "Σήμανση για _Εγκατάσταση"
 
 #: src/red_appwindow.py:754
 #, fuzzy
@@ -618,7 +601,7 @@ msgstr "Μεταφόρτωση πιο πρόσφατων δεδομένων κα
 
 #: src/red_appwindow.py:801
 msgid "_Contents"
-msgstr "_περιεχόμενα"
+msgstr "_Περιεχόμενα"
 
 #: src/red_appwindow.py:802
 msgid "View Red Carpet help"
@@ -825,7 +808,7 @@ msgstr ""
 #. following
 #: src/red_connection.py:123
 msgid "Starting daemon..."
-msgstr ""
+msgstr "Εκκίνηση υπηρεσίας..."
 
 #. child
 #. If we get here, the exec failed.
@@ -847,20 +830,19 @@ msgstr ""
 #. NOTE: password must be md5ified.
 #: src/red_connection.py:345
 msgid "Connect to this system"
-msgstr ""
+msgstr "Σύνδεση σε αυτό το σύστημα"
 
 #: src/red_connection.py:349
 msgid "Connect to a remote system"
-msgstr ""
+msgstr "Σύνδεση σε απομακρυσμένο σύστημα"
 
 #: src/red_connection.py:357
 msgid "Server:"
-msgstr ""
+msgstr "Εξυπηρετητής:"
 
 #: src/red_connection.py:361 src/red_users.py:389
-#, fuzzy
 msgid "User name:"
-msgstr "Όνομα χρήστη"
+msgstr "Όνομα χρήστη:"
 
 #: src/red_connection.py:365 src/red_prefs.py:302 src/red_users.py:192
 #: src/red_users.py:395
@@ -871,7 +853,7 @@ msgstr "Συνθηματικό:"
 #. desensitize the table by default.
 #: src/red_connection.py:401
 msgid "Connect"
-msgstr ""
+msgstr "Σύνδεση"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -890,9 +872,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Red Carpet - Συνθηματικό"
+msgstr "Κονσόλα Σφαλμάτων Red Carpet"
 
 #. We put the text into the console window in a timeout.  That
 #. way we can be sure that it happens in the main thread and
@@ -924,9 +905,8 @@ msgid "Lost contact with the daemon!"
 msgstr ""
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Ximian Red Carpet"
+msgstr "Έξοδος από το Red Carpet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -948,24 +928,20 @@ msgstr "Ximian Red Carpet"
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:65 src/red_depcomponent.py:356
-#, fuzzy
 msgid "Dependency Resolution"
-msgstr "Εξαρτήσεις"
+msgstr "Επίλυση Εξαρτήσεων"
 
 #. Clean up
 #: src/red_depcomponent.py:117
-#, fuzzy
 msgid "Verifying System"
-msgstr "Γίνεται πιστοποίηση"
+msgstr "Πιστοποίηση Συστήματος"
 
 #: src/red_depcomponent.py:123
-#, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Εξαρτήσεις"
+msgstr "Ανάλυση Εξαρτήσεων"
 
 #: src/red_depcomponent.py:157
-msgid ""
-"You must agree to the licenses covering this software before installing it."
+msgid "You must agree to the licenses covering this software before installing it."
 msgstr ""
 
 #. Try to estimate the size of the window we want.
@@ -974,7 +950,7 @@ msgstr ""
 #. Get a mark to the start of the buffer and then scroll there
 #: src/red_depcomponent.py:201
 msgid "I Agree"
-msgstr ""
+msgstr "Δέχομαι"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
@@ -983,12 +959,12 @@ msgstr ""
 #. Assemble our warning banner
 #: src/red_depcomponent.py:261
 msgid "Dependency Resolution Failed"
-msgstr ""
+msgstr "Αποτυχία Επίλυσης Εξαρτήσεων"
 
 #. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:311
 msgid "System Verified"
-msgstr ""
+msgstr "Το Σύστημα Επιβεβεώθηκε"
 
 #: src/red_depcomponent.py:313
 msgid ""
@@ -1009,19 +985,16 @@ msgid "Requested Removals"
 msgstr "Αιτούμενες Διαγραφές"
 
 #: src/red_depcomponent.py:375
-#, fuzzy
 msgid "Required Installations"
-msgstr "Αιτούμενες Εγκαταστάσεις"
+msgstr "Απαιτούμενες Εγκαταστάσεις"
 
 #: src/red_depcomponent.py:379
-#, fuzzy
 msgid "Required Removals"
-msgstr "Αιτούμενες Διαγραφές"
+msgstr "Απαιτούμενες Διαγραφές"
 
 #: src/red_depcomponent.py:405
-#, fuzzy
 msgid "Continue"
-msgstr "εννιά"
+msgstr "Συνέχιση"
 
 #. # That's all we can do here. We might (and usually don't)
 #. # have enough information here to decide what kind of page
@@ -1045,25 +1018,22 @@ msgstr "εννιά"
 #. ##
 #: src/red_depview.py:47 src/red_mount.py:226 src/red_packagepage_info.py:83
 #: src/red_packageview.py:367
-#, fuzzy
 msgid "Channel"
-msgstr "Ακύρωση"
+msgstr "Κανάλι"
 
 #: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "Πακέτο"
 
 #: src/red_depview.py:53 src/red_packageview.py:462
-#, fuzzy
 msgid "Current Version"
-msgstr "Αιτούμενη Έκδοση:"
+msgstr "Τρέχουσα Έκδοση"
 
 #. ## Main
 #: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
 #: src/red_updates.py:94
-#, fuzzy
 msgid "New Version"
-msgstr "Έκδοση"
+msgstr "Νέα Έκδοση"
 
 #: src/red_depview.py:59 src/red_packageview.py:498
 msgid "Size"
@@ -1141,26 +1111,23 @@ msgstr "Μέγεθος"
 #. ##
 #: src/red_history.py:113 src/red_users.py:30
 msgid "All"
-msgstr ""
+msgstr "Όλα"
 
 #: src/red_history.py:114
-#, fuzzy
 msgid "Installations"
-msgstr "Γίνεται εγκατάσταση"
+msgstr "Εγκαταστάσεις"
 
 #: src/red_history.py:115
-#, fuzzy
 msgid "Removals"
-msgstr "Απεγκατάσταση"
+msgstr "Απεγκαταστάσεις"
 
 #: src/red_history.py:116
-#, fuzzy
 msgid "Upgrades"
-msgstr "Ανανεώσεις"
+msgstr "Αναβαθμίσεις"
 
 #: src/red_history.py:121
 msgid "User:"
-msgstr ""
+msgstr "Χρήστης:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
@@ -1171,25 +1138,22 @@ msgstr ""
 #. ##
 #. # We want opposite order.
 #: src/red_history.py:279
-#, fuzzy
 msgid "Searching..."
-msgstr "Αναζήτηση"
+msgstr "Σε αναζήτηση..."
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:435
 msgid "Time"
-msgstr ""
+msgstr "Χρόνος"
 
 #: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
-#, fuzzy
 msgid "Action"
-msgstr "Τοποθεσία"
+msgstr "Ενέργεια"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
-#, fuzzy
 msgid "User"
-msgstr "Όνομα χρήστη"
+msgstr "Χρήστης"
 
 #: src/red_history.py:305 src/red_history.py:438
 msgid "Old Version"
@@ -1199,15 +1163,15 @@ msgstr "Παλαιά Έκδοση"
 #. Define me!
 #: src/red_history.py:336 src/red_packagepage.py:45
 msgid "History"
-msgstr ""
+msgstr "Ιστορικό"
 
 #: src/red_history.py:339
 msgid "_History"
-msgstr ""
+msgstr "_Ιστορικό"
 
 #: src/red_history.py:383
 msgid "No results found."
-msgstr ""
+msgstr "Δε βρέθηκαν αποτελέσματα."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1239,25 +1203,22 @@ msgid "There are no valid packages to install"
 msgstr ""
 
 #: src/red_installfiles.py:102
-#, fuzzy
 msgid "Install from File"
-msgstr "Εγκατεστημένο Λογισμικό"
+msgstr "Εγκατάσταση από Αρχείο"
 
 #. need trailing /
 #: src/red_installfiles.py:119
-#, fuzzy, python-format
+#, python-format
 msgid "Downloading %s..."
-msgstr "Μεταφόρτωση του %s"
+msgstr "Μεταφόρτωση του %s..."
 
 #: src/red_installfiles.py:158
-#, fuzzy
 msgid "Install from URL"
-msgstr "Εγκατάσταση"
+msgstr "Εγκατάσταση από URL"
 
 #: src/red_installfiles.py:163
-#, fuzzy
 msgid "Package URL:"
-msgstr "Πακέτο"
+msgstr "URL Πακέτο:"
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1400,13 +1361,12 @@ msgid "Mirror"
 msgstr "Σύστημα καθεπτρισμού"
 
 #: src/red_mirrors.py:81
-#, fuzzy
 msgid "Location"
 msgstr "Τοποθεσία"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "Επιλέξτε Σύστημα Καθεπτρισμού"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1438,7 +1398,7 @@ msgstr ""
 
 #: src/red_mount.py:117
 msgid "Browse..."
-msgstr ""
+msgstr "Εξερεύνηση..."
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
@@ -1454,13 +1414,12 @@ msgid "Mount a directory as channel"
 msgstr ""
 
 #: src/red_mount.py:153
-#, fuzzy
 msgid "Channel Name:"
-msgstr "Πληροφορίες Καναλιού"
+msgstr "Όνομα Καναλιού:"
 
 #: src/red_mount.py:157
 msgid "Directory:"
-msgstr ""
+msgstr "Κατάλογος:"
 
 #: src/red_mount.py:189
 msgid "Please choose the path for channel."
@@ -1529,9 +1488,8 @@ msgid "Contact daemon on specified host"
 msgstr ""
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "username"
-msgstr "Όνομα χρήστη"
+msgstr "όνομα χρήστη"
 
 #: src/red_option.py:26
 #, fuzzy
@@ -1539,9 +1497,8 @@ msgid "Specify user name"
 msgstr "Όνομα χρήστη"
 
 #: src/red_option.py:27
-#, fuzzy
 msgid "password"
-msgstr "Κωδικός χρήστη"
+msgstr "κωδικός"
 
 #: src/red_option.py:27
 msgid "Specify password"
@@ -1603,22 +1560,21 @@ msgstr ""
 #. ## Callbacks for our ListModel
 #. ##
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "Εγκατάσταση"
+msgstr "εγκατεστημένο"
 
 #. upgrade
 #: src/red_packagearray.py:93
 msgid "newer"
-msgstr ""
+msgstr "νεώτερο"
 
 #: src/red_packagearray.py:95
 msgid "older"
-msgstr ""
+msgstr "παλαιότερο"
 
 #: src/red_packagearray.py:97
 msgid "not installed"
-msgstr ""
+msgstr "μη εγκατεστημένο"
 
 #. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
 #. __older_icon               = red_pixbuf.get_pixbuf("status-older")
@@ -1796,9 +1752,8 @@ msgid "Summary"
 msgstr "Περίληψη"
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:478
-#, fuzzy
 msgid "Description"
-msgstr "Περιγραφή:"
+msgstr "Περιγραφή"
 
 #: src/red_packagepage_info.py:140
 msgid "Info"
@@ -1822,17 +1777,16 @@ msgstr "Πληροφορίες"
 #. ##
 #. Define me!
 #: src/red_packagepage.py:32
-#, fuzzy
 msgid "Unnamed"
-msgstr "Όνομα χρήστη"
+msgstr "Δίχως όνομα"
 
 #: src/red_packageview.py:301
 msgid "Status"
-msgstr ""
+msgstr "Κατάσταση"
 
 #: src/red_packageview.py:472
 msgid "Importance"
-msgstr ""
+msgstr "Σημαντικότητα"
 
 #. button,
 #. time
@@ -1888,7 +1842,7 @@ msgstr ""
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr ""
+msgstr "Ολοκλήρωση κατά %.1f%%"
 
 #. Define me!
 #. If necessary, change the button from "Cancel"
@@ -1898,7 +1852,7 @@ msgstr ""
 #. #############################################################################
 #: src/red_pendingview.py:504
 msgid "Updating System"
-msgstr ""
+msgstr "Γίνεται Αναβάθμιση του Συστήματος"
 
 #. this is a different kind of polling
 #. # FIXME: This is really ugly hack, but otherwise ui will be
@@ -1921,14 +1875,12 @@ msgstr "Ακυρώθηκε"
 #.
 #. FIXME: Do something intelligent here?
 #: src/red_pendingview.py:613
-#, fuzzy
 msgid "Transaction Finished"
-msgstr "Ανανεώσεις"
+msgstr "Η Συναλλαγή Ολοκληρώθηκε"
 
 #: src/red_pendingview.py:626
-#, fuzzy
 msgid "Downloading packages"
-msgstr "Μεταφόρτωση του %s"
+msgstr "Μεταφόρτωση πακέτων"
 
 #: src/red_pendingview.py:639
 #, fuzzy
@@ -1936,9 +1888,8 @@ msgid "Download Failed"
 msgstr "Μεταφόρτωση αρχείων"
 
 #: src/red_pendingview.py:640
-#, fuzzy
 msgid "Unknown Error"
-msgstr "(κανένα σφάλμα)"
+msgstr "Άγνωστο Σφάλμα"
 
 #: src/red_pendingview.py:657
 #, fuzzy
@@ -2007,9 +1958,8 @@ msgstr ""
 
 #. manually force the value to update
 #: src/red_prefs.py:228
-#, fuzzy
 msgid "Mirrors"
-msgstr "Σύστημα καθεπτρισμού"
+msgstr "Συστήματα Καθεπτρισμού"
 
 #: src/red_prefs.py:240
 msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
@@ -2017,14 +1967,12 @@ msgstr ""
 
 #. Packages section
 #: src/red_prefs.py:251
-#, fuzzy
 msgid "Packages"
-msgstr "Πακέτο"
+msgstr "Πακέτα"
 
 #: src/red_prefs.py:260
-#, fuzzy
 msgid "Require package signatures"
-msgstr "Υπογραφές Πακέτου"
+msgstr "Απαίτηση υπογραφών πακέτων"
 
 #: src/red_prefs.py:265
 msgid "Maximum number of packages to download at once:"
@@ -2037,12 +1985,11 @@ msgstr "Διαμεσολαβητής"
 
 #: src/red_prefs.py:284
 msgid "Use a proxy"
-msgstr ""
+msgstr "Χρήση διαμεσολαβητή"
 
 #: src/red_prefs.py:288
-#, fuzzy
 msgid "Proxy URL:"
-msgstr "Διαμεσολαβητής"
+msgstr "URL Διαμεσολαβητής:"
 
 #: src/red_prefs.py:295
 #, fuzzy
@@ -2065,7 +2012,7 @@ msgstr ""
 #. Expiration section
 #: src/red_prefs.py:373
 msgid "Expiration"
-msgstr ""
+msgstr "Λήξη"
 
 #: src/red_prefs.py:377
 msgid "Cache expires"
@@ -2095,25 +2042,24 @@ msgstr "Ήδη μεταφορτωμένα πακέτα"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:460
-#, fuzzy, python-format
+#, python-format
 msgid "%d MB"
-msgstr "%d KB"
+msgstr "%d ΜB"
 
 #. Don't set the pref if we didn't change anything.
 #: src/red_prefs.py:508
 msgid "Value"
-msgstr ""
+msgstr "Τιμή"
 
 #: src/red_prefs.py:521
-#, fuzzy
 msgid "Loading preferences..."
-msgstr "Μεταφόρτωση νέων..."
+msgstr "Φόρτωση προτιμήσεων..."
 
 #. Remove the "loading" "page".
 #: src/red_prefs.py:585
-#, fuzzy, python-format
+#, python-format
 msgid "%s Preferences"
-msgstr "Προτιμήσεις"
+msgstr "%s Προτιμήσεις"
 
 #. Should only be called for toggle renderer
 #. Should only be called for text renderer
@@ -2135,9 +2081,8 @@ msgstr "Προτιμήσεις"
 #. ##
 #. system packages and uninstalled packages are mutually exclusive
 #: src/red_searchbox.py:146
-#, fuzzy
 msgid "All Packages"
-msgstr "Πακέτο"
+msgstr "Όλα τα Πακέτα"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2162,14 +2107,12 @@ msgid "Updates"
 msgstr "Ανανεώσεις"
 
 #: src/red_searchbox.py:148
-#, fuzzy
 msgid "Uninstalled Packages"
-msgstr " Εγκατάσταση Πακέτων "
+msgstr "Απεγκαταστημένα Πακέτα"
 
 #: src/red_searchbox.py:149
-#, fuzzy
 msgid "Installed Packages"
-msgstr " Εγκατάσταση Πακέτων "
+msgstr "Εγκατεστημένα Πακέτα"
 
 #: src/red_searchbox.py:174
 #, fuzzy
@@ -2178,11 +2121,11 @@ msgstr "Τοποθεσία"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr ""
+msgstr "Παραγωγικότητα"
 
 #: src/red_searchbox.py:176
 msgid "Imaging"
-msgstr ""
+msgstr "Επεξεργασία Εικόνας"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
@@ -2190,68 +2133,62 @@ msgstr ""
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr ""
+msgstr "Γραφικό Περιβάλλον"
 
 #: src/red_searchbox.py:179
-#, fuzzy
 msgid "Games"
-msgstr "Όνομα"
+msgstr "Παιχνίδια"
 
 #: src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr ""
+msgstr "Πολυμέσα"
 
 #: src/red_searchbox.py:181
 msgid "Internet"
-msgstr ""
+msgstr "Διαδίκτυο"
 
 #: src/red_searchbox.py:182
 msgid "Utilities"
-msgstr ""
+msgstr "Εργαλεία"
 
 #: src/red_searchbox.py:183
 msgid "System"
-msgstr ""
+msgstr "Σύστημα"
 
 #: src/red_searchbox.py:184
 msgid "Documentation"
-msgstr ""
+msgstr "Τεκμηρίωση"
 
 #: src/red_searchbox.py:185
 msgid "Libraries"
-msgstr ""
+msgstr "Βιβλιοθήκες"
 
 #: src/red_searchbox.py:186
-#, fuzzy
 msgid "Development"
-msgstr "Προγραμματιστές"
+msgstr "Ανάπτυξη Εφαρμογών"
 
 #: src/red_searchbox.py:187
-#, fuzzy
 msgid "Development Tools"
-msgstr "Προγραμματιστές"
+msgstr "Εργαλεία Ανάπτυξης Εφαρμογών"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Διάφορα"
 
 #: src/red_searchbox.py:274
-#, fuzzy
 msgid "Search descriptions"
-msgstr "Εγγρα_φές"
+msgstr "Αναζήτηση περιγραφών"
 
 #. ##
 #. ## Match radio buttons
 #. ##
 #: src/red_searchbox.py:286
-#, fuzzy
 msgid "Match:"
-msgstr "Διαδρομή:"
+msgstr "Ταίριασμα:"
 
 #: src/red_searchbox.py:322
-#, fuzzy
 msgid "Channel:"
-msgstr "Ακύρωση"
+msgstr "Κανάλι:"
 
 #. ##
 #. ## Build the second row of the search UI, which contains the
@@ -2501,14 +2438,12 @@ msgstr "Δίχως εκκρεμείς ενέργειες"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_software.py:28
-#, fuzzy
 msgid "Installed Software"
 msgstr "Εγκατεστημένο Λογισμικό"
 
 #: src/red_software.py:31
-#, fuzzy
 msgid "I_nstalled Software"
-msgstr "Εγκατεστημένο Λογισμικό"
+msgstr "Εγκατεστημένο _Λογισμικό"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2517,9 +2452,8 @@ msgid "Available Software"
 msgstr "Διαθέσιμο Λογισμικό"
 
 #: src/red_software.py:100
-#, fuzzy
 msgid "A_vailable Software"
-msgstr "Διαθέσιμο Λογισμικό"
+msgstr "_Διαθέσιμο Λογισμικό"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2563,14 +2497,12 @@ msgstr "Σε σύνδεση με %s"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_subscriptions.py:57
-#, fuzzy
 msgid "Subscribed"
-msgstr "_Εγγραφή"
+msgstr "Εγγεγραμμένα"
 
 #: src/red_subscriptions.py:64
-#, fuzzy
 msgid "Channel Name"
-msgstr "Πληροφορίες Καναλιού"
+msgstr "Όνομα Καναλιού"
 
 #: src/red_subscriptions.py:78
 #, fuzzy, python-format
@@ -2606,7 +2538,7 @@ msgstr ""
 #. of the time.
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
-msgstr ""
+msgstr "Δίχως τίτλο"
 
 #. Fix the old column header
 #. ##
@@ -3694,3 +3626,4 @@ msgstr ""
 
 #~ msgid "GUI Options"
 #~ msgstr "Επιλογές Γραφικού Περιβάλλοντος"
+
