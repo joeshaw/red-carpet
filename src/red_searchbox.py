@@ -168,21 +168,21 @@ class SearchBox(gtk.VBox):
 
     def __assemble_section_option(self):
 
-        section_table = ( ("All Sections",        None,          -1),
-                          ("Productivity",        "office",       0),
-                          ("Imaging",             "imaging",      1),
-                          ("Personal Info. Mgmt", "pim",          2),
-                          ("X Windows",           "xapp",         3),
-                          ("Games",               "game",         4),
-                          ("Multimedia",          "multimedia",   5),
-                          ("Internet",            "internet",     6),
-                          ("Utilities",           "util",         7),
-                          ("System",              "system",       8),
-                          ("Documentation",       "doc",          9),
-                          ("Libraries",           "library",     10),
-                          ("Development",         "devel",       11),
-                          ("Development Tools",   "develutil",   12),
-                          ("Miscellaneous",       "misc",        13),
+        section_table = ( (_("All Sections"),        None,          -1),
+                          (_("Productivity"),        "office",       0),
+                          (_("Imaging"),             "imaging",      1),
+                          (_("Personal Info. Mgmt"), "pim",          2),
+                          (_("X Windows"),           "xapp",         3),
+                          (_("Games"),               "game",         4),
+                          (_("Multimedia"),          "multimedia",   5),
+                          (_("Internet"),            "internet",     6),
+                          (_("Utilities"),           "util",         7),
+                          (_("System"),              "system",       8),
+                          (_("Documentation"),       "doc",          9),
+                          (_("Libraries"),           "library",     10),
+                          (_("Development"),         "devel",       11),
+                          (_("Development Tools"),   "develutil",   12),
+                          (_("Miscellaneous"),       "misc",        13),
                           )
 
         menu = gtk.Menu()
