@@ -49,7 +49,7 @@ class Statusbar(gtk.HBox):
         msg = _("Connected to %s" % host)
         self.tooltips.set_tip(self.connection, msg)
         self.pop(abs(hash(self))) # Pop off any old message
-        self.push(abs(hash(self)), msg))
+        self.push(abs(hash(self)), msg)
 
     def connect_clicked(self):
         self.emit("connect")
