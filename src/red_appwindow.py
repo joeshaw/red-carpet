@@ -18,7 +18,7 @@
 import sys
 import gobject, gtk
 
-import red_header, red_menubar, red_sidebar, red_statusbar
+import red_header, red_menubar, red_sidebar
 import red_transaction
 import red_component
 import red_pendingview
@@ -97,9 +97,6 @@ class AppWindow(gtk.Window):
         self.lower   = gtk.EventBox()
         self.mainbox = gtk.EventBox()
 
-        #self.transaction = red_transaction.Transaction()
-        #self.statusbar = red_statusbar.StatusBar(self.transaction)
-
         style = self.mainbox.get_style().copy()
         color = self.mainbox.get_colormap().alloc_color("white")
         style.bg[gtk.STATE_NORMAL] = color
@@ -144,8 +141,6 @@ class AppWindow(gtk.Window):
                           gtk.FILL, gtk.FILL,
                           0, 2)
 
-        #self.paned.pack2(self.statusbar, 1, 0)
-
         self.connect("delete_event", lambda x, y:self.shutdown())
 
     def register_component(self, comp):
@@ -155,7 +150,6 @@ class AppWindow(gtk.Window):
                          callback=lambda: self.activate_component(comp))
 
         comp.set_server(self.server)
-        #comp.set_transaction(self.transaction)
 
         # We activate the first component that gets registered.
         if not self.components:

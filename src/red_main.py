@@ -20,7 +20,6 @@ import gtk
 import ximian_xmlrpclib
 import rcd_util
 import red_packagearray
-import red_explodedview
 import red_appwindow
 import red_channeloption
 import red_channelbrowse
