@@ -106,7 +106,7 @@ class TransactionComponent(red_component.Component):
         self.array = TransactionArray()
 
         view = red_packageview.PackageView()
-        view.append_status_column()
+        view.append_action_column()
         view.append_name_column(show_channel_icon=1)
         view.append_version_column()
         view.append_size_column()
@@ -188,6 +188,13 @@ def ok_to_quit(main_app_window):
 
 #########################################################################
 
+class TransactionFailed(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __repr__(self):
+        return "<TransactionFailed '%s'>" % self.message
+
 timeout_len = 400
 
 class TransactionWindow(gtk.Window):
@@ -206,13 +213,18 @@ class TransactionWindow(gtk.Window):
         self.set_default_size(400, 250)
         self.set_modal(1)
 
-        self.mainbox = gtk.VBox(0, 10)
-        self.add(self.mainbox)
+        # shim
+        hbox = gtk.HBox(0, 10)
+        self.add(hbox)
+        hbox.show()
 
-        label = gtk.Label("")
-        label.set_markup("<b><big>Updating System</big></b>")
-        label.set_alignment(0, 0.5)
-        self.mainbox.pack_start(label, 0, 0, 0)
+        self.mainbox = gtk.VBox(0, 10)
+        hbox.pack_start(self.mainbox)
+
+        self.title_label = gtk.Label("")
+        self.title_label.set_markup("<b><big>Updating System</big></b>")
+        self.title_label.set_alignment(0, 0.5)
+        self.mainbox.pack_start(self.title_label, 0, 0, 0)
 
         self.step_label = gtk.Label("")
         self.step_label.set_alignment(0, 0.5)
@@ -231,7 +243,16 @@ class TransactionWindow(gtk.Window):
 
         self.button = gtk.Button(gtk.STOCK_CANCEL)
         self.button.set_use_stock(1)
+        self.button.cancel = 1
         bbox.pack_start(self.button, 0, 0, 0)
+
+        def clicked_cb(button, window):
+            if button.cancel:
+                window.abort_download()
+            else:
+                window.destroy()
+
+        self.button.connect("clicked", clicked_cb, self)
 
         self.show_all()
 
@@ -240,55 +261,99 @@ class TransactionWindow(gtk.Window):
 
         self.poll_id = gtk.timeout_add(timeout_len, poll_cb)
 
+    def abort_download(self):
+        if self.download_id == -1 or self.download_complete:
+            print "Can't abort transaction"
+            return
+
+        serv = rcd_util.get_server()
+        ret = serv.rcd.packsys.abort_download(self.download_id)
+
+        if ret:
+            print "Download aborted"
+            gtk.timeout_remove(self.poll_id)
+            self.transaction_finished(msg="Download cancelled",
+                                      title="Update Cancelled")
+        else:
+            print "Couldn't abort download"
+
     def poll_transaction(self):
 
         print "Polling..."
 
-        if self.download_id != -1 and not self.download_complete:
-            self.update_download()
-        elif self.transact_id == -1:
-            # We're in "download only" mode.
-            if self.download_complete:
-                return 0
-            elif self.download_id == -1:
-                # Everything we wanted to download is already cached on the
-                # system.
-                #
-                # FIXME: Do something intelligent here?
-                return 0
-        else:
-            return self.update_transaction()
+        if self.download_complete:
+            self.button.set_sensitive(0)
+
+        try:
+            if self.download_id != -1 and not self.download_complete:
+                self.update_download()
+            elif self.transact_id == -1:
+                # We're in "download only" mode.
+                if self.download_complete:
+                    return 0
+                elif self.download_id == -1:
+                    # Everything we wanted to download is already cached on the
+                    # system.
+                    #
+                    # FIXME: Do something intelligent here?
+                    return 0
+            else:
+                return self.update_transaction()
+        except TransactionFailed, e:
+            self.transaction_failed(msg=e.message, title="Update Failed")
+
+            return 0
             
         return 1
 
-    def update_progress_from_pending(self, pending):
+    def update_progress_from_pending(self, pending, show_rate=1):
         if pending.has_key("completed_size") and pending.has_key("total_size"):
             fraction = float(pending["completed_size"]) / float(pending["total_size"])
             self.progress_bar.set_fraction(fraction)
 
             cs = rcd_util.byte_size_to_string(pending["completed_size"])
             ts = rcd_util.byte_size_to_string(pending["total_size"])
-            msg = "(%s/%s)" % (cs, ts)
+            msg = "%s / %s" % (cs, ts)
+
+            if show_rate and pending.has_key("elapsed_sec") and \
+                   pending.has_key("completed_size"):
+                elap = pending["elapsed_sec"]
+                if elap > 0:
+                    rate = rcd_util.byte_size_to_string(
+                        pending["completed_size"] / elap)
+                    msg = msg + " (" + rate + "/s)"
+                
         else:
             self.progress_bar.pulse()
             msg = ""
 
         self.progress_bar.set_text(msg)
 
+    def transaction_finished(self, msg, title="Update Finished"):
+        self.progress_bar.set_fraction(1.0)
+        self.progress_bar.set_text("")
+        self.title_label.set_markup("<b><big>%s</big></b>" % title)
+        self.step_label.set_text(msg)
+        self.progress_text.set_text("")
+        self.button.set_label(gtk.STOCK_OK)
+        self.button.cancel = 0
+        self.button.set_sensitive(1)
+
     def update_download(self):
         serv = rcd_util.get_server()
         pending = serv.rcd.system.poll_pending(self.download_id)
 
-        self.step_label.set_text("Download packages")
+        self.step_label.set_text("Downloading packages")
 
         self.update_progress_from_pending(pending)
 
         if pending["status"] == "finished":
             self.download_complete = 1
+            self.progress_bar.set_fraction(1.0)
+            self.progress_bar.set_text("")
         elif pending["status"] == "failed":
-            # FIXME
-            self.step_label.set_text("Download failed.  Nurr.")
             self.download_complete = 1
+            raise TransactionFailed, "Download failed"
         
     def update_transaction(self):
         serv = rcd_util.get_server()
@@ -300,14 +365,13 @@ class TransactionWindow(gtk.Window):
         self.progress_text.set_markup("<i>%s</i>" % rcd_util.transaction_status(pending["messages"][-1]))
 
         if step_pending["status"] == "running":
-            self.update_progress_from_pending(step_pending)
+            self.update_progress_from_pending(step_pending, show_rate=0)
 
         if pending["status"] == "finished":
+            self.transaction_finished(msg="The update has completed successfully")
             return 0
         elif pending["status"] == "failed":
-            # FIXME
-            self.step_label.set_text(string.join(rcd_util.linebreak("Transaction failed: %s" % pending["error_msg"], 80), "\n"))
-            return 0
-        else:
-            return 1
+            raise TransactionFailed, "Transaction failed: %s" % pending["error_msg"]
+
+        return 1
                 

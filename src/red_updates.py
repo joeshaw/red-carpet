@@ -53,7 +53,7 @@ class SummaryComponent(red_component.Component):
         browser = red_packagebrowser.PackageBrowser()
 
         view = browser.get_view()
-        view.append_status_column()
+        view.append_action_column()
         view.append_importance_column()
         view.append_channel_column(show_channel_name=0)
         view.append_name_column()

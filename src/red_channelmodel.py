@@ -143,8 +143,13 @@ class ChannelModel(gtk.GenericTreeModel, red_serverlistener.ServerListener):
 
     def set_subscribed(self, channel, flag):
         if channel["subscribed"] ^ flag:
-            channel["subscribed"] = (flag and 1) or 0
             server = rcd_util.get_server()
+
+            if not server.rcd.users.has_privilege("subscribe"):
+                # User does not have privileges to (un)subscribe
+                return
+            
+            channel["subscribed"] = (flag and 1) or 0
             if flag:
                 server.rcd.packsys.subscribe(channel["id"])
             else:

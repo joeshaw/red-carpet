@@ -85,6 +85,31 @@ def pkg_is_downgrade(pkg):
 
 def pkg_status(pkg):
 
+    if pkg["installed"]:
+        return "installed"
+    elif pkg["name_installed"] > 0: # upgrade
+        return "upgrade"
+    elif pkg["name_installed"] < 0:
+        return "downgrade"
+    else:
+        return ""
+
+__update_icon              = red_pixbuf.get_pixbuf("update")
+__downgrade_icon           = red_pixbuf.get_pixbuf("warning", width=24, height=24)
+__installed_icon           = red_pixbuf.get_pixbuf("installed")
+
+def pkg_status_icon(pkg):
+
+    if pkg["installed"]:
+        return __installed_icon
+    elif pkg["name_installed"] > 0: # upgrade
+        return __update_icon
+    elif pkg["name_installed"] < 0: # downgrade
+        return __downgrade_icon
+    return None
+
+def pkg_action(pkg):
+
     pending = red_pendingops.get_action(pkg)
     if pending:
         if pending == red_pendingops.TO_BE_INSTALLED \
@@ -108,13 +133,6 @@ def pkg_status(pkg):
         
         else:
             return "?Unknown?"
-
-    if pkg["installed"]:
-        return "installed"
-    elif pkg["name_installed"] > 0: # upgrade
-        return "upgrade"
-    elif pkg["name_installed"] < 0:
-        return "downgrade"
     else:
         return ""
 
@@ -122,11 +140,9 @@ __to_be_installed_icon     = red_pixbuf.get_pixbuf("to-be-installed")
 __to_be_removed_icon       = red_pixbuf.get_pixbuf("to-be-removed")
 __to_be_installed_xxx_icon = red_pixbuf.get_pixbuf("to-be-installed-cancelled")
 __to_be_removed_xxx_icon   = red_pixbuf.get_pixbuf("to-be-removed-cancelled")
-__update_icon              = red_pixbuf.get_pixbuf("update")
-__downgrade_icon           = red_pixbuf.get_pixbuf("warning", width=24, height=24)
-__installed_icon           = red_pixbuf.get_pixbuf("installed")
 
-def pkg_status_icon(pkg):
+def pkg_action_icon(pkg):
+
     pending = red_pendingops.get_action(pkg)
     if pending:
         if pending == red_pendingops.TO_BE_INSTALLED:
@@ -139,13 +155,8 @@ def pkg_status_icon(pkg):
             return __to_be_removed_xxx_icon
         else:
             return None
-    if pkg["installed"]:
-        return __installed_icon
-    elif pkg["name_installed"] > 0: # upgrade
-        return __update_icon
-    elif pkg["name_installed"] < 0: # downgrade
-        return __downgrade_icon
-    return None
+    else:
+        return None
 
 COLUMNS = (
     ("PKG",               pkg,                   gobject.TYPE_PYOBJECT),
@@ -166,6 +177,8 @@ COLUMNS = (
     ("IS_DOWNGRADE",      pkg_is_downgrade,      gobject.TYPE_BOOLEAN),
     ("STATUS",            pkg_status,            gobject.TYPE_STRING),
     ("STATUS_ICON",       pkg_status_icon,       gtk.gdk.Pixbuf),
+    ("ACTION",            pkg_action,            gobject.TYPE_STRING),
+    ("ACTION_ICON",       pkg_action_icon,       gtk.gdk.Pixbuf),
     )
 
 for i in range(len(COLUMNS)):
@@ -483,6 +496,23 @@ class PackagesFromQuery(PackagesFromDaemon):
         print "time=%.2f" % (end - start)
         print "got %d packages (%.2f pkgs/sec)" \
               % (len(packages), len(packages)/(end-start))
+
+        # Remove duplicates in which a package is installed on the system
+        # and patches a package in a channel.  We'll just show the channel
+        # package.
+        def pkg_to_key(p):
+            ch = p["channel"] or p.get("channel_guess", 0)
+            return "%d:%s:%d:%s:%s" % \
+                   (ch, p["name"], p["epoch"], p["version"], p["release"])
+
+        in_channel = {}
+        for p in packages:
+            if p["installed"] and p["channel"]:
+                in_channel[pkg_to_key(p)] = 1
+
+        for p in packages:
+            if p["channel"] == 0 and in_channel.has_key(pkg_to_key(p)):
+                packages.remove(p)
 
         return packages
         
