@@ -1,3 +1,8 @@
+2003-03-27  Tambet Ingo  <tambet@ximian.com>
+
+	* red_my_computer.py (MyComputerComponent.search_cb): Assign method
+	instead of exectuing it. Doh. Fixes #40351.
+
 2003-02-26  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py: Change the "Channel Names" mnemonic.  Get rid

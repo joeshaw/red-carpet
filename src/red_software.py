@@ -56,7 +56,7 @@ class MyComputerComponent(red_component.Component):
         self.__sbox.connect("search", search_cb)
         gtk.idle_add(lambda sbox: search_cb(sbox,
                                             sbox.get_query(),
-                                            sbox.get_filter()), self.__sbox)
+                                            sbox.get_filter), self.__sbox)
 
         view = red_packageview.PackageView(self.array)
         self.connect_view(view)
