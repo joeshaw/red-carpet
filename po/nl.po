@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-21 13:07+0200\n"
+"POT-Creation-Date: 2003-07-07 13:26+0200\n"
 "PO-Revision-Date: 2003-04-01 18:04+0100\n"
 "Last-Translator: Gahan Zwart <linux@innertruth.net>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -120,7 +120,7 @@ msgstr "Bezig met configureren"
 #. language.  Just nothing offensive please. :)
 #: src/red_about.py:41
 msgid "Brought to you by:"
-msgstr ""
+msgstr "U gebracht door:"
 
 #: src/red_about.py:42
 msgid "With love from:"
@@ -233,7 +233,7 @@ msgstr ""
 #. Red Carpet help is localized.
 #: src/red_appwindow.py:83
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. GNOME 2
 #. XD2 w/o yelp?
@@ -846,7 +846,7 @@ msgstr "Wachtwoord:"
 #. desensitize the table by default.
 #: src/red_connection.py:377
 msgid "Connect"
-msgstr ""
+msgstr "Verbinden"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1150,9 +1150,8 @@ msgid "Time"
 msgstr "Tijd"
 
 #: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
-#, fuzzy
 msgid "Action"
-msgstr "Locatie"
+msgstr "Actie"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
@@ -1171,7 +1170,7 @@ msgstr "Geschiedenis"
 
 #: src/red_history.py:339
 msgid "_History"
-msgstr ""
+msgstr "_Geschiedenis"
 
 #: src/red_history.py:383
 msgid "No results found."
@@ -1361,7 +1360,7 @@ msgstr ""
 #. ##
 #: src/red_mirrors.py:76
 msgid "Mirror"
-msgstr ""
+msgstr "Spiegelen"
 
 #: src/red_mirrors.py:81
 msgid "Location"
@@ -2148,11 +2147,11 @@ msgstr "Naam"
 
 #: src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedia"
 
 #: src/red_searchbox.py:181
 msgid "Internet"
-msgstr ""
+msgstr "Internet"
 
 #: src/red_searchbox.py:182
 msgid "Utilities"
@@ -2160,7 +2159,7 @@ msgstr ""
 
 #: src/red_searchbox.py:183
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
 #: src/red_searchbox.py:184
 msgid "Documentation"
@@ -2168,11 +2167,11 @@ msgstr ""
 
 #: src/red_searchbox.py:185
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliotheken"
 
 #: src/red_searchbox.py:186
 msgid "Development"
-msgstr ""
+msgstr "Development"
 
 #: src/red_searchbox.py:187
 msgid "Development Tools"
@@ -2180,7 +2179,7 @@ msgstr ""
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Allerlei"
 
 #: src/red_searchbox.py:274
 #, fuzzy
@@ -2625,7 +2624,7 @@ msgstr ""
 #. We want opposite state
 #: src/red_users.py:166
 msgid "Enabled"
-msgstr ""
+msgstr "Ingeschakeld"
 
 #: src/red_users.py:181
 msgid "Edit Users"
