@@ -6,6 +6,7 @@ headers
 #include "pygobject.h"
 #include "redlistmodel.h"
 #include "redlistview.h"
+#include "redtoolbar.h"
 %%
 modulename red_extra
 %%
@@ -13,6 +14,7 @@ import gobject.GObject as PyGObject_Type
 import gtk.TreeModel as PyGtkTreeModel_Type
 import gtk.TreeView as PyGtkTreeView_Type
 import gtk.CellRenderer as PyGtkCellRenderer_Type
+import gtk.Toolbar as PyGtkToolbar_Type
 %%
 ignore-glob
   *_get_type
