@@ -471,6 +471,8 @@ def linebreak(in_str, width):
         n = width
     else:
         n = string.rfind(str[0:width], " ")
+        if n  == -1:
+            n = string.find(str, " ")
 
     lines = []
 

@@ -82,7 +82,7 @@ class PendingView(gtk.Window):
         self.step_label = gtk.Label("")
         self.step_label.set_alignment(0, 0.5)
         (width, height) = self.calculate_required_text_size(MAX_LABEL_LEN)
-        self.step_label.set_size_request(width, height)
+        self.step_label.set_size_request(width, -1)
 
         textbox.pack_start(self.step_label, 0, 0, 0)
         if label:
@@ -200,9 +200,13 @@ class PendingView(gtk.Window):
     def set_label(self, msg):
         if msg:
             lines = rcd_util.linebreak(msg, WRAP_LABEL_LEN)
-            msg = string.join(lines, "\n")
         else:
-            msg = ""
+            lines = []
+        # We always want at least 3 lines of text to avoid "jumpyness".
+        while len(lines) < 3:
+            lines.append("")
+
+        msg = string.join(lines, "\n")
         self.step_label.set_text(msg)
         self.position_window() # keep window centered
 
