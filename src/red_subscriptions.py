@@ -16,119 +16,83 @@
 ###
 
 import sys, string
-import ximian_xmlrpclib, rcd_util
+import rcd_util
 import gobject, gtk
-import red_pixbuf
+import red_pixbuf, red_component
 
-colcounter = -1
-def next_col():
-    global colcounter
-    colcounter = colcounter + 1
-    return colcounter
+class SubscriptionsComponent(red_component.Component):
 
-COLUMN_NAME       = next_col()
-COLUMN_ICON       = next_col()
-COLUMN_ICON_SMALL = next_col()
-COLUMN_SUBSCRIBED = next_col()
-COLUMN_BUTTON     = next_col()
-COLUMN_LAST       = next_col()
+    def name(self):
+        return "Subscriptions"
 
-
-class SubscriptionModel(gtk.GenericTreeModel):
-
-    def __init__(self):
-        self.channels = rcd_util.get_all_channels()
-        gtk.GenericTreeModel.__init__(self)
-
-    def on_get_flags(self):
-        return 0
-
-    def on_get_n_columns(self):
-        return COLUMN_LAST
-
-    def on_get_column_type(self, i):
-        if i == COLUMN_NAME:
-            return gobject.TYPE_STRING
-        elif i == COLUMN_ICON:
-            return gtk.gdk.Pixbuf.__gtype__
-        elif i == COLUMN_SUBSCRIBED:
-            return gobject.TYPE_BOOLEAN
-        elif i == COLUMN_BUTTON:
-            return gtk.gdk.Pixbuf.__gtype__
-
-    def on_get_path(self, node):
-        return (node,)
-
-    def on_get_iter(self, path):
-        return path[0]
-
-    def on_get_value(self, node, i):
-        c = self.channels[node]
-        if i == COLUMN_NAME:
-            return c["name"]
-        elif i == COLUMN_ICON:
-            return rcd_util.get_channel_icon(c["id"])
-        elif i == COLUMN_ICON_SMALL:
-            return rcd_util.get_channel_icon(c["id"], 32, 32)
-        elif i == COLUMN_SUBSCRIBED:
-            return c["subscribed"]
-        elif i == COLUMN_BUTTON:
-            if c["subscribed"]:
-                return red_pixbuf.get_pixbuf("subscribe")
-            else:
-                return red_pixbuf.get_pixbuf("unsubscribe")
-
-    def on_iter_next(self, node):
-        N = len(self.channels)
-        node = node + 1
-        if node < N:
-            return node
-        else:
-            return None
-
-    def on_iter_children(self, node):
-        if node == None:
-            return 0
-        else:
-            return None
-
-    def on_iter_has_child(self, node):
-        return 0
-
-    def on_iter_nth_child(self, node, n):
-        if node == None:
-            return n
-        else:
-            return None
-
-    def on_iter_parent(self, node):
-        return None
-
-
-class SubscriptionView(gtk.TreeView):
-
-    def __init__(self):
-        gtk.TreeView.__init__(self)
-        self.construct()
-        self.set_model(SubscriptionModel())
+    def pixbuf(self):
+        return "subscribed"
 
     def construct(self):
+        channels = rcd_util.get_all_channels()
 
-        self.icon_col = gtk.TreeViewColumn("",
-                                           gtk.CellRendererPixbuf(),
-                                           pixbuf=COLUMN_ICON)
-        self.append_column(self.icon_col)
+        rows = len(channels) * 4
+        cols = 3
 
-        self.name_col = gtk.TreeViewColumn("Name",
-                                           gtk.CellRendererText(),
-                                           markup=COLUMN_NAME)
-        self.append_column(self.name_col)
+        table = gtk.Table(rows, cols, 0)
+
+        r = 0
+        for c in channels:
+
+            # a spacer
+            table.attach(gtk.VBox(0, 0),
+                         0, 3, r, r+1,
+                         0, gtk.EXPAND | gtk.FILL,
+                         0, 8)
+
+            r = r + 1
+
+            pixbuf = rcd_util.get_channel_icon(c["id"])
+            img = gtk.Image()
+            img.set_from_pixbuf(pixbuf)
+            img.show()
+            table.attach(img,
+                         0, 1, r, r+2,
+                         0, 0,
+                         0, 0)
+
+            label = gtk.Label("")
+            label.set_alignment(0, 0)
+            label.set_markup("<b>%s</b>" % c["name"])
+            label.show()
+            table.attach(label,
+                         1, 2, r, r+1,
+                         gtk.EXPAND | gtk.FILL, gtk.EXPAND | gtk.FILL,
+                         0, 0)
+
+            view = gtk.TextView()
+            view.get_buffer().set_text(c["description"])
+            view.set_wrap_mode(gtk.WRAP_WORD)
+            table.attach(view,
+                         1, 2, r+1, r+2,
+                         gtk.FILL, gtk.FILL,
+                         0, 0)
+
+            b = gtk.Button("Foo!")
+            b.show()
+            table.attach(b,
+                         2, 3, r, r+2,
+                         gtk.FILL, gtk.FILL,
+                         0, 0)
 
 
-        self.button_col = gtk.TreeViewColumn("",
-                                             gtk.CellRendererPixbuf(),
-                                             pixbuf=COLUMN_BUTTON)
-        self.append_column(self.button_col)
+            r = r + 3
+
+        table.show_all()
+
+        return table
+
+            
+
+    def build(self):
+        widget = self.construct()
+        self.display("main", widget)
+        
 
 
         

@@ -26,68 +26,6 @@ import rcd_util
 def pkg_cmp(a,b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
-def pkg_key(p):
-    return string.join([p["name"], p["epoch"], p["version"], p["release"]],
-                       "||")
-
-
-colcounter = -1
-def next_col():
-    global colcounter
-    colcounter = colcounter + 1
-    return colcounter
-
-COLUMN_NAME                  = next_col()
-COLUMN_INSTALLED             = next_col()
-COLUMN_CHANNEL_NAME          = next_col()
-COLUMN_CHANNEL_PIXBUF        = next_col()
-COLUMN_INSTALLED_SIZE        = next_col()
-COLUMN_INSTALLED_SIZE_STRING = next_col()
-COLUMN_EVR                   = next_col()
-COLUMN_LAST                  = next_col()
-
-column = {}
-
-column[COLUMN_NAME] = \
-  ( lambda x:x["name"], gobject.TYPE_STRING )
-
-column[COLUMN_INSTALLED] = \
-  ( lambda x:x["installed"], gobject.TYPE_INT )
-
-column[COLUMN_CHANNEL_NAME] = \
-  ( lambda x:rcd_util.get_package_channel_name(x), gobject.TYPE_STRING )
-
-column[COLUMN_CHANNEL_PIXBUF] = \
-  ( lambda x:rcd_util.get_package_channel_icon(x, 20, 20),
-    gtk.gdk.Pixbuf.__gtype__ )
-
-column[COLUMN_INSTALLED_SIZE] = \
-  ( lambda x:x["installed_size"], gobject.TYPE_INT )
-
-def installed_size_str_cb(pkg):
-    sz = pkg["file_size"]
-    
-    if sz < 1024:
-        return "%d bytes" % sz
-    elif sz < 1048576:
-        return "%d kb" % (sz/1024)
-    else:
-        return "%.1f mb" % (sz/(1048576.0))
-            
-column[COLUMN_INSTALLED_SIZE_STRING] = \
-  ( installed_size_str_cb, gobject.TYPE_STRING )
-
-def pkg_evr_cb(pkg):
-    epoch_str = ""
-    rel_str = ""
-    if pkg["has_epoch"]:
-        epoch_str = "%d:" % pkg["epoch"]
-    if pkg["release"]:
-        rel_str = "-%s" % pkg["release"]
-    return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
-
-column[COLUMN_EVR] = \
-  ( pkg_evr_cb, gobject.TYPE_STRING)
 
 class PackageArray(gtk.GenericTreeModel):
 
@@ -122,61 +60,6 @@ class PackageArray(gtk.GenericTreeModel):
         for pkg in self.get_all():
             print pkg["name"]
 
-    ## GenericTreeModel stuff
-
-    def on_get_flags(self):
-        return 0
-
-    def on_get_n_columns(self):
-        return COLUMN_LAST
-
-    def on_get_column_type(self, i):
-        if column.has_key(i):
-            fn, type = column[i]
-            return type
-        else:
-            return gobject.TYPE_STRING
-
-    def on_get_path(self, node):
-        return (node,)
-
-    def on_get_iter(self, path):
-        return path[0]
-
-    def on_get_value(self, node, i):
-        pkg = self.get(node)
-        if column.has_key(i):
-            fn, type = column[i]
-            return fn(pkg)
-
-        assert 0
-
-    def on_iter_next(self, node):
-        len = self.len()
-        node = node + 1
-        if node < len:
-            return node
-        else:
-            return None
-
-    def on_iter_children(self, node):
-        if node == None:
-            return 0
-        else:
-            return None
-
-    def on_iter_has_child(self, node):
-        return 0
-
-    def on_iter_nth_child(self, node, n):
-        if node == None:
-            return n
-        else:
-            return None
-
-    def on_iter_parent(self, node):
-        return None
-                
 
 gobject.type_register(PackageArray)
 

@@ -17,32 +17,8 @@
 
 import sys, string
 import gobject, gtk
+import rcd_util
 import red_pixbuf
-
-def linebreak(in_str, width):
-
-    str = string.strip(in_str)
-
-    if not str:
-        return []
-
-    if len(str) <= width:
-        return [str]
-
-    if width < len(str) and str[width] == " ":
-        n = width
-    else:
-        n = string.rfind(str[0:width], " ")
-
-    lines = []
-
-    if n == -1:
-        lines.append(str)
-    else:
-        lines.append(str[0:n])
-        lines = lines + linebreak(str[n+1:], width)
-
-    return lines
 
 class SideBar(gtk.EventBox):
 
@@ -82,7 +58,7 @@ class SideBar(gtk.EventBox):
         button.set_style(style)
         my_vbox.pack_start(button, 0, 0, 0)
 
-        lines = linebreak(label, 12)
+        lines = rcd_util.linebreak(label, 12)
         for line in lines:
             l = gtk.Label(line)
             style = l.get_style().copy()

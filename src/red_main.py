@@ -26,6 +26,7 @@ import red_channeloption
 import red_channelbrowse
 import red_summary
 import red_search
+import red_subscriptions
 
 def connect_to_server():
     ## Make contact with the daemon.
@@ -64,6 +65,7 @@ def main(version):
     app.show_all()
 
     app.register_component(red_summary.SummaryComponent())
+    app.register_component(red_subscriptions.SubscriptionsComponent())
     app.register_component(red_channelbrowse.ChannelBrowseComponent())
     app.register_component(red_search.SearchComponent())
 

@@ -18,6 +18,7 @@
 import sys, string
 import ximian_xmlrpclib
 import gobject, gtk
+import red_pixbuf
 
 server = None
 
@@ -88,6 +89,13 @@ def get_channel_icon(id, width=0, height=0):
         pixbuf = original.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
 
     else:
+
+        # FIXME: a hack until the mono icon gets fixed
+        if get_channel_name(id) == "mono":
+            pixbuf = red_pixbuf.get_pixbuf("mono-override")
+            cached_channel_icons[key] = pixbuf
+            return pixbuf
+            
         #assert server
         try:
             icon_data = server.rcd.packsys.get_channel_icon(id)
@@ -145,8 +153,32 @@ def byte_size_to_string(sz):
     else:
         return "%.1f mb" % (sz/(1048576.0))
 
+###############################################################################
 
+def linebreak(in_str, width):
 
+    str = string.strip(in_str)
+
+    if not str:
+        return []
+
+    if len(str) <= width:
+        return [str]
+
+    if width < len(str) and str[width] == " ":
+        n = width
+    else:
+        n = string.rfind(str[0:width], " ")
+
+    lines = []
+
+    if n == -1:
+        lines.append(str)
+    else:
+        lines.append(str[0:n])
+        lines = lines + linebreak(str[n+1:], width)
+
+    return lines
 
         
 
