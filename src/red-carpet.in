@@ -23,6 +23,8 @@ import os
 red_carpet_dir = "@DDIR@/rc"
 red_carpet_version = "@VERSION@"
 
+sys.path.insert(0, "/opt/pygtk/lib/python2.2/site-packages")
+
 # FIXME: This has a special check to allow us to run rc in-place
 # without having done a "make install".  We might want to take this
 # out at some point.
