@@ -19,6 +19,7 @@ import string, gtk
 import red_packagearray, red_packageview
 import red_pendingops
 import red_component
+import red_depcomponent
 import rcd_util, red_pixbuf
 import red_emptypage
 
@@ -60,6 +61,25 @@ class SummaryComponent(red_component.Component):
         self.array.connect_after("changed", updates_changed_cb, self)
 
         page = gtk.VBox(0, 6)
+
+        ### Update All button
+
+        box = gtk.HButtonBox()
+        box.set_layout(gtk.BUTTONBOX_START)
+        page.pack_start(box, 0, 0)
+
+        def sensitize_update_all(this, button):
+            sensitive = 0
+            if not this.array.len() == 0:
+                sensitive = 1
+            button.set_sensitive(sensitive)
+
+        update_all = gtk.Button(_("Update All"))
+        self.array.connect_after("changed", lambda x,y,z: sensitize_update_all(y,z),
+                                 self, update_all)
+        update_all.connect("clicked", lambda x,y: y.update_all(), self)
+        box.add(update_all)
+        box.show_all()
 
         ### Main
 
@@ -106,6 +126,16 @@ class SummaryComponent(red_component.Component):
 
         return page
 
+    def update_all(self):
+        pkgs = self.array.get_all()
+        install_packages = []
+        for pkg in pkgs:
+            if red_pendingops.can_perform_action_single(pkg, red_pendingops.TO_BE_INSTALLED):
+                install_packages.append(pkg)
+
+        if install_packages:
+            dep_comp = red_depcomponent.DepComponent(install_packages, [])
+            self.parent().componentbook.push_component(dep_comp)
 
     def changed_visibility(self, flag):
         if flag:

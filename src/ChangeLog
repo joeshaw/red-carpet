@@ -1,3 +1,12 @@
+2003-04-16  Tambet Ingo  <tambet@ximian.com>
+
+	* red_componentbook.py (ComponentPage.__init__): Set border
+	width for main container.
+
+	* red_summary.py (SummaryComponent.build): Add often requested
+	"Update All" button.
+	(SummaryComponent.update_all): Update everything.
+
 2003-04-16  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (help_cb): Prefer gnome-help to gnome-moz-remote.

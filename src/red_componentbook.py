@@ -28,6 +28,7 @@ class ComponentPage(red_component.ComponentListener):
         self.__parent_book = parent_book
         self.__displayed = None
         self.__box = gtk.HBox(0, 0)
+        self.__box.set_border_width(6)
 
     def build_page_label(self):
         img = None
