@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import time, threading, gtk
+import os, time, threading, gtk
 import rcd_util
 import red_appwindow
 import red_search
@@ -27,7 +27,7 @@ import red_history
 red_name      = "Red Carpet"
 red_version   = None
 red_copyright = "2002-2003"
-debug     = 1
+debug         = os.getenv("RC_GUI_DEBUG")
 
 red_running = 1
 
@@ -83,7 +83,8 @@ def main(version):
 
     server = rcd_util.get_server()
 
-    ticker()
+    if debug:
+        ticker()
 
     app = red_appwindow.AppWindow(server)
     app.set_title(red_name + " " + red_version)

@@ -138,21 +138,35 @@ def pkg_action(pkg):
     else:
         return ""
 
-__to_be_installed_icon     = red_pixbuf.get_pixbuf("to-be-installed")
-__to_be_removed_icon       = red_pixbuf.get_pixbuf("to-be-removed")
-__to_be_installed_xxx_icon = red_pixbuf.get_pixbuf("to-be-installed-cancelled")
-__to_be_removed_xxx_icon   = red_pixbuf.get_pixbuf("to-be-removed-cancelled")
+__to_be_installed_icon      = red_pixbuf.get_pixbuf("to-be-installed")
+__to_be_upgraded_icon       = red_pixbuf.get_pixbuf("to-be-upgraded")
+__to_be_downgraded_icon     = red_pixbuf.get_pixbuf("to-be-downgraded")
+__to_be_removed_icon        = red_pixbuf.get_pixbuf("to-be-removed")
+__to_be_installed_xxx_icon  = red_pixbuf.get_pixbuf("to-be-installed-cancelled")
+__to_be_upgraded_xxx_icon   = red_pixbuf.get_pixbuf("to-be-upgraded-cancelled")
+__to_be_downgraded_xxx_icon = red_pixbuf.get_pixbuf("to-be-downgraded-cancelled")
+__to_be_removed_xxx_icon    = red_pixbuf.get_pixbuf("to-be-removed-cancelled")
 
 def pkg_action_icon(pkg):
 
     pending = red_pendingops.get_action(pkg)
     if pending:
         if pending == red_pendingops.TO_BE_INSTALLED:
-            return __to_be_installed_icon
+            if pkg["name_installed"] > 0:
+                return __to_be_upgraded_icon
+            elif pkg["name_installed"] < 0:
+                return __to_be_downgraded_icon
+            else:
+                return __to_be_installed_icon
         elif pending == red_pendingops.TO_BE_REMOVED:
             return __to_be_removed_icon
         elif pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
-            return __to_be_installed_xxx_icon
+            if pkg["name_installed"] > 0:
+                return __to_be_upgraded_xxx_icon
+            elif pkg["name_installed"] < 0:
+                return __to_be_downgraded_xxx_icon
+            else:
+                return __to_be_installed_xxx_icon
         elif pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
             return __to_be_removed_xxx_icon
         else:
@@ -574,8 +588,6 @@ class PackagesFromQuery(PackagesFromDaemon):
                     packages = []
                 else:
                     elapsed = time.time() - worker.t1
-                    print "query time=%.2fs" % elapsed
-                    print "got %d packages" % len(packages)
                     
                     _cache_query_results(self.query, packages)
 
@@ -586,7 +598,6 @@ class PackagesFromQuery(PackagesFromDaemon):
                 array.set_packages(packages or [])
 
 
-        print "launching query"
         self.busy(1)
         if self.__query_msg:
             self.message_push(self.__query_msg)

@@ -1,5 +1,10 @@
 2003-02-21  Jon Trowbridge  <trow@ximian.com>
 
+	* red_main.py (debug): Set the debug flag based on the
+	RC_GUI_DEBUG environment variable.
+
+	* red_packagearray.py: Removed debug spew.  Icon-related tweaks.
+
 	* red_searchbar.py (SearchBar.__assemble): Remove the "Find Now"
 	button, which wasn't really needed anyway.
 
