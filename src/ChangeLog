@@ -1,9 +1,12 @@
 2003-03-19  Jon Trowbridge  <trow@ximian.com>
 
+	* red-carpet.in: Check to make sure that we can import gtk, and
+	fail semi-gracefully if we can't.  Fixes #39975.
+
 	* red_serverlistener.py (poll_cb): Turn off the damn 'working
 	polls' warning I put in yesterday, since it can happen under
 	legitimate non-error circumstances. (i.e. if the daemon is
-	blocking a lot)
+	blocking a lot)  Fixes #39974.
 
 2003-03-18  Joe Shaw  <joe@ximian.com>
 

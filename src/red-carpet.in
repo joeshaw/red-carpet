@@ -54,6 +54,19 @@ if not hasattr(sys, "frozen") or sys.frozen == 0:
 
 sys.path.append(red_carpet_datadir)
 
+###
+### Make sure we can import gtk.  This keeps us from getting
+### an error w/ an ugly backtrace if we can't open the DISPLAY.
+###
+try:
+    import gtk
+except RuntimeError, r:
+    sys.stderr.write("Error importing gtk: %s\n" % r)
+    sys.exit(1)
+except:
+    sys.stderr.write("Error: Couldn't import gtk.\n")
+    sys.exit(1)
+
 import red_pixbuf
 red_pixbuf.pixbuf_path.append(red_carpet_pixbuf_path)
 
