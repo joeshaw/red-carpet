@@ -1,5 +1,13 @@
-2003-03-04  Jon Trowbridge  <trow@ximian.com>
+2003-03-04  Jose Mercado  <jose@ximian.com>
 
+	* rcd_util.py (StartDaemon): Use /etc/init.d/rcd, which will
+	work on all LSB compliant distros.
+	(connect_to_server): Get rid of /sbin/services here too.	
+
+	* red_main.py (main): Fixed typo.
+
+2003-03-04  Jon Trowbridge  <trow@ximian.com>
+	
 	* red_search.py (SearchComponent.select_all): If a package is
 	already installed, don't mark it as TO_BE_INSTALLED.
 
@@ -8,10 +16,10 @@
 
 2003-03-04  Tambet Ingo  <tambet@ximian.com>
 
-	* red_pendingview.py (PendingView.set_label): Make sure label has at
-	least 3 lines to avoid "jumpyness".
-	(PendingView.__init__): Don't set height, it won't grow otherwise. Fixes
-	part of #39001.
+	* red_pendingview.py (PendingView.set_label): Make sure label has
+	at least 3 lines to avoid "jumpyness".
+	(PendingView.__init__): Don't set height, it won't grow
+	otherwise. Fixes part of #39001.
 
 	* rcd_util.py (linebreak): Handle cases where string has "words" longer
 	than "width" argument.
