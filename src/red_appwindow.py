@@ -256,7 +256,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 callback=lambda x:red_mount.select_and_mount())
 
         bar.add("/File/Unmount Directory...",
-                callback=lambda x:self.open_or_raise_window(red_mount.UnmountWindow))
+                callback=lambda x:self.open_or_raise_window(red_mount.UnmountWindow),
+                sensitive_fn=red_mount.has_mounted_channels)
 
         bar.add("/File/sep3", is_separator=1)
 

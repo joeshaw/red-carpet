@@ -72,9 +72,21 @@ def select_and_mount():
     dirsel.cancel_button.connect("clicked", lambda x,y:y.destroy(), dirsel)
     dirsel.show()
 
-COLUMN_CID  = 0
-COLUMN_ICON = 1
-COLUMN_NAME = 2
+def has_mounted_channels():
+    channels = mounted_channels
+    if len(channels):
+        return 1
+
+    # Try a bit harder
+    server = rcd_util.get_server()
+    channels += [x["id"] for x in server.rcd.packsys.get_channels()
+                 if x.get("transient", 0) and not x["id"] in mounted_channels]
+    return len(channels)
+
+COLUMN_CID  =    0
+COLUMN_ICON =    1
+COLUMN_NAME =    2
+COLUMN_UNMOUNT = 3
 
 class UnmountWindow(gtk.Dialog):
 
@@ -92,9 +104,12 @@ class UnmountWindow(gtk.Dialog):
 
         model = gtk.ListStore(gobject.TYPE_INT,
                               gtk.gdk.Pixbuf,
-                              gobject.TYPE_STRING)
+                              gobject.TYPE_STRING,
+                              gobject.TYPE_BOOLEAN)
 
+        channels_to_unmount = {}
         for c in channels:
+            channels_to_unmount[c] = 0
             iter = model.append()
             model.set_value(iter, COLUMN_CID, c)
             model.set_value(iter, COLUMN_ICON, rcd_util.get_channel_icon(c))
@@ -115,8 +130,19 @@ class UnmountWindow(gtk.Dialog):
         view.append_column(col)
         view.show()
 
-        selection = view.get_selection()
-        selection.set_mode("multiple")
+        def activate_cb(renderer, path, model):
+            path = (int(path),)
+            node = model.get_iter(path)
+            cid = model.get_value(node, COLUMN_CID)
+            active = not renderer.get_active()
+            channels_to_unmount[cid] = active
+            model.set_value(node, COLUMN_UNMOUNT, active)
+
+        r = gtk.CellRendererToggle()
+        r.set_property("activatable", 1)
+        r.connect("toggled", activate_cb, model)
+        col = gtk.TreeViewColumn("Unmount?", r, active=COLUMN_UNMOUNT)
+        view.append_column(col)
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -130,15 +156,10 @@ class UnmountWindow(gtk.Dialog):
 
         b = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
         def ok_clicked_cb(b, w, s):
+            for cid in s.keys():
+                if s[cid]:
+                    unmount_channel(cid)
             
-            def selected_rows_cb(model, path, iter, channels):
-                channels.append(model.get_value(iter, COLUMN_CID))
-                
-            channels = []
-            s.selected_foreach(selected_rows_cb, channels)
-            for c in channels:
-                unmount_channel(c)
-
             w.destroy()
 
-        b.connect("clicked", ok_clicked_cb, self, selection)
+        b.connect("clicked", ok_clicked_cb, self, channels_to_unmount)
