@@ -1,3 +1,13 @@
+2003-02-03  Jon Trowbridge  <trow@ximian.com>
+
+	* red_pendingview.py (PendingView_Simple): Revamped to use
+	ServerProxys for the poll_pending calls so that we won't ever
+	block on a busy daemon.  PendingView_Simple is what is used for
+	feedback when refreshing channel data, so that operation is now
+	much nicer.  The total number of threads we throw off is bounded,
+	so that the whole system won't bog down if your rcd sees a whole
+	bunch of channels.
+
 2003-02-03  Tambet Ingo  <tambet@ximian.com>
 
 	* red_activation.py (ActivationWindow.activate): Don't block

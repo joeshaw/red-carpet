@@ -157,15 +157,18 @@ class PendingView(gtk.Window):
 
             msg = "%.1f%%" % percent
 
-            if show_rate and total_size > 0 and rate > 0:
+            if show_rate and rate > 0:
                 rate_str = rcd_util.byte_size_to_string(rate) + "/s"
             else:
                 rate_str = None
 
-            if show_size and total_size > 0:
+            if show_size:
                 cs = rcd_util.byte_size_to_string(completed_size)
-                ts = rcd_util.byte_size_to_string(total_size)
-                msg = msg + " - %s / %s" % (cs, ts)
+                if total_size > 0:
+                    ts = rcd_util.byte_size_to_string(total_size)
+                    msg = msg + " - %s / %s" % (cs, ts)
+                else:
+                    msg = msg + " - %s" % cs
                 if rate_str:
                     msg = msg + " (" + rate_str + ")"
             else:
@@ -188,6 +191,7 @@ class PendingView(gtk.Window):
         remaining_sec = 0
         completed_size = 0
         total_size = 0
+        know_total_size = 1
 
         for pending in pending_list:
             if pending["is_active"]:
@@ -199,7 +203,13 @@ class PendingView(gtk.Window):
             remaining_sec = max(remaining_sec, pending.get("remaining_sec", 0))
 
             completed_size = completed_size + pending.get("completed_size", 0)
-            total_size = total_size + pending.get("total_size", 0)
+            ts = pending.get("total_size", 0)
+            if ts <= 0:
+                know_total_size = 0
+            total_size = total_size + ts
+
+        if not know_total_size:
+            total_size = -1
 
         if pending_list:
             percent = percent / len(pending_list)
@@ -270,26 +280,73 @@ class PendingView_Simple(PendingView):
 
         self.pending_list = []
 
+        self.max_threads = 5
+
+        self.pending_countdown = 0
+        self.poll_queue = []
+        self.poll_results = {}
+        self.first_poll = 1
+        self.finished_polling = 0
+
     def set_pending_list(self, pending_list):
         self.pending_list = pending_list
         self.start_polling()
+        red_serverlistener.freeze_polling()
+
+    def launch_poll_threads(self, launch_max=0):
+        server = rcd_util.get_server_proxy()
+
+        launch = 1
+        if launch_max:
+            launch = self.max_threads
+
+        while launch > 0:
+            if not self.poll_queue:
+                self.poll_queue = self.pending_list
+            tid = self.poll_queue[0]
+            self.poll_queue = self.poll_queue[1:]
+            th = server.rcd.system.poll_pending(tid)
+            th.connect("ready",
+                       lambda x: self.process_pending(x.get_result()))
+            launch -= 1
+        
+
+    def process_pending(self, pending):
+        if self.finished_polling:
+            return
+        
+        self.poll_results[pending["id"]] = pending
+
+        self.launch_poll_threads()
+
+        if len(self.poll_results) == len(self.pending_list):
+            results = self.poll_results.values()
+            polling = 0
+            for p in results:
+                if p["is_active"]:
+                    polling = 1
+            if not polling:
+                self.finished_polling = 1
+            self.update_from_pendings(results,
+                                      show_size=self.show_size,
+                                      show_rate=self.show_rate)
+        else:
+            self.update_pulse()
+                        
 
     def poll_worker(self):
-        print "Polling!"
-        server = rcd_util.get_server()
-        polling = 0
-        pendings = []
-        for tid in self.pending_list:
-            pending = server.rcd.system.poll_pending(tid)
-            pendings.append(pending)
-            if pending["is_active"]:
-                polling = 1
 
-        self.update_from_pendings(pendings,
-                                  show_size=self.show_size,
-                                  show_rate=self.show_rate)
+        if self.first_poll:
+            self.launch_poll_threads(launch_max=1)
+            self.first_poll = 0
 
-        return polling
+        if self.finished_polling:
+            red_serverlistener.thaw_polling()
+            self.first_poll = 1
+            return 0
+
+        return 1
+
 
 ##############################################################################
 
