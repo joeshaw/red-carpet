@@ -33,7 +33,7 @@ class _ShowAdvanced(gobject.GObject):
     def __init__(self):
         gobject.GObject.__init__(self)
         config = red_settings.get_config()
-        self.__show = int(config.get(self.conf_str + "=0"))
+        self.__show = int(config.getboolean(self.conf_str + "=0"))
 
     def set(self, x):
         if self.__show ^ x:

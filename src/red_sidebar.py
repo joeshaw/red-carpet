@@ -40,7 +40,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         self.build()
 
         config = red_settings.get_config()
-        if not int(config.get(self.conf_str_hidden + "=0")):
+        if not int(config.getboolean(self.conf_str_hidden + "=0")):
             self.show_all()
 
     def change_visibility(self):
