@@ -1,3 +1,10 @@
+2003-02-26  Jon Trowbridge  <trow@ximian.com>
+
+	* red_pendingview.py (PendingView_Transaction.finished): Thaw the
+	serverlistener polling when we are finished, not when we cancel.
+	(PendingView_Transaction.transaction_finished): Don't thaw the
+	polling yet.
+
 2003-02-26  Tambet Ingo  <tambet@ximian.com>
 
 	* red_pendingview.py (PendingView.delete_event_cb): Connect this
@@ -8,6 +15,10 @@
 
 	* red_pendingview.py (PendingView_Transaction.cancelled): Chain
 	to PendingView's cancelled function.
+	(PendingView_Transaction.finished): Thaw the serverlistener
+	polling when we are finished, not when we cancel.
+	(PendingView_Transaction.transaction_finished): Don't thaw the
+	polling yet.
 
 	* red_appwindow.py (AppWindow.assemble_toolbar): Renamed the
 	"Subscriptions" button to "Channels" and changed the tooltip.

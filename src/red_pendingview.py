@@ -15,7 +15,9 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string, threading, gobject, gtk, pango
+import red_extra
+import os, signal
+import sys, string, threading, gobject, gtk, pango
 import ximian_xmlrpclib
 import rcd_util
 import red_pendingops, red_serverlistener
@@ -547,6 +549,10 @@ class PendingView_Transaction(PendingView):
         else:
             print "Couldn't abort download"
 
+    def finished(self):
+        red_serverlistener.thaw_polling(do_immediate_poll=1)
+        PendingView.finished(self)
+
     def poll_worker(self):
 
         if self.__finished:
@@ -580,7 +586,6 @@ class PendingView_Transaction(PendingView):
         self.set_title(title)
         self.set_label(msg)
         self.update_fill()
-        red_serverlistener.thaw_polling(do_immediate_poll=1)
 
     def update_download(self):
 
