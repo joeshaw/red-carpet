@@ -21,6 +21,8 @@ import rcd_util
 import ConfigParser
 import os
 
+from red_gettext import _
+
 class RCConfig:
 
     def __init__(self):
@@ -217,11 +219,11 @@ class DaemonSettings(gtk.VBox):
 
     def build(self):
         self.local_rb = gtk.RadioButton(None,
-                                        "Connect to daemon on this computer")
+                                        _("Connect to daemon on this computer"))
         self.pack_start(self.local_rb)
 
         self.remote_rb = gtk.RadioButton(self.local_rb,
-                                         "Connect to a remote daemon")
+                                         _("Connect to a remote daemon"))
         self.pack_start(self.remote_rb)
 
         table = gtk.Table(3, 2)
@@ -229,15 +231,15 @@ class DaemonSettings(gtk.VBox):
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label("Server:")
+        l = gtk.Label(_("Server:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 0, 1)
 
-        l = gtk.Label("User name:")
+        l = gtk.Label(_("User name:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 1, 2)
 
-        l = gtk.Label("Password:")
+        l = gtk.Label(_("Password:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 2, 3)
 
@@ -309,7 +311,7 @@ class ConnectionWindow(gtk.Dialog):
 
     def build(self):
         self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
-        b = self.add_button("Connect", gtk.RESPONSE_ACCEPT)
+        b = self.add_button(_("Connect"), gtk.RESPONSE_ACCEPT)
         b.grab_default()
         def response_cb(dialog, id, this):
             if id == gtk.RESPONSE_ACCEPT:

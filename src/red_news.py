@@ -21,6 +21,7 @@ import gobject, gtk, pango
 import red_component
 import red_listmodel
 import red_thrashingtreeview
+from red_gettext import _
 
 
 def news_item_get_title(item):
@@ -165,10 +166,10 @@ class NewsView(gtk.ScrolledWindow):
 class NewsComponent(red_component.Component):
 
     def name(self):
-        return "News"
+        return _("News")
 
     def long_name(self):
-        return "Red Carpet News"
+        return _("Red Carpet News")
 
     def show_in_shortcuts(self):
         return 1

@@ -21,6 +21,8 @@ import red_main
 import red_listmodel, red_thrashingtreeview
 import ximian_xmlrpclib
 
+from red_gettext import _
+
 model = None
 
 def build_categories(prefs):
@@ -37,7 +39,7 @@ class PrefsView(gtk.Notebook):
         gtk.Notebook.__init__(self)
 
         self.set_show_tabs(0)
-        label = gtk.Label("Loading preferences...")
+        label = gtk.Label(_("Loading preferences..."))
         label.show()
         self.append_page(label, gtk.Label(""))
         
@@ -69,7 +71,7 @@ class PrefsView(gtk.Notebook):
             view = red_thrashingtreeview.TreeView(model)
             view.set_sensitive(rcd_util.check_server_permission("superuser"))
 
-            col = gtk.TreeViewColumn("Description",
+            col = gtk.TreeViewColumn(_("Description"),
                                      gtk.CellRendererText(),
                                      text=COLUMN_DESCRIPTION)
             view.append_column(col)
@@ -112,7 +114,7 @@ class PrefsView(gtk.Notebook):
 
             r.connect("editing_done", editing_done_cb, model)
 
-            col = gtk.TreeViewColumn("Value", r, value=COLUMN_VALUE)
+            col = gtk.TreeViewColumn(_("Value"), r, value=COLUMN_VALUE)
             view.append_column(col)
 
             view.show_all()
@@ -120,13 +122,13 @@ class PrefsView(gtk.Notebook):
             if c:
                 label = gtk.Label(c)
             else:
-                label = gtk.Label("Settings")
+                label = gtk.Label(_("Settings"))
             self.append_page(view, label)        
 
 class PrefsWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, "%s Preferences" % red_main.red_name)
+        gtk.Dialog.__init__(self, _("%s Preferences") % red_main.red_name)
 
         self.set_default_size(550, 400)
 

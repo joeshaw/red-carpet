@@ -19,6 +19,8 @@ import threading, gobject, gtk
 import red_deaddaemon
 import ximian_xmlrpclib
 
+from red_gettext import _
+
 class ServerThread(threading.Thread, gobject.GObject):
 
     def __init__(self, server, method, args):

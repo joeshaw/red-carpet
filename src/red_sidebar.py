@@ -23,6 +23,8 @@ import red_pixbuf
 import red_pendingops
 import red_settings
 
+from red_gettext import _
+
 class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
     conf_str_hidden = "UI/sidebar_hidden"
@@ -56,7 +58,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         self.pack_start(self.shortcut_bar, 0, 0)
 
         label = gtk.Label("")
-        label.set_markup("<b>Pending Transactions</b>")
+        label.set_markup("<b>%s</b>" % _("Pending Transactions"))
         label.set_alignment(0, 0.5)
         self.pack_start(label, 0, 1)
 
@@ -80,7 +82,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_BUTTON)
         box.pack_start(image, expand=0, fill=0)
-        box.pack_start(gtk.Label("Run"), 0, 0)
+        box.pack_start(gtk.Label(_("Run")), 0, 0)
         align.add(box)
         bbox.add(self.run)
         self.run.set_sensitive(0)
@@ -93,7 +95,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         image = red_pixbuf.get_widget("pending-transactions",
                                       width=24, height=24)
         box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label("Details"), 0, 0)
+        box.pack_start(gtk.Label(_("Details")), 0, 0)
         align.add(box)
         bbox.add(self.details)
         self.details.set_sensitive(0)

@@ -19,6 +19,7 @@ red_carpetsupport_DATA =	\
 	red_depcomponent.py			\
 	red_depview.py				\
 	red_dirselection.py			\
+	red_gettext.py				\
 	red_history.py				\
 	red_installfiles.py			\
 	red_listmodel.py			\

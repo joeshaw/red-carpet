@@ -20,6 +20,7 @@ import red_extra
 import rcd_util
 import red_component
 import red_users
+from red_gettext import _
 
 model = None
 
@@ -106,21 +107,21 @@ class HistorySearchBar(HistoryFilter):
     def build(self):
         self.container = gtk.HBox(0, 5)
 
-        actions = [("All",        None),
-                   ("Installations", "install"),
-                   ("Removals",      "remove"),
-                   ("Upgrades",      "upgrade")]
+        actions = [(_("All"),        None),
+                   (_("Installations"), "install"),
+                   (_("Removals"),      "remove"),
+                   (_("Upgrades"),      "upgrade")]
         self.action_opt = HistoryOption(actions)
         self.container.pack_start(self.action_opt, 0, 0, 0)
         self.action_opt.connect("selected", lambda x, y:self.updated())
 
-        self.container.pack_start(gtk.Label("User:"), 0, 0, 0)
+        self.container.pack_start(gtk.Label(_("User:")), 0, 0, 0)
 
         self.user_opt = red_users.UsersOption(allow_all=1)
         self.container.pack_start(self.user_opt, 0, 0, 0)
         self.user_opt.connect("selected", lambda x, y:self.updated())
 
-        self.container.pack_start(gtk.Label("Timeframe (days):"), 0, 0, 0)
+        self.container.pack_start(gtk.Label(_("Timeframe (days):")), 0, 0, 0)
 
         self.days_spin = gtk.SpinButton()
         self.days_spin.set_increments(1, 7)
@@ -136,7 +137,7 @@ class HistorySearchBar(HistoryFilter):
     def updated(self):
         self.query_reset()
         user = self.user_opt.get_selected_user()
-        if user and user.name_get() != "All":
+        if user and user.name_get() != _("All"):
             self.query.append(["user", "contains", user.name_get()])
         action = self.action_opt.get_active_item()
         if action:
@@ -156,7 +157,7 @@ class HistoryComponent(red_component.Component):
         red_component.Component.__init__(self)
 
     def name(self):
-        return "History"
+        return _("History")
 
     def access_key(self):
         return "h"
@@ -210,12 +211,12 @@ class HistoryView(gtk.ScrolledWindow):
         self.view = gtk.TreeView(model)
         self.view.set_rules_hint(1)
 
-        cols = [("Action",      COLUMN_ACTION,  1),
-                ("User",        COLUMN_USER,    1),
-                ("Package",     COLUMN_PACKAGE, 1),
-                ("Old Version", COLUMN_VER_OLD, 0),
-                ("New Version", COLUMN_VER_NEW, 0),
-                ("Time",        COLUMN_TIME,    1)]
+        cols = [(_("Action"),      COLUMN_ACTION,  1),
+                (_("User"),        COLUMN_USER,    1),
+                (_("Package"),     COLUMN_PACKAGE, 1),
+                (_("Old Version"), COLUMN_VER_OLD, 0),
+                (_("New Version"), COLUMN_VER_NEW, 0),
+                (_("Time"),        COLUMN_TIME,    1)]
 
         for label, id, sortable in cols:
             col = gtk.TreeViewColumn(label,
@@ -379,11 +380,11 @@ class PackageHistory(gtk.ScrolledWindow):
         self.view.set_model(self.model)
         self.view.set_rules_hint(1)
 
-        cols = [("Action",      COLUMN_ACTION),
-                ("User",        COLUMN_USER),
-                ("Old Version", COLUMN_VER_OLD),
-                ("New Version", COLUMN_VER_NEW),
-                ("Time",        COLUMN_TIME)]
+        cols = [(_("Action"),      COLUMN_ACTION),
+                (_("User"),        COLUMN_USER),
+                (_("Old Version"), COLUMN_VER_OLD),
+                (_("New Version"), COLUMN_VER_NEW),
+                (_("Time"),        COLUMN_TIME)]
 
         for label, id in cols:
             col = gtk.TreeViewColumn(label,
@@ -403,7 +404,7 @@ class PackageHistory(gtk.ScrolledWindow):
                     return
                 rows = len(entries)
             if not rows:
-                this.add_note("There is no record of this package ever being installed or removed.")
+                this.add_note(_("There is no record of this package ever being installed or removed."))
 
         worker = self.model.get_worker()
         worker.connect("ready", got_results_cb, self)

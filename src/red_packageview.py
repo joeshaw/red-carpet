@@ -23,6 +23,8 @@ import red_packagebook
 import red_thrashingtreeview
 import red_locks
 
+from red_gettext import _
+
 class CellRendererActivatablePixbuf(gtk.GenericCellRenderer):
 
     __gproperties__ = {
@@ -141,7 +143,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         menu = gtk.Menu()
         menu.attach_to_widget(self, None)
 
-        item = gtk.ImageMenuItem("Package Info")
+        item = gtk.ImageMenuItem(_("Package Info"))
         image = red_pixbuf.get_widget("info")
         item.set_image(image)
         item.show_all()
@@ -157,7 +159,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         registered_action = red_pendingops.package_action(pkg)
 
         if registered_action != red_pendingops.NO_ACTION:
-            item = gtk.ImageMenuItem("Cancel action")
+            item = gtk.ImageMenuItem(_("Cancel action"))
             image = gtk.Image()
             image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
             item.show_all()
@@ -168,7 +170,7 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         if red_packagearray.pkg_is_name_installed(pkg):
             if registered_action != red_pendingops.TO_BE_REMOVED:
-                item = gtk.ImageMenuItem("Remove this package")
+                item = gtk.ImageMenuItem(_("Remove this package"))
                 image = red_pixbuf.get_widget("to-be-removed")
                 item.set_image(image)
                 if not rcd_util.check_server_permission("remove"):
@@ -180,7 +182,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                              lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_REMOVED))
         else:
             if registered_action != red_pendingops.TO_BE_INSTALLED:
-                item = gtk.ImageMenuItem("Install this package")
+                item = gtk.ImageMenuItem(_("Install this package"))
                 image = red_pixbuf.get_widget("to-be-installed")
                 item.set_image(image)
                 if not rcd_util.check_server_permission("install"):
@@ -193,7 +195,7 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         if red_packagearray.pkg_is_upgrade(pkg) and \
            registered_action != red_pendingops.TO_BE_INSTALLED:
-            item = gtk.ImageMenuItem("Upgrade")
+            item = gtk.ImageMenuItem(_("Upgrade"))
             image = red_pixbuf.get_widget("to-be-upgraded")
             item.set_image(image)
             if not rcd_util.check_server_permission("upgrade"):
@@ -205,7 +207,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                          lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
         elif red_packagearray.pkg_is_downgrade(pkg) and \
              registered_action != red_pendingops.TO_BE_INSTALLED:
-            item = gtk.ImageMenuItem("Downgrade")
+            item = gtk.ImageMenuItem(_("Downgrade"))
             image = red_pixbuf.get_widget("warning", width=24, height=24)
             item.set_image(image)
             if not rcd_util.check_server_permission("upgrade"):
@@ -222,9 +224,9 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         # Locking
         if pkg["locked"]:
-            item = gtk.ImageMenuItem("Unlock")
+            item = gtk.ImageMenuItem(_("Unlock"))
         else:
-            item = gtk.ImageMenuItem("Lock")
+            item = gtk.ImageMenuItem(_("Lock"))
 
         image = red_pixbuf.get_widget("lock")
         item.set_image(image)
@@ -256,7 +258,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                    sort_callback=None):
 
         if not title and not widget:
-            title = "Untitled"
+            title = _("Untitled")
 
         self.__column_info[column] = { "title":title,
                                        "widget":widget,
@@ -320,7 +322,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         
 
     def append_status_column(self,
-                             column_title="Status",
+                             column_title=_("Status"),
                              show_status_icon=1,
                              show_status_name=1):
         col = gtk.TreeViewColumn()
@@ -347,7 +349,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         return col
 
     def append_action_column(self,
-                             column_title="Action",
+                             column_title=_("Action"),
                              show_action_icon=1,
                              show_action_name=0,
                              activatable=1):
@@ -383,7 +385,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         return col
 
     def append_channel_column(self,
-                              column_title="Channel",
+                              column_title=_("Channel"),
                               show_channel_icon=1,
                               show_channel_name=1):
         col = gtk.TreeViewColumn()
@@ -409,7 +411,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         return col
 
     def append_name_column(self,
-                           column_title="Package",
+                           column_title=_("Package"),
                            show_channel_icon=0,
                            show_section_icon=0):
         col = gtk.TreeViewColumn()
@@ -439,7 +441,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                         )
         return col
 
-    def append_version_column(self, column_title="Version"):
+    def append_version_column(self, column_title=_("Version")):
         col = gtk.TreeViewColumn(column_title,
                                  gtk.CellRendererText(),
                                  text=red_packagearray.COLUMN_EVR)
@@ -450,7 +452,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                         )
         return col
 
-    def append_current_version_column(self, column_title="Current Version"):
+    def append_current_version_column(self, column_title=_("Current Version")):
         col = gtk.TreeViewColumn(column_title,
                                  gtk.CellRendererText(),
                                  text=red_packagearray.COLUMN_OLD_EVR)
@@ -461,7 +463,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                         )
         return col
 
-    def append_importance_column(self, column_title="Importance"):
+    def append_importance_column(self, column_title=_("Importance")):
         col = gtk.TreeViewColumn(column_title,
                                  gtk.CellRendererText(),
                                  text=red_packagearray.COLUMN_IMPORTANCE)
@@ -486,7 +488,7 @@ class PackageView(red_thrashingtreeview.TreeView):
                         sort_callback=lambda a,r: a.changed_sort_by_locked(r))
         return col
 
-    def append_size_column(self, column_title="Size"):
+    def append_size_column(self, column_title=_("Size")):
         render = gtk.CellRendererText()
         render.set_property("xalign", 1.0)
         col = gtk.TreeViewColumn(column_title,

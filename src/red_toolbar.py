@@ -18,6 +18,8 @@
 import gtk
 import red_pendingops
 
+from red_gettext import _
+
 
 class Toolbar(gtk.Toolbar, red_pendingops.PendingOpsListener):
 

@@ -1,5 +1,11 @@
 2003-02-22  Jon Trowbridge  <trow@ximian.com>
 
+	* Marked a whole bunch of strings for translation.  Made
+	trivial changes to some text.
+
+	* red_gettext.py: A home for translation-related magic.
+	Currently just defined _ to be the identity function.
+
 	* red_about.py (About.__init__): Removed the "this is really ugly"
 	comment.  Hopefully the about box can get some design-love later
 	on.

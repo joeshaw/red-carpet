@@ -18,6 +18,8 @@
 import gobject, gtk
 import red_pixbuf
 
+from red_gettext import _
+
 section_table = ( ("Any Section",               None,         -1),
                   ("Productivity Applications", "office",      0),
                   ("Imaging",                   "imaging",     1),

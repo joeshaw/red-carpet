@@ -21,13 +21,15 @@ import red_pendingops
 import red_component
 import rcd_util
 
+from red_gettext import _
+
 class SummaryComponent(red_component.Component):
 
     def name(self):
-        return "Summary"
+        return _("Summary")
 
     def long_name(self):
-        return "Update Summary"
+        return _("Update Summary")
 
     def pixbuf(self):
         return "summary"
@@ -65,7 +67,7 @@ class SummaryComponent(red_component.Component):
         col = view.append_importance_column()
         view.append_channel_column(show_channel_name=0)
         view.append_name_column()
-        view.append_version_column(column_title="New Version")
+        view.append_version_column(column_title=_("New Version"))
         view.append_current_version_column()
 
         view.set_model(self.array)

@@ -20,6 +20,8 @@ import gobject, gtk
 import red_menubar
 import red_channeloption, red_sectionoption, red_statusoption
 
+from red_gettext import _
+
 class SearchBar(gtk.VBox):
 
     def __init__(self):
@@ -105,7 +107,7 @@ class SearchBar(gtk.VBox):
 
         # When the string is marked for translation, the magic codes allow
         # the menu items to be reordered.
-        txt = "Search for %status packages in %channel"
+        txt = _("Search for %status packages in %channel ")
 
         txt_parsed = []
         while txt:
@@ -153,30 +155,30 @@ class SearchBar(gtk.VBox):
         ### button w/ search characteristics.
         ###
 
-        dropdown = "/" + "Containing"
+        dropdown = "/" + _("Containing")
 
         bar = red_menubar.MenuBar()
         bar.add(dropdown, with_dropdown_arrow=1)
 
-        bar.add(dropdown+"/"+"Match All Words",
+        bar.add(dropdown+"/"+_("Match All Words"),
                 radiogroup="anyall", radiotag="all",
                 radio_get=lambda: self.get_match_anyall(),
                 radio_set=lambda x: self.set_match_anyall(x))
-        bar.add(dropdown+"/"+"Match Any Word",
+        bar.add(dropdown+"/"+_("Match Any Word"),
                 radiogroup="anyall", radiotag="any")
 
         bar.add(dropdown+"/Sep1", is_separator=1)
 
-        bar.add(dropdown+"/"+"Match Substrings",
+        bar.add(dropdown+"/"+_("Match Substrings"),
                 radiogroup="words", radiotag="substr",
                 radio_get=lambda: self.get_match_word(),
                 radio_set=lambda x: self.set_match_word(x))
-        bar.add(dropdown+"/"+"Match Whole Words",
+        bar.add(dropdown+"/"+_("Match Whole Words"),
                 radiogroup="words", radiotag="whole")
 
         bar.add(dropdown+"/Sep2", is_separator=1)
 
-        bar.add(dropdown+"/"+"Search Descriptions",
+        bar.add(dropdown+"/"+_("Search Descriptions"),
                 checked_get = lambda: self.get_search_descriptions(),
                 checked_set = lambda x: self.set_search_descriptions(x))
 

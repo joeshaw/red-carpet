@@ -18,6 +18,8 @@
 import sys, weakref
 import rcd_util
 
+from red_gettext import _
+
 package_data = {}
 listeners = {}
 listener_id = 0

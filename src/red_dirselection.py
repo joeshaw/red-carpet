@@ -16,6 +16,7 @@
 ###
 
 import os.path, gtk
+from red_gettext import _
 
 DIR_COLUMN = 0
 

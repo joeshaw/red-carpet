@@ -18,6 +18,7 @@
 import gobject, gtk
 import rcd_util
 import red_extra, red_pixbuf
+from red_gettext import _
 
 class DepView(red_extra.ListView):
 
@@ -33,19 +34,19 @@ class DepView(red_extra.ListView):
         sel = self.get_selection()
         sel.set_mode(gtk.SELECTION_NONE)
 
-        col = gtk.TreeViewColumn("Channel", gtk.CellRendererPixbuf(), pixbuf=0)
+        col = gtk.TreeViewColumn(_("Channel"), gtk.CellRendererPixbuf(), pixbuf=0)
         self.append_column(col)
 
-        col = gtk.TreeViewColumn("Package", gtk.CellRendererText(), markup=1)
+        col = gtk.TreeViewColumn(_("Package"), gtk.CellRendererText(), markup=1)
         self.append_column(col)
         
-        col = gtk.TreeViewColumn("Current Version", gtk.CellRendererText(), markup=3)
+        col = gtk.TreeViewColumn(_("Current Version"), gtk.CellRendererText(), markup=3)
         self.append_column(col)
 
-        col = gtk.TreeViewColumn("New Version", gtk.CellRendererText(), markup=2)
+        col = gtk.TreeViewColumn(_("New Version"), gtk.CellRendererText(), markup=2)
         self.append_column(col)
         
-        col = gtk.TreeViewColumn("Size", gtk.CellRendererText(), markup=4)
+        col = gtk.TreeViewColumn(_("Size"), gtk.CellRendererText(), markup=4)
         self.append_column(col)
 
 

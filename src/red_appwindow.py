@@ -41,6 +41,7 @@ import red_toolbar
 import red_packagearray
 import red_packagebook
 import red_settings
+from red_gettext import _
 
 def refresh_cb(app):
     server = rcd_util.get_server_proxy()
@@ -54,9 +55,9 @@ def refresh_cb(app):
             rcd_util.dialog_from_fault(f, parent=app)
             return
         
-        pend = red_pendingview.PendingView_Simple(title="Refreshing channel data",
+        pend = red_pendingview.PendingView_Simple(title=_("Refreshing channel data"),
                                                   parent=app)
-        pend.set_label("Downloading channel information")
+        pend.set_label(_("Downloading channel information"))
         pend.set_icon("dialog-refreshing")
         pend.show_all()
         pend.set_pending_list(stuff_to_poll)
@@ -374,29 +375,29 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
     def assemble_toolbar(self, bar):
 
-        bar.install = bar.add(text="Install",
-                              tooltip="Install selected package",
+        bar.install = bar.add(text=_("Install"),
+                              tooltip=_("Install selected package"),
                               pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
                                                            width=16,
                                                            height=16),
                               sensitive_fn=self.install_sensitive_cb,
                               callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
 
-        bar.remove = bar.add(text="Remove",
-                             tooltip="Remove selected package",
+        bar.remove = bar.add(text=_("Remove"),
+                             tooltip=_("Remove selected package"),
                              pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
                                                           width=16, height=16),
                              sensitive_fn=self.remove_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
-        bar.cancel = bar.add(text="Cancel",
-                             tooltip="Cancel package action",
+        bar.cancel = bar.add(text=_("Cancel"),
+                             tooltip=_("Cancel package action"),
                              stock=gtk.STOCK_CANCEL,
                              sensitive_fn=self.cancel_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
 
-        bar.info = bar.add(text="Info",
-                           tooltip="Package Information",
+        bar.info = bar.add(text=_("Info"),
+                           tooltip=_("Package Information"),
                            pixbuf=red_pixbuf.get_pixbuf("info",
                                                         width=16, height=16),
                            sensitive_fn=self.info_sensitive_cb,
@@ -404,8 +405,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.append_space()
 
-        bar.subs = bar.add(text="Subscriptions",
-                           tooltip="Change your subscription options",
+        bar.subs = bar.add(text=_("Subscriptions"),
+                           tooltip=_("Change your subscription options"),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
     # The return value is for the benefit of our delete_event handler.

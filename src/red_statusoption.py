@@ -17,12 +17,14 @@
 
 import gobject, gtk
 
+from red_gettext import _
+
 _status_types = (
-    ("Uninstalled", lambda p: not p["installed"] and not p["name_installed"]),
-    ("Upgrade",     lambda p: p["name_installed"] > 0 and not p["installed"]),
-    ("Installed",   lambda p: p["installed"] or p["name_installed"]),
-    ("Locked",      lambda p: p["locked"]),
-    ("All",         lambda p: 1),
+    (_("Uninstalled"), lambda p: not p["installed"] and not p["name_installed"]),
+    (_("Upgrade"),     lambda p: p["name_installed"] > 0 and not p["installed"]),
+    (_("Installed"),   lambda p: p["installed"] or p["name_installed"]),
+    (_("Locked"),      lambda p: p["locked"]),
+    (_("All"),         lambda p: 1),
     )
 
 class StatusOption(gtk.OptionMenu):

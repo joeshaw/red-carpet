@@ -18,6 +18,8 @@
 import gobject, gtk
 import red_listmodel
 
+from red_gettext import _
+
 class TreeView(gtk.TreeView):
 
     def __init__(self, model=None):

@@ -19,6 +19,7 @@ import time, gtk,random
 
 import red_main
 import red_pixbuf
+from red_gettext import _
 
 contributors = [
     "Tambet Ingo",

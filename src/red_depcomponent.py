@@ -25,6 +25,7 @@ import red_main
 import red_pixbuf
 import red_pendingview
 import red_component, red_pendingops, red_depview
+from red_gettext import _
 
 def filter_deps(dep_list):
     if not dep_list:
@@ -57,7 +58,7 @@ class DepComponent(gobject.GObject, red_component.Component):
         self.get_deps()
 
     def name(self):
-        return "Dependency Resolution"
+        return _("Dependency Resolution")
 
     def get_deps(self):
         if self.__worker:
@@ -153,7 +154,7 @@ class DepComponent(gobject.GObject, red_component.Component):
         style.bg[gtk.STATE_NORMAL] = bg_color
         banner_box.set_style(style)
         banner = gtk.Label("")
-        msg = "Dependency Resolution Failed"
+        msg = _("Dependency Resolution Failed")
         banner.set_markup("<span size=\"large\"><b>%s</b></span>" % msg)
         banner_box.add(banner)
         page.pack_start(banner_box, 0, 0, 0)
@@ -197,7 +198,7 @@ class DepComponent(gobject.GObject, red_component.Component):
                                       width=48, height=48)
         hbox.pack_start(image, 0, 0, 0)
 
-        label = gtk.Label("All package dependencies are satisfied")
+        label = gtk.Label(_("All package dependencies are satisfied"))
         hbox.pack_start(label, 0, 0 ,0)
 
         buttons = gtk.HButtonBox()
@@ -228,18 +229,19 @@ class DepComponent(gobject.GObject, red_component.Component):
         self.table = red_depview.DepView()
 
         if self.install_packages:
-            self.add_package_list("Requested Installations",
+            self.add_package_list(_("Requested Installations"),
                                   self.install_packages)
 
         if self.remove_packages:
-            self.add_package_list("Requested Removals",
+            self.add_package_list(_("Requested Removals"),
                                   self.remove_packages, removal=1)
 
         if self.dep_install:
-            self.add_package_list("Required Installations", self.dep_install)
+            self.add_package_list(_("Required Installations"),
+                                  self.dep_install)
 
         if self.dep_remove:
-            self.add_package_list("Required Removals",
+            self.add_package_list(_("Required Removals"),
                                   self.dep_remove, removal=1)
 
         self.table.show_all()
@@ -265,7 +267,7 @@ class DepComponent(gobject.GObject, red_component.Component):
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_GO_FORWARD, gtk.ICON_SIZE_BUTTON)
         box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label("Continue"), 0, 0)
+        box.pack_start(gtk.Label(_("Continue")), 0, 0)
         align.add(box)
 
         buttons.add(cancel)

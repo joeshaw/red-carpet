@@ -19,6 +19,8 @@ import sys, weakref, threading, gtk
 import rcd_util
 import ximian_xmlrpclib
 
+from red_gettext import _
+
 ###
 ### Set up our polling timeout.  This should be the only place
 ### where we poll for the world sequence number.

@@ -19,6 +19,7 @@ import sys, os, errno, time, signal, string, md5, socket, gtk
 import ximian_xmlrpclib
 import red_pixbuf, red_serverproxy
 import red_settings
+from red_gettext import _
 
 server = None
 server_proxy = None
@@ -43,7 +44,7 @@ def connect_real(url, username=None, password=None):
                                          auth_password=password,
                                          verbose=transport_debug)
     except:
-        err_msg = "Unable to connect to the daemon"
+        err_msg = _("Unable to connect to the daemon")
 
     if not err_msg:
         try:
@@ -95,9 +96,9 @@ def connect_to_server(force_dialog=0):
                                        gtk.DIALOG_MODAL,
                                        gtk.MESSAGE_WARNING,
                                        gtk.BUTTONS_YES_NO,
-                                       "Red Carpet requires a Red Carpet "
-                                       "Daemon to be running.\n"
-                                       "Would you like to start one now?")
+                                       _("Red Carpet requires a Red Carpet "
+                                         "Daemon to be running.\n"
+                                         "Would you like to start one now?"))
             dialog.set_title("") # Conform to GNOME HIG
             gtk.threads_enter()
             response = dialog.run()
@@ -115,8 +116,8 @@ def connect_to_server(force_dialog=0):
         else:
             dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL,
                                        gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                       "Unable to connect to the "
-                                       "daemon:\n '%s'." % err_msg)
+                                       _("Unable to connect to the "
+                                       "daemon:\n '%s'.") % err_msg)
             dialog.set_title("") # Gnome HIG says no titles on these sorts of dialogs
             gtk.threads_enter()
             dialog.run()
@@ -189,7 +190,7 @@ class StartDaemon:
         self.dialog = gtk.MessageDialog(None, 0,
                                         gtk.MESSAGE_INFO,
                                         gtk.BUTTONS_CANCEL,
-                                        "Starting daemon...")
+                                        _("Starting daemon..."))
 
         child_pid = os.fork()
         if child_pid == 0: # child
@@ -500,7 +501,7 @@ def server_proxy_dialog(worker,
                         parent=None):
 
     if not message:
-        message = "Please wait while getting data."
+        message = _("Please wait while getting data.")
 
     dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
                                gtk.BUTTONS_CANCEL, message)
@@ -544,13 +545,13 @@ def server_proxy_dialog(worker,
 ###
 
 def transaction_status(message):
-    messages = {"verify"       : "Verifying",
-                "verify-undef" : "Unable to verify package signature for",
-                "verify-nosig" : "There is no package signature for",
-                "prepare"      : "Preparing Transaction",
-                "install"      : "Installing",
-                "remove"       : "Removing",
-                "configure"    : "Configuring"}
+    messages = {"verify"       : _("Verifying"),
+                "verify-undef" : _("Unable to verify package signature for"),
+                "verify-nosig" : _("There is no package signature for"),
+                "prepare"      : _("Preparing Transaction"),
+                "install"      : _("Installing"),
+                "remove"       : _("Removing"),
+                "configure"    : _("Configuring")}
     
     status = string.split(message, ":", 1)
 

@@ -19,11 +19,12 @@ import gtk
 import rcd_util
 import ximian_xmlrpclib
 import red_settings
+from red_gettext import _
 
 class ActivationWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, "Group Activation")
+        gtk.Dialog.__init__(self, _("Group Activation"))
         self.build()
         self.fill()
 
@@ -33,11 +34,11 @@ class ActivationWindow(gtk.Dialog):
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label("Email:")
+        l = gtk.Label(_("Email:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 0, 1)
 
-        l = gtk.Label("Activation Code:")
+        l = gtk.Label(_("Activation Code:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 1, 2)
 
@@ -55,7 +56,7 @@ class ActivationWindow(gtk.Dialog):
         button = self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         button.connect("clicked", lambda x:self.destroy())
 
-        button = self.add_button("Activate", gtk.RESPONSE_CLOSE)
+        button = self.add_button(_("Activate"), gtk.RESPONSE_CLOSE)
         button.grab_default()
         button.connect("clicked", self.activate)
 
@@ -72,7 +73,7 @@ class ActivationWindow(gtk.Dialog):
         if not email or not code:
             dialog = gtk.MessageDialog(self, gtk.DIALOG_DESTROY_WITH_PARENT,
                                        gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                       "Please fill in both email and activation code.")
+                                       _("Please fill in both email and activation code."))
             dialog.run()
             dialog.destroy()
             return
@@ -91,7 +92,7 @@ class ActivationWindow(gtk.Dialog):
             
             if success:
                 msg_type = gtk.MESSAGE_INFO
-                msg_txt = "System successfully activated."
+                msg_txt = _("System successfully activated.")
 
                 # Store email to config.
                 config = red_settings.get_config()
@@ -99,8 +100,8 @@ class ActivationWindow(gtk.Dialog):
                 config.sync()
             else:
                 msg_type = gtk.MESSAGE_ERROR
-                msg_txt = "System could not be activated:" \
-                          " Invalid activation code or email address."
+                msg_txt = _("System could not be activated:" \
+                          " Invalid activation code or email address.")
 
             dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
                                        msg_type, gtk.BUTTONS_OK, msg_txt)

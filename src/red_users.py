@@ -20,6 +20,8 @@ import rcd_util
 import ximian_xmlrpclib
 import red_listmodel, red_serverlistener, red_thrashingtreeview
 
+from red_gettext import _
+
 opt = None
 
 class User:
@@ -101,7 +103,7 @@ def make_users_view(model):
     view = red_thrashingtreeview.TreeView(model)
     view.set_headers_visible(0)
 
-    col = gtk.TreeViewColumn("User",
+    col = gtk.TreeViewColumn(_("User"),
                              gtk.CellRendererText(),
                              text=COLUMN_NAME)
     view.append_column(col)
@@ -119,7 +121,7 @@ class PermissionsView(gtk.ScrolledWindow):
         view.set_model(model)
         view.set_headers_visible(0)
 
-        col = gtk.TreeViewColumn("Privilege",
+        col = gtk.TreeViewColumn(_("Privilege"),
                                  gtk.CellRendererText(),
                                  text=PRIVILEGE_COLUMN_PRIVILEGE)
         view.append_column(col)
@@ -136,12 +138,12 @@ class PermissionsView(gtk.ScrolledWindow):
                                                0,
                                                gtk.MESSAGE_WARNING,
                                                gtk.BUTTONS_YES_NO,
-                                               "If you remove superuser "
+                                               _("If you remove superuser "
                                                "privileges from yourself, you "
                                                "will be unable to re-add them."
                                                "\n\n"
                                                "Are you sure you want to do "
-                                               "this?")
+                                               "this?"))
                     response = dialog.run()
                     dialog.destroy()
                     if response == gtk.RESPONSE_NO or response == gtk.RESPONSE_DELETE_EVENT:
@@ -154,7 +156,8 @@ class PermissionsView(gtk.ScrolledWindow):
         r = gtk.CellRendererToggle()
         r.set_property("activatable", 1)
         r.connect("toggled", activated_cb, model)
-        col = gtk.TreeViewColumn("Enabled", r, active=PRIVILEGE_COLUMN_ENABLED)
+        col = gtk.TreeViewColumn(_("Enabled"),
+                                 r, active=PRIVILEGE_COLUMN_ENABLED)
         view.append_column(col)
 
         view.show_all()
@@ -168,7 +171,7 @@ class UsersWindow(gtk.Dialog,
                   red_serverlistener.ServerListener):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, "Edit Users")
+        gtk.Dialog.__init__(self, _("Edit Users"))
         red_serverlistener.ServerListener.__init__(self)
         self.build()
         self.set_size_request(300, 500)
@@ -179,11 +182,11 @@ class UsersWindow(gtk.Dialog,
         table.set_row_spacings(5)
         table.set_border_width(6)
 
-        l = gtk.Label("Password")
+        l = gtk.Label(_("Password:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 0, 1)
 
-        l = gtk.Label("Confirm:")
+        l = gtk.Label(_("Confirm:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 1, 2)
 
@@ -204,7 +207,7 @@ class UsersWindow(gtk.Dialog,
         button_box.set_layout(gtk.BUTTONBOX_START)
 
         button = gtk.Button()
-        button.set_label("Set Password")
+        button.set_label(_("Set Password"))
         button_box.add(button)
         self.pwd_button = button
         table.attach_defaults(button_box, 0, 2, 2, 3)
@@ -233,13 +236,15 @@ class UsersWindow(gtk.Dialog,
 
             msg = None
             if not p1:
-                msg = "Password can not be empty."
+                msg = _("Password can not be empty.")
             elif p1 != p2:
-                msg = "Passwords do not match."
+                msg = _("Passwords do not match.")
 
             if msg:
-                dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,
-                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, msg)
+                dialog = gtk.MessageDialog(this,
+                                           gtk.DIALOG_DESTROY_WITH_PARENT,
+                                           gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                           msg)
                 dialog.run()
                 dialog.destroy()
             else:
@@ -253,7 +258,7 @@ class UsersWindow(gtk.Dialog,
 
         def update_frame_label(ud, u, frame):
             if u:
-                label = "Set %s's password" % u.name_get()
+                label = _("Set %s's password") % u.name_get()
             else:
                 label = ""
 
@@ -274,7 +279,7 @@ class UsersWindow(gtk.Dialog,
         main_box.pack_start(left_box, 0, 0)
 
         box = gtk.HBox(0, 5)
-        frame = gtk.Frame("Users")
+        frame = gtk.Frame(_("Users"))
         frame.set_border_width(6)
 
         global opt
@@ -293,7 +298,7 @@ class UsersWindow(gtk.Dialog,
         button_box.set_border_width(6)
 
         button = gtk.Button()
-        button.set_label("Add")
+        button.set_label(_("Add"))
         button.set_sensitive(is_superuser)
         button.connect("clicked", lambda x,y:UserAdd(y), opt)
         button_box.add(button)
@@ -308,13 +313,13 @@ class UsersWindow(gtk.Dialog,
 
                 dialog = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT,
                                            gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
-                                           "Are you sure you want to delete '%s'?" % u.name_get())
+                                           _("Are you sure you want to delete '%s'?") % u.name_get())
                 dialog.connect("response", remove_dialog_cb, u)
                 dialog.run()
                 dialog.destroy()
 
         button = gtk.Button()
-        button.set_label("Remove")
+        button.set_label(_("Remove"))
         button.set_sensitive(is_superuser)
         button.connect("clicked", remove_cb, opt)
         button_box.add(button)
@@ -338,7 +343,7 @@ class UsersWindow(gtk.Dialog,
         
         opt.connect("selected", sensitize_password_part_cb, table)
 
-        frame = gtk.Frame("Privileges")
+        frame = gtk.Frame(_("Privileges"))
         view = PermissionsView(opt)
         view.set_border_width(6)
         frame.add(view)
@@ -359,7 +364,7 @@ class UsersWindow(gtk.Dialog,
 
 class UserAdd(gtk.Dialog):
     def __init__(self, opt):
-        gtk.Dialog.__init__(self, "Add new user")
+        gtk.Dialog.__init__(self, _("Add new user"))
 
         box = gtk.VBox(0, 5)
         self.vbox.add(box)
@@ -369,17 +374,17 @@ class UserAdd(gtk.Dialog):
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label("User name:")
+        l = gtk.Label(_("User name:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 0, 1)
         self.user_entry = gtk.Entry()
         table.attach_defaults(self.user_entry, 1, 2, 0, 1)
         
-        l = gtk.Label("Password:")
+        l = gtk.Label(_("Password:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 1, 2)
 
-        l = gtk.Label("Confirm:")
+        l = gtk.Label(_("Confirm:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 2, 3)
 
@@ -402,13 +407,13 @@ class UserAdd(gtk.Dialog):
 
             msg = None
             if not p1:
-                msg = "Password can not be empty."
+                msg = _("Password can not be empty.")
             elif p1 != p2:
-                msg = "Passwords do not match."
+                msg = _("Passwords do not match.")
             if not re.compile("^\w+$").match(name):
-                msg = "Invalid user name."
+                msg = _("Invalid user name.")
             elif opt.user_name_exists(name):
-                msg = "User '" + name + "' already exists."
+                msg = _("User '%s' already exists.") % name
 
             if msg:
                 dialog = gtk.MessageDialog(this, gtk.DIALOG_DESTROY_WITH_PARENT,

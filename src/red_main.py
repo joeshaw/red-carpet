@@ -24,6 +24,7 @@ import red_summary
 import red_transaction
 import red_news
 import red_history
+from red_gettext import _
 
 red_name      = "Red Carpet"
 red_version   = None

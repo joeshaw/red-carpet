@@ -21,6 +21,8 @@ import rcd_util
 import red_pendingops, red_serverlistener
 import red_pixbuf
 
+from red_gettext import _
+
 class PendingView(gtk.Window):
 
     def __init__(self, title=None, label=None,
@@ -443,7 +445,7 @@ class PollPending_Transact:
 class PendingView_Transaction(PendingView):
 
     def __init__(self, download_id, transact_id, step_id, parent=None):
-        PendingView.__init__(self, "Updating System",
+        PendingView.__init__(self, _("Updating System"),
                              allow_cancel=1, parent=parent)
 
         self.download_id = download_id
@@ -511,8 +513,8 @@ class PendingView_Transaction(PendingView):
         if ret:
             print "Download aborted"
             self.stop_polling()
-            self.transaction_finished(msg="Download cancelled",
-                                      title="Update cancelled")
+            self.transaction_finished(msg=_("Download cancelled"),
+                                      title=_("Update cancelled"))
         else:
             print "Couldn't abort download"
 
@@ -543,7 +545,7 @@ class PendingView_Transaction(PendingView):
         return 1
 
 
-    def transaction_finished(self, msg, title="Update Finished"):
+    def transaction_finished(self, msg, title=_("Update Finished")):
         self.stop_icon_anim()
         self.switch_cancel_button_to_ok()
         self.set_title(title)
@@ -556,7 +558,7 @@ class PendingView_Transaction(PendingView):
         if self.__working_query:
             return
 
-        self.step_label.set_text("Downloading packages")
+        self.step_label.set_text(_("Downloading packages"))
 
         def download_pending_cb(th, pv):
             pv.__working_query = 0
@@ -567,7 +569,7 @@ class PendingView_Transaction(PendingView):
                 pv.update_fill()
             elif pending["status"] == "failed":
                 pv.download_complete = 1
-                pv.transaction_finished("Download Failed")
+                pv.transaction_finished(_("Download Failed"))
                 
         serv = rcd_util.get_server_proxy()
         th = serv.rcd.system.poll_pending(self.download_id)
@@ -583,8 +585,8 @@ class PendingView_Transaction(PendingView):
         if self.__working_query:
             return 1
 
-        self.set_title("Processing Transaction")
-        self.set_label("Starting Transaction")
+        self.set_title(_("Processing Transaction"))
+        self.set_label(_("Starting Transaction"))
 
         def update_pending_cb(pending, step_pending, pv):
             if pending and step_pending:
@@ -600,11 +602,11 @@ class PendingView_Transaction(PendingView):
 
             if pending and pending["status"] == "finished":
                 red_pendingops.clear_packages_with_actions()
-                pv.transaction_finished(msg="The update has " \
-                                        "completed successfully")
+                pv.transaction_finished(msg=_("The update has " \
+                                        "completed successfully"))
                 pv.__finished = 1
             elif pending and pending["status"] == "failed":
-                msg = "Transaction failed: %s" % pending["error_msg"]
+                msg = _("Transaction failed") + ": " + pending["error_msg"]
                 pv.transaction_finished(msg)
                 self.__finished = 1
 

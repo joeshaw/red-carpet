@@ -22,6 +22,7 @@ import rcd_util
 import red_listmodel
 import red_serverlistener, red_pixbuf
 import red_pendingops
+from red_gettext import _
 
 ###
 ### Callbacks for our ListModel
@@ -117,18 +118,18 @@ def pkg_action(pkg):
         if pending == red_pendingops.TO_BE_INSTALLED \
            or pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
             if pkg["name_installed"] > 0:
-                str = "upgrade"
+                str = _("upgrade")
             elif pkg["name_installed"] < 0:
-                str = "<b>downgrade</b>"
+                str = "<b>%s</b>" % _("downgrade")
             else:
-                str = "install"
+                str = _("install")
             if pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
                 str = "<s>%s</s>" % str
             return str
         
         elif pending == red_pendingops.TO_BE_REMOVED \
              or pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
-            str = "remove"
+            str = _("remove")
             if pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
                 str = "<s>%s</s>" % str
             return str
@@ -554,11 +555,11 @@ class PackagesFromQuery(PackagesFromDaemon):
     def set_packages(self, pkgs, quiet=0):
         if not quiet:
             if len(pkgs) > 1:
-                msg = "Found %d matching packages" % len(pkgs)
+                msg = _("Found %d matching packages") % len(pkgs)
             elif len(pkgs) == 1:
-                msg = "Found 1 matching package"
+                msg = _("Found 1 matching package")
             else:
-                msg = "No matching packages found"
+                msg = _("No matching packages found")
             self.message_push(msg, transient=1)
             
         PackagesFromDaemon.set_packages(self, pkgs)
@@ -696,7 +697,7 @@ class UpdatedPackages(PackagesFromDaemon):
             array.busy(0)
 
         self.busy(1)
-        self.message_push("Looking for updates...")
+        self.message_push(_("Looking for updates..."))
         self.set_packages([])
 
         server = rcd_util.get_server_proxy()

@@ -16,6 +16,7 @@
 ###
 
 import os, gobject, gtk, sys
+from red_gettext import _
 
 pixbuf_path = [ "../art" ]
 

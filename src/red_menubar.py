@@ -17,7 +17,7 @@
 
 import os, string, types,re, gobject, gtk
 import red_pixbuf
-
+from red_gettext import _
 
 ## The format looks like "<Control>a" or "<Shift><Alt>F1.
 ## The parser is fairly liberal and allows lower or upper case, and also

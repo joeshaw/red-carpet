@@ -23,6 +23,7 @@ import rcd_util
 import red_channelmodel
 import red_dirselection
 import red_thrashingtreeview
+from red_gettext import _
 
 def mount_channel(path, name=None):
     # Handle ~ to mean $HOME
@@ -57,7 +58,7 @@ def mount_channel(path, name=None):
             return
         
         if not cid:
-            msg = "Unable to mount %s as a channel" % path
+            msg = _("Unable to mount '%s' as a channel") % path
             dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
                                        gtk.BUTTONS_OK, msg)
 
@@ -87,7 +88,7 @@ def unmount_channel(cid):
             return
         
         if not success:
-            msg = "Unable to unmount %s" % name
+            msg = _("Unable to unmount '%s'") % name
             dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
                                        gtk.BUTTONS_OK, msg)
             dialog.run()
@@ -113,7 +114,7 @@ class FileEntry(gtk.HBox):
         self.pack_start(self.entry)
         self.entry.show()
 
-        button = gtk.Button("Browse...")
+        button = gtk.Button(_("Browse..."))
         self.pack_start(button)
         button.connect("clicked", self.browse)
         button.show()
@@ -124,7 +125,7 @@ class FileEntry(gtk.HBox):
             self.entry.set_text(file[0])
             self.dirsel.destroy()
 
-        self.dirsel = red_dirselection.DirSelection("Mount Directory")
+        self.dirsel = red_dirselection.DirSelection(_("Mount Directory"))
         self.dirsel.set_select_multiple(0)
         self.dirsel.ok_button.connect("clicked", get_file_cb, self)
         self.dirsel.cancel_button.connect("clicked", lambda x,y:y.destroy(), self.dirsel)
@@ -136,11 +137,11 @@ class FileEntry(gtk.HBox):
 class MountWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, "Mount channel")
+        gtk.Dialog.__init__(self, _("Mount channel"))
         self.build()
         
     def build(self):
-        frame = gtk.Frame("Mount a directory as channel")
+        frame = gtk.Frame(_("Mount a directory as channel"))
         frame.set_border_width(5)
 
         table = gtk.Table(2, 2)
@@ -148,11 +149,11 @@ class MountWindow(gtk.Dialog):
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label("Channel Name:")
+        l = gtk.Label(_("Channel Name:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 0, 1)
 
-        l = gtk.Label("Directory:")
+        l = gtk.Label(_("Directory:"))
         l.set_alignment(0, 0.5)
         table.attach_defaults(l, 0, 1, 1, 2)
 
@@ -184,7 +185,7 @@ class MountWindow(gtk.Dialog):
         if not path:
             dialog = gtk.MessageDialog(self, 0, gtk.MESSAGE_ERROR,
                                        gtk.BUTTONS_OK,
-                                       "Please choose the path for channel.")
+                                       _("Please choose the path for channel."))
             dialog.run()
             dialog.destroy()
             return
@@ -205,7 +206,7 @@ class UnmountWindow(gtk.Dialog):
 
     def __init__(self):
 
-        gtk.Dialog.__init__(self, "Unmount Channel")
+        gtk.Dialog.__init__(self, _("Unmount Channel"))
 
         self.set_default_size(300, 300)
 
@@ -221,7 +222,7 @@ class UnmountWindow(gtk.Dialog):
         view = red_thrashingtreeview.TreeView(model)
 
         r = gtk.CellRendererText()
-        col = gtk.TreeViewColumn("Channel", r, text=COLUMN_NAME)
+        col = gtk.TreeViewColumn(_("Channel"), r, text=COLUMN_NAME)
         view.append_column(col)
 
         def toggle_cb(cr, path, mod):
@@ -234,7 +235,7 @@ class UnmountWindow(gtk.Dialog):
         r.set_property("activatable", 1)
         r.set_property("xalign", 0.0)
         r.connect("toggled", toggle_cb, model)
-        col = gtk.TreeViewColumn("Unmount?", r, active=umount_col)
+        col = gtk.TreeViewColumn(_("Unmount?"), r, active=umount_col)
         view.append_column(col)
 
         view.show()

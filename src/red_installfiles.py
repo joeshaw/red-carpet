@@ -17,6 +17,7 @@
 
 import os, stat, string, sys, threading
 import gobject, gtk
+from red_gettext import _
 
 import ximian_xmlrpclib
 
@@ -63,7 +64,7 @@ def install_local(parent):
                or f.faultCode == rcd_util.fault.invalid_package_file:
                 dialog = gtk.MessageDialog(fs, gtk.DIALOG_DESTROY_WITH_PARENT,
                                            gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                           "%s is not a valid package" % x)
+                                           _("%s is not a valid package") % x)
                 dialog.run()
                 dialog.destroy()
                 err = 1
@@ -73,7 +74,7 @@ def install_local(parent):
             if not plist:
                 dialog = gtk.MessageDialog(fs, gtk.DIALOG_DESTROY_WITH_PARENT,
                                            gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                           "There are no valid packages to install")
+                                           _("There are no valid packages to install"))
                 dialog.run()
                 dialog.destroy()
                 err = 1
@@ -83,7 +84,7 @@ def install_local(parent):
             [red_pendingops.set_action(x, red_pendingops.TO_BE_INSTALLED) for x in plist]
             
 
-    filesel = gtk.FileSelection("Install from File")
+    filesel = gtk.FileSelection(_("Install from File"))
     filesel.set_select_multiple(1)
     filesel.ok_button.connect("clicked", get_file_cb, filesel)
     filesel.cancel_button.connect("clicked", lambda x,y:y.destroy(), filesel)
@@ -99,7 +100,7 @@ def install_remote(parent):
 
         dialog = gtk.MessageDialog(None, 0,
                                    gtk.MESSAGE_INFO, 0,
-                                   "Downloading %s..." % url)
+                                   _("Downloading %s...") % url)
         button = dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
 
         progress_bar = gtk.ProgressBar()
@@ -122,7 +123,7 @@ def install_remote(parent):
                     dialog = gtk.MessageDialog(None, 0,
                                                gtk.MESSAGE_ERROR,
                                                gtk.BUTTONS_OK,
-                                               "%s is not a valid package" % dw.url)
+                                               _("%s is not a valid package") % dw.url)
                     gtk.threads_enter()
                     dialog.run()
                     gtk.threads_leave()
@@ -138,12 +139,12 @@ def install_remote(parent):
         dialog.show()
         download_watcher.start()
         
-    win = gtk.Dialog("Install from URL")
+    win = gtk.Dialog(_("Install from URL"))
     win.set_has_separator(0)
 
     hbox = gtk.HBox(0, 4)
 
-    label = gtk.Label("Package URL:")
+    label = gtk.Label(_("Package URL:"))
     hbox.pack_start(label)
 
     entry = gtk.Entry()

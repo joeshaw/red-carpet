@@ -20,6 +20,7 @@ import rcd_util
 import red_packagepage
 import red_packagepage_deps
 import red_packagepage_info
+from red_gettext import _
 
 package_infos = {}
 
@@ -39,7 +40,7 @@ def show_package_info(pkg):
 
     book.set_package(pkg)
 
-    title = "Package Information: %s" % pkg["name"]
+    title = _("Package Information") + ": " + pkg["name"]
     dialog = gtk.Dialog(title)
     button = dialog.add_button(gtk.STOCK_OK, 0)
     # grab_default() is not sufficient here.

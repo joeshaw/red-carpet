@@ -21,6 +21,8 @@ import red_packagearray, red_packageview
 import red_pendingops
 import red_component
 
+from red_gettext import _
+
 model = None
 
 class TransactionArray(red_packagearray.PackageArray,
@@ -75,7 +77,7 @@ def ok_to_quit(main_app_window):
                  "actions will be lost." % (word, string.join(msgs, " and "))
 
     msg_lines = rcd_util.linebreak(count_msg, 40)
-    msg_lines.append("Are you sure you want to quit?")
+    msg_lines.append(_("Are you sure you want to quit?"))
     
     msgbox = gtk.VBox(0, 0)
     msgbox.pack_start(gtk.HBox(0, 0), 0, 0, 4) # shim
@@ -112,10 +114,10 @@ def ok_to_quit(main_app_window):
 class TransactionComponent(red_component.Component):
 
     def name(self):
-        return "Pending Transactions"
+        return _("Pending Transactions")
 
     def long_name(self):
-        return "Pending Transactions"
+        return _("Pending Transactions")
 
     def access_key(self):
         return "P"

@@ -18,6 +18,8 @@
 import gtk
 import red_pixbuf
 
+from red_gettext import _
+
 _throbber_pixbufs = ["throb-1",
                      "throb-2",
                      "throb-3",

@@ -16,6 +16,7 @@
 ###
 
 import gobject, gtk
+from red_gettext import _
 
 class Component(gobject.GObject):
 

@@ -24,6 +24,7 @@ import gobject
 import rcd_util
 import red_listmodel
 import red_serverlistener
+from red_gettext import _
 
 def get_alias(ch):
     if ch["alias"]:

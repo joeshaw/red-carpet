@@ -17,6 +17,7 @@
 
 import gobject
 import red_extra
+from red_gettext import _
 
 ###
 ### ListModel: our magic-laden base class

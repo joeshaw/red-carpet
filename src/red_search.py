@@ -23,16 +23,18 @@ import red_component, red_packageview
 import red_pendingops
 import red_searchbar
 
+from red_gettext import _
+
 class SearchComponent(red_component.Component):
 
     def __init__(self):
         red_component.Component.__init__(self)
 
     def name(self):
-        return "Search"
+        return _("Search")
 
     def long_name(self):
-        return "Search Packages"
+        return _("Search Packages")
 
     def stock(self):
         return gtk.STOCK_FIND
@@ -70,7 +72,7 @@ class SearchComponent(red_component.Component):
 
         def search_cb(bar, query, filter):
             self.array.set_query(query,
-                                 query_msg="Searching for matching packages...",
+                                 query_msg=_("Searching for matching packages..."),
                                  query_filter=filter)
         self.__bar.connect("search", search_cb)
 

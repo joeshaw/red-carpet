@@ -18,6 +18,7 @@
 import rcd_util, gobject, gtk
 import red_serverlistener
 import string
+from red_gettext import _
 
 class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
@@ -38,10 +39,10 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
                                      string.lower(y["name"])))
 
         if self.__allow_any_channel:
-            channels.insert(0, {"name": "Any Channel", "id": -1})
+            channels.insert(0, {"name": _("Any Channel"), "id": -1})
 
         if self.__allow_no_channel:
-            channels.append({"name": "No Channel", "id": -2})
+            channels.append({"name": _("No Channel"), "id": -2})
         
         for c in channels:
             hbox = gtk.HBox(0, 0)

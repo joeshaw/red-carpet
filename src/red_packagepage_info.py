@@ -18,8 +18,8 @@
 import re
 import gtk
 import rcd_util, red_packagepage
-
 import red_pixbuf
+from red_gettext import _
 
 NO_SPAN = 0
 SPAN    = 1
@@ -75,15 +75,15 @@ def pkg_description(pkg, pkg_info, key):
     return l
 
 _info_rows = (
-    ("Name",           TYPE_TEXT,   pkg_element,      "name",           NO_SPAN),
-    ("Version",        TYPE_TEXT,   pkg_element,      "version",        NO_SPAN),
-    ("Release",        TYPE_TEXT,   pkg_element,      "release",        NO_SPAN),
-    ("Package Size",   TYPE_TEXT,   pkg_size,         "file_size",      NO_SPAN),
-    ("Installed Size", TYPE_TEXT,   pkg_size,         "installed_size", NO_SPAN),
-    ("Channel",        TYPE_WIDGET, pkg_channel,      "channel",        NO_SPAN),
-    ("Section",        TYPE_WIDGET, pkg_section,      "section",        NO_SPAN),
-    ("Summary",        TYPE_TEXT,   pkg_info_element, "summary",        NO_SPAN),
-    ("Description",    TYPE_WIDGET, pkg_description,  "description",    SPAN),
+    (_("Name"),           TYPE_TEXT,   pkg_element,      "name",           NO_SPAN),
+    (_("Version"),        TYPE_TEXT,   pkg_element,      "version",        NO_SPAN),
+    (_("Release"),        TYPE_TEXT,   pkg_element,      "release",        NO_SPAN),
+    (_("Package Size"),   TYPE_TEXT,   pkg_size,         "file_size",      NO_SPAN),
+    (_("Installed Size"), TYPE_TEXT,   pkg_size,         "installed_size", NO_SPAN),
+    (_("Channel"),        TYPE_WIDGET, pkg_channel,      "channel",        NO_SPAN),
+    (_("Section"),        TYPE_WIDGET, pkg_section,      "section",        NO_SPAN),
+    (_("Summary"),        TYPE_TEXT,   pkg_info_element, "summary",        NO_SPAN),
+    (_("Description"),    TYPE_WIDGET, pkg_description,  "description",    SPAN),
     )
 
 def build_rows(table, pkg, pkg_info):
@@ -137,7 +137,7 @@ class PackagePage_Info(red_packagepage.PackagePage):
         red_packagepage.PackagePage.__init__(self)
 
     def name(self):
-        return "Info"
+        return _("Info")
 
     def visible(self, pkg):
         return 1

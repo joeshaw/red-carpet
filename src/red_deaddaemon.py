@@ -19,6 +19,7 @@ import threading
 import gtk
 
 import rcd_util, red_serverlistener
+from red_gettext import _
 
 _daemon_is_dead = 0
 _dead_daemon_lock = threading.Lock()
@@ -31,8 +32,7 @@ def show_server_is_alive_dialog():
 
     dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
                                gtk.BUTTONS_CLOSE,
-                               "Connection to daemon restored.\n" \
-                               "(We need a better message here too.)")
+                               _("Connection to daemon restored.\n"))
     dialog.show()
     gtk.threads_enter()
     dialog.run()
@@ -65,9 +65,8 @@ def show_daemon_dialog_real():
 
     dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
                                gtk.BUTTONS_NONE,
-                               "Lost contact with the daemon!\n" \
-                               "(We need a better message here)" )
-    dialog.add_button("Exit Red Carpet", 1)
+                               _("Lost contact with the daemon!"))
+    dialog.add_button(_("Exit Red Carpet"), 1)
     dialog.set_modal(1)
 
     def dialog_response_cb(dialog, val):

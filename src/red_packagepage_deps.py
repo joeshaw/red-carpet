@@ -18,6 +18,7 @@
 import sys, gobject, gtk
 import red_extra
 import rcd_util, red_packagepage
+from red_gettext import _
 
 class PackagePage_Deps(red_packagepage.PackagePage):
 
@@ -25,7 +26,7 @@ class PackagePage_Deps(red_packagepage.PackagePage):
         red_packagepage.PackagePage.__init__(self)
 
     def name(self):
-        return "Dependencies"
+        return _("Dependencies")
 
     def visible(self, pkg):
         return 1
@@ -63,13 +64,13 @@ class PackagePage_Deps(red_packagepage.PackagePage):
             if deps:
 
                 if x == "provides":
-                    label = "Provides"
+                    label = _("Provides")
                     bg_color = "green"
                 elif x == "requires":
-                    label = "Requires"
+                    label = _("Requires")
                     bg_color = "yellow"
                 elif x == "conflicts":
-                    label = "Conflicts With"
+                    label = _("Conflicts With")
                     bg_color = "red"
                 else:
                     label = "???"

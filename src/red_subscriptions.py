@@ -21,6 +21,8 @@ import red_main
 import red_channelmodel
 import red_thrashingtreeview
 
+from red_gettext import _
+
 model = None
 
 class SubscriptionsView(gtk.ScrolledWindow):
@@ -58,7 +60,7 @@ class SubscriptionsView(gtk.ScrolledWindow):
         view.append_column(col)
 
         col = gtk.TreeViewColumn()
-        col.set_title("Channel")
+        col.set_title(_("Channel"))
         r1 = gtk.CellRendererPixbuf()
         r2 = gtk.CellRendererText()
         col.pack_start(r1, 0)
@@ -72,7 +74,7 @@ class SubscriptionsView(gtk.ScrolledWindow):
 class SubscriptionsWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, "%s Channel Subscriptions" % red_main.red_name)
+        gtk.Dialog.__init__(self, _("%s Channel Subscriptions") % red_main.red_name)
 
         self.set_default_size(500, 300)
 
@@ -89,11 +91,11 @@ def show_sub_privs_dialog():
                                     0,
                                     gtk.MESSAGE_INFO,
                                     gtk.BUTTONS_OK,
-                                    "You do not have permission to "
+                                    _("You do not have permission to "
                                     "subscribe or unsubscribe from "
                                     "channels.  You will be unable "
                                     "to make any changes to the "
-                                    "subscriptions.")
+                                    "subscriptions."))
 
     def response_cb(dialog, response_id):
         dialog.destroy()

@@ -20,6 +20,8 @@ import gtk
 import red_packagearray
 import red_history
 
+from red_gettext import _
+
 class PackagePage:
 
     def __init__(self):
@@ -27,7 +29,7 @@ class PackagePage:
 
     # Define me!
     def name(self):
-        return "Unnamed"
+        return _("Unnamed")
 
     # Define me!
     def visible(self, pkg):
@@ -40,7 +42,7 @@ class PackagePage:
 class PackagePage_History(PackagePage):
 
     def name(self):
-        return "History"
+        return _("History")
 
     def visible(self, pkg):
         return pkg and red_packagearray.pkg_name(pkg)
