@@ -415,6 +415,7 @@ class FilteredPackageArray(PackageArray):
         self.__ch_id = 0
         self.__cache = []
         self.__filter = filter
+        self.__target = None
         if target:
             self.set_target(target)
 
@@ -482,22 +483,28 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         if reverse:
             self.__packages.reverse()
 
+
     # This is the method that derived classes need to implement
-    def get_packages_from_daemon(self, server):
+    def get_packages_from_daemon(self):
         return []
 
-    def refresh(self):
-        packages = self.get_packages_from_daemon(rcd_util.get_server())
+    # The derived class should use this function to report the packages
+    # it received from the daemon.
+    def set_packages(self, packages):
         def set_pkg_cb(me, p):
             me.__packages = p
         self.changed(set_pkg_cb, packages)
+
+    def refresh(self):
+        self.get_packages_from_daemon()
         self.pending_refresh = 0
 
     def schedule_refresh(self):
         if self.pending_refresh == 0:
-            self.pending_refresh = gtk.timeout_add(20,
-                                                   lambda s: s.refresh(),
-                                                   self)
+            def schedule_cb(s):
+                s.refresh()
+                return 0
+            self.pending_refresh = gtk.timeout_add(20, schedule_cb, self)
 
     def packages_changed(self, server):
         self.schedule_refresh()
@@ -520,40 +527,55 @@ class PackagesFromQuery(PackagesFromDaemon):
 
     def __init__(self, query=None):
         PackagesFromDaemon.__init__(self)
+        self.__worker = None
+        self.__worker_handler_id = 0
         self.set_query(query)
 
-    def get_packages_from_daemon(self, server):
-
+    def get_packages_from_daemon(self):
         if not self.query:
-            return []
+            self.set_packages([])
+            return
 
-        print "query:", self.query
-        import time
-        start = time.time()
-        packages = server.rcd.packsys.search(self.query)
-        end = time.time()
-        print "time=%.2f" % (end - start)
-        print "got %d packages (%.2f pkgs/sec)" \
-              % (len(packages), len(packages)/(end-start))
+        server = rcd_util.get_server_proxy()
+            
+        if self.__worker:
+            if self.__worker_handler_id:
+                self.__worker.disconnect(self.__worker_handler_id)
+                self.__worker_handler_id = 0
+            self.__worker.cancel()
 
-        # Remove duplicates in which a package is installed on the system
-        # and patches a package in a channel.  We'll just show the channel
-        # package.
-        def pkg_to_key(p):
-            ch = p["channel"] or p.get("channel_guess", 0)
-            return "%d:%s:%d:%s:%s" % \
-                   (ch, p["name"], p["epoch"], p["version"], p["release"])
+        def query_finished_cb(worker, array):
+            if not worker.is_cancelled():
+                packages = worker.get_result()
+                elapsed = time.time() - worker.t1
+                print "query time=%.2fs" % elapsed
+                print "got %d packages" % len(packages)
 
-        in_channel = {}
-        for p in packages:
-            if p["installed"] and p["channel"]:
-                in_channel[pkg_to_key(p)] = 1
+                # Remove duplicates in which a package is installed on
+                # the system and matches a package in a channel.
+                # We'll just show the channel package.
+                
+                def pkg_to_key(p):
+                    ch = p["channel"] or p.get("channel_guess", 0)
+                    return "%d:%s:%d:%s:%s" % \
+                           (ch, p["name"], p["epoch"], p["version"], p["release"])
 
-        for p in packages:
-            if p["channel"] == 0 and in_channel.has_key(pkg_to_key(p)):
-                packages.remove(p)
+                in_channel = {}
+                for p in packages:
+                    if p["installed"] and p["channel"]:
+                        in_channel[pkg_to_key(p)] = 1
 
-        return packages
+                for p in packages:
+                    if p["channel"] == 0 and in_channel.has_key(pkg_to_key(p)):
+                        packages.remove(p)
+                
+                array.set_packages(packages or [])
+            
+        self.__worker = server.rcd.packsys.search(self.query)
+        self.__worker.t1 = time.time()
+        self.__worker_handler_id = self.__worker.connect("ready",
+                                                         query_finished_cb,
+                                                         self)
         
     def set_query(self, query):
         self.query = query
@@ -569,14 +591,14 @@ class UpdatedPackages(PackagesFromDaemon):
         PackagesFromDaemon.__init__(self)
         self.refresh()
 
-    def get_packages_from_daemon(self, server):
+    def get_packages_from_daemon(self):
         packages = []
+        server = rcd_util.get_server()
         for old_pkg, pkg, history in server.rcd.packsys.get_updates():
             pkg["__old_package"] = old_pkg
             pkg["__history"] = history
             packages.append(pkg)
-
-        return packages
+        self.set_packages(packages)
 
     # The list of updates needs to refresh when the list of available
     # channels or subscriptions change.

@@ -18,18 +18,23 @@
 import sys, string
 import ximian_xmlrpclib
 import gobject, gtk
-import red_pixbuf
+import red_pixbuf, red_serverproxy
 
 server = None
+server_proxy = None
 
 def register_server(srv):
-    global server
+    global server, server_proxy
     server = srv
+    server_proxy = red_serverproxy.ServerProxy(server)
     ping = server.rcd.system.ping()
     print "Connected to %s\n%s" % (ping["name"], ping["copyright"])
 
 def get_server():
     return server
+
+def get_server_proxy():
+    return server_proxy
 
 ###############################################################################
 
@@ -162,9 +167,12 @@ def get_package_history(pkg):
     return server.rcd.log.query_log([["name", "=", pkg["name"]]])
 
 def get_package_key(pkg):
-    return "%s/%s/%d" % (pkg["name"],
-                         get_package_EVR(pkg),
-                         pkg["channel"])
+    key = pkg.get("__key")
+    if not key:
+        key = pkg["__key"] = "%s/%s/%d" % (pkg["name"],
+                                           get_package_EVR(pkg),
+                                           pkg["channel"])
+    return key
 
 def get_dep_EVR(dep):
     evr = get_package_EVR(dep)

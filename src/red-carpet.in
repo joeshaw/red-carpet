@@ -26,7 +26,7 @@ pygtk.require("2.0")
 red_carpet_dir = "@DDIR@/red-carpet"
 red_carpet_version = "@VERSION@"
 
-sys.path.insert(0, "../ximian_unmarshaller/build/lib.linux-i686-2.2")
+sys.path.insert(0, "../ximian_unmarshaller")
 sys.path.append("../sgmlop")
 sys.path.append("../sgmlop/build/lib.linux-i686-2.2")
 

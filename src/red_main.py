@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os
+import sys, os, signal, time, threading
 import gtk
 import ximian_xmlrpclib
 import rcd_util
@@ -31,6 +31,8 @@ import red_prefs
 
 red_name = "Red Carpet 2: Electric Boogaloo"
 red_version = "0.0.1"
+
+gtk.threads_init()
 
 def connect_to_server():
     ## Make contact with the daemon.
@@ -54,8 +56,44 @@ def connect_to_server():
 
     return server
 
+###
+### This is some code to help us track down performance problems
+### in GtkTreeView, etc.  Turned off by default.
+###
+
+last_tick = time.time()
+def tick_cb():
+    global last_tick
+    now = time.time()
+    if now - last_tick > 0.5:
+        print "***"
+        print "*** UI was blocked for %.2fs" % (now-last_tick)
+        print "***"
+    last_tick = now
+    return 1
+
+class TickThread(threading.Thread):
+
+    def run(self):
+        while 1:
+            now = time.time()
+            if now - last_tick > 2:
+                print "UI blocked for %.2fs" % (now-last_tick)
+                os.kill(os.getpid(), signal.SIGTRAP)
+            time.sleep(1)
+
+def ticker():
+    gtk.timeout_add(50, tick_cb);
+    TickThread().start()
+
+###
+### main
+###
+   
 def main(version):
     server = connect_to_server()
+
+    #ticker()
 
     app = red_appwindow.AppWindow(server)
 
@@ -71,7 +109,6 @@ def main(version):
     app.set_size_request(780, 550)
     app.show()
 
-    gtk.threads_init()
     gtk.threads_enter()
     gtk.main()
     gtk.threads_leave()
