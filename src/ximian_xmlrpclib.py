@@ -107,9 +107,7 @@ Exported classes:
                  XML-RPC value
   Binary         binary data wrapper
 
-  SlowParser     Slow but safe standard parser (based on xmllib)
   Marshaller     Generate an XML-RPC params chunk from a Python data structure
-  Unmarshaller   Unmarshal an XML-RPC response from incoming XML event message
   Transport      Handles an HTTP transaction to an XML-RPC server
   SafeTransport  Handles an HTTPS transaction to an XML-RPC server
 
@@ -121,16 +119,11 @@ Exported constants:
 Exported functions:
 
   boolean        Convert any Python value to an XML-RPC boolean
-  getparser      Create instance of the fastest available parser & attach
-                 to an unmarshalling object
   dumps          Convert an argument tuple or a Fault instance to an XML-RPC
-                 request (or response, if the methodresponse option is used).
-  loads          Convert an XML-RPC packet to unmarshalled data plus a method
-                 name (None if not present).
 """
 
 import re, string, time, operator
-
+import ximian_unmarshaller
 from types import *
 
 try:
@@ -307,120 +300,6 @@ def binary(data):
 
 WRAPPERS = DateTime, Binary, Boolean
 
-# --------------------------------------------------------------------
-# XML parsers
-
-try:
-    # optional xmlrpclib accelerator.  for more information on this
-    # component, contact info@pythonware.com
-    import _xmlrpclib
-    FastParser = _xmlrpclib.Parser
-    FastUnmarshaller = _xmlrpclib.Unmarshaller
-except (AttributeError, ImportError):
-    FastParser = FastUnmarshaller = None
-
-have_ximian_unmarshaller = 0
-try:
-    import ximian_unmarshaller
-    have_ximian_unmarshaller = 1
-except (AttributeError, ImportError):
-    pass
-
-#
-# the SGMLOP parser is about 15x faster than Python's builtin
-# XML parser.  SGMLOP sources can be downloaded from:
-#
-#     http://www.pythonware.com/products/xml/sgmlop.htm
-#
-
-try:
-    import sgmlop
-    if not hasattr(sgmlop, "XMLParser"):
-        raise ImportError
-except ImportError:
-    SgmlopParser = None # sgmlop accelerator not available
-else:
-    class SgmlopParser:
-        def __init__(self, target):
-
-            # setup callbacks
-            self.finish_starttag = target.start
-            self.finish_endtag = target.end
-            self.handle_data = target.data
-            self.handle_xml = target.xml
-
-            # activate parser
-            self.parser = sgmlop.XMLParser()
-            self.parser.register(self)
-            self.feed = self.parser.feed
-            self.entity = {
-                "amp": "&", "gt": ">", "lt": "<",
-                "apos": "'", "quot": '"'
-                }
-
-        def close(self):
-            try:
-                self.parser.close()
-            finally:
-                self.parser = self.feed = None # nuke circular reference
-
-        def handle_proc(self, tag, attr):
-            import re
-            m = re.search("encoding\s*=\s*['\"]([^\"']+)[\"']", attr)
-            if m:
-                self.handle_xml(m.group(1), 1)
-
-        def handle_entityref(self, entity):
-            # <string> entity
-            try:
-                self.handle_data(self.entity[entity])
-            except KeyError:
-                self.handle_data("&%s;" % entity)
-
-try:
-    from xml.parsers import expat
-    if not hasattr(expat, "ParserCreate"):
-        raise ImportError, "ParserCreate"
-except ImportError:
-    ExpatParser = None
-else:
-    class ExpatParser:
-        # fast expat parser for Python 2.0.  this is about 50%
-        # slower than sgmlop, on roundtrip testing
-        def __init__(self, target):
-            self._parser = parser = expat.ParserCreate(None, None)
-            self._target = target
-            parser.StartElementHandler = target.start
-            parser.EndElementHandler = target.end
-            parser.CharacterDataHandler = target.data
-            encoding = None
-            if not parser.returns_unicode:
-                encoding = "utf-8"
-            target.xml(encoding, None)
-
-        def feed(self, data):
-            self._parser.Parse(data, 0)
-
-        def close(self):
-            self._parser.Parse("", 1) # end of data
-            del self._target, self._parser # get rid of circular references
-
-class SlowParser:
-    """Default XML parser (based on xmllib.XMLParser)."""
-    # this is about 10 times slower than sgmlop, on roundtrip
-    # testing.
-    def __init__(self, target):
-        import xmllib # lazy subclassing (!)
-        if xmllib.XMLParser not in SlowParser.__bases__:
-            SlowParser.__bases__ = (xmllib.XMLParser,)
-        self.handle_xml = target.xml
-        self.unknown_starttag = target.start
-        self.handle_data = target.data
-        self.unknown_endtag = target.end
-        try:
-            xmllib.XMLParser.__init__(self, accept_utf8=1)
-        except TypeError:
-            xmllib.XMLParser.__init__(self) # pre-2.0
 
 #
 # HTTP helper functions
@@ -615,206 +494,8 @@ class Marshaller:
             self.dump_struct(value.__dict__)
     dispatch[InstanceType] = dump_instance
 
-class Unmarshaller:
-    """Unmarshal an XML-RPC response, based on incoming XML event
-    messages (start, data, end).  Call close() to get the resulting
-    data structure.
-
-    Note that this reader is fairly tolerant, and gladly accepts bogus
-    XML-RPC data without complaining (but not bogus XML).
-    """
-
-    # and again, if you don't understand what's going on in here,
-    # that's perfectly ok.
-
-    def __init__(self):
-        self._type = None
-        self._stack = []
-        self._marks = []
-        self._data = []
-        self._methodname = None
-        self._encoding = "utf-8"
-        self.append = self._stack.append
-
-    def close(self):
-        # return response tuple and target method
-        if self._type is None or self._marks:
-            raise ResponseError()
-        if self._type == "fault":
-            raise apply(Fault, (), self._stack[0])
-        return tuple(self._stack)
-
-    def getmethodname(self):
-        return self._methodname
-
-    #
-    # event handlers
-
-    def xml(self, encoding, standalone):
-        self._encoding = encoding
-        # FIXME: assert standalone == 1 ???
-
-    def start(self, tag, attrs):
-        # prepare to handle this element
-        if tag == "array" or tag == "struct":
-            self._marks.append(len(self._stack))
-        self._data = []
-        self._value = (tag == "value")
-
-    def data(self, text):
-        self._data.append(text)
-
-    def end(self, tag, join=string.join):
-        # call the appropriate end tag handler
-        try:
-            f = self.dispatch[tag]
-        except KeyError:
-            pass # unknown tag ?
-        else:
-            return f(self, join(self._data, ""))
-
-    #
-    # accelerator support
-
-    def end_dispatch(self, tag, data):
-        # dispatch data
-        try:
-            f = self.dispatch[tag]
-        except KeyError:
-            pass # unknown tag ?
-        else:
-            return f(self, data)
-
-    #
-    # element decoders
-
-    dispatch = {}
-
-    def end_boolean(self, data):
-        if data == "0":
-            self.append(False)
-        elif data == "1":
-            self.append(True)
-        else:
-            raise TypeError, "bad boolean value"
-        self._value = 0
-    dispatch["boolean"] = end_boolean
-
-    def end_int(self, data):
-        self.append(int(data))
-        self._value = 0
-    dispatch["i4"] = end_int
-    dispatch["int"] = end_int
-
-    def end_double(self, data):
-        self.append(float(data))
-        self._value = 0
-    dispatch["double"] = end_double
-
-    def end_string(self, data):
-        if self._encoding:
-            data = _decode(data, self._encoding)
-        self.append(_stringify(data))
-        self._value = 0
-    dispatch["string"] = end_string
-    dispatch["name"] = end_string # struct keys are always strings
-
-    def end_array(self, data):
-        mark = self._marks[-1]
-        del self._marks[-1]
-        # map arrays to Python lists
-        self._stack[mark:] = [self._stack[mark:]]
-        self._value = 0
-    dispatch["array"] = end_array
-
-    def end_struct(self, data):
-        mark = self._marks[-1]
-        del self._marks[-1]
-        # map structs to Python dictionaries
-        dict = {}
-        items = self._stack[mark:]
-        for i in range(0, len(items), 2):
-            dict[_stringify(items[i])] = items[i+1]
-        self._stack[mark:] = [dict]
-        self._value = 0
-    dispatch["struct"] = end_struct
-
-    def end_base64(self, data):
-        value = Binary()
-        value.decode(data)
-        self.append(value)
-        self._value = 0
-    dispatch["base64"] = end_base64
-
-    def end_dateTime(self, data):
-        value = DateTime()
-        value.decode(data)
-        self.append(value)
-    dispatch["dateTime.iso8601"] = end_dateTime
-
-    def end_value(self, data):
-        # if we stumble upon an value element with no internal
-        # elements, treat it as a string element
-        if self._value:
-            self.end_string(data)
-    dispatch["value"] = end_value
-
-    def end_params(self, data):
-        self._type = "params"
-    dispatch["params"] = end_params
-
-    def end_fault(self, data):
-        self._type = "fault"
-    dispatch["fault"] = end_fault
-
-    def end_methodName(self, data):
-        if self._encoding:
-            data = _decode(data, self._encoding)
-        self._methodname = data
-        self._type = "methodName" # no params
-    dispatch["methodName"] = end_methodName
-
-
 # --------------------------------------------------------------------
 # convenience functions
-
-def getparser():
-    """getparser() -> parser, unmarshaller
-
-    Create an instance of the fastest available parser, and attach it
-    to an unmarshalling object.  Return both objects.
-    """
-    if FastParser and FastUnmarshaller:
-        target = FastUnmarshaller(True, False, binary, datetime)
-        parser = FastParser(target)
-    else:
-        if have_ximian_unmarshaller:
-            def binary_cb(data):
-                b = Binary()
-                b.decode(data)
-                return b
-            def boolean_cb(value):
-                if value == "0":
-                    return False
-                elif value == "1":
-                    return True
-                else:
-                    raise TypeError, "bad boolean value"
-            def fault_cb(arg):
-                raise apply(Fault, (), arg)
-            target = ximian_unmarshaller.new(binary_cb, boolean_cb, fault_cb)
-        else:
-            target = Unmarshaller()
-            
-        if FastParser:
-            parser = FastParser(target)
-        elif SgmlopParser:
-            parser = SgmlopParser(target)
-        elif ExpatParser:
-            parser = ExpatParser(target)
-        else:
-            parser = SlowParser(target)
-    return parser, target
 
 def dumps(params, methodname=None, methodresponse=None, encoding=None):
     """data [,options] -> marshalled data
@@ -881,21 +562,6 @@ def dumps(params, methodname=None, methodresponse=None, encoding=None):
         return data # return as is
     return string.join(data, "")
 
-def loads(data):
-    """data -> unmarshalled data, method name
-
-    Convert an XML-RPC packet to unmarshalled data plus a method
-    name (None if not present).
-
-    If the XML-RPC packet represents a fault condition, this function
-    raises a Fault exception.
-    """
-    p, u = getparser()
-    p.feed(data)
-    p.close()
-    return u.close(), u.getmethodname()
-
-
 # --------------------------------------------------------------------
 # request dispatcher
 
@@ -958,10 +624,6 @@ class Transport:
         self.verbose = verbose
 
         return self.parse_response(h.getfile())
-
-    def getparser(self):
-        # get parser and unmarshaller
-        return getparser()
 
     def make_connection(self, host):
         # create a HTTP connection object from a host descriptor
@@ -1047,20 +709,33 @@ class Transport:
     def parse_response(self, f):
         # read response from input file, and parse it
 
-        p, u = self.getparser()
+        def binary_cb(data):
+            b = Binary()
+            b.decode(data)
+            return b
+        def boolean_cb(value):
+            if value == 0:
+                return False
+            elif value == 1:
+                return True
+            else:
+                raise TypeError, "bad boolean value"
+        def fault_cb(arg):
+            raise apply(Fault, (), arg)
 
+        unmarshaller = ximian_unmarshaller.new(binary_cb, boolean_cb, fault_cb)
         while 1:
             response = f.read(1024)
             if not response:
                 break
             if self.verbose:
                 print "body:", repr(response)
-            p.feed(response)
+            unmarshaller.feed(response, 0)
 
         f.close()
-        p.close()
+        unmarshaller.feed("", 1)
+        return unmarshaller.close()
 
-        return u.close()
 
 class SafeTransport(Transport):
     """Handles an HTTPS transaction to an XML-RPC server."""

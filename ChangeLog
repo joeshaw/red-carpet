@@ -1,3 +1,11 @@
+2003-03-31  Tambet Ingo  <tambet@ximian.com>
+
+	* ximian_unmarshaller/setup.py: Added build flags required
+	by new unmarshaller.
+
+	* ximian_unmarshaller/unmarshaller.c: New version. Includes
+	xml parser and unmarshaller now. FAST!
+
 2003-03-26  Carlos Perelló Marín <carlos@gnome.org>
 
 	* configure.in (ALL_LINGUAS): Added lots of translations from
