@@ -30,7 +30,11 @@ class SummaryComponent(red_component.Component):
     def pixbuf(self):
         return "summary"
 
-    def package_selected_cb(self, pkg):
+    def package_selected_cb(self, pkg, action):
+        if action != "install":
+            print "Expected an 'install' action, got '" + action + "'"
+            return
+        
         if pkg in self.transaction.install_packages:
             self.transaction.remove_install_package(pkg)
         else:
@@ -59,7 +63,8 @@ class SummaryComponent(red_component.Component):
         ex.set_exploder(by_importance=1)
         ex.set_array(self.array)
 
-        ex.connect("package_selected", lambda x,y:self.package_selected_cb(y))
+        ex.connect("package_selected",
+                   lambda x,y,z:self.package_selected_cb(y,z))
 
         self.display("main", ex)
 
