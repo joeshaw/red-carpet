@@ -1,6 +1,10 @@
+2004-03-30  Gustavo Maciel Dias Vieira  <gdvieira@zaz.com.br>
+
+	* configure.in: Added pt_BR to ALL_LINGUAS.
+
 2004-02-07  Robert Sedak  <robert.sedak@sk.htnet.hr>
- 
-         * configure.in: Added "hr" (Croatian) to ALL_LINGUAS.
+
+	* configure.in: Added "hr" (Croatian) to ALL_LINGUAS.
 
 2004-01-23  Joe Shaw  <joe@ximian.com>
 
