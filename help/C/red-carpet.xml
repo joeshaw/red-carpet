@@ -1,0 +1,399 @@
+<?xml version='1.0'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  
+<!ENTITY rcversion "2.0">
+<!ENTITY manversion "2.0">
+<!ENTITY pubdate "March, 2003">
+
+]>
+
+<article id="index" lang="en">
+ <articleinfo>
+    <title>Ximian Red Carpet</title>
+    <copyright>
+      <year>2000-2003</year>
+      <holder>Ximian Inc.</holder>
+    </copyright>    
+    <legalnotice id="legalnotice">     
+      <para>
+        Permission is granted to copy, distribute and/or modify this
+        document under the terms of the <ulink type="help"
+        url="gnome-help:fdl"><citetitle>GNU Free Documentation
+        License</citetitle></ulink>, Version 1.1 or any later version
+        published by the Free Software Foundation with no Invariant
+        Sections, no Front-Cover Texts, and no Back-Cover Texts. You
+        may obtain a copy of the <citetitle>GNU Free Documentation
+        License</citetitle> from the Free Software Foundation by
+        visiting <ulink type="http" url="http://www.fsf.org">their Web
+        site</ulink> or by writing to: Free Software Foundation, Inc.,
+        59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+      </para>
+      <para>
+        Many of the names used by companies to distinguish their
+        products and services are claimed as trademarks. Where those
+        names appear in any GNOME documentation, and those trademarks
+        are made aware to the members of the GNOME Documentation
+        Project, the names have been printed in caps or initial caps.
+      </para>
+    </legalnotice>
+    <releaseinfo>
+       This is version &manversion; of the guide to Ximian Red Carpet, describing Ximian Red
+       Carpet &rcversion;. It was last updated &pubdate;.
+    </releaseinfo>
+  </articleinfo>
+
+  <sect1 id="rc-intro">
+    <title>Introduction</title>
+    <para>
+       <application>Ximian Red Carpet</application> is a program designed to
+       help you manage the software you have on your computer. It can
+       help you install, update, and remove programs, without making you keep
+       track of dependencies and conflicts yourself.  It works with
+       the package management structures your operating systems
+       already has, so you can use it alongside command-line tools
+       without running into conflicts.
+    </para>
+    
+    <note id="whats-a-package">
+      <title>What is a Package?</title>
+      <para>
+        Software for most versions of Linux is shipped as a
+        <emphasis>package</emphasis> file, most commonly the 
+        <systemitem>rpm</systemitem> or <systemitem>deb</systemitem>
+        format. Each package contains a set of files that constitute
+        the software itself, plus additional information about what
+        the software is, what requirements it has, and where it should
+        be installed.  Proper packaging makes software easier to
+        install, upgrade, or remove, and can help manage the
+        interdependencies among various programs.
+      </para>
+      <para>
+        Ximian Red Carpet supports the <systemitem>rpm</systemitem>
+        (Red Hat Package Manager, used by most distributions) and the
+        <systemitem>deb</systemitem> (Debian) package formats.
+      </para>
+
+    </note>
+
+    <para>
+       <application>Ximian Red Carpet</application> also gives you
+       access to two important services from Ximian, Inc.  The first
+       service, Red Carpet Express, is for individuals, and offers
+       access to special high-speed servers with faster connections,
+       so you get better download rates.  The other service, Ximian
+       CorporateConnect, is aimed at businesses and workgroups that
+       want to manage software deployment on a relatively large scale.
+    </para>
+    <para>
+      To find out more about using Red Carpet Express, read <xref
+      linkend="rcx" />.  For more about Red Carpet Enterprise
+      visit the <ulink
+      url="http://ximian.com/products/red_carpet_enterprise">Ximian
+      website</ulink>.
+    </para>
+
+    <note id="note-requirements">
+      <title>Software Requirements</title>
+      <para>
+         <itemizedlist>
+	  <listitem>
+	    <para>
+            The <application>Ximian Red Carpet</application> update
+            and installation services require a network
+            connection. You can still use Ximian Red Carpet to remove
+            software or install local packages without using a network
+            connection. To install from a file, select
+            <menuchoice> <guimenu>File</guimenu> <guimenuitem>Install
+            Local Packages</guimenuitem>
+          </menuchoice>. For information on removing software, see
+          <xref linkend="rc-remove" />.
+          </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+             To install, update, or remove software, you must enter
+             your system's root password.  If you do not have root
+             privileges, you may only view the software installed on
+             your system.
+          </para>
+	  </listitem>
+	</itemizedlist>
+     </para>
+    </note>
+
+
+    <para>
+      A Red Carpet transaction works like this:
+      <orderedlist>
+        <listitem>
+          <para>
+            Select software you wish to install, update, or
+            remove.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click the <guibutton>Run</guibutton> button to start the
+            transactions.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Ximian Red Carpet will check to make sure it is possible
+            to perform the requested actions without installing or
+            removing other programs.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            If necessary, Ximian Red Carpet will offer to add or
+            remove additional software to satisfy requirements, giving
+            you an opportunity to approve or cancel the actions.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            When you approve, click <guibutton>Continue</guibutton>
+            and the actions will be performed.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      To start using <application>Ximian Red Carpet</application>, select
+      <menuchoice>
+      <guimenu>System</guimenu><guimenuitem>Software
+      Update</guimenuitem></menuchoice> from the menu panel, or type
+      <userinput>red-carpet</userinput> at the command line.
+    </para>
+  </sect1>
+
+
+  <sect1 id="rc-channels">
+    <title>Channels</title>
+  <para>
+    Ximian Red Carpet organizes software into channels, groups of
+    software sorted by origin or topic.  "Red Hat 8.0," "Ximian
+    Evolution Beta Snapshots," and "Ximian Desktop" are all channels.
+    You can subscribe to different channels based on your interest in
+    them. Software from channels to which you are not subscribed is
+    not updated or installed.
+  </para>
+
+  <para>
+    To subscribe to a channel, select    <menuchoice>
+      <guimenu>Edit</guimenu><guimenuitem>Channel Subscriptions</guimenuitem>
+    </menuchoice> or press the <guibutton>Channels</guibutton> button
+    in the toolbar. A window will open to show you the list of
+    available channels. Check the box next to a channel to subscribe.
+  </para>
+
+  </sect1>
+
+
+  <sect1 id="rc-update">
+    <title>Update</title>
+  <para>
+     When you start Ximian Red Carpet it will show you a list of
+     software packages that you can update. An update notice is only
+    shown for software that you already have installed, that is in a
+    channel to which you are subscribed, and for which there is a
+    newer version than what you already have. New software, and new
+    versions of software that you have but that is in a channel to
+    which you do not subscribe, is not part of the update screen.
+  </para>
+
+  <para>
+    If you do not see any updates, make sure that you are subscribed
+    to the right channels. See <xref linkend="rc-channels" /> to learn
+    how to adjust channel subscriptions.
+  </para>
+
+  <para>
+    To perform a simple update of your already installed software:
+
+    <orderedlist>
+      <listitem>
+        <para>
+          Select all the items in your update list by clicking on them
+          one by one or choosing <menuchoice> <guimenu>Edit</guimenu>
+          <guimenuitem>Select All</guimenuitem></menuchoice>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Mark the packages for installation by clicking the
+          <guibutton>Mark for Installation</guibutton> button.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Click the <guibutton>Run Now</guibutton> button to have Ximian
+          Red Carpet perform the updates.
+        </para>
+      </listitem>
+    </orderedlist>
+  </para>
+
+  <para>
+    You may also select individual packages for upgrade. 
+  </para>
+
+
+  </sect1>
+
+  <sect1 id="rc-install">
+    <title>Install</title>
+    <para>
+      To install new software,  click the <guibutton>FIXME</guibutton>
+      button. This will <emphasis>not</emphasis> display a list of all
+      available software, because that list would be far too long.  You
+      must first search for the software you want to see. If you really
+      wish to see every available piece of software, enter a blank search
+      in the search box. It will take a while to display, however. 
+    </para>
+    <para>
+      To search for software, select one or more criteria: type of
+      software, channel, a few letters in the software's name or
+      description, and so forth, and then press the
+      <guibutton>Search</guibutton> button. Each package is 
+      displayed with six columns of information:
+     
+      <variablelist>
+
+        <varlistentry>
+          <term>Action</term>
+          <listitem>
+            <para>
+              The action you are performing for this package. This
+              entry will be blank if you have not selected an action
+              for the package. If you have selected an action, it will
+              have an installation or removal icon. You can click on
+              the blank space to perform an action (install a package
+              if it is not installed, remove a packave if it is
+              installed), or click on the icon to cancel the action.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Status</term>
+          <listitem>
+            <para>
+              The first column displays the package status. In addition to
+              <guilabel>installed</guilabel> and <guilabel>not
+              installed</guilabel>, package status may be
+              <guilabel>older</guilabel>, meaning that the package
+              displayed here is an older version than one you have
+              installed or <guilabel>newer</guilabel>, meaning that
+              the package here is newer than your version.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Channel</term>
+          <listitem>
+            <para>
+              The name of the channel in which this package is shipped.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Lock</term>
+          <listitem>
+            <para>
+              The column with the lock icon indicates whether the
+              package is cryptographically signed.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Package</term>
+          <listitem>
+            <para>
+              The name of the software package.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Version</term>
+          <listitem>
+            <para>
+              The version number of the package.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+
+    <para>
+      When you see an item you would like to install, click on it
+      once to select it, then click the <guibutton>Mark For
+    Installation</guibutton> button.  The package installation will be
+    added to the list of transactions displayed on the left of the
+    window.
+    </para>
+    <para>
+      To remove an item from the list of pending transactions, select
+      it and click <guibutton>Cancel</guibutton> or right-click on it and
+      select <guimenuitem>Cancel</guimenuitem>.
+    </para>
+
+    <para>
+      Proceed to choose other software you would like to install or
+      remove. When you are done choosing software, click the
+      <guibutton>Run Now</guibutton> button in the toolbar at the top
+      of the window.
+    </para>
+  </sect1>
+
+  <sect1 id="rc-remove">
+    <title>Remove</title>
+    <para>
+      To remove software, click the <guibutton>FIXME</guibutton>
+      button. This will display a list of all software installed on your
+      system. You can narrow your list by selecting criteria from the
+      search toolbar. 
+    </para>
+    <para>
+      When you see an item you would like to remove, click on it
+      once to select it, then click the <guibutton>Mark For
+      Removal</guibutton> button.  The package removal will be added
+      to the list of transactions displayed on the left of the window.
+    </para>  
+  
+    <para>
+      To remove an item from the list of pending transactions, select
+      it and click <guibutton>Cancel</guibutton> or right-click on it and
+      select <guimenuitem>Cancel</guimenuitem>.
+    </para>
+
+    <para>
+      Proceed to choose other software you would like to install or
+      remove. When you are done choosing software, click the
+      <guibutton>Run Now</guibutton> button in the toolbar at the top
+      of the window.
+    </para>
+
+  </sect1>
+
+
+  <sect1 id="rcx">
+    <title>Red Carpet Express</title>
+    <para>
+      Red Carpet Express is a high-speed, exclusive service that
+      provides you with additional software. You should sign up for it
+      today. FIXME: instructions go here.
+    </para>
+
+  </sect1>
+
+
+</article>

@@ -1,3 +1,19 @@
+2003-03-24  Aaron Weber  <aaron@ximian.com>
+
+	* help/C/red-carpet.xml: Somewhat incomplete draft.
+	
+	* help/C/red-carpet.xml: 
+
+	* help: new dir
+	* help/C: new dir.
+
+	* help/Makefile.am: new file
+	* help/xmldocs.make: new file
+	* COPYING-DOCS: new file (FDL)
+	
+	* help/C/red-carpet.xml: new file.
+	* help/C/red-carpet-C.omf: new file.
+
 2003-03-14  Joe Shaw  <joe@ximian.com>
 
 	* art/menu-about.png: Copy the gnome stock about icon so we can
