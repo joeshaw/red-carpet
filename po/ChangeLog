@@ -1,4 +1,4 @@
-2004-07-07  Est�v�o Samuel Proc�pio  <tevaum@ig.com.br>
+2004-07-07  Estêvão Samuel Procópio  <tevaum@ig.com.br>
 
 	* pt_BR.po: Updated Brazilian Portuguese translation.
 
@@ -153,7 +153,7 @@
 
 	* sv.po: Updated Swedish translation.
 
-2003-10-22  Danilo Šegan  <dsegan@gmx.net>
+2003-10-22  Danilo Å egan  <dsegan@gmx.net>
 
 	* sr.po, sr@Latn.po: Updated Serbian translation.
 
@@ -179,7 +179,7 @@
 
 	* pt.po: Updated Portuguese translation.
 
-2003-09-26  Danilo Šegan  <dsegan@gmx.net>
+2003-09-26  Danilo Å egan  <dsegan@gmx.net>
 
 	* sr.po, sr@Latn.po: Updated Serbian translation.
 
@@ -208,7 +208,7 @@
 
 	* sv.po: Updated Swedish translation.
 
-2003-09-06  Danilo Šegan  <dsegan@gmx.net>
+2003-09-06  Danilo Å egan  <dsegan@gmx.net>
 
 	* mk.po: Fixed "%.1%%" with "%.1f%%".
 
@@ -222,7 +222,7 @@
 
 	* nl.po: Dutch translation updated by Kees van den Broek.
 
-2003-08-25  Danilo Šegan  <dsegan@gmx.net>
+2003-08-25  Danilo Å egan  <dsegan@gmx.net>
 
 	* sr.po, sr@Latn.po: Updated Serbian translation.
 
@@ -230,7 +230,7 @@
 
 	* no.po: Update Norwegian translation.
 
-2003-08-15  Danilo Šegan  <dsegan@gmx.net>
+2003-08-15  Danilo Å egan  <dsegan@gmx.net>
 
 	* sr.po, sr@Latn.po: Added Serbian translation by Serbian
 	team (Prevod.org).
@@ -328,7 +328,7 @@
 
         * pt.po: Updated Portuguese translation.
 
-2003-05-21  Tõivo Leedjärv  <toivo@linux.ee>
+2003-05-21  TÃµivo LeedjÃ€rv  <toivo@linux.ee>
 
 	* et.po: Updated Estonian translation.
 
@@ -355,7 +355,7 @@
 
 2003-05-04  Joe Shaw  <joe@ximian.com>
 
-	* fr.po: Updated French translation from Stéphane
+	* fr.po: Updated French translation from StÃ©phane
 	Raimbault <raimbault.stephane@free.fr> 
 
 2003-04-29  Christian Rose  <menthos@menthos.com>
@@ -433,7 +433,7 @@
 
 	* sv.po: Updated Swedish translation.
 
-2003-03-26  Carlos Perelló Marín <carlos@gnome.org>
+2003-03-26  Carlos PerellÃ³ MarÃ­n <carlos@gnome.org>
 
 	* *.po: Added and merge all .po files from old red-carpet release.
 
