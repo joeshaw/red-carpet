@@ -74,7 +74,7 @@ class TransactionBar(gtk.HBox,
                             (rem_count,
                              (rem_count > 1 and "s") or ""))
                 
-        msg = string.join(msg_list, ", ")
+        msg = string.join(msg_list, ",\n")
         self.label.set_text(msg or TransactionBar.no_action_str)
 
     def pendingops_changed(self, pkg, key, value, old_value):

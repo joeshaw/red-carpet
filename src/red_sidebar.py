@@ -20,7 +20,7 @@ import math
 
 import red_transaction
 import red_pixbuf
-
+import red_pendingops
 
 class SideBar(gtk.VBox):
 
@@ -29,6 +29,12 @@ class SideBar(gtk.VBox):
         self.set_border_width(6)
 
         self.build()
+
+    def change_visibility(self):
+        if self.get_property("visible"):
+            self.hide()
+        else:
+            self.show()
 
     def build(self):
         self.shortcut_bar = ShortcutBar()
@@ -48,18 +54,20 @@ class SideBar(gtk.VBox):
         bbox = gtk.HButtonBox()
         bbox.set_spacing(6)
 
-        self.run = gtk.Button()
-        align = gtk.Alignment(0.5, 0.5, 0, 0)
-        self.run.add(align)
-        box = gtk.HBox(0, 2)
-        image = red_pixbuf.get_widget("progress-config",
-                                      width=24, height=24)
-        box.pack_start(image, 0, 0)
-        box.pack_start(gtk.Label("Run"), 0, 0)
-        align.add(box)
+        ## Run button
+        self.run = RunButton()
         bbox.add(self.run)
 
-        self.details = gtk.Button("Details")
+        ## Details Button
+        self.details = gtk.Button()
+        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        self.details.add(align)
+        box = gtk.HBox(0, 2)
+        image = red_pixbuf.get_widget("pending-transactions",
+                                      width=24, height=24)
+        box.pack_start(image, 0, 0)
+        box.pack_start(gtk.Label("Details"), 0, 0)
+        align.add(box)
         bbox.add(self.details)
 
         self.pack_start(bbox, 0, 1)
@@ -69,6 +77,9 @@ class SideBar(gtk.VBox):
 
     def get_run_button(self):
         return self.run
+
+    def sensitize_run_button(self, en):
+        self.run.set_sensitive(en)
 
     def get_details_button(self):
         return self.details
@@ -152,3 +163,28 @@ class ShortcutBar(gtk.HBox):
 
         self.pack_start(table)
         table.show_all()
+
+
+class RunButton(gtk.Button,
+                red_pendingops.PendingOpsListener):
+
+    def __init__(self):
+        gtk.Button.__init__(self)
+        red_pendingops.PendingOpsListener.__init__(self)
+
+        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        self.add(align)
+        box = gtk.HBox(0, 2)
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_BUTTON)
+        box.pack_start(image, 0, 0)
+        box.pack_start(gtk.Label("Run"), 0, 0)
+        align.add(box)
+
+    def pendingops_changed(self, pkg, key, value, old_value):
+        if key == "action":
+            if red_pendingops.pending_install_count() + \
+               red_pendingops.pending_remove_count() < 1:
+                self.set_sensitive(0)
+            else:
+                self.set_sensitive(1)

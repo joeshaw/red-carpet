@@ -204,10 +204,12 @@ class DepComponent(red_component.Component):
                 self.table.add_package(p, removal)                
 
     def activated(self):
-        self.parent().sensitize_go_button(0)
+        sidebar = self.parent().sidebar
+        sidebar.sensitize_run_button(0)
 
     def deactivated(self):
+        sidebar = self.parent().sidebar
         if red_pendingops.packages_with_actions():
-            self.parent().sensitize_go_button(1)
+            sidebar.sensitize_run_button(1)
         else:
-            self.parent().sensitize_go_button(0)
+            sidebar.sensitize_run_button(0)

@@ -97,6 +97,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.accel_group = gtk.AccelGroup()
         self.add_accel_group(self.accel_group)
 
+        self.set_icon(red_pixbuf.get_pixbuf("red-carpet"))
+
         self.menubar = red_menubar.MenuBar(self.accel_group)
         self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
@@ -120,15 +122,15 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.sidebar = red_sidebar.SideBar()
         self.shortcut_bar = self.sidebar.get_shortcut_bar()
 
-        self.go_button = self.sidebar.get_run_button()
-        self.go_button.connect("clicked", lambda x,y:run_transaction_cb(y), self)
-        self.sensitize_go_button(0)
+        #  Connect sidebar's buttons later
+        # (when the components are registered)
+        gtk.idle_add(self.connect_sidebar_buttons, self.sidebar)
 
         hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
         main_box = gtk.VBox(0, 6)
         main_box.set_border_width(6)
-        hpaned.pack2(main_box, resize=1, shrink=0)
+        hpaned.pack2(main_box, resize=1, shrink=1)
 
         ## Toolbar
         toolbar_box = gtk.HBox(0, 0)
@@ -142,7 +144,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         icon_size = self.toolbar.get_icon_size()
         width, height = gtk.icon_size_lookup(icon_size)
         toolbar_box.pack_end(self.create_throbber(width, height),
-                                  0, 0)
+                             0, 0)
 
         main_box.pack_start(self.container, expand=1, fill=1)
         hpaned.show_all()
@@ -151,6 +153,23 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(self.statusbar, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+    def connect_sidebar_buttons(self, bar):
+        ## Run button
+        run = bar.get_run_button()
+        run.connect("clicked", lambda x,y:run_transaction_cb(y), self)
+        bar.sensitize_run_button(0)
+
+        ## Details button
+        details = bar.get_details_button()
+        for comp in self.components:
+            if isinstance(comp, red_transaction.TransactionComponent):
+                details.connect("clicked",
+                                lambda x,y:self.activate_component(y), comp)
+                details.set_sensitive(1)
+                return
+
+        details.set_sensitive(0)
 
     def create_throbber(self, height, width):
         self.throbber = red_throbber.Throbber(height, width)
@@ -268,6 +287,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         
         bar.info = bar.add(text="Info",
                            tooltip="Package Information",
+                           pixbuf=red_pixbuf.get_pixbuf("info", width=16, height=16),
                            sensitive_fn=lambda x:info_sensitive_cb(self),
                            callback=lambda x:info_cb(self))
 
@@ -438,10 +458,22 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/Edit/Users...",
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
+        ## Sidebar
+        def checked_get_cb():
+            return self.sidebar.get_property("visible")
+        def checked_set_cb(flag):
+            self.sidebar.change_visibility()
+
+        self.menubar.add("/View/Sidebar",
+                         checked_get=checked_get_cb,
+                         checked_set=checked_set_cb)
+
+        bar.add("/View/sep", is_separator=1)
+
         bar.add("/View/Server Information...",
                 callback=red_serverinfo.view_server_info_cb)
-        bar.add("/View/sep", is_separator=1)
-        
+        bar.add("/View/sep1", is_separator=1)
+
         bar.add("/Help/About...",
                 callback=lambda x:red_about.About().show())
 
@@ -474,9 +506,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 checked_get=throb_checked_get,
                 checked_set=throb_checked_set)
 
-
-    def sensitize_go_button(self, en):
-        self.go_button.set_sensitive(en)
 
     def register_component(self, comp):
 
@@ -520,8 +549,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         if old_comp and old_comp.is_busy():
             self.busy_stop()
 
-        # Clear the status bar
+        # Clear the status bar, update toolbar
         self.statusbar.pop(0)
+        self.toolbar.sensitize_toolbar_items()
 
         # Show the new component, hide the old one.
         comp.visible(1)

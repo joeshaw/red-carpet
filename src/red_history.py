@@ -177,7 +177,7 @@ class HistoryComponent(red_component.Component):
         return "Browse Package History"
 
     def pixbuf(self):
-        return "featured"
+        return "history"
 
     def show_in_shortcuts(self):
         return 1

@@ -1,3 +1,30 @@
+2003-02-06  Tambet Ingo  <tambet@ximian.com>
+
+	* red_history.py (HistoryComponent.pixbuf): Updated icon.
+
+	* red_transaction.py (TransactionBar.update_label): Add a
+	newline if there are both installs and removals. Otherwise it
+	got too long.
+
+	* red_sidebar.py (SideBar.change_visibility): Implement
+
+	* red_appwindow.py (AppWindow.connect_sidebar_buttons): Connect
+	sidebar's buttons here.
+	(AppWindow.activate_component): Update toolbar items.
+	(AppWindow.info_cb): Add pixbuf to "info" toolbar item.
+	(AppWindow.__init__): Allow shrinking for 2nd pane. Otherwise,
+	if main window is not big enough, both sides will fight for
+	their part. Set icon for appwindow.
+	(AppWindow.assemble_menubar): Added
+	View/Hide sidebar.
+
+	* red_sidebar.py (RunButton): New class for sidebar's "Run"
+	button. It is subclass of PendingOpsListener so it can
+	sensitize itself correctly.
+	(SideBar.sensitize_run_button): Convenient function, moved here
+	from red_appwindow.py.
+	(SideBar.build): Use new icons for buttons.
+
 2003-02-05  Joe Shaw  <joe@ximian.com>
 
 	* red_channeloption.py (get_channel): We could get a -1 from
