@@ -9,4 +9,4 @@ ximian_unmarshaller.so: setup.py unmarshaller.c
 	$(PYTHON) ./setup.py build
 	mv build/lib.*/ximian_unmarshaller.so .
 
-EXTRA_DIST = $(unmarshaller_DATA) setup.py unmarshaller.c
+EXTRA_DIST = setup.py unmarshaller.c

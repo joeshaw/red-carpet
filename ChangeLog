@@ -1,3 +1,8 @@
+2003-03-31  Frank Belew  <frb@ximian.com>
+
+	* ximian_unmarshaller/Makefile.am: don't distribute binary .so of
+	unmarshaller
+
 2003-03-31  Tambet Ingo  <tambet@ximian.com>
 
 	* ximian_unmarshaller/setup.py: Added build flags required
