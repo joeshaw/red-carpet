@@ -384,7 +384,7 @@
                 removing it.  If you have selected an action, it will
                 have an installation or removal icon. You can click on
                 the blank space to perform an action (install a package
-                if it is not installed, remove a packave if it is
+                if it is not installed, remove a package if it is
                 installed), or click on the icon to cancel the action.
               </para>
             </listitem>
@@ -623,7 +623,7 @@
               <listitem>
                 <para>
                   The type of software you are looking for, such as
-                  <guilabel>Productivit</guilabel> or
+                  <guilabel>Productivity</guilabel> or
                   <guilabel>Imaging</guilabel>.The default is to search in
                   all sections.
                 </para>
@@ -935,7 +935,7 @@
                <term>Require Package Signatures</term>
                <listitem>
                  <para>
-                   Ximian ships software with a cryprographic
+                   Ximian ships software with a cryptographic
                    signature. Unless you absolutely trust your server
                    (for example, you are using Red Carpet Enterprise)
                    you should leave this setting on for security.
