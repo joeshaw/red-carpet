@@ -1,3 +1,8 @@
+2003-09-05  Joe Shaw  <joe@ximian.com>
+
+	* red_connection.py (connect_real): Check the protocol version and
+	pop up an error dialog if it doesn't match.
+
 2003-08-07  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (get_channel_icon): import gobject and put the

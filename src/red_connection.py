@@ -30,6 +30,14 @@ import red_pixbuf
 import red_settings
 from red_gettext import _
 
+# Required rcd versions
+required_major_version = 1
+required_minor_version = 4
+required_micro_version = 1
+
+# Required protocol version
+required_protocol_version = 1
+
 class IncorrectVersionError(exceptions.Exception):
     def __init__(self, args=None):
         self.args = args
@@ -45,22 +53,23 @@ def show_error_message(msg, parent=None):
     dialog.destroy()
 
 def check_rcd_version(major, minor, micro):
-    req_major = 1
-    req_minor = 4
-    req_micro = 1
-
     # Guard for NoneType
     major = major or 0
     minor = minor or 0
     micro = micro or 0
 
-    req_version = (req_major * 100) + (req_minor * 10) + req_micro
+    req_version = (required_major_version * 100) + \
+                  (required_minor_version * 10) + \
+                  required_micro_version
     version = (major * 100) + (minor * 10) + micro
 
     if version < req_version:
         raise IncorrectVersionError, _("Detected Red Carpet Daemon version %d.%d.%d.\n"
                                        "Version %d.%d.%d (or newer) is required") % \
-                                       (major, minor, micro, req_major, req_minor, req_micro)
+                                       (major, minor, micro,
+                                        required_major_version,
+                                        required_minor_version,
+                                        required_micro_version)
 
     return 1
 
@@ -71,6 +80,21 @@ def connect_real(uri, user=None, password=None):
                                      auth_username=user,
                                      auth_password=password,
                                      verbose=transport_debug)
+
+    try:
+        protocol_version = server.rcd.system.protocol_version()
+    except ximian_xmlrpclib.Fault,f :
+        if f.faultCode == rcd_util.fault.undefined_method:
+            protocol_version = 1 # Assume protocol v1 if method not present.
+        else:
+            raise
+
+    if protocol_version != required_protocol_version:
+        raise IncorrectVersionError, _("Detected protocol version %d.  "
+                                       "Version %d is required.  "
+                                       "You must update your version of "
+                                       "rcd.") % (protocol_version,
+                                                  required_protocol_version)
 
     ping = server.rcd.system.ping()
     check_rcd_version(ping.get("major_version"),
