@@ -1,3 +1,15 @@
+2003-03-26  Tambet Ingo  <tambet@ximian.com>
+
+	* red_thrashingtreeview.py (TreeView.add_column): Added a new
+	optional argument 'resizable' which defaults to true. If it's
+	set, set column resizable. Fixes #40246.
+
+	* red_packageview.py (PackageView.append_action_column): Don't
+	set resizable here.
+	(PackageView.append_name_column): Ditto.
+	(PackageView.append_version_column): Ditto.
+	(PackageView.append_current_version_column): Ditto.
+
 2003-03-25  Joe Shaw  <joe@ximian.com>
 
 	* red_packagearray.py (PackagesFromDaemon): Add channels_changed

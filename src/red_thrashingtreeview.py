@@ -116,7 +116,8 @@ class TreeView(gtk.TreeView):
                    sort_id=None,
                    title=None,
                    widget=None,
-                   initially_visible=0):
+                   initially_visible=0,
+                   resizable=1):
 
         if not title and not widget:
             title = _("Untitled")
@@ -136,6 +137,9 @@ class TreeView(gtk.TreeView):
         if widget:
             column.set_widget(widget)
             column.set_alignment(0.5)
+
+        if resizable:
+            column.set_resizable(1)
 
         column.set_visible(initially_visible)
         self.append_column(column)

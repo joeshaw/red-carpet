@@ -337,7 +337,6 @@ class PackageView(red_thrashingtreeview.TreeView):
             col.pack_start(render_text, 0)
             col.set_attributes(render_text,
                                markup=red_packagearray.COLUMN_ACTION)
-            col.set_resizable(1)
 
         self.add_column(col,
                         title=column_title,
@@ -425,7 +424,6 @@ class PackageView(red_thrashingtreeview.TreeView):
         render_text = gtk.CellRendererText()
         col.pack_start(render_text, 1)
         col.set_attributes(render_text, text=red_packagearray.COLUMN_NAME)
-        col.set_resizable(1)
 
         self.add_column(col,
                         title=column_title,
@@ -438,7 +436,6 @@ class PackageView(red_thrashingtreeview.TreeView):
         col = gtk.TreeViewColumn(column_title,
                                  gtk.CellRendererText(),
                                  text=red_packagearray.COLUMN_EVR)
-        col.set_resizable(1)
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
@@ -449,7 +446,6 @@ class PackageView(red_thrashingtreeview.TreeView):
         col = gtk.TreeViewColumn(column_title,
                                  gtk.CellRendererText(),
                                  text=red_packagearray.COLUMN_OLD_EVR)
-        col.set_resizable(1)
         self.add_column(col,
                         title=column_title,
                         initially_visible=1,
