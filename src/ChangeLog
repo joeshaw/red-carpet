@@ -1,3 +1,8 @@
+2003-03-06  Tambet Ingo  <tambet@ximian.com>
+
+	* red_history.py (HistoryView.build): Moved "Time" column from last to
+	first.
+
 2003-03-05  Jon Trowbridge  <trow@ximian.com>
 
 	* Makefile.am (red_carpetsupport_DATA): Add red_my_computer.py.

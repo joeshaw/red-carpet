@@ -298,12 +298,13 @@ class HistoryView(gtk.ScrolledWindow):
         view.set_rules_hint(1)
         self.view = view
 
-        cols = [(_("Action"),      COLUMN_ACTION),
+        cols = [(_("Time"),        COLUMN_TIME),
+                (_("Action"),      COLUMN_ACTION),
                 (_("User"),        COLUMN_USER),
                 (_("Package"),     COLUMN_PKG),
                 (_("Old Version"), COLUMN_PKG_INITIAL),
                 (_("New Version"), COLUMN_PKG_FINAL),
-                (_("Time"),        COLUMN_TIME)]
+                ]
 
         for title, id in cols:
             col = gtk.TreeViewColumn(title,
