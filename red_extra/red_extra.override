@@ -1,0 +1,16 @@
+/* -*- Mode: C; c-basic-offset: 4 -*- */
+%%
+headers
+#include <Python.h>
+
+#include "pygobject.h"
+#include "redlistmodel.h"
+%%
+modulename red_extra
+%%
+import gobject.GObject as PyGObject_Type
+import gtk.TreeModel as PyGtkTreeModel_Type
+%%
+ignore-glob
+  *_get_type
+%%

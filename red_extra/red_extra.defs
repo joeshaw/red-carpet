@@ -1,0 +1,37 @@
+
+(define-object ListModel
+  (in-module "red_extra")
+  (parent "GObject")
+  (c-name "RedListModel")
+  (gtype-id "RED_TYPE_LIST_MODEL")
+  (implements "GtkTreeModel"))
+
+(define-function red_list_model_get_type
+  (c-name "red_list_model_get_type")
+  (return-type "GType")
+)
+
+(define-function red_list_model_new
+  (c-name "red_list_model_new")
+  (is-constructor-of RedListModel)
+  (return-type "RedListModel *")
+)
+
+(define-method set_list
+  (of-object "RedListModel")
+  (c-name "red_list_model_set_list")
+  (return-type "none")
+  (parameters
+   '("PyObject*" "pylist")
+   )
+)
+
+(define-method add_column
+  (of-object "RedListModel")
+  (c-name "red_list_model_add_column")
+  (return-type "none")
+  (parameters
+   '("PyObject*" "pylist")
+   '("GType"     "type")
+  )
+)
