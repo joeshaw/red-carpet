@@ -27,8 +27,6 @@ import red_thrashingtreeview
 
 from red_gettext import _
 
-model = None
-
 
 class HistoryFilter(gobject.GObject):
     def __init__(self):
@@ -366,12 +364,24 @@ class HistoryComponent(red_component.Component):
         model = HistoryModel()
         self.connect_array(model)
         search_bar.connect("updated", lambda x,q,m:m.refresh(q), model)
+        self.filter = search_bar
 
         view = HistoryView(model)
         page.add(view)
 
         page.show_all()
         return page
+
+    def activated(self):
+        parent = self.parent()
+        try:
+            update = parent.history_changed
+        except AttributeError:
+            pass
+        else:
+            if update:
+                parent.history_changed = None
+                self.filter.updated()
 
 class PackageHistoryFilter(HistoryFilter):
     def __init__(self, pkg_name):

@@ -1,3 +1,11 @@
+2003-03-05  Tambet Ingo  <tambet@ximian.com>
+
+	* red_depcomponent.py (DepComponent.finished_cb): Save temporary
+	variable to let history view know it should update itself.
+
+	* red_history.py: Remove unused global model.
+	(HistoryComponent.activated): Check if we have to update. Fixes #38920.
+
 2003-03-04  Jose Mercado  <jose@ximian.com>
 
 	* rcd_util.py (StartDaemon): Use /etc/init.d/rcd, which will

@@ -145,8 +145,13 @@ class DepComponent(gobject.GObject, red_component.Component):
         self.__scratch = trans_win
 
         def finished_cb(win, comp):
+            # a hack to let history component know we are updated.
+            app = comp.parent()
+            app.history_changed = 1
+
             comp.busy(0)
             comp.pop()
+
         trans_win.connect("finished", finished_cb, self)
 
     def build_dep_error_page(self):
