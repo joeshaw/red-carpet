@@ -1,11 +1,11 @@
 # Translation of red-carpet to Croatian
 # Copyright (C) Croatian team
-# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,
+# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Jerko Škifić <skific@riteh.hr>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,Željko Brajdić <zorz@iskon.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 0\n"
 "POT-Creation-Date: 2003-11-06 18:13+0100\n"
-"PO-Revision-Date: 2003-11-10 18:59+CET\n"
+"PO-Revision-Date: 2003-12-30 18:34+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -644,7 +644,7 @@ msgstr ""
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s nije ispravan paket"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
@@ -735,7 +735,7 @@ msgstr ""
 #: src/red_news.py:174
 #, python-format
 msgid "%s News"
-msgstr ""
+msgstr "%s Novosti"
 
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
@@ -791,11 +791,11 @@ msgstr "Postavljeno"
 
 #: src/red_packagearray.py:93
 msgid "newer"
-msgstr ""
+msgstr "noviji"
 
 #: src/red_packagearray.py:95
 msgid "older"
-msgstr ""
+msgstr "starije"
 
 #: src/red_packagearray.py:97
 #, fuzzy
@@ -1047,7 +1047,7 @@ msgstr ""
 
 #: src/red_prefs.py:520
 msgid "%s Preferences"
-msgstr ""
+msgstr "%s Postavke"
 
 #: src/red_searchbox.py:146
 msgid "All Packages"
@@ -1192,7 +1192,7 @@ msgstr ""
 
 #: src/red_services.py:117
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/red_services.py:133
 msgid "_Remove service"
@@ -1204,7 +1204,7 @@ msgstr ""
 
 #: src/red_services.py:226
 msgid "Add Service"
-msgstr ""
+msgstr "Dodaj servis"
 
 #: src/red_services.py:231
 msgid "Service URL"
