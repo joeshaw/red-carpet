@@ -11,7 +11,7 @@
 	(PrefsViewPage_General.build): Don't show proxy settings if the
 	user isn't superuser.
 	(PrefsViewPage_Cache): Display the current cache size and allow
-	the user to flush it, if they have permission to.
+	the user to flush it, if they have permission to. (#39942)
 
 2003-03-19  Jon Trowbridge  <trow@ximian.com>
 
