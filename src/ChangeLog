@@ -1,5 +1,8 @@
 2003-02-24  Tambet Ingo  <tambet@ximian.com>
 
+	* red_serverinfo.py (dump_finished_cb): Removed use of "app" variable
+	which was not defined.
+
 	* red_search.py (SearchComponent.build): Set spacing.
 
 	* red_searchbar.py (SearchBar.__init__): Ditto.

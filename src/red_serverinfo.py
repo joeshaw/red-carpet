@@ -111,8 +111,7 @@ def dump_xml(filename):
     worker = server.rcd.packsys.dump()
     rcd_util.server_proxy_dialog(worker,
                                  callback=dump_finished_cb,
-                                 user_data=f,
-                                 parent=app)
+                                 user_data=f)
 
 
 def select_and_dump(parent):
