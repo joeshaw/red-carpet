@@ -104,9 +104,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
 
-        icon_size = self.toolbar.get_icon_size()
-        width, height = gtk.icon_size_lookup(icon_size)
-        self.throbber = red_throbber.Throbber(width, height)
+        # FIXME: Tambet will fix this tomorrow :)
+##        icon_size = self.toolbar.get_icon_size()
+##        width, height = gtk.icon_size_lookup(icon_size)
+        self.throbber = red_throbber.Throbber(24, 24)
 
         # A box to put component widgets in.  We use an EventBox
         # instead of just a [HV]Box so that we can control the
