@@ -185,12 +185,13 @@ class ServerListener:
         if self.__freeze_count > 0:
             self.__freeze_count -= 1
             if self.__freeze_count == 0:
+                server = rcd_util.get_server()
                 if self.__missed_package_changes > 0:
-                    self.process_package_changes()
+                    self.process_package_changes(server)
                 if self.__missed_channel_changes > 0:
-                    self.process_channel_changes()
+                    self.process_channel_changes(server)
                 if self.__missed_subscription_changes > 0:
-                    self.process_subscription_changes()
+                    self.process_subscription_changes(server)
 
     # Any ServerListener has to be shut down when it isn't going to be used
     # again, or otherwise it will never get GCed.  (A reference to it

@@ -16,7 +16,6 @@
 ###
 
 import gobject, gtk
-import red_packagemodel
 
 class PackageView(gtk.TreeView):
 

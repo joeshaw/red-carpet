@@ -25,6 +25,9 @@ import red_serverlistener
 ### Callbacks for our ListModel
 ###
 
+def pkg(pkg):
+    return pkg
+
 def pkg_name(pkg):
     return pkg["name"]
 
@@ -68,6 +71,7 @@ def pkg_cmp(a,b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
 COLUMNS = (
+    ("PKG",               pkg,                   gobject.TYPE_PYOBJECT),
     ("NAME",              pkg_name,              gobject.TYPE_STRING),
     ("EVR",               pkg_EVR,               gobject.TYPE_STRING),
     ("SIZE",              pkg_size,              gobject.TYPE_STRING),
