@@ -22,7 +22,7 @@ import gtk
 import gobject
 
 import rcd_util
-import red_extra
+import red_listmodel
 import red_serverlistener
 import red_thrashingtreeview
 
@@ -87,37 +87,22 @@ for i in range(len(COLUMNS)):
 def sort_channels_by_name(a,b):
     return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
-class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
+class ChannelModel(red_listmodel.ListModel, red_serverlistener.ServerListener):
 
-    def __init__(self, sort_fn=None, filter_fn=None):
-        gobject.GObject.__init__(self)
+    def __init__(self, sort_fn=sort_channels_by_name, filter_fn=None):
+        red_listmodel.ListModel.__init__(self, sort_fn, filter_fn)
         red_serverlistener.ServerListener.__init__(self)
-        self.__pending_changes = []
-        self.__sort_fn = sort_fn
-        if sort_fn is None:
-            self.__sort_fn = sort_channels_by_name
-        self.__reverse_sort = 0
-        self.__filter_fn = filter_fn
-        self.__channels = rcd_util.get_all_channels()
 
-        self.set_list(self.__channels)
-        self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
-        self.set_filter_magic(self.__filter_fn)
+        self.__channels = rcd_util.get_all_channels()
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
 
-    ###
-    ### red_extra.ListModel implementation
-    ###
+        self.refresh()
 
-    def len(self):
-        all = self.get_all()
-        return len(all)
-
-    def get(self, i):
-        all = self.get_all()
-        return all[i]
+    ###
+    ### red_listmodel.ListModel implementation
+    ###
 
     def get_all(self):
         return self.__channels
@@ -148,19 +133,6 @@ class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
     ### Other methods
     ###
 
-    def do_changed(self):
-        operator, args = self.__pending_changes.pop()
-        if operator:
-            apply(operator, (self,) + args)
-
-            self.set_list(self.get_all())
-            self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
-            self.set_filter_magic(self.__filter_fn)
-            
-    def changed(self, operator, *args):
-        self.__pending_changes.append((operator, args))
-        self.emit("changed")
-
     def toggle_subscribed(self, channel):
         def set_subscribed_fn(model, ch, flag):
             server = rcd_util.get_server()
@@ -173,15 +145,6 @@ class ChannelModel(red_extra.ListModel, red_serverlistener.ServerListener):
                 server.rcd.packsys.unsubscribe(ch["id"])
 
         self.changed(set_subscribed_fn, channel, not channel["subscribed"])
-
-gobject.type_register(ChannelModel)
-
-gobject.signal_new("changed",
-                   ChannelModel,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   ())
-
 
 def make_channel_view(model):
 

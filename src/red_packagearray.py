@@ -18,7 +18,7 @@
 import sys, string, time, traceback
 import gobject, gtk
 import rcd_util
-import red_extra
+import red_listmodel
 import red_serverlistener, red_pixbuf
 import red_pendingops
 
@@ -242,19 +242,16 @@ def sort_pkgs_by_action(a, b):
 ### PackageArray: our magic-laden base class
 ###
 
-class PackageArray(red_extra.ListModel,
+class PackageArray(red_listmodel.ListModel,
                    red_pendingops.PendingOpsListener):
 
     def __init__(self):
         gobject.GObject.__init__(self)
+        red_listmodel.ListModel.__init__(self, sort_fn=sort_pkgs_by_name)
         red_pendingops.PendingOpsListener.__init__(self)
-        self.__pending_changes = []
-        self.__sort_fn = sort_pkgs_by_name
-        self.__filter_fn = None
-        self.__reverse_sort = 0
+
         self.__package_keys = {}
         self.__busy_flag = 0
-        self.__pending_set = 0
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
@@ -262,18 +259,13 @@ class PackageArray(red_extra.ListModel,
     ## This function should take the data in the array and sort it according
     ## to the specified function.  This is a "protected" function and
     ## shouldn't be called by users of PackageArrays.
-    def sort(self, sort_fn):
-        assert 0, "PackageArray.sort not defined"
+    #def sort(self, sort_fn):
+    #    assert 0, "PackageArray.sort not defined"
 
     def do_changed(self):
-        operator, args = self.__pending_changes.pop()
+        operator, args = red_listmodel.ListModel.do_changed(self)
+
         if operator:
-            apply(operator, (self,) + args)
-
-            self.set_list(self.get_all())
-            self.set_sort_magic(self.__sort_fn, self.__reverse_sort)
-            self.set_filter_magic(self.__filter_fn)
-
             self.__package_keys = {}
             for i in xrange(self.length()):
                 p = self.get_list_item(i)
@@ -281,23 +273,8 @@ class PackageArray(red_extra.ListModel,
                 indices = self.__package_keys.setdefault(key, [])
                 indices.append(i)
 
-    def changed(self, operator, *args):
-        self.__pending_changes.append((operator, args))
-        self.emit("changed")
-
-    def changed_filter_fn(self, filter_fn):
-        def set_filter_fn(array, fn):
-            array.__filter_fn = fn
-        if self.__filter_fn != filter_fn:
-            self.changed(set_filter_fn, filter_fn)
-
-    def changed_sort_fn(self, sort_fn, reverse=0):
-        def set_sort_fn(array, fn, rev):
-            array.__sort_fn = fn
-            array.__reverse_sort = rev
-        if self.__sort_fn != sort_fn or reverse ^ self.__reverse_sort:
-            self.changed(set_sort_fn, sort_fn, reverse)
-
+    ## Sort functions
+                
     def changed_sort_by_name(self, reverse=0):
         self.changed_sort_fn(sort_pkgs_by_name, reverse)
 
@@ -315,16 +292,6 @@ class PackageArray(red_extra.ListModel,
 
     def changed_sort_by_action(self, reverse=0):
         self.changed_sort_fn(sort_pkgs_by_action, reverse)
-
-    def do_changed_one(self, i):
-        self.row_changed(i)
-
-    def changed_one(self, i):
-        if 0 <= i < self.len():
-            self.emit("changed_one", i)
-        else:
-            # FIXME: Should throw a proper exception
-            assert 0, "WARNING! Invalid index %d passed to change_one" % i
 
     ## Find all instances of pkg in the PackageArray, and cause a
     ## 'changed_one' signal to be emitted for each.
@@ -355,38 +322,12 @@ class PackageArray(red_extra.ListModel,
     def pendingops_changed(self, pkg, key, value, old_value):
         self.changed_one_by_package(pkg)
 
-    ## Fallback implementation
-    def len(self):
-        all = self.get_all()
-        return len(all)
-
-    ## Fallback implementation
-    def get(self, i):
-        all = self.get_all()
-        return all[i]
-
-    def get_all(self):
-        print "PackageArray.get_all not defined"
-        assert 0
-
     def spew(self):
         for pkg in self.get_all():
             print pkg["name"]
 
 
 gobject.type_register(PackageArray)
-
-gobject.signal_new("changed",
-                   PackageArray,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   ())
-
-gobject.signal_new("changed_one",
-                   PackageArray,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   (gobject.TYPE_INT,))
 
 gobject.signal_new("busy",
                    PackageArray,

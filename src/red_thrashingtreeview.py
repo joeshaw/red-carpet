@@ -16,16 +16,20 @@
 ###
 
 import gobject, gtk
+import red_listmodel
 
 class TreeView(gtk.TreeView):
 
     def __init__(self, model=None):
         gobject.GObject.__init__(self)
 
+        gtk.TreeView.set_model(self, model)
+        
         self.__pre_changed_id = 0
         self.__post_changed_id = 0
 
         if model:
+            assert isinstance(model, red_listmodel.ListModel)
             self.__pre_changed_id = model.connect("changed",
                                                   lambda x:self.pre_thrash_model())
 
@@ -80,5 +84,3 @@ class TreeView(gtk.TreeView):
     def thrash_model(self):
         self.pre_thrash_model()
         self.post_thrash_model()
-
-gobject.type_register(TreeView)

@@ -1,5 +1,25 @@
 2003-01-24  Joe Shaw  <joe@ximian.com>
 
+	* red_channelmodel.py: Change the ChannelModel to derive from
+	red_extra.ListModel to red_listmodel.ListModel, and remove a large
+	chunk of code.
+
+	* red_packagearray.py: Ditto.
+
+	* red_listmodel.py: Created a ListModel class, which moves a lot
+	of code duplicated in the PackageArray and ChannelModel to here.
+	Includes the "changed" and "changed_one" signals, the
+	pending_changes queue, the sort and filter functions, and the
+	len/get/get_all() methods.
+
+	* red_statusoption.py (_status_types): For the "Installed" list,
+	we want to show installed packages with the same name.
+
+	* red_thrashingtreeview.py (TreeView): We need to call
+	gtk.TreeView.set_model(), calling the constructor isn't sufficient.
+
+2003-01-24  Joe Shaw  <joe@ximian.com>
+
 	* red_packageview.py: Call the thrashing treeview's constructor
 	explicitly.
 
