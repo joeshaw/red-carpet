@@ -67,6 +67,7 @@ def view_server_info_cb(app):
 
     dialog = gtk.MessageDialog(app, 0, dialog_type, gtk.BUTTONS_OK,
                                string.join(messages, "\n"))
+    dialog.set_default_response(gtk.RESPONSE_OK)
     if results:
         bbox = gtk.HButtonBox()
         dialog.vbox.add(bbox)
@@ -104,7 +105,8 @@ def dump_xml(filename):
     worker = server.rcd.packsys.dump()
     rcd_util.server_proxy_dialog(worker,
                                  callback=dump_finished_cb,
-                                 user_data=f)
+                                 user_data=f,
+                                 parent=app)
 
 
 def select_and_dump(parent):

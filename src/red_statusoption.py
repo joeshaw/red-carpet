@@ -21,6 +21,7 @@ _status_types = (
     ("Uninstalled", lambda p: not p["installed"] and not p["name_installed"]),
     ("Upgrade",     lambda p: p["name_installed"] > 0 and not p["installed"]),
     ("Installed",   lambda p: p["installed"] or p["name_installed"]),
+    ("Locked",      lambda p: p["locked"]),
     ("All",         lambda p: 1),
     )
 

@@ -115,10 +115,13 @@ class TransactionComponent(red_component.Component):
         return "Pending Transactions"
 
     def long_name(self):
-        return "Manage Pending Transactions"
+        return "Pending Transactions"
 
-    def pixbuf(self):
-        return "about-monkey"
+    def access_key(self):
+        return "P"
+
+    def accelerator(self):
+        return "<Control>P"
 
     def build(self):
         global model

@@ -222,6 +222,11 @@ def sort_pkgs_by_size(a, b):
 def sort_pkgs_by_importance(a, b):
     return cmp(a["importance_num"], b["importance_num"])
 
+def sort_pkgs_by_locked(a, b):
+    # We want locked (1) to sort higher than unlocked (0), that's
+    # why the logic is backwards.
+    return cmp(not a["locked"], not b["locked"])
+
 def sort_pkgs_by_channel(a, b):
     return cmp(rcd_util.get_package_channel_name(a),
                rcd_util.get_package_channel_name(b))
@@ -305,6 +310,9 @@ class PackageArray(red_listmodel.ListModel,
 
     def changed_sort_by_importance(self, reverse=0):
         self.changed_sort_fn(sort_pkgs_by_importance, reverse)
+
+    def changed_sort_by_locked(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_locked, reverse)
 
     def changed_sort_by_channel(self, reverse=0):
         self.changed_sort_fn(sort_pkgs_by_channel, reverse)

@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, gtk
+import string, sys, gtk
 
 import ximian_xmlrpclib
 import rcd_util
@@ -449,15 +449,17 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/_Actions")
         bar.add("/_Help")
 
-        bar.add("/File/Connect...",
-                callback=lambda x:rcd_util.connect_to_server(1))
+        bar.add("/File/_Connect...",
+                callback=lambda x:rcd_util.connect_to_server(1),
+                pixbuf_name="connect",
+                accelerator="<Control>O")
 
         bar.add("/File/sep", is_separator=1)
 
         def install_file_sensitive_fn():
             return rcd_util.check_server_permission("install")
 
-        bar.add("/File/Install From File...",
+        bar.add("/File/Install From _File...",
                 sensitive_fn=install_file_sensitive_fn,
                 callback=lambda x:red_installfiles.install_local(self))
 
@@ -465,7 +467,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             return rcd_util.check_server_permission("install") and \
                    red_installfiles.can_install_remote()
 
-        bar.add("/File/Install From URL...",
+        bar.add("/File/Install From _URL...",
                 sensitive_fn=install_url_sensitive_fn,
                 callback=lambda x:red_installfiles.install_remote(self))
 
@@ -481,9 +483,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def mount_sensitive_fn():
             return rcd_util.check_server_permission("superuser")
 
-        bar.add("/File/Mount Directory...",
+        bar.add("/File/_Mount Directory...",
                 callback=mount_callback,
-                sensitive_fn=mount_sensitive_fn)
+                sensitive_fn=mount_sensitive_fn,
+                accelerator="<Control>M")
 
         ##
         ## Unmount command
@@ -496,9 +499,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             return rcd_util.check_server_permission("superuser") and \
                    red_mount.has_mounted_channels()
 
-        bar.add("/File/Unmount Directory...",
+        bar.add("/File/U_nmount Directory...",
                 callback=unmount_callback,
-                sensitive_fn=unmount_sensitive_fn)
+                sensitive_fn=unmount_sensitive_fn,
+                accelerator="<Control>U")
         
 
         bar.add("/File/sep3", is_separator=1)
@@ -510,7 +514,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def activate_sensitive_fn():
             return rcd_util.check_server_permission("superuser")
 
-        bar.add("/File/Activate...",
+        bar.add("/File/_Activate...",
                 callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow),
                 sensitive_fn=activate_sensitive_fn)
 
@@ -531,25 +535,27 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                 return 0
             return comp.select_all_sensitive()
 
-        bar.add("/Edit/Select All",
+        bar.add("/Edit/Select _All",
                 callback=lambda x:self.select_all_cb(1),
                 accelerator="<Control>a",
                 sensitive_fn=select_all_sensitive_cb)
 
-        bar.add("/Edit/Select None",
+        bar.add("/Edit/Select _None",
                 callback=lambda x:self.select_all_cb(0),
-                sensitive_fn=select_all_sensitive_cb)
+                sensitive_fn=select_all_sensitive_cb,
+                accelerator="<Shift><Control>A")
 
         bar.add("/Edit/sep", is_separator=1)
 
-        bar.add("/Edit/Subscriptions...",
-                callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
+        bar.add("/Edit/_Subscriptions...",
+                callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
+                accelerator="<Control>B")
 
-        bar.add("/Edit/Preferences...",
+        bar.add("/Edit/_Preferences...",
                 stock=gtk.STOCK_PREFERENCES,
                 callback=lambda x:self.open_or_raise_window(red_prefs.PrefsWindow))
 
-        bar.add("/Edit/Users...",
+        bar.add("/Edit/_Users...",
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
         ##
@@ -561,20 +567,21 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def checked_set_cb(flag):
             self.sidebar.change_visibility()
 
-        bar.add("/View/Sidebar",
+        bar.add("/View/_Sidebar",
                 checked_get=checked_get_cb,
                 checked_set=checked_set_cb)
 
         bar.add("/View/sep", is_separator=1)
 
-        bar.add("/View/Package Information...",
+        bar.add("/View/Package _Information...",
                 pixbuf_name="info",
                 callback=lambda x:self.package_info_cb(),
-                sensitive_fn=self.info_sensitive_cb)
+                sensitive_fn=self.info_sensitive_cb,
+                accelerator="<Control>I")
 
         bar.add("/View/sep1", is_separator=1)
 
-        bar.add("/View/Daemon Information...",
+        bar.add("/View/_Daemon Information...",
                 callback=red_serverinfo.view_server_info_cb)
         bar.add("/View/sep2", is_separator=1)
 
@@ -592,10 +599,11 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/Run Transaction",
+        bar.add("/Actions/Run _Transaction",
                 image=image,
                 callback=run_transaction_cb,
-                sensitive_fn=run_sensitive_cb)
+                sensitive_fn=run_sensitive_cb,
+                accelerator="<Control>X")
 
         ##
         ## Verify System Dependencies
@@ -604,9 +612,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def verify_and_refresh_sensitive_cb():
             return self.sidebar.get_property("sensitive")
                 
-        bar.add("/Actions/Verify System Dependencies",
+        bar.add("/Actions/_Verify System Dependencies",
                 callback=verify_deps_cb,
-                sensitive_fn=verify_and_refresh_sensitive_cb)
+                sensitive_fn=verify_and_refresh_sensitive_cb,
+                accelerator="<Control>D")
 
         bar.add("/Actions/sep1", is_separator=1)
 
@@ -614,28 +623,28 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         ## Install Package
         ##
 
-        bar.add("/Actions/Install Package",
+        bar.add("/Actions/I_nstall Package",
                 pixbuf_name="to-be-installed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED),
                 sensitive_fn=self.install_sensitive_cb)
 
         ##
-        ## Install Package
+        ## Remove Package
         ##
 
-        bar.add("/Actions/Remove Package",
+        bar.add("/Actions/_Remove Package",
                 pixbuf_name="to-be-removed",
                 callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED),
                 sensitive_fn=self.remove_sensitive_cb)
 
         ##
-        ## Install Package
+        ## Cancel Action
         ##
 
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/Cancel Action",
+        bar.add("/Actions/_Cancel Action",
                 image=image,
                 callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION),
                 sensitive_fn=self.cancel_sensitive_cb)
@@ -649,12 +658,13 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
 
-        bar.add("/Actions/Refresh Channel Data",
+        bar.add("/Actions/Re_fresh Channel Data",
                 image=image,
                 callback=refresh_cb,
-                sensitive_fn=verify_and_refresh_sensitive_cb)
+                sensitive_fn=verify_and_refresh_sensitive_cb,
+                accelerator="<Control>R")
 
-        bar.add("/Help/About...",
+        bar.add("/Help/_About...",
                 callback=lambda x:red_about.About().show())
 
         if red_main.debug:
@@ -702,8 +712,14 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         def checked_set_cb(flag):
             if flag:
                 self.activate_component(comp)
+
+        ln = comp.long_name()
+        if comp.access_key():
+            index = string.index(string.lower(ln),
+                                 string.lower(comp.access_key()))
+            ln = ln[:index] + "_" + ln[index:]
         
-        self.menubar.add("/View/" + comp.long_name(),
+        self.menubar.add("/View/" + ln,
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb,
                          accelerator=comp.accelerator())

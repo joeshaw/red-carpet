@@ -25,6 +25,13 @@ import red_dirselection
 import red_thrashingtreeview
 
 def mount_channel(path, name=None):
+    # Handle ~ to mean $HOME
+    if path[0] == "~":
+        homedir = os.getenv("HOME")
+        if homedir:
+            path = homedir + path[1:]
+            print path
+
     path_base = os.path.basename(path)
     alias = string.lower(path_base)
 
@@ -53,8 +60,16 @@ def mount_channel(path, name=None):
             msg = "Unable to mount %s as a channel" % path
             dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
                                        gtk.BUTTONS_OK, msg)
-            dialog.run()
-            dialog.destroy()
+
+            def idle_cb(d):
+                gtk.threads_enter()
+                d.show()
+                d.run()
+                d.destroy()
+                gtk.threads_leave()
+
+            # Always run the dialog in the main thread
+            gtk.idle_add(idle_cb, dialog)
 
     mount_th.connect("ready", mount_cb, path)
 
@@ -94,6 +109,7 @@ class FileEntry(gtk.HBox):
 
     def build(self):
         self.entry = gtk.Entry()
+        self.entry.set_activates_default(1)
         self.pack_start(self.entry)
         self.entry.show()
 
@@ -141,6 +157,7 @@ class MountWindow(gtk.Dialog):
         table.attach_defaults(l, 0, 1, 1, 2)
 
         self.channel = gtk.Entry()
+        self.channel.set_activates_default(1)
         table.attach_defaults(self.channel, 1, 2, 0, 1)
 
         self.directory = FileEntry()
@@ -165,7 +182,7 @@ class MountWindow(gtk.Dialog):
         path = e.get_text()
 
         if not path:
-            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR,
+            dialog = gtk.MessageDialog(self, 0, gtk.MESSAGE_ERROR,
                                        gtk.BUTTONS_OK,
                                        "Please choose the path for channel.")
             dialog.run()
@@ -208,11 +225,14 @@ class UnmountWindow(gtk.Dialog):
         view.append_column(col)
 
         def toggle_cb(cr, path, mod):
-            c = model.get_list_item(int(path))
-            channels_to_unmount[c["id"]] = not channels_to_unmount[c["id"]]
+            def set_cb(m, p):
+                c = m.get_list_item(int(p))
+                channels_to_unmount[c["id"]] = not channels_to_unmount[c["id"]]
+            mod.changed(set_cb, path)
 
         r = gtk.CellRendererToggle()
         r.set_property("activatable", 1)
+        r.set_property("xalign", 0.0)
         r.connect("toggled", toggle_cb, model)
         col = gtk.TreeViewColumn("Unmount?", r, active=umount_col)
         view.append_column(col)
@@ -230,6 +250,7 @@ class UnmountWindow(gtk.Dialog):
         b.connect("clicked", lambda x,y:y.destroy(), self)
 
         b = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        b.grab_default()
         def ok_clicked_cb(b, w, s):
             for cid in s:
                 if s[cid]:

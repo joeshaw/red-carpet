@@ -173,6 +173,9 @@ class NewsComponent(red_component.Component):
     def show_in_shortcuts(self):
         return 1
 
+    def access_key(self):
+        return "n"
+
     def accelerator(self):
         return "<Control>n"
 

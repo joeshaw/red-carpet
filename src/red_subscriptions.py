@@ -19,6 +19,7 @@ import gtk
 import rcd_util
 import red_main
 import red_channelmodel
+import red_thrashingtreeview
 
 model = None
 
@@ -31,13 +32,42 @@ class SubscriptionsView(gtk.ScrolledWindow):
         if not model:
             model = red_channelmodel.ChannelModel()
 
-        view = red_channelmodel.make_channel_view(model)
+        view = self.make_channel_view()
 
         view.show_all()
         view.set_sensitive(rcd_util.check_server_permission("subscribe"))
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
+
+    def make_channel_view(self):
+        global model
+
+        view = red_thrashingtreeview.TreeView(model)
+
+        def toggle_cb(cr, path, model):
+            c = model.get_list_item(int(path))
+            model.toggle_subscribed(c)
+
+        toggle = gtk.CellRendererToggle()
+        toggle.set_property("activatable", 1)
+        col = gtk.TreeViewColumn("Sub'd",
+                                 toggle,
+                                 active=red_channelmodel.COLUMN_SUBSCRIBED)
+        toggle.connect("toggled", toggle_cb, model)
+        view.append_column(col)
+
+        col = gtk.TreeViewColumn()
+        col.set_title("Channel")
+        r1 = gtk.CellRendererPixbuf()
+        r2 = gtk.CellRendererText()
+        col.pack_start(r1, 0)
+        col.pack_start(r2, 0)
+        col.set_attributes(r1, pixbuf=red_channelmodel.COLUMN_ICON)
+        col.set_attributes(r2, text=red_channelmodel.COLUMN_NAME)
+        view.append_column(col)
+
+        return view
 
 class SubscriptionsWindow(gtk.Dialog):
 
@@ -51,6 +81,7 @@ class SubscriptionsWindow(gtk.Dialog):
         self.vbox.add(view)
 
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        button.grab_default()
         button.connect("clicked", lambda x:self.destroy())
 
 def show_sub_privs_dialog():

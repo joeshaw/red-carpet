@@ -41,7 +41,9 @@ def show_package_info(pkg):
 
     title = "Package Information: %s" % pkg["name"]
     dialog = gtk.Dialog(title)
-    dialog.add_button(gtk.STOCK_OK, 0)
+    button = dialog.add_button(gtk.STOCK_OK, 0)
+    # grab_default() is not sufficient here.
+    button.grab_focus()
     dialog.vbox.add(book)
     dialog.connect("response", lambda d, code: d.destroy())
 

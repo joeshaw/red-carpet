@@ -482,7 +482,8 @@ class PackageView(red_thrashingtreeview.TreeView):
 
         self.add_column(col,
                         widget=widget,
-                        initially_visible=1)
+                        initially_visible=1,
+                        sort_callback=lambda a,r: a.changed_sort_by_locked(r))
         return col
 
     def append_size_column(self, column_title="Size"):

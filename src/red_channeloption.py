@@ -17,6 +17,7 @@
 
 import rcd_util, gobject, gtk
 import red_serverlistener
+import string
 
 class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
@@ -33,6 +34,8 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         menu = gtk.Menu()
 
         channels = rcd_util.get_all_channels()
+        channels.sort(lambda x,y:cmp(string.lower(x["name"]),
+                                     string.lower(y["name"])))
 
         if self.__allow_any_channel:
             channels.insert(0, {"name": "Any Channel", "id": -1})

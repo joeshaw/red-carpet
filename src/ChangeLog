@@ -1,3 +1,72 @@
+2003-02-21  Joe Shaw  <joe@ximian.com>
+
+	* red_activation.py: Make the entries activate the default.  For
+	the activity dialog, set the parent.
+
+	* red_appwindow.py: Give access keys and accelerators to the menu
+	items, add an icon for File->Connect.
+
+	* red_channelmodel.py: Remove some debugging output and move
+	make_channel_view() out of here.
+
+	* red_channeloption.py: Sort the channels alphabetically.
+
+	* red_component.py: Add a stock() function which returns the stock
+	id for a component and an access_key() function which returns the
+	menu access key for a component.
+
+	* red_history.py: Add an access key.
+
+	* red_installfiles.py (install_local): Run the stat.S_ISDIR() in a
+	try block or else we'll get an exception if the file isn't there.
+
+	* red_mount.py (mount_channel): Handle ~ to mean $HOME.  If we
+	can't mount a channel, run the dialog in the main thread.
+	(FileEntry): Make the entries activate the default widget.
+	(MountWindow): Ditto.  Also make the dialog transient of its
+	parent.  Call the changed method on the model so it gets updated
+	if the user activates the toggle button using the keyboard.  Set
+	the "xalign" property on the toggle button so it's left-aligned.
+	Make the OK button grab the default.
+
+	* red_news.py: Add an access key.
+
+	* red_packagearray.py (sort_pkgs_by_locked): Added.  Sorts the
+	packages by whether it is locked.
+	(changed_sort_by_locked): Added.
+
+	* red_packagebook.py: Make the OK button grab the focus.
+
+	* red_packageview.py (append_locked_column): Add
+	change_sort_by_locked() as the sort_callback for this column.
+
+	* red_search.py: Add an access key and replace its pixbuf() with
+	stock().
+
+	* red_serverinfo.py (view_server_info_cb): Set the default
+	response to OK.
+	(dump_xml): Set the dialog's parent.
+
+	* red_sidebar.py: When populating the sidebar, use stock() if it
+	doesn't return None.
+
+	* red_statusoption.py (_status_types): Add a Locked status type.
+
+	* red_subscriptions.py: Move make_channel_view() here from
+	red_channelmodel.py.  Make the Close button grab the default.
+
+	* red_summary.py: Add an access key.
+
+	* red_thrashingview.py (pre_thrash_model): Save the cursor path
+	and column so we can maintain keyboard focus.
+	(post_thrash_model): Restore it if we had it.
+
+	* red_transaction.py: Add an access key and Get rid of the
+	pixbuf, it's not used anymore
+	(long_name): Make it just "Pending Transactions".
+
+	* red_users.py: Make the Close button grab the default.
+
 2003-02-21  Tambet Ingo  <tambet@ximian.com>
 
 	* red_packageview.py (PackageView.do_popup): Use the new icon

@@ -47,9 +47,17 @@ def install_local(parent):
             # We need to do the stat check because if we select something in
             # the filesel and then unselect it (with control-click), we'll
             # get the parent directory for that file, not the file itself.
+
+            def is_valid(x):
+                try:
+                    return stat.S_ISDIR(os.stat(x).st_mode)
+                except OSError, e:
+                    # File probably doesn't exist.
+                    return 0
+            
             plist = [server.rcd.packsys.query_file(x) \
                      for x in fs.get_selections() \
-                     if not stat.S_ISDIR(os.stat(x).st_mode)]
+                     if not is_valid(x)]
         except ximian_xmlrpclib.Fault, f:
             if f.faultCode == rcd_util.fault.package_not_found \
                or f.faultCode == rcd_util.fault.invalid_package_file:

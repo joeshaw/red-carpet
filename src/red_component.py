@@ -149,6 +149,12 @@ class Component(gobject.GObject):
     def pixbuf(self):
         return None
 
+    def stock(self):
+        return None
+
+    def access_key(self):
+        return None
+
     def accelerator(self):
         return None
 

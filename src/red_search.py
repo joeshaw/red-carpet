@@ -34,8 +34,11 @@ class SearchComponent(red_component.Component):
     def long_name(self):
         return "Search Packages"
 
-    def pixbuf(self):
-        return "info-button"
+    def stock(self):
+        return gtk.STOCK_FIND
+
+    def access_key(self):
+        return "e"
 
     def accelerator(self):
         return "<Control>f"

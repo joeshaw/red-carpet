@@ -32,6 +32,9 @@ class SummaryComponent(red_component.Component):
     def pixbuf(self):
         return "summary"
 
+    def access_key(self):
+        return "s"
+
     def accelerator(self):
         return "<Control>s"
 

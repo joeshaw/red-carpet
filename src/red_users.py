@@ -348,6 +348,7 @@ class UsersWindow(gtk.Dialog,
         main_box.show_all()
 
         button = self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        button.grab_default()
         button.connect("clicked", lambda x:self.destroy())
 
     def users_changed(self):

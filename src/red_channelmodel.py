@@ -24,7 +24,6 @@ import gobject
 import rcd_util
 import red_listmodel
 import red_serverlistener
-import red_thrashingtreeview
 
 def get_alias(ch):
     if ch["alias"]:
@@ -116,15 +115,12 @@ class ChannelModel(red_listmodel.ListModel, red_serverlistener.ServerListener):
     ###
 
     def channels_changed(self):
-        print "Channels changed!"
         self.refresh()
 
     def subscriptions_changed(self):
-        print "Subscriptions changed!"
         self.refresh()
 
     def refresh(self):
-        print "refreshing channels"
         def refresh_cb(me):
             me.__channels = rcd_util.get_all_channels()
         self.changed(refresh_cb)
@@ -149,34 +145,3 @@ class ChannelModel(red_listmodel.ListModel, red_serverlistener.ServerListener):
 
         th.connect("ready", subscribe_cb, self, channel,
                    not channel["subscribed"])
-
-def make_channel_view(model):
-
-    view = red_thrashingtreeview.TreeView(model)
-
-    def toggle_cb(cr, path, model):
-        c = model.get_list_item(int(path))
-        model.toggle_subscribed(c)
-
-    toggle = gtk.CellRendererToggle()
-    toggle.set_property("activatable", 1)
-    col = gtk.TreeViewColumn("Sub'd",
-                             toggle,
-                             active=COLUMN_SUBSCRIBED)
-    toggle.connect("toggled", toggle_cb, model)
-    view.append_column(col)
-
-    col = gtk.TreeViewColumn()
-    col.set_title("Channel")
-    r1 = gtk.CellRendererPixbuf()
-    r2 = gtk.CellRendererText()
-    col.pack_start(r1, 0)
-    col.pack_start(r2, 0)
-    col.set_attributes(r1, pixbuf=COLUMN_ICON)
-    col.set_attributes(r2, text=COLUMN_NAME)
-    view.append_column(col)
-
-    return view
-
-
-

@@ -158,6 +158,9 @@ class HistoryComponent(red_component.Component):
     def name(self):
         return "History"
 
+    def access_key(self):
+        return "h"
+
     def accelerator(self):
         return "<Control>h"
 

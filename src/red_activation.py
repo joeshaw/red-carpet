@@ -42,9 +42,11 @@ class ActivationWindow(gtk.Dialog):
         table.attach_defaults(l, 0, 1, 1, 2)
 
         self.email = gtk.Entry()
+        self.email.set_activates_default(1)
         table.attach_defaults(self.email, 1, 2, 0, 1)
 
         self.code = gtk.Entry()
+        self.code.set_activates_default(1)
         table.attach_defaults(self.code, 1, 2, 1, 2)
 
         table.show_all()
@@ -111,4 +113,5 @@ class ActivationWindow(gtk.Dialog):
         self.email_to_save = email
         rcd_util.server_proxy_dialog(worker,
                                      callback=activate_finished_cb,
-                                     user_data=self)
+                                     user_data=self,
+                                     parent=self)

@@ -60,6 +60,8 @@ class TreeView(gtk.TreeView):
                                                          lambda x:self.post_thrash_model())
         
     def pre_thrash_model(self):
+        self.saved_curpath, self.saved_column = self.get_cursor()
+        
         model = self.get_model()
         selpath = None
         if model:
@@ -87,6 +89,9 @@ class TreeView(gtk.TreeView):
             if iter:
                 select = self.get_selection()
                 select.select_iter(iter)
+
+        if self.saved_curpath:
+            self.set_cursor(self.saved_curpath, self.saved_column)
 
     def thrash_model(self):
         self.pre_thrash_model()

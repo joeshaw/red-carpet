@@ -196,9 +196,23 @@ class ShortcutBar(gtk.HBox):
                 button.add(align)
                 box = gtk.HBox(0, 2)
 
+                image = None
+
+                if comp.stock():
+                    assert not comp.pixbuf()
+
+                    stock_id = comp.stock()
+                    
+                    image = gtk.Image()
+                    image.set_from_stock(stock_id, gtk.ICON_SIZE_LARGE_TOOLBAR)
+                
                 if comp.pixbuf():
+                    assert not comp.stock()
                     image = red_pixbuf.get_widget(comp.pixbuf(),
                                                   width=24, height=24)
+
+
+                if image:
                     box.pack_start(image, 0, 0)
 
                 box.pack_start(gtk.Label(comp.name()), 0, 0)
