@@ -1,22 +1,21 @@
-PYTHON_INCLUDES=-I/usr/include/python2.2
-PYGTK_CODEGEN=/opt/pygtk/bin/pygtk-codegen-2.0
-pythondir=/opt/pygtk/lib/python2.2
+
 
 INCLUDES = $(PYTHON_INCLUDES) $(PYGTK_CFLAGS) $(GTK_CFLAGS)
 
-defsdir = $(datadir)/pygtk/2.0/defs
+defsdir = $(datadir)/red-carpet/defs
 defs_DATA = \
 	red_extra.defs
 
 EXTRA_DIST = $(defs_DATA)
 
+pythondir=$(PYGTK_PREFIX)/lib/python2.2
 pkgpythondir = $(pythondir)/gtk-2.0
 pkgpyexecdir = $(pythondir)/gtk-2.0
 
 red_extradir = $(pkgpythondir)/red_extra
 red_extra_PYTHON = __init__.py
 
-red_extraexecdir = $(pkgpyexecdir)/red_extra
+red_extraexecdir = $(datadir)/red-carpet/red_extra
 
 red_extraexec_LTLIBRARIES = xxx_red_extra.la
 xxx_red_extra_la_CFLAGS = $(GTK_CFLAGS)

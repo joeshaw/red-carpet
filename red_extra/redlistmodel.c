@@ -35,6 +35,8 @@
 
 #define red_list_model_length(model) ((model) && (model)->array ? (model)->array->len : 0)
 
+static GObjectClass *parent_class = NULL;
+
 static guint
 red_list_model_get_flags (GtkTreeModel *tree_model)
 {
@@ -45,14 +47,19 @@ static gint
 red_list_model_get_n_columns (GtkTreeModel *tree_model)
 {
     RedListModel *model = RED_LIST_MODEL (tree_model);
-    return model->columns->len;
+    return model->columns ? model->columns->len : 0;
 }
 
 static GType
 red_list_model_get_column_type (GtkTreeModel *tree_model, gint index)
 {
     RedListModel *model = RED_LIST_MODEL (tree_model);
-    RedListModelColumn *col = g_ptr_array_index (model->columns, index);
+    RedListModelColumn *col;
+
+    g_assert (model->columns);
+    g_assert (0 <= index && index < model->columns->len);
+
+    col = g_ptr_array_index (model->columns, index);
     return col->type;
 }
 
@@ -106,6 +113,12 @@ red_list_model_get_value (GtkTreeModel *tree_model,
     int i = ITER_GET_INDEX (iter);
     PyObject *obj, *py_value, *args;
     RedListModelColumn *col;
+
+    g_assert (model->columns);
+    g_assert (0 <= column && column < model->columns->len);
+
+    g_assert (model->array);
+    g_assert (0 <= i && i < model->array->len);
 
     obj = g_ptr_array_index (model->array, i);
     col = g_ptr_array_index (model->columns, column);
@@ -192,9 +205,62 @@ red_list_model_iter_parent (GtkTreeModel *tree_model,
 /* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
 
 static void
+red_list_model_clear_columns (RedListModel *model)
+{
+    int i;
+
+    if (model->columns == NULL)
+        return;
+
+    for (i = 0; i < model->columns->len; ++i) {
+        RedListModelColumn *col = g_ptr_array_index (model->columns, i);
+        Py_DECREF (col->pycallback);
+        g_free (col);
+    }
+
+    g_ptr_array_free (model->columns, TRUE);
+    model->columns = NULL;
+}
+
+static void
+red_list_model_clear_array (RedListModel *model)
+{
+    int i;
+
+    if (model->array == NULL)
+        return;
+
+    for (i = 0; i < model->array->len; ++i) {
+        PyObject *obj = g_ptr_array_index (model->array, i);
+        Py_DECREF (obj);
+    }
+
+    g_ptr_array_free (model->array, TRUE);
+    model->array = NULL;
+}
+
+/* ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
+
+void
+red_list_model_finalize (GObject *obj)
+{
+    RedListModel *model = RED_LIST_MODEL (obj);
+
+    red_list_model_clear_columns (model);
+    red_list_model_clear_array (model);
+
+    if (parent_class->finalize)
+        parent_class->finalize (obj);
+}
+
+static void
 red_list_model_class_init (RedListModelClass *klass)
 {
-    
+    GObjectClass *obj_class = (GObjectClass *) klass;
+
+    parent_class = g_type_class_peek_parent (klass);
+
+    obj_class->finalize = red_list_model_finalize;
 }
 
 static void
@@ -229,15 +295,15 @@ red_list_model_get_type (void)
         static const GTypeInfo object_info = {
             sizeof (RedListModelClass),
             NULL, NULL,
-            red_list_model_class_init,
+            (GClassInitFunc) red_list_model_class_init,
             NULL, NULL,
             sizeof (RedListModel),
             0,
-            red_list_model_init
+            (GInstanceInitFunc) red_list_model_init
         };
 
         static const GInterfaceInfo tree_model_info = {
-            red_list_model_iface_init,
+            (GInterfaceInitFunc) red_list_model_iface_init,
             NULL, NULL
         };
 
