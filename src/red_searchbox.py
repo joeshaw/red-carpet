@@ -17,7 +17,7 @@
 
 import string, gobject, gtk
 import rcd_util, red_pixbuf
-import red_channeloption, red_sectionoption, red_statusoption
+import red_channeloption
 
 from red_gettext import _
 

@@ -1,5 +1,17 @@
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
+	* Makefile.am (red_carpetsupport_DATA): Removed unused files.
+
+	* red_searchbox.py: Removed unneeded imports.
+
+	* red_search.py: Removed unneeded imports.
+
+	* red_searchbar.py: Removed.
+
+	* red_sectionoption.py: Removed.
+
+	* red_statusoption.py: Removed.
+
 	* red_depcomponent.py (DepComponent.begin_transaction): A hack.
 	We hold a reference to our PendingView_Transaction window in
 	order to work around pygtk bug 92955 (a refcounting glitch).

@@ -41,15 +41,12 @@ red_carpetsupport_DATA =	\
 	red_pixbuf.py				\
 	red_prefs.py				\
 	red_search.py				\
-	red_searchbar.py			\
 	red_searchbox.py			\
-	red_sectionoption.py			\
 	red_serverinfo.py			\
 	red_serverlistener.py			\
 	red_serverproxy.py			\
 	red_settings.py				\
 	red_sidebar.py				\
-	red_statusoption.py			\
 	red_subscriptions.py			\
 	red_summary.py				\
 	red_thrashingtreeview.py		\

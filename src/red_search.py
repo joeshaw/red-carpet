@@ -18,7 +18,6 @@
 import gtk
 import rcd_util
 import red_packagearray
-import red_channeloption, red_sectionoption, red_statusoption
 import red_component, red_packageview
 import red_pendingops
 import red_searchbox
