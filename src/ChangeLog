@@ -1,3 +1,8 @@
+2003-06-12  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (assemble_menubar): Change "Connect..." to be
+	"Connect to daemon..." to be more clear.  Fixes #40205.
+
 2003-06-10  Tambet Ingo  <tambet@ximian.com>
 
 	* red_connection.py (check_rcd_version): Require rcd version

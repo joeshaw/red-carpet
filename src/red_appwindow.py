@@ -547,7 +547,7 @@ class AppWindow(gtk.Window,
         bar.add("/" + actions_str)
         bar.add("/" + help_str)
 
-        bar.add("/%s/%s" % (file_str, _("Connect...")),
+        bar.add("/%s/%s" % (file_str, _("Connect to daemon...")),
                 description=_("Connect to a remote daemon"),
                 callback=lambda x:self.connect_to_daemon(),
                 pixbuf_name="connect",
