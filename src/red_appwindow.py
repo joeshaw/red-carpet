@@ -20,7 +20,6 @@ import sys, gtk
 import ximian_xmlrpclib
 import rcd_util
 import red_main
-import red_extra
 import red_menubar
 import red_transaction
 import red_installfiles
@@ -37,6 +36,7 @@ import red_activation
 import red_about
 import red_mount
 import red_serverinfo
+import red_sidebar
 
 def refresh_cb(app):
     try:
@@ -97,22 +97,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
 
-        self.toolbar = red_extra.Toolbar()
-        self.toolbar.set_style(gtk.TOOLBAR_BOTH_HORIZ)
-
-        self.go_button = self.toolbar.append_item("Go!",
-                                                  "Run transaction",
-                                                  None,
-                                                  red_pixbuf.get_widget("progress-config", width=24, height=24),
-                                                  lambda x:run_transaction_cb(self),
-                                                  None)
-
-        self.sensitize_go_button(0)
-
-        self.toolbar.append_space()
-
         self.transient_windows = {}
-        
+
         self.transactionbar = red_transaction.TransactionBar(self)
 
         self.progressbar = gtk.ProgressBar()
@@ -126,6 +112,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         # instead of just a [HV]Box so that we can control the
         # background color if we want to.
         self.container = gtk.EventBox()
+        self.container.set_border_width(6)
 
         self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
@@ -135,15 +122,20 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         throbbox.set_border_width(2)
         throbbox.add(self.throbber)
 
-        toolbox = gtk.HBox()
-        toolbox.pack_start(self.toolbar, expand=1, fill=1)
-        toolbox.pack_end(throbbox, expand=0, fill=0)
-        toolbox.show_all()
+        hbox = gtk.HBox()
+        self.vbox.pack_start(hbox, expand=1, fill=1)
 
-        self.vbox.pack_start(toolbox, expand=0, fill=1)
+        self.sidebar = red_sidebar.SideBar()
+        self.toolbar = self.sidebar.get_toolbar()
 
-        self.vbox.pack_start(self.container, expand=1, fill=1)
-        self.container.show()
+        self.go_button = self.sidebar.get_run_button()
+        self.go_button.connect("clicked", lambda x,y:run_transaction_cb(y), self)
+        self.sensitize_go_button(0)
+
+        hbox.pack_start(self.sidebar, 0, 1)
+
+        hbox.pack_start(self.container, expand=1, fill=1)
+        hbox.show_all()
 
         south = gtk.HBox(0, 0)
         south.pack_start(self.transactionbar, 0, 1, 2)
@@ -355,13 +347,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
     def register_component(self, comp):
 
-        if comp.show_on_toolbar():
-            self.toolbar.append_item(comp.name(),
-                                     comp.long_name(),
-                                     None,
-                                     red_pixbuf.get_widget(comp.pixbuf(), width=24, height=24),
-                                     lambda x:self.activate_component(comp),
-                                     None)
+        self.toolbar.add(comp,
+                         lambda x:self.activate_component(comp))
 
         # We need to make the component menu items checked
         # instead of radio-style, because with a radio group you

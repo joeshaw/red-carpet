@@ -24,6 +24,9 @@ import rcd_util
 class SummaryComponent(red_component.Component):
 
     def name(self):
+        return "Summary"
+
+    def long_name(self):
         return "Update Summary"
 
     def pixbuf(self):

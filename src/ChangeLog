@@ -1,3 +1,33 @@
+2003-02-04  Tambet Ingo  <tambet@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Added red_sidebar.py.
+
+	* red_sidebar.py: New file.
+	(SideBar): New class, implements sidebar for the main window.
+	(Toolbar): New class, implements new toolbar. I think
+	red_extras/toolbar.c is now deprecated?
+
+	* red_transaction.py (TransactionComponent.build): Made
+	data model global to be shared with TransactionSimple.
+	(TransactionSimple): New class.
+
+	* red_news.py (NewsComponent.show_on_toolbar): Yes,
+	we want to be on the toolbar.
+
+	* red_history.py (HistoryComponent.show_on_toolbar): Ditto.
+
+	* red_channelbrowse.py (ChannelBrowseComponent.name): Made
+	it's name shorter (we still have (long_name) method).
+
+	* red_summary.py (SummaryComponent.name):  Ditto.
+
+	* red_system.py (SystemComponent.name): Ditto.
+
+	* red_appwindow.py (AppWindow.__init__): Added new sidebar
+	widget, modified other code to work with it.
+	(AppWindow.register_component): Add all components to toolbar.
+	Toolbar decides which components are visible.
+
 2003-02-03  Jon Trowbridge  <trow@ximian.com>
 
 	* red_pendingview.py (PendingView_Simple): Revamped to use

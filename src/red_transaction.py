@@ -21,6 +21,7 @@ import red_packagearray, red_packageview
 import red_pendingops
 import red_component
 
+model = None
 
 class TransactionArray(red_packagearray.PackageArray,
                        red_pendingops.PendingOpsListener):
@@ -150,11 +151,12 @@ class TransactionComponent(red_component.Component):
     def pixbuf(self):
         return "about-monkey"
 
-    def show_on_toolbar(self):
-        return 1
-
     def build(self):
-        self.array = TransactionArray()
+        global model
+        if not model:
+            model = TransactionArray()
+
+        self.array = model
 
         view = red_packageview.PackageView()
         view.append_action_column()
@@ -181,3 +183,21 @@ class TransactionComponent(red_component.Component):
         if not flag:
             red_pendingops.clear_action_cancellations()
 
+class TransactionSimple(gtk.ScrolledWindow):
+
+    def __init__(self):
+        gtk.ScrolledWindow.__init__(self)
+        self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+
+        view = red_packageview.PackageView()
+        view.append_action_column()
+        view.append_name_column(show_channel_icon=1)
+
+        global model
+        if not model:
+            model = TransactionArray()
+
+        view.set_model(model)
+        view.show()
+
+        self.add(view)
