@@ -19,12 +19,14 @@ import gtk
 import rcd_util
 import red_main
 import ximian_xmlrpclib
+import red_settings
 
 class ActivationWindow(gtk.Dialog):
 
     def __init__(self):
         gtk.Dialog.__init__(self, "Group Activation")
         self.build()
+        self.fill()
 
     def build(self):
         table = gtk.Table(2, 2)
@@ -49,12 +51,30 @@ class ActivationWindow(gtk.Dialog):
         table.show_all()
         self.vbox.add(table)
 
+        button = self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        button.connect("clicked", lambda x:self.destroy())
+
         button = self.add_button("Activate", gtk.RESPONSE_CLOSE)
+        button.grab_default()
         button.connect("clicked", self.activate)
+
+    def fill(self):
+        config = red_settings.get_config()
+        email = config.get("Activation/email")
+        if email:
+            self.email.set_text(email)
 
     def activate(self, button):
         email = self.email.get_text()
         code = self.code.get_text()
+
+        if not email or not code:
+            dialog = gtk.MessageDialog(self, gtk.DIALOG_DESTROY_WITH_PARENT,
+                                       gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                                       "Please fill in both email and activation code.")
+            dialog.run()
+            dialog.destroy()
+            return
 
         server = rcd_util.get_server()
         err = None
@@ -76,6 +96,8 @@ class ActivationWindow(gtk.Dialog):
             dialog.run()
             dialog.destroy()
         else:
+            config = red_settings.get_config()
+            config.set("Activation/email", email)
             dialog = gtk.MessageDialog(self, gtk.DIALOG_DESTROY_WITH_PARENT,
                                        gtk.MESSAGE_INFO, gtk.BUTTONS_OK,
                                        "System successfully activated.")
