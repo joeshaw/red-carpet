@@ -207,9 +207,10 @@ class StartDaemon:
         self.rcd_pid = -1;
         self.server = None
 
-        # FIXME: Distro-specific love?
-        self.cmd = "/sbin/service"
-        self.args = (self.cmd, "rcd", "start")
+        # LSB compliant distros should have the
+        # following
+        self.cmd = "/etc/init.d/rcd"
+        self.args = (self.cmd, "start")
 
     def run(self):
         self.dialog = gtk.MessageDialog(None, 0,
