@@ -43,7 +43,10 @@ cached_channels = {}
 cached_channel_icons = {}
 
 def reset_channels():
+    global have_channels, cached_channels, cached_channel_icons
     have_channels = 0
+    cached_channels = {}
+    cached_channel_icons = {}
 
 def fetch_all_channels():
     global have_channels, cached_channels
@@ -120,6 +123,9 @@ def get_channel_icon(id, width=0, height=0):
             loader.write(icon_data.data, len(icon_data.data))
             loader.close()
             pixbuf = loader.get_pixbuf()
+
+    if pixbuf is None:
+        pixbuf = red_pixbuf.get_pixbuf("empty", width, height)
 
     cached_channel_icons[key] = pixbuf
     return pixbuf

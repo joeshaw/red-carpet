@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string, time
+import sys, string, time, traceback
 import gobject, gtk
 import rcd_util
 import red_extra
@@ -253,6 +253,7 @@ class PackageArray(red_extra.ListModel,
         self.__reverse_sort = 0
         self.__package_keys = {}
         self.__busy_flag = 0
+        self.__pending_set = 0
 
         for name, callback, type in COLUMNS:
             self.add_column(callback, type)
@@ -274,7 +275,12 @@ class PackageArray(red_extra.ListModel,
             apply(operator, (self,) + args)
             self.request_sort()
             all = self.get_all()
-            self.set_list(self.get_all())
+            self.set_list(all)
+
+            #traceback.print_stack(sys.exc_info()[2])
+            #print "len=%d" % len(all)
+            #print "- " * 38
+
             self.__package_keys = {}
             i = 0
             for p in all:
@@ -557,6 +563,19 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
 ###############################################################################
 
+_query_cache = {}
+
+def _query_to_key(query):
+    key = str(query)
+    return key
+
+def _get_query_from_cache(query):
+    key = _query_to_key(query)
+    return _query_cache.get(key)
+
+def _cache_query_results(query, results):
+    key = _query_to_key(query)
+    _query_cache[key] = results
 
 class PackagesFromQuery(PackagesFromDaemon):
 
@@ -577,6 +596,11 @@ class PackagesFromQuery(PackagesFromDaemon):
             self.set_packages([])
             return
 
+        cached = _get_query_from_cache(self.query)
+        if cached is not None:
+            self.set_packages(cached)
+            return
+        
         server = rcd_util.get_server_proxy()
             
         if self.__worker:
@@ -605,7 +629,8 @@ class PackagesFromQuery(PackagesFromDaemon):
                     key = rcd_util.get_package_key(p)
                     if p["channel"] == 0 and in_channel.has_key(key):
                         packages.remove(p)
-                
+
+                _cache_query_results(self.query, packages)
                 array.set_packages(packages or [])
             array.message_pop()
             array.busy(0)

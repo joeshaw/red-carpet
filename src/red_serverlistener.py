@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, weakref
+import sys, weakref, threading
 import gobject, gtk
 import rcd_util
 
@@ -24,15 +24,14 @@ import rcd_util
 ### where we poll for the world sequence number.
 ###
 
+poll_lock = threading.RLock()
+
 poll_count   = 0
 last_server  = -1
 freeze_count = 0
 missed_polls = 0
 poll_timeout = 0
 timeout_len  = 3000
-
-worker            = None
-worker_handler_id = 0
 
 last_package_seqno      = -1
 last_channel_seqno      = -1
@@ -42,20 +41,7 @@ listeners = {}
 listener_id = 0
 
 def register_listener(obj):
-    global listener_id, poll_count, last_seqno, last_server
-    global last_package_seqno
-    global last_channel_seqno
-    global last_subscription_seqno
-
-    # If we haven't polled yet, initialize things so that we won't
-    # necessarily get a server change reported on the first poll.
-    if poll_count == 0:
-        server = rcd_util.get_server()
-        last_server = id(server)
-        last_package_seqno, last_channel_seqno, last_subscription_seqno \
-                            = server.rcd.packsys.world_sequence_numbers()
-        poll_count += 1
-    
+    global listener_id
     listener_id += 1
     listeners[listener_id] = weakref.ref(obj)
     return listener_id
@@ -89,87 +75,95 @@ def signal_listeners(server,
                 unregister_listener(lid)
 
 def poll_cb():
-    global poll_count, missed_polls, last_server
-    global last_package_seqno
-    global last_channel_seqno
-    global last_subscription_seqno
-    global worker, worker_handler_id
+    global poll_count, missed_polls
 
-    poll_count = poll_count + 1
-    
+    poll_lock.acquire()
+
     if freeze_count == 0:
 
-        # This lets us do the right thing if the server changes
-        # out from under us.
         server = rcd_util.get_server_proxy()
-        if id(server) != last_server:
-            last_package_seqno      = -1
-            last_channel_seqno      = -1
-            last_subscription_seqno = -1
-        last_server = id(server)
+        if server is None:
+            return
 
-        if worker:
-            if worker_handler_id:
-                worker.disconnect(worker_handler_id)
-                worker_handler_id = 0
-            worker.cancel()
-
-        def sequence_numbers_finished_cb(worker):
+        def ready_cb(th):
+            global last_server
+            global poll_count
             global last_package_seqno
-            global last_channel_seqno
             global last_subscription_seqno
-            
-            if not worker.is_cancelled():
-                curr_package_seqno, curr_channel_seqno, curr_subscription_seqno \
-                                    = worker.get_result()
+            global last_channel_seqno
 
-                
-                if curr_channel_seqno != last_channel_seqno or \
-                       curr_subscription_seqno != last_subscription_seqno:
-                    rcd_util.reset_channels()
+            curr_package_seqno, curr_channel_seqno, curr_subscription_seqno =\
+                                th.get_result()
 
+            poll_lock.acquire()
+
+            # This lets us do the right thing if the server changes
+            # out from under us.
+            if id(server) != last_server:
+                last_package_seqno      = -1
+                last_channel_seqno      = -1
+                last_subscription_seqno = -1
+            last_server = id(server)
+
+            if curr_channel_seqno != last_channel_seqno or \
+                   curr_subscription_seqno != last_subscription_seqno:
+                rcd_util.reset_channels()
+
+            # Ignore any problems on the first poll, since we know we
+            # don't have valid server information before that point.
+            if poll_count != 0:
                 signal_listeners(server,
                                  curr_package_seqno != last_package_seqno,
                                  curr_subscription_seqno != last_subscription_seqno,
                                  curr_channel_seqno != last_channel_seqno)
+                
+            last_package_seqno = curr_package_seqno
+            last_subscription_seqno = curr_subscription_seqno
+            last_channel_seqno = curr_channel_seqno
 
-                last_package_seqno = curr_package_seqno
-                last_subscription_seqno = curr_subscription_seqno
-                last_channel_seqno = curr_channel_seqno
-        
-            missed_polls = 0
+            poll_lock.release()
+            
+            poll_count += 1
+            
+        th = server.rcd.packsys.world_sequence_numbers()
+        th.connect("ready", ready_cb)
 
-        if server:
-            worker = server.rcd.packsys.world_sequence_numbers()
-            worker_handler_id = worker.connect("ready",
-                                               sequence_numbers_finished_cb)
+        missed_polls = 0
         
     else:
         missed_polls += 1
+
+    poll_lock.release()
         
     return 1
 
 def reset_polling(do_immediate_poll=1):
     global poll_timeout
+    poll_lock.acquire()
     if poll_timeout:
         gtk.timeout_remove(poll_timeout)
     # do the first poll immediately
     if do_immediate_poll:
         poll_cb()
     poll_timeout = gtk.timeout_add(timeout_len, poll_cb)
+    poll_lock.release()
 
 def freeze_polling():
-    global freeze_count, poll_timeout
+    global freeze_count
+    poll_lock.acquire()
     freeze_count += 1
+    poll_lock.release()
 
 def thaw_polling():
     global freeze_count
+    poll_lock.acquire()
     if freeze_count > 0:
         freeze_count -= 1
     if freeze_count == 0:
         if missed_polls:
             poll_cb()       # do the first poll right away
             reset_polling() # and then get poll timeout started again
+    poll_lock.release()
 
 
 # Start polling.  We skip our first poll, since we won't have made a

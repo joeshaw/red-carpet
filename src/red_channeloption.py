@@ -16,15 +16,18 @@
 ###
 
 import rcd_util
+import red_serverlistener
 import gobject, gtk
 
-class ChannelOption(gtk.OptionMenu):
+class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
     def __init__(self):
         gobject.GObject.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
+        self.__assemble()
 
+    def __assemble(self):
         self.item_id_list = []
-
         menu = gtk.Menu()
         for c in rcd_util.get_all_channels():
             hbox = gtk.HBox(0, 0)
@@ -53,6 +56,7 @@ class ChannelOption(gtk.OptionMenu):
         menu.show()
         self.set_menu(menu)
 
+
     def get_channel(self):
         id = self.item_id_list[self.get_history()]
         return rcd_util.get_channel(id)
@@ -71,6 +75,12 @@ class ChannelOption(gtk.OptionMenu):
         i = self.item_id_list.index(id)
         self.set_history(i)
 
+    def channels_changed(self, server):
+        id = self.get_channel_id()
+        self.__assemble()
+        if id is not None and id in self.item_id_list:
+            self.set_channel_by_id(id)
+                
         
         
 gobject.type_register(ChannelOption)
