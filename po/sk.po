@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-05 20:28+0200\n"
-"PO-Revision-Date: 2004-05-02 23:11+0200\n"
+"POT-Creation-Date: 2004-05-31 04:21+0200\n"
+"PO-Revision-Date: 2004-05-31 14:56+0200\n"
 "Last-Translator: Ivan Noris <vix@vazka.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -62,11 +62,11 @@ msgstr "Konfigurujem"
 
 #: src/red_about.py:41
 msgid "Brought to you by:"
-msgstr ""
+msgstr "Iba pre vás od:"
 
 #: src/red_about.py:42
 msgid "With love from:"
-msgstr ""
+msgstr "S láskou od:"
 
 #: src/red_about.py:43
 msgid "Best wishes from:"
@@ -78,7 +78,7 @@ msgstr "S úctou:"
 
 #: src/red_about.py:45
 msgid "Developed by chimps:"
-msgstr ""
+msgstr "Vyvinuté šimpanzami:"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
@@ -86,7 +86,7 @@ msgstr "Licencované podľa GNU General Public License, verzia 2"
 
 #: src/red_activation.py:27
 msgid "Group Activation"
-msgstr ""
+msgstr "Aktivácia skupiny"
 
 #: src/red_activation.py:44
 msgid "Service:"
@@ -120,7 +120,7 @@ msgstr "Skontrolujte, že ste zadali správnu e-mailovú adresu a aktivačný k�
 #. Red Carpet help is localized.
 #: src/red_appwindow.py:84
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/red_appwindow.py:121
 msgid ""
@@ -1097,11 +1097,11 @@ msgstr "Všetky sekcie"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr ""
+msgstr "Produktivita"
 
 #: src/red_searchbox.py:176
 msgid "Imaging"
-msgstr ""
+msgstr "Manipulácia s obrázkami"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
@@ -1416,3 +1416,4 @@ msgstr "Neplatné meno používateľa"
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Používateľ '%s' už existuje."
+
