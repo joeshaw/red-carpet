@@ -1,1 +1,6 @@
 build
+Makefile
+Makefile.in
+*.so
+
+
