@@ -194,7 +194,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         if red_packagearray.pkg_is_upgrade(pkg) and \
            registered_action != red_pendingops.TO_BE_INSTALLED:
             item = gtk.ImageMenuItem("Upgrade")
-            image = red_pixbuf.get_widget("update")
+            image = red_pixbuf.get_widget("to-be-upgraded")
             item.set_image(image)
             if not rcd_util.check_server_permission("upgrade"):
                 item.set_sensitive(0)

@@ -1,5 +1,10 @@
 2003-02-21  Tambet Ingo  <tambet@ximian.com>
 
+	* red_packageview.py (PackageView.do_popup): Use the new icon
+	for upgrade here also.
+
+2003-02-21  Tambet Ingo  <tambet@ximian.com>
+
 	* red_depcomponent.py (DepComponent.__init__): We are a GObject
 	now, we want to emit signal when we're done with fetching data.
 	(DepComponent.get_deps): New method, moved all data fetching code
