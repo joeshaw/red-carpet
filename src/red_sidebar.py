@@ -178,7 +178,7 @@ class ShortcutBar(gtk.HBox):
             return
 
         rows = int(math.ceil(len(self.components) / 2.0))
-        table = gtk.Table(rows, 2)
+        table = gtk.Table(rows, 2, 1)
         table.set_col_spacings(6)
         table.set_row_spacings(6)
 

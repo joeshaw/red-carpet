@@ -58,6 +58,9 @@ class Component(gobject.GObject):
     def set_parent(self, p):
         self.__parent = p
 
+    def show_actionbar(self):
+        return 1
+
     # Ask the window embedding this component to switch to another
     # component.
     def switch_to(self, component):

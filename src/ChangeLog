@@ -1,5 +1,19 @@
 2003-03-10  Tambet Ingo  <tambet@ximian.com>
 
+	* red_appwindow.py (AppWindow.activate_component): Show/hide actionbar
+	according to new component's requirements.
+
+	* red_depcomponent.py (DepComponent.show_actionbar): Don't show
+	actionbar.
+
+	* red_component.py (Component.show_actionbar): New method, defaults
+	to true.
+
+	* red_sidebar.py (ShortcutBar.construct): Make buttons' table
+	homogeneous.
+
+	* red_news.py: I don't deserve to be on the shortcutbar!
+
 	* red_actionbar.py: Implement.
 
 	* Makefile.am (red_carpetsupport_DATA): Install red_actionbar.py.

@@ -63,6 +63,9 @@ class DepComponent(gobject.GObject, red_component.Component):
     def name(self):
         return _("Dependency Resolution")
 
+    def show_actionbar(self):
+        return 0
+
     def get_deps(self):
         if self.__worker:
             if self.__worker_handler_id:

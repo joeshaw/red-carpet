@@ -744,6 +744,11 @@ class AppWindow(gtk.Window,
         comp.visible(1)
         comp.set_parent(self)
         comp.activated()
+        if not comp.show_actionbar():
+            self.actionbar.hide()
+        else:
+            self.actionbar.show()
+
         if old_comp:
             old_comp.visible(0)
             old_comp.deactivated()

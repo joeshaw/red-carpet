@@ -176,9 +176,6 @@ class NewsComponent(red_component.Component):
     def long_name(self):
         return _("Red Carpet News")
 
-    def show_in_shortcuts(self):
-        return 1
-
     def access_key(self):
         return "n"
 
