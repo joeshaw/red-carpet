@@ -157,7 +157,9 @@ def toggle_action(pkg):
         new_act = TO_BE_REMOVED
     else:
         new_act = TO_BE_INSTALLED
-    set_action(pkg, new_act)
+        
+    if can_perform_action_single(pkg, new_act):
+        set_action(pkg, new_act)
 
 def toggle_action_with_cancellation(pkg):
     act = get_action(pkg)

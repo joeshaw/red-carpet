@@ -63,8 +63,11 @@ class PrefsViewPage(gtk.HBox):
         
         entry = gtk.Entry()
         entry.set_text(self.prefs[name]["value"])
-        entry.set_activates_default(1)
-        entry.connect("focus_out_event", entry_focus_out_cb, self, name)
+        if rcd_util.check_server_permission("superuser"):
+            entry.set_activates_default(1)
+            entry.connect("focus_out_event", entry_focus_out_cb, self, name)
+        else:
+            entry.set_sensitive(0)
 
         self.handled_prefs.append(name)
 
@@ -77,7 +80,10 @@ class PrefsViewPage(gtk.HBox):
 
         cb = gtk.CheckButton(label)
         cb.set_active((self.prefs[name]["value"] and 1) or 0)
-        cb.connect("toggled", checkbox_toggled_cb, self, name)
+        if rcd_util.check_server_permission("superuser"):
+            cb.connect("toggled", checkbox_toggled_cb, self, name)
+        else:
+            cb.set_sensitive(0)
 
         self.handled_prefs.append(name)
 
@@ -107,9 +113,12 @@ class PrefsViewPage(gtk.HBox):
                              step_incr=1, page_incr=5)
                              
         spin = gtk.SpinButton(adjustment=adj, digits=0)
-        spin.set_update_policy(gtk.UPDATE_IF_VALID)
-        spin.connect("value-changed", spinbutton_value_changed_cb,
-                     self, name, to_daemon_func)
+        if rcd_util.check_server_permission("superuser"):
+            spin.set_update_policy(gtk.UPDATE_IF_VALID)
+            spin.connect("value-changed", spinbutton_value_changed_cb,
+                         self, name, to_daemon_func)
+        else:
+            spin.set_sensitive(0)
 
         self.handled_prefs.append(name)
 
@@ -169,65 +178,73 @@ class PrefsViewPage_General(PrefsViewPage):
                                                         (0, 20))
         table.attach(self.max_download_spin, 1, 2, 1, 2,
                      xoptions=gtk.FILL, xpadding=3)
-        
-        # Proxy frame
+
+        # Proxy frame - requires superuser
         frame = gtk.Frame(_("Proxy"))
         vbox.pack_start(frame, expand=0)
 
-        table = gtk.Table(rows=4, columns=2)
-        table.set_row_spacings(5)
-        frame.add(table)
+        if rcd_util.check_server_permission("superuser"):
+            table = gtk.Table(rows=4, columns=2)
+            table.set_row_spacings(5)
+            frame.add(table)
 
-        self.use_proxy_check = gtk.CheckButton(_("Use a proxy"))
-        table.attach(self.use_proxy_check, 0, 2, 0, 1,
-                     xoptions=gtk.FILL, xpadding=3)
+            self.use_proxy_check = gtk.CheckButton(_("Use a proxy"))
+            table.attach(self.use_proxy_check, 0, 2, 0, 1,
+                         xoptions=gtk.FILL, xpadding=3)
 
-        label = gtk.Label(_("Proxy URL:"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL, xpadding=3)
+            label = gtk.Label(_("Proxy URL:"))
+            label.set_alignment(0.0, 0.5)
+            table.attach(label, 0, 1, 1, 2, xoptions=gtk.FILL, xpadding=3)
 
-        self.proxy_url_entry = self.create_entry("proxy-url")
-        table.attach(self.proxy_url_entry, 1, 2, 1, 2, xpadding=3)
+            self.proxy_url_entry = self.create_entry("proxy-url")
+            table.attach(self.proxy_url_entry, 1, 2, 1, 2, xpadding=3)
 
-        label = gtk.Label(_("Username:"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 2, 3, xoptions=gtk.FILL, xpadding=3) 
+            label = gtk.Label(_("Username:"))
+            label.set_alignment(0.0, 0.5)
+            table.attach(label, 0, 1, 2, 3, xoptions=gtk.FILL, xpadding=3) 
 
-        self.proxy_username_entry = self.create_entry("proxy-username")
-        table.attach(self.proxy_username_entry, 1, 2, 2, 3, xpadding=3)
+            self.proxy_username_entry = self.create_entry("proxy-username")
+            table.attach(self.proxy_username_entry, 1, 2, 2, 3, xpadding=3)
 
-        label = gtk.Label(_("Password:"))
-        label.set_alignment(0.0, 0.5)
-        table.attach(label, 0, 1, 3, 4, xoptions=gtk.FILL, xpadding=3)
+            label = gtk.Label(_("Password:"))
+            label.set_alignment(0.0, 0.5)
+            table.attach(label, 0, 1, 3, 4, xoptions=gtk.FILL, xpadding=3)
 
-        self.proxy_password_entry = self.create_entry("proxy-password")
-        self.proxy_password_entry.set_visibility(0)
-        table.attach(self.proxy_password_entry, 1, 2, 3, 4, xpadding=3)
+            self.proxy_password_entry = self.create_entry("proxy-password")
+            self.proxy_password_entry.set_visibility(0)
+            table.attach(self.proxy_password_entry, 1, 2, 3, 4, xpadding=3)
 
-        # Have to wait for the above widgets to be created.
-        def use_proxy_toggled_cb(cb, p):
-            sensitive = cb.get_active()
+            # Have to wait for the above widgets to be created.
+            def use_proxy_toggled_cb(cb, p):
+                sensitive = cb.get_active()
 
-            p.proxy_url_entry.set_sensitive(sensitive)
-            p.proxy_username_entry.set_sensitive(sensitive)
-            p.proxy_password_entry.set_sensitive(sensitive)
+                p.proxy_url_entry.set_sensitive(sensitive)
+                p.proxy_username_entry.set_sensitive(sensitive)
+                p.proxy_password_entry.set_sensitive(sensitive)
 
-            if not sensitive:
-                p.prefs["proxy-url"]["value"] = ""
-                p.prefs["proxy-username"]["value"] = ""
-                p.prefs["proxy-password"]["value"] = ""
-            else:
-                p.prefs["proxy-url"]["value"] = p.proxy_url_entry.get_text()
-                p.prefs["proxy-username"]["value"] = p.proxy_username_entry.get_text()
-                p.prefs["proxy-password"]["value"] = p.proxy_password_entry.get_text()
+                if not sensitive:
+                    p.prefs["proxy-url"]["value"] = ""
+                    p.prefs["proxy-username"]["value"] = ""
+                    p.prefs["proxy-password"]["value"] = ""
+                else:
+                    p.prefs["proxy-url"]["value"] = p.proxy_url_entry.get_text()
+                    p.prefs["proxy-username"]["value"] = p.proxy_username_entry.get_text()
+                    p.prefs["proxy-password"]["value"] = p.proxy_password_entry.get_text()
 
-            p.enqueue("proxy-url")
-            p.enqueue("proxy-username")
-            p.enqueue("proxy-password")
-                
-        self.use_proxy_check.connect("toggled", use_proxy_toggled_cb, self)
-        self.use_proxy_check.set_active((self.prefs["proxy-url"]["value"] and 1) or 0)
-        self.use_proxy_check.toggled()
+                p.enqueue("proxy-url")
+                p.enqueue("proxy-username")
+                p.enqueue("proxy-password")
+
+            self.use_proxy_check.connect("toggled", use_proxy_toggled_cb, self)
+            self.use_proxy_check.set_active((self.prefs["proxy-url"]["value"] and 1) or 0)
+            self.use_proxy_check.toggled()
+        else:
+            hbox = gtk.HBox()
+            label = gtk.Label(_("You do not have permissions to view "
+                                "proxy settings"))
+            label.set_alignment(0.0, 0.5)
+            hbox.pack_start(label, padding=3)
+            frame.add(hbox)
 
 class PrefsViewPage_Cache(PrefsViewPage):
 
@@ -294,9 +311,37 @@ class PrefsViewPage_Cache(PrefsViewPage):
                                                      (0, 1460))
         hbox.pack_start(self.cache_age_spin, expand=0, fill=1)
 
+        hbox = gtk.HBox(spacing=6)
+        vbox.pack_start(hbox, expand=0, fill=1)
+        
+        label = gtk.Label(_("Current cache size:"))
+        label.set_alignment(0.0, 0.5)
+        hbox.pack_start(label, expand=0, fill=1)
+
+        self.cache_size_label = gtk.Label("")
+        self.cache_size_label.set_alignment(0.0, 0.5)
+        hbox.pack_start(self.cache_size_label, expand=0, fill=1)
+
+        def flush_cache_cb(b):
+            def flush_cb(th, page):
+                gtk.idle_add(page.update_cache_size_label)
+            server = rcd_util.get_server_proxy()
+            th = server.rcd.system.flush_cache()
+            th.connect("ready", flush_cb, self)
+
+        self.update_cache_size_label()
+
+        button = gtk.Button(_("Flush Cache"))
+        if rcd_util.check_server_permission("superuser"):
+            button.connect("clicked", flush_cache_cb)
+        else:
+            button.set_sensitive(0)
+        hbox.pack_start(button, expand=0, fill=1)
+
         # Have to do this after the other widgets are created
         def cache_enabled_toggled_cb(cb, p):
-            sensitive = cb.get_active()
+            sensitive = cb.get_active() and \
+                        rcd_util.check_server_permission("superuser")
 
             p.cache_size_spin.set_sensitive(sensitive)
             p.cache_age_spin.set_sensitive(sensitive)
@@ -304,6 +349,14 @@ class PrefsViewPage_Cache(PrefsViewPage):
         self.cache_enabled_check.connect("toggled", cache_enabled_toggled_cb,
                                          self)
         self.cache_enabled_check.toggled()
+
+    def update_cache_size_label(self):
+        def update_cb(th, page):
+            size = th.get_result()
+            page.cache_size_label.set_text(_("%d MB") % (size/(1024*1024)))
+        server = rcd_util.get_server_proxy()
+        th = server.rcd.system.get_cache_size()
+        th.connect("ready", update_cb, self)
 
 class PrefsViewPage_Daemon(PrefsViewPage):
 

@@ -1,3 +1,18 @@
+2003-03-19  Joe Shaw  <joe@ximian.com>
+
+	* red_connection.py: Bump up the required rcd version to 1.3.2.
+
+	* red_pendingops.py (toggle_action): Only set the action if we
+	have the permissions to set it.
+
+	* red_prefs.py (create_entry, create_checkbox, create_spinbutton):
+	Only allow the prefs to be set if the user has superuser
+	privileges.
+	(PrefsViewPage_General.build): Don't show proxy settings if the
+	user isn't superuser.
+	(PrefsViewPage_Cache): Display the current cache size and allow
+	the user to flush it, if they have permission to.
+
 2003-03-19  Jon Trowbridge  <trow@ximian.com>
 
 	* red_main.py (main): If we can't connect to a server, print an

@@ -70,8 +70,8 @@ def save_credentials(uri, user, password, local):
 
 def check_rcd_version(major, minor, micro):
     req_major = 1
-    req_minor = 2
-    req_micro = 1
+    req_minor = 3
+    req_micro = 2
 
     # Guard for NoneType
     major = major or 0
