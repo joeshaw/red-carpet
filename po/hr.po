@@ -1,11 +1,11 @@
 # Translation of red-carpet to Croatiann
 # Copyright (C) Croatiann team
-# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Jerko Škifić <skific@riteh.hr>,Željko Brajdić <zorz@iskon.hr>,pr pr <delacko@192.168.0.1>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,
+# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Jerko Škifić <skific@riteh.hr>,Željko Brajdić <zorz@iskon.hr>,pr pr <delacko@192.168.0.1>,Robert Sedak <robert.sedak@sk.tel.hr>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 0\n"
-"POT-Creation-Date: 2004-02-01 17:14+0100\n"
-"PO-Revision-Date: 2004-02-05 23:52+CET\n"
+"POT-Creation-Date: 2004-03-20 15:02+0100\n"
+"PO-Revision-Date: 2004-03-20 15:02+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -113,6 +113,8 @@ msgstr "Ne mogu aktivirati"
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr "Provjerite jeste li ispravno popunili adresu e-pošte i aktivirajući kod."
 
+#. TRANSLATORS: *Only* localize this to the language code if the
+#.  Red Carpet help is localized.
 #: src/red_appwindow.py:84
 msgid "C"
 msgstr "C"
@@ -157,6 +159,7 @@ msgstr "Osvježi"
 msgid "Refresh channel data"
 msgstr "Osvježi podatke o kanalu"
 
+#. Install
 #: src/red_appwindow.py:463 src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Označi za _instalaciju"
@@ -165,6 +168,10 @@ msgstr "Označi za _instalaciju"
 msgid "Mark selected packages for installation"
 msgstr "Označavanje paketa za instalaciju"
 
+#. #
+#.  # Remove Package
+#.  #
+#.  Remove
 #: src/red_appwindow.py:469 src/red_appwindow.py:770
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
@@ -174,6 +181,7 @@ msgstr "Označi za _uklanjanje"
 msgid "Mark selected packages for removal"
 msgstr "Označavanje paketa za uklanjanje"
 
+#. Cancel
 #: src/red_appwindow.py:475 src/red_appwindow.py:783
 #: src/red_packageview.py:258
 msgid "_Cancel"
@@ -183,6 +191,7 @@ msgstr "_Odustani"
 msgid "Cancel marked package actions"
 msgstr "Otkazuje označene postupke za pakete"
 
+#. Info
 #: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "_Prikaži informacije"
@@ -380,6 +389,9 @@ msgstr "Pro_vjeri zavisnosti sustava"
 msgid "Verify that all system dependencies are met"
 msgstr "Provjeravanje zavisnosti sustava"
 
+#. #
+#.  # Install Package
+#.  #
 #: src/red_appwindow.py:760
 msgid "Mark for I_nstallation"
 msgstr "Označi za instalaciju"
@@ -442,7 +454,7 @@ msgid ""
 " '%s'."
 msgstr ""
 "Ne mogu se spojiti na daemon:\n"
-" „%s“."
+" \"%s\"."
 
 #: src/red_connection.py:67
 msgid ""
@@ -788,6 +800,7 @@ msgstr "Sljedeće opcije su prihvaćene:"
 msgid "installed"
 msgstr "instalirano"
 
+#. upgrade
 #: src/red_packagearray.py:93
 msgid "newer"
 msgstr "noviji"
@@ -953,6 +966,7 @@ msgstr "Transakcija nije uspjela"
 msgid "Interval to refresh channel data (in hours):"
 msgstr "Vrijeme između osvježavanja podataka kanala (u satima):"
 
+#. Packages section
 #: src/red_prefs.py:182
 msgid "Packages"
 msgstr "Paketi"
@@ -969,6 +983,7 @@ msgstr "Najveći broj paketa koji se preuzimaju odjednom:"
 msgid "Enable package rollback"
 msgstr "Uključite vraćanje paketa"
 
+#. Proxy section - requires superuser
 #: src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
@@ -997,6 +1012,7 @@ msgstr "Ostavi preuzete pakete i njihove podatke"
 msgid "Location of cached data:"
 msgstr "Lokacija međuspremnika:"
 
+#. Expiration section
 #: src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Ističe"
@@ -1122,6 +1138,9 @@ msgstr "Razno"
 msgid "Search descriptions"
 msgstr "Pretražuj opise"
 
+#. ##
+#.  ## Match radio buttons
+#.  ##
 #: src/red_searchbox.py:286
 msgid "Match:"
 msgstr "Usporedi s:"
@@ -1172,7 +1191,7 @@ msgstr "Ubaci podatke o daemonu u XML datoteku"
 
 #: src/red_serverinfo.py:94
 msgid "Could not open file '%s': %s"
-msgstr "Ne mogu otvoriti datoteku „%s“: %s"
+msgstr "Ne mogu otvoriti datoteku \"%s\": %s"
 
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
