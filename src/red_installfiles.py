@@ -219,7 +219,7 @@ class DownloadWatcher(threading.Thread, gobject.GObject):
             u.close()
             return None
 
-        data = []
+        data = ""
 
         while 1:
             d = u.read(1024)

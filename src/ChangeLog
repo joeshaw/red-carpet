@@ -1,3 +1,9 @@
+2003-03-24  Joe Shaw  <joe@ximian.com>
+
+	* red_installfiles.py (DownloadWatcher.fetch_package): Initialize
+	data to be an empty string, not an empty list, so we send down
+	byte data to the daemon.  (Fixes #40066)
+
 2003-03-24  Jon Trowbridge  <trow@ximian.com>
 
 	* red_history.py (HistoryComponent.activated): Chain a call to
