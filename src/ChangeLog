@@ -1,5 +1,8 @@
 2003-06-02  Joe Shaw  <joe@ximian.com>
 
+	* rcd_util.py (byte_size_to_string): Use proper units for kB and
+	MB.  Fixes #42283.
+
 	* red_thrashingtreeview.py (pre_thrash_model): Save the items, not
 	their paths for restoring post-thrash.
 	(post_thrash_model): Do a couple passes over the list's items to

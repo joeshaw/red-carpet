@@ -296,9 +296,9 @@ def byte_size_to_string(sz):
     elif sz < 1024:
         return "%d bytes" % sz
     elif sz < 1048576:
-        return "%d kb" % (sz/1024)
+        return "%d kB" % (sz/1024)
     else:
-        return "%.1f mb" % (sz/(1048576.0))
+        return "%.1f MB" % (sz/(1048576.0))
 
 ###############################################################################
 
