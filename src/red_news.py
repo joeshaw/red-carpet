@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string
+import sys, string, re
 import rcd_util
 import gobject, gtk, pango
 import red_pixbuf, red_component, red_channelinfo
@@ -40,8 +40,8 @@ class NewsView(gtk.ScrolledWindow):
         sel.set_mode(gtk.SELECTION_NONE)
 
         col = gtk.TreeViewColumn("Icon",
-                                 gtk.CellRendererText(),
-                                 text=COLUMN_ICON)
+                                 gtk.CellRendererPixbuf(),
+                                 pixbuf=COLUMN_ICON)
 
         view.append_column(col)
 
@@ -83,19 +83,39 @@ COLUMN_TITLE       = 2
 COLUMN_DATE        = 3
 COLUMN_LAST        = 4
 
+
 class NewsModel(gtk.GenericTreeModel):
 
     def __init__(self, server):
         gtk.GenericTreeModel.__init__(self)
         self.news = server.rcd.news.get_all()
 
+        for item in self.news:
+            item["icon"] = self.get_icon(item["channel_name"])
+
+    def get_icon(self, name):
+        # FIXME: Special hacks for current (bad) news file
+        if name == "Ximian GNOME":
+            name = "Ximian Desktop"
+
+        if name == "OpenOffice":
+            name = "OpenOffice.org"
+
+        channels = rcd_util.get_all_channels()
+        for c in channels:
+            if c["name"] == name:
+                return rcd_util.get_channel_icon(c["id"])
+
+        return None
+
     def news_item_to_column(self, news_item, index):
         if index == COLUMN_NEWS:
             return news_item
         elif index == COLUMN_ICON:
-            return news_item["icon_url"]
+            return news_item["icon"]
         elif index == COLUMN_TITLE:
-            return news_item["title"] + "\n<i>" + news_item["time_str"] + "</i>\n" + news_item["summary"]
+            summary = re.sub("\s+", " ", news_item["summary"])
+            return "<b>" + news_item["title"] + "</b>\n<i>" + news_item["time_str"] + "</i>\n" + summary
         elif index == COLUMN_DATE:
             return "\n" + news_item["time_str"]
 
@@ -106,8 +126,10 @@ class NewsModel(gtk.GenericTreeModel):
         return COLUMN_LAST
 
     def on_get_column_type(self, index):
-        if index == COLUMN_NEWS: ##  or index == COLUMN_ICON:
+        if index == COLUMN_NEWS:
             return gobject.TYPE_PYOBJECT
+        elif index == COLUMN_ICON:
+            return gtk.gdk.Pixbuf
         else:
             return gobject.TYPE_STRING
 
