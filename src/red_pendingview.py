@@ -83,6 +83,7 @@ class PendingView(gtk.Window):
         self.step_label.set_alignment(0, 0.5)
         (width, height) = self.calculate_required_text_size(MAX_LABEL_LEN)
         self.step_label.set_size_request(width, -1)
+        self.__line_height = height
 
         viewport = gtk.Viewport()
         viewport.set_shadow_type(gtk.SHADOW_NONE)
@@ -91,8 +92,10 @@ class PendingView(gtk.Window):
         scrolled = gtk.ScrolledWindow()
         scrolled.add(viewport)
         scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scrolled.set_size_request(-1, 3*height+2) # a few extra pixels...
+        self.__scrolled = scrolled
         textbox.pack_start(scrolled, expand=1, fill=1)
-
+        
         if label:
             self.set_label(label)
 
@@ -177,9 +180,7 @@ class PendingView(gtk.Window):
 
     def calculate_required_text_size(self, max_len):
         # "W" being the widest glyph.
-        # Text is usually split to two lines, add another one just
-        # to make sure we have enough space.
-        s = "W"*max_len + "\n\n"
+        s = "W"*max_len
         layout = pango.Layout(gtk.Label("").get_pango_context())
         layout.set_text(s)
         (width, height) = layout.get_pixel_size()
@@ -209,9 +210,12 @@ class PendingView(gtk.Window):
             lines = rcd_util.linebreak(msg, WRAP_LABEL_LEN)
         else:
             lines = []
-        # We always want at least 3 lines of text to avoid "jumpyness".
-        while len(lines) < 3:
-            lines.append("")
+
+        # Try to set the scrollbox to a reasonable size, neither too big
+        # or too small. (We always want at least 3 lines of text to avoid
+        # "jumpyness".)
+        n = max(3, min(len(lines), 8))
+        self.__scrolled.set_size_request(-1, n*self.__line_height+2)
 
         msg = string.join(lines, "\n")
         self.step_label.set_text(msg)

@@ -1,5 +1,12 @@
 2003-03-24  Jon Trowbridge  <trow@ximian.com>
 
+	* red_pendingview.py (PendingView.set_label): Try to set the
+	scrollbox containing the label to a reasonable size. (Fixes 
+	#40209).
+	(PendingView.__init__): Set the scrollbox to a reasonable
+	initial size.  Store the height of one line of text for
+	use in set_label.
+
 	* Makefile.am (red_carpetsupport_DATA): Removed red_throbber.py.
 
 	* red_appwindow.py: Removed the throbber. Fixes #39979.
