@@ -1,22 +1,21 @@
-# Serbian translation of gtetrinet
+# Serbian translation of red-carpet
 # Courtesy of Prevod.org team (http://www.prevod.org/) -- 2003.
-# 
-# This file is distributed under the same license as the gtetrinet package.
-# 
+#
+# This file is distributed under the same license as the red-carpet package.
+#
 # Maintainer: Слободан Симић <slsimic@verat.net>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-26 17:47+0200\n"
-"PO-Revision-Date: 2003-09-26 18:04+0200\n"
+"POT-Creation-Date: 2003-10-22 02:57+0200\n"
+"PO-Revision-Date: 2003-10-22 02:58+0200\n"
 "Last-Translator: Slobodan Simic <slsimic@verat.net>\n"
 "Language-Team: Srpski <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -212,13 +211,6 @@ msgstr ""
 "Проверите да ли сте исправно попунили е-поштанску адресу и активирајући код."
 
 #. Store email to config.
-#: src/red_activation.py:133
-msgid ""
-"System could not be activated: Invalid activation code or email address."
-msgstr ""
-"Систем се не може активирати: Погрешан активирајући код или е-поштанска "
-"адреса."
-
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
@@ -946,20 +938,20 @@ msgstr "Изађи из Red Carpet-а"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:357
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:364
 msgid "Dependency Resolution"
 msgstr "Провера зависности"
 
 #. Clean up
-#: src/red_depcomponent.py:117
+#: src/red_depcomponent.py:116
 msgid "Verifying System"
 msgstr "Проверавам систем"
 
-#: src/red_depcomponent.py:123
+#: src/red_depcomponent.py:122
 msgid "Resolving Dependencies"
 msgstr "Решавам зависности"
 
-#: src/red_depcomponent.py:157
+#: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
@@ -970,25 +962,23 @@ msgstr ""
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:201
+#: src/red_depcomponent.py:188
 msgid "I Agree"
 msgstr "Слажем се"
 
-#. FIXME: flags,
-#. FIXME: Hold a reference to trans_win to work around
-#. pygtk bug 92955.
 #. a hack to let history component know we are updated.
+#. FIXME: flags
 #. Assemble our warning banner
-#: src/red_depcomponent.py:262
+#: src/red_depcomponent.py:269
 msgid "Dependency Resolution Failed"
 msgstr "Неуспело решавање зависности"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:312
+#: src/red_depcomponent.py:319
 msgid "System Verified"
 msgstr "Систем проверен"
 
-#: src/red_depcomponent.py:314
+#: src/red_depcomponent.py:321
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -998,23 +988,23 @@ msgstr "Све зависности пакета су задовољене, и �
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:368
+#: src/red_depcomponent.py:375
 msgid "Requested Installations"
 msgstr "Тражене инсталације"
 
-#: src/red_depcomponent.py:372
+#: src/red_depcomponent.py:379
 msgid "Requested Removals"
 msgstr "Тражена уклањања"
 
-#: src/red_depcomponent.py:376
+#: src/red_depcomponent.py:383
 msgid "Required Installations"
 msgstr "Неопходне инсталације"
 
-#: src/red_depcomponent.py:380
+#: src/red_depcomponent.py:387
 msgid "Required Removals"
 msgstr "Неопходна уклањања"
 
-#: src/red_depcomponent.py:406
+#: src/red_depcomponent.py:413
 msgid "Continue"
 msgstr "Настави"
 
@@ -1735,7 +1725,7 @@ msgstr "У сукобу са"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Име"
 
@@ -1862,7 +1852,7 @@ msgstr "%.1f%% завршено"
 #. gobject.type_register(PendingView)
 #. #############################################################################
 #. #############################################################################
-#: src/red_pendingview.py:504
+#: src/red_pendingview.py:509
 msgid "Updating System"
 msgstr "Освежавам систем"
 
@@ -1870,11 +1860,11 @@ msgstr "Освежавам систем"
 #. # FIXME: This is really ugly hack, but otherwise ui will be
 #. # unresponsive if connection with rcd is lost (even if rcd
 #. # comes back).
-#: src/red_pendingview.py:577
+#: src/red_pendingview.py:582
 msgid "Download cancelled"
 msgstr "Преузимање отказано"
 
-#: src/red_pendingview.py:578
+#: src/red_pendingview.py:583
 msgid "Transaction cancelled"
 msgstr "Пренос отказан"
 
@@ -1884,37 +1874,37 @@ msgstr "Пренос отказан"
 #. system.
 #.
 #. FIXME: Do something intelligent here?
-#: src/red_pendingview.py:613
+#: src/red_pendingview.py:618
 msgid "Transaction Finished"
 msgstr "Пренос завршен"
 
-#: src/red_pendingview.py:626
+#: src/red_pendingview.py:631
 msgid "Downloading packages"
 msgstr "Преузимам пакете"
 
-#: src/red_pendingview.py:639
+#: src/red_pendingview.py:644
 msgid "Download Failed"
 msgstr "Преузимање неуспешно"
 
-#: src/red_pendingview.py:640
+#: src/red_pendingview.py:645
 msgid "Unknown Error"
 msgstr "Непозната грешка"
 
-#: src/red_pendingview.py:657
+#: src/red_pendingview.py:662
 msgid "Processing Transaction"
 msgstr "Обрађујем пренос"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
-#: src/red_pendingview.py:696
+#: src/red_pendingview.py:701
 msgid "The transaction has completed successfully"
 msgstr "Пренос је успешно обављен"
 
-#: src/red_pendingview.py:701
+#: src/red_pendingview.py:706
 msgid "Transaction failed"
 msgstr "Пренос неуспешан"
 
-#: src/red_pendingview.py:703
+#: src/red_pendingview.py:708
 msgid "Transaction Failed"
 msgstr "Пренос неуспешан"
 
@@ -2363,6 +2353,58 @@ msgstr "Изаберите датотеку за уписивање XML-а"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "Уредите услуге"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "Адреса"
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "У_клони услугу"
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr "_Додај услугу"
+
+#: src/red_services.py:226
+msgid "Add Service"
+msgstr "Додај услугу"
+
+#: src/red_services.py:231
+msgid "Service URL"
+msgstr "Адреса услуге"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
@@ -2672,6 +2714,12 @@ msgstr "Неисправно име корисника."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Корисник '%s' већ постоји."
+
+#~ msgid ""
+#~ "System could not be activated: Invalid activation code or email address."
+#~ msgstr ""
+#~ "Систем се не може активирати: Погрешан активирајући код или е-поштанска "
+#~ "адреса."
 
 #~ msgid "Unable to mount '%s' as a channel"
 #~ msgstr "Не могу да монтирам '%s' као канал"
