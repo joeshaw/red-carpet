@@ -5,6 +5,7 @@ src/red_activation.py
 src/red_appwindow.py
 src/red_channelmodel.py
 src/red_channeloption.py
+src/red_componentbook.py
 src/red_component.py
 src/red_connection.py
 src/red_console.py
@@ -20,8 +21,8 @@ src/red_listmodel.py
 src/red_locks.py
 src/red_main.py
 src/red_menubar.py
+src/red_mirrors.py
 src/red_mount.py
-src/red_my_computer.py
 src/red_news.py
 src/red_option.py
 src/red_packagearray.py
@@ -41,10 +42,11 @@ src/red_serverlistener.py
 src/red_serverproxy.py
 src/red_settings.py
 src/red_sidebar.py
+src/red_software.py
 src/red_subscriptions.py
-src/red_summary.py
 src/red_thrashingtreeview.py
 src/red_toolbar.py
 src/red_transaction.py
+src/red_updates.py
 src/red_users.py
 src/ximian_xmlrpclib.py
