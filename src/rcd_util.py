@@ -99,7 +99,7 @@ def connect_to_server(force_dialog=0):
         dialog.destroy()
 
 def register_server(srv):
-    global server, server_proxy, current_user
+    global server, server_proxy
     server = srv
     server_proxy = red_serverproxy.ServerProxy(server)
     reset_server_permissions()
