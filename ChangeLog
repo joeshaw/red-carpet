@@ -1,3 +1,9 @@
+2004-09-02  James Willcox  <james@ximian.com>
+
+	* trayicon/red_icon_main.py:
+
+	Fix brain damaged spawning behavior
+
 2004-09-01  James Willcox  <james@ximian.com>
 
 	* trayicon/red_icon_main.py:

@@ -39,6 +39,7 @@ import red_software
 import red_tray
 import red_pixbuf
 import os
+import threading
 
 red_running = 1
 
@@ -51,6 +52,7 @@ class UpdateIcon(red_tray.TrayIcon):
     def __init__(self):
         red_tray.TrayIcon.__init__(self, "Red Carpet Notification Icon")
 
+        self.thread = None
 
         self.imp_icons = {}
         for imp in ['necessary', 'urgent', 'suggested', 'feature', 'minor']:
@@ -70,7 +72,13 @@ class UpdateIcon(red_tray.TrayIcon):
 
     def image_press_cb(self, img, event, data):
         if event.button == 1:
-            f = os.popen('red-carpet', 'r')
+            if not self.thread:
+                self.thread = threading.Thread(target=self.run_red_carpet)
+                self.thread.start()
+
+    def run_red_carpet(self):
+        os.system('red-carpet')
+        self.thread = None
 
     def check_updates(self, icon):
         def query_finished_cb(worker, icon):
