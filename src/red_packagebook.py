@@ -20,7 +20,6 @@ import rcd_util
 import red_packagepage
 import red_packagepage_deps
 import red_packagepage_info
-import red_packagepage_files
 from red_gettext import _
 
 package_infos = {}
@@ -38,7 +37,6 @@ def show_package_info(pkg, parent=None):
     book.add_page(red_packagepage_info.PackagePage_Info())
     book.add_page(red_packagepage.PackagePage_History())
     book.add_page(red_packagepage_deps.PackagePage_Deps())
-    book.add_page(red_packagepage_files.PackagePage_Files())
 
     book.set_package(pkg)
 
