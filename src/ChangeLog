@@ -10,6 +10,12 @@
 	(UsersWindow.selection_changed_cb): Catch programmatically changed
 	active_user and modify the visual selection.
 	(UserAdd.add_cb): Set the new user active_user.
+	(UsersData.set_active_user_cb): New method to wait until threads
+	are finished.
+	(UsersData.add_user): Use (set_active_user_cb)
+	(UsersData.delete_user): Ditto.
+	(UsersModel.get_iter_for_user): Find it by name, don't require
+	equality.
 
 	* red_serverinfo.py (dump_xml): Get dump in new thread to avoid
 	UI blocking.

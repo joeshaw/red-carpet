@@ -94,6 +94,7 @@ class UsersData(red_serverlistener.ServerListener, gobject.GObject):
         self.__users = []
         self.__privileges = []
         self.active_user = None
+        self.__poll_count = 0
 
         self.refresh()
 
@@ -132,6 +133,25 @@ class UsersData(red_serverlistener.ServerListener, gobject.GObject):
             if u.name_get() == user_name:
                 return 1
         return 0
+
+    ## Make sure to initialize self.__poll_count.
+    def set_active_user_cb(self, user):
+        if self.__poll_count != red_serverlistener.poll_count:
+            self.set_active_user(user)
+            self.__poll_count = 0
+            return 0
+        return 1
+
+    def add_user(self, user):
+        self.__poll_count = red_serverlistener.poll_count
+        user.update()
+        gtk.timeout_add(100, self.set_active_user_cb, user)
+
+    def delete_user(self, user):
+        self.__poll_count = red_serverlistener.poll_count
+        user.delete()
+        user = self.__users[0]
+        gtk.timeout_add(100, self.set_active_user_cb, user)
 
     def get_active_user(self):
         if self.active_user:
@@ -384,7 +404,6 @@ class UsersWindow(gtk.Dialog,
                 model = view.get_model()
                 iter = model.get_iter_for_user(u)
                 if iter:
-                    print "Found iter, selecting %s" % u.name_get()
                     selection = view.get_selection()
                     selection.select_iter(iter)
 
@@ -421,7 +440,7 @@ class UsersWindow(gtk.Dialog,
 
                 def remove_dialog_cb(dialog, id, user):
                     if id == gtk.RESPONSE_YES:
-                        user.delete()
+                        users_data.delete_user(user)
 
                 dialog = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT,
                                            gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
@@ -538,8 +557,7 @@ class UserAdd(gtk.Dialog):
                 dialog.destroy()
             else:
                 user = User(name, p1)
-                user.update()
-                users_data.set_active_user(user)
+                users_data.add_user(user)
                 this.destroy()
 
         button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
@@ -578,19 +596,14 @@ class UsersModel(red_listmodel.ListModel):
     def refresh(self, users_data):
         def refresh_cb(this, users_data):
             self.__users = users_data.get_all_users()
-            print "refreshed"
 
         self.changed(refresh_cb, users_data)
 
     def get_iter_for_user(self, user):
-        print "get_iter for %s" % user.name_get()
-        iter = self.get_iter_first()
-        while iter:
-            u = self.get_value(iter, COLUMN_USER)
-            if u == user:
-                print u.name_get()
-                return iter
-            iter = self.iter_next(iter)
+        user_name = user.name_get()
+        for i in range(len(self.__users)):
+            if user_name == self.__users[i].name_get():
+                return self.get_iter((i,))
 
     ###
     ### red_listmodel.ListModel implementation
@@ -652,3 +665,5 @@ class PrivilegesModel(red_listmodel.ListModel):
 
     def get_all(self):
         return self.__privileges
+
+
