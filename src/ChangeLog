@@ -1,3 +1,10 @@
+2003-12-03  Joe Shaw  <joe@ximian.com>
+
+	* red_prefs.py (CellRendererPref.on_activate): Don't call a cell
+	renderer's activate method if event is None, since it'll
+	traceback.  We get this on keyboard events, and just not calling
+	it seems to work okay.
+
 2003-10-30  Joe Shaw  <joe@ximian.com>
 
 	* red_connection.py: Set the required rcd version to 2.0.0.

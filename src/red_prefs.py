@@ -597,8 +597,13 @@ class CellRendererPref(gtk.GenericCellRenderer):
         model = widget.get_model()
         pref = model.get_list_item(int(path))
         self.emit("activated", pref)
-        return r.activate(event, widget, path,
-                          background_area, cell_area, flags)
+
+        # For some reason, event is None on keyboard events, and
+        # r.activate() complains about it.  Things seem to work
+        # if we just don't call this if it's None, though.
+        if event:
+            return r.activate(event, widget, path,
+                              background_area, cell_area, flags)
 
     def on_start_editing(self, event, widget, path,
                          background_area, cell_area, flags):
