@@ -1,186 +1,97 @@
-# Copyright (C) 2001 Free Software Foundation, Inc.
-# Andras Timar <timar@gnome.hu>, 2001.
+# Hungarian translation of red-carpet.
+# Copyright (C) 2001, 2003, 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the red-carpet package.
+# Andras Timar <timar@gnome.hu>, 2001, 2003.
+# Laszlo Dvornik <dvornik@gnome.hu>, 2004.
+# Gabor Kelemen <kelemeng@gnome.hu>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Ximian Red Carpet 1.3\n"
+"Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-23 14:10-0500\n"
-"PO-Revision-Date: 2003-07-11 10:18+0200\n"
-"Last-Translator: Andras Timar <timar@gnome.hu>\n"
-"Language-Team: Hungarian <hu@gnome.hu>\n"
+"POT-Creation-Date: 2004-09-27 04:19+0200\n"
+"PO-Revision-Date: 2004-09-27 15:41+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
+"Language-Team: Hungarian <gnome@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. FIXME: we can do better than this...
-#. "All Animals Are Equal / But Some Are More Equal Than Others."
-#. ##############################################################################
-#. assert server
-#. Don't return None here, because we want an empty image to be
-#. scaled to the correct height.
-#. ##############################################################################
-#. ##############################################################################
-#. ##############################################################################
-#. ##############################################################################
-#. Gnome HIG says no titles on these sorts of dialogs
-#. Always run the dialog in the main thread.
-#. ##############################################################################
-#: src/rcd_util.py:398
-#, fuzzy
+#: src/rcd_util.py:412
 msgid "Please wait while getting data."
-msgstr "Várj, az oldalbetöltés folyamatban van..."
+msgstr "Kérem várjon, az adatok lekérése folyamatban van."
 
-#. ##############################################################################
-#: src/rcd_util.py:452 src/rcd_util.py:470
+#: src/rcd_util.py:466 src/rcd_util.py:484
 msgid "Please ensure that your network settings are correct."
-msgstr "Ellenőrizd, hogy a hálózati beállításaid helyesek-e."
+msgstr "Kérem ellenőrizze, hogy a hálózati beállításai megfelelőek-e."
 
-#: src/rcd_util.py:459
+#: src/rcd_util.py:473
 msgid "Refreshing channel data"
 msgstr "Csatornaadatok frissítése"
 
-#: src/rcd_util.py:461
+#: src/rcd_util.py:475
 msgid "Downloading channel information"
-msgstr "Csatornaadatok letöltése"
+msgstr "Csatornainformációk letöltése"
 
-#. ##############################################################################
-#. ##
-#. ## Format transaction status messages into readable text
-#. ##
-#: src/rcd_util.py:487
+#: src/rcd_util.py:501
 msgid "Verifying"
 msgstr "Ellenőrzés"
 
-#: src/rcd_util.py:488
+#: src/rcd_util.py:502
 msgid "Unable to verify package signature for"
-msgstr ""
+msgstr "Nem lehet a csomagaláírást ellenőrizni a következőhöz:"
 
-#: src/rcd_util.py:489
+#: src/rcd_util.py:503
 msgid "There is no package signature for"
-msgstr ""
+msgstr "Nincs csomagaláírás a következőhöz:"
 
-#: src/rcd_util.py:490
+#: src/rcd_util.py:504
 msgid "Preparing Transaction"
 msgstr "Tranzakció előkészítése"
 
-#: src/rcd_util.py:491
+#: src/rcd_util.py:505
 msgid "Installing"
 msgstr "Telepítés"
 
-#: src/rcd_util.py:492
+#: src/rcd_util.py:506
 msgid "Removing"
 msgstr "Eltávolítás"
 
-#: src/rcd_util.py:493
+#: src/rcd_util.py:507
 msgid "Configuring"
 msgstr "Beállítás"
 
-#. ##############################################################################
-#. ## XML-RPC faults that we care about back from the daemon.
-#. ##
-#. ## KEEP THIS IN SYNC WITH RCD!
-#. matches xmlrpc-c
-#. matches xmlrpc-c
-#. matches xmlrpc-c
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Translators: you can translate these into any cute greetings in your own
-#. language.  Just nothing offensive please. :)
 #: src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "Készítők:"
 
 #: src/red_about.py:42
 msgid "With love from:"
-msgstr ""
+msgstr "Szeretettel:"
 
 #: src/red_about.py:43
 msgid "Best wishes from:"
-msgstr ""
+msgstr "Minden jót:"
 
 #: src/red_about.py:44
 msgid "Sincerely:"
-msgstr ""
+msgstr "Tisztelettel:"
 
 #: src/red_about.py:45
 msgid "Developed by chimps:"
-msgstr ""
+msgstr "Csimpánzok által fejlesztve:"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr ""
+msgstr "A GNU GPL licenc 2. verziója alatt megjelent program"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_activation.py:27
 msgid "Group Activation"
-msgstr ""
+msgstr "Csoportos aktiválás"
 
 #: src/red_activation.py:44
-#, fuzzy
 msgid "Service:"
-msgstr "Kiszolgáló:"
+msgstr "Szolgáltatás:"
 
 #: src/red_activation.py:48
 msgid "Email:"
@@ -188,1454 +99,655 @@ msgstr "E-mail:"
 
 #: src/red_activation.py:52
 msgid "Activation Code:"
-msgstr ""
+msgstr "Aktiválási kód:"
 
 #: src/red_activation.py:78
 msgid "Activate"
-msgstr ""
+msgstr "Aktiválás"
 
 #: src/red_activation.py:99
 msgid "Please fill in both email and activation code."
-msgstr ""
+msgstr "Kérem töltse ki mind az e-mail, mind az aktiválási kód mezőt."
 
 #: src/red_activation.py:114
-#, fuzzy
 msgid "Unable to activate"
-msgstr "Hitelesítés sikertelen"
+msgstr "Nem lehet aktiválni"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
+"Kérem ellenőrizze, hogy helyesen gépelte-e be az e-mail címet és az "
+"aktivációs kódot"
 
-#. Store email to config.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. FIXME: This feels like a hack.  Go through the remove_packages and
-#. if any of them have an __old_package field, use that package for
-#. the removal instead of the actual package.  This is so you can right
-#. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:84
+#: src/red_appwindow.py:92
 msgid "C"
-msgstr ""
+msgstr "C"
 
-#. GNOME 2
-#. XD2 w/o yelp?
-#. RH 9
-#. KDE
-#. GNOME 1.x
-#. GNOME 1.x w/o help
-#. browser?
-#. dunno, but a sane
-#. fallback
-#. CDE
-#: src/red_appwindow.py:121
+#: src/red_appwindow.py:129
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
 msgstr ""
+"Nem lehet megjeleníteni a súgót, mert hiányoznak a súgófájlok. Kérem "
+"jelentse ezt a gyártónak."
 
-#: src/red_appwindow.py:131
+#: src/red_appwindow.py:139
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
+"Nem lehet megjeleníteni a súgót, mert nem áll rendelkezésre a "
+"megjelenítéséhez súgómegjelenítő alkalmazás."
 
-#. Menubar
-#. # Toolbar
-#. # GtkSettings
-#. Ensure a sane width for the sidebar if visible
-#. # Actionbar
-#. Componentbook
-#. Clear the status bar, update the toolbar
-#. Show the new component, hide the old one
-#. # Statusbar
-#. # Geometry handling
-#. #
-#. # Toolbar and menubar callback and sensitivity functions
-#. #
-#: src/red_appwindow.py:406
+#: src/red_appwindow.py:414
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
-msgstr ""
-
-#. #
-#. # Toolbar
-#. #
-#: src/red_appwindow.py:434
-msgid "Run Now"
-msgstr ""
-
-#: src/red_appwindow.py:435
-msgid "Perform installations and removals"
-msgstr ""
+msgstr "Biztos meg akar nyitni %d csomaginformációs ablakot?"
 
 #: src/red_appwindow.py:442
+msgid "Run Now"
+msgstr "Futtatás most"
+
+#: src/red_appwindow.py:443
+msgid "Perform installations and removals"
+msgstr "Telepítések és eltávolítások végrehajtása"
+
+#: src/red_appwindow.py:450
 msgid "Channels"
 msgstr "Csatornák"
 
-#: src/red_appwindow.py:443
-msgid "Change your channel subscriptions"
-msgstr ""
-
 #: src/red_appwindow.py:451
+msgid "Change your channel subscriptions"
+msgstr "Csatorna feliratkozások megváltoztatása"
+
+#: src/red_appwindow.py:459
 msgid "Refresh"
 msgstr "Frissítés"
 
-#: src/red_appwindow.py:452
+#: src/red_appwindow.py:460
 msgid "Refresh channel data"
-msgstr ""
+msgstr "Csatornaadatok frissítése"
 
-#. #
-#. # Actionbar.
-#. #
-#: src/red_appwindow.py:463 src/red_packageview.py:232
-#, fuzzy
+#. Install
+#: src/red_appwindow.py:471 src/red_packageview.py:232
 msgid "Mark for _Installation"
-msgstr "Csomagok telepítése"
+msgstr "Kijelölés _telepítésre"
 
-#: src/red_appwindow.py:464
-#, fuzzy
+#: src/red_appwindow.py:472
 msgid "Mark selected packages for installation"
-msgstr "Gyorstárazott csomagok törlése indításkor"
+msgstr "A kiválasztott csomagok kijelölése telepítésre"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:469 src/red_appwindow.py:770
+#. Remove
+#: src/red_appwindow.py:477 src/red_appwindow.py:778
 #: src/red_packageview.py:245
-#, fuzzy
 msgid "Mark for _Removal"
-msgstr "Csomagok eltávolítása"
+msgstr "Kijelölés e_ltávolításra"
 
-#: src/red_appwindow.py:470
-#, fuzzy
+#: src/red_appwindow.py:478
 msgid "Mark selected packages for removal"
-msgstr "Kiválasztott csomagok telepítése"
+msgstr "A kiválasztott csomagok kijelölése eltávolításra"
 
-#. #
-#. # Cancel Action
-#. #
-#: src/red_appwindow.py:475 src/red_appwindow.py:783
+#. Cancel
+#: src/red_appwindow.py:483 src/red_appwindow.py:791
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Mégsem"
 
-#: src/red_appwindow.py:476
+#: src/red_appwindow.py:484
 msgid "Cancel marked package actions"
-msgstr ""
+msgstr "Kijelölt csomagműveletek megszakítása"
 
 #. Info
-#: src/red_appwindow.py:481 src/red_packageview.py:276
-#, fuzzy
+#: src/red_appwindow.py:489 src/red_packageview.py:276
 msgid "I_nformation"
-msgstr "Információ"
+msgstr "I_nformáció"
 
-#: src/red_appwindow.py:482
-#, fuzzy
+#: src/red_appwindow.py:490
 msgid "Package information"
-msgstr "Csomagok telepítése"
+msgstr "Csomaginformáció"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# components/loser/content/nautilus-content-loser-ui.xml.h:3
-# components/loser/sidebar/nautilus-sidebar-loser-ui.xml.h:3
-# components/sample/nautilus-sample-content-view-ui.xml.h:4
-# src/nautilus-shell-ui.xml.h:77
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# components/loser/content/nautilus-content-loser-ui.xml.h:3
-# components/loser/sidebar/nautilus-sidebar-loser-ui.xml.h:3
-# components/sample/nautilus-sample-content-view-ui.xml.h:4
-# src/nautilus-shell-ui.xml.h:77
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# components/loser/content/nautilus-content-loser-ui.xml.h:3
-# components/loser/sidebar/nautilus-sidebar-loser-ui.xml.h:3
-# components/sample/nautilus-sample-content-view-ui.xml.h:4
-# src/nautilus-shell-ui.xml.h:77
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# components/loser/content/nautilus-content-loser-ui.xml.h:3
-# components/loser/sidebar/nautilus-sidebar-loser-ui.xml.h:3
-# components/sample/nautilus-sample-content-view-ui.xml.h:4
-# src/nautilus-shell-ui.xml.h:77
-#. We want to revert to our old settings if we don't connect to
-#. a new daemon successfully.
-#. The return value is for the benefit of our delete_event handler.
-#. #
-#. # Menubar
-#. #
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:547
 msgid "_File"
 msgstr "_Fájl"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:18 src/trans.h:189 src/trans.h:369
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:18 src/trans.h:189 src/trans.h:369
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:18 src/trans.h:189 src/trans.h:369
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:74
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:74
-#: src/red_appwindow.py:540
+#: src/red_appwindow.py:548
 msgid "_Edit"
 msgstr "S_zerkesztés"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:97
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:97
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:377
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:97
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:97
-#. We need to make the component menu items checked
-#. instead of radio-style, because with a radio group you
-#. always have to have exactly one item set: when a non-navigable
-#. component is on the screen (like the dep resolution page),
-#. the component gets reset if you open any menu.
-#: src/red_appwindow.py:541 src/red_appwindow.py:833
+#: src/red_appwindow.py:549 src/red_appwindow.py:841
 msgid "_View"
 msgstr "_Nézet"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:550
 msgid "_Actions"
 msgstr "_Műveletek"
 
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  gtk+.gtk-2-2.hu.po-new.po (gtk+ 2.2)  #-#-#-#-#
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:81
-#: src/red_appwindow.py:543
+#: src/red_appwindow.py:551
 msgid "_Help"
 msgstr "_Súgó"
 
-#: src/red_appwindow.py:551
-#, fuzzy
+#: src/red_appwindow.py:559
 msgid "Connect to daemon..."
-msgstr "Nem sikerült csatlakozni"
+msgstr "Kapcsolódás a démonhoz..."
 
-#: src/red_appwindow.py:552
-#, fuzzy
+#: src/red_appwindow.py:560
 msgid "Connect to a remote daemon"
-msgstr "Hitelesítés sikertelen"
+msgstr "Kapcsolódás egy távoli démonhoz"
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:570
 msgid "Install from _File..."
-msgstr ""
+msgstr "Telepítés _fájlból..."
 
-#: src/red_appwindow.py:563
-#, fuzzy
+#: src/red_appwindow.py:571
 msgid "Install a package from a local file"
-msgstr "Minden csomag telepítése a könyvtárból"
+msgstr "Csomag telepítése egy helyi fájlból"
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:580
 msgid "Install from _URL..."
-msgstr ""
+msgstr "Telepítés _URL-ről..."
 
-#: src/red_appwindow.py:573
-#, fuzzy
+#: src/red_appwindow.py:581
 msgid "Install a package from a remote URL"
-msgstr "Minden csomag telepítése a könyvtárból"
+msgstr "Csomag telepítése egy távoli URL-ről"
 
-#. #
-#. # Mount command
-#. #
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:598
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "Könyvtár _csatlakoztatása..."
 
-#: src/red_appwindow.py:591
-#, fuzzy
+#: src/red_appwindow.py:599
 msgid "Mount a directory as a channel"
-msgstr "Alapértelmezett alcsatorna"
+msgstr "Könyvtár csatlakoztatása csatornaként"
 
-#. #
-#. # Unmount command
-#. #
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:615
 msgid "U_nmount Directory..."
-msgstr ""
+msgstr "Könyvtár _leválasztása..."
 
-#: src/red_appwindow.py:608
+#: src/red_appwindow.py:616
 msgid "Unmount a directory"
-msgstr ""
+msgstr "Egy könyvtár leválasztása"
 
-#. #
-#. # Activate
-#. #
-#: src/red_appwindow.py:624
+#: src/red_appwindow.py:632
 msgid "_Activate..."
-msgstr ""
+msgstr "_Aktiválás..."
 
-#: src/red_appwindow.py:625
+#: src/red_appwindow.py:633
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
+"Démon aktiválása egy Red Carpet Express vagy Red Carpet Enterprise "
+"kiszolgálóval szemben"
 
-# #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
-# sysdeps/osf1/siglist.c:30 sysdeps/sun4/siglist.c:30
-#: src/red_appwindow.py:631
+#: src/red_appwindow.py:639
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/red_appwindow.py:632
-#, fuzzy
+#: src/red_appwindow.py:640
 msgid "Quit Red Carpet"
-msgstr "Red Carpet"
+msgstr "Kilépés a Red Carpet-ból"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:52 src/trans.h:336
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:52 src/trans.h:336
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/nautilus-shell-ui.xml.h:92
-#. #
-#. # Select all/none
-#. #
-#: src/red_appwindow.py:647
+#: src/red_appwindow.py:655
 msgid "Select _All"
 msgstr "_Mindent kijelöl"
 
-#: src/red_appwindow.py:648
-#, fuzzy
+#: src/red_appwindow.py:656
 msgid "Select all items"
-msgstr "_Mindet kijelöli"
-
-#: src/red_appwindow.py:653
-#, fuzzy
-msgid "Select _None"
-msgstr "_Kijelölések megszüntetése"
-
-#: src/red_appwindow.py:654
-msgid "Deselect all items"
-msgstr ""
+msgstr "Minden elem kijelölése"
 
 #: src/red_appwindow.py:661
-#, fuzzy
-msgid "Services..."
-msgstr "_Beállítások..."
+msgid "Select _None"
+msgstr "Kijelölés megszü_ntetése"
 
 #: src/red_appwindow.py:662
+msgid "Deselect all items"
+msgstr "Megszünteti az összes elem kijelölését"
+
+#: src/red_appwindow.py:669
+msgid "Services..."
+msgstr "Szolgáltatások..."
+
+#: src/red_appwindow.py:670
 msgid "Edit services"
-msgstr ""
+msgstr "Szolgáltatások szerkesztése"
 
-#: src/red_appwindow.py:666
-#, fuzzy
+#: src/red_appwindow.py:674
 msgid "Channel _Subscriptions..."
-msgstr "_Előfizetések"
+msgstr "Csatorna _feliratkozások..."
 
-#: src/red_appwindow.py:667
-#, fuzzy
+#: src/red_appwindow.py:675
 msgid "Edit your channel subscriptions"
-msgstr "_Előfizetések"
+msgstr "Csatorna feliratkozások szerkesztése"
 
-#: src/red_appwindow.py:672
+#: src/red_appwindow.py:680
 msgid "_Preferences..."
 msgstr "_Beállítások..."
 
-#: src/red_appwindow.py:673
-#, fuzzy
+#: src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
-msgstr "Ximian Red Carpet - Beállítások"
+msgstr "A Red Carpet beállításainak szerkesztése"
 
-#: src/red_appwindow.py:677
+#: src/red_appwindow.py:685
 msgid "_Users..."
-msgstr ""
+msgstr "_Felhasználók..."
 
-#: src/red_appwindow.py:678
+#: src/red_appwindow.py:686
 msgid "Edit user permissions for this daemon"
-msgstr ""
+msgstr "Felhasználói jogosultságok szerkesztése ehhez a démonhoz"
 
-#. #
-#. # Sidebar
-#. #
-#: src/red_appwindow.py:691
+#: src/red_appwindow.py:699
 msgid "_Sidebar"
-msgstr ""
+msgstr "_Oldalsáv"
 
-#: src/red_appwindow.py:692
+#: src/red_appwindow.py:700
 msgid "Hide or show the Pending Actions sidebar"
-msgstr ""
+msgstr "A Folyamatban lévő műveletek oldalsáv rejtése/mutatása"
 
-#: src/red_appwindow.py:696
-#, fuzzy
+#: src/red_appwindow.py:704
 msgid "_Advanced Search Options"
-msgstr "_Előfizetések"
+msgstr "Haladó _keresési lehetőségek"
 
-#: src/red_appwindow.py:697
-#, fuzzy
+#: src/red_appwindow.py:705
 msgid "Hide or show advanced search options"
-msgstr "_Előfizetések"
-
-#: src/red_appwindow.py:701
-#, fuzzy
-msgid "_Channel Names"
-msgstr "Csatornainfó"
-
-#: src/red_appwindow.py:702
-msgid "Hide or show channel names in package lists"
-msgstr ""
-
-#: src/red_appwindow.py:708
-#, fuzzy
-msgid "Package _Information..."
-msgstr "Csomagok telepítése"
+msgstr "Haladó keresési lehetőségek rejtése/mutatása"
 
 #: src/red_appwindow.py:709
-msgid "View information about currently selected packages"
-msgstr ""
+msgid "_Channel Names"
+msgstr "_Csatornanevek"
+
+#: src/red_appwindow.py:710
+msgid "Hide or show channel names in package lists"
+msgstr "Csatornanevek rejtése/mutatása a csomaglistákban"
+
+#: src/red_appwindow.py:716
+msgid "Package _Information..."
+msgstr "Csomag_információ..."
 
 #: src/red_appwindow.py:717
-#, fuzzy
+msgid "View information about currently selected packages"
+msgstr "Információk megtekintése a jelenleg kiválasztott csomagokról"
+
+#: src/red_appwindow.py:725
 msgid "_Daemon Information..."
-msgstr "Információ"
+msgstr "_Démoninformációk..."
 
-#: src/red_appwindow.py:718
+#: src/red_appwindow.py:726
 msgid "View information about this daemon"
-msgstr ""
+msgstr "Információk megtekintése erről a démonról"
 
-#: src/red_appwindow.py:720
-#, fuzzy
+#: src/red_appwindow.py:728
 msgid "Red Carpet Ne_ws..."
-msgstr "Red Carpet hírek"
+msgstr "Red Carpet _hírek..."
 
-#: src/red_appwindow.py:721
+#: src/red_appwindow.py:729
 msgid "View the latest Red Carpet news"
-msgstr ""
+msgstr "A legfrissebb Red Carpet hírek megtekintése"
 
-#. #
-#. # Run Transaction
-#. #
-#: src/red_appwindow.py:733
+#: src/red_appwindow.py:741
 msgid "Run _Now"
-msgstr ""
+msgstr "Futtatás _most"
 
-#: src/red_appwindow.py:734
+#: src/red_appwindow.py:742
 msgid "Run the current transaction"
-msgstr ""
+msgstr "A jelenlegi tranzakció futtatása"
 
-#. #
-#. # Verify System Dependencies
-#. #
-#: src/red_appwindow.py:748
-#, fuzzy
+#: src/red_appwindow.py:756
 msgid "_Verify System Dependencies"
-msgstr "Függőségi problémák"
+msgstr "_Rendszerfüggőségek ellenőrzése"
 
-#: src/red_appwindow.py:749
-#, fuzzy
+#: src/red_appwindow.py:757
 msgid "Verify that all system dependencies are met"
-msgstr "Függőségi problémák"
+msgstr "Ellenőrzi, hogy minden rendszerfüggőség teljesül-e"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:760
-#, fuzzy
+#: src/red_appwindow.py:768
 msgid "Mark for I_nstallation"
-msgstr "Csomagok telepítése"
+msgstr "Kijelölés _telepítésre"
 
-#: src/red_appwindow.py:761
-#, fuzzy
+#: src/red_appwindow.py:769
 msgid "Mark this package for installation"
-msgstr "Gyorstárazott csomagok törlése indításkor"
+msgstr "Ezen csomag kijelölése telepítésre"
 
-#: src/red_appwindow.py:771
-#, fuzzy
+#: src/red_appwindow.py:779
 msgid "Mark this package for removal"
-msgstr "Kiválasztott csomagok telepítése"
+msgstr "Ezen csomag kijelölése eltávolításra"
 
-#: src/red_appwindow.py:784
-#, fuzzy
+#: src/red_appwindow.py:792
 msgid "Cancel installation or removal mark"
-msgstr "A telepítés befejeződött."
+msgstr "Telepítésre vagy eltávolításra kijelölés megszüntetése"
 
-#. #
-#. # Refresh Channel Data
-#. #
-#: src/red_appwindow.py:798
+#: src/red_appwindow.py:806
 msgid "Re_fresh Channel Data"
-msgstr ""
+msgstr "Csatornaadatok _frissítése"
 
-#: src/red_appwindow.py:799
-#, fuzzy
+#: src/red_appwindow.py:807
 msgid "Download latest channel data"
-msgstr "Csatornaadatok letöltése (%s)"
+msgstr "A legfrissebb csatornaadatok letöltése"
 
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/file-manager/fm-properties-window.c:1085
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/file-manager/fm-properties-window.c:1085
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/file-manager/fm-properties-window.c:1085
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/file-manager/fm-properties-window.c:1085
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:816
 msgid "_Contents"
 msgstr "_Tartalom"
 
-#: src/red_appwindow.py:809
-#, fuzzy
+#: src/red_appwindow.py:817
 msgid "View Red Carpet help"
-msgstr "Red Carpet"
+msgstr "A Red Carpet súgójának megtekintése"
 
-#: src/red_appwindow.py:814
+#: src/red_appwindow.py:822
 msgid "_About..."
 msgstr "_Névjegy..."
 
-#: src/red_appwindow.py:815
-#, fuzzy
+#: src/red_appwindow.py:823
 msgid "About Red Carpet"
-msgstr "Red Carpet"
+msgstr "Red Carpet névjegye"
 
-#: src/red_appwindow.py:834
+#: src/red_appwindow.py:842
 #, python-format
 msgid "Go to the '%s' page"
-msgstr ""
+msgstr "Ugrás a(z) '%s' oldalra"
 
-#. ##
-#. ## Handlers for PendingOpsListener
-#. ##
-#. ##
-#. ## Handlers for Component signals (via the ComponentListener API)
-#. ##
-#. always pop off transient messages
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. FIXME: hackish evil to generate nicer fallback aliases.
-#. This should be removed once we actually get aliases
-#. into the channel XML.
-#. ##
-#. ## red_listmodel.ListModel implementation
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## Other methods
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_channeloption.py:64
-#, fuzzy
 msgid "All Channels"
-msgstr "Hirdetett csatornák"
+msgstr "Minden csatorna"
 
 #: src/red_channeloption.py:69
-#, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Előfizetett csatornák"
+msgstr "Minden csatorna, amire fel van iratkozva"
 
 #: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "Nincs csatorna/Ismeretlen csatorna"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Clean any old widgets out of self.container,
-#. then stick in our new widget and show it.
-#. component
-#. list of packages
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Forces the component to emit a 'display' signal
-#. for the current widget (and causes the build method
-#. to be executed if no widget has been displayed yet).
-#. Change the component's visibility flag.  This doesn't
-#. actually make the component visible or invisible: instead,
-#. it tells the component whether or not it is currently being
-#. viewed.  If a component is hidden, we often want to do things
-#. like "freeze" views so that they don't respond to rcd changes.
-#. Ask the window embedding this component to switch to another
-#. component.
-#. Ask the window embedding this component to push the current
-#. component (i.e. ourselves) onto the component stack and to switch
-#. to another component.
-#. Ask the window embedding this component to pop a component off of
-#. the stack and switch to it.  If the stack is empty, this is a no-op.
-#. Send a status message to the window embedding this component.  The
-#. window is expected to do something reasonable with the message, like
-#. displaying it in a status bar.
-#. Pop the component's previous message off of the status bar.
-#. Signal our 'busy state' to the window embedding this component.
-#. When we tell the window we are busy (i.e. set the busy flag to
-#. 1), it should give some user feedback (i.e. throbbing a throbber
-#. or pulsing a progress bar) until we transmit a busy flag of 0.
-#. Pass a widget up to the window embedding this component.  This widget
-#. becomes the "view" on the component, replacing any previous widget.
-#. Proxy selected signals from package views
-#. Proxy busy and message signals from arrays.
-#. ##
-#. ## Virtual functions
-#. ##
-#. This should always be the same as the long name plus a menu mnemonic
-#. Always autoresize our connected views, since the treeview is
-#. stupid and doesn't work properly if the widget is hidden.
-#. ##
-#. ## Hints for setting up component navigation
-#. ##
-#. ##
-#. ## A convenience class that handles all of the signal connecting and
-#. ## disconnecting required to monitor a component.
-#. ##
-#. A paranoid check: make sure that a component matches what the
-#. ComponentListener thinks is the current component.
-#. Ugh... fractured English.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Required rcd versions
-#. Required protocol version
 #: src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
+"Nem lehet kapcsolódni a démonhoz:\n"
+" '%s'."
 
-#. Gnome HIG says no titles on these sorts of dialogs
-#. Guard for NoneType
 #: src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
+"A felismert Red Carpet démon %d.%d.%d. verziójú.\n"
+"A(z) %d.%d.%d verzió (vagy újabb) szükséges"
 
-#. Assume protocol v1 if method not present.
 #: src/red_connection.py:93
 #, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"A(z) %d. protokoll-verziót érzékeltem, de a(z) %d. verzió szükséges. "
+"Frissítenie kell az rcd-t."
 
-#. LSB compliant distros should have the
-#. following
 #: src/red_connection.py:123
 msgid "Starting daemon..."
-msgstr ""
+msgstr "Démon indítása..."
 
-#. child
-#. If we get here, the exec failed.
-#. parent
-#. Couldn't kill it, probably already dead
-#. File doesn't exist?
-#. FIXME: allow other paths?
-#. Give the rcd 20 seconds to start before we give up.
 #: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
 msgstr ""
+"A Red Carpet működéséhez egy Red Carpet démon futása szükséges.\n"
+"Kíván egyet indítani most?"
 
-#. Conform to GNOME HIG
-#. This will block with a dialog.
-#. Prepend "https://" if it isn't already specified
-#. Append default port number (505) if one isn't specified
-#. NOTE: password must be md5ified.
 #: src/red_connection.py:345
 msgid "Connect to this system"
-msgstr ""
+msgstr "Csatlakozás ehhez a rendszerhez"
 
 #: src/red_connection.py:349
 msgid "Connect to a remote system"
-msgstr ""
+msgstr "Csatlakozás egy távoli rendszerhez"
 
 #: src/red_connection.py:357
 msgid "Server:"
 msgstr "Kiszolgáló:"
 
 #: src/red_connection.py:361 src/red_users.py:389
-#, fuzzy
 msgid "User name:"
-msgstr "Felhasználói név"
+msgstr "Felhasználónév:"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/shares.glade.h:12
 #: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Jelszó:"
 
-#. Don't activate the dropdown with enter
-#. desensitize the table by default.
 #: src/red_connection.py:401
 msgid "Connect"
 msgstr "Kapcsolódás"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Red Carpet - Jelszó"
+msgstr "Red Carpet hibakonzol"
 
-#. We put the text into the console window in a timeout.  That
-#. way we can be sure that it happens in the main thread and
-#. that we don't have any gtk locking issues if another thread
-#. writes to stderr.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
-msgstr ""
+msgstr "A kapcsolat a démonnal helyreállítva.\n"
 
-#. FIXME: don't just mindlessly catch all exceptions
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr ""
+msgstr "Elveszett a kapcsolat a démonnal!"
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Red Carpet"
+msgstr "Kilépés a Red Carpetból"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Call get_deps in an idle so that we are fully initialized
-#. before we being our computation.  (In particular, the
-#. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
-#, fuzzy
+#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
 msgid "Dependency Resolution"
-msgstr "Függőségek"
-
-#. Clean up
-#: src/red_depcomponent.py:116
-#, fuzzy
-msgid "Verifying System"
-msgstr "%s ellenőrzése"
+msgstr "Függőségfeloldás"
 
 #: src/red_depcomponent.py:122
-#, fuzzy
-msgid "Resolving Dependencies"
-msgstr "Függőségek"
+msgid "Verifying System"
+msgstr "Rendszer ellenőrzése"
 
-#: src/red_depcomponent.py:144
+#: src/red_depcomponent.py:128
+msgid "Resolving Dependencies"
+msgstr "Függőségek feloldása"
+
+#: src/red_depcomponent.py:150
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
+"A telepítés előtt el kell fogadnia az(oka)t a licence(ke)t, amely(ek) alatt "
+"ez a szoftver áll."
 
-#. Try to estimate the size of the window we want.
-#. "W" being the widest glyph.
-#. Create a tag with our monospace font
-#. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:188
+#: src/red_depcomponent.py:194
 msgid "I Agree"
-msgstr ""
+msgstr "Elfogadom"
 
-#. a hack to let history component know we are updated.
-#. FIXME: flags
-#. Assemble our warning banner
-#: src/red_depcomponent.py:271
+#: src/red_depcomponent.py:288
 msgid "Dependency Resolution Failed"
-msgstr ""
+msgstr "Függőségek feloldása sikertelen"
 
-#. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:338
 msgid "System Verified"
-msgstr ""
+msgstr "A rendszer ellenőrizve"
 
-#: src/red_depcomponent.py:323
+#: src/red_depcomponent.py:340
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
 msgstr ""
+"Minden csomagfüggőség ki van elégítve és nincs szükség javítóműveletekre."
 
-#. Freeze the daemon listeners while we're doing a dependency
-#. resolution.  Otherwise we detect a change and slow things down.
-#. red_serverlistener.freeze_polling()
-#. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:377
+#: src/red_depcomponent.py:394
 msgid "Requested Installations"
 msgstr "Kért telepítések"
 
-#: src/red_depcomponent.py:381
+#: src/red_depcomponent.py:398
 msgid "Requested Removals"
 msgstr "Kért törlések"
 
-#: src/red_depcomponent.py:385
-#, fuzzy
+#: src/red_depcomponent.py:402
 msgid "Required Installations"
-msgstr "Kért telepítések"
+msgstr "Szükséges telepítések"
 
-#: src/red_depcomponent.py:389
-#, fuzzy
+#: src/red_depcomponent.py:406
 msgid "Required Removals"
-msgstr "Kért törlések"
+msgstr "Szükséges törlések"
 
-# #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
-# sysdeps/osf1/siglist.c:46 sysdeps/sun4/siglist.c:46
-#: src/red_depcomponent.py:415
+#: src/red_depcomponent.py:432
 msgid "Continue"
 msgstr "Folytatás"
 
-#. # That's all we can do here. We might (and usually don't)
-#. # have enough information here to decide what kind of page
-#. # to build.
-#. The section heading
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "Csatorna"
 
-# #-#-#-#-#  gnome-icon-theme.HEAD.hu.po-new.po (gnome-icon-theme CVS)  #-#-#-#-#
-# 48x48/emblems/emblem-package.icon.in.h:1
-# 48x48/emblems/emblem-package.icon.in.h:1
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# components/rpmview/Nautilus_View_rpm.oaf.in.h:2
-#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
+#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
 msgid "Package"
 msgstr "Csomag"
 
 #: src/red_depview.py:53 src/red_packageview.py:462
-#, fuzzy
 msgid "Current Version"
-msgstr "Kért verzió:"
+msgstr "Jelenlegi verzió"
 
-#. ## Main
-#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
+#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
 #: src/red_updates.py:94
-#, fuzzy
 msgid "New Version"
-msgstr "Verzió"
+msgstr "Új verzió"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:194
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:194
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:194
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/disks.glade.h:24 interfaces/memory.glade.h:9
-# interfaces/memory.glade.h:38
-# #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
-# sysdeps/names/procargs.c:38 sysdeps/names/procmem.c:47
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/file-manager/fm-list-view.c:1976
-# src/file-manager/fm-search-list-view.c:561
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/disks.glade.h:24 interfaces/memory.glade.h:9
-# interfaces/memory.glade.h:38
-# #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
-# sysdeps/names/procargs.c:38 sysdeps/names/procmem.c:47
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# src/file-manager/fm-list-view.c:1976
-# src/file-manager/fm-search-list-view.c:561
 #: src/red_depview.py:59 src/red_packageview.py:498
 msgid "Size"
 msgstr "Méret"
 
-#. \u2022 is the unicode bullet
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. This is probably very, very bad because we're relying on some
-#. strange GTK behavior which might very well be a bug.  That is,
-#. if no file is selected and nothing is in the entry, it returns
-#. the current directory.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. No translation file for this language
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_history.py:113 src/red_users.py:30
+#: src/red_history.py:114 src/red_users.py:30
 msgid "All"
 msgstr "Minden"
 
-#: src/red_history.py:114
-#, fuzzy
-msgid "Installations"
-msgstr "Telepítés"
-
 #: src/red_history.py:115
-#, fuzzy
-msgid "Removals"
-msgstr "Eltávolítás naplója"
+msgid "Installations"
+msgstr "Telepítések"
 
 #: src/red_history.py:116
-#, fuzzy
+msgid "Removals"
+msgstr "Eltávolítások"
+
+#: src/red_history.py:117
 msgid "Upgrades"
-msgstr "FrissÍtések"
+msgstr "Frissítések"
 
-#: src/red_history.py:121
+#: src/red_history.py:122
 msgid "User:"
-msgstr ""
+msgstr "Felhasználó:"
 
-#: src/red_history.py:127
+#: src/red_history.py:128
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "Időkeret (nap):"
 
-#. ##
-#. ## Sort functions
-#. ##
-#. # We want opposite order.
-#: src/red_history.py:279
+#: src/red_history.py:280
 msgid "Searching..."
 msgstr "Keresés..."
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/time.glade.h:10
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/time.glade.h:10
-#. 10 years
-#: src/red_history.py:301 src/red_history.py:435
+#: src/red_history.py:302 src/red_history.py:436
 msgid "Time"
 msgstr "Idő"
 
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:185
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
+#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
 msgid "Action"
 msgstr "Művelet"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/users.glade.h:40
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/users.glade.h:40
-# #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
-# examples/smp.c:71 sysdeps/names/mem.c:47
-# #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
-# examples/smp.c:71 sysdeps/names/mem.c:47
-#. # Make sure we have at least 'view'
-#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
+#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
 msgid "User"
 msgstr "Felhasználó"
 
-#: src/red_history.py:305 src/red_history.py:438
+#: src/red_history.py:306 src/red_history.py:439
 msgid "Old Version"
 msgstr "Régi verzió"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/prefs.c:389 src/trans.h:82 src/trans.h:84 src/trans.h:324
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/prefs.c:389 src/trans.h:82 src/trans.h:84 src/trans.h:324
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# components/history/Nautilus_View_history.oaf.in.h:2
-#. Define me!
-#. Define me!
-#: src/red_history.py:336 src/red_packagepage.py:45
+#: src/red_history.py:337 src/red_packagepage.py:45
 msgid "History"
 msgstr "Előzmények"
 
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/prefs.c:389 src/trans.h:82 src/trans.h:84 src/trans.h:324
-#: src/red_history.py:339
+#: src/red_history.py:340
 msgid "_History"
 msgstr "_Előzmények"
 
-#: src/red_history.py:383
+#: src/red_history.py:384
 msgid "No results found."
-msgstr ""
+msgstr "Nincs eredmény."
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We need to do the stat check because if we select something in
-#. the filesel and then unselect it (with control-click), we'll
-#. get the parent directory for that file, not the file itself.
-#. File probably doesn't exist.
-#: src/red_installfiles.py:82 src/red_installfiles.py:142
+#: src/red_installfiles.py:80 src/red_installfiles.py:149
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s nem egy érvényes csomag"
 
-#: src/red_installfiles.py:92
+#: src/red_installfiles.py:90
 msgid "There are no valid packages to install"
-msgstr ""
+msgstr "Nincs érvényes telepítendő csomag"
 
-#: src/red_installfiles.py:102
-#, fuzzy
+#: src/red_installfiles.py:109
 msgid "Install from File"
-msgstr "Telepített programok"
+msgstr "Telepítés fájlból"
 
-#. need trailing /
-#: src/red_installfiles.py:119
-#, fuzzy, python-format
+#: src/red_installfiles.py:126
+#, python-format
 msgid "Downloading %s..."
-msgstr "%s letöltése"
+msgstr "%s letöltése..."
 
-#: src/red_installfiles.py:158
-#, fuzzy
+#: src/red_installfiles.py:165
 msgid "Install from URL"
-msgstr "Telepítés"
+msgstr "Telepítés URL-ről"
 
-#: src/red_installfiles.py:163
-#, fuzzy
+#: src/red_installfiles.py:170
 msgid "Package URL:"
-msgstr "Csomag"
+msgstr "Csomag URL:"
 
-#. replace - with _
-#. emit the signal in the main thread.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## ListModel: our magic-laden base class
-#. ##
-#. FIXME: We should just reverse our list if possible
-#. FIXME: Should throw a proper exception
-#. # Fallback implementation
-#. # Fallback implementation
-#. # Busy/message functions
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## This is some code to help us track down performance problems
-#. ## in GtkTreeView, etc.  Turned off by default.
-#. ##
-#. os.kill(os.getpid(), signal.SIGTRAP)
-#. os.kill(os.getpid(), signal.SIGTRAP)
-#. ##
-#. ## main
-#. ##
-#: src/red_main.py:106
+#: src/red_main.py:109
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr ""
+"HIBA: Nem adhatja meg egyszerre mind a -h/--hosts és a -l/--local opciókat"
 
-#. This'll always fail and pop up the dialog.
-#: src/red_main.py:137
+#: src/red_main.py:140
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr ""
+msgstr "HIBA: Nem adhat meg felhasználót a helyi démonhoz"
 
-#. Try the command-line options or the saved data first
-#. Enclosed in an empty try-except because we don't care about the
-#. error on the first connect.
-#. That failed, pop up the dialog
-#. This will terminate all our child threads without joining
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. # The format looks like "<Control>a" or "<Shift><Alt>F1.
-#. # The parser is fairly liberal and allows lower or upper case, and also
-#. # abbreviations such as "<Ctl>" and "<Ctrl>".
-#. No key, no joy!
-#. # End of public methods
-#. Automatically construct our menu items, and refresh the items,
-#. when we are realized.
-#. We can only be constructed once.
-#. ## Flag items that aren't hooked up to callbacks.
-#. assert item["radio_get"] and item["radio_set"]
-#. ## If this item is a leaf in our tree,
-#. ## hook up it's callback
-#. ##
-#. ## If this item has special visibility, sensitivity or checked
-#. ## functions, hook them up to listen for our refresh_items
-#. ## signals.
-#. ##
-#. ##
-#. ## If this item has subitems, construct the submenu
-#. ## and continue walking down the tree.
-#. ##
-#. Refresh the menu bar every time a top-level
-#. menu item is opened.
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Tükör"
 
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:47 src/trans.h:50
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/shares.glade.h:31
 #: src/red_mirrors.py:81
 msgid "Location"
 msgstr "Hely"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "Tükör kiválasztása"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Handle ~ to mean $HOME
-#. Always run the dialog in the main thread
 #: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
-msgstr ""
+msgstr "Nem lehet leválasztani a következőt: '%s'"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/memory.glade.h:27
 #: src/red_mount.py:117
 msgid "Browse..."
 msgstr "Tallózás..."
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
-msgstr ""
+msgstr "Könyvtár csatlakoztatása"
 
 #: src/red_mount.py:141
-#, fuzzy
 msgid "Mount channel"
-msgstr "Alapértelmezett alcsatorna"
+msgstr "Csatorna csatlakoztatása"
 
 #: src/red_mount.py:145
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Könyvtár csatlakoztatása csatornaként"
 
 #: src/red_mount.py:153
-#, fuzzy
 msgid "Channel Name:"
-msgstr "Csatornainfó"
+msgstr "Csatornanév:"
 
 #: src/red_mount.py:157
 msgid "Directory:"
@@ -1643,586 +755,269 @@ msgstr "Könyvtár:"
 
 #: src/red_mount.py:168
 msgid "Look for packages recursively"
-msgstr ""
+msgstr "Csomagok keresése rekurzívan"
 
 #: src/red_mount.py:193
 msgid "Please choose the path for channel."
-msgstr ""
+msgstr "Kérem válassza ki a csatorna útvonalát."
 
 #: src/red_mount.py:214
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "Nem előfizetett csatornák"
+msgstr "Csatorna leválasztása"
 
 #: src/red_mount.py:243
 msgid "Unmount?"
-msgstr ""
+msgstr "Leválasztja?"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Break the news item up to make it easier to read.
-#. FIXME: It would be nice to actually wrap the text in
-#. some sort of intelligent way.
-#. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "%s News"
-msgstr "Hírek"
+msgstr "%s hírek"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr ""
+msgstr "Kapcsolódás egy helyileg futó démonhoz"
 
 #: src/red_option.py:25
 msgid "hostname"
-msgstr ""
+msgstr "gépnév"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "Kapcsolatfelvétel a démonnal a megadott gépen"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "username"
-msgstr "Felhasználói név"
+msgstr "felhasználónév"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "Specify user name"
-msgstr "Felhasználói név"
+msgstr "Felhasználónév megadása"
 
 #: src/red_option.py:27
-#, fuzzy
 msgid "password"
-msgstr "Jelszó"
+msgstr "jelszó"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "Jelszó megadása"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "Kliens verziójának kiírása és kilépés"
 
 #: src/red_option.py:29
-#, fuzzy
 msgid "Get usage information"
-msgstr "Információ"
+msgstr "Használati információk megszerzése"
 
-#. ##
-#. ## Expand our synthetic args.
-#. ## Then compile our list of arguments into something that getopt can
-#. ## understand.  Finally, call getopt on argv and massage the results
-#. ## in something easy-to-use.
-#. ##
-#. Just in case something strange went wrong and we weren't
-#. able to describe quite why the options parsing failed,
-#. we print a catch-all error message.
-#. ##
-#. ## Walk through our list of options and replace short options with the
-#. ## corresponding long option.
-#. ##
-#. ##
-#. ## Store our options in a dictionary
-#. ##
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "Használat: %s <opciók> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
-msgstr ""
+msgstr "A következő opciók értelmezettek:"
 
-#. By appending [0,0], we insure that this will work even if
-#. opt_list is empty (which it never should be)
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Callbacks for our ListModel
-#. ##
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "Telepítés"
+msgstr "telepítve"
 
 #. upgrade
 #: src/red_packagearray.py:93
 msgid "newer"
-msgstr ""
+msgstr "újabb"
 
 #: src/red_packagearray.py:95
 msgid "older"
-msgstr ""
+msgstr "régebbi"
 
 #: src/red_packagearray.py:97
 msgid "not installed"
-msgstr ""
+msgstr "nincs telepítve"
 
-#. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
-#. __older_icon               = red_pixbuf.get_pixbuf("status-older")
-#. upgrade
-#. downgrade
 #: src/red_packagearray.py:123
 msgid "upgrade"
-msgstr ""
+msgstr "frissítés"
 
 #: src/red_packagearray.py:125
 msgid "downgrade"
-msgstr ""
+msgstr "visszafejlesztés"
 
 #: src/red_packagearray.py:127
-#, fuzzy
 msgid "install"
-msgstr "Telepítés"
+msgstr "telepítés"
 
 #: src/red_packagearray.py:134
-#, fuzzy
 msgid "remove"
-msgstr "Eltávolítás"
+msgstr "eltávolítás"
 
-#. ##
-#. ## Sort functions
-#. ##
-#. We want locked (1) to sort higher than unlocked (0), that's
-#. why the logic is backwards.
-#. upgrade
-#. downgrade
-#. ##
-#. ## PackageArray: our magic-laden base class
-#. ##
-#. # This function should take the data in the array and sort it according
-#. # to the specified function.  This is a "protected" function and
-#. # shouldn't be called by users of PackageArrays.
-#. def sort(self, sort_fn):
-#. assert 0, "PackageArray.sort not defined"
-#. # Find all instances of pkg in the PackageArray, and cause a
-#. # 'changed_one' signal to be emitted for each.
-#. # Implements PendingOpsListener
-#. ##############################################################################
-#. ##############################################################################
-#. ##############################################################################
-#. This is the method that derived classes need to implement
-#. The derived class should use this function to report the packages
-#. it received from the daemon.
-#. ##############################################################################
 #: src/red_packagearray.py:614
-#, fuzzy, python-format
+#, python-format
 msgid "Found %d matching packages"
-msgstr " Csomagok eltávolítása "
+msgstr "%d illeszkedő csomagot találtam"
 
 #: src/red_packagearray.py:616
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "1 illeszkedő csomagot találtam"
 
 #: src/red_packagearray.py:618
-#, fuzzy
 msgid "No matching packages found"
-msgstr " Csomagok eltávolítása "
+msgstr "Nem találtam illeszkedő csomagot"
 
-#. Find System packages
-#. Remove instelled Channel packages
-#. ##############################################################################
 #: src/red_packagearray.py:776
 msgid "Looking for updates..."
-msgstr ""
+msgstr "Frissítések keresése..."
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_packagebook.py:43
-#, fuzzy
+#: src/red_packagearray.py:801
+#, python-format
+msgid "Found %d matching patches"
+msgstr "%d illeszkedő foltot találtam"
+
+#: src/red_packagearray.py:803
+msgid "Found 1 matching patch"
+msgstr "1 illeszkedő foltot találtam"
+
+#: src/red_packagearray.py:805
+msgid "No matching patches found"
+msgstr "Nem találtam illeszkedő foltot"
+
+#: src/red_packagebook.py:44
 msgid "Package Information"
-msgstr "Csomagok telepítése"
+msgstr "Csomaginformáció"
 
-#. grab_default() is not sufficient here.
-#. print "Built page %d: '%s'" % (num, page_box.page.name())
-#. If a page is currently set, remember it.
-#. We don't want to build page widgets if pages become visible
-#. as other pages are removed.
-#. If this is the page that was being displayed before,
-#. make it the current page.
-#. If no page was set previously, go to the first page.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
+#: src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "Névtelen"
+
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Függőségek"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "Nyújtja:"
+msgstr "Biztosítja"
 
 #: src/red_packagepage_deps.py:70
-#, fuzzy
 msgid "Requires"
-msgstr "Kell neki:"
+msgstr "Szükséges"
 
 #: src/red_packagepage_deps.py:73
-#, fuzzy
 msgid "Conflicts With"
-msgstr "Ütközik:"
+msgstr "Ütközik ezzel:"
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:183 src/trans.h:342 src/trans.h:348 src/trans.h:378
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/trans.h:183 src/trans.h:342 src/trans.h:348 src/trans.h:378
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/trans.h:183 src/trans.h:342 src/trans.h:348 src/trans.h:378
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/shares.glade.h:46
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# libnautilus-private/nautilus-program-chooser.c:1186
-# src/file-manager/fm-list-view.c:1970
-# src/file-manager/fm-search-list-view.c:549
-# src/nautilus-bookmarks-window.c:164
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/shares.glade.h:46
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# libnautilus-private/nautilus-program-chooser.c:1186
-# src/file-manager/fm-list-view.c:1970
-# src/file-manager/fm-search-list-view.c:549
-# src/nautilus-bookmarks-window.c:164
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. evil magic failure code
-#: src/red_packagepage_info.py:78 src/red_services.py:112
+#: src/red_packagepage_info.py:90 src/red_services.py:112
 msgid "Name"
 msgstr "Név"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:452
+#: src/red_packagepage_info.py:91 src/red_packageview.py:452
 msgid "Version"
 msgstr "Verzió"
 
-#: src/red_packagepage_info.py:80
-#, fuzzy
+#: src/red_packagepage_info.py:92
 msgid "Release"
-msgstr "Folytatás"
+msgstr "Kiadás"
 
-#: src/red_packagepage_info.py:81
-#, fuzzy
+#: src/red_packagepage_info.py:93
 msgid "Package Size"
-msgstr "Csomag"
+msgstr "Csomag mérete"
 
-#: src/red_packagepage_info.py:82
-#, fuzzy
+#: src/red_packagepage_info.py:94
 msgid "Installed Size"
-msgstr "Telepített programok"
+msgstr "Telepített méret"
 
-#: src/red_packagepage_info.py:84
+#: src/red_packagepage_info.py:96
 msgid "Section"
 msgstr "Fejezet"
 
-#: src/red_packagepage_info.py:85
+#: src/red_packagepage_info.py:97
 msgid "Summary"
 msgstr "Összefoglaló"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/nameresolution.glade.h:25
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/nameresolution.glade.h:25
-#: src/red_packagepage_info.py:86 src/red_prefs.py:413
+#: src/red_packagepage_info.py:98 src/red_prefs.py:413
 msgid "Description"
 msgstr "Leírás"
 
-#: src/red_packagepage_info.py:140
+#: src/red_packagepage_info.py:152
 msgid "Info"
-msgstr "Infó"
+msgstr "Információ"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Define me!
-#: src/red_packagepage.py:32
-msgid "Unnamed"
-msgstr "Névtelen"
-
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# libnautilus-private/nautilus-program-chooser.c:1189
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# libnautilus-private/nautilus-program-chooser.c:1189
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# libnautilus-private/nautilus-program-chooser.c:1189
-# #-#-#-#-#  nautilus.HEAD.hu.po-new.po (nautilus CVS-HEAD)  #-#-#-#-#
-# libnautilus-private/nautilus-program-chooser.c:1189
 #: src/red_packageview.py:301
 msgid "Status"
 msgstr "Állapot"
 
 #: src/red_packageview.py:472
 msgid "Importance"
-msgstr ""
+msgstr "Fontosság"
 
-#. button,
-#. time
-#. x coordinate
-#. y coordinate
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##############################################################################
-#. Remove package from list if threre's no more keys than "__package"
-#. ##############################################################################
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We don't really have any idea how long the transaction will take, but
-#. we'll guess that the download is 2/3 and the actual transaction 1/3.
-#. a few extra pixels...
-#. "W" being the widest glyph.
-#. # Guard for None
-#. keep window centered
-#. Try to set the scrollbox to a reasonable size, neither too big
-#. or too small. (We always want at least 3 lines of text to avoid
-#. "jumpyness".)
-#. keep window centered
-#. If our window has grown our shrunk, we want to make sure
-#. that it stays centered.
+#: src/red_patches.py:35
+msgid "Patches"
+msgstr "Foltok"
+
+#: src/red_patches.py:38
+msgid "YOU Patches"
+msgstr "YOU foltok"
+
+#: src/red_patches.py:72
+msgid "Searching for matching patches..."
+msgstr "Illeszkedő foltok keresése..."
+
+#: src/red_patches.py:111
+msgid "No matching patches found."
+msgstr "Nem találtam illeszkedő foltot."
+
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr ""
+msgstr "%.1f%% kész"
 
-#. Define me!
-#. If necessary, change the button from "Cancel"
-#. to "OK".  Make sure the button sensitive.
-#. gobject.type_register(PendingView)
-#. #############################################################################
-#. #############################################################################
 #: src/red_pendingview.py:536
 msgid "Updating System"
-msgstr ""
+msgstr "Rendszer frissítése"
 
-#. this is a different kind of polling
-#. # FIXME: This is really ugly hack, but otherwise ui will be
-#. # unresponsive if connection with rcd is lost (even if rcd
-#. # comes back).
 #: src/red_pendingview.py:609
-#, fuzzy
 msgid "Download cancelled"
-msgstr "Csatornaadatok letöltése..."
+msgstr "Letöltés megszakítva"
 
 #: src/red_pendingview.py:610
-#, fuzzy
 msgid "Transaction cancelled"
-msgstr "Tranzakciók naplója"
+msgstr "Tranzakció megszakítva"
 
-#. We can't cancel once the transaction begins
-#. We're in "download only" mode.
-#. Everything we wanted to download is already cached on the
-#. system.
-#.
-#. FIXME: Do something intelligent here?
 #: src/red_pendingview.py:645
-#, fuzzy
 msgid "Transaction Finished"
-msgstr "Tranzakciók naplója"
+msgstr "Tranzakció befejezve"
 
 #: src/red_pendingview.py:658
-#, fuzzy
 msgid "Downloading packages"
-msgstr "%s letöltése"
+msgstr "Csomagok letöltése"
 
 #: src/red_pendingview.py:671
-#, fuzzy
 msgid "Download Failed"
-msgstr "Fájlok letöltése"
+msgstr "Letöltés sikertelen"
 
 #: src/red_pendingview.py:672
-#, fuzzy
 msgid "Unknown Error"
-msgstr "(nincs hiba)"
+msgstr "Ismeretlen hiba"
 
 #: src/red_pendingview.py:689
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "Tranzakció kezdete..."
+msgstr "Tranzakció feldolgozása"
 
-#. We don't get step_pending notification every time, but
-#. we never want to reduce the total progress bar
 #: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
-msgstr ""
+msgstr "A tranzakció sikeresen befejeződött"
 
 #: src/red_pendingview.py:733
 msgid "Transaction failed"
-msgstr "Sikertelen tranzakció"
+msgstr "Tranzakció sikertelen"
 
 #: src/red_pendingview.py:735
-#, fuzzy
 msgid "Transaction Failed"
-msgstr "Tranzakciók naplója"
+msgstr "Tranzakció sikertelen"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. If this isn't a string, maybe it is a GdkPixbuf.  If so, just
-#. pass it through.  Otherwise something is very wrong, so we
-#. assert.
-#. FIXME: How do I check this type w/o the "try"?
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. Title
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr ""
+msgstr "Csatornaadatok frissítésének időköze (órában):"
 
 #. Packages section
 #: src/red_prefs.py:182
@@ -2230,17 +1025,16 @@ msgid "Packages"
 msgstr "Csomagok"
 
 #: src/red_prefs.py:191
-#, fuzzy
 msgid "Require package signatures"
-msgstr "Csomagaláírások"
+msgstr "Csomagaláírások szükségesek"
 
 #: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
-msgstr ""
+msgstr "Az egyszerre letöltendő csomagok maximális száma:"
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr ""
+msgstr "Csomagok visszagörgetésének (rollback) engedélyezése"
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:210
@@ -2248,175 +1042,132 @@ msgid "Proxy"
 msgstr "Proxy"
 
 #: src/red_prefs.py:219
-#, fuzzy
 msgid "Use a proxy"
-msgstr "Proxy engedélyezése"
+msgstr "Proxy használata"
 
 #: src/red_prefs.py:223
-#, fuzzy
 msgid "Proxy URL:"
-msgstr "Proxy"
+msgstr "Proxy URL:"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/users.glade.h:10
 #: src/red_prefs.py:230
 msgid "Username:"
-msgstr "Felhasználói név:"
+msgstr "Felhasználónév:"
 
-#. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
-msgstr ""
+msgstr "Nincs jogosultsága a proxy beállítások megtekintéséhez"
 
 #: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
-msgstr ""
+msgstr "Letöltött csomagok és metaadatok gyorsítótárazása"
 
 #: src/red_prefs.py:300
 msgid "Location of cached data:"
-msgstr ""
+msgstr "Gyorsítótárazott adatok helye:"
 
 #. Expiration section
 #: src/red_prefs.py:308
 msgid "Expiration"
-msgstr ""
+msgstr "Lejárat"
 
 #: src/red_prefs.py:312
 msgid "Cache expires"
-msgstr ""
+msgstr "A gyorsítótár lejár"
 
 #: src/red_prefs.py:318
 msgid "Maximum age in days:"
-msgstr ""
+msgstr "Legmagasabb kor napokban:"
 
 #: src/red_prefs.py:329
 msgid "Maximum size in MB:"
-msgstr ""
+msgstr "Maximális méret MB-ban:"
 
 #: src/red_prefs.py:340
 msgid "Current cache size:"
-msgstr ""
+msgstr "Jelenlegi gyorsítótár-méret:"
 
 #: src/red_prefs.py:357
-#, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr "Tényleg meg akarod szakítani az átvitelt?"
+msgstr "Biztos, hogy törölni szeretné a csomagfájlokat a gyorsítótárból?"
 
 #: src/red_prefs.py:373
-#, fuzzy
 msgid "Empty Cache"
-msgstr "Gyorstár"
+msgstr "Gyorsítótár ürítése"
 
-#. Have to do this after the other widgets are created
 #: src/red_prefs.py:395
-#, fuzzy, python-format
+#, python-format
 msgid "%d MB"
-msgstr "%d KB"
+msgstr "%d MB"
 
-#. Don't set the pref if we didn't change anything.
 #: src/red_prefs.py:443
 msgid "Value"
 msgstr "Érték"
 
 #: src/red_prefs.py:456
-#, fuzzy
 msgid "Loading preferences..."
-msgstr "Hírek letöltése..."
+msgstr "Beállítások betöltése..."
 
-#. Remove the "loading" "page".
 #: src/red_prefs.py:520
-#, fuzzy, python-format
+#, python-format
 msgid "%s Preferences"
-msgstr "Beállítások"
+msgstr "%s beállításai"
 
-#. Should only be called for toggle renderer
-#. For some reason, event is None on keyboard events, and
-#. r.activate() complains about it.  Things seem to work
-#. if we just don't call this if it's None, though.
-#. Should only be called for text renderer
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. system packages and uninstalled packages are mutually exclusive
+#: src/red_search.py:35
+msgid "Search"
+msgstr "Keresés"
+
+#: src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "Csomagok k_eresése"
+
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "Illeszkedő csomagok keresése..."
+
+#: src/red_search.py:109
+msgid "No matching packages found."
+msgstr "Nem találtam illeszkedő csomagot."
+
 #: src/red_searchbox.py:146
-#, fuzzy
 msgid "All Packages"
-msgstr "Csomag"
+msgstr "Minden csomag"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_searchbox.py:147 src/red_updates.py:31
 msgid "Updates"
-msgstr "FrissÍtések"
+msgstr "Frissítések"
 
 #: src/red_searchbox.py:148
-#, fuzzy
 msgid "Uninstalled Packages"
-msgstr " Csomagok telepítése "
+msgstr "Eltávolított csomagok"
 
 #: src/red_searchbox.py:149
-#, fuzzy
 msgid "Installed Packages"
-msgstr " Csomagok telepítése "
+msgstr "Telepített csomagok"
 
 #: src/red_searchbox.py:174
-#, fuzzy
 msgid "All Sections"
-msgstr "Hely"
+msgstr "Minden csoport"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr ""
+msgstr "Iroda"
 
 #: src/red_searchbox.py:176
-#, fuzzy
 msgid "Imaging"
-msgstr "Hátralévő"
+msgstr "Képfeldolgozás"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
-msgstr ""
+msgstr "Személyes információkezelés"
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr ""
+msgstr "X Windows"
 
 #: src/red_searchbox.py:179
 msgid "Games"
 msgstr "Játékok"
 
-# #-#-#-#-#  gnome-icon-theme.HEAD.hu.po-new.po (gnome-icon-theme CVS)  #-#-#-#-#
-# 48x48/emblems/emblem-multimedia.icon.in.h:1
-# 48x48/emblems/emblem-multimedia.icon.in.h:1
 #: src/red_searchbox.py:180
 msgid "Multimedia"
 msgstr "Multimédia"
@@ -2427,7 +1178,7 @@ msgstr "Internet"
 
 #: src/red_searchbox.py:182
 msgid "Utilities"
-msgstr ""
+msgstr "Segédprogramok"
 
 #: src/red_searchbox.py:183
 msgid "System"
@@ -2435,531 +1186,200 @@ msgstr "Rendszer"
 
 #: src/red_searchbox.py:184
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentáció"
 
 #: src/red_searchbox.py:185
 msgid "Libraries"
-msgstr ""
+msgstr "Programkönyvtárak"
 
 #: src/red_searchbox.py:186
 msgid "Development"
 msgstr "Fejlesztés"
 
 #: src/red_searchbox.py:187
-#, fuzzy
 msgid "Development Tools"
-msgstr "Fejlesztők"
+msgstr "Fejlesztőeszközök"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
 msgstr "Egyebek"
 
 #: src/red_searchbox.py:274
-#, fuzzy
 msgid "Search descriptions"
-msgstr "_Előfizetések"
+msgstr "Keresés leírásokban"
 
 #. ##
 #. ## Match radio buttons
 #. ##
 #: src/red_searchbox.py:286
-#, fuzzy
 msgid "Match:"
-msgstr "Útvonal:"
+msgstr "Keresés:"
 
 #: src/red_searchbox.py:322
-#, fuzzy
 msgid "Channel:"
-msgstr "Mégse"
+msgstr "Csatorna:"
 
-#. ##
-#. ## Build the second row of the search UI, which contains the
-#. ## entry and some option menus.
-#. ##
-#. Make the lag longer if we haven't typed much yet.
-#. ##
-#. ## Create a box for our 'view' widget.
-#. ##
-#. ##
-#. ## Build our bottom row of advanced options.
-#. ##
-#. ##
-#. ## Assemble all of these pieces into our VBox.
-#. We are always subscribed to channel 0
-#. (i.e. system packages)
-#. query
-#. filter fn
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_search.py:35
-msgid "Search"
-msgstr "Keresés"
-
-#: src/red_search.py:38
-#, fuzzy
-msgid "S_earch Packages"
-msgstr "Csomag"
-
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
-msgid "Searching for matching packages..."
-msgstr ""
-
-#: src/red_search.py:109
-msgid "No matching packages found."
-msgstr ""
-
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We only allow one server info window at a time
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
-msgstr ""
+msgstr "A démon a következőként azonosította magát:"
 
 #: src/red_serverinfo.py:57
 msgid "System type"
-msgstr ""
+msgstr "Rendszertípus"
 
 #: src/red_serverinfo.py:60
 msgid "Server URL"
-msgstr ""
+msgstr "Kiszolgáló URL"
 
 #: src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
-msgstr ""
+msgstr "A kiszolgáló támogatja a kibővített szolgáltatásokat."
 
-#. couldn't ping the server
 #: src/red_serverinfo.py:68
-#, fuzzy
 msgid "Unable to contact the daemon."
-msgstr "Hitelesítés sikertelen"
+msgstr "Nem lehet kapcsolódni a démonhoz."
 
 #: src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
-msgstr ""
+msgstr "Démoninformációk kiírása XML fájlba"
 
 #: src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
-msgstr ""
+msgstr "Nem lehet megnyitni a(z) '%s' fájlt: %s"
 
-#. We only allow one filesel window at a time
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
-msgstr ""
+msgstr "Válassza ki a kimeneti XML-fájlt"
 
-#. need trailing /
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Set up our polling timeout.  This should be the only place
-#. ## where we poll for the world sequence number.
-#. ##
-#. This lets us do the right thing if the server changes
-#. out from under us.
-#. Ignore any problems on the first poll, since we know we
-#. don't have valid server information before that point.
-#. We signal the listeners in an idle function so that
-#. it will always happen in the main thread.
-#. FIXME?  By doing nothing here, we keep the
-#. user from being hammered by a whole bunch of exceptions
-#. if something has gone badly wrong.
-#. FIXME?
-#. do the first poll immediately
-#. get poll timeout started again
-#. Start polling.  We skip our first poll, since we won't have made a
-#. connection to the server yet.
-#. ##############################################################################
-#. ##
-#. ##  The ServerListener class: a base class for objects that need to
-#. ## detect when the state of the world changes on the server
-#. ##
-#. These are the function that should be overrided in derived classes.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We want to emit our signal in the main thread.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## ListModel methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
 #: src/red_services.py:88
-#, fuzzy
 msgid "Edit Services"
-msgstr "_Beállítások..."
+msgstr "Szolgáltatások szerkesztése"
 
 #: src/red_services.py:117
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/red_services.py:133
 msgid "_Remove service"
-msgstr ""
+msgstr "Szolgáltatás _eltávolítása"
 
-#: src/red_services.py:146
-#, fuzzy
+#: src/red_services.py:150
 msgid "_Add service"
-msgstr "Kiszolgáló:"
+msgstr "Szolgáltatás hozzá_adása"
 
-#: src/red_services.py:226
-#, fuzzy
+#: src/red_services.py:233
 msgid "Add Service"
-msgstr "Kiszolgáló:"
+msgstr "Szolgáltatás hozzáadása"
 
-#: src/red_services.py:231
-#, fuzzy
+#: src/red_services.py:238
 msgid "Service URL"
-msgstr "Kiszolgáló:"
+msgstr "Szolgáltatás URL-je"
 
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## ServerListener methods
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. # Start of public API
-#. FIXME: This error message isn't great, but is better than a
-#. cryptic backtrace.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#: src/red_sidebar.py:61 src/red_transaction.py:112
-#, fuzzy
+#: src/red_sidebar.py:61 src/red_transaction.py:133
 msgid "Pending Actions"
-msgstr "Hely"
+msgstr "Folyamatban lévő műveletek"
 
-#. PendingOpsListener implementation
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d telepítés folyamatban"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d telepítés folyamatban"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d törlés folyamatban"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d törlés folyamatban"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "Nincsenek folyamatban lévő műveletek"
 
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_software.py:28
-#, fuzzy
 msgid "Installed Software"
 msgstr "Telepített programok"
 
 #: src/red_software.py:31
-#, fuzzy
 msgid "I_nstalled Software"
-msgstr "Telepített programok"
+msgstr "_Telepített programok"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_software.py:97
 msgid "Available Software"
 msgstr "Rendelkezésre álló programok"
 
 #: src/red_software.py:100
-#, fuzzy
 msgid "A_vailable Software"
-msgstr "Rendelkezésre álló programok"
+msgstr "_Rendelkezésre álló programok"
 
-#. In some cases, the selection's changed signal doesn't get
-#. emitted when we unselect_all on it.  I'm not sure why.
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_statusbar.py:49
-#, fuzzy, python-format
+#, python-format
 msgid "Connected to %s"
-msgstr "Nem sikerült csatlakozni"
+msgstr "Csatlakozva a következőhöz: %s"
 
-#. Pop off any old message
-#. # Proxy GtkStatusbar's interface
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
 #: src/red_subscriptions.py:57
 msgid "Subscribed"
-msgstr "Előfizetett"
+msgstr "Feliratkozva"
 
 #: src/red_subscriptions.py:64
-#, fuzzy
 msgid "Channel Name"
-msgstr "Csatornainfó"
+msgstr "Csatornanév"
 
 #: src/red_subscriptions.py:78
-#, fuzzy, python-format
+#, python-format
 msgid "%s Channel Subscriptions"
-msgstr "_Előfizetések"
+msgstr "Feliratkozások %s csatornára"
 
-#. FIXME: Make transient of app
 #: src/red_subscriptions.py:99
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
 msgstr ""
+"Nincs jogosultsága feliratkozni csatornákra vagy leiratkozni róluk. Nem fog "
+"tudni a feliratkozásokon változtatni."
 
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/bookmarks.c:827 src/bookmarks_callbacks.c:181
-# src/browser_callbacks.c:803 src/history.c:182 src/mozcallbacks.c:139
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# #-#-#-#-#  epiphany.HEAD.hu.po-new.po (Epiphany CVS)  #-#-#-#-#
-# src/bookmarks.c:827 src/bookmarks_callbacks.c:181
-# src/browser_callbacks.c:803 src/history.c:182 src/mozcallbacks.c:139
-# #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
-# src/bookmarks.c:827 src/bookmarks_callbacks.c:181
-# src/browser_callbacks.c:803 src/history.c:182 src/mozcallbacks.c:139
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. We want (as many of) the same items to be selected even if
-#. we sort it differently.  We have to make two passes since
-#. setting the cursor after the selection seems to break some
-#. of the time.
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Névtelen"
 
-#. Fix the old column header
-#. ##
-#. ## Copyright (C) 2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ########################################################################
-#: src/red_transaction.py:75
-#, fuzzy
+#: src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
-msgstr "Tényleg meg akarod szakítani az átvitelt?"
+msgstr "Biztos ki akar lépni?"
 
-#: src/red_transaction.py:115
-#, fuzzy
+#: src/red_transaction.py:136
 msgid "_Pending Actions"
-msgstr "_Előfizetések"
+msgstr "_Folyamatban lévő műveletek"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "FrissÍtések"
+msgstr "_Frissítések"
 
-#. ## Update All button
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr "Megszakítva"
+msgstr "Összes _frissítése"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
-msgstr ""
+msgstr "A rendszer naprakész."
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
 msgstr ""
+"Nem érhető el szoftverfrissítés egyetlen olyan csatornán sem, amelyre fel "
+"van iratkozva."
 
 #: src/red_users.py:131
-#, fuzzy
 msgid "Privilege"
-msgstr "Futtatás egyszerű felhasználóként"
+msgstr "Jogosultság"
 
-#. Warn the user about removing their own superuser priv
 #: src/red_users.py:148
 msgid ""
 "If you remove superuser privileges from yourself, you will be unable to re-"
@@ -2967,99 +1387,70 @@ msgid ""
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
+"Ha megvonja a root jogosultságokat önmagától, nem lesz képes azokat újra "
+"megadni.\n"
+"\n"
+"Biztosan ezt akarja tenni?"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/memory.glade.h:15 interfaces/memory.glade.h:24
-# interfaces/memory.glade.h:35 interfaces/shares.glade.h:48
-# interfaces/shares.glade.h:54
-#. We want opposite state
 #: src/red_users.py:166
 msgid "Enabled"
 msgstr "Engedélyezve"
 
 #: src/red_users.py:181
 msgid "Edit Users"
-msgstr ""
+msgstr "Felhasználók szerkesztése"
 
 #: src/red_users.py:196 src/red_users.py:399
-#, fuzzy
 msgid "Confirm:"
-msgstr "Ütközik:"
+msgstr "Megerősítés:"
 
 #: src/red_users.py:217
-#, fuzzy
 msgid "Set Password"
-msgstr "Jelszó"
+msgstr "Jelszó beállítása"
 
-#. else:
 #: src/red_users.py:246 src/red_users.py:422
 msgid "Password can not be empty."
-msgstr ""
+msgstr "A jelszó nem lehet üres."
 
 #: src/red_users.py:248 src/red_users.py:424
 msgid "Passwords do not match."
-msgstr ""
+msgstr "A jelszavak nem egyeznek."
 
 #: src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
-msgstr ""
+msgstr "%s jelszavának beállítása"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/users.glade.h:40
 #: src/red_users.py:289
 msgid "Users"
 msgstr "Felhasználók"
 
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/memory.glade.h:39 interfaces/nameresolution.glade.h:10
-# interfaces/nameresolution.glade.h:30 interfaces/nameresolution.glade.h:35
-# interfaces/shares.glade.h:55 interfaces/shares.glade.h:64
-# interfaces/shares.glade.h:67 interfaces/time.glade.h:29
-# #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
-# #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
-# interfaces/memory.glade.h:39 interfaces/nameresolution.glade.h:10
-# interfaces/nameresolution.glade.h:30 interfaces/nameresolution.glade.h:35
-# interfaces/shares.glade.h:55 interfaces/shares.glade.h:64
-# interfaces/shares.glade.h:67 interfaces/time.glade.h:29
 #: src/red_users.py:306
 msgid "Add"
 msgstr "Hozzáadás"
 
 #: src/red_users.py:320
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Tényleg meg akarod szakítani az átvitelt?"
+msgstr "Biztos, hogy törölni szeretné a következőt: '%s' ?"
 
 #: src/red_users.py:326
 msgid "Remove"
 msgstr "Eltávolítás"
 
 #: src/red_users.py:339
-#, fuzzy
 msgid "Privileges"
-msgstr "Nyújtja:"
+msgstr "Jogosultságok"
 
 #: src/red_users.py:379
 msgid "Add new user"
-msgstr ""
+msgstr "Új felhasználó hozzáadása"
 
 #: src/red_users.py:426
 msgid "Invalid user name."
-msgstr ""
+msgstr "Érvénytelen felhasználónév."
 
 #: src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
-msgstr ""
-
-# #-#-#-#-#  gnome-media.HEAD.hu.po-new.po (gnome-media CVS)  #-#-#-#-#
-# tcd/cddb_props.c:246
-# #-#-#-#-#  gnome-utils.HEAD.hu.po-new.po (gnome-utils 2.2.0)  #-#-#-#-#
-# gdictsrc/gdict-pref-dialog.c:156
-#~ msgid "Server"
-#~ msgstr "Kiszolgáló"
-
-#, fuzzy
-#~ msgid "Mirrors"
-#~ msgstr "Tükör"
+msgstr "'%s' felhasználó már létezik."
