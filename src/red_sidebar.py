@@ -95,16 +95,22 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
         ins_count = red_pendingops.pending_install_count()
         if ins_count:
-            msg_list.append("%d pending install%s" %
-                            (ins_count, (ins_count > 1 and "s") or ""))
+            if ins_count == 1:
+                msg = _("%d pending install") % ins_count
+            else:
+                msg = _("%d pending installs") % ins_count
+            msg_list.append(msg)
 
         rem_count = red_pendingops.pending_remove_count()
         if rem_count:
-            msg_list.append("%d pending removal%s" %
-                            (rem_count, (rem_count > 1 and "s") or ""))
+            if rem_count == 1:
+                msg = _("%d pending removal") % ins_count
+            else:
+                msg = _("%d pending removals") % ins_count
+            msg_list.append(msg)
 
         if not msg_list:
-            msg_list.append("No pending operations")
+            msg_list.append(_("No pending actions"))
 
         msg = string.join(msg_list, "\n")
 
@@ -159,7 +165,7 @@ class ShortcutBar(gtk.HBox):
         table.set_col_spacings(6)
         table.set_row_spacings(6)
 
-        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
+        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
 
         row = 0
         for comp, callback in self.components:
@@ -178,7 +184,7 @@ class ShortcutBar(gtk.HBox):
                     stock_id = comp.stock()
 
                     image = gtk.Image()
-                    image.set_from_stock(stock_id, gtk.ICON_SIZE_BUTTON)
+                    image.set_from_stock(stock_id, gtk.ICON_SIZE_MENU)
 
                 if comp.pixbuf():
                     assert not comp.stock()

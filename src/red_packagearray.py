@@ -96,8 +96,10 @@ def pkg_status(pkg):
     else:
         return _("not installed")
 
-__update_icon              = red_pixbuf.get_pixbuf("status-upgrade")
-__downgrade_icon           = red_pixbuf.get_pixbuf("status-downgrade")
+#__newer_icon               = red_pixbuf.get_pixbuf("status-newer")
+#__older_icon               = red_pixbuf.get_pixbuf("status-older")
+__newer_icon               = None
+__older_icon               = None
 __installed_icon           = red_pixbuf.get_pixbuf("status-installed")
 __uninstalled_icon         = red_pixbuf.get_pixbuf("status-not-installed")
 
@@ -106,9 +108,9 @@ def pkg_status_icon(pkg):
     if pkg["installed"]:
         return __installed_icon
     elif pkg["name_installed"] > 0: # upgrade
-        return __update_icon
+        return __newer_icon
     elif pkg["name_installed"] < 0: # downgrade
-        return __downgrade_icon
+        return __older_icon
     return __uninstalled_icon
 
 def pkg_action(pkg):

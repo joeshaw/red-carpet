@@ -77,7 +77,7 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
             hbox.pack_start(label, 0, 0, 4)
 
             if c.get("subscribed"):
-                sub_img = red_pixbuf.get_widget("subscribed",
+                sub_img = red_pixbuf.get_widget("status-installed",
                                                 width=width, height=height)
                 hbox.pack_end(sub_img, expand=0, fill=0, padding=2)
 

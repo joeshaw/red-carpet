@@ -51,7 +51,7 @@ class Actionbar(gtk.HBox, red_pendingops.PendingOpsListener):
 
             if stock:
                 assert not pixbuf
-                image.set_from_stock(stock, gtk.ICON_SIZE_BUTTON)
+                image.set_from_stock(stock, gtk.ICON_SIZE_MENU)
 
             if pixbuf:
                 assert not stock

@@ -318,11 +318,11 @@ class ConnectionWindow(gtk.Dialog):
 
     def build(self):
         self.local_rb = gtk.RadioButton(None,
-                                        _("Connect to daemon on this computer"))
+                                        _("Connect to this system"))
         self.vbox.pack_start(self.local_rb)
 
         self.remote_rb = gtk.RadioButton(self.local_rb,
-                                         _("Connect to a remote daemon"))
+                                         _("Connect to a remote system"))
         self.vbox.pack_start(self.remote_rb)
 
         table = gtk.Table(3, 2)

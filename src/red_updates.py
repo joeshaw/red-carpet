@@ -36,7 +36,7 @@ class SummaryComponent(red_component.Component):
         return _("_Update Summary")
 
     def pixbuf(self):
-        return "summary"
+        return "updates"
 
     def accelerator(self):
         return "<Control>s"

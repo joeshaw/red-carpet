@@ -358,8 +358,7 @@ class AppWindow(gtk.Window,
 
         bar.subs = bar.add(text=_("Channels"),
                            tooltip=_("Change your channel subscriptions"),
-                           pixbuf=red_pixbuf.get_pixbuf("subscribed",
-                                                        width=width, height=height),
+                           pixbuf=red_pixbuf.get_pixbuf("channels-24"),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
         bar.refresh = bar.add(text=_("Refresh"),
@@ -373,20 +372,15 @@ class AppWindow(gtk.Window,
 
     def assemble_actionbar(self, bar):
 
-        width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
-
         bar.install = bar.add(text=_("Mark for _Installation"),
                               tooltip=_("Mark selected packages for installation"),
-                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
-                                                           width=width,
-                                                           height=height),
+                              pixbuf=red_pixbuf.get_pixbuf("to-be-installed"),
                               sensitive_fn=self.install_sensitive_cb,
                               callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
 
         bar.remove = bar.add(text=_("Mark for _Removal"),
                              tooltip=_("Mark selected packages for removal"),
-                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
-                                                          width=width, height=height),
+                             pixbuf=red_pixbuf.get_pixbuf("to-be-removed"),
                              sensitive_fn=self.remove_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
@@ -398,8 +392,7 @@ class AppWindow(gtk.Window,
 
         bar.info = bar.add(text=_("I_nformation"),
                            tooltip=_("Package information"),
-                           pixbuf=red_pixbuf.get_pixbuf("info",
-                                                        width=width, height=height),
+                           pixbuf=red_pixbuf.get_pixbuf("info"),
                            sensitive_fn=self.info_sensitive_cb,
                            callback=lambda x:self.package_info_cb())
 
@@ -478,6 +471,7 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("install")
 
         bar.add("/%s/%s" % (file_str, _("Install from _File...")),
+                pixbuf=red_pixbuf.get_pixbuf("install-from-file"),
                 sensitive_fn=install_file_sensitive_fn,
                 callback=lambda x:red_installfiles.install_local(self))
 
@@ -486,6 +480,7 @@ class AppWindow(gtk.Window,
                    red_installfiles.can_install_remote()
 
         bar.add("/%s/%s" % (file_str, _("Install from _URL...")),
+                pixbuf=red_pixbuf.get_pixbuf("install-from-url"),
                 sensitive_fn=install_url_sensitive_fn,
                 callback=lambda x:red_installfiles.install_remote(self))
 
@@ -567,8 +562,7 @@ class AppWindow(gtk.Window,
 
         bar.add("/%s/%s" % (edit_str, _("Channel _Subscriptions...")),
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
-                pixbuf=red_pixbuf.get_pixbuf("subscribed",
-                                             width=width, height=height),
+                pixbuf=red_pixbuf.get_pixbuf("channels-16"),
                 accelerator="<Control>B")
 
         bar.add("/%s/%s" % (edit_str, _("_Preferences...")),
@@ -576,6 +570,7 @@ class AppWindow(gtk.Window,
                 callback=lambda x:self.open_or_raise_window(red_prefs.PrefsWindow))
 
         bar.add("/%s/%s" % (edit_str, _("_Users...")),
+                pixbuf=red_pixbuf.get_pixbuf("users"),
                 callback=lambda x:self.open_or_raise_window(red_users.UsersWindow))
 
         ##

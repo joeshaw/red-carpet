@@ -68,19 +68,19 @@ class PendingView(gtk.Window):
 
         topbox = gtk.HBox(0, 0)
         self.image = gtk.Image()
-        topbox.pack_start(self.image, 0, 0, 5)
+        topbox.pack_start(self.image, expand=0, fill=1, padding=5)
 
         textbox = gtk.VBox(0, 0)
-        topbox.pack_end(textbox, 1, 1, 0)
+        topbox.pack_end(textbox, expand=1, fill=1)
 
-        mainbox.pack_start(topbox, 0, 1, 0)
+        mainbox.pack_start(topbox, expand=1, fill=1)
 
         self.title_label = gtk.Label("")
         self.title_label.set_alignment(0, 0.5)
-        textbox.pack_start(self.title_label, 0, 0, 0)
+        textbox.pack_start(self.title_label, expand=0, fill=0)
 
         self.step_label = gtk.Label("")
-        self.step_label.set_alignment(0, 0.5)
+        self.step_label.set_alignment(0, 0.0)
         (width, height) = self.calculate_required_text_size(MAX_LABEL_LEN)
         self.step_label.set_size_request(width, -1)
         self.__line_height = height
@@ -103,7 +103,7 @@ class PendingView(gtk.Window):
         self.set_title(self.window_title)
 
         self.progress_bar = gtk.ProgressBar()
-        mainbox.pack_start(self.progress_bar, 0, 0, 0)
+        mainbox.pack_start(self.progress_bar, expand=0, fill=0)
 
         self.button = None
         if self.allow_cancel or not self.self_destruct:
@@ -601,6 +601,7 @@ class PendingView_Transaction(PendingView):
         self.switch_cancel_button_to_ok()
         self.set_title(title)
         self.set_label(msg)
+        self.step_label.set_selectable(1)
         self.update_fill()
 
     def update_download(self):

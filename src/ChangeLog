@@ -1,3 +1,35 @@
+2003-04-11  Joe Shaw  <joe@ximian.com>
+
+	* red_actionbar.py: Default to ICON_SIZE_MENU, not BUTTON.
+
+	* red_appwindow.py (assemble_toolbar): Update channels icon.
+	(assemble_actionbar): Fix the icon sizes.
+	(assemble_menubar): Add icons for Install from File, Install from
+	URL, Users, and update the channels icon.
+
+	* red_channeloption.py (ChannelOption.__assemble): Update
+	subscribed icon.
+
+	* red_connection.py: Update text to not mention "daemon".
+
+	* red_packagearray.py: Update installed and not installed icons,
+	temporarily turn off newer and older icons.
+
+	* red_packageview.py (append_status_column): Turn the status icon
+	back on by default.
+
+	* red_pendingview.py: Be more explicit about expand, fill, and
+	padding parameters to Box.pack_start().  Fix it so the text box
+	expands as the dialog is resized.  Fixes #41028.
+	(PendingView_Transaction.transaction_finished): Allow the finished
+	text to be selected.  Fixes #41035.
+
+	* red_sidebar.py: Mark the pending install/removal text for
+	translation.
+	(ShortcutBar): Make the side of the buttons MENU, not BUTTON.
+
+	* red_summary.py: Use "updates" pixbuf, not "summary".
+
 2003-04-07  Tambet Ingo  <tambet@ximian.com>
 
 	* red_thrashingtreeview.py (TreeView.sort_by): Fix sorting by
