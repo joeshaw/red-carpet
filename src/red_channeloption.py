@@ -57,6 +57,12 @@ class ChannelOption(gtk.OptionMenu):
         id = self.item_id_list[self.get_history()]
         return rcd_util.get_channel(id)
 
+    def get_channel_id(self):
+        c = self.get_channel()
+        if c:
+            return c["id"]
+        return None
+
     def set_channel_by_id(self, id):
         if not id in self.item_id_list:
             print "Unknown channel '%d'" % id

@@ -67,8 +67,7 @@ class SideBar(gtk.EventBox):
     def add(self,
             pixbuf=None,
             label="No Label",
-            callback=None,
-            user_data=None):
+            callback=None):
 
         icon = red_pixbuf.get_widget(pixbuf)
 
@@ -93,14 +92,15 @@ class SideBar(gtk.EventBox):
 
         if callback:
             button.connect("clicked",
-                           lambda b, ud: callback(ud),
-                           ud)
+                           lambda b: callback())
         else:
             warn = gtk.Label("")
             warn.set_markup("<small>(no callback)</small>")
             my_vbox.pack_start(warn, 0, 0, 0)
 
         self.vbox.pack_start(my_vbox, 0, 0, 10)
+
+        my_vbox.show_all()
         
            
         

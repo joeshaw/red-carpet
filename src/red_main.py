@@ -23,7 +23,8 @@ import red_packagearray
 import red_explodedview
 import red_appwindow
 import red_channeloption
-import red_browse_by_channel
+import red_channelbrowse
+import red_summary
 
 def connect_to_server():
     ## Make contact with the daemon.
@@ -71,11 +72,13 @@ def opt_test(server):
 def main(version):
     server = connect_to_server()
 
-    app = red_appwindow.AppWindow()
+    app = red_appwindow.AppWindow(server)
     app.set_title("Red Carpet 2: Electric Boogaloo")
     app.show_all()
 
-    red_browse_by_channel.main(server, app)
+    #comp = red_channelbrowse.ChannelBrowseComponent()
+    app.add_component(red_summary.SummaryComponent())
+    app.add_component(red_channelbrowse.ChannelBrowseComponent())
 
     gtk.main()
     

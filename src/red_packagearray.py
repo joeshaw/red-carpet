@@ -189,6 +189,11 @@ class PackageStore(PackageArray):
             x.store = []
         self.changed(clear_op)
 
+    def set(self, pkg_list):
+        def set_op(x, pl):
+            x.store = pl
+        self.changed(set_op, pkg_list)
+
     def append(self, pkg):
         def append_op(x, p):
             x.store.append(p)
@@ -292,7 +297,9 @@ class PackageQuery(PackageArray):
                 start = time.time()
                 packages = self.server.rcd.packsys.search(self.query)
                 end = time.time()
-                print "time=", end - start
+                print "time=%.2f" % (end - start)
+                print "got %d packages (%.2f pkgs/sec)" \
+                      % (len(packages), len(packages)/(end-start))
                 packages.sort(pkg_cmp)
 
 

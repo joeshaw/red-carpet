@@ -18,7 +18,7 @@
 import sys
 import gobject, gtk
 
-import red_menubar, red_sidebar
+import red_header, red_menubar, red_sidebar
 
 class AppWindow(gtk.Window):
 
@@ -44,34 +44,27 @@ class AppWindow(gtk.Window):
         bar.add("/Help/Foo")
 
 
-    def assemble_sidebar(self, bar):
-
-        bar.add(pixbuf="summary",
-                label="Summary")
-
-        bar.add(pixbuf="featured",
-                label="Browse by Channel")
-
-        bar.add(pixbuf="news",
-                label="News")
-        
-
-    def __init__(self):
+    def __init__(self, server):
 
         gtk.Window.__init__(self)
 
-        self.table = gtk.Table(2, 3)
+        self.server = server
+
+        self.table = gtk.Table(2, 5)
         self.add (self.table)
+
+        self.components = []
 
         self.menubar = red_menubar.MenuBar()
         self.assemble_menubar(self.menubar)
         
         self.sidebar = red_sidebar.SideBar()
-        self.assemble_sidebar(self.sidebar)
 
-        self.control = gtk.EventBox()
+        self.header = gtk.EventBox()
+        self.upper  = gtk.EventBox()
+        self.lower  = gtk.EventBox()
+        self.main   = gtk.EventBox()
 
-        self.main = gtk.EventBox()
         style = self.main.get_style().copy()
         color = self.main.get_colormap().alloc_color("white")
         style.bg[gtk.STATE_NORMAL] = color
@@ -87,31 +80,76 @@ class AppWindow(gtk.Window):
                           0, 0)
 
         self.table.attach(self.sidebar,
-                          0, 1, 1, 3,
+                          0, 1, 1, 5,
                           gtk.FILL, gtk.FILL,
                           0, 0)
 
-        self.table.attach(self.control,
+        self.table.attach(self.header,
                           1, 2, 1, 2,
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
 
-        self.table.attach(self.sw,
+        self.table.attach(self.upper,
                           1, 2, 2, 3,
+                          gtk.FILL | gtk.EXPAND, gtk.FILL,
+                          0, 0)
+
+        self.table.attach(self.sw,
+                          1, 2, 3, 4,
                           gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
                           0, 0)
 
+        self.table.attach(self.lower,
+                          1, 2, 4, 5,
+                          gtk.FILL | gtk.EXPAND, gtk.FILL,
+                          0, 0)
+
+
         self.connect("delete_event", lambda x, y:self.shutdown())
 
-    def set_control_widget(self, item):
-        for c in self.control.get_children():
-            self.control.remove(c)
-        self.control.add(item)
-        item.show()
 
-    def set_main_widget(self, item):
-        for c in self.main.get_children():
-            self.main.remove(c)
-        self.main.add(item)
-        item.show()
+    def add_component(self, comp):
         
+        self.sidebar.add(label=comp.name(),
+                         pixbuf=comp.pixbuf(),
+                         callback=lambda: self.set_component(comp))
+
+        if not self.components:
+            self.set_component(comp)
+
+        self.components.append(comp)
+        
+
+    def set_component(self, comp):
+
+        def switch_children(parent, child):
+            for c in parent.get_children():
+                parent.remove(c)
+            if not child:
+                child = gtk.EventBox()
+            parent.add(child)
+            child.show()
+
+        self.component = comp
+
+        comp.set_server(self.server)
+
+        # Create a pure virtual component, which will return None
+        # when asked for any widget.
+        if not comp:
+            comp = red_appcomponent.AppComponent()
+
+        comp.prebuild()
+
+        hdr = red_header.Header(comp.pixbuf(), comp.long_name())
+        hdr.show_all()
+
+        switch_children(self.header, hdr)
+        switch_children(self.upper, comp.get_upper_widget())
+        switch_children(self.main,  comp.get_main_widget())
+        switch_children(self.lower, comp.get_lower_widget())
+
+        comp.postbuild()
+
+        # Might also need to hook up some signals, etc.
+

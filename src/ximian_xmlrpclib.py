@@ -336,6 +336,7 @@ try:
     import sgmlop
     if not hasattr(sgmlop, "XMLParser"):
         raise ImportError
+    print "Using sgmlop parser."
 except ImportError:
     SgmlopParser = None # sgmlop accelerator not available
 else:
