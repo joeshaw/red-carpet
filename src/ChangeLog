@@ -1,5 +1,10 @@
 2003-02-20  Tambet Ingo  <tambet@ximian.com>
 
+	* red_locks.py (toggle_lock): Catch exceptions, let user know
+	if something is wrong. Let serverlistener know we have updated.
+
+2003-02-20  Tambet Ingo  <tambet@ximian.com>
+
 	* red_users.py (UsersWindow.password_update_cb): Reset password
 	entries after successful password update.
 	(PrivilegesModel.got_cb): Catch possible exception.

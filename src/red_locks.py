@@ -16,18 +16,26 @@
 ###
 
 import rcd_util
+import red_serverlistener
 
 def toggle_lock(pkg):
     if not pkg:
         return
 
     server = rcd_util.get_server_proxy()
-    
+
+    def ready_cb(th):
+        try:
+            success = th.get_result()
+        except ximian_xmlrpclib.Fault, f:
+            rcd_util.dialog_from_fault(f)
+            return
+        red_serverlistener.reset_polling(1)
+
     locked = pkg.get("locked")
     if not locked:
-        server.rcd.packsys.add_lock({"glob":pkg["name"]})
+        th = server.rcd.packsys.add_lock({"glob":pkg["name"]})
     else:
-        try:
-            server.rcd.packsys.remove_lock({"glob":pkg["name"]})
-        except:
-            pass
+        th = server.rcd.packsys.remove_lock({"glob":pkg["name"]})
+
+    th.connect("ready", ready_cb)
