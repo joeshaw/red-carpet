@@ -1,3 +1,25 @@
+2003-02-05  Tambet Ingo  <tambet@ximian.com>
+
+	* red_history.py (HistorySearchBar.build): Changed some labels.
+	(HistoryComponent.build): Show component's name in main window.
+
+	* red_news.py (NewsComponent.build): Ditto.
+
+	* red_system.py (SystemComponent.build): Ditto.
+
+	* red_summary.py (SummaryComponent.build): Ditto, removed "You have
+	N updates available" label.
+
+	* red_appwindow.py (register_component):  Activate first component
+	in gtk.idle to get the default active componet on toolbar.
+	(AppWindow.__init__): Moved creation throbber to it's own method,
+	init is getting too long. Added "Shortcut bar" to main window.
+	(AppWindow.create_throbber): New method.
+	(AppWindow.assemble_shortcut_bar): Construct shortcut bar here.
+
+	* red_sidebar.py (SideBar.build): Center icon and label on buttons.
+	(Toolbar.construct): Ditto.
+
 2003-02-04  Tambet Ingo  <tambet@ximian.com>
 
 	* Makefile.am (red_carpetsupport_DATA): Added red_sidebar.py.

@@ -46,12 +46,14 @@ class SideBar(gtk.VBox):
         bbox.set_spacing(6)
 
         self.run = gtk.Button()
+        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        self.run.add(align)
         box = gtk.HBox(0, 2)
         image = red_pixbuf.get_widget("progress-config",
                                       width=24, height=24)
         box.pack_start(image, 0, 0)
         box.pack_start(gtk.Label("Run"), 0, 0)
-        self.run.add(box)
+        align.add(box)
         bbox.add(self.run)
 
         self.details = gtk.Button("Details")
@@ -107,7 +109,6 @@ class Toolbar(gtk.HBox):
 
         rows = int(math.ceil(len(self.components) / 2.0))
         table = gtk.Table(rows, 2)
-        table.set_border_width(6)
         table.set_col_spacings(6)
         table.set_row_spacings(6)
 
@@ -115,6 +116,8 @@ class Toolbar(gtk.HBox):
         for comp, callback in self.components:
             if comp.show_on_toolbar():
                 button = gtk.ToggleButton()
+                align = gtk.Alignment(0.5, 0.5, 0, 0)
+                button.add(align)
                 box = gtk.HBox(0, 2)
 
                 if comp.pixbuf():
@@ -123,7 +126,7 @@ class Toolbar(gtk.HBox):
                     box.pack_start(image, 0, 0)
 
                 box.pack_start(gtk.Label(comp.name()), 0, 0)
-                button.add(box)
+                align.add(box)
 
                 y = int(row)
                 if row > y:

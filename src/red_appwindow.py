@@ -104,24 +104,13 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.progressbar = gtk.ProgressBar()
         self.statusbar = gtk.Statusbar()
 
-        # FIXME: Tambet will fix this tomorrow :)
-##        icon_size = self.toolbar.get_icon_size()
-##        width, height = gtk.icon_size_lookup(icon_size)
-        self.throbber = red_throbber.Throbber(24, 24)
-
         # A box to put component widgets in.  We use an EventBox
         # instead of just a [HV]Box so that we can control the
         # background color if we want to.
         self.container = gtk.EventBox()
-        self.container.set_border_width(6)
 
         self.vbox.pack_start(self.menubar, expand=0, fill=1)
         self.menubar.show()
-
-        throbbox = gtk.Frame(None)
-        throbbox.set_shadow_type(gtk.SHADOW_ETCHED_OUT)
-        throbbox.set_border_width(2)
-        throbbox.add(self.throbber)
 
         hbox = gtk.HBox()
         self.vbox.pack_start(hbox, expand=1, fill=1)
@@ -135,7 +124,25 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         hbox.pack_start(self.sidebar, 0, 1)
 
-        hbox.pack_start(self.container, expand=1, fill=1)
+        main_box = gtk.VBox(0, 6)
+        main_box.set_border_width(6)
+        hbox.pack_start(main_box, 1, 1)
+
+        ## Shortcut bar
+        shortcut_bar_box = gtk.HBox(0, 0)
+        main_box.pack_start(shortcut_bar_box, 0, 0)
+
+        self.shortcut_bar = gtk.Toolbar()
+        self.assemble_shortcut_bar(self.shortcut_bar)
+        shortcut_bar_box.pack_start(self.shortcut_bar, 1, 1)
+
+        ## Throbber
+        icon_size = self.shortcut_bar.get_icon_size()
+        width, height = gtk.icon_size_lookup(icon_size)
+        shortcut_bar_box.pack_end(self.create_throbber(width, height),
+                                  0, 0)
+
+        main_box.pack_start(self.container, expand=1, fill=1)
         hbox.show_all()
 
         south = gtk.HBox(0, 0)
@@ -145,6 +152,56 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.vbox.pack_start(south, expand=0, fill=1)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
+
+    def create_throbber(self, height, width):
+        self.throbber = red_throbber.Throbber(height, width)
+
+        throbbox = gtk.Frame(None)
+        throbbox.set_shadow_type(gtk.SHADOW_ETCHED_OUT)
+        throbbox.set_border_width(2)
+        throbbox.add(self.throbber)
+
+        return throbbox
+
+    def assemble_shortcut_bar(self, bar):
+
+        ## Install
+        bar.install = bar.append_item("Install",
+                                      "Install selected package",
+                                      None,
+                                      red_pixbuf.get_widget("to-be-installed", width=16, height=16),
+                                      None)
+        bar.install.set_sensitive(0)
+
+        ## Remove
+        bar.remove = bar.append_item("Remove",
+                                     "Remove selected package",
+                                     None,
+                                     red_pixbuf.get_widget("to-be-removed", width=16, height=16),
+                                     None)
+        bar.remove.set_sensitive(0)
+
+        bar.append_space()
+
+        ## Settings
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_PREFERENCES, gtk.ICON_SIZE_SMALL_TOOLBAR)
+        bar.settings = bar.append_item("Settings",
+                                       "Settings",
+                                       None,
+                                       image,
+                                       lambda x:self.open_or_raise_window(red_prefs.PrefsWindow),
+                                       None)
+
+        ## Help
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_HELP, gtk.ICON_SIZE_SMALL_TOOLBAR)
+        bar.help = bar.append_item("Help",
+                                   "Help",
+                                   None,
+                                   image,
+                                   None)
+        bar.help.set_sensitive(0)
 
     def set_title(self, title, component=None):
         buf = ""
@@ -370,7 +427,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         # We activate the first component that gets registered.
         if not self.components:
-            self.activate_component(comp)
+            gtk.idle_add(self.activate_component, comp)
 
         self.components.append(comp)
 

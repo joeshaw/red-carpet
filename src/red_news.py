@@ -49,7 +49,6 @@ class NewsView(gtk.ScrolledWindow):
         r1 = gtk.CellRendererText()
         col.pack_start(r1, 0)
         col.set_attributes(r1, markup=COLUMN_TITLE)
-#        r2.set_property("style", pango.STYLE_ITALIC)
 
         view.append_column(col)
 
@@ -77,10 +76,23 @@ class NewsComponent(red_component.Component):
         return "news"
 
     def build(self):
+        page = gtk.VBox(0, 6)
+
+        hbox = gtk.HBox(0, 6)
+
+        label = gtk.Label("")
+        label.set_alignment(0, 0.5)
+        label.set_markup("<b>" + self.long_name() + "</b>")
+        hbox.pack_start(label)
+
+        hbox.show_all()
+        page.pack_start(hbox, 0, 0)
+
         view = NewsView()
         view.show()
+        page.pack_start(view, 1, 1)
 
-        return view
+        return page
 
 
 COLUMN_NEWS        = 0

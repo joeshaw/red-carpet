@@ -105,17 +105,16 @@ class HistorySearchBar(HistoryFilter):
 
     def build(self):
         self.container = gtk.HBox(0, 5)
-        self.container.pack_start(gtk.Label("Browse"), 0, 0, 0)
 
         actions = [("All",        None),
-                   ("Installs",   "install"),
-                   ("Removals",   "remove"),
-                   ("Upgrades",   "upgrade")]
+                   ("Package Installations", "install"),
+                   ("Package Removals",      "remove"),
+                   ("Package Upgrades",      "upgrade")]
         self.action_opt = HistoryOption(actions)
         self.container.pack_start(self.action_opt, 0, 0, 0)
         self.action_opt.connect("selected", lambda x, y:self.updated())
 
-        self.container.pack_start(gtk.Label("packages by"), 0, 0, 0)
+        self.container.pack_start(gtk.Label("User:"), 0, 0, 0)
 
         def get_users(server):
             users = map(lambda x:x[0], server.rcd.users.get_all())
@@ -131,7 +130,7 @@ class HistorySearchBar(HistoryFilter):
         self.container.pack_start(self.user_opt, 0, 0, 0)
         self.user_opt.connect("selected", lambda x, y:self.updated())
 
-        self.container.pack_start(gtk.Label("in last"), 0, 0, 0)
+        self.container.pack_start(gtk.Label("Timeframe (days):"), 0, 0, 0)
 
         self.days_spin = gtk.SpinButton()
         self.days_spin.set_increments(1, 7)
@@ -140,8 +139,6 @@ class HistorySearchBar(HistoryFilter):
         self.days_spin.set_value(30)
         self.container.pack_start(self.days_spin, 0, 0, 0)
         self.days_spin.connect("value-changed", lambda x:self.updated())
-
-        self.container.pack_start(gtk.Label("days"), 0, 0, 0)
 
     def container_get(self):
         return self.container
@@ -186,12 +183,20 @@ class HistoryComponent(red_component.Component):
         return 1
 
     def build(self):
-        page = gtk.VBox(0,0)
+        page = gtk.VBox(0, 6)
+
+        hbox = gtk.HBox(0, 6)
+        page.pack_start(hbox, 0, 0)
+
+        label = gtk.Label("")
+        label.set_alignment(0, 0.5)
+        label.set_markup("<b>" + self.long_name() + "</b>")
+        hbox.pack_start(label, 0, 0)
 
         search_bar = HistorySearchBar(self.server)
         container = search_bar.container_get()
-        container.show()
-        page.pack_start(container, 0, 0, 4)
+        hbox.pack_start(container, 0, 0)
+        hbox.show_all()
 
         view = HistoryView(search_bar)
         page.add(view)

@@ -27,7 +27,7 @@ class SummaryComponent(red_component.Component):
         return "Summary"
 
     def long_name(self):
-        return "Update Summary"
+        return "Summary of Updates"
 
     def pixbuf(self):
         return "summary"
@@ -41,26 +41,17 @@ class SummaryComponent(red_component.Component):
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
 
-        page = gtk.VBox(0, 0)
+        page = gtk.VBox(0, 6)
 
-        vbox = gtk.VBox(0,0)
+        hbox = gtk.HBox(0, 6)
 
-        def updates_changed_cb(array, label):
-            if array.len() == 0:
-                markup = "Your system is up to date."
-            else:
-                markup = "There are <b>%d updates</b>" \
-                         " available for your system." % array.len()
-                
-            label.set_markup(markup)
+        label = gtk.Label("")
+        label.set_alignment(0, 0.5)
+        label.set_markup("<b>" + self.long_name() + "</b>")
+        hbox.pack_start(label)
 
-        msg1 = gtk.Label("")
-        self.array.connect("changed", updates_changed_cb, msg1)
-        vbox.pack_start(msg1, 1, 1, 0)
-
-        vbox.show_all()
-        
-        page.pack_start(vbox, 0, 0)
+        hbox.show_all()
+        page.pack_start(hbox, 0, 0)
 
         ### Main
 
