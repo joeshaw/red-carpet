@@ -50,6 +50,9 @@ class User:
             self.pwd = None
 
     def privileges_get(self):
+        ## Make sure we have at least 'view'
+        if not self.privileges:
+            self.privileges.append("view")
         return self.privileges
     def privileges_set(self, privileges):
         self.privileges = privileges
@@ -75,11 +78,12 @@ class User:
                                 privs_str)
 
         server.set_password(self.pwd_get())
+        red_serverlistener.reset_polling(1)
 
     def delete(self):
         server = rcd_util.get_server()
         server.rcd.users.remove(self.name_get())
-
+        red_serverlistener.reset_polling(1)
 
 class UsersData(red_serverlistener.ServerListener, gobject.GObject):
 
@@ -127,7 +131,6 @@ class UsersData(red_serverlistener.ServerListener, gobject.GObject):
         for u in self.__users:
             if u.name_get() == user_name:
                 return 1
-
         return 0
 
     def get_active_user(self):
@@ -194,7 +197,7 @@ def make_users_view(model):
                              text=COLUMN_NAME)
     view.append_column(col)
     return view
-    
+
 
 class PermissionsView(gtk.ScrolledWindow):
 
@@ -292,7 +295,26 @@ class UsersWindow(gtk.Dialog,
         button = gtk.Button()
         button.set_label("Set Password")
         button_box.add(button)
+        self.pwd_button = button
         table.attach_defaults(button_box, 0, 2, 2, 3)
+
+        def sensitize_pwd_widgets(w, this):
+            if this.pwd1.get_text() == "-*-unchanged-*-":
+                this.pwd2.set_sensitive(0)
+                this.pwd_button.set_sensitive(0)
+                return
+
+            this.pwd2.set_sensitive(1)
+
+            if this.pwd2.get_text() == "-*-unchanged-*-":
+                this.pwd_button.set_sensitive(0)
+                return
+
+            # else:
+            this.pwd_button.set_sensitive(1)
+
+        self.pwd1.connect("changed", sensitize_pwd_widgets, self)
+        self.pwd2.connect("changed", sensitize_pwd_widgets, self)
 
         def password_update_cb(button, this):
             p1 = this.pwd1.get_text()
@@ -317,7 +339,20 @@ class UsersWindow(gtk.Dialog,
 
         button.connect("clicked", password_update_cb, self)
 
-        return table
+        def update_frame_label(ud, frame):
+            u = ud.get_active_user()
+            if u:
+                label = "Set %s's password" % u.name_get()
+            else:
+                label = ""
+
+            frame.set_label(label)
+
+        frame = gtk.Frame()
+        frame.add(table)
+        users_data.connect("active-changed", update_frame_label, frame)
+
+        return frame
 
     def build(self):
         main_box = gtk.HBox(0, 5)
@@ -331,6 +366,8 @@ class UsersWindow(gtk.Dialog,
         if not users_data:
             users_data = UsersData()
 
+##        users_data.set_active_user(rcd_util.get_current_user())
+
         box = gtk.HBox(0, 5)
         frame = gtk.Frame("Users")
         users_model = UsersModel(users_data)
@@ -341,14 +378,28 @@ class UsersWindow(gtk.Dialog,
         frame.add(sw)
         box.add(frame)
 
-        def selection_changed_cb(selection):
+        def active_user_changed_cb(users_data, view):
+            u = users_data.get_active_user()
+            if u:
+                model = view.get_model()
+                iter = model.get_iter_for_user(u)
+                if iter:
+                    print "Found iter, selecting %s" % u.name_get()
+                    selection = view.get_selection()
+                    selection.select_iter(iter)
+
+        def selection_changed_cb(selection, sid):
             model, iter = selection.get_selected()
             if iter:
                 u = model.get_value(iter, COLUMN_USER)
+                users_data.handler_block(sid)
                 users_data.set_active_user(u)
+                users_data.handler_unblock(sid)
 
+
+        sid = users_data.connect("active-changed", active_user_changed_cb, view)
         selection = view.get_selection()
-        selection.connect("changed", selection_changed_cb)
+        selection.connect("changed", selection_changed_cb, sid)
 
         is_superuser = rcd_util.check_server_permission("superuser")
 
@@ -488,6 +539,7 @@ class UserAdd(gtk.Dialog):
             else:
                 user = User(name, p1)
                 user.update()
+                users_data.set_active_user(user)
                 this.destroy()
 
         button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
@@ -526,8 +578,19 @@ class UsersModel(red_listmodel.ListModel):
     def refresh(self, users_data):
         def refresh_cb(this, users_data):
             self.__users = users_data.get_all_users()
+            print "refreshed"
 
         self.changed(refresh_cb, users_data)
+
+    def get_iter_for_user(self, user):
+        print "get_iter for %s" % user.name_get()
+        iter = self.get_iter_first()
+        while iter:
+            u = self.get_value(iter, COLUMN_USER)
+            if u == user:
+                print u.name_get()
+                return iter
+            iter = self.iter_next(iter)
 
     ###
     ### red_listmodel.ListModel implementation

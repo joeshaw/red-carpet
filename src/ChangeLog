@@ -1,3 +1,23 @@
+2003-01-30  Tambet Ingo  <tambet@ximian.com>
+
+	* red_users.py (User.privileges_get): Make sure user has at least
+	"view" privilege.
+	(User.update): Notify serverlistener that we have updated.
+	(User.delete): Ditto.
+	(UsersWindow.build_password_part): Added a frame with user's
+	name on it to make it more explicit. Senzitise entries and button
+	to make it more intuitive.
+	(UsersWindow.selection_changed_cb): Catch programmatically changed
+	active_user and modify the visual selection.
+	(UserAdd.add_cb): Set the new user active_user.
+
+	* red_serverinfo.py (dump_xml): Get dump in new thread to avoid
+	UI blocking.
+	(filesel_destroy): Cleanup on destroy.
+	(show_server_proxy_dialog): New function to show to user that
+	we're working. It should probably be moved to red_serverproxy
+	so it could be used by others (activation, ...) also.
+
 2003-01-29  Joe Shaw  <joe@ximian.com>
 
 	* red_settings.py: If .gnome2 or .gnome2_private don't exist,

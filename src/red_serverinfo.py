@@ -98,16 +98,30 @@ def dump_xml(filename):
         dialog.destroy()
         return
 
-    server = rcd_util.get_server()
-    f.write(zlib.decompress(server.rcd.packsys.dump().data))
-    f.close()
+    server = rcd_util.get_server_proxy()
+
+    def dump_finished_cb(worker, f):
+        if not worker.is_cancelled():
+            dump = worker.get_result()
+            f.write(zlib.decompress(dump.data))
+        f.close()
+
+    worker = server.rcd.packsys.dump()
+    show_server_proxy_dialog(worker, dump_finished_cb, f)
+
 
 def select_and_dump(parent):
-    def get_file_cb(button, filesel):
-        filename = filesel.get_filename()
+
+    def filesel_destroy(app):
+        if getattr(app, "__filesel", None):
+            app.__filesel.destroy()
+            app.__filesel = None
+
+    def get_file_cb(button, parent):
+        filename = parent.__filesel.get_filename()
         if filename:
             dump_xml(filename)
-            filesel.destroy()
+            filesel_destroy(parent)
 
     # We only allow one filesel window at a time
     if getattr(parent, "__filesel", None):
@@ -115,8 +129,40 @@ def select_and_dump(parent):
         return
 
     filesel = gtk.FileSelection("Choose file to dump")
-    filesel.ok_button.connect("clicked", get_file_cb, filesel)
-    filesel.cancel_button.connect("clicked", lambda x,y:y.destroy(), filesel)
+    filesel.ok_button.connect("clicked", get_file_cb, parent)
+    filesel.cancel_button.connect("clicked", lambda x,y:filesel_destroy(y), parent)
     filesel.show()
 
     parent.__filesel = filesel
+
+
+def show_server_proxy_dialog(worker, callback, user_data):
+    worker.connect("ready", callback, user_data)
+
+    dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO,
+                               gtk.BUTTONS_CANCEL,
+                               "Please wait while getting data.")
+
+    def update_progressbar_cb(p):
+        p.pulse()
+        return 1
+
+    progressbar = gtk.ProgressBar()
+    tid = gtk.timeout_add(100, update_progressbar_cb, progressbar)
+    progressbar.show()
+    dialog.vbox.add(progressbar)
+
+    def cb(x, y):
+        gtk.timeout_remove(y)
+        return 1
+
+    dialog.connect("destroy", cb, tid)
+
+    def cancel_cb(dialog, response, worker):
+        worker.cancel()
+        dialog.destroy()
+
+    dialog.connect("response", cancel_cb, worker)
+    dialog.show()
+
+    worker.connect("ready", lambda x,y:y.destroy(), dialog)
