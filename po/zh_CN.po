@@ -1,60 +1,60 @@
 # red-carpet
 # Copyright (C) YEAR Free Software Foundation, Inc.
-# Wang Jian <lark@linux.net.cn>, 2001
+# Wang Jian <lark@linux.net.cn>, 2001, 2004
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-11 15:06+0200\n"
-"PO-Revision-Date: 2002-03-29 00:14+0800\n"
+"POT-Creation-Date: 2004-09-10 22:02+0800\n"
+"PO-Revision-Date: 2004-09-10 22:48+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/rcd_util.py:402
+#: src/rcd_util.py:412
 msgid "Please wait while getting data."
 msgstr "请稍候，正在获取数据。"
 
-#: src/rcd_util.py:456 src/rcd_util.py:474
+#: src/rcd_util.py:466 src/rcd_util.py:484
 msgid "Please ensure that your network settings are correct."
 msgstr "请确保您的网络设置正确。"
 
-#: src/rcd_util.py:463
+#: src/rcd_util.py:473
 msgid "Refreshing channel data"
 msgstr "刷新频道数据"
 
-#: src/rcd_util.py:465
+#: src/rcd_util.py:475
 msgid "Downloading channel information"
 msgstr "下载频道信息"
 
-#: src/rcd_util.py:491
+#: src/rcd_util.py:501
 msgid "Verifying"
-msgstr "验证"
+msgstr "检验"
 
-#: src/rcd_util.py:492
+#: src/rcd_util.py:502
 msgid "Unable to verify package signature for"
-msgstr "无法验证软件包签名"
+msgstr "无法检验软件包签名"
 
-#: src/rcd_util.py:493
+#: src/rcd_util.py:503
 msgid "There is no package signature for"
 msgstr "未找到软件包签名"
 
-#: src/rcd_util.py:494
+#: src/rcd_util.py:504
 msgid "Preparing Transaction"
 msgstr "准备事务"
 
-#: src/rcd_util.py:495
+#: src/rcd_util.py:505
 msgid "Installing"
 msgstr "安装"
 
-#: src/rcd_util.py:496
+#: src/rcd_util.py:506
 msgid "Removing"
 msgstr "删除"
 
-#: src/rcd_util.py:497
+#: src/rcd_util.py:507
 msgid "Configuring"
 msgstr "配置"
 
@@ -80,7 +80,7 @@ msgstr ""
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr "以 GNU GPL 第2版许可协议放出"
+msgstr "以 GNU Public License 版本 2 授权"
 
 #: src/red_activation.py:27
 msgid "Group Activation"
@@ -116,346 +116,340 @@ msgstr "请确保您的电子邮件地址和激活代码输入正确"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:84
+#: src/red_appwindow.py:92
 msgid "C"
 msgstr "C"
 
-#: src/red_appwindow.py:121
+#: src/red_appwindow.py:129
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
-msgstr ""
-"无法显示帮助，因为找不到帮助文件。请向您的提供者报告。"
+msgstr "无法显示帮助，因为找不到帮助文件。请向您的提供者报告。"
 
-#: src/red_appwindow.py:131
+#: src/red_appwindow.py:139
 msgid ""
 "Unable to show help because there are no applications available to view help."
-msgstr ""
+msgstr "无法显示帮助，没有可用的程序用来查看帮助。"
 
-#: src/red_appwindow.py:406
+#: src/red_appwindow.py:414
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
-msgstr ""
+msgstr "您确定要打开 %d 个软件包信息窗口吗？"
 
-#: src/red_appwindow.py:434
+#: src/red_appwindow.py:442
 msgid "Run Now"
-msgstr "立即运行"
+msgstr "立即执行"
 
-#: src/red_appwindow.py:435
+#: src/red_appwindow.py:443
 msgid "Perform installations and removals"
 msgstr "执行安装和删除"
 
-#: src/red_appwindow.py:442
+#: src/red_appwindow.py:450
 msgid "Channels"
 msgstr "频道"
 
-#: src/red_appwindow.py:443
-msgid "Change your channel subscriptions"
-msgstr "更改您的频道订阅"
-
 #: src/red_appwindow.py:451
+msgid "Change your channel subscriptions"
+msgstr "更改您订阅的频道"
+
+#: src/red_appwindow.py:459
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/red_appwindow.py:452
+#: src/red_appwindow.py:460
 msgid "Refresh channel data"
 msgstr "刷新频道数据"
 
 #. Install
-#: src/red_appwindow.py:463 src/red_packageview.py:232
+#: src/red_appwindow.py:471 src/red_packageview.py:232
 msgid "Mark for _Installation"
-msgstr "标为安装(_I)"
+msgstr "做安装标记(_I)"
 
-#: src/red_appwindow.py:464
+#: src/red_appwindow.py:472
 msgid "Mark selected packages for installation"
-msgstr "标出选中软件包进行安装"
+msgstr "标记选中的软件包以便安装"
 
 #. #
 #. # Remove Package
 #. #
 #. Remove
-#: src/red_appwindow.py:469 src/red_appwindow.py:770
+#: src/red_appwindow.py:477 src/red_appwindow.py:778
 #: src/red_packageview.py:245
 msgid "Mark for _Removal"
-msgstr "标为删除(_R)"
+msgstr "做删除标记(_R)"
 
-#: src/red_appwindow.py:470
+#: src/red_appwindow.py:478
 msgid "Mark selected packages for removal"
-msgstr "标出选中软件包进行删除"
+msgstr "标记选中的软件包以便删除"
 
 #. Cancel
-#: src/red_appwindow.py:475 src/red_appwindow.py:783
+#: src/red_appwindow.py:483 src/red_appwindow.py:791
 #: src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: src/red_appwindow.py:476
+#: src/red_appwindow.py:484
 msgid "Cancel marked package actions"
-msgstr "取消选中的软件包操作"
+msgstr "取消选中的软件包"
 
 #. Info
-#: src/red_appwindow.py:481 src/red_packageview.py:276
+#: src/red_appwindow.py:489 src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "信息(_N)"
 
-#: src/red_appwindow.py:482
+#: src/red_appwindow.py:490
 msgid "Package information"
 msgstr "软件包信息"
 
-#: src/red_appwindow.py:539
+#: src/red_appwindow.py:547
 msgid "_File"
 msgstr "文件(_F)"
 
-#: src/red_appwindow.py:540
+#: src/red_appwindow.py:548
 msgid "_Edit"
 msgstr "编辑(_E)"
 
-#: src/red_appwindow.py:541 src/red_appwindow.py:833
+#: src/red_appwindow.py:549 src/red_appwindow.py:841
 msgid "_View"
 msgstr "查看(_V)"
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:550
 msgid "_Actions"
 msgstr "操作(_A)"
 
-#: src/red_appwindow.py:543
+#: src/red_appwindow.py:551
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:559
 msgid "Connect to daemon..."
 msgstr "连接到守护程序..."
 
-#: src/red_appwindow.py:552
+#: src/red_appwindow.py:560
 msgid "Connect to a remote daemon"
 msgstr "连接到远程守护程序"
 
-#: src/red_appwindow.py:562
+#: src/red_appwindow.py:570
 msgid "Install from _File..."
 msgstr "从文件安装(_F)..."
 
-#: src/red_appwindow.py:563
+#: src/red_appwindow.py:571
 msgid "Install a package from a local file"
 msgstr "从本地文件安装软件包"
 
-#: src/red_appwindow.py:572
+#: src/red_appwindow.py:580
 msgid "Install from _URL..."
 msgstr "从 URL 安装(_U)..."
 
-#: src/red_appwindow.py:573
+#: src/red_appwindow.py:581
 msgid "Install a package from a remote URL"
 msgstr "从远程 URL 安装软件包"
 
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:598
 msgid "_Mount Directory..."
 msgstr "挂载目录(_M)..."
 
-#: src/red_appwindow.py:591
+#: src/red_appwindow.py:599
 msgid "Mount a directory as a channel"
 msgstr "将目录挂载为频道"
 
-#: src/red_appwindow.py:607
+#: src/red_appwindow.py:615
 msgid "U_nmount Directory..."
-msgstr "卸下目录(_N)..."
+msgstr "卸载目录(_N)..."
 
-#: src/red_appwindow.py:608
+#: src/red_appwindow.py:616
 msgid "Unmount a directory"
 msgstr "卸载目录"
 
-#: src/red_appwindow.py:624
+#: src/red_appwindow.py:632
 msgid "_Activate..."
 msgstr "激活(_A)..."
 
-#: src/red_appwindow.py:625
+#: src/red_appwindow.py:633
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
+"激活守护程序，使用 Red Carpet Express 或者 Red Carpet Enterprise 服务器"
 
-#: src/red_appwindow.py:631
+#: src/red_appwindow.py:639
 msgid "Quit"
 msgstr "退出"
 
-#: src/red_appwindow.py:632
+#: src/red_appwindow.py:640
 msgid "Quit Red Carpet"
 msgstr "退出 Red Carpet"
 
-#: src/red_appwindow.py:647
+#: src/red_appwindow.py:655
 msgid "Select _All"
 msgstr "全选(_A)"
 
-#: src/red_appwindow.py:648
+#: src/red_appwindow.py:656
 msgid "Select all items"
 msgstr "选中全部项目"
 
-#: src/red_appwindow.py:653
+#: src/red_appwindow.py:661
 msgid "Select _None"
 msgstr "不选(_N)"
 
-#: src/red_appwindow.py:654
+#: src/red_appwindow.py:662
 msgid "Deselect all items"
-msgstr ""
+msgstr "取消所有选择"
 
-#: src/red_appwindow.py:661
+#: src/red_appwindow.py:669
 msgid "Services..."
 msgstr "服务..."
 
-#: src/red_appwindow.py:662
+#: src/red_appwindow.py:670
 msgid "Edit services"
 msgstr "编辑服务"
 
-#: src/red_appwindow.py:666
+#: src/red_appwindow.py:674
 msgid "Channel _Subscriptions..."
 msgstr "频道订阅(_S)..."
 
-#: src/red_appwindow.py:667
+#: src/red_appwindow.py:675
 msgid "Edit your channel subscriptions"
-msgstr "编辑您的频道订阅"
+msgstr "编辑您订阅的频道"
 
-#: src/red_appwindow.py:672
+#: src/red_appwindow.py:680
 msgid "_Preferences..."
 msgstr "首选项(_P)..."
 
-#: src/red_appwindow.py:673
+#: src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
 msgstr "编辑您的 Red Carpet 首选项"
 
-#: src/red_appwindow.py:677
+#: src/red_appwindow.py:685
 msgid "_Users..."
 msgstr "用户(_U)..."
 
-#: src/red_appwindow.py:678
+#: src/red_appwindow.py:686
 msgid "Edit user permissions for this daemon"
 msgstr "编辑此守护程序的用户权限"
 
-#: src/red_appwindow.py:691
+#: src/red_appwindow.py:699
 msgid "_Sidebar"
 msgstr "侧边栏(_S)"
 
-#: src/red_appwindow.py:692
+#: src/red_appwindow.py:700
 msgid "Hide or show the Pending Actions sidebar"
-msgstr ""
+msgstr "隐藏或显示待完成动作工具栏"
 
-#: src/red_appwindow.py:696
+#: src/red_appwindow.py:704
 msgid "_Advanced Search Options"
 msgstr "高级搜索选项(_A)"
 
-#: src/red_appwindow.py:697
-#, fuzzy
+#: src/red_appwindow.py:705
 msgid "Hide or show advanced search options"
-msgstr "订阅(_U)"
+msgstr "隐藏或显示高级搜索选项(_U)"
 
-#: src/red_appwindow.py:701
+#: src/red_appwindow.py:709
 msgid "_Channel Names"
 msgstr "频道名称(_C)"
 
-#: src/red_appwindow.py:702
+#: src/red_appwindow.py:710
 msgid "Hide or show channel names in package lists"
-msgstr ""
+msgstr "在软件包列表中隐藏或显示频道名称"
 
-#: src/red_appwindow.py:708
+#: src/red_appwindow.py:716
 msgid "Package _Information..."
 msgstr "软件包信息(_I)..."
 
-#: src/red_appwindow.py:709
-msgid "View information about currently selected packages"
-msgstr ""
-
 #: src/red_appwindow.py:717
+msgid "View information about currently selected packages"
+msgstr "查看选中软件包的信息"
+
+#: src/red_appwindow.py:725
 msgid "_Daemon Information..."
 msgstr "守护程序信息(_D)..."
 
-#: src/red_appwindow.py:718
+#: src/red_appwindow.py:726
 msgid "View information about this daemon"
-msgstr ""
+msgstr "查看守护程序的信息"
 
-#: src/red_appwindow.py:720
+#: src/red_appwindow.py:728
 msgid "Red Carpet Ne_ws..."
 msgstr "Red Carpet 新闻(_W)..."
 
-#: src/red_appwindow.py:721
+#: src/red_appwindow.py:729
 msgid "View the latest Red Carpet news"
-msgstr ""
+msgstr "查看最新的 Red Carpet 新闻"
 
-#: src/red_appwindow.py:733
+#: src/red_appwindow.py:741
 msgid "Run _Now"
-msgstr "立即运行(_N)"
+msgstr "立即执行(_N)"
 
-#: src/red_appwindow.py:734
+#: src/red_appwindow.py:742
 msgid "Run the current transaction"
-msgstr ""
+msgstr "执行当前的事务"
 
-#: src/red_appwindow.py:748
+#: src/red_appwindow.py:756
 msgid "_Verify System Dependencies"
 msgstr "校验系统依赖关系(_V)"
 
-#: src/red_appwindow.py:749
-#, fuzzy
+#: src/red_appwindow.py:757
 msgid "Verify that all system dependencies are met"
-msgstr "不满足的依赖关系"
+msgstr "检验所有系统依赖关系是否被满足"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:760
+#: src/red_appwindow.py:768
 msgid "Mark for I_nstallation"
-msgstr "标为安装(_N)"
+msgstr "做安装标记(_N)"
 
-#: src/red_appwindow.py:761
-#, fuzzy
+#: src/red_appwindow.py:769
 msgid "Mark this package for installation"
-msgstr "启动时清除缓存的软件包"
+msgstr "标记该软件包以便安装"
 
-#: src/red_appwindow.py:771
-#, fuzzy
+#: src/red_appwindow.py:779
 msgid "Mark this package for removal"
-msgstr "安装选中的软件包"
+msgstr "标记该软件包以便删除"
 
-#: src/red_appwindow.py:784
-#, fuzzy
+#: src/red_appwindow.py:792
 msgid "Cancel installation or removal mark"
-msgstr "安装完成。"
+msgstr "取消安装或删除标记"
 
-#: src/red_appwindow.py:798
+#: src/red_appwindow.py:806
 msgid "Re_fresh Channel Data"
 msgstr "刷新频道数据(_F)"
 
-#: src/red_appwindow.py:799
+#: src/red_appwindow.py:807
 msgid "Download latest channel data"
 msgstr "下载最新的频道数据"
 
-#: src/red_appwindow.py:808
+#: src/red_appwindow.py:816
 msgid "_Contents"
 msgstr "目录(_C)"
 
-#: src/red_appwindow.py:809
+#: src/red_appwindow.py:817
 msgid "View Red Carpet help"
 msgstr "查看 Red Carpet 帮助"
 
-#: src/red_appwindow.py:814
+#: src/red_appwindow.py:822
 msgid "_About..."
 msgstr "关于(_A)..."
 
-#: src/red_appwindow.py:815
+#: src/red_appwindow.py:823
 msgid "About Red Carpet"
 msgstr "关于 Red Carpet"
 
-#: src/red_appwindow.py:834
+#: src/red_appwindow.py:842
 #, python-format
 msgid "Go to the '%s' page"
-msgstr ""
+msgstr "转到“%s”页"
 
 #: src/red_channeloption.py:64
 msgid "All Channels"
 msgstr "全部频道"
 
 #: src/red_channeloption.py:69
-#, fuzzy
 msgid "All Subscribed Channels"
 msgstr "已订阅频道"
 
 #: src/red_channeloption.py:74
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "没有频道/未知频道"
 
 #: src/red_connection.py:49
 #, python-format
@@ -463,6 +457,8 @@ msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
 msgstr ""
+"无法连接到守护程序：\n"
+"“%s”。"
 
 #: src/red_connection.py:67
 #, python-format
@@ -470,35 +466,39 @@ msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
 msgstr ""
+"检测到 Red Carpet 守护程序版本 %d.%d.%d。\n"
+"需要版本 %d.%d.%d 或更新的版本"
 
 #: src/red_connection.py:93
 #, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
-msgstr ""
+msgstr "检测到协议版本 %d。需要版本 %d。您必须升级您的 rcd。"
 
 #: src/red_connection.py:123
 msgid "Starting daemon..."
-msgstr ""
+msgstr "启动守护程序..."
 
 #: src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
 msgstr ""
+"Red Carpet 需要运行一个 Red Carpet 守护程序。\n"
+"您要启动一个吗？"
 
 #: src/red_connection.py:345
 msgid "Connect to this system"
-msgstr ""
+msgstr "连接到这个系统"
 
 #: src/red_connection.py:349
 msgid "Connect to a remote system"
-msgstr ""
+msgstr "连接到远程系统"
 
 #: src/red_connection.py:357
 msgid "Server:"
-msgstr ""
+msgstr "服务器："
 
 #: src/red_connection.py:361 src/red_users.py:389
 msgid "User name:"
@@ -514,89 +514,82 @@ msgid "Connect"
 msgstr "连接"
 
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "红魔毯－密码"
+msgstr "Red Carpet 错误控制台"
 
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
-msgstr ""
+msgstr "到守护程序的连接已恢复。\n"
 
 #: src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
-msgstr ""
+msgstr "和守护程序的连接断开！"
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
-msgstr "红魔毯"
+msgstr "退出 Red Carpet"
 
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:366
-#, fuzzy
+#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
 msgid "Dependency Resolution"
-msgstr "依赖关系"
-
-#: src/red_depcomponent.py:116
-#, fuzzy
-msgid "Verifying System"
-msgstr "正在验证 %s"
+msgstr "解决依赖关系"
 
 #: src/red_depcomponent.py:122
-#, fuzzy
-msgid "Resolving Dependencies"
-msgstr "依赖关系"
+msgid "Verifying System"
+msgstr "正在验证系统"
 
-#: src/red_depcomponent.py:144
+#: src/red_depcomponent.py:128
+msgid "Resolving Dependencies"
+msgstr "正在解决依赖关系"
+
+#: src/red_depcomponent.py:150
 msgid ""
 "You must agree to the licenses covering this software before installing it."
-msgstr ""
+msgstr "在安装之前，您必须同意该软件的授权条款。"
 
-#: src/red_depcomponent.py:188
+#: src/red_depcomponent.py:194
 msgid "I Agree"
 msgstr "我同意"
 
-#: src/red_depcomponent.py:271
+#: src/red_depcomponent.py:288
 msgid "Dependency Resolution Failed"
-msgstr ""
+msgstr "解决依赖关系失败"
 
-#: src/red_depcomponent.py:321
+#: src/red_depcomponent.py:338
 msgid "System Verified"
-msgstr ""
+msgstr "系统检验完毕"
 
-#: src/red_depcomponent.py:323
+#: src/red_depcomponent.py:340
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
-msgstr ""
+msgstr "所有的软件包依赖关系都满足，不需要进行更正动作。"
 
-#: src/red_depcomponent.py:377
+#: src/red_depcomponent.py:394
 msgid "Requested Installations"
-msgstr "要求的安装"
+msgstr "请求安装的软件包"
 
-#: src/red_depcomponent.py:381
+#: src/red_depcomponent.py:398
 msgid "Requested Removals"
-msgstr "要求的删除"
+msgstr "请求删除的软件包"
 
-#: src/red_depcomponent.py:385
-#, fuzzy
+#: src/red_depcomponent.py:402
 msgid "Required Installations"
-msgstr "要求的安装"
+msgstr "需要安装的软件包"
 
-#: src/red_depcomponent.py:389
-#, fuzzy
+#: src/red_depcomponent.py:406
 msgid "Required Removals"
-msgstr "要求的删除"
+msgstr "需要删除的软件包"
 
-#: src/red_depcomponent.py:415
+#: src/red_depcomponent.py:432
 msgid "Continue"
 msgstr "继续"
 
-#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:83
+#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
 #: src/red_packageview.py:367
 msgid "Channel"
 msgstr "频道"
 
-#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
+#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
 msgid "Package"
 msgstr "软件包"
 
@@ -604,7 +597,7 @@ msgstr "软件包"
 msgid "Current Version"
 msgstr "当前版本"
 
-#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
+#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
 #: src/red_updates.py:94
 msgid "New Version"
 msgstr "新版本"
@@ -613,71 +606,70 @@ msgstr "新版本"
 msgid "Size"
 msgstr "大小"
 
-#: src/red_history.py:113 src/red_users.py:30
+#: src/red_history.py:114 src/red_users.py:30
 msgid "All"
 msgstr "全部"
 
-#: src/red_history.py:114
+#: src/red_history.py:115
 msgid "Installations"
 msgstr "安装"
 
-#: src/red_history.py:115
+#: src/red_history.py:116
 msgid "Removals"
 msgstr "删除"
 
-#: src/red_history.py:116
+#: src/red_history.py:117
 msgid "Upgrades"
 msgstr "升级"
 
-#: src/red_history.py:121
+#: src/red_history.py:122
 msgid "User:"
 msgstr "用户："
 
-#: src/red_history.py:127
+#: src/red_history.py:128
 msgid "Timeframe (days):"
-msgstr ""
+msgstr "时间(天)："
 
-#: src/red_history.py:279
+#: src/red_history.py:280
 msgid "Searching..."
 msgstr "正在搜索..."
 
-#: src/red_history.py:301 src/red_history.py:435
+#: src/red_history.py:302 src/red_history.py:436
 msgid "Time"
 msgstr "时间"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
-#, fuzzy
+#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
 msgid "Action"
-msgstr "位置"
+msgstr "动作"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
+#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
 msgid "User"
 msgstr "用户"
 
-#: src/red_history.py:305 src/red_history.py:438
+#: src/red_history.py:306 src/red_history.py:439
 msgid "Old Version"
 msgstr "旧版本"
 
-#: src/red_history.py:336 src/red_packagepage.py:45
+#: src/red_history.py:337 src/red_packagepage.py:45
 msgid "History"
 msgstr "历史"
 
-#: src/red_history.py:339
+#: src/red_history.py:340
 msgid "_History"
 msgstr "历史(_H)"
 
-#: src/red_history.py:383
+#: src/red_history.py:384
 msgid "No results found."
-msgstr ""
+msgstr "没有找到。"
 
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
 #, python-format
 msgid "%s is not a valid package"
-msgstr ""
+msgstr "%s 不是有效的软件包"
 
 #: src/red_installfiles.py:92
 msgid "There are no valid packages to install"
-msgstr ""
+msgstr "没有要安装的有效软件包"
 
 #: src/red_installfiles.py:102
 msgid "Install from File"
@@ -696,13 +688,13 @@ msgstr "从 URL 安装"
 msgid "Package URL:"
 msgstr "软件包 URL："
 
-#: src/red_main.py:106
+#: src/red_main.py:108
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
-msgstr ""
+msgstr "错误：您不能同时指定 -h/--host 和 -l/--local 选项"
 
-#: src/red_main.py:137
+#: src/red_main.py:139
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr ""
+msgstr "错误：您不能给本地守护程序指定用户"
 
 #: src/red_mirrors.py:76
 msgid "Mirror"
@@ -714,12 +706,12 @@ msgstr "位置"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "选择镜像"
 
 #: src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
-msgstr ""
+msgstr "无法卸载“%s”"
 
 #: src/red_mount.py:117
 msgid "Browse..."
@@ -727,16 +719,15 @@ msgstr "浏览..."
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
-msgstr ""
+msgstr "挂载目录"
 
 #: src/red_mount.py:141
-#, fuzzy
 msgid "Mount channel"
-msgstr "默认子频道："
+msgstr "挂载频道"
 
 #: src/red_mount.py:145
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "将目录挂载为频道"
 
 #: src/red_mount.py:153
 msgid "Channel Name:"
@@ -744,290 +735,295 @@ msgstr "频道名称："
 
 #: src/red_mount.py:157
 msgid "Directory:"
-msgstr ""
+msgstr "目录："
 
 #: src/red_mount.py:168
 msgid "Look for packages recursively"
-msgstr ""
+msgstr "递归搜索软件包"
 
 #: src/red_mount.py:193
 msgid "Please choose the path for channel."
-msgstr ""
+msgstr "请选择频道的路径。"
 
 #: src/red_mount.py:214
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "未订阅频道"
+msgstr "卸载频道"
 
 #: src/red_mount.py:243
 msgid "Unmount?"
-msgstr ""
+msgstr "卸载吗？"
 
 #: src/red_news.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "%s News"
-msgstr "新闻"
+msgstr "%s 新闻"
 
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr ""
+msgstr "连接到本地运行的守护程序"
 
 #: src/red_option.py:25
 msgid "hostname"
-msgstr ""
+msgstr "主机名"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "连接指定主机上的守护程序"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "username"
 msgstr "用户名"
 
 #: src/red_option.py:26
-#, fuzzy
 msgid "Specify user name"
-msgstr "用户名"
+msgstr "指定用户名"
 
 #: src/red_option.py:27
-#, fuzzy
 msgid "password"
-msgstr "密  码"
+msgstr "密码"
 
 #: src/red_option.py:27
 msgid "Specify password"
-msgstr ""
+msgstr "指定密码"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "打印客户程序版本并退出"
 
 #: src/red_option.py:29
-#, fuzzy
 msgid "Get usage information"
-msgstr "信息"
+msgstr "获得使用方法"
 
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr ""
+msgstr "用法：%s <选项> ..."
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
-msgstr ""
+msgstr "支持下列选项："
 
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "安装"
+msgstr "已安装"
 
 #. upgrade
 #: src/red_packagearray.py:93
 msgid "newer"
-msgstr ""
+msgstr "新"
 
 #: src/red_packagearray.py:95
 msgid "older"
-msgstr ""
+msgstr "旧"
 
 #: src/red_packagearray.py:97
 msgid "not installed"
-msgstr ""
+msgstr "未安装"
 
 #: src/red_packagearray.py:123
 msgid "upgrade"
-msgstr ""
+msgstr "升级"
 
 #: src/red_packagearray.py:125
 msgid "downgrade"
-msgstr ""
+msgstr "降级"
 
 #: src/red_packagearray.py:127
-#, fuzzy
 msgid "install"
 msgstr "安装"
 
 #: src/red_packagearray.py:134
-#, fuzzy
 msgid "remove"
 msgstr "删除"
 
 #: src/red_packagearray.py:614
-#, fuzzy, python-format
+#, python-format
 msgid "Found %d matching packages"
-msgstr "正在删除软件包 "
+msgstr "找到 %d 个匹配软件包"
 
 #: src/red_packagearray.py:616
 msgid "Found 1 matching package"
-msgstr ""
+msgstr "找到 1 个匹配软件包"
 
 #: src/red_packagearray.py:618
-#, fuzzy
 msgid "No matching packages found"
-msgstr "正在删除软件包 "
+msgstr "没有找到匹配软件包"
 
 #: src/red_packagearray.py:776
 msgid "Looking for updates..."
-msgstr ""
+msgstr "查找更新..."
 
-#: src/red_packagebook.py:43
+#: src/red_packagearray.py:801
+#, fuzzy, python-format
+msgid "Found %d matching patches"
+msgstr "找到 %d 个匹配更新"
+
+#: src/red_packagearray.py:803
 #, fuzzy
+msgid "Found 1 matching patch"
+msgstr "找到 1 个匹配更新"
+
+#: src/red_packagearray.py:805
+#, fuzzy
+msgid "No matching patches found"
+msgstr "没有找到匹配更新"
+
+#: src/red_packagebook.py:44
 msgid "Package Information"
-msgstr "软件包安装"
+msgstr "软件包信息"
+
+#: src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "未命名"
 
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "依赖关系"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "提供："
+msgstr "提供"
 
 #: src/red_packagepage_deps.py:70
-#, fuzzy
 msgid "Requires"
-msgstr "需要："
+msgstr "需要"
 
 #: src/red_packagepage_deps.py:73
-#, fuzzy
 msgid "Conflicts With"
-msgstr "冲突："
+msgstr "冲突"
 
-#: src/red_packagepage_info.py:78 src/red_services.py:112
+#: src/red_packagepage_info.py:90 src/red_services.py:112
 msgid "Name"
 msgstr "名字"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:452
+#: src/red_packagepage_info.py:91 src/red_packageview.py:452
 msgid "Version"
 msgstr "版本"
 
-#: src/red_packagepage_info.py:80
-#, fuzzy
+#: src/red_packagepage_info.py:92
 msgid "Release"
-msgstr "继续"
+msgstr "发行版本"
 
-#: src/red_packagepage_info.py:81
-#, fuzzy
+#: src/red_packagepage_info.py:93
 msgid "Package Size"
-msgstr "软件包"
+msgstr "软件包大小"
 
-#: src/red_packagepage_info.py:82
-#, fuzzy
+#: src/red_packagepage_info.py:94
 msgid "Installed Size"
-msgstr "已安装软件"
+msgstr "安装后大小"
 
-#: src/red_packagepage_info.py:84
-#, fuzzy
+#: src/red_packagepage_info.py:96
 msgid "Section"
-msgstr "位置"
+msgstr "类别"
 
-#: src/red_packagepage_info.py:85
+#: src/red_packagepage_info.py:97
 msgid "Summary"
 msgstr "摘要"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:413
-#, fuzzy
+#: src/red_packagepage_info.py:98 src/red_prefs.py:413
 msgid "Description"
-msgstr "描述："
+msgstr "描述"
 
-#: src/red_packagepage_info.py:140
+#: src/red_packagepage_info.py:152
 msgid "Info"
 msgstr "信息"
 
-#: src/red_packagepage.py:32
-#, fuzzy
-msgid "Unnamed"
-msgstr "用户名"
-
 #: src/red_packageview.py:301
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #: src/red_packageview.py:472
 msgid "Importance"
+msgstr "重要性"
+
+#: src/red_patches.py:35
+#, fuzzy
+msgid "Patches"
+msgstr "更新"
+
+#: src/red_patches.py:38
+msgid "YOU Patches"
 msgstr ""
+
+#: src/red_patches.py:72
+#, fuzzy
+msgid "Searching for matching patches..."
+msgstr "搜索匹配的更新..."
+
+#: src/red_patches.py:111
+#, fuzzy
+msgid "No matching patches found."
+msgstr "没有找到匹配的更新。"
 
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr ""
+msgstr "完成 %.1f%%"
 
 #: src/red_pendingview.py:536
 msgid "Updating System"
-msgstr ""
+msgstr "正在更新系统"
 
 #: src/red_pendingview.py:609
-#, fuzzy
 msgid "Download cancelled"
-msgstr "正在下载频道数据..."
+msgstr "下载已取消"
 
 #: src/red_pendingview.py:610
-#, fuzzy
 msgid "Transaction cancelled"
-msgstr "处理记录"
+msgstr "事务已取消"
 
 #: src/red_pendingview.py:645
-#, fuzzy
 msgid "Transaction Finished"
-msgstr "处理记录"
+msgstr "事务已完成"
 
 #: src/red_pendingview.py:658
-#, fuzzy
 msgid "Downloading packages"
-msgstr "正在下载 %s"
+msgstr "正在下载软件包"
 
 #: src/red_pendingview.py:671
-#, fuzzy
 msgid "Download Failed"
-msgstr "正在下载文件"
+msgstr "下载失败"
 
 #: src/red_pendingview.py:672
 msgid "Unknown Error"
-msgstr ""
+msgstr "位置错误"
 
 #: src/red_pendingview.py:689
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "开始处理..."
+msgstr "正在处理事务"
 
 #: src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
-msgstr ""
+msgstr "事务已经顺利完成"
 
 #: src/red_pendingview.py:733
-#, fuzzy
 msgid "Transaction failed"
-msgstr "处理记录"
+msgstr "事务失败"
 
 #: src/red_pendingview.py:735
-#, fuzzy
 msgid "Transaction Failed"
-msgstr "处理记录"
+msgstr "事务失败"
 
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr ""
+msgstr "刷新频道数据的间隔(小时)："
 
 #. Packages section
 #: src/red_prefs.py:182
-#, fuzzy
 msgid "Packages"
 msgstr "软件包"
 
 #: src/red_prefs.py:191
-#, fuzzy
 msgid "Require package signatures"
-msgstr "软件包签名"
+msgstr "需要软件包签名"
 
 #: src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
-msgstr ""
+msgstr "一次最多下载软件包个数："
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr ""
+msgstr "启用软件包回滚"
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:210
@@ -1036,12 +1032,11 @@ msgstr "代理服务器"
 
 #: src/red_prefs.py:219
 msgid "Use a proxy"
-msgstr ""
+msgstr "使用代理服务器"
 
 #: src/red_prefs.py:223
-#, fuzzy
 msgid "Proxy URL:"
-msgstr "代理服务器"
+msgstr "代理服务器URL："
 
 #: src/red_prefs.py:230
 msgid "Username:"
@@ -1049,51 +1044,49 @@ msgstr "用户名："
 
 #: src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
-msgstr ""
+msgstr "您没有查看代理设置的权限"
 
 #: src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
-msgstr ""
+msgstr "缓存下载的软件包和元数据"
 
 #: src/red_prefs.py:300
 msgid "Location of cached data:"
-msgstr ""
+msgstr "缓存数据的位置："
 
 #. Expiration section
 #: src/red_prefs.py:308
 msgid "Expiration"
-msgstr ""
+msgstr "过期"
 
 #: src/red_prefs.py:312
 msgid "Cache expires"
-msgstr ""
+msgstr "缓存过期"
 
 #: src/red_prefs.py:318
 msgid "Maximum age in days:"
-msgstr ""
+msgstr "最大时间(天)："
 
 #: src/red_prefs.py:329
 msgid "Maximum size in MB:"
-msgstr ""
+msgstr "最大空间(MB)："
 
 #: src/red_prefs.py:340
 msgid "Current cache size:"
-msgstr ""
+msgstr "当前缓存空间："
 
 #: src/red_prefs.py:357
-#, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr "您确定要中止当前的传输吗？"
+msgstr "您确定要删除缓存中的软件包吗？"
 
 #: src/red_prefs.py:373
-#, fuzzy
 msgid "Empty Cache"
-msgstr "缓存"
+msgstr "清空缓存"
 
 #: src/red_prefs.py:395
-#, fuzzy, python-format
+#, python-format
 msgid "%d MB"
-msgstr "%d KB"
+msgstr "%d MB"
 
 #: src/red_prefs.py:443
 msgid "Value"
@@ -1101,12 +1094,28 @@ msgstr "值"
 
 #: src/red_prefs.py:456
 msgid "Loading preferences..."
-msgstr "正在装入首选项..."
+msgstr "正在载入首选项..."
 
 #: src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "%s 首选项"
+
+#: src/red_search.py:35
+msgid "Search"
+msgstr "查找"
+
+#: src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "搜索软件包(_E)"
+
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "搜索匹配的软件包..."
+
+#: src/red_search.py:109
+msgid "No matching packages found."
+msgstr "没有找到匹配的软件包。"
 
 #: src/red_searchbox.py:146
 msgid "All Packages"
@@ -1126,11 +1135,11 @@ msgstr "已安装软件包"
 
 #: src/red_searchbox.py:174
 msgid "All Sections"
-msgstr "全部节"
+msgstr "全部类别"
 
 #: src/red_searchbox.py:175
 msgid "Productivity"
-msgstr "创作"
+msgstr "生产力"
 
 #: src/red_searchbox.py:176
 msgid "Imaging"
@@ -1199,25 +1208,9 @@ msgstr "匹配："
 msgid "Channel:"
 msgstr "频道："
 
-#: src/red_search.py:35
-msgid "Search"
-msgstr "查找"
-
-#: src/red_search.py:38
-msgid "S_earch Packages"
-msgstr "搜索软件包(_E)"
-
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
-msgid "Searching for matching packages..."
-msgstr ""
-
-#: src/red_search.py:109
-msgid "No matching packages found."
-msgstr ""
-
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
-msgstr ""
+msgstr "守护进程标识为："
 
 #: src/red_serverinfo.py:57
 msgid "System type"
@@ -1225,28 +1218,28 @@ msgstr "系统类型"
 
 #: src/red_serverinfo.py:60
 msgid "Server URL"
-msgstr ""
+msgstr "服务器URL"
 
 #: src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
-msgstr ""
+msgstr "服务器支持增强特性。"
 
 #: src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
-msgstr ""
+msgstr "无法连接守护程序。"
 
 #: src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
-msgstr ""
+msgstr "将守护程序信息转存到 XML 文件"
 
 #: src/red_serverinfo.py:94
-#, fuzzy, python-format
+#, python-format
 msgid "Could not open file '%s': %s"
-msgstr "无法打开文件写入"
+msgstr "无法打开文件“%s”：%s"
 
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
-msgstr ""
+msgstr "选择要写入 XML 的文件"
 
 #: src/red_services.py:88
 msgid "Edit Services"
@@ -1254,52 +1247,51 @@ msgstr "编辑服务"
 
 #: src/red_services.py:117
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/red_services.py:133
 msgid "_Remove service"
 msgstr "删除服务(_R)"
 
-#: src/red_services.py:146
+#: src/red_services.py:150
 msgid "_Add service"
 msgstr "添加服务(_A)"
 
-#: src/red_services.py:226
+#: src/red_services.py:233
 msgid "Add Service"
 msgstr "添加服务"
 
-#: src/red_services.py:231
+#: src/red_services.py:238
 msgid "Service URL"
 msgstr "服务 URL"
 
 #: src/red_sidebar.py:61 src/red_transaction.py:133
-#, fuzzy
 msgid "Pending Actions"
-msgstr "位置"
+msgstr "待完成动作"
 
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d 个要安装的包"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d 个要安装的包"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d 个要删除的包"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d 个要删除的包"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "没有待完成的动作"
 
 #: src/red_software.py:28
 msgid "Installed Software"
@@ -1314,72 +1306,64 @@ msgid "Available Software"
 msgstr "可安装软件"
 
 #: src/red_software.py:100
-#, fuzzy
 msgid "A_vailable Software"
 msgstr "可安装软件"
 
 #: src/red_statusbar.py:49
 #, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "连接到 %s"
 
 #: src/red_subscriptions.py:57
-#, fuzzy
 msgid "Subscribed"
-msgstr "订阅(_S)"
+msgstr "已订阅(_S)"
 
 #: src/red_subscriptions.py:64
-#, fuzzy
 msgid "Channel Name"
-msgstr "频道信息"
+msgstr "频道名称"
 
 #: src/red_subscriptions.py:78
-#, fuzzy, python-format
+#, python-format
 msgid "%s Channel Subscriptions"
-msgstr "订阅(_U)"
+msgstr "%s 频道订阅(_U)"
 
 #: src/red_subscriptions.py:99
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr ""
+msgstr "您没有权限订阅或者取消订阅频道。您不能对订阅做任何更改。"
 
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
-msgstr ""
+msgstr "未命名"
 
 #: src/red_transaction.py:96
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "您确定要中止当前的传输吗？"
+msgstr "您确定要退出吗？"
 
 #: src/red_transaction.py:136
-#, fuzzy
 msgid "_Pending Actions"
-msgstr "订阅(_U)"
+msgstr "待完成动作(_P)"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "更新"
+msgstr "更新(_U)"
 
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr " 更新软件包 "
+msgstr "全部更新(_U)"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
-msgstr ""
+msgstr "系统已经最新。"
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr ""
+msgstr "在订阅的所有频道中都没有可用的软件更新。"
 
 #: src/red_users.py:131
-#, fuzzy
 msgid "Privilege"
-msgstr "以低权限运行"
+msgstr "权限"
 
 #: src/red_users.py:148
 msgid ""
@@ -1388,70 +1372,69 @@ msgid ""
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
+"如果您剥夺自己的超级用户权限，您之后无法重新获得。\n"
+"\n"
+"您确定要这么做吗？"
 
 #: src/red_users.py:166
 msgid "Enabled"
-msgstr ""
+msgstr "启用"
 
 #: src/red_users.py:181
 msgid "Edit Users"
-msgstr ""
+msgstr "编辑用户"
 
 #: src/red_users.py:196 src/red_users.py:399
-#, fuzzy
 msgid "Confirm:"
-msgstr "冲突："
+msgstr "确认："
 
 #: src/red_users.py:217
-#, fuzzy
 msgid "Set Password"
-msgstr "密  码"
+msgstr "设置密码"
 
 #: src/red_users.py:246 src/red_users.py:422
 msgid "Password can not be empty."
-msgstr ""
+msgstr "密码不能为空。"
 
 #: src/red_users.py:248 src/red_users.py:424
 msgid "Passwords do not match."
-msgstr ""
+msgstr "密码不匹配。"
 
 #: src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
-msgstr ""
+msgstr "设置“%s”的密码"
 
 #: src/red_users.py:289
 msgid "Users"
-msgstr ""
+msgstr "用户"
 
 #: src/red_users.py:306
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: src/red_users.py:320
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "您确定要中止当前的传输吗？"
+msgstr "您确定要删除“%s”？"
 
 #: src/red_users.py:326
 msgid "Remove"
 msgstr "删除"
 
 #: src/red_users.py:339
-#, fuzzy
 msgid "Privileges"
-msgstr "提供："
+msgstr "权限"
 
 #: src/red_users.py:379
 msgid "Add new user"
-msgstr ""
+msgstr "添加新用户"
 
 #: src/red_users.py:426
 msgid "Invalid user name."
-msgstr ""
+msgstr "无效的用户名。"
 
 #: src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
-msgstr ""
-
+msgstr "用户“%s”已经存在。"
