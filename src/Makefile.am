@@ -5,7 +5,7 @@ red_carpetsupportdir = $(datadir)/red-carpet
 red_carpetsupport_DATA = 		\
 	ximian_xmlrpclib.py		\
 	redmain.py			\
-	packagemodel.py			\
+	packagemodel.py
 
 EXTRA_DIST = $(red_carpetsupport_DATA)
 
