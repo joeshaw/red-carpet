@@ -1,3 +1,7 @@
+2003-10-06  Joe Shaw  <joe@ximian.com>
+
+	* configure.in: Version 2.1.90
+
 2003-09-18  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: Add back in PYGTK_IMPORTDIR, we definitely do use
