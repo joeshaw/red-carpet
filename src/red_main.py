@@ -140,6 +140,8 @@ def main(version):
     else:
         success = rcd_util.connect_to_server()
     if not success:
+        sys.stderr.write("Unable to connect to server.\n")
+        sys.stderr.write("You might need to run red-carpet as root.\n")
         sys.exit(1)
 
     server = rcd_util.get_server()
