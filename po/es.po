@@ -1,3 +1,4 @@
+# translation of es.po to Spanish
 # translation of red-carpet.HEAD.po to Spanish
 # translation of red-carpet.HEAD.es.po to Spanish
 # Red Carpet's Spanish translation.
@@ -7,18 +8,19 @@
 # Francisco Javier Fernandez <serrador@arrakis.es>, 2003.
 # Francisco Javier F. Serrador <serrador@arrakis.es>, 2003.
 # Francisco Javier Fernández <serrador@arrakis.es>, 2003.
+# Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: red-carpet.HEAD\n"
-"POT-Creation-Date: 2003-10-30 22:10-0500\n"
-"PO-Revision-Date: 2003-09-10 19:50+0200\n"
-"Last-Translator: Francisco Javier F. Serrador <serrador@arrakis.es>\n"
+"Project-Id-Version: es\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-21 23:20+0100\n"
+"PO-Revision-Date: 2003-12-21 23:22+0100\n"
+"Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.2\n"
 
 #. ##
@@ -185,9 +187,8 @@ msgid "Group Activation"
 msgstr "Activación de grupos"
 
 #: src/red_activation.py:44
-#, fuzzy
 msgid "Service:"
-msgstr "Servidor:"
+msgstr "Servicio:"
 
 #: src/red_activation.py:48
 msgid "Email:"
@@ -261,8 +262,7 @@ msgstr ""
 "Informa de esto a su vendedor."
 
 #: src/red_appwindow.py:131
-msgid ""
-"Unable to show help because there are no applications available to view help."
+msgid "Unable to show help because there are no applications available to view help."
 msgstr ""
 "No se puede mostrar la ayuda porque no hay aplicaciones disponibles para ver "
 "la ayuda."
@@ -441,8 +441,7 @@ msgid "_Activate..."
 msgstr "_Activar..."
 
 #: src/red_appwindow.py:625
-msgid ""
-"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr "Activar demonio contra un servidor Red Carpet Express o Enterprise"
 
 #: src/red_appwindow.py:631
@@ -473,14 +472,12 @@ msgid "Deselect all items"
 msgstr "Deseleccionar todos los elementos"
 
 #: src/red_appwindow.py:661
-#, fuzzy
 msgid "Services..."
-msgstr "_Preferencias..."
+msgstr "Servicios..."
 
 #: src/red_appwindow.py:662
-#, fuzzy
 msgid "Edit services"
-msgstr "Editar usuarios"
+msgstr "Editar servicios"
 
 #: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
@@ -959,8 +956,7 @@ msgid "Resolving Dependencies"
 msgstr "Resolviendo dependencias"
 
 #: src/red_depcomponent.py:144
-msgid ""
-"You must agree to the licenses covering this software before installing it."
+msgid "You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Debe estar de acuerdo con las licencias que cubren este software antes de "
 "instalarlo."
@@ -1438,7 +1434,7 @@ msgstr "Directorio."
 
 #: src/red_mount.py:167
 msgid "Look for packages recursively"
-msgstr ""
+msgstr "buscar paquetes recursivamente"
 
 #: src/red_mount.py:192
 msgid "Please choose the path for channel."
@@ -1734,7 +1730,7 @@ msgstr "Entra en conflicto con:"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "Nombre"
 
@@ -1956,7 +1952,7 @@ msgstr "Transacción fallida"
 #. Title
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr ""
+msgstr "Intervalo para refrescar los datos del canal (en horas):"
 
 #. Packages section
 #: src/red_prefs.py:182
@@ -1973,7 +1969,7 @@ msgstr "Máximo número de paquetes a descargar a la vez"
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr ""
+msgstr "Activar vuelta atrás del packete"
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:210
@@ -2056,6 +2052,9 @@ msgid "%s Preferences"
 msgstr "%s preferencias"
 
 #. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
 #. Should only be called for text renderer
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2362,6 +2361,58 @@ msgstr "Elija un archivo para escribir XML"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+msgid "Edit Services"
+msgstr "Editar servicios"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr "URL"
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr "Elimina_r servicio"
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr "_Añadir servicio"
+
+#: src/red_services.py:226
+msgid "Add Service"
+msgstr "Añadir servicio"
+
+#: src/red_services.py:231
+msgid "Service URL"
+msgstr "URL del servicio"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
 #. # Start of public API
 #. FIXME: This error message isn't great, but is better than a
 #. cryptic backtrace.
@@ -2588,8 +2639,7 @@ msgstr "El sistema está actualizado"
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr ""
-"No hay disponibles actualizaciones de software en ningún canal suscrito"
+msgstr "No hay disponibles actualizaciones de software en ningún canal suscrito"
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -3491,3 +3541,4 @@ msgstr "El usuario «%s» ya existe."
 #~ msgstr ""
 #~ "No se ha podido encontrar '%s'.\n"
 #~ "Asegúrese que Red Carpet se ha instalado correctamente."
+
