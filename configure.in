@@ -100,6 +100,12 @@ AC_SUBST(PYGTK_IMPORTDIR)
 
 dnl **************************************************************************
 
+dnl Look for scrollkeeper
+AC_PATH_PROG(have_scrollkeeper_config, scrollkeeper-config, no)
+if test x$have_scrollkeeper_config = xno; then
+  AC_MSG_ERROR(Couldn't find scrollkeeper-config.  Please install the scrollkeeper package: http://scrollkeeper.sf.net)
+fi
+
 AC_SUBST(PYTHON)
 
 GETTEXT_PACKAGE=red-carpet
@@ -132,6 +138,8 @@ fi
 AC_OUTPUT([
 Makefile
 po/Makefile.in
+help/Makefile
+help/C/Makefile
 art/Makefile
 ximian_unmarshaller/Makefile
 red_extra/Makefile

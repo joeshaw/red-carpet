@@ -1,5 +1,19 @@
 2003-04-11  Joe Shaw  <joe@ximian.com>
 
+	* configure.in: Check for scrollkeeper-config, Add the help
+	directories to the build.
+
+	* Makefile.am: Add the help directory to the build
+
+	* help/omf.make: Added.
+
+	* help/xmldocs.make: Get omf.make from $(top_srcdir)/help, not
+	$(top_srcdir).
+
+	* help/C/red-carpet-C.omf: Make this xmllint.
+
+2003-04-11  Joe Shaw  <joe@ximian.com>
+
 	* art: Update a lot of icons and add new ones from jimmac.
 
 2003-04-09  Aaron Weber  <aaron@ximian.com>

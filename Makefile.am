@@ -15,8 +15,9 @@ endif
 
 SUBDIRS = $(UNMARSHALLER_DIR)	\
 	  $(SRCDIR)		\
+          red_extra		\
 	  art			\
-	  red_extra		\
+          help			\
 	  po
 
 #man_MANS = red-carpet.1
