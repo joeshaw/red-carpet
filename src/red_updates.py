@@ -26,7 +26,7 @@ import red_component
 class SummaryComponent(red_component.Component):
 
     def name(self):
-        return "Summary"
+        return "Update Summary"
 
     def pixbuf(self):
         return "summary"

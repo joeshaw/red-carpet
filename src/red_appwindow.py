@@ -27,14 +27,18 @@ def refresh_cb(app):
     # FIXME: this should be in a try
     stuff_to_poll = app.server.rcd.packsys.refresh_all_channels()
 
-    pend = red_pendingview.PendingView()
-    win = gtk.Window()
-    win.add(pend)
-    win.show_all()
+    pend = red_pendingview.PendingView("Refreshing channel data", show_size=0)
+    pend.step_label.set_text("Downloading channel information")
+    pend.set_transient_for(app)
+    pend.show_all()
 
-    pend.set_server(app.server)
+    def finished_cb(p):
+        p.destroy()
+
+    pend.connect("finished", finished_cb)
+
     pend.set_pending_list(stuff_to_poll)
-    
+    pend.start_timeout()
 
 class AppWindow(gtk.Window):
 

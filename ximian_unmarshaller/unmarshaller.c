@@ -46,6 +46,7 @@ typedef struct {
     char      *encoding;
     int        value;
     PyObject  *binary_cb;
+    PyObject  *boolean_cb;
 } PyUnmarshaller;
     
 static PyObject *
@@ -145,18 +146,15 @@ unmarshaller_data (PyObject *self, PyObject *args)
 static void
 end_boolean (PyUnmarshaller *unm, const char *data)
 {
-    PyObject *obj = NULL;
+    PyObject *args;
+    PyObject *bool;
 
-    if (! strcmp (data, "0"))
-        obj = Py_BuildValue ("i", 0);
-    else if (! strcmp (data, "1"))
-        obj = Py_BuildValue ("i", 1);
+    args = Py_BuildValue ("(s)", data);
+    bool = PyEval_CallObject (unm->boolean_cb, args);
+    Py_DECREF (args);
 
-    if (obj == NULL) {
-        g_assert_not_reached ();
-    }
+    g_ptr_array_add (unm->stack, bool);
 
-    g_ptr_array_add (unm->stack, obj);
     unm->value = 0;
 }
 
@@ -245,6 +243,7 @@ end_base64 (PyUnmarshaller *unm, const char *data)
 
     args = Py_BuildValue ("(s)", data);
     binary = PyEval_CallObject (unm->binary_cb, args);
+    Py_DECREF (args);
 
     g_ptr_array_add (unm->stack, binary);
 
@@ -362,9 +361,10 @@ static PyObject *
 unmarshaller_new (PyObject *self, PyObject *args)
 {
     PyUnmarshaller *unm;
-    PyObject *binary_cb;
+    PyObject *binary_cb, *boolean_cb;
 
-    if (!PyArg_ParseTuple (args, "O:new_unmarshaller", &binary_cb))
+    if (!PyArg_ParseTuple (args, "OO:new_unmarshaller",
+                           &binary_cb, &boolean_cb))
         return NULL;
     
     unm = PyObject_New (PyUnmarshaller, &PyUnmarshallerType);
@@ -376,8 +376,10 @@ unmarshaller_new (PyObject *self, PyObject *args)
     unm->methodname = NULL;
     unm->encoding = g_strdup ("utf-8");
     unm->binary_cb = binary_cb;
+    unm->boolean_cb = boolean_cb;
 
     Py_INCREF (unm->binary_cb);
+    Py_INCREF (unm->boolean_cb);
 
     return (PyObject *) unm;
 }

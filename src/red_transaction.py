@@ -19,10 +19,10 @@ import string
 import gobject, gtk
 import rcd_util
 import red_packagearray, red_packageview
+import red_pendingview
 import red_pendingops
 import red_component
 import red_depwindow
-import red_main
 import red_serverlistener
 
 class TransactionArray(red_packagearray.PackageArray,
@@ -201,11 +201,11 @@ class TransactionFailed(Exception):
 
 timeout_len = 400
 
-class TransactionWindow(gtk.Window):
+class TransactionWindow(red_pendingview.PendingView):
 
     def __init__(self, download_id, transact_id, step_id):
 
-        gtk.Window.__init__(self)
+        red_pendingview.PendingView.__init__(self)
 
         self.download_id = download_id
         self.transact_id = transact_id
@@ -213,28 +213,7 @@ class TransactionWindow(gtk.Window):
 
         self.download_complete = 0
 
-        self.set_title("%s - Updating System" % red_main.red_name)
-        self.set_default_size(400, 250)
         self.set_modal(1)
-
-        self.mainbox = gtk.VBox(0, 10)
-        self.add(self.mainbox)
-
-        self.title_label = gtk.Label("")
-        self.title_label.set_markup("<b><big>Updating System</big></b>")
-        self.title_label.set_alignment(0, 0.5)
-        self.mainbox.pack_start(self.title_label, 0, 0, 0)
-
-        self.step_label = gtk.Label("")
-        self.step_label.set_alignment(0, 0.5)
-        self.mainbox.pack_start(self.step_label, 0, 0, 0)
-
-        self.progress_bar = gtk.ProgressBar()
-        self.mainbox.pack_start(self.progress_bar, 0, 0, 0)
-
-        self.progress_text = gtk.Label("")
-        self.progress_text.set_alignment(0, 0.5)
-        self.mainbox.pack_start(self.progress_text, 0, 0, 0)
 
         bbox = gtk.HButtonBox()
         bbox.set_layout(gtk.BUTTONBOX_END)
@@ -254,11 +233,7 @@ class TransactionWindow(gtk.Window):
         self.button.connect("clicked", clicked_cb, self)
 
         self.show_all()
-
-        def poll_cb():
-            return self.poll_transaction()
-
-        self.poll_id = gtk.timeout_add(timeout_len, poll_cb)
+        self.start_timeout()
 
         # We don't want to bog down the daemon with changes while a
         # transaction is running.
@@ -274,13 +249,13 @@ class TransactionWindow(gtk.Window):
 
         if ret:
             print "Download aborted"
-            gtk.timeout_remove(self.poll_id)
+            self.stop_timeout()
             self.transaction_finished(msg="Download cancelled",
                                       title="Update Cancelled")
         else:
             print "Couldn't abort download"
 
-    def poll_transaction(self):
+    def poll(self):
 
         print "Polling..."
 
@@ -310,28 +285,13 @@ class TransactionWindow(gtk.Window):
         return 1
 
     def update_progress_from_pending(self, pending, show_rate=1):
-        if pending.has_key("completed_size") and pending.has_key("total_size"):
-            fraction = float(pending["completed_size"]) / float(pending["total_size"])
-            self.progress_bar.set_fraction(fraction)
-
-            cs = rcd_util.byte_size_to_string(pending["completed_size"])
-            ts = rcd_util.byte_size_to_string(pending["total_size"])
-            msg = "%s / %s" % (cs, ts)
-
-            if show_rate and pending.has_key("elapsed_sec") and \
-                   pending.has_key("completed_size"):
-                elap = pending["elapsed_sec"]
-                if elap > 0:
-                    rate = rcd_util.byte_size_to_string(
-                        pending["completed_size"] / elap)
-                    msg = msg + " (" + rate + "/s)"
-                
-        else:
-            self.progress_bar.pulse()
-            msg = ""
-
-        self.progress_bar.set_text(msg)
-
+        self.show_rate = show_rate
+        self.update(pending["percent_complete"],
+                    pending.get("elapsed_sec", 0),
+                    pending.get("remaining_sec", 0),
+                    pending.get("completed_size", 0),
+                    pending.get("total_size", 0))
+        
     def transaction_finished(self, msg, title="Update Finished"):
         self.progress_bar.set_fraction(1.0)
         self.progress_bar.set_text("")

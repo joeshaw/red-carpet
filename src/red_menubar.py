@@ -205,8 +205,10 @@ class MenuBar(gtk.MenuBar):
                 ### hook up it's callback
 
                 if is_leaf and item["callback"]:
-                    menu_item.connect("activate",
-                                      lambda x:item["callback"](self.user_data))
+                    menu_item.connect_after(
+                        "activate",
+                        lambda x, i:i["callback"](self.user_data),
+                        item)
 
                 ###
                 ### If this item has special visibility, sensitivity or checked

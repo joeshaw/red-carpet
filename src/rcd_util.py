@@ -248,3 +248,26 @@ def transaction_status(message):
         return m + " " + status[1]
     else:
         return m
+
+###############################################################################
+
+def set_pref(name, value):
+    if value != ximian_xmlrpclib.True and value != ximian_xmlrpclib.False:
+        try:
+            v = int(value)
+        except ValueError:
+            v = value
+    else:
+        v = value
+
+    server = get_server()
+    try:
+        server.rcd.prefs.set_pref(name, v)
+    except ximian_xmlrpclib.Fault, f:
+        # FIXME: Don't use numbers.  Use rcfault.
+        if f.faultCode == -501: # type mismatch
+            return 0
+        else:
+            raise
+    else:
+        return 1

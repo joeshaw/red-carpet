@@ -793,7 +793,16 @@ def getparser():
                 b = Binary()
                 b.decode(data)
                 return b
-            target = ximian_unmarshaller.new(binary_cb)
+
+            def boolean_cb(value):
+                if value == "0":
+                    return False
+                elif value == "1":
+                    return True
+                else:
+                    raise TypeError, "bad boolean value"
+            
+            target = ximian_unmarshaller.new(binary_cb, boolean_cb)
         else:
             target = Unmarshaller()
         if FastParser:
