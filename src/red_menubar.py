@@ -22,7 +22,6 @@ import red_pixbuf
 class MenuBar(gtk.MenuBar):
 
     def __init__(self, accel_group=None):
-        #gtk.MenuBar.__init__(self)
         gobject.GObject.__init__(self)
 
         self.accel_group = accel_group

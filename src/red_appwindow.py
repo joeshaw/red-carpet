@@ -26,6 +26,7 @@ import red_header, red_menubar, red_sidebar
 import red_transaction
 import red_component
 import red_pendingview
+import red_pixbuf
 
 def refresh_cb(app):
     try:
@@ -149,7 +150,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.busy_count = 0
         self.busy_handler = 0
 
-        self.table = gtk.Table(2, 6)
+        self.table = gtk.Table(2, 7)
         self.add(self.table)
         self.table.show()
 
@@ -162,6 +163,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.menubar = red_menubar.MenuBar()
         self.menubar.set_user_data(self)
         self.assemble_menubar(self.menubar)
+
+        self.toolbar = gtk.Toolbar()
         
         self.sidebar = red_sidebar.SideBar()
         self.show_sidebar = 0
@@ -185,21 +188,27 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                           0, 0)
         self.menubar.show()
 
+        self.table.attach(self.toolbar,
+                          0, 2, 1, 2,
+                          gtk.FILL, gtk.FILL,
+                          0, 0)
+        self.toolbar.show()
+
         self.table.attach(self.sidebar,
-                          0, 1, 1, 5,
+                          0, 1, 2, 6,
                           gtk.FILL, gtk.FILL,
                           0, 0)
         if self.show_sidebar:
             self.sidebar.show_all()
             
         self.table.attach(self.header,
-                          1, 2, 1, 2,
+                          1, 2, 2, 3,
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
-        self.header.show()
+        ## self.header.show()
 
         self.table.attach(self.container,
-                          1, 2, 2, 5,
+                          1, 2, 3, 6,
                           gtk.FILL | gtk.EXPAND, gtk.FILL | gtk.EXPAND,
                           0, 0)
         self.container.show()
@@ -210,7 +219,7 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         south.pack_start(self.statusbar, 1, 1, 2)
         south.show_all()
         self.table.attach(south,
-                          0, 2, 5, 6,
+                          0, 2, 6, 7,
                           gtk.FILL, gtk.FILL,
                           0, 2)
         south.show()
@@ -218,6 +227,13 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         self.connect("delete_event", lambda x, y:self.shutdown())
 
     def register_component(self, comp):
+
+        self.toolbar.append_item(comp.name(),
+                                 comp.long_name(),
+                                 None,
+                                 red_pixbuf.get_widget(comp.pixbuf(), width=24, height=24),
+                                 lambda x:self.activate_component(comp),
+                                 None)
 
         self.sidebar.add(label=comp.name(),
                          pixbuf=comp.pixbuf(),
@@ -300,10 +316,14 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             return 0
         gtk.timeout_add(100, busy_cb, self)
         self.busy_count += 1
+        self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
 
     def busy_stop(self):
         if self.busy_count > 0:
             self.busy_count -= 1
+
+        if self.busy_count == 0:
+            self.window.set_cursor(None)
         
     ###
     ### Handlers for Component signals (via the ComponentListener API)

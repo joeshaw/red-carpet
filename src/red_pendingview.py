@@ -28,7 +28,7 @@ class PendingView(gtk.Window):
                  timeout_len=200, show_rate=1, show_size=1, is_modal=1,
                  allow_cancel=0,
                  self_destruct=0):
-        gtk.Window.__init__(self, gtk.WINDOW_POPUP)
+        gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 
         self.set_resizable(0)
 

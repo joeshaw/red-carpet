@@ -67,7 +67,7 @@ def get_pixbuf(name, fail_gracefully=0, width=0, height=0):
                     assert 0
 
     if pixbuf:
-        pixbuf_cache[name] = pixbuf
+        pixbuf_cache[key] = pixbuf
         return pixbuf
 
     if not fail_gracefully:
