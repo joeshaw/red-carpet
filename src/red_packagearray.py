@@ -480,6 +480,7 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
 
         self.__packages = []
         self.pending_refresh = 0
+        self.refresh_id = 0
         self.__length = 0
 
 
@@ -510,11 +511,12 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
         self.get_packages_from_daemon()
 
     def schedule_refresh(self):
-        if not self.refresh_pending():
+        if not self.refresh_id:
             def schedule_cb(s):
                 s.refresh()
+                self.refresh_id = 0
                 return 0
-            gtk.idle_add(schedule_cb, self)
+            self.refresh_id = gtk.idle_add(schedule_cb, self)
             self.refresh_start()
 
     def packages_changed(self):
@@ -634,6 +636,12 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.query = query
         self.__query_msg = query_msg
         self.__query_filter = query_filter
+
+        if self.__worker and self.__worker_handler_id:
+            self.__worker.disconnect(self.__worker_handler_id)
+            self.__worker = None
+            self.__worker_handler_id = 0
+
         self.schedule_refresh()
 
     def packages_changed(self):

@@ -1,5 +1,10 @@
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
+	* red_packagearray.py (PackagesFromDaemon.schedule_refresh): Track
+	the id of the idle handler.
+	(PackagesFromQuery.set_query): Explicitly disconnect any existing
+	query when we start a new query. (fixes part of #33839)
+
 	* Makefile.am (red_carpetsupport_DATA): Removed unused files.
 
 	* red_searchbox.py: Removed unneeded imports.
