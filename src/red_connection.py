@@ -31,9 +31,9 @@ import red_settings
 from red_gettext import _
 
 # Required rcd versions
-required_major_version = 1
-required_minor_version = 5
-required_micro_version = 1
+required_major_version = 2
+required_minor_version = 0
+required_micro_version = 0
 
 # Required protocol version
 required_protocol_version = 2

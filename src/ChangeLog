@@ -1,3 +1,7 @@
+2003-10-30  Joe Shaw  <joe@ximian.com>
+
+	* red_connection.py: Set the required rcd version to 2.0.0.
+
 2003-10-28  Joe Shaw  <joe@ximian.com>
 
 	* rcd_util.py (filter_package_dups): Remove this, it wasn't being
