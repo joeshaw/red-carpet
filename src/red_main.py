@@ -16,6 +16,13 @@
 ###
 
 import os, time, threading, gtk
+
+red_name      = "Red Carpet"
+red_version   = None
+red_copyright = "2002-2003"
+debug         = os.getenv("RC_GUI_DEBUG")
+
+from red_gettext import _
 import rcd_util
 import red_console
 import red_appwindow
@@ -24,12 +31,7 @@ import red_summary
 import red_transaction
 import red_news
 import red_history
-from red_gettext import _
 
-red_name      = "Red Carpet"
-red_version   = None
-red_copyright = "2002-2003"
-debug         = os.getenv("RC_GUI_DEBUG")
 
 red_running = 1
 

@@ -1,3 +1,11 @@
+2003-02-24  Jon Trowbridge  <trow@ximian.com>
+
+	* red_gettext.py (_): If we are in debug mode, replace strings by
+	((strings)) to make it easy to spot untranslated strings.
+
+	* red_main.py: Make sure that debug (and some other variables) get
+	set right away.
+
 2003-02-24  Tambet Ingo  <tambet@ximian.com>
 
 	* red_summary.py (SummaryComponent.build): Catch busy signals.
