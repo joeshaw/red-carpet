@@ -54,9 +54,8 @@ class UpdateIcon(red_tray.TrayIcon):
 
         self.thread = None
 
-        self.imp_icons = {}
-        for imp in ['necessary', 'urgent', 'suggested', 'feature', 'minor']:
-            self.imp_icons[imp] = red_pixbuf.get_pixbuf('importance-' + imp)
+        self.high_priority_icon = red_pixbuf.get_pixbuf('importance-necessary')
+        self.low_priority_icon = red_pixbuf.get_pixbuf('importance-urgent')
             
         self.image = gtk.Image()
         self.box = gtk.EventBox()
@@ -78,7 +77,12 @@ class UpdateIcon(red_tray.TrayIcon):
 
     def run_red_carpet(self):
         os.system('red-carpet')
+        gtk.idle_add(self.check_updates_idle, self)
         self.thread = None
+
+    def check_updates_idle(self, icon):
+        self.check_updates(icon)
+        return gtk.FALSE
 
     def check_updates(self, icon):
         def query_finished_cb(worker, icon):
@@ -98,9 +102,17 @@ class UpdateIcon(red_tray.TrayIcon):
                             importance_str = new_pkg['importance_str']
                             
                 if max_importance < 10:
-                    self.image.set_from_pixbuf(self.imp_icons[importance_str])
+                    update_str = ''
+
+                    if importance_str == 'necessary':
+                        self.image.set_from_pixbuf(self.high_priority_icon)
+                        update_str = 'Urgent updates available'
+                    else:
+                        self.image.set_from_pixbuf(self.low_priority_icon)
+                        update_str = 'Updates available'
+
                     self.box.show ()
-                    self.tooltips.set_tip(self.box, "Updates available")
+                    self.tooltips.set_tip(self.box, update_str)
                 else:
                     self.box.hide ()
                 

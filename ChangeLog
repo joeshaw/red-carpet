@@ -1,3 +1,10 @@
+2004-09-13  James Willcox  <james@ximian.com>
+
+	* trayicon/red_icon_main.py:
+
+	Only use the urgent/necessary icons, and update the icon after
+	the user has quit from red-carpet
+
 2004-09-08  James Willcox  <james@ximian.com>
 
 	* red_extra/Makefile.am:
