@@ -1,13 +1,14 @@
 # red-carpet's Portuguese Translation
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright (C) 2002 red-carpet
+# Distributed under the same licence as red-carpet package
 # Duarte Loreto <happyguy_pt@hotmail.com>, 2003.
 # Paulo Silva <paulojjs@yahoo.com>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.2\n"
-"POT-Creation-Date: 2003-04-06 17:15+0100\n"
-"PO-Revision-Date: 2003-04-06 17:20+0000\n"
+"POT-Creation-Date: 2003-04-13 17:45+0100\n"
+"PO-Revision-Date: 2003-04-13 17:49+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -227,52 +228,52 @@ msgstr "Canais"
 msgid "Change your channel subscriptions"
 msgstr "Alterar as suas subscrições de canais"
 
-#: src/red_appwindow.py:365
+#: src/red_appwindow.py:364
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: src/red_appwindow.py:366
+#: src/red_appwindow.py:365
 msgid "Refresh channel data"
 msgstr "Actualizar dados de canal"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:378
+#: src/red_appwindow.py:375
 msgid "Mark for _Installation"
 msgstr "Marcar para _Instalação"
 
-#: src/red_appwindow.py:379
+#: src/red_appwindow.py:376
 msgid "Mark selected packages for installation"
 msgstr "Marcar pacotes seleccionados para instalação"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:386 src/red_appwindow.py:656
+#: src/red_appwindow.py:381 src/red_appwindow.py:651
 msgid "Mark for _Removal"
 msgstr "Marcar para _Remoção"
 
-#: src/red_appwindow.py:387
+#: src/red_appwindow.py:382
 msgid "Mark selected packages for removal"
 msgstr "Marcar pacotes seleccionados para remoção"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:393 src/red_appwindow.py:668
+#: src/red_appwindow.py:387 src/red_appwindow.py:663
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: src/red_appwindow.py:394
+#: src/red_appwindow.py:388
 msgid "Cancel marked package actions"
 msgstr "Cancelar acção de pacotes marcados"
 
-#: src/red_appwindow.py:399
+#: src/red_appwindow.py:393
 msgid "I_nformation"
 msgstr "I_nformação"
 
-#: src/red_appwindow.py:400
+#: src/red_appwindow.py:394
 msgid "Package information"
 msgstr "Informação de pacote"
 
@@ -282,11 +283,11 @@ msgstr "Informação de pacote"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:458
+#: src/red_appwindow.py:451
 msgid "_File"
 msgstr "_Ficheiro"
 
-#: src/red_appwindow.py:459
+#: src/red_appwindow.py:452
 msgid "_Edit"
 msgstr "_Editar"
 
@@ -295,130 +296,130 @@ msgstr "_Editar"
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:460 src/red_appwindow.py:723
+#: src/red_appwindow.py:453 src/red_appwindow.py:718
 msgid "_View"
 msgstr "_Ver"
 
-#: src/red_appwindow.py:461
+#: src/red_appwindow.py:454
 msgid "_Actions"
 msgstr "_Acções"
 
-#: src/red_appwindow.py:462
+#: src/red_appwindow.py:455
 msgid "_Help"
 msgstr "A_juda"
 
-#: src/red_appwindow.py:470
+#: src/red_appwindow.py:463
 msgid "Connect..."
 msgstr "Ligar..."
 
-#: src/red_appwindow.py:480
+#: src/red_appwindow.py:473
 msgid "Install from _File..."
 msgstr "Instalar de _Ficheiro..."
 
-#: src/red_appwindow.py:488
+#: src/red_appwindow.py:482
 msgid "Install from _URL..."
 msgstr "Instalar de _URL..."
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:504
+#: src/red_appwindow.py:499
 msgid "_Mount Directory..."
 msgstr "Directório de _Montagem..."
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:520
+#: src/red_appwindow.py:515
 msgid "U_nmount Directory..."
 msgstr "Directório de Desmo_ntagem..."
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:535
+#: src/red_appwindow.py:530
 msgid "_Activate..."
 msgstr "_Activar..."
 
-#: src/red_appwindow.py:541
+#: src/red_appwindow.py:536
 msgid "Quit"
 msgstr "Sair"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:556
+#: src/red_appwindow.py:551
 msgid "Select _All"
 msgstr "Seleccionar _Todos"
 
-#: src/red_appwindow.py:561
+#: src/red_appwindow.py:556
 msgid "Select _None"
 msgstr "_Não Seleccionar Nenhum"
 
-#: src/red_appwindow.py:568
+#: src/red_appwindow.py:563
 msgid "Channel _Subscriptions..."
 msgstr "_Subscrições de Canais..."
 
-#: src/red_appwindow.py:574
+#: src/red_appwindow.py:568
 msgid "_Preferences..."
 msgstr "_Preferências..."
 
-#: src/red_appwindow.py:578
+#: src/red_appwindow.py:572
 msgid "_Users..."
 msgstr "_Utilizadores..."
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:590
+#: src/red_appwindow.py:585
 msgid "_Sidebar"
 msgstr "Barra _Lateral"
 
-#: src/red_appwindow.py:594
+#: src/red_appwindow.py:589
 msgid "_Advanced Search Options"
 msgstr "Opções _Avançadas Procura"
 
-#: src/red_appwindow.py:598
+#: src/red_appwindow.py:593
 msgid "_Channel Names"
 msgstr "Nomes _Canais"
 
-#: src/red_appwindow.py:604
+#: src/red_appwindow.py:599
 msgid "Package _Information..."
 msgstr "_Informação Pacote..."
 
-#: src/red_appwindow.py:612
+#: src/red_appwindow.py:607
 msgid "_Daemon Information..."
 msgstr "Informação _Daemon..."
 
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:623
+#: src/red_appwindow.py:618
 msgid "Run _Now"
 msgstr "E_xecutar Agora"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:636
+#: src/red_appwindow.py:631
 msgid "_Verify System Dependencies"
 msgstr "_Verificar Dependências Sistema"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:647
+#: src/red_appwindow.py:642
 msgid "Mark for I_nstallation"
 msgstr "Marcar para I_nstalação"
 
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:682
+#: src/red_appwindow.py:677
 msgid "Re_fresh Channel Data"
 msgstr "_Actualizar Dados Canal"
 
-#: src/red_appwindow.py:688
+#: src/red_appwindow.py:683
 msgid "_About..."
 msgstr "_Sobre..."
 
@@ -614,12 +615,12 @@ msgstr ""
 #. Append default port number (505) if one isn't specified
 #. NOTE: password must be md5ified.
 #: src/red_connection.py:321
-msgid "Connect to daemon on this computer"
-msgstr "Ligar-se a daemon neste computador"
+msgid "Connect to this system"
+msgstr "Ligar-se ao sistema"
 
 #: src/red_connection.py:325
-msgid "Connect to a remote daemon"
-msgstr "Ligar-se a um daemon remoto"
+msgid "Connect to a remote system"
+msgstr "Ligar-se a um sistema remoto"
 
 #: src/red_connection.py:333
 msgid "Server:"
@@ -1358,21 +1359,23 @@ msgstr "mais antigo"
 msgid "not installed"
 msgstr "não instalado"
 
+#. __newer_icon               = red_pixbuf.get_pixbuf("status-newer")
+#. __older_icon               = red_pixbuf.get_pixbuf("status-older")
 #. upgrade
 #. downgrade
-#: src/red_packagearray.py:121
+#: src/red_packagearray.py:123
 msgid "upgrade"
 msgstr "actualizar"
 
-#: src/red_packagearray.py:123
+#: src/red_packagearray.py:125
 msgid "downgrade"
 msgstr "repor versão anterior"
 
-#: src/red_packagearray.py:125
+#: src/red_packagearray.py:127
 msgid "install"
 msgstr "instalar"
 
-#: src/red_packagearray.py:132
+#: src/red_packagearray.py:134
 msgid "remove"
 msgstr "remover"
 
@@ -1401,23 +1404,23 @@ msgstr "remover"
 #. The derived class should use this function to report the packages
 #. it received from the daemon.
 #. ##############################################################################
-#: src/red_packagearray.py:612
+#: src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
 msgstr "Encontrados %d pacotes coincidentes"
 
-#: src/red_packagearray.py:614
+#: src/red_packagearray.py:616
 msgid "Found 1 matching package"
 msgstr "Encontrados 2 pacote coincidente"
 
-#: src/red_packagearray.py:616
+#: src/red_packagearray.py:618
 msgid "No matching packages found"
 msgstr "Nenhum pacote coincidente encontrado"
 
 #. Find System packages
 #. Remove instelled Channel packages
 #. ##############################################################################
-#: src/red_packagearray.py:758
+#: src/red_packagearray.py:760
 msgid "Looking for updates..."
 msgstr "A procurar actualizações..."
 
@@ -1690,31 +1693,31 @@ msgstr "Actualização cancelada"
 msgid "Update Finished"
 msgstr "Actualização Terminada"
 
-#: src/red_pendingview.py:611
+#: src/red_pendingview.py:612
 msgid "Downloading packages"
 msgstr "A descarregar pacotes"
 
-#: src/red_pendingview.py:623
+#: src/red_pendingview.py:624
 msgid "Download Failed"
 msgstr "Descarregar Falhou"
 
-#: src/red_pendingview.py:624
+#: src/red_pendingview.py:625
 msgid "Unknown Error"
 msgstr "Erro Desconhecido"
 
-#: src/red_pendingview.py:641
+#: src/red_pendingview.py:642
 msgid "Processing Transaction"
 msgstr "A Processar Transação"
 
-#: src/red_pendingview.py:660
+#: src/red_pendingview.py:661
 msgid "The update has completed successfully"
 msgstr "A actualização terminou com sucesso"
 
-#: src/red_pendingview.py:664
+#: src/red_pendingview.py:665
 msgid "Transaction failed"
 msgstr "Transação falhou"
 
-#: src/red_pendingview.py:666
+#: src/red_pendingview.py:667
 msgid "Update Failed"
 msgstr "Actualização falhou"
 
@@ -2201,6 +2204,30 @@ msgid "Installations and Removals"
 msgstr "Instalações e Remoções"
 
 #. PendingOpsListener implementation
+#: src/red_sidebar.py:99
+#, python-format
+msgid "%d pending install"
+msgstr "%d instalação pendente"
+
+#: src/red_sidebar.py:101
+#, python-format
+msgid "%d pending installs"
+msgstr "%d instalações pendentes"
+
+#: src/red_sidebar.py:107
+#, python-format
+msgid "%d pending removal"
+msgstr "%d remoção pendente"
+
+#: src/red_sidebar.py:109
+#, python-format
+msgid "%d pending removals"
+msgstr "%d remoções pendentes"
+
+#: src/red_sidebar.py:113
+msgid "No pending actions"
+msgstr "Nenhuma acção pendente"
+
 #. Is this the last item and the only one on the row?
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
