@@ -192,6 +192,7 @@ class DepComponent(gobject.GObject, red_component.Component):
 
             sw = gtk.ScrolledWindow()
             sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            sw.set_shadow_type(gtk.SHADOW_IN)
             sw.add(text)
             sw.show_all()
             dialog.vbox.pack_start(sw, expand=1, fill=1)
@@ -252,12 +253,13 @@ class DepComponent(gobject.GObject, red_component.Component):
         # Assemble our warning banner
         banner_box = gtk.EventBox()
         style = banner_box.get_style().copy()
-        bg_color = banner_box.get_colormap().alloc_color("red")
+        bg_color = banner_box.get_colormap().alloc_color("#db1a1a")
         style.bg[gtk.STATE_NORMAL] = bg_color
         banner_box.set_style(style)
         banner = gtk.Label("")
         msg = _("Dependency Resolution Failed")
-        banner.set_markup("<span size=\"large\"><b>%s</b></span>" % msg)
+        banner.set_markup('<span size="large"><span foreground="white">'
+                          '<b>%s</b></span></span>' % msg)
         banner_box.add(banner)
         page.pack_start(banner_box, 0, 0, 0)
 
@@ -269,11 +271,13 @@ class DepComponent(gobject.GObject, red_component.Component):
         view.set_editable(0)
         view.set_cursor_visible(0)
         view.set_wrap_mode(gtk.WRAP_WORD)
+        view.set_left_margin(6)
+        view.set_right_margin(6)
         view.get_buffer().set_text(msg)
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        sw.set_shadow_type(gtk.SHADOW_OUT)
+        sw.set_shadow_type(gtk.SHADOW_IN)
         sw.add(view)
         page.pack_start(sw, expand=1, fill=1, padding=0)
 
@@ -378,7 +382,7 @@ class DepComponent(gobject.GObject, red_component.Component):
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        sw.set_shadow_type(gtk.SHADOW_OUT)
+        sw.set_shadow_type(gtk.SHADOW_IN)
         sw.add(self.table)
 
         page.pack_start(sw, 1, 1, 0)
@@ -439,10 +443,10 @@ class DepComponent(gobject.GObject, red_component.Component):
     def add_package_list(self, title, package_list, removal=0):
         
         if removal:
-            bg_color = "red"
+            bg_color = "#db1a1a"
             fg_color = "white"
         else:
-            bg_color = "#fcdc7b"
+            bg_color = "#f8f659"
             fg_color = "black"
 
         # The section heading

@@ -180,11 +180,11 @@ class AppWindow(gtk.Window,
 
         self.sidebar = red_sidebar.SideBar()
 
-        self.hpaned.pack1(self.sidebar, resize=0, shrink=0)
+        self.hpaned.pack1(self.sidebar, resize=1, shrink=0)
 
         main_box = gtk.VBox(0, 6)
         main_box.set_border_width(6)
-        self.hpaned.pack2(main_box, resize=1, shrink=1)
+        self.hpaned.pack2(main_box, resize=0, shrink=0)
 
         ## Actionbar
         self.actionbar = red_actionbar.Actionbar()
@@ -385,7 +385,7 @@ class AppWindow(gtk.Window,
                 return
 
         for p in pkgs:
-            red_packagebook.show_package_info(p)
+            red_packagebook.show_package_info(p, parent=self)
 
     def sensitize_run_button(self):
         comp = self.componentbook.get_visible_component()

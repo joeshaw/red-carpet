@@ -65,13 +65,13 @@ class PackagePage_Deps(red_packagepage.PackagePage):
 
                 if x == "provides":
                     label = _("Provides")
-                    bg_color = "green"
+                    bg_color = "#59cc59"
                 elif x == "requires":
                     label = _("Requires")
-                    bg_color = "yellow"
+                    bg_color = "#f8f659"
                 elif x == "conflicts":
                     label = _("Conflicts With")
-                    bg_color = "red"
+                    bg_color = "#db1a1a"
                 else:
                     label = "???"
                     bg_color = "blue"
@@ -98,6 +98,7 @@ class PackagePage_Deps(red_packagepage.PackagePage):
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_IN)
         sw.add(view)
         sw.show_all()
 

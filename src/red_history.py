@@ -322,7 +322,7 @@ class HistoryView(gtk.ScrolledWindow):
         view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.set_shadow_type(gtk.SHADOW_OUT)
+        self.set_shadow_type(gtk.SHADOW_IN)
         self.add(view)
 
 
@@ -451,5 +451,6 @@ class PackageHistory(gtk.ScrolledWindow):
         view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_shadow_type(gtk.SHADOW_IN)
         self.add(view)
         self.view = view

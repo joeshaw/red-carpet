@@ -243,6 +243,7 @@ class UnmountWindow(gtk.Dialog):
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_IN)
         sw.show()
 
         sw.add(view)

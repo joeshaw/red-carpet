@@ -90,9 +90,10 @@ class PendingView(gtk.Window):
         viewport.add(self.step_label)
 
         scrolled = gtk.ScrolledWindow()
-        scrolled.add(viewport)
         scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scrolled.set_shadow_type(gtk.SHADOW_IN)
         scrolled.set_size_request(-1, 3*height+2) # a few extra pixels...
+        scrolled.add(viewport)
         self.__scrolled = scrolled
         textbox.pack_start(scrolled, expand=1, fill=1)
         

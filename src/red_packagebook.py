@@ -24,7 +24,7 @@ from red_gettext import _
 
 package_infos = {}
 
-def show_package_info(pkg):
+def show_package_info(pkg, parent=None):
 
     key = rcd_util.get_package_key(pkg)
     if package_infos.has_key(key):
@@ -41,7 +41,7 @@ def show_package_info(pkg):
     book.set_package(pkg)
 
     title = _("Package Information") + ": " + pkg["name"]
-    dialog = gtk.Dialog(title)
+    dialog = gtk.Dialog(title, parent=parent)
     dialog.set_default_size(450, 350)
     button = dialog.add_button(gtk.STOCK_OK, 0)
     # grab_default() is not sufficient here.

@@ -40,6 +40,7 @@ class SubscriptionsView(gtk.ScrolledWindow):
         view.set_sensitive(rcd_util.check_server_permission("subscribe"))
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_sensitive(gtk.SHADOW_IN)
         self.add(view)
 
     def make_channel_view(self):

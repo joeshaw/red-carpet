@@ -136,6 +136,7 @@ def select_and_dump(parent):
     filesel.set_filename(os.environ.get("HOME", "") + "/") # need trailing /
     filesel.ok_button.connect("clicked", get_file_cb, parent)
     filesel.cancel_button.connect("clicked", lambda x,y:filesel_destroy(y), parent)
+    filesel.set_transient_for(parent)
     filesel.show()
 
     parent.__filesel = filesel

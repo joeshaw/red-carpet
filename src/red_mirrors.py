@@ -111,6 +111,7 @@ class MirrorsWindow(gtk.Dialog):
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_IN)
         self.vbox.add(sw)
 
         mirrors = rcd_util.get_mirrors()

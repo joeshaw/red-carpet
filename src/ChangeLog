@@ -1,3 +1,43 @@
+2003-04-28  Joe Shaw  <joe@ximian.com>
+
+	* *.py: Use gtk.SHADOW_IN for all scroll windows (Fixes #41979).
+
+	* red_appwindow.py (AppWindow.build): Change the pane resizing
+	rules so we can never resize the right pane smaller than the width
+	of the notebook.
+	(package_info_cb): Pass in the appwindow as the parent window.
+
+	* red_depcomponent.py: Use less harsh yellow and red for the
+	dependency resolution view.  Add a margin for the text in dep
+	failure.
+
+	* red_main.py: Change "MyComputerComponent" to
+	"InstalledComponent" and add "AvailableComponent".
+
+	* red_my_computer.py: Rename MyComputerComponent/System Packages
+	to InstalledComponent/Installed Software.  Add an Available
+	Software component for not installed packages.
+
+	* red_packagebook.py (show_package_info): Take a parent parameter
+	and pass it off to the dialog constructor.
+
+	* red_packagepage_deps.py: Use less harsh green, yellow and red
+	for package dependency info.
+
+	* red_packageview.py (do_popup): Find out or toplevel window and
+	pass it in as the parent to red_packagebook.show_package_info().
+
+	* red_searchbox.py (SearchBox): Add a uninstalled_packages_only flag
+	to the constructor.
+
+	* red_serverinfo.py (select_and_dump): Make the file selector
+	transient for the main window.
+
+	* red_sidebar.py (update_label): Fix a cut-and-paste-o where it
+	should show the number of installs as the number of removals too.
+
+	* red_summary.py: Add a mnemonic for the Update All button.
+
 2003-04-24  Joe Shaw  <joe@ximian.com>
 
 	* red_about.py (contributors): Add Jakub to the list.

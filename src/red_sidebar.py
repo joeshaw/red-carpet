@@ -98,9 +98,9 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         rem_count = red_pendingops.pending_remove_count()
         if rem_count:
             if rem_count == 1:
-                msg = _("%d pending removal") % ins_count
+                msg = _("%d pending removal") % rem_count
             else:
-                msg = _("%d pending removals") % ins_count
+                msg = _("%d pending removals") % rem_count
             msg_list.append(msg)
 
         if not msg_list:

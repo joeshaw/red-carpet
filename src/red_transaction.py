@@ -146,7 +146,7 @@ class TransactionComponent(red_component.Component):
         
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scrolled.set_shadow_type(gtk.SHADOW_OUT)
+        scrolled.set_shadow_type(gtk.SHADOW_IN)
         scrolled.add(view)
 
         page.pack_start(scrolled, expand=1, fill=1)
@@ -165,7 +165,7 @@ class TransactionSimple(gtk.ScrolledWindow):
     def __init__(self):
         gtk.ScrolledWindow.__init__(self)
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.set_shadow_type(gtk.SHADOW_OUT)
+        self.set_shadow_type(gtk.SHADOW_IN)
 
         global model
         if not model:

@@ -273,8 +273,13 @@ class PackageView(red_thrashingtreeview.TreeView):
             item.set_sensitive(0)
         menu.append(item)
 
+        parent = self.get_toplevel()
+        if not parent.flags() & gtk.TOPLEVEL:
+            parent_window = None
+
         item.connect("activate",
-                     lambda x:red_packagebook.show_package_info(pkgs[0]))
+                     lambda x:red_packagebook.show_package_info(pkgs[0],
+                                                                parent=parent))
 
 
         menu.popup(None, None, None, ev_button, ev_time)

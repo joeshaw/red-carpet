@@ -68,12 +68,17 @@ class SearchBox(gtk.VBox):
     def __init__(self,
                  allow_entry=1,
                  allow_advanced=1,
-                 system_packages_only=0):
+                 system_packages_only=0,
+                 uninstalled_packages_only=0):
         gobject.GObject.__init__(self)
 
-        self.__allow_entry          = allow_entry
-        self.__allow_advanced       = allow_advanced
-        self.__system_packages_only = system_packages_only
+        # system packages and uninstalled packages are mutually exclusive
+        assert (system_packages_only and uninstalled_packages_only) == 0
+
+        self.__allow_entry               = allow_entry
+        self.__allow_advanced            = allow_advanced
+        self.__system_packages_only      = system_packages_only
+        self.__uninstalled_packages_only = uninstalled_packages_only
 
         self.__pending_change = 0
 
@@ -318,12 +323,15 @@ class SearchBox(gtk.VBox):
         top_row.pack_start(channel_label, expand=0, fill=0, padding=2)
 
         any_subd = 1
+        no_chan = 1
         if self.__system_packages_only:
             any_subd=0
+        elif self.__uninstalled_packages_only:
+            no_chan = 1
 
         self.__ch_opt = red_channeloption.ChannelOption(allow_any_channel=1,
                                                         allow_any_subd_channel=any_subd,
-                                                        allow_no_channel=1)
+                                                        allow_no_channel=no_chan)
         self.__ch_opt.connect("selected",
                               lambda x, y, z: z.__changed(),
                               self)
@@ -360,7 +368,7 @@ class SearchBox(gtk.VBox):
         if self.__allow_entry:
             entry_row.show_all()
 
-        if self.__system_packages_only:
+        if self.__system_packages_only or self.__uninstalled_packages_only:
             stat_opt.hide()
             self.__status_filter = None
 
@@ -422,6 +430,9 @@ class SearchBox(gtk.VBox):
 
         if self.__system_packages_only:
             query.append(["installed", "is", "true"])
+            channel_id = 0
+        elif self.__uninstalled_packages_only:
+            query.append(["name-installed", "is", "false"])
             channel_id = 0
         else:
             channel_id = self.__ch_opt.get_channel_id()

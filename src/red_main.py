@@ -178,7 +178,8 @@ def main(version):
     app.set_title(get_title())
 
     app.register_component(red_summary.SummaryComponent())
-    app.register_component(red_my_computer.MyComputerComponent())
+    app.register_component(red_my_computer.InstalledComponent())
+    app.register_component(red_my_computer.AvailableComponent())
     app.register_component(red_search.SearchComponent())
     app.register_component(red_history.HistoryComponent())
     app.register_component(red_transaction.TransactionComponent())

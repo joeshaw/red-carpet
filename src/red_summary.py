@@ -74,7 +74,7 @@ class SummaryComponent(red_component.Component):
                 sensitive = 1
             button.set_sensitive(sensitive)
 
-        update_all = gtk.Button(_("Update All"))
+        update_all = gtk.Button(_("_Update All"))
         self.array.connect_after("changed", lambda x,y,z: sensitize_update_all(y,z),
                                  self, update_all)
         update_all.connect("clicked", lambda x,y: y.update_all(), self)
@@ -98,7 +98,7 @@ class SummaryComponent(red_component.Component):
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scrolled.set_shadow_type(gtk.SHADOW_OUT)
+        scrolled.set_shadow_type(gtk.SHADOW_IN)
         scrolled.add(view)
         scrolled.show_all()
         scrolled.hide()
