@@ -1,5 +1,7 @@
 2003-05-09  Joe Shaw  <joe@ximian.com>
 
+	* red_connection.py (check_rcd_version): Require rcd 1.4.0.
+
 	* red_searchbox.py (filter_fn): If the __uninstalled_packages_only
 	flag is set and a channel is selected, actually filter out
 	packages which don't match the channel.  Fixes #42667.

@@ -46,8 +46,8 @@ def show_error_message(msg, parent=None):
 
 def check_rcd_version(major, minor, micro):
     req_major = 1
-    req_minor = 3
-    req_micro = 2
+    req_minor = 4
+    req_micro = 0
 
     # Guard for NoneType
     major = major or 0
