@@ -152,18 +152,18 @@ class MountWindow(gtk.Dialog):
 
         l = gtk.Label(_("Channel Name:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
+        table.attach(l, 0, 1, 0, 1)
 
         l = gtk.Label(_("Directory:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
+        table.attach(l, 0, 1, 1, 2)
 
         self.channel = gtk.Entry()
         self.channel.set_activates_default(1)
-        table.attach_defaults(self.channel, 1, 2, 0, 1)
+        table.attach(self.channel, 1, 2, 0, 1)
 
         self.directory = FileEntry()
-        table.attach_defaults(self.directory, 1, 2, 1, 2)
+        table.attach(self.directory, 1, 2, 1, 2)
 
         frame.add(table)
         frame.show_all()

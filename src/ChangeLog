@@ -1,5 +1,11 @@
 2003-09-05  Joe Shaw  <joe@ximian.com>
 
+	* red_activation.py, red_connection.py, red_mount.py,
+	red_users.py: Replace calls to gtk.Table.attach_defaults() to
+	gtk.Table.attach() to avoid a deprecation warning.
+
+2003-09-05  Joe Shaw  <joe@ximian.com>
+
 	* red_connection.py (connect_real): Check the protocol version and
 	pop up an error dialog if it doesn't match.
 

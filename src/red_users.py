@@ -191,18 +191,18 @@ class UsersWindow(gtk.Dialog,
 
         l = gtk.Label(_("Password:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
+        table.attach(l, 0, 1, 0, 1)
 
         l = gtk.Label(_("Confirm:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
+        table.attach(l, 0, 1, 1, 2)
 
         self.pwd1 = gtk.Entry()
         self.pwd1.set_visibility(0)
-        table.attach_defaults(self.pwd1, 1, 2, 0, 1)
+        table.attach(self.pwd1, 1, 2, 0, 1)
         self.pwd2 = gtk.Entry()
         self.pwd2.set_visibility(0)
-        table.attach_defaults(self.pwd2, 1, 2, 1, 2)
+        table.attach(self.pwd2, 1, 2, 1, 2)
 
         def init_pwd_entries(this):
             this.pwd1.set_text("-*-unchanged-*-")
@@ -217,7 +217,7 @@ class UsersWindow(gtk.Dialog,
         button.set_label(_("Set Password"))
         button_box.add(button)
         self.pwd_button = button
-        table.attach_defaults(button_box, 0, 2, 2, 3)
+        table.attach(button_box, 0, 2, 2, 3)
 
         def sensitize_pwd_widgets(w, this):
             if this.pwd1.get_text() == "-*-unchanged-*-":
@@ -388,24 +388,24 @@ class UserAdd(gtk.Dialog):
 
         l = gtk.Label(_("User name:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
+        table.attach(l, 0, 1, 0, 1)
         self.user_entry = gtk.Entry()
-        table.attach_defaults(self.user_entry, 1, 2, 0, 1)
+        table.attach(self.user_entry, 1, 2, 0, 1)
         
         l = gtk.Label(_("Password:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
+        table.attach(l, 0, 1, 1, 2)
 
         l = gtk.Label(_("Confirm:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 2, 3)
+        table.attach(l, 0, 1, 2, 3)
 
         self.pwd1 = gtk.Entry()
         self.pwd1.set_visibility(0)
-        table.attach_defaults(self.pwd1, 1, 2, 1, 2)
+        table.attach(self.pwd1, 1, 2, 1, 2)
         self.pwd2 = gtk.Entry()
         self.pwd2.set_visibility(0)
-        table.attach_defaults(self.pwd2, 1, 2, 2, 3)
+        table.attach(self.pwd2, 1, 2, 2, 3)
 
         box.add(table)
 

@@ -36,19 +36,19 @@ class ActivationWindow(gtk.Dialog):
 
         l = gtk.Label(_("Email:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 0, 1)
+        table.attach(l, 0, 1, 0, 1)
 
         l = gtk.Label(_("Activation Code:"))
         l.set_alignment(0, 0.5)
-        table.attach_defaults(l, 0, 1, 1, 2)
+        table.attach(l, 0, 1, 1, 2)
 
         self.email = gtk.Entry()
         self.email.set_activates_default(1)
-        table.attach_defaults(self.email, 1, 2, 0, 1)
+        table.attach(self.email, 1, 2, 0, 1)
 
         self.code = gtk.Entry()
         self.code.set_activates_default(1)
-        table.attach_defaults(self.code, 1, 2, 1, 2)
+        table.attach(self.code, 1, 2, 1, 2)
 
         table.show_all()
         self.vbox.add(table)
