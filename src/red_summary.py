@@ -63,34 +63,6 @@ class SummaryComponent(red_component.Component):
 
         self.display("main", ex)
 
-
-        ### Lower
-            
-        img = red_pixbuf.get_widget("update-now")
-        b = gtk.Button()
-        b.set_relief(gtk.RELIEF_NONE)
-        b.add(img)
-
-        box = gtk.HBox(0, 0)
-        box.pack_end(b, 0, 0, 0)
-        box.show_all()
-
-        def not_yet(b):
-            dialog = gtk.MessageDialog(None, 0,
-                                       gtk.MESSAGE_ERROR,
-                                       gtk.BUTTONS_CLOSE,
-                                       "Sorry, not yet!")
-            dialog.connect("response",
-                           lambda b, x, d: d.destroy(),
-                           dialog)
-            dialog.show_all()
-
-
-        b.connect("clicked", not_yet)
-        
-        self.display("lower", box)
-
-
     def changed_visibility(self, flag):
         if flag:
             self.array.thaw()

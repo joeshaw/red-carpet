@@ -72,8 +72,11 @@ class AppWindow(gtk.Window):
 
         self.server = server
 
-        self.table = gtk.Table(2, 6)
-        self.add (self.table)
+        self.paned = gtk.VPaned()
+        self.add(self.paned)
+
+        self.table = gtk.Table(2, 5)
+        self.paned.pack1 (self.table, 1, 1)
 
         self.components = []
         self.current_comp = None
@@ -132,11 +135,7 @@ class AppWindow(gtk.Window):
                           gtk.FILL | gtk.EXPAND, gtk.FILL,
                           0, 0)
 
-        self.table.attach(self.statusbar,
-                          0, 2, 5, 6,
-                          gtk.FILL | gtk.EXPAND, gtk.FILL,
-                          0, 0)
-
+        self.paned.pack2(self.statusbar, 1, 0)
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 
