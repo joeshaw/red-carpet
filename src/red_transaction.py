@@ -15,17 +15,12 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string
-import gobject, gtk
-import ximian_xmlrpclib
+import string, gtk
 import rcd_util
-import red_main
 import red_packagearray, red_packageview
-import red_pendingview
 import red_pendingops
 import red_component
-import red_depcomponent
-import red_serverlistener
+
 
 class TransactionArray(red_packagearray.PackageArray,
                        red_pendingops.PendingOpsListener):

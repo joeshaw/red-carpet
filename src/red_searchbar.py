@@ -15,11 +15,11 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string
 import gobject, gtk
 import red_menubar
+import red_channeloption, red_sectionoption, red_statusoption
 
-class SearchBar(gtk.HBox):
+class SearchBar(gtk.VBox):
 
     def __init__(self):
         gobject.GObject.__init__(self)
@@ -66,6 +66,30 @@ class SearchBar(gtk.HBox):
 
     def __assemble(self):
 
+        box1 = gtk.HBox(0, 0)
+        box2 = gtk.HBox(0, 0)
+
+        ###
+        ### Build the top row of the bar, where we can filter by
+        ### channel, status, etc.
+
+        box1.pack_start(gtk.Label("Foo!"), expand=0, fill=0)
+
+        ch_opt   = red_channeloption.ChannelOption(allow_any_channel=1)
+        sect_opt = red_sectionoption.SectionOption()
+        stat_opt = red_statusoption.StatusOption()
+
+        box1.pack_start(ch_opt, expand=0, fill=0)
+        box1.pack_start(sect_opt, expand=0, fill=0)
+        box1.pack_start(stat_opt, expand=0, fill=0)
+        
+        
+
+        ###
+        ### Put together second row, with the search entry and dropdown
+        ### button w/ search characteristics.
+        ###
+
         bar = red_menubar.MenuBar()
         bar.add("/Search", with_dropdown_arrow=1)
 
@@ -91,18 +115,22 @@ class SearchBar(gtk.HBox):
                 checked_get = lambda: self.get_search_descriptions(),
                 checked_set = lambda x: self.set_search_descriptions(x))
 
-        self.pack_start(bar, expand=0, fill=0)
-        bar.show_all()
+        box2.pack_start(bar, expand=0, fill=0)
 
         self.search_entry = gtk.Entry()
-        self.pack_start(self.search_entry, expand=1, fill=1)
+        box2.pack_start(self.search_entry, expand=1, fill=1)
         self.search_entry.connect("activate", lambda x:self.__emit_search())
-        self.search_entry.show_all()
 
         button = gtk.Button("Find Now")
-        self.pack_start(button, expand=0, fill=0)
+        box2.pack_start(button, expand=0, fill=0)
         button.connect("clicked", lambda x:self.__emit_search())
-        button.show_all()
+
+        self.pack_start(box1, expand=0, fill=0)
+        self.pack_start(box2, expand=0, fill=0)
+
+        box1.show_all()
+        box2.show_all()
+        
 
 gobject.type_register(SearchBar)
 gobject.signal_new("search",

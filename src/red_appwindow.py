@@ -15,13 +15,11 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
-import gobject, gtk
-import string
+import sys, gtk
 
 import ximian_xmlrpclib
-
 import rcd_util
+import red_main
 import red_extra
 import red_menubar
 import red_transaction
@@ -37,7 +35,6 @@ import red_users
 import red_throbber
 import red_activation
 import red_about
-import red_settings
 import red_mount
 import red_serverinfo
 
@@ -307,6 +304,36 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/Help/About...",
                 callback=lambda x:red_about.About().show())
 
+        if red_main.debug:
+            self.assemble_debug_menubar(bar)
+
+
+    def assemble_debug_menubar(self, bar):
+        
+        bar.add("/Debug")
+        
+        bar.add("/Debug/Exercise Components",
+                callback=lambda x: x.exercise_components())
+
+        bar.add("/Debug/Exercise Menu Items",
+                callback=lambda x: x.menubar.exercise_menubar())
+
+        self.__throb_debug = 0
+
+        def throb_checked_get():
+            return self.__throb_debug
+
+        def throb_checked_set(flag):
+            self.__throb_debug = flag
+            if flag:
+                self.busy_start()
+            else:
+                self.busy_stop()
+        bar.add("/Debug/Throb",
+                checked_get=throb_checked_get,
+                checked_set=throb_checked_set)
+
+
     def sensitize_go_button(self, en):
         self.go_button.set_sensitive(en)
 
@@ -386,6 +413,17 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             new_comp = self.component_stack.pop()
             if new_comp:
                 self.activate_component(new_comp)
+
+    def exercise_components(self):
+        interval = 1000
+        when = interval
+        for c in self.components:
+            gtk.timeout_add(when, lambda x, y: x.push_component(y), self, c)
+            when += interval
+        for c in self.components:
+            gtk.timeout_add(when, lambda x: x.pop_component(), self)
+            when += interval
+
 
     def busy_start(self):
         self.throbber.start()

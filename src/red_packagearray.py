@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string, time, traceback
+import sys, string, time
 import gobject, gtk
 import rcd_util
 import red_listmodel

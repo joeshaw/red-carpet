@@ -15,11 +15,9 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string, threading
-import gobject, gtk
+import threading, gobject, gtk
 import rcd_util
-import red_main
-import red_transaction, red_pendingops, red_serverlistener
+import red_pendingops, red_serverlistener
 
 class PendingView(gtk.Window):
 

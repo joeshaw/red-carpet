@@ -15,13 +15,8 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string, re
-import gobject, gtk
+import string, re, gobject, gtk
 import rcd_util
-import red_main
-import red_pixbuf
-import red_component
-import ximian_xmlrpclib
 
 import red_listmodel, red_serverlistener, red_thrashingtreeview
 

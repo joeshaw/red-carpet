@@ -15,10 +15,8 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, string
-import md5
+import sys, os, string, md5, gtk
 import ximian_xmlrpclib
-import gobject, gtk
 import red_pixbuf, red_serverproxy
 import red_settings
 

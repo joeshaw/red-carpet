@@ -9,6 +9,9 @@ def chase_file(name):
     fd = open(name)
     modules[name] = 1
     for line in fd.readlines():
+        i = string.find(line, "#")
+        if i >= 0:
+            line = line[:i]
         match = pattern.search(line)
         if match:
             a, b = match.span(0)

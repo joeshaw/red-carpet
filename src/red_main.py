@@ -15,16 +15,12 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, signal, time, threading
-import gtk
-import ximian_xmlrpclib
+import time, threading, gtk
 import rcd_util
-import red_packagearray
 import red_appwindow
-import red_channeloption
-import red_channelbrowse
+import red_channelbrowse, red_search
 import red_summary
-import red_search, red_system
+import red_system
 import red_transaction
 import red_news
 import red_history
@@ -32,6 +28,7 @@ import red_history
 red_name      = "Red Carpet"
 red_version   = None
 red_copyright = "2002-2003"
+debug     = 1
 
 red_running = 1
 

@@ -23,7 +23,6 @@ import ximian_xmlrpclib
 import red_main
 import red_pixbuf
 import red_pendingview
-import red_serverlistener
 import red_component, red_pendingops, red_depview
 
 def filter_deps(dep_list):

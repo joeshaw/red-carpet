@@ -15,9 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os.path
-import gobject, gtk
-import string
+import os.path, gtk
 
 DIR_COLUMN = 0
 

@@ -1,8 +1,6 @@
 
-import threading
-import ximian_xmlrpclib
-import gobject, gtk
-import rcd_util, red_serverlistener, red_deaddaemon
+import threading, gobject, gtk
+import red_deaddaemon
 
 class ServerThread(threading.Thread, gobject.GObject):
 

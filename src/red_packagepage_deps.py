@@ -15,8 +15,8 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string
-import gobject, gtk, red_extra
+import sys, gobject, gtk
+import red_extra
 import rcd_util, red_packagebook
 
 class PackagePage_Deps(red_packagebook.PackagePage):

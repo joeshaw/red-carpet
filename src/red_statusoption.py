@@ -15,8 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import rcd_util
-import gobject, gtk
+import gtk
 
 _status_types = (
     ("Uninstalled", lambda p: not p["installed"] and not p["name_installed"]),
@@ -28,7 +27,7 @@ _status_types = (
 class StatusOption(gtk.OptionMenu):
 
     def __init__(self):
-        gobject.GObject.__init__(self)
+        gtk.OptionMenu.__init__(self)
         self.__current_filter = _status_types[0][1] # the default setting
 
         menu = gtk.Menu()

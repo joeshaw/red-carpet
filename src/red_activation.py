@@ -17,7 +17,6 @@
 
 import gtk
 import rcd_util
-import red_main
 import ximian_xmlrpclib
 import red_settings
 

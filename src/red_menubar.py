@@ -15,9 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, os, string, types
-import re
-import gobject, gtk
+import os, string, types,re, gobject, gtk
 import red_pixbuf
 
 
@@ -159,6 +157,15 @@ class MenuBar(gtk.MenuBar):
 
         self.pending_items.append(item)
         self.pending_items_hash[path] = item
+
+    def exercise_menubar(self):
+        for item in self.pending_items:
+            if item["path"][:7] != "/Debug/" \
+               and item["path"] != "/File/Quit" \
+               and item["callback"]:
+                print item["path"]
+                item["callback"](self.user_data)
+
 
     def construct(self):
 

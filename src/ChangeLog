@@ -1,3 +1,30 @@
+2003-01-31  Jon Trowbridge  <trow@ximian.com>
+
+	* Removed extraneous imports from lots of files.
+
+	* red_statusoption.py (StatusOption.__init__): Correctly chain
+	the constructors.
+
+	* red_serverlistener.py: Removed some really annoying debug spew.
+
+	* red_searchbar.py: Light hacking.
+
+	* red_menubar.py (MenuBar.exercise_menubar): Added.  Call (almost)
+	all menu item callbacks in sequence.
+
+	* red_channeloption.py (ChannelOption.__assemble): Added an
+	(optional) "Any Channel" menu item.
+
+	* red_appwindow.py (AppWindow.assemble_debug_menubar): Added.
+	Access to useful debugging functions.
+	(AppWindow.exercise_components): Added.  Activates all components
+	in sequence.
+
+	* red_main.py: Added debug flag.
+
+	* Makefile.am (red_carpetsupport_DATA): Added new files.  Now
+	we should be able to make distcheck again.
+
 2003-01-31  Tambet Ingo  <tambet@ximian.com>
 
 	* red_users.py: Removed some old cruft.

@@ -15,11 +15,8 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string
-import rcd_util
-import gobject, gtk
+import gtk
 import red_main
-import red_pixbuf, red_component, red_channelinfo
 import red_channelmodel
 
 model = None

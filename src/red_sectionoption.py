@@ -16,8 +16,24 @@
 ###
 
 import gobject, gtk
-import rcd_util
-import red_packagearray, red_pixbuf
+import red_pixbuf
+
+section_table = ( ("Any Section",               None,         -1),
+                  ("Productivity Applications", "office",      0),
+                  ("Imaging",                   "imaging",     1),
+                  ("Personal Information Mgmt", "pim",         2),
+                  ("X Windows Applications",    "xapp",        3),
+                  ("Games",                     "game",        4),
+                  ("Multimedia",                "multimedia",  5),
+                  ("Internet",                  "internet",    6),
+                  ("Utilities",                 "util",        7),
+                  ("System",                    "system",      8),
+                  ("Documentation",             "doc",         9),
+                  ("Libraries",                 "library",    10),
+                  ("Development",               "devel",      11),
+                  ("Development Utilities",     "develutil",  12),
+                  ("Miscellaneous",             "misc",       13),
+                  )
 
 class SectionOption(gtk.OptionMenu):
 

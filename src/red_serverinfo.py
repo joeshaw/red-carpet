@@ -15,12 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys
-import gobject, gtk
-import string
-import zlib
-
-import ximian_xmlrpclib
+import sys, string, gtk, zlib
 import rcd_util
 
 def destroy_server_info(app):

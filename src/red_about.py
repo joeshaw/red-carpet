@@ -15,9 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, time
-import gobject, gtk
-import random
+import time, gtk,random
 
 import red_main
 import red_pixbuf

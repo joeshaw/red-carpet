@@ -16,11 +16,9 @@
 ###
 
 import gobject, gtk
+import red_extra
 import rcd_util
-import red_packagearray
-import red_channeloption, red_sectionoption
-import red_component, red_packageview, red_packagebrowser
-import red_pendingops, red_extra
+import red_component
 
 model = None
 

@@ -15,10 +15,10 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, string, re
+import string, re
 import rcd_util
 import gobject, gtk, pango
-import red_pixbuf, red_component, red_channelinfo
+import red_component
 
 model = None
 

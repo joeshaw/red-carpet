@@ -15,26 +15,35 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import rcd_util
+import rcd_util, gobject, gtk
 import red_serverlistener
-import gobject, gtk
 
 class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
-    def __init__(self):
+    def __init__(self, allow_any_channel=0):
         gobject.GObject.__init__(self)
         red_serverlistener.ServerListener.__init__(self)
+        self.__allow_any_channel=allow_any_channel
         self.__assemble()
 
     def __assemble(self):
         self.item_id_list = []
         menu = gtk.Menu()
-        for c in rcd_util.get_all_channels():
+
+        channels = rcd_util.get_all_channels()
+
+        if self.__allow_any_channel:
+            channels.insert(0, {"name": "Any Channel", "id": -1})
+        
+        for c in channels:
             hbox = gtk.HBox(0, 0)
 
             pixbuf = rcd_util.get_channel_icon(c["id"], 24, 24)
+                
             img = gtk.Image()
-            img.set_from_pixbuf(pixbuf)
+            img.set_size_request(24, 24)
+            if pixbuf:
+                img.set_from_pixbuf(pixbuf)
 
             label = gtk.Label(c["name"])
 

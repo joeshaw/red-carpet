@@ -15,8 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import sys, weakref, threading
-import gobject, gtk
+import sys, weakref, threading, gtk
 import rcd_util
 
 ###
@@ -90,14 +89,12 @@ class SeqNoChecker:
         self.curr_user_seqno    = -1
 
     def set_world_seqnos(self, pkg, ch, subs):
-        print "got world seqnos"
         self.curr_package_seqno = pkg
         self.curr_channel_seqno = ch
         self.curr_subs_seqno    = subs
         self.check()
 
     def set_user_seqno(self, usr):
-        print "got user seqnos"
         self.curr_user_seqno = usr
         self.check()
 
@@ -107,8 +104,6 @@ class SeqNoChecker:
            or self.curr_subs_seqno < 0    \
            or self.curr_user_seqno < 0:
             return
-
-        print "doing check"
 
         global last_server
         global poll_count
@@ -167,8 +162,6 @@ def poll_cb():
         server = rcd_util.get_server_proxy()
         if server is None:
             return 1
-
-        print "polling"
 
         snc = SeqNoChecker()
         t1 = server.rcd.packsys.world_sequence_numbers()
