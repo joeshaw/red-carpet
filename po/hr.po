@@ -1,11 +1,11 @@
 # Translation of red-carpet to Croatian
 # Copyright (C) Croatian team
-# Translators: Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,
+# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Boris Tudan <boris.tudan@ka.htnet.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Vedran Vyroubal <vedran.vyroubal@inet.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 0\n"
 "POT-Creation-Date: 2003-11-06 18:13+0100\n"
-"PO-Revision-Date: 2003-11-07 18:46+CET\n"
+"PO-Revision-Date: 2003-11-10 16:55+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr "Instaliram"
 
 #: src/rcd_util.py:492
 msgid "Removing"
-msgstr ""
+msgstr "Uklanjanje"
 
 #: src/rcd_util.py:493
 msgid "Configuring"
@@ -910,7 +910,7 @@ msgstr "Važnost"
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr ""
+msgstr "%.1f%% završeno"
 
 #: src/red_pendingview.py:509
 msgid "Updating System"
@@ -950,7 +950,7 @@ msgstr ""
 
 #: src/red_pendingview.py:706
 msgid "Transaction failed"
-msgstr ""
+msgstr "Prijenos neuspješan"
 
 #: src/red_pendingview.py:708
 msgid "Transaction Failed"
@@ -1217,22 +1217,22 @@ msgstr ""
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d za instalaciju"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d za instalacije"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d za uklanjanje"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d za uklanjanja"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
@@ -1270,7 +1270,7 @@ msgstr ""
 #: src/red_subscriptions.py:78
 #, python-format
 msgid "%s Channel Subscriptions"
-msgstr ""
+msgstr "%s pretplata na kanale"
 
 #: src/red_subscriptions.py:99
 msgid ""
