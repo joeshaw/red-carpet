@@ -1,3 +1,7 @@
+2004-04-27  James Willcox  <james@ximian.com>
+
+	* configure.in: 2.2.3
+
 2004-04-09  Gareth Owen  <gowen72@yahoo.com>
 
 	* configure.in: Added en_GB to ALL_LINGUAS
