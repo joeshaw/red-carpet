@@ -290,6 +290,15 @@
        satisfied with the set of actions, click
        <guibutton>Continue</guibutton>.
     </para>
+    <tip id="tip-mirrors">
+      <title>Use a Mirror for Faster Downloads</title>
+      <para>
+        For best performance, select a mirror near you. To learn how
+        to choose a mirror, and why mirrors can give you a faster
+        download, read <xref linkend="prefs-general" />.
+      </para>
+    </tip>
+
   </sect1>
 
   <sect1 id="five-views">
@@ -861,24 +870,24 @@
       </para>
       <para>
         In addition to the action and package name available in the
-        concise view, you can also see the package version number and the
-        amount of disk space taken up by the package.
+        concise view, the detailed transaction view lets you see see
+        the package version number and the amount of disk space taken
+        up by the package.
       </para>
     </sect2>
   </sect1>
 
 
   <sect1 id="rcx">
-    <title>Red Carpet Express</title>
+    <title>Red Carpet Express: More Software, Faster</title>
     <para>
-      Red Carpet Express is a premium service that provides you with
-      exclusive access to high speed download servers, plus additional
-      software not available through the free service.
-    </para>
-    <para>
-      To sign up for Red Carpet Express, and more information about
-      its benefits, visit <ulink
-      url="http://store.ximian.com">http://store.ximian.com</ulink>.
+       Red Carpet Express is a premium service that
+       provides you with exclusive access to high speed download
+       servers, plus additional software not available through the free
+       service. Red Carpet Express works like basic regular Red Carpet
+      service, except there are more channels of software available,
+      and you connect to a dedicated high-bandwidth server. A one-year
+       subscription is included with the purchase of Ximian Desktop. 
     </para>
     <para>
       When you purchase a subscription, you will be given an
@@ -895,9 +904,30 @@
       the <guilabel>General</guilabel> section, clicking the
       <guilabel>Enable Premium Services</guilabel> checkbox.
     </para>
+    <para>
+      To sign up for Red Carpet Express, or find more information about
+      its benefits, visit <ulink
+      url="http://store.ximian.com">http://store.ximian.com</ulink>. 
+    </para>
+
+    <note id="rce">
+      <title>Red Carpet Enterprise</title>
+      <para>
+        Red Carpet Enterprise allows you to run your own Ximian Red
+        Carpet server and distribute software to your network in a
+        secure and convenient manner. Clients may connect with either Red
+        Carpet or the "rc" command line tool, simplifying automated
+        updates. The server includes a web interface and scriptable
+        command line tools.  You can use Red Carpet Enterprise to
+        manage installs and updates for internal or purchased software, plus
+        easy redistribution of software from Ximian, SuSE YaST, and the Red
+        Hat Network. For additional information, visit <ulink
+        url="http://ximian.com">http://ximian.com</ulink>. 
+      </para>
+    </note>
+
   </sect1>
-
-
+ 
 
   <sect1 id="preferences">
     <title>Ximian Red Carpet Preferences</title>
@@ -916,10 +946,37 @@
              <term>Server URL</term>
                <listitem>
                  <para>
-                 The location of the Red Carpet server you are using.
+                 The location of the Red Carpet server you are
+                   using. If you know the exact URL of a server, you can enter it here,
+                   or choose one from the list of mirrors by clicking
+                   the <guibutton>Mirrors</guibutton> button.
                  </para>
                </listitem>
              </varlistentry>
+
+               <varlistentry>
+                 <term>Mirrors</term>
+                 <listitem>
+                   <para>
+                     Click this button to get a list of mirrors you
+                     can choose from. All of these servers have the
+                     same software as the main Ximian server, and
+                     update at least once per day. 
+                   </para>
+                   <para>
+                     For best results, choose a mirror with a physical
+                     location near yours.  That generally means that
+                     there are fewer intermediate connections between
+                     the server and your computer.  In addition, the
+                     primary Ximian site is often crowded, so even a
+                     relatively distant mirror can be faster. Another
+                     way to get a faster connection is with Red Carpet
+                     Express. See <xref linkend="rcx" /> for more information.
+                   </para>
+                 </listitem>
+               </varlistentry>
+
+
 
              <varlistentry>
                <term>Enable Premium Services</term>
@@ -1133,16 +1190,13 @@
     <para>
       Ximian Red Carpet may be used with remote systems running the
       Red Carpet Daemon, <command>rcd</command>.  You will need to
-      have an account <emphasis>with the daemon</emphasis> on the remote
-      system. 
+      have an account with the daemon on the remote system.
     </para>
     <para>
-      To add an account on the remote system, you must log in to that
+      To add an rcd account on the remote system, you must log in to that
       system as root, and use the <command>rc user-add -U username -P
-      password</command> command to add a user. Then, you may administer
-      the system using the <command>rc</command> command or the graphical
-      <command>red-carpet</command> tool. For information on using the
-      command line methods, type <command>man rc</command>.
+      password</command> command. Then, you may administer the system
+    without logging in as root.
     </para>
     <para>
       To connect to a remote system, do the following:
@@ -1182,6 +1236,11 @@
       Once you are connected you can view and administer the system as
       you would a local one, in accordance with the privileges granted
       to your account.
+    </para>
+    <para>
+      You can also use the <command>rc</command> command to administer
+      a remote system. For information on the command line Red Carpet
+      tools, use the <command>man rc</command> command.
     </para>
   </sect1>
 
