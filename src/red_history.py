@@ -107,9 +107,9 @@ class HistorySearchBar(HistoryFilter):
         self.container = gtk.HBox(0, 5)
 
         actions = [("All",        None),
-                   ("Package Installations", "install"),
-                   ("Package Removals",      "remove"),
-                   ("Package Upgrades",      "upgrade")]
+                   ("Installations", "install"),
+                   ("Removals",      "remove"),
+                   ("Upgrades",      "upgrade")]
         self.action_opt = HistoryOption(actions)
         self.container.pack_start(self.action_opt, 0, 0, 0)
         self.action_opt.connect("selected", lambda x, y:self.updated())
@@ -173,9 +173,6 @@ class HistoryComponent(red_component.Component):
     def accelerator(self):
         return "<Control>h"
 
-    def long_name(self):
-        return "Browse Package History"
-
     def pixbuf(self):
         return "history"
 
@@ -232,6 +229,9 @@ class HistoryView(gtk.ScrolledWindow):
             col = gtk.TreeViewColumn(label,
                                      gtk.CellRendererText(),
                                      text=id)
+
+            col.set_resizable(1)
+
             if sortable:
                 col.set_sort_column_id(id)
             self.view.append_column(col)
@@ -239,6 +239,7 @@ class HistoryView(gtk.ScrolledWindow):
         self.view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_shadow_type(gtk.SHADOW_OUT)
         self.add(self.view)
 
 COLUMN_ROW =     0

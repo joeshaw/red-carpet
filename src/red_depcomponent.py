@@ -96,7 +96,7 @@ class DepComponent(red_component.Component):
 
         # If we're verifying and we don't need to do anything...
         if self.verify and not self.dep_install and not self.dep_remove:
-            page = gtk.VBox(0, 0)
+            page = gtk.VBox(0, 6)
 
             hbox = gtk.HBox(0, 0)
             page.pack_start(hbox, expand=0, fill=0)
@@ -121,8 +121,13 @@ class DepComponent(red_component.Component):
             
             return page
 
-        page = gtk.VBox(0, 0)
-        
+        page = gtk.VBox(0, 6)
+
+        label = gtk.Label("")
+        label.set_alignment(0, 0.5)
+        label.set_markup("<b>" + self.long_name() + "</b>")
+        page.pack_start(label, 0, 0)
+
         # Freeze the daemon listeners while we're doing a dependency
         # resolution.  Otherwise we detect a change and slow things down.
         #red_serverlistener.freeze_polling()
@@ -149,8 +154,8 @@ class DepComponent(red_component.Component):
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.set_shadow_type(gtk.SHADOW_OUT)
         sw.add(self.table)
-        sw.show()
 
         page.pack_start(sw, 1, 1, 0)
 
@@ -160,9 +165,9 @@ class DepComponent(red_component.Component):
         cont = gtk.Button("Continue")
         buttons.pack_end(cont, 0, 0, 2)
         buttons.pack_end(cancel, 0, 0, 2)
-        buttons.show_all()
 
         page.pack_end(buttons, 0, 0, 0)
+        page.show_all()
 
         cont.connect("clicked", lambda x:self.begin_transaction())
         cancel.connect("clicked", lambda x:self.pop())

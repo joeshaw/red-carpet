@@ -55,6 +55,7 @@ class NewsView(gtk.ScrolledWindow):
         view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_shadow_type(gtk.SHADOW_OUT)
         self.add(view)
 
 

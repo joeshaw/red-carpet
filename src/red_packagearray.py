@@ -92,11 +92,12 @@ def pkg_status(pkg):
     elif pkg["name_installed"] < 0:
         return "downgrade"
     else:
-        return ""
+        return "uninstalled"
 
 __update_icon              = red_pixbuf.get_pixbuf("update")
 __downgrade_icon           = red_pixbuf.get_pixbuf("warning", width=24, height=24)
 __installed_icon           = red_pixbuf.get_pixbuf("installed")
+__uninstalled_icon         = red_pixbuf.get_pixbuf("uninstalled")
 
 def pkg_status_icon(pkg):
 
@@ -106,7 +107,7 @@ def pkg_status_icon(pkg):
         return __update_icon
     elif pkg["name_installed"] < 0: # downgrade
         return __downgrade_icon
-    return None
+    return __uninstalled_icon
 
 def pkg_action(pkg):
 

@@ -120,6 +120,13 @@ class TransactionComponent(red_component.Component):
 
         self.array = model
 
+        page = gtk.VBox(0, 6)
+
+        label = gtk.Label("")
+        label.set_alignment(0, 0.5)
+        label.set_markup("<b>" + self.long_name() + "</b>")
+        page.pack_start(label, 0, 0)
+
         view = red_packageview.PackageView()
         self.connect_view(view)
         
@@ -136,10 +143,13 @@ class TransactionComponent(red_component.Component):
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.set_shadow_type(gtk.SHADOW_OUT)
         scrolled.add(view)
-        view.show()
 
-        return scrolled
+        page.pack_start(scrolled, expand=1, fill=1)
+        page.show_all()
+
+        return page
 
 
     def changed_visibility(self, flag):
@@ -152,6 +162,7 @@ class TransactionSimple(gtk.ScrolledWindow):
     def __init__(self):
         gtk.ScrolledWindow.__init__(self)
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_shadow_type(gtk.SHADOW_OUT)
 
         view = red_packageview.PackageView()
         view.append_action_column(show_action_name=1)

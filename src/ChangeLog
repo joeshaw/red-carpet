@@ -1,3 +1,39 @@
+2003-02-11  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packagearray.py (pkg_status): Return "uninstalled" string
+	for uninstalled packages.
+	(pkg_status_icon): Show uninstalled icon.
+
+	* red_packageview.py (PackageView.append_current_version_column):
+	Enable resizing of the column.
+	(PackageView.append_version_column): Ditto.
+	(PackageView.append_name_column): Ditto.
+
+	* red_transaction.py (TransactionComponent.act_cb): Add page
+	title.
+
+	* red_channelbrowse.py (ChannelBrowseComponent.build): Add page
+	title. Add shadow.
+
+	* red_search.py (SearchComponent.build): Add shadow.
+
+	* red_system.py (SystemComponent.build): Add shadow.
+
+	* red_news.py (NewsView.__init__): Add shadow.
+
+	* red_transaction.py (TransactionSimple.__init__): Add shadow.
+	(TransactionComponent.build): Add shadow.
+
+	* red_depcomponent.py (DepComponent.build): Add shadow. Add page
+	title.
+
+	* red_history.py (HistoryView.build): Add shadow.
+	(long_name): name = long_name.
+	(HistorySearchBar.build): Removed unnecessary words "Package".
+	(HistoryView.build): Set columns resizable.
+
+	* red_summary.py (SummaryComponent.build): Add shadow.
+
 2003-02-10  Tambet Ingo  <tambet@ximian.com>
 
 	* red_appwindow.py (AppWindow.__init__): Don't show_all()

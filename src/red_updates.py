@@ -70,6 +70,7 @@ class SummaryComponent(red_component.Component):
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolled.set_shadow_type(gtk.SHADOW_OUT)
         scrolled.add(view)
         scrolled.show_all()
 
