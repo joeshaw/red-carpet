@@ -1,3 +1,25 @@
+2003-03-05  Jon Trowbridge  <trow@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Add red_my_computer.py.
+
+	* red_main.py (main): Register the "My Computer" component.
+
+	* red_my_computer.py: Added.  Implements a customized search
+	component for browsing packages on the system.
+
+	* red_packagearray.py (pkg_status): Replace the status strings
+	"upgrade" and "downgrade" with "newer" and "older".
+
+	* red_searchbox.py (SearchBox.__init__): Add a "system packages
+	only" flag to customize behavior for our "My Computer" component.
+	(SearchBox.__assemble): When just browsing system packages, don't
+	offer the "any subscribed channel" option item and hide the status
+	option menu.
+	(SearchBox.get_query): If we are searching system packages only,
+	assemble an appropriate query.
+	(SearchBox.get_filter): Correctly filter when we are only
+	searching system packages.
+
 2003-03-05  Joe Shaw  <joe@ximian.com>
 
 	* red_prefs.py: Make native pages and make the Advanced page

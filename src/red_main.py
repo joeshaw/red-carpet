@@ -33,6 +33,7 @@ import red_news
 import red_history
 import red_option
 import red_settings
+import red_my_computer
 
 red_running = 1
 
@@ -150,6 +151,7 @@ def main(version):
     app.set_title(red_name + " " + red_version)
 
     app.register_component(red_summary.SummaryComponent())
+    app.register_component(red_my_computer.MyComputerComponent())
     app.register_component(red_search.SearchComponent())
     app.register_component(red_news.NewsComponent())
     app.register_component(red_transaction.TransactionComponent())

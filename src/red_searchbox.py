@@ -66,13 +66,15 @@ class SearchBox(gtk.VBox):
 
     def __init__(self, title,
                  allow_entry=1,
-                 allow_advanced=1):
+                 allow_advanced=1,
+                 system_packages_only=0):
         gobject.GObject.__init__(self)
 
         self.__title = title
         
-        self.__allow_entry    = allow_entry
-        self.__allow_advanced = allow_advanced
+        self.__allow_entry          = allow_entry
+        self.__allow_advanced       = allow_advanced
+        self.__system_packages_only = system_packages_only
 
         self.__pending_change = 0
 
@@ -320,8 +322,12 @@ class SearchBox(gtk.VBox):
         title_label.set_markup("<b>%s</b>" % self.__title)
         top_row.pack_start(title_label, expand=0, fill=0, padding=0)
 
+        any_subd = 1
+        if self.__system_packages_only:
+            any_subd=0
+
         self.__ch_opt = red_channeloption.ChannelOption(allow_any_channel=1,
-                                                        allow_any_subd_channel=1,
+                                                        allow_any_subd_channel=any_subd,
                                                         allow_no_channel=0)
         self.__ch_opt.connect("selected",
                               lambda x, y, z: z.__changed(),
@@ -362,6 +368,11 @@ class SearchBox(gtk.VBox):
 
         if self.__allow_entry:
             entry_row.show_all()
+
+        if self.__system_packages_only:
+            stat_opt.hide()
+            self.__status_filter = None
+
 
         ###
         ### Create a box for our 'view' widget.
@@ -418,9 +429,13 @@ class SearchBox(gtk.VBox):
             query.insert(0, ["", "begin-or", ""])
             query.append(["", "end-or", ""])
 
-        channel_id = self.__ch_opt.get_channel_id()
-        if channel_id >= 0:
-            query.append(["channel", "is", str(channel_id)])
+        if self.__system_packages_only:
+            query.append(["installed", "is", "true"])
+            channel_id = 0
+        else:
+            channel_id = self.__ch_opt.get_channel_id()
+            if channel_id >= 0:
+                query.append(["channel", "is", str(channel_id)])
 
         return query
     
@@ -440,10 +455,17 @@ class SearchBox(gtk.VBox):
                       n=self.__match_section,
                       status_fn=self.__status_filter,
                       subd_dict=subd_dict):
+
             if subd_dict and not subd_dict.has_key(p.get("channel")):
                 return 0
+
+            if self.__system_packages_only \
+               and channel_id > 0 \
+               and channel_id != p.get("channel_guess"):
+                return 0
+            
             sect = p.get("section_num")
-            return status_fn(p) and (n < 0 or sect == n)
+            return (not status_fn or status_fn(p)) and (n < 0 or sect == n)
 
         return filter_fn
 

@@ -90,9 +90,9 @@ def pkg_status(pkg):
     if pkg["installed"]:
         return _("installed")
     elif pkg["name_installed"] > 0: # upgrade
-        return _("upgrade")
+        return _("newer")
     elif pkg["name_installed"] < 0:
-        return _("downgrade")
+        return _("older")
     else:
         return _("not installed")
 
