@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-29 04:15+0200\n"
+"POT-Creation-Date: 2004-08-18 04:17+0200\n"
 "PO-Revision-Date: 2004-07-29 11:38+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
@@ -113,7 +113,8 @@ msgstr "Aktivimi nuk është i mundur"
 
 #: src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
-msgstr "Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
+msgstr ""
+"Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
@@ -130,8 +131,10 @@ msgstr ""
 "kontakt me shitësin tuaj."
 
 #: src/red_appwindow.py:139
-msgid "Unable to show help because there are no applications available to view help."
-msgstr "E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr ""
+"E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
 
 #: src/red_appwindow.py:414
 #, python-format
@@ -268,8 +271,10 @@ msgid "_Activate..."
 msgstr "_Aktivo..."
 
 #: src/red_appwindow.py:633
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
+msgid ""
+"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
+msgstr ""
+"Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
 
 #: src/red_appwindow.py:639
 msgid "Quit"
@@ -544,7 +549,8 @@ msgid "Resolving Dependencies"
 msgstr "Duke zgjidhur varësitë"
 
 #: src/red_depcomponent.py:150
-msgid "You must agree to the licenses covering this software before installing it."
+msgid ""
+"You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a "
 "instaloni."
@@ -594,7 +600,7 @@ msgstr "Vazhdo"
 msgid "Channel"
 msgstr "Kanali"
 
-#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
+#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
 msgid "Package"
 msgstr "Paketa"
 
@@ -602,7 +608,7 @@ msgstr "Paketa"
 msgid "Current Version"
 msgstr "Versioni aktual"
 
-#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
+#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
 #: src/red_updates.py:94
 msgid "New Version"
 msgstr "Versioni i ri"
@@ -611,59 +617,59 @@ msgstr "Versioni i ri"
 msgid "Size"
 msgstr "Madhësia"
 
-#: src/red_history.py:113 src/red_users.py:30
+#: src/red_history.py:114 src/red_users.py:30
 msgid "All"
 msgstr "Gjithçka"
 
-#: src/red_history.py:114
+#: src/red_history.py:115
 msgid "Installations"
 msgstr "Instalimet"
 
-#: src/red_history.py:115
+#: src/red_history.py:116
 msgid "Removals"
 msgstr "Heqjet"
 
-#: src/red_history.py:116
+#: src/red_history.py:117
 msgid "Upgrades"
 msgstr "Rifreskimet"
 
-#: src/red_history.py:121
+#: src/red_history.py:122
 msgid "User:"
 msgstr "Përdoruesi:"
 
-#: src/red_history.py:127
+#: src/red_history.py:128
 msgid "Timeframe (days):"
 msgstr "Intervali (ditë):"
 
-#: src/red_history.py:279
+#: src/red_history.py:280
 msgid "Searching..."
 msgstr "Duke kërkuar..."
 
-#: src/red_history.py:301 src/red_history.py:435
+#: src/red_history.py:302 src/red_history.py:436
 msgid "Time"
 msgstr "Ora"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
+#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
 msgid "Action"
 msgstr "Veprimi"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
+#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
 msgid "User"
 msgstr "Përdoruesi"
 
-#: src/red_history.py:305 src/red_history.py:438
+#: src/red_history.py:306 src/red_history.py:439
 msgid "Old Version"
 msgstr "Versioni i vjetër"
 
-#: src/red_history.py:336 src/red_packagepage.py:45
+#: src/red_history.py:337 src/red_packagepage.py:45
 msgid "History"
 msgstr "Kronollogjia"
 
-#: src/red_history.py:339
+#: src/red_history.py:340
 msgid "_History"
 msgstr "_Kronollogjia"
 
-#: src/red_history.py:383
+#: src/red_history.py:384
 msgid "No results found."
 msgstr "Nuk u gjet asnjë rezultat."
 
@@ -1443,4 +1449,3 @@ msgstr "Emër përdoruesi i pasaktë."
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Përdoruesi '%s' ekziston."
-
