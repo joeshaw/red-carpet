@@ -26,6 +26,7 @@ class PackageView(red_thrashingtreeview.TreeView):
 
     def __init__(self):
         gobject.GObject.__init__(self)
+        red_thrashingtreeview.TreeView.__init__(self)
 
         self.set_rules_hint(1)
 

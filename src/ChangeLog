@@ -1,5 +1,10 @@
 2003-01-24  Joe Shaw  <joe@ximian.com>
 
+	* red_packageview.py: Call the thrashing treeview's constructor
+	explicitly.
+
+2003-01-24  Joe Shaw  <joe@ximian.com>
+
 	* red_channelmodel.py: Add a TRANSIENT column, take sort and
 	filter functions, make it pretty similar to a PackageArray so we
 	can share some code between them with an abstract class later.

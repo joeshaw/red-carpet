@@ -20,7 +20,6 @@ import gobject, gtk
 class TreeView(gtk.TreeView):
 
     def __init__(self, model=None):
-        #gtk.TreeView.__init__(self, model)
         gobject.GObject.__init__(self)
 
         self.__pre_changed_id = 0
