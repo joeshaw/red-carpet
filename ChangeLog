@@ -1,3 +1,9 @@
+2003-04-29  Joe Shaw  <joe@ximian.com>
+
+	* art/my-computer.png: Renamed to installed.png
+
+	* art/throb-*.png: Removed; we don't have a throbber anymore.
+
 2003-04-25  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: Bump version up to 1.99.2.
