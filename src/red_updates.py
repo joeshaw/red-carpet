@@ -30,15 +30,8 @@ class SummaryComponent(red_component.Component):
     def pixbuf(self):
         return "summary"
 
-    def get_updates(self):
-        self.updates = self.server().rcd.packsys.get_updates()
-        self.packages = map(lambda x:x[1], self.updates)
-
-
     def build(self):
-        self.get_updates()
-        self.array = red_packagearray.PackageStore()
-        self.array.set(self.packages)
+        self.array = red_packagearray.UpdatedPackages(self.server())
 
         ### Upper
         
@@ -47,7 +40,7 @@ class SummaryComponent(red_component.Component):
         msg1 = gtk.Label("")
         msg1.set_markup("There are "
                         "<b>%d updates</b>"
-                        " available for your system." % len (self.packages))
+                        " available for your system." % self.array.len())
         vbox.pack_start(msg1, 1, 1, 0)
         
         vbox.show_all()
@@ -56,7 +49,7 @@ class SummaryComponent(red_component.Component):
 
         ### Main
 
-        if self.packages:
+        if self.array.len() > 0:
             ex = red_explodedview.ExplodedView(array=self.array,
                                                by_importance=1)
             
@@ -88,4 +81,11 @@ class SummaryComponent(red_component.Component):
         b.connect("clicked", not_yet)
         
         self.display("lower", box)
+
+
+    def changed_visibility(self, flag):
+        if flag:
+            self.array.thaw()
+        else:
+            self.array.freeze()
         

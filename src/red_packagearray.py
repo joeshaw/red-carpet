@@ -266,59 +266,81 @@ class FilteredPackageArray(PackageArray):
         if self.cache_dirty:
             self.fill_cache()
             return self.cache
-        
+
+
 ###############################################################################
 
-def pkg_cmp(a,b):
-    return cmp(string.lower(a["name"]), string.lower(b["name"]))
 
-class PackageQuery(PackageArray):
+class PackagesFromDaemon(PackageArray):
 
-    def __init__(self, server, query=None):
+    def __init__(self, server):
         PackageArray.__init__(self)
-        
+
         self.server = server
-        self.seqno = -1
         self.packages = []
+        self.seqno = -1
         self.timeout = 0
         self.timeout_length = 10000
+        self.freeze_count = 0
 
-        self.set_query(query)
+    # FIXME: We should probably disable the timeout when we are frozen
+    # and re-add it when we thaw.
+        
+    def freeze(self):
+        self.freeze_count = self.freeze_count + 1
+
+    def thaw(self):
+        if self.freeze_count > 0:
+            self.freeze_count = self.freeze_count - 1
+            if self.freeze_count == 0:
+                self.sync_with_daemon()
+
+    # This is the method that derived classes need to implement
+    def get_packages_from_daemon(self, server):
+
+        assert 0
+
+    def enable_sync(self):
+        if self.timeout:
+            gtk.timeout_remove(self.timeout)
+        self.sync_with_daemon()
+        self.timeout = gtk.timeout_add(self.timeout_length,
+                                       PackagesFromDaemon.sync_with_daemon,
+                                       self)
+
+    def disable_sync(self):
+        if self.timeout:
+            gtk.timeout_remove(self.timeout)
+            self.timeout = 0
 
     def sync_with_daemon(self):
+
+        if self.freeze_count > 0:
+            return
+        
         current_seqno = self.server.rcd.packsys.world_sequence_number()
         if current_seqno != self.seqno:
 
-            if type(self.query) == type(None):
-                packages = []
-            else:
-                print "query:", self.query
-                import time
-                start = time.time()
-                packages = self.server.rcd.packsys.search(self.query)
-                end = time.time()
-                print "time=%.2f" % (end - start)
-                print "got %d packages (%.2f pkgs/sec)" \
-                      % (len(packages), len(packages)/(end-start))
+            self.seqno = current_seqno
+
+            packages = self.get_packages_from_daemon(self.server)
+
+            # FIXME: This sorting function should be smarter, and should
+            # sort lists into some sort of canonical form that will
+            # make it inexpensive to figure out if array.packages != packages.
+            def pkg_cmp(a,b):
+                return cmp(string.lower(a["name"]), string.lower(b["name"]))
+            if packages:
                 packages.sort(pkg_cmp)
 
+            # FIXME: we should only emit if array.packages != packages
+            def set_pkg_cb(array, p):
+                array.packages = p
+            self.changed(set_pkg_cb, packages)
 
-            self.seqno = current_seqno
-            # FIXME: should only emit if packages != self.packages
-            def set_pkgs_op(s, p):
-                s.packages = p
-            self.changed(set_pkgs_op, packages)
-
-    def set_query(self, query):
-        self.query = query
-        self.seqno = -1
-        self.sync_with_daemon()
-        if self.timeout:
-            gtk.timeout_remove(self.timeout)
-        if self.timeout_length > 0: 
-            self.timeout = gtk.timeout_add(self.timeout_length,
-                                           lambda x:x.sync_with_daemon(),
-                                           self)
+        # Since this is used as a timeout function, we have to return TRUE
+        # to make sure that we don't just sync once.
+        return 1
 
     def len(self):
         return len(self.packages)
@@ -329,4 +351,56 @@ class PackageQuery(PackageArray):
 
     def get_all(self):
         return self.packages
+
+
+###############################################################################
+
+
+class PackagesFromQuery(PackagesFromDaemon):
+
+    def __init__(self, server, query=None):
+        PackagesFromDaemon.__init__(self, server)
+        self.set_query(query)
+
+    def get_packages_from_daemon(self, server):
+
+        print "query:", self.query
+        import time
+        start = time.time()
+        packages = server.rcd.packsys.search(self.query)
+        end = time.time()
+        print "time=%.2f" % (end - start)
+        print "got %d packages (%.2f pkgs/sec)" \
+              % (len(packages), len(packages)/(end-start))
+
+        return packages
+        
+    def set_query(self, query):
+        self.query = query
+        self.seqno = -1
+
+        if type(query) == type(None):
+            self.disable_sync()
+        else:
+            self.enable_sync()
+
+
+###############################################################################
+
+
+class UpdatedPackages(PackagesFromDaemon):
+
+    def __init__(self, server):
+        PackagesFromDaemon.__init__(self, server)
+        self.enable_sync()
+
+    def get_packages_from_daemon(self, server):
+
+        ## Since we might want to add extra methods for accessing
+        ## more of the update data later, there is no harm in keeping
+        ## the whole list of updates around.
+        self.updates = server.rcd.packsys.get_updates()
+        packages = map(lambda x: x[1], self.updates)
+
+        return packages
 

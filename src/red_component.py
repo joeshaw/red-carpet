@@ -45,8 +45,9 @@ class Component(gobject.GObject):
         if flag and not self.did_build:
             self.build()
             self.did_build = 1
-        if not self.visible_flag ^ flag:
+        if self.visible_flag ^ flag:
             self.visible_flag = flag
+            self.changed_visibility(flag)
             self.emit("visible", flag)
 
     def is_visible(self):
@@ -61,6 +62,10 @@ class Component(gobject.GObject):
         self.server_obj = server
         self.have_server = 1
 
+    ###
+    ### Virtual functions
+    ###
+
     def name(self):
         return "?Unknown?"
 
@@ -71,6 +76,9 @@ class Component(gobject.GObject):
         return None
 
     def build(self):
+        pass
+
+    def changed_visibility(self, flag):
         pass
 
 gobject.type_register(Component)
