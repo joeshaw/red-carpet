@@ -1,0 +1,5 @@
+2003-01-23  Jon Trowbridge  <trow@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Updated the list of files
+	so that we can make distcheck.
+
