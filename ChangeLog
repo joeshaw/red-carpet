@@ -1,5 +1,9 @@
 2003-02-06  Frank Belew  <frb@ximian.com>
 
+	* autogen.sh: big ugly hack to make it use automake-1.6
+
+2003-02-06  Frank Belew  <frb@ximian.com>
+
 	* Makefile.am: add requirement for automake 1.6 or better
 
 	* configure.in: use AM_PATH_PYTHON instead of homegrown version check
