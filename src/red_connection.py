@@ -117,7 +117,10 @@ class StartDaemon:
             if self.service_pid != -1:
                 os.kill(self.service_pid, signal.SIGKILL)
             if self.rcd_pid != -1:
-                os.kill(self.rcd_pid, signal.SIGKILL)
+                try:
+                    os.kill(self.rcd_pid, signal.SIGKILL)
+                except OSError, e: # Couldn't kill it, probably already dead
+                    pass
 
         return self.success
 
@@ -127,9 +130,15 @@ class StartDaemon:
             if pid == self.service_pid:
                 self.service_pid = -1
 
-                pidfile = open("/var/run/rcd.pid")
-                pidstr = pidfile.read()
-                self.rcd_pid = int(pidstr)
+                try:
+                    pidfile = open("/var/run/rcd.pid")
+                except IOError: # File doesn't exist?
+                    self.dialog.response(gtk.RESPONSE_CANCEL)
+                    return 0
+                else:
+                    pidstr = pidfile.read()
+                    self.rcd_pid = int(pidstr)
+                    pidfile.close()
 
         if self.rcd_pid != -1:
             # FIXME: allow other paths?
@@ -283,7 +292,12 @@ def connect_from_window(parent=None):
             server = connect(*connect_info)
         except ConnectException, e:
             if local and can_start_daemon():
-                server = connect(*connect_info)
+                started = start_daemon()
+                if started:
+                    try:
+                        server = connect(*connect_info)
+                    except ConnectException, e:
+                        show_error_message(e.err_msg, parent=parent)
             else:
                 show_error_message(e.err_msg, parent=parent)
 

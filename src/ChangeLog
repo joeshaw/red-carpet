@@ -1,3 +1,13 @@
+2003-04-02  Joe Shaw  <joe@ximian.com>
+
+	* red_connection.py (connect_from_window): Actually make starting
+	the daemon work again.
+	(StartDaemon.run): Catch exceptions when trying to kill the daemon
+	in case it isn't there anymore.
+	(StartDaemon.wait_for_daemon_cb): Catch exceptions when trying to
+	read from the pidfile and make sure we close it when we're
+	finished.
+
 2003-04-02  Tambet Ingo  <tambet@ximian.com>
 
 	* red_pendingops.py (clear): Remove package from package_data
