@@ -1,0 +1,48 @@
+#!@PYTHON@
+
+###
+### Copyright 2002 Ximian, Inc.
+###
+### This program is free software; you can redistribute it and/or modify
+### it under the terms of the GNU General Public License, version 2,
+### as published by the Free Software Foundation.
+###
+### This program is distributed in the hope that it will be useful,
+### but WITHOUT ANY WARRANTY; without even the implied warranty of
+### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+### GNU General Public License for more details.
+###
+### You should have received a copy of the GNU General Public License
+### along with this program; if not, write to the Free Software
+### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+###
+
+import sys
+import os
+
+red_carpet_dir = "@DDIR@/rc"
+red_carpet_version = "@VERSION@"
+
+# FIXME: This has a special check to allow us to run rc in-place
+# without having done a "make install".  We might want to take this
+# out at some point.
+
+if not (os.path.isfile("./redmain.py") \
+        or (os.path.isdir(red_carpet_dir) \
+            and os.path.isfile(red_carpet_dir + "/redmain.py"))):
+    print "ERROR: The Red Carpet Graphical Client doesn't appear to be"
+    print "ERROR: installed properly.  Please check your installation."
+    sys.exit(1)
+
+
+sys.path.append(red_carpet_dir)
+import redmain
+
+if "--rc-profile" in sys.argv:
+    import profile
+    sys.stderr.write("*** Profiling Enabled ***\n")
+    sys.argv = filter(lambda x:x != "--rc-profile", sys.argv)
+    profile.run("rcmain.main(rc_version)")
+else:
+    redmain.main(red_carpet_version)
+    
