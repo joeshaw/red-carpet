@@ -1,3 +1,53 @@
+2003-03-07  Tambet Ingo  <tambet@ximian.com>
+   
+	* red_component.py (Component.__init__): current_pkgs is now an
+	array instead of single package.
+	(Component.packages_selected): Emit "package_selected" for each
+	package.
+	
+	* red_packageview.py (PackageView.__init__): Allow multiple
+	selection.  Send all selected packages with "selected" signal.
+	(PackageView.button_clicked_for_popup_cb): Ignore middle
+	button. End signal emission if pressed button is right button.
+	(PackageView.get_selected_packages): New helper function.
+	(PackageView.do_popup): Make it look and feel like toolbar's
+	action items: Show them all in the same order, sensitize as
+	necessary.
+
+	* red_pendingops.py (can_perform_action_single): New
+	function. Helper for sensitize functions, takes care of privileges
+	also.
+	(can_perform_action_multiple): Ditto for multiple packages.
+
+	* red_appwindow.py (AppWindow.install_sensitive_cb): Cleaned up,
+	use common helper function, handle multiple selections.
+	(AppWindow.remove_sensitive_cb): Ditto.
+	(AppWindow.cancel_sensitive_cb): Ditto.
+	(AppWindow.set_package_action_cb): Ditto.
+	(AppWindow.info_sensitive_cb): Ditto. It's sensitive only if a
+	single package is selected.
+	(AppWindow.package_info_cb): Handle multiple selections.
+	(AppWindow.assemble_toolbar): Change tooltips to plural form.
+
+	* red_my_computer.py (MyComputerComponent.build): Connect view to
+	the component. Fixes toolbar item's sensitize methods.
+
+	* red_thrashingtreeview.py (TreeView.pre_thrash_model): Save all
+	selected paths.
+	(TreeView.post_thrash_model): Restore all saved paths.
+
+	* red_summary.py (SummaryComponent.select_all): Just select all
+	rows, don't set any actions.
+	(SummaryComponent.unselect_all): Ditto for unselect.
+	(SummaryComponent.build): Save view widget, it's needed in select
+	all/none methods.
+
+	* red_search.py (SearchComponent.select_all): Just select all
+	rows, don't set any actions.
+	(SearchComponent.unselect_all): Ditto for unselect.
+	(SearchComponent.build): Save view widget, it's needed in select
+	all/none methods.
+
 2003-03-07  Jon Trowbridge  <trow@ximian.com>
 
 	* red_searchbox.py (SearchBox.all_cb): "Not Installed" is bad

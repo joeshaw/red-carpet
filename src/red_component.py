@@ -27,7 +27,7 @@ class Component(gobject.GObject):
         self.__visible_flag = 0
         self.__busy_flag = 0
         self.__parent = None
-        self.__current_pkg = None
+        self.__current_pkgs = []
 
 
     # Forces the component to emit a 'display' signal
@@ -111,17 +111,18 @@ class Component(gobject.GObject):
             self.__widget = widget
             self.emit("display", widget)
 
-    def package_selected(self, pkg):
-        self.__current_pkg = pkg
-        self.emit("package_selected", pkg)
+    def packages_selected(self, pkgs):
+        self.__current_pkgs = pkgs
+        for pkg in pkgs:
+            self.emit("package_selected", pkg)
 
-    def get_current_package(self):
-        return self.__current_pkg
+    def get_current_packages(self):
+        return self.__current_pkgs
 
     # Proxy selected signals from package views
     def connect_view(self, view):
-        def proxy_selected_cb(view, path, pkg, comp):
-            comp.package_selected(pkg)
+        def proxy_selected_cb(view, pkgs, comp):
+            comp.packages_selected(pkgs)
         view.connect("selected", proxy_selected_cb, self)
 
     # Proxy busy and message signals from arrays.

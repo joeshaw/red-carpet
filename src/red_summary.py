@@ -114,6 +114,7 @@ class SummaryComponent(red_component.Component):
 
         view = red_packageview.PackageView(self.array)
         self.connect_view(view)
+        self.view = view
 
         view.append_action_column()
         col = view.append_importance_column()
@@ -151,14 +152,12 @@ class SummaryComponent(red_component.Component):
             self.array.freeze()
 
     def select_all_sensitive(self):
-        return rcd_util.check_server_permission("upgrade") \
-               and self.array.len() > 0
+        return self.array.len() > 0
 
     def select_all(self):
-        for pkg in self.array.get_all():
-            if not pkg["installed"]:
-                red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)
+        selection = self.view.get_selection()
+        selection.select_all()
 
     def unselect_all(self):
-        for pkg in self.array.get_all():
-            red_pendingops.set_action(pkg, red_pendingops.NO_ACTION)
+        selection = self.view.get_selection()
+        selection.unselect_all()

@@ -79,31 +79,30 @@ class PackageView(red_thrashingtreeview.TreeView):
         self.set_model(model)
 
         select = self.get_selection()
-        select.set_mode(gtk.SELECTION_SINGLE)
+        select.set_mode(gtk.SELECTION_MULTIPLE)
 
         def selection_changed_cb(select, view):
-            model, iter = select.get_selected()
-            if iter:
-                path = model.get_path(iter)
-                pkg = model.get_list_item(path[0])
-                self.emit("selected", path[0], pkg)
+            pkgs = view.get_selected_packages()
+            view.emit("selected", pkgs)
 
         # This callback gets invoked before the selection has
         # been updated, which causes get_selected to return
         # out-of-date information unless we do the query in an
         # idle callback.
         def button_clicked_for_popup_cb(view, ev, select):
+            if ev.button == 2:
+                return 1
+
             if ev.button == 3:
                 def clicked_idle_cb(view, ev, select, b, t):
-                    model, iter = select.get_selected()
-                    if iter:
-                        path = model.get_path(iter)
-                        pkg = model.get_list_item(path[0])
-                        view.emit("popup", ev, path[0], b, t, pkg)
-                    return 0
+                    view.emit("popup", ev, b, t)
+
                 gtk.idle_add(clicked_idle_cb,
                              view, ev, select,
                              ev.button, ev.time)
+                return 1
+
+            return 0
 
         def row_activated_cb(view, path, col):
             model = view.get_model()
@@ -121,12 +120,24 @@ class PackageView(red_thrashingtreeview.TreeView):
                      button_clicked_for_popup_cb,
                      select)
 
+
+    def get_selected_packages(self):
+        def selected_cb(model, path, iter, list):
+            if iter:
+                pkg = model.get_list_item(path[0])
+                list.append(pkg)
+
+        pkgs = []
+        select = self.get_selection()
+        select.selected_foreach(selected_cb, pkgs)
+        return pkgs
+
     ## This 'activated_fn' business is just a hack to get a call to
     ## toggle_action to be the default behavior.
     def set_activated_fn(self, fn):
         self.__activated_fn = fn
 
-    def do_selected(self, i, pkg):
+    def do_selected(self, pkgs):
         pass
         #print "selected %s (%d)" % (pkg["name"], i)
 
@@ -137,110 +148,75 @@ class PackageView(red_thrashingtreeview.TreeView):
             red_pendingops.toggle_action(pkg)
         #print "activated %s (%d)" % (pkg["name"], i)
 
-    def do_popup(self, ev, i, ev_button, ev_time, pkg):
+    def do_popup(self, ev, ev_button, ev_time):
         menu = gtk.Menu()
         menu.attach_to_widget(self, None)
 
-        item = gtk.ImageMenuItem(_("Package Info"))
-        image = red_pixbuf.get_widget("info")
+        pkgs = self.get_selected_packages()
+
+        def set_package_action(pkgs, action):
+            for pkg in pkgs:
+                if red_pendingops.can_perform_action_single(pkg, action):
+                    red_pendingops.set_action(pkg, action)
+
+        # Install
+        item = gtk.ImageMenuItem(_("Install selected packages"))
+        image = red_pixbuf.get_widget("to-be-installed")
         item.set_image(image)
+        if not red_pendingops.can_perform_action_multiple(pkgs,
+                                                          red_pendingops.TO_BE_INSTALLED):
+            item.set_sensitive(0)
         item.show_all()
         menu.append(item)
 
         item.connect("activate",
-                     lambda x:red_packagebook.show_package_info(pkg))
+                     lambda x:set_package_action(pkgs, red_pendingops.TO_BE_INSTALLED))
+
+        # Remove
+        item = gtk.ImageMenuItem(_("Remove selected packages"))
+        image = red_pixbuf.get_widget("to-be-removed")
+        item.set_image(image)
+        if not red_pendingops.can_perform_action_multiple(pkgs,
+                                                          red_pendingops.TO_BE_REMOVED):
+            item.set_sensitive(0)
+        item.show_all()
+        menu.append(item)
+
+        item.connect("activate",
+                     lambda x:set_package_action(pkgs, red_pendingops.TO_BE_REMOVED))
+
+        # Cancel
+        item = gtk.ImageMenuItem(_("Cancel actions"))
+        image = gtk.Image()
+        image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
+        item.set_image(image)
+        item.show_all()
+        if not red_pendingops.can_perform_action_multiple(pkgs,
+                                                          red_pendingops.NO_ACTION):
+            item.set_sensitive(0)
+        menu.append(item)
+
+        item.connect("activate",
+                     lambda x:set_package_action(pkgs, red_pendingops.NO_ACTION))
 
         item = gtk.SeparatorMenuItem()
         item.show_all()
         menu.append(item)
 
-        registered_action = red_pendingops.package_action(pkg)
+        # Info
+        item = gtk.ImageMenuItem(_("Package Info"))
+        image = red_pixbuf.get_widget("info")
+        item.set_image(image)
+        item.show_all()
+        if len(pkgs) != 1:
+            item.set_sensitive(0)
+        menu.append(item)
 
-        if registered_action != red_pendingops.NO_ACTION:
-            item = gtk.ImageMenuItem(_("Cancel action"))
-            image = gtk.Image()
-            image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_MENU)
-            item.show_all()
-            menu.append(item)
-
-            item.connect("activate",
-                         lambda x:red_pendingops.set_action(pkg, red_pendingops.NO_ACTION))
-
-        if red_packagearray.pkg_is_name_installed(pkg):
-            if registered_action != red_pendingops.TO_BE_REMOVED:
-                item = gtk.ImageMenuItem(_("Remove this package"))
-                image = red_pixbuf.get_widget("to-be-removed")
-                item.set_image(image)
-                if not rcd_util.check_server_permission("remove"):
-                    item.set_sensitive(0)
-                item.show_all()
-                menu.append(item)
-
-                item.connect("activate",
-                             lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_REMOVED))
-        else:
-            if registered_action != red_pendingops.TO_BE_INSTALLED:
-                item = gtk.ImageMenuItem(_("Install this package"))
-                image = red_pixbuf.get_widget("to-be-installed")
-                item.set_image(image)
-                if not rcd_util.check_server_permission("install"):
-                    item.set_sensitive(0)
-                item.show_all()
-                menu.append(item)
-
-                item.connect("activate",
-                             lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
-
-        if red_packagearray.pkg_is_upgrade(pkg) and \
-           registered_action != red_pendingops.TO_BE_INSTALLED:
-            item = gtk.ImageMenuItem(_("Upgrade"))
-            image = red_pixbuf.get_widget("to-be-upgraded")
-            item.set_image(image)
-            if not rcd_util.check_server_permission("upgrade"):
-                item.set_sensitive(0)
-            item.show_all()
-            menu.append(item)
-
-            item.connect("activate",
-                         lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
-        elif red_packagearray.pkg_is_downgrade(pkg) and \
-             registered_action != red_pendingops.TO_BE_INSTALLED:
-            item = gtk.ImageMenuItem(_("Downgrade"))
-            image = red_pixbuf.get_widget("to-be-downgraded")
-            item.set_image(image)
-            if not rcd_util.check_server_permission("upgrade"):
-                item.set_sensitive(0)
-            item.show_all()
-            menu.append(item)
-
-            item.connect("activate",
-                         lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
-
-
-        # FIXME: We don't want locking right now.
-##         item = gtk.SeparatorMenuItem()
-##         item.show_all()
-##         menu.append(item)
-
-##         # Locking
-##         if pkg["locked"]:
-##             item = gtk.ImageMenuItem(_("Unlock"))
-##         else:
-##             item = gtk.ImageMenuItem(_("Lock"))
-
-##         image = red_pixbuf.get_widget("lock")
-##         item.set_image(image)
-##         if not rcd_util.check_server_permission("lock"):
-##             item.set_sensitive(0)
-##         item.show_all()
-##         menu.append(item)
-
-##         item.connect("activate",
-##                      lambda x:red_locks.toggle_lock(pkg))
+        item.connect("activate",
+                     lambda x:red_packagebook.show_package_info(pkgs[0]))
 
 
         menu.popup(None, None, None, ev_button, ev_time)
-        #print "popup on %s (%d)" % (pkg["name"], i)
 
     def set_model(self, model):
         assert isinstance(model, red_packagearray.PackageArray)
@@ -442,8 +418,7 @@ gobject.signal_new("selected",
                    PackageView,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
-                   (gobject.TYPE_INT,
-                    gobject.TYPE_PYOBJECT))
+                   (gobject.TYPE_PYOBJECT,))
 
 gobject.signal_new("activated",
                    PackageView,
@@ -457,7 +432,7 @@ gobject.signal_new("popup",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gtk.gdk.Event.__gtype__,
-                    gobject.TYPE_INT, # item number,
                     gobject.TYPE_INT, # button,
                     gobject.TYPE_INT, # time
-                    gobject.TYPE_PYOBJECT))
+                    )
+                   )

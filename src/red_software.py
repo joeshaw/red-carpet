@@ -53,6 +53,8 @@ class MyComputerComponent(red_component.Component):
                                             sbox.get_filter()), self.__sbox)
 
         view = red_packageview.PackageView(self.array)
+        self.connect_view(view)
+        self.view = view
 
         view.append_action_column()
         view.append_channel_column()
@@ -72,7 +74,3 @@ class MyComputerComponent(red_component.Component):
         self.__sbox.try_to_grab_focus()
 
         return self.__sbox
-
-
-    
-

@@ -17,6 +17,7 @@
 
 import sys, weakref
 import rcd_util
+import red_packagearray
 
 from red_gettext import _
 
@@ -212,3 +213,41 @@ def pending_remove_count():
 def pending_ops_exist():
     return pending_install_count() > 0 or pending_remove_count() > 0
 
+def can_perform_action_single(pkg, action):
+    if not pkg:
+        return 0
+
+    pkg_action = package_action(pkg)
+    if pkg_action == action:
+        return 0
+
+    if action == NO_ACTION and \
+       pkg_action != NO_ACTION:
+        return 1
+
+    if action == TO_BE_REMOVED:
+        if red_packagearray.pkg_is_name_installed(pkg) and \
+           rcd_util.check_server_permission("remove"):
+            return 1
+        else:
+            return 0
+
+    if action == TO_BE_INSTALLED:
+        if not red_packagearray.pkg_is_name_installed(pkg) and \
+           rcd_util.check_server_permission("install"):
+            return 1
+
+        elif (red_packagearray.pkg_is_upgrade(pkg) or \
+              red_packagearray.pkg_is_downgrade(pkg)) and \
+              rcd_util.check_server_permission("upgrade"):
+            return 1
+        else:
+            return 0
+
+    return 0
+
+def can_perform_action_multiple(pkgs, action):
+    for p in pkgs:
+        if can_perform_action_single(p, action):
+            return 1
+    return 0

@@ -71,12 +71,16 @@ class TreeView(gtk.TreeView):
         self.saved_curpath, self.saved_column = self.get_cursor()
         
         model = self.get_model()
-        selpath = None
+        selpath = []
         if model:
+
+            def add_path(model, path, iter, list):
+                if iter:
+                    list.append(path)
+
             select = self.get_selection()
-            m, iter = select.get_selected()
-            if iter:
-                selpath = m.get_path(iter)
+            select.selected_foreach(add_path, selpath)
+ 
         self.saved_selpath = selpath
         self.saved_model = model
         gtk.TreeView.set_model(self, None)
@@ -85,17 +89,18 @@ class TreeView(gtk.TreeView):
         selpath = self.saved_selpath
         model = self.saved_model
         gtk.TreeView.set_model(self, model)
-        if selpath:
+
+        select = self.get_selection()
+        for path in selpath:
             try:
-                iter = model.get_iter(selpath)
+                iter = model.get_iter(path)
             except ValueError:
                 # If there's nothing left in the tree, we'll get a
                 # ValueError when we try to get an iter from the
                 # (now invalid) path.
                 iter = None
-                
+
             if iter:
-                select = self.get_selection()
                 select.select_iter(iter)
 
         if self.saved_curpath:

@@ -44,6 +44,7 @@ import red_searchbox
 import red_settings
 from red_gettext import _
 
+
 def refresh_cb(app):
     server = rcd_util.get_server_proxy()
 
@@ -263,110 +264,66 @@ class AppWindow(gtk.Window,
     ##
     ## Toolbar and menubar callback and sensitivity functions
     ##
-    
+
     def install_sensitive_cb(self):
         comp = self.get_component()
 
         if not comp:
             return 0
 
-        pkg = comp.get_current_package()
-
-        if not pkg:
-            return 0
-
-        pkg_action = red_pendingops.package_action(pkg)
-
-        if pkg_action == red_pendingops.TO_BE_INSTALLED:
-            return 0
-        else:
-            if not red_packagearray.pkg_is_name_installed(pkg) and \
-               rcd_util.check_server_permission("install"):
-                return 1
-
-            elif (red_packagearray.pkg_is_upgrade(pkg) or \
-                  red_packagearray.pkg_is_downgrade(pkg)) and \
-                  rcd_util.check_server_permission("upgrade"):
-                return 1
-
-            else:
-                return 0
+        pkgs = comp.get_current_packages()
+        return red_pendingops.can_perform_action_multiple(
+            pkgs, red_pendingops.TO_BE_INSTALLED)
 
     def remove_sensitive_cb(self):
         comp = self.get_component()
 
         if not comp:
             return 0
-        
-        pkg = comp.get_current_package()
 
-        if not pkg:
-            return 0
-
-        pkg_action = red_pendingops.package_action(pkg)
-
-        if pkg_action != red_pendingops.TO_BE_REMOVED and \
-           red_packagearray.pkg_is_name_installed(pkg) and \
-           rcd_util.check_server_permission("remove"):
-            return 1
-        else:
-            return 0
-
+        pkgs = comp.get_current_packages()
+        return red_pendingops.can_perform_action_multiple(
+            pkgs, red_pendingops.TO_BE_REMOVED)
 
     def cancel_sensitive_cb(self):
         comp = self.get_component()
 
         if not comp:
             return 0
-        
-        pkg = comp.get_current_package()
 
-        if not pkg:
-            return 0
-
-        pkg_action = red_pendingops.package_action(pkg)
-
-        if pkg_action != red_pendingops.NO_ACTION:
-            return 1
-        else:
-            return 0
-
-        assert pkg is not None
+        pkgs = comp.get_current_packages()
+        return red_pendingops.can_perform_action_multiple(
+            pkgs, red_pendingops.NO_ACTION)
 
     def set_package_action_cb(self, action):
         comp = self.get_component()
 
         assert comp is not None
         
-        pkg = comp.get_current_package()
-
-        assert pkg is not None
-
-        red_pendingops.set_action(pkg, action)
+        pkgs = comp.get_current_packages()
+        for pkg in pkgs:
+            if red_pendingops.can_perform_action_single(pkg, action):
+                red_pendingops.set_action(pkg, action)
 
     def info_sensitive_cb(self):
         comp = self.get_component()
 
         if not comp:
             return 0
-        
-        pkg = comp.get_current_package()
 
-        if not pkg:
-            return 0
-        else:
-            return 1
+        pkgs = comp.get_current_packages()
+        return len(pkgs) == 1
 
     def package_info_cb(self):
         comp = self.get_component()
 
         assert comp is not None
         
-        pkg = comp.get_current_package()
+        pkgs = comp.get_current_packages()
 
-        assert pkg is not None
+        assert len(pkgs) == 1
 
-        red_packagebook.show_package_info(pkg)
+        red_packagebook.show_package_info(pkgs[0])
 
     ##
     ## Toolbar
@@ -385,7 +342,7 @@ class AppWindow(gtk.Window,
         bar.append_space()
 
         bar.install = bar.add(text=_("Install"),
-                              tooltip=_("Install selected package"),
+                              tooltip=_("Install selected packages"),
                               pixbuf=red_pixbuf.get_pixbuf("to-be-installed",
                                                            width=width,
                                                            height=height),
@@ -393,14 +350,14 @@ class AppWindow(gtk.Window,
                               callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_INSTALLED))
 
         bar.remove = bar.add(text=_("Remove"),
-                             tooltip=_("Remove selected package"),
+                             tooltip=_("Remove selected packages"),
                              pixbuf=red_pixbuf.get_pixbuf("to-be-removed",
                                                           width=width, height=height),
                              sensitive_fn=self.remove_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.TO_BE_REMOVED))
 
         bar.cancel = bar.add(text=_("Cancel"),
-                             tooltip=_("Cancel package action"),
+                             tooltip=_("Cancel package actions"),
                              stock=gtk.STOCK_CANCEL,
                              sensitive_fn=self.cancel_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
