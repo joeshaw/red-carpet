@@ -329,6 +329,7 @@ class HistoryComponent(red_component.Component):
 
     def __init__(self):
         red_component.Component.__init__(self)
+        self.filter = None
 
     def name(self):
         return _("History")
@@ -379,7 +380,7 @@ class HistoryComponent(red_component.Component):
         except AttributeError:
             pass
         else:
-            if update:
+            if update and self.filter:
                 parent.history_changed = None
                 self.filter.updated()
 

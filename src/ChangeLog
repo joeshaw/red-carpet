@@ -1,5 +1,7 @@
 2003-03-05  Tambet Ingo  <tambet@ximian.com>
 
+	* red_history.py (HistoryComponent.activated): Fix my previous "fix".
+
 	* Makefile.am (red_carpetsupport_DATA): Added red_connection.py.
 
 	* red_main.py (main): Fixed server/local command line argument parsing.
