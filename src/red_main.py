@@ -133,7 +133,7 @@ def main(version):
             password = ""
     else:
         if opt_dict.has_key("user"):
-            print _("ERROR: You cannoy specify a user to a local daemon")
+            print _("ERROR: You cannot specify a user to a local daemon")
             sys.exit(1)
 
         if opt_dict.has_key("host"):
