@@ -1,8 +1,12 @@
+2003-04-11  Joe Shaw  <joe@ximian.com>
+
+	* art: Update a lot of icons and add new ones from jimmac.
+
 2003-04-09  Aaron Weber  <aaron@ximian.com>
 
-	* help/C/red-carpet.xml: Finish docs. Remote usage coverage added. Now to wait
-	for next snap and verify that the prefs I describe are the prefs
-	as they are.
+	* help/C/red-carpet.xml: Finish docs. Remote usage coverage added.
+	Now to wait for next snap and verify that the prefs I describe are
+	the prefs as they are.
 
 2003-03-31  Frank Belew  <frb@ximian.com>
 
