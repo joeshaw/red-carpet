@@ -31,7 +31,7 @@ def main(version):
 
     ## Make contact with the daemon.
     ## We assume local access only
-    url = "/tmp/rcd"
+    url = "/var/run/rcd"
     username = None
     password = None
 
