@@ -21,11 +21,12 @@ xxx_red_extra_la_LDFLAGS = -module -avoid-version -export-symbols-regex initxxx_
 xxx_red_extra_la_LIBADD = $(GTK_LIBS)
 xxx_red_extra_la_SOURCES =	\
 	module.c		\
-	red_extra.c		\
 	redlistmodel.c		\
 	redlistmodel.h		\
 	redlistview.c		\
 	redlistview.h
+
+nodist_xxx_red_extra_la_SOURCES = red_extra.c
 
 CLEANFILES = red_extra.c
 EXTRA_DIST += red_extra.override

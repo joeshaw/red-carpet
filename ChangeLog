@@ -1,5 +1,11 @@
 2004-09-08  James Willcox  <james@ximian.com>
 
+	* red_extra/Makefile.am:
+
+	Same thing for red_extra.c
+
+2004-09-08  James Willcox  <james@ximian.com>
+
 	* trayicon/bindings/Makefile.am:
 
 	Don't put red_tray.c in the dist
