@@ -114,7 +114,7 @@ AC_SUBST(PYTHON)
 
 GETTEXT_PACKAGE=red-carpet
 AC_SUBST(GETTEXT_PACKAGE)
-ALL_LINGUAS="az ca cs da de el en_CA en_GB es et eu fi fr hr hu it ja ml nl nb pl pt pt_BR ru sk sq sr sr@Latn sv tr uk zh_CN zh_TW"
+ALL_LINGUAS="az ca cs da de el en_CA en_GB es et eu fi fr hr hu it ja ml nl nb pa pl pt pt_BR ru sk sq sr sr@Latn sv tr uk zh_CN zh_TW"
 AM_GLIB_GNU_GETTEXT
 
 DDIR=`echo $datadir | sed -e "s,"'${prefix}'",$prefix,"`
