@@ -98,9 +98,9 @@ class FileEntry(gtk.HBox):
 class MountWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self)
+        gtk.Dialog.__init__(self, "Mount channel")
         self.build()
-
+        
     def build(self):
         frame = gtk.Frame("Mount a directory as channel")
         frame.set_border_width(5)
@@ -166,7 +166,7 @@ class UnmountWindow(gtk.Dialog):
 
     def __init__(self):
 
-        gtk.Dialog.__init__(self)
+        gtk.Dialog.__init__(self, "Unmount Channel")
 
         self.set_default_size(300, 300)
 
@@ -209,7 +209,7 @@ class UnmountWindow(gtk.Dialog):
 
         b = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
         def ok_clicked_cb(b, w, s):
-            for cid in s.keys():
+            for cid in s:
                 if s[cid]:
                     unmount_channel(cid)
             

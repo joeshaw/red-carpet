@@ -67,7 +67,12 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
 
     def get_channel(self):
-        id = self.item_id_list[self.get_history()]
+        h = self.get_history()
+
+        if h < 0:
+            return None
+
+        id = self.item_id_list[h]
         return rcd_util.get_channel(id)
 
     def get_channel_id(self):

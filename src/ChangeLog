@@ -1,5 +1,14 @@
 2003-02-05  Joe Shaw  <joe@ximian.com>
 
+	* red_channeloption.py (get_channel): We could get a -1 from
+	self.get_history().  If so, return None.
+
+	* red_mount.py: Set the title of the mount and unmount dialogs.
+	Iterate over the keys of a dictionary by doing "for x in d"
+	instead of "for x in d.keys()" for efficiency.
+
+2003-02-05  Joe Shaw  <joe@ximian.com>
+
 	* red_appwindow.py: Switch the naming of "toolbar" and "shortcut
 	bar"; the buttons that take the user to different components
 	should be the shortcut bar.  Also changed "show_on_toolbar" to
