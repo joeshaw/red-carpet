@@ -1,3 +1,16 @@
+2003-01-30  Jon Trowbridge  <trow@ximian.com>
+
+	* red_serverlistener.py: Changes to make the sequence number
+	checks happen using ServerProxies, so that we'll get the nice
+	behavior if the daemon crashes or otherwise goes away.
+
+	* red_serverproxy.py: Dead daemon code moved into
+	red_deaddaemon.py.
+
+	* red_deaddaemon.py: Added.  Contains a better version of the
+	"lost contact with the daemon" dialogs/code that used to be in
+	red_serverproxy.py.
+
 2003-01-30  Tambet Ingo  <tambet@ximian.com>
 
 	* red_users.py (User.privileges_get): Make sure user has at least

@@ -81,6 +81,82 @@ def signal_listeners(packages_changed,
             else:
                 unregister_listener(lid)
 
+class SeqNoChecker:
+
+    def __init__(self):
+        self.curr_package_seqno = -1
+        self.curr_channel_seqno = -1
+        self.curr_subs_seqno    = -1
+        self.curr_user_seqno    = -1
+
+    def set_world_seqnos(self, pkg, ch, subs):
+        print "got world seqnos"
+        self.curr_package_seqno = pkg
+        self.curr_channel_seqno = ch
+        self.curr_subs_seqno    = subs
+        self.check()
+
+    def set_user_seqno(self, usr):
+        print "got user seqnos"
+        self.curr_user_seqno = usr
+        self.check()
+
+    def check(self):
+        if self.curr_user_seqno < 0       \
+           or self.curr_channel_seqno < 0 \
+           or self.curr_subs_seqno < 0    \
+           or self.curr_user_seqno < 0:
+            return
+
+        print "doing check"
+
+        global last_server
+        global poll_count
+        global last_package_seqno
+        global last_subs_seqno
+        global last_channel_seqno
+        global last_user_seqno
+
+        poll_lock.acquire()
+
+        server = rcd_util.get_server()
+
+        # This lets us do the right thing if the server changes
+        # out from under us.
+        if id(server) != last_server:
+            last_package_seqno      = -1
+            last_channel_seqno      = -1
+            last_subs_seqno         = -1
+            last_user_seqno         = -1
+        last_server = id(server)
+
+        if self.curr_channel_seqno != last_channel_seqno or \
+               self.curr_subs_seqno != last_subs_seqno:
+            rcd_util.reset_channels()
+
+        if self.curr_user_seqno != last_user_seqno:
+            rcd_util.reset_server_permissions()
+
+        # Ignore any problems on the first poll, since we know we
+        # don't have valid server information before that point.
+        if poll_count != 0:
+            # We signal the listeners in an idle function so that
+            # it will always happen in the main thread.
+            gtk.idle_add(signal_listeners,
+                         self.curr_package_seqno != last_package_seqno,
+                         self.curr_channel_seqno != last_channel_seqno,
+                         self.curr_subs_seqno != last_subs_seqno,
+                         self.curr_user_seqno != last_user_seqno)
+
+        last_package_seqno = self.curr_package_seqno
+        last_subs_seqno = self.curr_subs_seqno
+        last_channel_seqno = self.curr_channel_seqno
+        last_user_seqno = self.curr_user_seqno
+
+        poll_count += 1
+
+        poll_lock.release()
+
 def poll_cb():
     global poll_count, missed_polls
 
@@ -88,70 +164,26 @@ def poll_cb():
 
     if freeze_count == 0:
 
-        server = rcd_util.get_server()
+        server = rcd_util.get_server_proxy()
         if server is None:
-            return
+            return 1
 
-        class SeqNoChecker(threading.Thread):
+        print "polling"
 
-            def run(self):
-                global last_server
-                global poll_count
-                global last_package_seqno
-                global last_subs_seqno
-                global last_channel_seqno
-                global last_user_seqno
+        snc = SeqNoChecker()
+        t1 = server.rcd.packsys.world_sequence_numbers()
+        t2 = server.rcd.users.sequence_number()
 
-                poll_lock.acquire()
-
-                server = rcd_util.get_server()
-
-                (curr_package_seqno,
-                 curr_channel_seqno,
-                 curr_subs_seqno) = server.rcd.packsys.world_sequence_numbers()
-                curr_user_seqno = server.rcd.users.sequence_number()
-
-                # This lets us do the right thing if the server changes
-                # out from under us.
-                if id(server) != last_server:
-                    last_package_seqno      = -1
-                    last_channel_seqno      = -1
-                    last_subs_seqno = -1
-                    last_user_seqno         = -1
-                last_server = id(server)
-
-                if curr_channel_seqno != last_channel_seqno or \
-                       curr_subs_seqno != last_subs_seqno:
-                    rcd_util.reset_channels()
-
-                if curr_user_seqno != last_user_seqno:
-                    rcd_util.reset_server_permissions()
-
-                # Ignore any problems on the first poll, since we know we
-                # don't have valid server information before that point.
-                if poll_count != 0:
-                    # We signal the listeners in an idle function so that
-                    # it will always happen in the main thread.
-                    gtk.idle_add(signal_listeners,
-                                 curr_package_seqno != last_package_seqno,
-                                 curr_channel_seqno != last_channel_seqno,
-                                 curr_subs_seqno != last_subs_seqno,
-                                 curr_user_seqno != last_user_seqno)
-
-                last_package_seqno = curr_package_seqno
-                last_subs_seqno = curr_subs_seqno
-                last_channel_seqno = curr_channel_seqno
-                last_user_seqno = curr_user_seqno
-
-                poll_lock.release()
-
-                poll_count += 1
-
-        th = SeqNoChecker()
-        th.start()
+        t1.connect("ready",
+                   lambda th, snc: apply(snc.set_world_seqnos,
+                                         th.get_result()),
+                   snc)
+        t2.connect("ready",
+                   lambda th, snc: snc.set_user_seqno(th.get_result()),
+                   snc)
 
         missed_polls = 0
-        
+
     else:
         missed_polls += 1
 
