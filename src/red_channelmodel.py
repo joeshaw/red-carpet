@@ -93,7 +93,7 @@ class ChannelModel(gtk.GenericTreeModel, red_serverlistener.ServerListener):
         else:
             return gobject.TYPE_STRING
 
-    def on_get_path(self, node):
+    def on_get_tree_path(self, node):
         return node
 
     def on_get_iter(self, path):

@@ -97,6 +97,7 @@ class AppWindow(gtk.Window):
         self.current_comp = None
         self.comp_display_id = 0
         self.comp_message_id = 0
+        self.comp_switch_id = 0
 
         self.menubar = red_menubar.MenuBar()
         self.menubar.set_user_data(self)
@@ -105,7 +106,7 @@ class AppWindow(gtk.Window):
         self.sidebar = red_sidebar.SideBar()
         self.show_sidebar = 0
         
-        self.transactionbar = red_transaction.TransactionBar()
+        self.transactionbar = red_transaction.TransactionBar(self)
 
         self.statusbar = gtk.Statusbar()
 
@@ -224,6 +225,11 @@ class AppWindow(gtk.Window):
             self.current_comp.disconnect(self.comp_message_id)
             self.comp_message_id = 0
 
+        # Disconnect from the old component's switch signal
+        if self.comp_switch_id:
+            self.current_comp.disconnect(self.comp_switch_id)
+            self.comp_switch_id = 0
+
         # Clear the status bar
         self.statusbar.pop(0)
 
@@ -249,6 +255,9 @@ class AppWindow(gtk.Window):
         def message_cb(c, msg, win):
             win.statusbar.push(0, msg)
 
+        def switch_cb(c, win):
+            win.activate_component(c)
+
         # Listen for display and message signals from the the new component
         if comp:
             self.comp_display_id = comp.connect("display",
@@ -257,3 +266,6 @@ class AppWindow(gtk.Window):
             self.comp_message_id = comp.connect("message",
                                                 message_cb,
                                                 self)
+            self.comp_switch_id = comp.connect("switch",
+                                               switch_cb,
+                                               self)

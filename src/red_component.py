@@ -55,6 +55,9 @@ class Component(gobject.GObject):
     def is_visible(self):
         return self.visible_flag
 
+    def is_user_selectable(self):
+        return 1
+
     def server(self):
         assert self.have_server
         return self.server_obj
@@ -66,6 +69,9 @@ class Component(gobject.GObject):
 
     def set_transaction(self, transaction):
         self.transaction = transaction
+
+    def switch_to(self, component):
+        self.emit("switch", component)
 
     def message(self, msg):
         self.emit("message", msg)
@@ -102,6 +108,13 @@ gobject.signal_new("visible",
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gobject.TYPE_BOOLEAN,))
+
+gobject.signal_new("switch",
+                   Component,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_OBJECT,))
+
 
 gobject.signal_new("message",
                    Component,

@@ -38,12 +38,27 @@ class SubscriptionsComponent(red_component.Component):
         model = red_channelmodel.ChannelModel()
         view = red_channelmodel.make_channel_view(model)
 
+        select = view.get_selection()
+        select.set_mode(gtk.SELECTION_SINGLE)
+
+        def selection_changed_cb(select, component):
+            model, iter = select.get_selected()
+            if iter:
+                path = model.get_path(iter)
+                c = model.channels[path[0]]
+                print c
+        select.connect("changed", selection_changed_cb, self)
+
+        box = gtk.HBox(0, 0)
+        self.infobox = gtk.VBox(0, 0)
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scrolled.add(view)
-        view.show_all()
+        box.pack_start(scrolled, 1, 1, 0)
+        box.pack_start(self.infobox, 0, 1, 0)
+        box.show_all()
 
-        return scrolled
+        return box
 
     def build(self):
         widget = self.construct()

@@ -24,7 +24,7 @@ import red_appwindow
 import red_channeloption
 import red_channelbrowse
 import red_summary
-import red_search
+import red_search, red_system
 import red_transaction
 import red_subscriptions
 import red_prefs
@@ -63,10 +63,12 @@ def main(version):
     app.register_component(red_subscriptions.SubscriptionsComponent())
     app.register_component(red_channelbrowse.ChannelBrowseComponent())
     app.register_component(red_transaction.TransactionComponent())
+    app.register_component(red_system.SystemComponent())
     app.register_component(red_search.SearchComponent())
     app.register_component(red_prefs.PrefsComponent())
 
     app.set_title(red_name)
+    app.set_size_request(780, 550)
     app.show()
 
     gtk.main()

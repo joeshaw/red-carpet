@@ -23,7 +23,7 @@ import red_packagearray, red_packageview
 import red_pendingview
 import red_pendingops
 import red_component
-import red_depwindow
+import red_depcomponent
 import red_serverlistener
 
 class TransactionArray(red_packagearray.PackageArray,
@@ -65,33 +65,35 @@ def begin_transaction(install_packages, remove_packages):
 
     return download_id, transact_id, step_id
 
-def resolve_deps_and_transact():
-    depwindow = red_depwindow.DepWindow()
-    retval = depwindow.run()
+def resolve_deps_and_transact(app):
 
-    if retval == gtk.RESPONSE_ACCEPT: # Go button
-        serv = rcd_util.get_server()
+    deps = red_depcomponent.DepComponent()
+    app.activate_component(deps)
 
-        download_id, transact_id, step_id = begin_transaction(
-            depwindow.get_install_packages(),
-            depwindow.get_remove_packages())
+#    if retval == gtk.RESPONSE_ACCEPT: # Go button
+#        serv = rcd_util.get_server()
 
-        transaction_window = TransactionWindow(download_id,
-                                               transact_id,
-                                               step_id)
-
-        transaction_window.show()
-
-    depwindow.destroy()
+#        download_id, transact_id, step_id = begin_transaction(
+#            depwindow.get_install_packages(),
+#            depwindow.get_remove_packages())
+#
+#        transaction_window = TransactionWindow(download_id,
+#                                               transact_id,
+#                                              step_id)
+#
+#        transaction_window.show()
+#
+#    depwindow.destroy()
 
 class TransactionBar(gtk.HBox,
                      red_pendingops.PendingOpsListener):
 
     no_action_str = "No Pending Actions"
 
-    def __init__(self):
+    def __init__(self, app):
         gtk.HBox.__init__(self)
         red_pendingops.PendingOpsListener.__init__(self)
+        self.app = app
         self.button = gtk.Button("Go!")
         self.button.set_sensitive(0)
         self.label = gtk.Label(TransactionBar.no_action_str)
@@ -99,7 +101,7 @@ class TransactionBar(gtk.HBox,
         self.pack_end(self.label, 0, 0, 2)
         self.label.show()
 
-        self.button.connect("clicked", lambda x:resolve_deps_and_transact())
+        self.button.connect("clicked", lambda x:resolve_deps_and_transact(app))
 
     def update_label(self):
         msg_list = []
