@@ -1,3 +1,11 @@
+2003-02-21  Tambet Ingo  <tambet@ximian.com>
+
+	* red_users.py: Import ximian_xmlrpclib.
+
+	* red_appwindow.py (AppWindow.install_sensitive_cb): Check if user
+	has permission to install or upgrade.
+	(AppWindow.remove_sensitive_cb): Ditto for remove.
+
 2003-02-20  Tambet Ingo  <tambet@ximian.com>
 
 	* red_pendingview.py (PendingView_Transaction.cancelled): As added

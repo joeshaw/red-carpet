@@ -17,7 +17,7 @@
 
 import string, re, gobject, gtk
 import rcd_util
-
+import ximian_xmlrpclib
 import red_listmodel, red_serverlistener, red_thrashingtreeview
 
 opt = None

@@ -279,10 +279,15 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         if pkg_action == red_pendingops.TO_BE_INSTALLED:
             return 0
         else:
-            if not red_packagearray.pkg_is_name_installed(pkg) \
-                   or red_packagearray.pkg_is_upgrade(pkg) \
-                   or red_packagearray.pkg_is_downgrade(pkg):
+            if not red_packagearray.pkg_is_name_installed(pkg) and \
+               rcd_util.check_server_permission("install"):
                 return 1
+
+            elif (red_packagearray.pkg_is_upgrade(pkg) or \
+                  red_packagearray.pkg_is_downgrade(pkg)) and \
+                  rcd_util.check_server_permission("upgrade"):
+                return 1
+
             else:
                 return 0
 
@@ -299,8 +304,9 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         pkg_action = red_pendingops.package_action(pkg)
 
-        if pkg_action != red_pendingops.TO_BE_REMOVED \
-               and red_packagearray.pkg_is_name_installed(pkg):
+        if pkg_action != red_pendingops.TO_BE_REMOVED and \
+           red_packagearray.pkg_is_name_installed(pkg) and \
+           rcd_util.check_server_permission("remove"):
             return 1
         else:
             return 0
