@@ -1,3 +1,13 @@
+2003-03-26  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py (assemble_menubar): Fix a bug where a
+	translated menu title would cause no items to appear underneath.
+	It's okay to include the mnemonic in the menu path, and it means
+	many fewer strings to localize.  Add mnemonics for "Advanced
+	Search Options" and "Channel Names".
+	(register_component): Use the localized string for "_View" when
+	adding the component to the menus.
+
 2003-03-26  Tambet Ingo  <tambet@ximian.com>
 
 	* red_actionbar.py (Actionbar.pendingops_changed): Don't start

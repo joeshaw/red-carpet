@@ -432,13 +432,17 @@ class AppWindow(gtk.Window,
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
 
-        bar.add("/" + _("_File"))
-        bar.add("/" + _("_Edit"))
-        bar.add("/" + _("_View"))
-        bar.add("/" + _("_Actions"))
-        bar.add("/" + _("_Help"))
+        file_str = _("_File")
+        edit_str = _("_Edit")
+        view_str = _("_View")
+        actions_str = _("_Actions")
+        help_str = _("_Help")
 
-        file_str = _("File")
+        bar.add("/" + file_str)
+        bar.add("/" + edit_str)
+        bar.add("/" + view_str)
+        bar.add("/" + actions_str)
+        bar.add("/" + help_str)
 
         bar.add("/%s/%s" % (file_str, _("Connect...")),
                 callback=lambda x:rcd_util.connect_to_server(),
@@ -520,8 +524,6 @@ class AppWindow(gtk.Window,
         ## Select all/none
         ##
 
-        edit_str = _("Edit")
-
         def select_all_sensitive_cb():
             comp = self.get_component()
             if not comp:
@@ -562,17 +564,15 @@ class AppWindow(gtk.Window,
         def checked_set_cb(flag):
             self.sidebar.change_visibility()
 
-        view_str = _("View")
-
         bar.add("/%s/%s" % (view_str, _("_Sidebar")),
                 checked_get=checked_get_cb,
                 checked_set=checked_set_cb)
 
-        bar.add("/%s/%s" % (view_str, _("Advanced Search Options")),
+        bar.add("/%s/%s" % (view_str, _("_Advanced Search Options")),
                 checked_get=red_searchbox.show_advanced_get,
                 checked_set=red_searchbox.show_advanced_set)
 
-        bar.add("/%s/%s" % (view_str, _("Channel Names")),
+        bar.add("/%s/%s" % (view_str, _("C_hannel Names")),
                 checked_get=red_packageview.show_channel_names_get,
                 checked_set=red_packageview.show_channel_names_set)
 
@@ -596,8 +596,6 @@ class AppWindow(gtk.Window,
 
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
-
-        actions_str = _("Actions")
 
         bar.add("/%s/%s" % (actions_str, _("Run _Now")),
                 image=image,
@@ -664,8 +662,6 @@ class AppWindow(gtk.Window,
                 sensitive_fn=verify_and_refresh_sensitive_cb,
                 accelerator="<Control>R")
 
-        help_str = _("Help")
-
         bar.add("/%s/%s" % (help_str, _("_About...")),
                 pixbuf_name="menu-about",
                 callback=lambda x:red_about.About().show())
@@ -706,8 +702,7 @@ class AppWindow(gtk.Window,
             index = string.index(string.lower(ln),
                                  string.lower(comp.access_key()))
             ln = ln[:index] + "_" + ln[index:]
-        
-        self.menubar.add("/View/" + ln,
+        self.menubar.add("/%s/%s" % (_("_View"), ln),
                          checked_get=checked_get_cb,
                          checked_set=checked_set_cb,
                          accelerator=comp.accelerator())
