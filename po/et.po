@@ -1,19 +1,18 @@
 # Red Carpet'i eesti keele tõlge.
-# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
+# Copyright (C) 2001-2003 Free Software Foundation, Inc.
 # Ilmar Kerm <ikerm@hot.ee>, 2001, 2002.
-# Tõivo Leedjärv <leedjarv@interest.ee>, 2001, 2002.
+# Tõivo Leedjärv <toivo@linux.ee>, 2001-2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Red Carpet\n"
-"POT-Creation-Date: 2003-05-09 17:00-0400\n"
-"PO-Revision-Date: 2002-03-08 17:02+0200\n"
-"Last-Translator: Ilmar Kerm <ikerm@hot.ee>\n"
+"Project-Id-Version: Red Carpet 2\n"
+"POT-Creation-Date: 2003-05-21 22:57+0300\n"
+"PO-Revision-Date: 2003-05-21 23:17+0300\n"
+"Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -44,43 +43,41 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:367
-#, fuzzy
+#: src/rcd_util.py:376
 msgid "Please wait while getting data."
-msgstr "Palun oota, lehekülje allalaadimine..."
+msgstr "Palun oota, andmete laadimine..."
 
 #. ##############################################################################
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:416
+#: src/rcd_util.py:425
 msgid "Verifying"
 msgstr "Kontrollimine"
 
-#: src/rcd_util.py:417
+#: src/rcd_util.py:426
 msgid "Unable to verify package signature for"
 msgstr ""
 
-#: src/rcd_util.py:418
+#: src/rcd_util.py:427
 msgid "There is no package signature for"
 msgstr ""
 
-#: src/rcd_util.py:419
-#, fuzzy
+#: src/rcd_util.py:428
 msgid "Preparing Transaction"
-msgstr "Tehingu alustamine..."
+msgstr "Tehingu ettevalmistamine"
 
-#: src/rcd_util.py:420
+#: src/rcd_util.py:429
 msgid "Installing"
 msgstr "Installimine"
 
-#: src/rcd_util.py:421
+#: src/rcd_util.py:430
 msgid "Removing"
 msgstr "Eemaldamine"
 
-#: src/rcd_util.py:422
+#: src/rcd_util.py:431
 msgid "Configuring"
-msgstr "Konfigureerimine"
+msgstr "Häälestamine"
 
 #. ##############################################################################
 #. ## XML-RPC faults that we care about back from the daemon.
@@ -129,7 +126,7 @@ msgstr ""
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
-msgstr ""
+msgstr "Litsenseeritud GNU Üldise Avaliku Litsentsi, versioon 2 järgi"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -173,22 +170,30 @@ msgstr "E-post:"
 
 #: src/red_activation.py:41
 msgid "Activation Code:"
-msgstr ""
+msgstr "Aktiveerimiskood:"
 
 #: src/red_activation.py:59
 msgid "Activate"
-msgstr ""
+msgstr "Aktiveeri"
 
 #: src/red_activation.py:76
 msgid "Please fill in both email and activation code."
 msgstr ""
 
-#: src/red_activation.py:95
+#: src/red_activation.py:91
+msgid "Unable to activate"
+msgstr ""
+
+#: src/red_activation.py:92
+msgid "Please ensure you typed the email address and activation code correctly"
+msgstr ""
+
+#: src/red_activation.py:100
 msgid "System successfully activated."
 msgstr ""
 
 #. Store email to config.
-#: src/red_activation.py:103
+#: src/red_activation.py:108
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
@@ -210,14 +215,12 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_appwindow.py:64
-#, fuzzy
 msgid "Refreshing channel data"
-msgstr "Kanali info allalaadimine..."
+msgstr "Kanali info värskendamine"
 
 #: src/red_appwindow.py:66
-#, fuzzy
 msgid "Downloading channel information"
-msgstr "Kanali info allalaadimine..."
+msgstr "Kanali info allalaadimine"
 
 #. FIXME: This feels like a hack.  Go through the remove_packages and
 #. if any of them have an __old_package field, use that package for
@@ -225,16 +228,29 @@ msgstr "Kanali info allalaadimine..."
 #. click on an upgrade and select "remove".
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:105
+#: src/red_appwindow.py:116
 msgid "C"
 msgstr ""
 
-#. successfully spawned
-#. If we got here, we couldn't open any help file with any handler
-#: src/red_appwindow.py:129
+#. GNOME 2
+#. XD2 w/o yelp?
+#. RH 9
+#. KDE
+#. GNOME 1.x
+#. GNOME 1.x w/o help
+#. browser?
+#. dunno, but a sane
+#. fallback
+#. CDE
+#: src/red_appwindow.py:153
 msgid ""
-"Unable to show help because it was not found or because you don't have any "
-"help viewers available."
+"Unable to show help because the help files were missing.  Please report this "
+"to your vendor."
+msgstr ""
+
+#: src/red_appwindow.py:163
+msgid ""
+"Unable to show help because there are no applications available to view help."
 msgstr ""
 
 #. Menubar
@@ -249,7 +265,7 @@ msgstr ""
 #. #
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
-#: src/red_appwindow.py:387
+#: src/red_appwindow.py:420
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr ""
@@ -257,79 +273,73 @@ msgstr ""
 #. #
 #. # Toolbar
 #. #
-#: src/red_appwindow.py:415
+#: src/red_appwindow.py:448
 msgid "Run Now"
-msgstr ""
+msgstr "Käivita nüüd"
 
-#: src/red_appwindow.py:416
+#: src/red_appwindow.py:449
 msgid "Perform installations and removals"
-msgstr ""
+msgstr "Täida installimised ja eemaldamised"
 
-#: src/red_appwindow.py:423
-#, fuzzy
+#: src/red_appwindow.py:456
 msgid "Channels"
-msgstr "Katkesta"
+msgstr "Kanalid"
 
-#: src/red_appwindow.py:424
+#: src/red_appwindow.py:457
 msgid "Change your channel subscriptions"
-msgstr ""
+msgstr "Muuda kanalite tellimusi"
 
-#: src/red_appwindow.py:432
-#, fuzzy
+#: src/red_appwindow.py:465
 msgid "Refresh"
-msgstr "_Uuenda"
+msgstr "Värskenda"
 
-#: src/red_appwindow.py:433
+#: src/red_appwindow.py:466
 msgid "Refresh channel data"
-msgstr ""
+msgstr "Värskenda kanali info"
 
 #. #
 #. # Actionbar.
 #. #
-#: src/red_appwindow.py:444
-#, fuzzy
+#: src/red_appwindow.py:477 src/red_packageview.py:232
 msgid "Mark for _Installation"
-msgstr "Pakettide install"
+msgstr "Märgi _installimiseks"
 
-#: src/red_appwindow.py:445
-#, fuzzy
+#: src/red_appwindow.py:478
 msgid "Mark selected packages for installation"
-msgstr "Tühjenda pakettide puhver programmi käivitamisel"
+msgstr "Märgista valitud paketid installimiseks"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:450 src/red_appwindow.py:725
-#, fuzzy
+#: src/red_appwindow.py:483 src/red_appwindow.py:757
+#: src/red_packageview.py:245
 msgid "Mark for _Removal"
-msgstr "Pakettide eemaldamine"
+msgstr "Märgi _eemaldamiseks"
 
-#: src/red_appwindow.py:451
-#, fuzzy
+#: src/red_appwindow.py:484
 msgid "Mark selected packages for removal"
-msgstr "Installi valitud paketid"
+msgstr "Märgista valitud paketid eemaldamiseks"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:456 src/red_appwindow.py:737
-#, fuzzy
+#: src/red_appwindow.py:489 src/red_appwindow.py:769
+#: src/red_packageview.py:258
 msgid "_Cancel"
-msgstr "Katkesta"
+msgstr "_Loobu"
 
-#: src/red_appwindow.py:457
+#: src/red_appwindow.py:490
 msgid "Cancel marked package actions"
-msgstr ""
+msgstr "Loobu märgitud paketi tegevustest"
 
-#: src/red_appwindow.py:462
-#, fuzzy
+#. Info
+#: src/red_appwindow.py:495 src/red_packageview.py:276
 msgid "I_nformation"
-msgstr "Informatsioon"
+msgstr "_Informatsioon"
 
-#: src/red_appwindow.py:463
-#, fuzzy
+#: src/red_appwindow.py:496
 msgid "Package information"
-msgstr "Pakettide install"
+msgstr "Paketi informatsioon"
 
 #. We want to revert to our old settings if we don't connect to
 #. a new daemon successfully.
@@ -337,124 +347,119 @@ msgstr "Pakettide install"
 #. #
 #. # Menubar
 #. #
-#: src/red_appwindow.py:520
+#: src/red_appwindow.py:553
 msgid "_File"
-msgstr ""
+msgstr "_Fail"
 
-#: src/red_appwindow.py:521
+#: src/red_appwindow.py:554
 msgid "_Edit"
-msgstr ""
+msgstr "_Redaktor"
 
 #. We need to make the component menu items checked
 #. instead of radio-style, because with a radio group you
 #. always have to have exactly one item set: when a non-navigable
 #. component is on the screen (like the dep resolution page),
 #. the component gets reset if you open any menu.
-#: src/red_appwindow.py:522 src/red_appwindow.py:783
+#: src/red_appwindow.py:555 src/red_appwindow.py:815
 msgid "_View"
-msgstr "_Esitus"
+msgstr "_Vaade"
 
-#: src/red_appwindow.py:523
-#, fuzzy
+#: src/red_appwindow.py:556
 msgid "_Actions"
-msgstr "T_ellimused"
+msgstr "_Tegevused"
 
-#: src/red_appwindow.py:524
+#: src/red_appwindow.py:557
 msgid "_Help"
-msgstr ""
+msgstr "_Abi"
 
-#: src/red_appwindow.py:532
+#: src/red_appwindow.py:565
 msgid "Connect..."
-msgstr ""
+msgstr "Ühenda..."
 
-#: src/red_appwindow.py:542
+#: src/red_appwindow.py:575
 msgid "Install from _File..."
-msgstr ""
+msgstr "Installi _failist..."
 
-#: src/red_appwindow.py:551
+#: src/red_appwindow.py:584
 msgid "Install from _URL..."
-msgstr ""
+msgstr "Installi _URList..."
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:568
+#: src/red_appwindow.py:601
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "_Ühenda kataloog..."
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:584
+#: src/red_appwindow.py:617
 msgid "U_nmount Directory..."
-msgstr ""
+msgstr "_Lahuta kataloog..."
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:599
+#: src/red_appwindow.py:632
 msgid "_Activate..."
-msgstr ""
+msgstr "_Aktiveeri"
 
-#: src/red_appwindow.py:605
+#: src/red_appwindow.py:638
 msgid "Quit"
-msgstr "Välju"
+msgstr "Lõpeta"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:620
-#, fuzzy
+#: src/red_appwindow.py:653
 msgid "Select _All"
-msgstr "_Vali kõik "
+msgstr "_Vali kõik"
 
-#: src/red_appwindow.py:625
-#, fuzzy
+#: src/red_appwindow.py:658
 msgid "Select _None"
-msgstr "_Tühista valik "
+msgstr "_Tühista valik"
 
-#: src/red_appwindow.py:632
-#, fuzzy
+#: src/red_appwindow.py:665
 msgid "Channel _Subscriptions..."
-msgstr "T_ellimused"
+msgstr "Kanalite t_ellimused..."
 
-#: src/red_appwindow.py:637
-#, fuzzy
+#: src/red_appwindow.py:670
 msgid "_Preferences..."
-msgstr "Häälestus"
+msgstr "_Häälestus..."
 
-#: src/red_appwindow.py:641
+#: src/red_appwindow.py:674
 msgid "_Users..."
-msgstr ""
+msgstr "_Kasutajad..."
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:654
+#: src/red_appwindow.py:687
 msgid "_Sidebar"
 msgstr ""
 
-#: src/red_appwindow.py:658
+#: src/red_appwindow.py:691
 #, fuzzy
 msgid "_Advanced Search Options"
 msgstr "T_ellimused"
 
-#: src/red_appwindow.py:662
+#: src/red_appwindow.py:695
 #, fuzzy
 msgid "_Channel Names"
 msgstr "Kanaliinfo"
 
-#: src/red_appwindow.py:668
+#: src/red_appwindow.py:701
 #, fuzzy
 msgid "Package _Information..."
 msgstr "Pakettide install"
 
-#: src/red_appwindow.py:676
+#: src/red_appwindow.py:709
 #, fuzzy
 msgid "_Daemon Information..."
 msgstr "Informatsioon"
 
-#: src/red_appwindow.py:678
+#: src/red_appwindow.py:711
 #, fuzzy
 msgid "Red Carpet Ne_ws..."
 msgstr "Red Carpeti uudised"
@@ -462,14 +467,14 @@ msgstr "Red Carpeti uudised"
 #. #
 #. # Run Transaction
 #. #
-#: src/red_appwindow.py:691
+#: src/red_appwindow.py:723
 msgid "Run _Now"
 msgstr ""
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:705
+#: src/red_appwindow.py:737
 #, fuzzy
 msgid "_Verify System Dependencies"
 msgstr "Rahuldamata nõudmised"
@@ -477,7 +482,7 @@ msgstr "Rahuldamata nõudmised"
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:716
+#: src/red_appwindow.py:748
 #, fuzzy
 msgid "Mark for I_nstallation"
 msgstr "Pakettide install"
@@ -485,18 +490,17 @@ msgstr "Pakettide install"
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:751
+#: src/red_appwindow.py:783
 msgid "Re_fresh Channel Data"
 msgstr ""
 
-#: src/red_appwindow.py:760
+#: src/red_appwindow.py:792
 msgid "_Contents"
-msgstr ""
+msgstr "_Sisukord"
 
-#: src/red_appwindow.py:765
-#, fuzzy
+#: src/red_appwindow.py:797
 msgid "_About..."
-msgstr "Infoleht"
+msgstr "_Info..."
 
 #. ##
 #. ## Handlers for PendingOpsListener
@@ -550,18 +554,16 @@ msgstr "Infoleht"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_channeloption.py:50
-#, fuzzy
 msgid "All Channels"
-msgstr "Pakutavad kanalid"
+msgstr "Kõik kanalid"
 
 #: src/red_channeloption.py:55
-#, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Tellitud kanalid"
+msgstr "Kõik tellitud kanalid"
 
 #: src/red_channeloption.py:60
 msgid "No Channel/Unknown Channel"
-msgstr ""
+msgstr "Pole kanalit/Tundmatu kanal"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -678,7 +680,7 @@ msgstr ""
 #. following
 #: src/red_connection.py:99
 msgid "Starting daemon..."
-msgstr ""
+msgstr "Deemoni käivitamine..."
 
 #. child
 #. If we get here, the exec failed.
@@ -708,14 +710,13 @@ msgstr ""
 
 #: src/red_connection.py:333
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: src/red_connection.py:337 src/red_users.py:389
-#, fuzzy
 msgid "User name:"
-msgstr "Kasutajanimi"
+msgstr "Kasutajanimi:"
 
-#: src/red_connection.py:341 src/red_prefs.py:257 src/red_users.py:192
+#: src/red_connection.py:341 src/red_prefs.py:279 src/red_users.py:192
 #: src/red_users.py:395
 msgid "Password:"
 msgstr "Parool:"
@@ -724,7 +725,7 @@ msgstr "Parool:"
 #. desensitize the table by default.
 #: src/red_connection.py:377
 msgid "Connect"
-msgstr ""
+msgstr "Ühenda"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -777,9 +778,8 @@ msgid "Lost contact with the daemon!"
 msgstr ""
 
 #: src/red_deaddaemon.py:69
-#, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Red Carpet"
+msgstr "Välju Red Carpetist"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -800,50 +800,48 @@ msgstr "Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:65 src/red_depcomponent.py:355
-#, fuzzy
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:356
 msgid "Dependency Resolution"
-msgstr "Sõltuvused"
+msgstr "Sõltuvuste lahendus"
 
 #. Clean up
 #: src/red_depcomponent.py:117
-#, fuzzy
 msgid "Verifying System"
-msgstr "%s kontrollimine"
+msgstr "Süsteemi kontrollimine"
 
 #: src/red_depcomponent.py:123
-#, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Sõltuvused"
+msgstr "Sõltuvuste lahendamine"
 
 #: src/red_depcomponent.py:157
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
+"Enne installimist pead sa seda tarkvara katvate litsentsidega nõustuma."
 
 #. Try to estimate the size of the window we want.
 #. "W" being the widest glyph.
 #. Create a tag with our monospace font
 #. Get a mark to the start of the buffer and then scroll there
-#: src/red_depcomponent.py:200
+#: src/red_depcomponent.py:201
 msgid "I Agree"
-msgstr ""
+msgstr "Nõustun"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:260
+#: src/red_depcomponent.py:261
 msgid "Dependency Resolution Failed"
 msgstr ""
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:310
+#: src/red_depcomponent.py:311
 msgid "System Verified"
 msgstr ""
 
-#: src/red_depcomponent.py:312
+#: src/red_depcomponent.py:313
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -853,28 +851,25 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:366
+#: src/red_depcomponent.py:367
 msgid "Requested Installations"
 msgstr "Soovitud installimised"
 
-#: src/red_depcomponent.py:370
+#: src/red_depcomponent.py:371
 msgid "Requested Removals"
 msgstr "Soovitud eemaldused"
 
-#: src/red_depcomponent.py:374
-#, fuzzy
+#: src/red_depcomponent.py:375
 msgid "Required Installations"
-msgstr "Soovitud installimised"
+msgstr "Vajalikud installimised"
 
-#: src/red_depcomponent.py:378
-#, fuzzy
+#: src/red_depcomponent.py:379
 msgid "Required Removals"
-msgstr "Soovitud eemaldused"
+msgstr "Vajalikud eemaldused"
 
-#: src/red_depcomponent.py:404
-#, fuzzy
+#: src/red_depcomponent.py:405
 msgid "Continue"
-msgstr "üheksa"
+msgstr "Jätka"
 
 #. # That's all we can do here. We might (and usually don't)
 #. # have enough information here to decide what kind of page
@@ -897,28 +892,25 @@ msgstr "üheksa"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_depview.py:37 src/red_mount.py:226 src/red_packagepage_info.py:83
-#: src/red_packageview.py:359
-#, fuzzy
+#: src/red_packageview.py:367
 msgid "Channel"
-msgstr "Katkesta"
+msgstr "Kanal"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:415
+#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:423
 msgid "Package"
 msgstr "Pakett"
 
-#: src/red_depview.py:43 src/red_packageview.py:454
-#, fuzzy
+#: src/red_depview.py:43 src/red_packageview.py:462
 msgid "Current Version"
-msgstr "Soovitud versioon:"
+msgstr "Praegune versioon"
 
 #. ## Main
 #: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:439
 #: src/red_updates.py:94
-#, fuzzy
 msgid "New Version"
-msgstr "Versioon"
+msgstr "Uus versioon"
 
-#: src/red_depview.py:49 src/red_packageview.py:490
+#: src/red_depview.py:49 src/red_packageview.py:498
 msgid "Size"
 msgstr "Suurus"
 
@@ -997,7 +989,7 @@ msgstr "Suurus"
 #. ##
 #: src/red_history.py:113 src/red_users.py:30
 msgid "All"
-msgstr ""
+msgstr "Kõik"
 
 #: src/red_history.py:114
 #, fuzzy
@@ -1016,7 +1008,7 @@ msgstr "Uuendused"
 
 #: src/red_history.py:121
 msgid "User:"
-msgstr ""
+msgstr "Kasutaja:"
 
 #: src/red_history.py:127
 msgid "Timeframe (days):"
@@ -1027,25 +1019,22 @@ msgstr ""
 #. ##
 #. # We want opposite order.
 #: src/red_history.py:279
-#, fuzzy
 msgid "Searching..."
-msgstr "Otsi"
+msgstr "Otsimine..."
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:435
 msgid "Time"
-msgstr ""
+msgstr "Aeg"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:322
-#, fuzzy
+#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
 msgid "Action"
-msgstr "Asukoht"
+msgstr "Tegevus"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
-#, fuzzy
 msgid "User"
-msgstr "Kasutajanimi"
+msgstr "Kasutaja"
 
 #: src/red_history.py:305 src/red_history.py:438
 msgid "Old Version"
@@ -1055,11 +1044,11 @@ msgstr "Vana versioon"
 #. Define me!
 #: src/red_history.py:336 src/red_packagepage.py:45
 msgid "History"
-msgstr ""
+msgstr "Ajalugu"
 
 #: src/red_history.py:339
 msgid "_History"
-msgstr ""
+msgstr "_Ajalugu"
 
 #: src/red_history.py:383
 msgid "No results found."
@@ -1095,25 +1084,22 @@ msgid "There are no valid packages to install"
 msgstr ""
 
 #: src/red_installfiles.py:102
-#, fuzzy
 msgid "Install from File"
-msgstr "Installitud tarkvara"
+msgstr "Installi failist"
 
 #. need trailing /
 #: src/red_installfiles.py:119
-#, fuzzy, python-format
+#, python-format
 msgid "Downloading %s..."
-msgstr "%s allalaadimine"
+msgstr "%s allalaadimine..."
 
 #: src/red_installfiles.py:158
-#, fuzzy
 msgid "Install from URL"
-msgstr "Installi"
+msgstr "Installi URList"
 
 #: src/red_installfiles.py:163
-#, fuzzy
 msgid "Package URL:"
-msgstr "Pakett"
+msgstr "Paketi URL:"
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1256,13 +1242,12 @@ msgid "Mirror"
 msgstr "Peegel"
 
 #: src/red_mirrors.py:81
-#, fuzzy
 msgid "Location"
 msgstr "Asukoht"
 
 #: src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr ""
+msgstr "Vali peegel"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -1294,42 +1279,39 @@ msgstr ""
 
 #: src/red_mount.py:117
 msgid "Browse..."
-msgstr ""
+msgstr "Vali"
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
-msgstr ""
+msgstr "Ühenda kataloog"
 
 #: src/red_mount.py:141
-#, fuzzy
 msgid "Mount channel"
-msgstr "Aktiivne alakanal:"
+msgstr "Ühenda kanal"
 
 #: src/red_mount.py:145
 msgid "Mount a directory as channel"
-msgstr ""
+msgstr "Ühenda kataloog kanalina"
 
 #: src/red_mount.py:153
-#, fuzzy
 msgid "Channel Name:"
-msgstr "Kanaliinfo"
+msgstr "Kanali nimi:"
 
 #: src/red_mount.py:157
 msgid "Directory:"
-msgstr ""
+msgstr "Kataloog:"
 
 #: src/red_mount.py:189
 msgid "Please choose the path for channel."
 msgstr ""
 
 #: src/red_mount.py:210
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "Tellimata kanalid"
+msgstr "Lahuta kanal"
 
 #: src/red_mount.py:239
 msgid "Unmount?"
-msgstr ""
+msgstr "Kas lahutada?"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1594,19 +1576,16 @@ msgid "Dependencies"
 msgstr "Sõltuvused"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "Pakub:"
+msgstr "Pakub"
 
 #: src/red_packagepage_deps.py:70
-#, fuzzy
 msgid "Requires"
-msgstr "Vajab:"
+msgstr "Vajab"
 
 #: src/red_packagepage_deps.py:73
-#, fuzzy
 msgid "Conflicts With"
-msgstr "Konfliktid:"
+msgstr "Konfliktid"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1629,38 +1608,33 @@ msgstr "Konfliktid:"
 msgid "Name"
 msgstr "Nimi"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:444
+#: src/red_packagepage_info.py:79 src/red_packageview.py:452
 msgid "Version"
 msgstr "Versioon"
 
 #: src/red_packagepage_info.py:80
-#, fuzzy
 msgid "Release"
-msgstr "Jätka"
+msgstr "Väljalase"
 
 #: src/red_packagepage_info.py:81
-#, fuzzy
 msgid "Package Size"
-msgstr "Pakett"
+msgstr "Paketi suurus"
 
 #: src/red_packagepage_info.py:82
-#, fuzzy
 msgid "Installed Size"
-msgstr "Installitud tarkvara"
+msgstr "Installi suurus"
 
 #: src/red_packagepage_info.py:84
-#, fuzzy
 msgid "Section"
-msgstr "Asukoht"
+msgstr ""
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
 msgstr "Kokkuvõte"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:438
-#, fuzzy
+#: src/red_packagepage_info.py:86 src/red_prefs.py:455
 msgid "Description"
-msgstr "Kirjeldus:"
+msgstr "Kirjeldus"
 
 #: src/red_packagepage_info.py:140
 msgid "Info"
@@ -1688,61 +1662,13 @@ msgstr "Info"
 msgid "Unnamed"
 msgstr "Kasutajanimi"
 
-#. ##
-#. ## Copyright (C) 2002-2003 Ximian, Inc.
-#. ##
-#. ## This program is free software; you can redistribute it and/or modify
-#. ## it under the terms of the GNU General Public License, version 2,
-#. ## as published by the Free Software Foundation.
-#. ##
-#. ## This program is distributed in the hope that it will be useful,
-#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. ## GNU General Public License for more details.
-#. ##
-#. ## You should have received a copy of the GNU General Public License
-#. ## along with this program; if not, write to the Free Software
-#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-#. ##
-#. ##############################################################################
-#. ##############################################################################
-#. This callback gets invoked before the selection has
-#. been updated, which causes get_selected to return
-#. out-of-date information unless we do the query in an
-#. idle callback.
-#. # This 'activated_fn' business is just a hack to get a call to
-#. # toggle_action to be the default behavior.
-#. print "selected %s (%d)" % (pkg["name"], i)
-#. print "activated %s (%d)" % (pkg["name"], i)
-#. Install
-#: src/red_packageview.py:224
-#, fuzzy
-msgid "Mark for Installation"
-msgstr "Pakettide install"
-
-#. Remove
-#: src/red_packageview.py:237
-#, fuzzy
-msgid "Mark for Removal"
-msgstr "Pakettide eemaldamine"
-
-#. Cancel
-#: src/red_packageview.py:250
-msgid "Cancel"
-msgstr "Katkesta"
-
-#. Info
-#: src/red_packageview.py:268
-msgid "Information"
-msgstr "Informatsioon"
-
-#: src/red_packageview.py:293
+#: src/red_packageview.py:301
 msgid "Status"
-msgstr ""
+msgstr "Olek"
 
-#: src/red_packageview.py:464
+#: src/red_packageview.py:472
 msgid "Importance"
-msgstr ""
+msgstr "Tähtsus"
 
 #. button,
 #. time
@@ -1801,7 +1727,7 @@ msgstr ""
 #. #############################################################################
 #: src/red_pendingview.py:494
 msgid "Updating System"
-msgstr ""
+msgstr "Süsteemi uuendamine"
 
 #. this is a different kind of polling
 #. # FIXME: This is really ugly hack, but otherwise ui will be
@@ -1840,7 +1766,7 @@ msgstr "Failide allalaadimine"
 
 #: src/red_pendingview.py:626
 msgid "Unknown Error"
-msgstr ""
+msgstr "Tundmatu viga"
 
 #: src/red_pendingview.py:643
 #, fuzzy
@@ -1897,122 +1823,118 @@ msgstr "Uuenda"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
-#. Server frame
-#: src/red_prefs.py:141
+#. Title
+#. Server section
+#: src/red_prefs.py:160
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
-#: src/red_prefs.py:148
+#: src/red_prefs.py:168
 msgid "Server URL:"
-msgstr ""
+msgstr "Serveri URL:"
 
 #. manually force the value to update
-#: src/red_prefs.py:189
-#, fuzzy
+#: src/red_prefs.py:209
 msgid "Mirrors"
-msgstr "Peegel"
+msgstr "Peeglid"
 
-#: src/red_prefs.py:201
+#: src/red_prefs.py:221
 msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
 msgstr ""
 
-#. Packages frame
-#: src/red_prefs.py:208
-#, fuzzy
+#. Packages section
+#: src/red_prefs.py:228
 msgid "Packages"
-msgstr "Pakett"
+msgstr "Paketid"
 
-#: src/red_prefs.py:216
+#: src/red_prefs.py:237
 #, fuzzy
 msgid "Require package signatures"
 msgstr "Paketi allkirjad"
 
-#: src/red_prefs.py:221
+#: src/red_prefs.py:242
 msgid "Maximum number of packages to download at once:"
 msgstr ""
 
-#. Proxy frame - requires superuser
-#: src/red_prefs.py:231
+#. Proxy section - requires superuser
+#: src/red_prefs.py:252
 msgid "Proxy"
 msgstr "Proksi"
 
-#: src/red_prefs.py:239
+#: src/red_prefs.py:261
 msgid "Use a proxy"
-msgstr ""
+msgstr "Kasuta proksit"
 
-#: src/red_prefs.py:243
-#, fuzzy
+#: src/red_prefs.py:265
 msgid "Proxy URL:"
-msgstr "Proksi"
+msgstr "Proksi URL:"
 
-#: src/red_prefs.py:250
-#, fuzzy
+#: src/red_prefs.py:272
 msgid "Username:"
-msgstr "Kasutajanimi"
+msgstr "Kasutajanimi:"
 
 #. Have to wait for the above widgets to be created.
-#: src/red_prefs.py:291
+#: src/red_prefs.py:312
 msgid "You do not have permissions to view proxy settings"
 msgstr ""
 
-#: src/red_prefs.py:312
+#: src/red_prefs.py:336
 msgid "Cache downloaded packages and metadata"
 msgstr ""
 
-#: src/red_prefs.py:318
+#: src/red_prefs.py:342
 msgid "Location of cached data:"
 msgstr ""
 
-#. Expiration frame
-#: src/red_prefs.py:326
+#. Expiration section
+#: src/red_prefs.py:350
 msgid "Expiration"
 msgstr ""
 
-#. lame shim
-#: src/red_prefs.py:337
+#: src/red_prefs.py:354
 msgid "Cache expires"
 msgstr ""
 
-#: src/red_prefs.py:343
+#: src/red_prefs.py:360
 msgid "Maximum age in days:"
 msgstr ""
 
-#: src/red_prefs.py:354
+#: src/red_prefs.py:371
 msgid "Maximum size in MB:"
 msgstr ""
 
-#: src/red_prefs.py:365
+#: src/red_prefs.py:382
 msgid "Current cache size:"
 msgstr ""
 
-#: src/red_prefs.py:382
+#: src/red_prefs.py:399
 #, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Kas sa tõesti soovid allalaadmise katkestada?"
 
-#: src/red_prefs.py:398
+#: src/red_prefs.py:415
 #, fuzzy
 msgid "Empty Cache"
 msgstr "Puhver"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:420
-#, fuzzy, python-format
+#: src/red_prefs.py:437
+#, python-format
 msgid "%d MB"
-msgstr "%d KB"
+msgstr "%d MB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:468
+#: src/red_prefs.py:485
 msgid "Value"
-msgstr ""
+msgstr "Väärtus"
 
-#: src/red_prefs.py:481
+#: src/red_prefs.py:498
 #, fuzzy
 msgid "Loading preferences..."
 msgstr "Uudiste allalaadimine..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:541
+#: src/red_prefs.py:562
 #, fuzzy, python-format
 msgid "%s Preferences"
 msgstr "Häälestus"
@@ -2037,9 +1959,8 @@ msgstr "Häälestus"
 #. ##
 #. system packages and uninstalled packages are mutually exclusive
 #: src/red_searchbox.py:146
-#, fuzzy
-msgid "Uninstalled Packages"
-msgstr " Installi paketid "
+msgid "All Packages"
+msgstr "Kõik paketid"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2063,13 +1984,13 @@ msgstr "Uuendused"
 
 #: src/red_searchbox.py:148
 #, fuzzy
-msgid "Installed Packages"
+msgid "Uninstalled Packages"
 msgstr " Installi paketid "
 
 #: src/red_searchbox.py:149
 #, fuzzy
-msgid "All Packages"
-msgstr "Pakett"
+msgid "Installed Packages"
+msgstr " Installi paketid "
 
 #: src/red_searchbox.py:174
 #, fuzzy
@@ -2091,48 +2012,47 @@ msgstr ""
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
-msgstr ""
+msgstr "X Windows"
 
 #: src/red_searchbox.py:179
-#, fuzzy
 msgid "Games"
-msgstr "Nimi"
+msgstr "Mängud"
 
 #: src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimeedia"
 
 #: src/red_searchbox.py:181
 msgid "Internet"
-msgstr ""
+msgstr "Internet"
 
 #: src/red_searchbox.py:182
 msgid "Utilities"
-msgstr ""
+msgstr "Tööriistad"
 
 #: src/red_searchbox.py:183
 msgid "System"
-msgstr ""
+msgstr "Süsteem"
 
 #: src/red_searchbox.py:184
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentatsioon"
 
 #: src/red_searchbox.py:185
 msgid "Libraries"
-msgstr ""
+msgstr "Teegid"
 
 #: src/red_searchbox.py:186
 msgid "Development"
-msgstr ""
+msgstr "Arendus"
 
 #: src/red_searchbox.py:187
 msgid "Development Tools"
-msgstr ""
+msgstr "Arenduse tööriistad"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Mitmesugust"
 
 #: src/red_searchbox.py:274
 #, fuzzy
@@ -2148,9 +2068,8 @@ msgid "Match:"
 msgstr "Kataloogitee:"
 
 #: src/red_searchbox.py:322
-#, fuzzy
 msgid "Channel:"
-msgstr "Katkesta"
+msgstr "Kanal:"
 
 #. ##
 #. ## Build the second row of the search UI, which contains the
@@ -2231,7 +2150,7 @@ msgstr ""
 
 #: src/red_serverinfo.py:60
 msgid "Server URL"
-msgstr ""
+msgstr "Serveri URL"
 
 #: src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
@@ -2361,26 +2280,26 @@ msgstr "Asukoht"
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d ootel installimine"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d ootel installimist"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d ootel eemaldamine"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d ootel eemaldamist"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "Ootel tegevusi pole"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -2399,23 +2318,20 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_software.py:28
-#, fuzzy
 msgid "Installed Software"
 msgstr "Installitud tarkvara"
 
 #: src/red_software.py:31
-#, fuzzy
 msgid "I_nstalled Software"
-msgstr "Installitud tarkvara"
+msgstr "_Installitud tarkvara"
 
 #: src/red_software.py:84
 msgid "Available Software"
 msgstr "Saadaval olev tarkvara"
 
 #: src/red_software.py:87
-#, fuzzy
 msgid "A_vailable Software"
-msgstr "Saadaval olev tarkvara"
+msgstr "_Saadaval olev tarkvara"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2434,14 +2350,12 @@ msgstr "Saadaval olev tarkvara"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_subscriptions.py:57
-#, fuzzy
 msgid "Subscribed"
-msgstr "_Telli"
+msgstr "Tellitud"
 
 #: src/red_subscriptions.py:64
-#, fuzzy
 msgid "Channel Name"
-msgstr "Kanaliinfo"
+msgstr "Kanali nimi"
 
 #: src/red_subscriptions.py:78
 #, fuzzy, python-format
@@ -2449,7 +2363,7 @@ msgid "%s Channel Subscriptions"
 msgstr "T_ellimused"
 
 #. FIXME: Make transient of app
-#: src/red_subscriptions.py:95
+#: src/red_subscriptions.py:99
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
@@ -2476,7 +2390,7 @@ msgstr ""
 #. (now invalid) path.
 #: src/red_thrashingtreeview.py:123
 msgid "Untitled"
-msgstr ""
+msgstr "Nimetu"
 
 #. Fix the old column header
 #. ##
@@ -2523,15 +2437,13 @@ msgid "_Pending Actions"
 msgstr "T_ellimused"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "Uuendused"
+msgstr "_Uuendused"
 
 #. ## Update All button
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr " Uuenda paketid "
+msgstr "_Uuenda kõik"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
@@ -2590,11 +2502,11 @@ msgstr ""
 
 #: src/red_users.py:289
 msgid "Users"
-msgstr ""
+msgstr "Kasutajad"
 
 #: src/red_users.py:306
 msgid "Add"
-msgstr ""
+msgstr "Lisa"
 
 #: src/red_users.py:320
 #, fuzzy, python-format
@@ -2612,16 +2524,30 @@ msgstr "Pakub:"
 
 #: src/red_users.py:379
 msgid "Add new user"
-msgstr ""
+msgstr "Lisa uus kasutaja"
 
 #: src/red_users.py:426
 msgid "Invalid user name."
-msgstr ""
+msgstr "Vigane kasutajanimi."
 
 #: src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
-msgstr ""
+msgstr "Kasutaja '%s' on juba olemas."
+
+#, fuzzy
+#~ msgid "Mark for Installation"
+#~ msgstr "Pakettide install"
+
+#, fuzzy
+#~ msgid "Mark for Removal"
+#~ msgstr "Pakettide eemaldamine"
+
+#~ msgid "Cancel"
+#~ msgstr "Katkesta"
+
+#~ msgid "Information"
+#~ msgstr "Informatsioon"
 
 #, fuzzy
 #~ msgid "View"
