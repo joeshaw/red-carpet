@@ -24,6 +24,7 @@ dnl **************************************************************************
 dnl Check for Python 2.2
 
 AM_PATH_PYTHON(2.2)
+AM_CHECK_PYTHON_HEADERS(,[AC_MSG_ERROR(could not find Python headers)])
 
 dnl **************************************************************************
 
@@ -73,12 +74,6 @@ dnl **************************************************************************
 
 dnl This is stuff for building our pygtk extensions that are written in C
 
-PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
-AC_SUBST(PYTHON_PREFIX)
-
-PYTHON_INCLUDES=-I$PYTHON_PREFIX/include/python2.2
-AC_SUBST(PYTHON_INCLUDES)
-
 PKG_CHECK_MODULES(GTK, gtk+-2.0)
 AC_SUBST(GTK_CFLAGS)
 AC_SUBST(GTK_LIBS)
@@ -97,9 +92,6 @@ AC_MSG_RESULT($PYGTK_DEFSDIR)
 dnl FIXME: check that pygtk-codegen-2.0 actually exists!
 PYGTK_CODEGEN=$PYGTK_PREFIX/bin/pygtk-codegen-2.0
 AC_SUBST(PYGTK_CODEGEN)
-
-PYGTK_IMPORTDIR=$PYGTK_PREFIX/lib/python2.2/site-packages
-AC_SUBST(PYGTK_IMPORTDIR)
 
 dnl **************************************************************************
 

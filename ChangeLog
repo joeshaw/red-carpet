@@ -1,3 +1,16 @@
+2003-09-16  Joe Shaw  <joe@ximian.com>
+
+	* acinclude.m4: Add in some m4 magic for detecting python includes
+	and library directories.
+
+	* configure.in: Call AM_CHECK_PYTHON_HEADERS() instead of trying
+	to do it all ourselves.  PYTHON_PREFIX and PYTHON_INCLUDES are
+	encompassed by this, remove the PYGTK_IMPORTDIR since we don't use
+	it anymore.
+
+	* red_extra/Makefile.am: pythondir is defined by our m4 magic,
+	don't define it (incorrectly) ourselves.
+
 2003-09-05  Joe Shaw  <joe@ximian.com>
 
 	* configure.in: Version 2.0.3

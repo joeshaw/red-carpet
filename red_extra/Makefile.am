@@ -8,7 +8,6 @@ defs_DATA = \
 
 EXTRA_DIST = $(defs_DATA)
 
-pythondir=$(PYGTK_PREFIX)/lib/python2.2
 pkgpythondir = $(pythondir)/gtk-2.0
 pkgpyexecdir = $(pythondir)/gtk-2.0
 
