@@ -156,7 +156,8 @@ class SummaryComponent(red_component.Component):
 
     def select_all(self):
         for pkg in self.array.get_all():
-            red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)
+            if not pkg["installed"]:
+                red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED)
 
     def unselect_all(self):
         for pkg in self.array.get_all():
