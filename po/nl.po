@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-20 20:41+0200\n"
-"PO-Revision-Date: 2004-06-21 10:30+0200\n"
+"POT-Creation-Date: 2004-07-11 21:03+0200\n"
+"PO-Revision-Date: 2004-07-12 05:15+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
@@ -892,6 +892,10 @@ msgstr "Geen passende patches gevonden"
 msgid "Package Information"
 msgstr "Pakketinformatie"
 
+#: src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "Naamloos"
+
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Afhankelijkheden"
@@ -948,10 +952,6 @@ msgstr "Beschrijving"
 msgid "Info"
 msgstr "Info"
 
-#: src/red_packagepage.py:32
-msgid "Unnamed"
-msgstr "Naamloos"
-
 #: src/red_packageview.py:301
 msgid "Status"
 msgstr "Status"
@@ -961,6 +961,24 @@ msgstr "Status"
 #: src/red_packageview.py:472
 msgid "Importance"
 msgstr "Urgentie"
+
+# vertaling?
+#: src/red_patches.py:35
+msgid "Patches"
+msgstr "Patches"
+
+# huh?
+#: src/red_patches.py:38
+msgid "YOU Patches"
+msgstr "YOU Patches"
+
+#: src/red_patches.py:72
+msgid "Searching for matching patches..."
+msgstr "Zoeken naar overeenkomende patches..."
+
+#: src/red_patches.py:111
+msgid "No matching patches found."
+msgstr "Geen passende patches gevonden"
 
 #: src/red_pendingview.py:347
 #, python-format
@@ -1112,6 +1130,22 @@ msgstr "Voorkeuren worden geladen..."
 msgid "%s Preferences"
 msgstr "%s Voorkeuren"
 
+#: src/red_search.py:35
+msgid "Search"
+msgstr "Zoeken"
+
+#: src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "Pakketten door_zoeken"
+
+#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "Zoeken naar overeenkomende pakketten..."
+
+#: src/red_search.py:109
+msgid "No matching packages found."
+msgstr "Geen overeenkomende pakketten gevonden."
+
 #: src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Alle pakketten"
@@ -1205,22 +1239,6 @@ msgstr "Zoeken op:"
 #: src/red_searchbox.py:322
 msgid "Channel:"
 msgstr "Kanaal:"
-
-#: src/red_search.py:35
-msgid "Search"
-msgstr "Zoeken"
-
-#: src/red_search.py:38
-msgid "S_earch Packages"
-msgstr "Pakketten door_zoeken"
-
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
-msgid "Searching for matching packages..."
-msgstr "Zoeken naar overeenkomende pakketten..."
-
-#: src/red_search.py:109
-msgid "No matching packages found."
-msgstr "Geen overeenkomende pakketten gevonden."
 
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
