@@ -31,7 +31,6 @@ import red_depcomponent
 import red_prefs
 import red_subscriptions
 import red_users
-import red_throbber
 import red_activation
 import red_about
 import red_mount
@@ -161,12 +160,6 @@ class AppWindow(gtk.Window,
         self.assemble_toolbar(self.toolbar)
         toolbar_box.pack_start(self.toolbar, 1, 1)
 
-        ## Throbber
-        icon_size = self.toolbar.get_icon_size()
-        width, height = gtk.icon_size_lookup(icon_size)
-        toolbar_box.pack_end(self.create_throbber(width, height),
-                             0, 0)
-
         ## Actionbar
         self.actionbar = red_actionbar.Actionbar()
         self.assemble_actionbar(self.actionbar)
@@ -226,16 +219,6 @@ class AppWindow(gtk.Window,
 
         if w:
             self.hpaned.set_position(w)
-
-    def create_throbber(self, height, width):
-        self.throbber = red_throbber.Throbber(height, width)
-
-        throbbox = gtk.Frame(None)
-        throbbox.set_shadow_type(gtk.SHADOW_ETCHED_OUT)
-        throbbox.set_border_width(2)
-        throbbox.add(self.throbber)
-
-        return throbbox
 
     def set_title(self, title, component=None):
         buf = ""
@@ -701,21 +684,6 @@ class AppWindow(gtk.Window,
         bar.add("/Debug/Exercise Menu Items",
                 callback=lambda x: x.menubar.exercise_menubar())
 
-        self.__throb_debug = 0
-
-        def throb_checked_get():
-            return self.__throb_debug
-
-        def throb_checked_set(flag):
-            self.__throb_debug = flag
-            if flag:
-                self.busy_start()
-            else:
-                self.busy_stop()
-        bar.add("/Debug/Throb",
-                checked_get=throb_checked_get,
-                checked_set=throb_checked_set)
-
 
     def register_component(self, comp):
 
@@ -814,12 +782,10 @@ class AppWindow(gtk.Window,
 
 
     def busy_start(self):
-        self.throbber.start()
         self.busy_count += 1
         self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
 
     def busy_stop(self):
-        self.throbber.stop()
         if self.busy_count > 0:
             self.busy_count -= 1
         if self.busy_count == 0:

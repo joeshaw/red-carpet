@@ -1,3 +1,9 @@
+2003-03-24  Jon Trowbridge  <trow@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Removed red_throbber.py.
+
+	* red_appwindow.py: Removed the throbber. Fixes #39979.
+
 2003-03-24  Joe Shaw  <joe@ximian.com>
 
 	* red_installfiles.py (DownloadWatcher.fetch_package): Initialize
