@@ -30,7 +30,6 @@ import red_appwindow
 import red_search
 import red_summary
 import red_transaction
-import red_news
 import red_history
 import red_option
 import red_settings
@@ -179,7 +178,6 @@ def main(version):
     app.register_component(red_summary.SummaryComponent())
     app.register_component(red_my_computer.MyComputerComponent())
     app.register_component(red_search.SearchComponent())
-    app.register_component(red_news.NewsComponent())
     app.register_component(red_history.HistoryComponent())
     app.register_component(red_transaction.TransactionComponent())
 

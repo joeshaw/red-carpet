@@ -18,7 +18,7 @@
 import string, re
 import rcd_util
 import gobject, gtk, pango
-import red_component
+import red_main
 import red_listmodel
 import red_thrashingtreeview
 import red_serverlistener
@@ -168,38 +168,17 @@ class NewsView(gtk.ScrolledWindow):
         self.add(view)
 
 
-class NewsComponent(red_component.Component):
+class NewsWindow(gtk.Dialog):
 
-    def name(self):
-        return _("News")
+    def __init__(self):
+        gtk.Dialog.__init__(self, _("%s News") % red_main.red_name)
 
-    def long_name(self):
-        return _("Red Carpet News")
-
-    def menu_name(self):
-        return _("Red Carpet _News")
-
-    def accelerator(self):
-        return "<Control>n"
-
-    def pixbuf(self):
-        return "news"
-
-    def build(self):
-        page = gtk.VBox(0, 6)
-
-        hbox = gtk.HBox(0, 6)
-
-        label = gtk.Label("")
-        label.set_alignment(0, 0.5)
-        label.set_markup("<b>" + self.long_name() + "</b>")
-        hbox.pack_start(label)
-
-        hbox.show_all()
-        page.pack_start(hbox, 0, 0)
+        self.set_default_size(600, 400)
 
         view = NewsView()
         view.show()
-        page.pack_start(view, 1, 1)
+        self.vbox.add(view)
 
-        return page
+        button = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        button.grab_default()
+        button.connect("clicked", lambda x:self.destroy())

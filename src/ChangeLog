@@ -1,3 +1,12 @@
+2003-04-15  Tambet Ingo  <tambet@ximian.com>
+
+	* red_news.py (NewsWindow): Remove News component, add News
+	window.
+
+	* red_main.py (main): Don't register News component.
+
+	* red_appwindow.py (AppWindow.assemble_menubar): Add RC News.
+
 2003-04-11  Joe Shaw  <joe@ximian.com>
 
 	* red_actionbar.py: Default to ICON_SIZE_MENU, not BUTTON.
