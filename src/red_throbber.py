@@ -18,17 +18,16 @@
 import gobject, gtk
 import red_pixbuf
 
-#_throbber_pixbufs = ["throb-1",
-#                     "throb-2",
-#                     "throb-3",
-#                     "throb-4",
-#                     "throb-5",
-#                     "throb-6",
-#                     "throb-7",
-#                     "throb-8",
-#                     "throb-9",
-#                     "throb-10"]
-_throbber_pixbufs = ["app_icon", "download"]
+_throbber_pixbufs = ["throb-1",
+                     "throb-2",
+                     "throb-3",
+                     "throb-4",
+                     "throb-5",
+                     "throb-6",
+                     "throb-7",
+                     "throb-8",
+                     "throb-9",
+                     "throb-10"]
 
 for i in range(len(_throbber_pixbufs)):
     _throbber_pixbufs[i] = red_pixbuf.get_pixbuf(_throbber_pixbufs[i])

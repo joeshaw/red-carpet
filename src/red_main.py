@@ -29,8 +29,7 @@ import red_transaction
 import red_news
 import red_history
 
-red_name = "Red Carpet 2: Electric Boogaloo"
-red_version = "0.0.1"
+red_name = "Red Carpet %s"
 
 red_running = 1
 
@@ -117,7 +116,7 @@ def main(version):
     app.register_component(red_search.SearchComponent())
     app.register_component(red_history.HistoryComponent())
 
-    app.set_title(red_name)
+    app.set_title(red_name % version)
     app.set_size_request(780, 550)
     app.show()
 
