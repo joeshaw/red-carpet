@@ -1,5 +1,8 @@
 2003-06-02  Joe Shaw  <joe@ximian.com>
 
+	* red_pendingview.py: Use "transaction" instead of "update"
+	because the user might just be removing things.  Fixes #42731.
+
 	* rcd_util.py (byte_size_to_string): Use proper units for kB and
 	MB.  Fixes #42283.
 

@@ -557,7 +557,7 @@ class PendingView_Transaction(PendingView):
             print "Download aborted"
             self.stop_polling()
             self.transaction_finished(msg=_("Download cancelled"),
-                                      title=_("Update cancelled"))
+                                      title=_("Transaction cancelled"))
         else:
             print "Couldn't abort download"
 
@@ -592,7 +592,7 @@ class PendingView_Transaction(PendingView):
         return 1
 
 
-    def transaction_finished(self, msg, title=_("Update Finished")):
+    def transaction_finished(self, msg, title=_("Transaction Finished")):
         self.finished()
         self.switch_cancel_button_to_ok()
         self.set_title(title)
@@ -652,13 +652,13 @@ class PendingView_Transaction(PendingView):
 
             if pending and pending["status"] == "finished":
                 red_pendingops.clear_packages_with_actions()
-                pv.transaction_finished(msg=_("The update has " \
+                pv.transaction_finished(msg=_("The transaction has " \
                                         "completed successfully"))
                 pv.__finished = 1
             elif pending and pending["status"] == "failed":
                 msg = _("Transaction failed") + ":\n" + pending["error_msg"]
                 pv.transaction_finished(msg,
-                                        title=_("Update Failed"))
+                                        title=_("Transaction Failed"))
                 pv.__finished = 1
 
             if pending and step_pending:
