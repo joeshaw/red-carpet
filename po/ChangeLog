@@ -1,3 +1,7 @@
+2003-03-29  Christian Rose  <menthos@menthos.com>
+
+	* sv.po: Updated Swedish translation.
+
 2003-03-26  Carlos Perelló Marín <carlos@gnome.org>
 
 	* *.po: Added and merge all .po files from old red-carpet release.
@@ -11,3 +15,4 @@
 	* es.po: Added a test Spanish translation.  Very incomplete and
 	formed by doing a Google Translation. ;)  Please feel free to make
 	this a real translation.
+

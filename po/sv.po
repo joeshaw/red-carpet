@@ -1,14 +1,14 @@
 # Swedish messages for Red Carpet.
-# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
-# Christian Rose <menthos@menthos.com>, 2001, 2002.
+# Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
+# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.1 2003/03/26 22:16:21 carlos Exp $
+# $Id: sv.po,v 1.2 2003/03/29 16:14:35 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-03-26 22:53+0100\n"
-"PO-Revision-Date: 2002-03-28 00:06+0100\n"
+"POT-Creation-Date: 2003-03-29 17:12+0100\n"
+"PO-Revision-Date: 2002-03-29 17:13+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:365
+#: src/rcd_util.py:366
 #, fuzzy
 msgid "Please wait while getting data."
 msgstr "Var vänlig vänta, läser in sidan..."
@@ -51,32 +51,31 @@ msgstr "Var vänlig vänta, läser in sidan..."
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:414
+#: src/rcd_util.py:415
 msgid "Verifying"
 msgstr "Verifierar"
 
-#: src/rcd_util.py:415
-msgid "Unable to verify package signature for"
-msgstr ""
-
 #: src/rcd_util.py:416
-msgid "There is no package signature for"
-msgstr ""
+msgid "Unable to verify package signature for"
+msgstr "Kan inte verifiera paketsignatur för"
 
 #: src/rcd_util.py:417
-#, fuzzy
-msgid "Preparing Transaction"
-msgstr "Påbörjar transaktion..."
+msgid "There is no package signature for"
+msgstr "Det finns ingen paketsignatur för"
 
 #: src/rcd_util.py:418
+msgid "Preparing Transaction"
+msgstr "Förbereder transaktion"
+
+#: src/rcd_util.py:419
 msgid "Installing"
 msgstr "Installerar"
 
-#: src/rcd_util.py:419
+#: src/rcd_util.py:420
 msgid "Removing"
 msgstr "Tar bort"
 
-#: src/rcd_util.py:420
+#: src/rcd_util.py:421
 msgid "Configuring"
 msgstr "Konfigurerar"
 
@@ -137,7 +136,7 @@ msgstr "Konfigurerar"
 #. ##
 #: src/red_activation.py:27
 msgid "Group Activation"
-msgstr ""
+msgstr "Gruppaktivering"
 
 #: src/red_activation.py:37
 msgid "Email:"
@@ -145,25 +144,26 @@ msgstr "E-post:"
 
 #: src/red_activation.py:41
 msgid "Activation Code:"
-msgstr ""
+msgstr "Aktiveringskod:"
 
 #: src/red_activation.py:59
 msgid "Activate"
-msgstr ""
+msgstr "Aktivera"
 
 #: src/red_activation.py:76
 msgid "Please fill in both email and activation code."
-msgstr ""
+msgstr "Fyll i både e-postadress och aktiveringskod."
 
 #: src/red_activation.py:95
 msgid "System successfully activated."
-msgstr ""
+msgstr "Systemet aktiverades framgångsrikt."
 
 #. Store email to config.
 #: src/red_activation.py:103
 msgid ""
 "System could not be activated: Invalid activation code or email address."
 msgstr ""
+"Systemet kunde inte aktiveras: Ogiltig aktiveringskod eller e-postadress."
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -182,14 +182,12 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_appwindow.py:60
-#, fuzzy
 msgid "Refreshing channel data"
-msgstr "Hämtar kanaldata..."
+msgstr "Uppdaterar kanaldata"
 
 #: src/red_appwindow.py:62
-#, fuzzy
 msgid "Downloading channel information"
-msgstr "Hämtar kanaldata..."
+msgstr "Hämtar kanalinformation"
 
 #. FIXME: This feels like a hack.  Go through the remove_packages and
 #. if any of them have an __old_package field, use that package for
@@ -207,27 +205,26 @@ msgstr "Hämtar kanaldata..."
 #: src/red_appwindow.py:314
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
-msgstr ""
+msgstr "Är du säker på att du vill öppna %d fönster med paketinformation?"
 
 #. #
 #. # Toolbar
 #. #
 #: src/red_appwindow.py:342
 msgid "Run Now"
-msgstr ""
+msgstr "Kör nu"
 
 #: src/red_appwindow.py:343
 msgid "Perform installations and removals"
-msgstr ""
+msgstr "Utför installationer och borttagningar"
 
 #: src/red_appwindow.py:350
-#, fuzzy
 msgid "Channels"
-msgstr "Avbryt"
+msgstr "Kanaler"
 
 #: src/red_appwindow.py:351
 msgid "Change your channel subscriptions"
-msgstr ""
+msgstr "Ändra dina kanalprenumerationer"
 
 #: src/red_appwindow.py:356
 msgid "Refresh"
@@ -235,55 +232,48 @@ msgstr "Uppdatera"
 
 #: src/red_appwindow.py:357
 msgid "Refresh channel data"
-msgstr ""
+msgstr "Uppdatera kanaldata"
 
 #. #
 #. # Actionbar.
 #. #
 #: src/red_appwindow.py:369
-#, fuzzy
 msgid "Mark for _Installation"
-msgstr "Paketinstallation"
+msgstr "Markera för _installation"
 
 #: src/red_appwindow.py:370
-#, fuzzy
 msgid "Mark selected packages for installation"
-msgstr "Töm mellanlagrade paket vid uppstart"
+msgstr "Markera valda paket för installation"
 
 #. #
 #. # Remove Package
 #. #
-#: src/red_appwindow.py:377 src/red_appwindow.py:635
-#, fuzzy
+#: src/red_appwindow.py:377 src/red_appwindow.py:633
 msgid "Mark for _Removal"
-msgstr "Paketborttagning"
+msgstr "Markera för _borttagning"
 
 #: src/red_appwindow.py:378
-#, fuzzy
 msgid "Mark selected packages for removal"
-msgstr "Installera markerade paket"
+msgstr "Markera valda paket för borttagning"
 
 #. #
 #. # Cancel Action
 #. #
-#: src/red_appwindow.py:384 src/red_appwindow.py:647
-#, fuzzy
+#: src/red_appwindow.py:384 src/red_appwindow.py:645
 msgid "_Cancel"
-msgstr "Avbryt"
+msgstr "_Avbryt"
 
 #: src/red_appwindow.py:385
 msgid "Cancel marked package actions"
-msgstr ""
+msgstr "Avbryt markerade paketåtgärder"
 
 #: src/red_appwindow.py:390
-#, fuzzy
 msgid "I_nformation"
-msgstr "Information"
+msgstr "I_nformation"
 
 #: src/red_appwindow.py:391
-#, fuzzy
 msgid "Package information"
-msgstr "Paketinstallation"
+msgstr "Paketinformation"
 
 #. The return value is for the benefit of our delete_event handler.
 #. #
@@ -291,117 +281,104 @@ msgstr "Paketinstallation"
 #. #
 #: src/red_appwindow.py:435
 msgid "_File"
-msgstr ""
+msgstr "_Arkiv"
 
 #: src/red_appwindow.py:436
 msgid "_Edit"
-msgstr ""
+msgstr "_Redigera"
 
-#: src/red_appwindow.py:437
+#. We need to make the component menu items checked
+#. instead of radio-style, because with a radio group you
+#. always have to have exactly one item set: when a non-navigable
+#. component is on the screen (like the dep resolution page),
+#. the component gets reset if you open any menu.
+#: src/red_appwindow.py:437 src/red_appwindow.py:700
 msgid "_View"
 msgstr "_Visa"
 
 #: src/red_appwindow.py:438
-#, fuzzy
 msgid "_Actions"
-msgstr "_Prenumerationer"
+msgstr "_Åtgärder"
 
 #: src/red_appwindow.py:439
 msgid "_Help"
-msgstr ""
+msgstr "_Hjälp"
 
-#: src/red_appwindow.py:441
-msgid "File"
-msgstr ""
-
-#: src/red_appwindow.py:443
-#, fuzzy
+#: src/red_appwindow.py:447
 msgid "Connect..."
-msgstr "Kan inte ansluta"
+msgstr "Anslut..."
 
-#: src/red_appwindow.py:453
+#: src/red_appwindow.py:457
 msgid "Install from _File..."
-msgstr ""
+msgstr "Installera från _fil..."
 
-#: src/red_appwindow.py:461
+#: src/red_appwindow.py:465
 msgid "Install from _URL..."
-msgstr ""
+msgstr "Installera från _URL..."
 
 #. #
 #. # Mount command
 #. #
-#: src/red_appwindow.py:477
+#: src/red_appwindow.py:481
 msgid "_Mount Directory..."
-msgstr ""
+msgstr "_Montera katalog..."
 
 #. #
 #. # Unmount command
 #. #
-#: src/red_appwindow.py:493
+#: src/red_appwindow.py:497
 msgid "U_nmount Directory..."
-msgstr ""
+msgstr "A_vmontera katalog..."
 
 #. #
 #. # Activate
 #. #
-#: src/red_appwindow.py:508
+#: src/red_appwindow.py:512
 msgid "_Activate..."
-msgstr ""
+msgstr "_Aktivera..."
 
-#: src/red_appwindow.py:514
+#: src/red_appwindow.py:518
 msgid "Quit"
 msgstr "Avsluta"
 
 #. #
 #. # Select all/none
 #. #
-#: src/red_appwindow.py:523
-msgid "Edit"
-msgstr ""
-
-#: src/red_appwindow.py:531
-#, fuzzy
+#: src/red_appwindow.py:533
 msgid "Select _All"
-msgstr "_Markera alla "
+msgstr "Markera _alla"
 
-#: src/red_appwindow.py:536
-#, fuzzy
+#: src/red_appwindow.py:538
 msgid "Select _None"
-msgstr "Markera _inga "
+msgstr "Markera _inga"
 
-#: src/red_appwindow.py:543
-#, fuzzy
+#: src/red_appwindow.py:545
 msgid "Channel _Subscriptions..."
-msgstr "_Prenumerationer"
+msgstr "Kanal_prenumerationer..."
 
-#: src/red_appwindow.py:549
-#, fuzzy
+#: src/red_appwindow.py:551
 msgid "_Preferences..."
-msgstr "Inställningar"
+msgstr "_Inställningar..."
 
-#: src/red_appwindow.py:553
+#: src/red_appwindow.py:555
 msgid "_Users..."
-msgstr ""
+msgstr "_Användare..."
 
 #. #
 #. # Sidebar
 #. #
-#: src/red_appwindow.py:565
-#, fuzzy
-msgid "View"
-msgstr "_Visa"
-
 #: src/red_appwindow.py:567
 msgid "_Sidebar"
-msgstr ""
+msgstr "_Sidopanel"
 
 #: src/red_appwindow.py:571
-msgid "Advanced Search Options"
-msgstr ""
+#, fuzzy
+msgid "_Advanced Search Options"
+msgstr "_Prenumerationer"
 
 #: src/red_appwindow.py:575
 #, fuzzy
-msgid "Channel Names"
+msgid "_Channel Names"
 msgstr "Kanalinfo"
 
 #: src/red_appwindow.py:581
@@ -418,18 +395,13 @@ msgstr "Information"
 #. # Run Transaction
 #. #
 #: src/red_appwindow.py:600
-#, fuzzy
-msgid "Actions"
-msgstr "Plats"
-
-#: src/red_appwindow.py:602
 msgid "Run _Now"
-msgstr ""
+msgstr "Kör _nu"
 
 #. #
 #. # Verify System Dependencies
 #. #
-#: src/red_appwindow.py:615
+#: src/red_appwindow.py:613
 #, fuzzy
 msgid "_Verify System Dependencies"
 msgstr "Misslyckade beroenden"
@@ -437,7 +409,7 @@ msgstr "Misslyckade beroenden"
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:626
+#: src/red_appwindow.py:624
 #, fuzzy
 msgid "Mark for I_nstallation"
 msgstr "Paketinstallation"
@@ -445,24 +417,14 @@ msgstr "Paketinstallation"
 #. #
 #. # Refresh Channel Data
 #. #
-#: src/red_appwindow.py:661
+#: src/red_appwindow.py:659
 msgid "Re_fresh Channel Data"
 msgstr ""
 
-#: src/red_appwindow.py:667
-msgid "Help"
-msgstr ""
-
-#: src/red_appwindow.py:669
-#, fuzzy
+#: src/red_appwindow.py:665
 msgid "_About..."
-msgstr "Om"
+msgstr "_Om..."
 
-#. We need to make the component menu items checked
-#. instead of radio-style, because with a radio group you
-#. always have to have exactly one item set: when a non-navigable
-#. component is on the screen (like the dep resolution page),
-#. the component gets reset if you open any menu.
 #. We activate the first component that gets registered.
 #. Clear the status bar, update toolbar
 #. Show the new component, hide the old one.
@@ -581,6 +543,7 @@ msgstr ""
 #. ##
 #. ## Virtual functions
 #. ##
+#. This should always be the same as the long name plus a menu mnemonic
 #. Always autoresize our connected views, since the treeview is
 #. stupid and doesn't work properly if the widget is hidden.
 #. ##
@@ -618,7 +581,7 @@ msgstr ""
 
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
-#: src/red_connection.py:85
+#: src/red_connection.py:87
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -627,7 +590,7 @@ msgstr ""
 
 #. LSB compliant distros should have the
 #. following
-#: src/red_connection.py:126
+#: src/red_connection.py:128
 msgid "Starting daemon..."
 msgstr ""
 
@@ -636,7 +599,7 @@ msgstr ""
 #. parent
 #. FIXME: allow other paths?
 #. Give the rcd 20 seconds to start before we give up.
-#: src/red_connection.py:190
+#: src/red_connection.py:192
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -805,16 +768,16 @@ msgstr "nio"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_depview.py:37 src/red_mount.py:225 src/red_packagepage_info.py:83
-#: src/red_packageview.py:350
+#: src/red_packageview.py:354
 #, fuzzy
 msgid "Channel"
 msgstr "Avbryt"
 
-#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:406
+#: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:410
 msgid "Package"
 msgstr "Paket"
 
-#: src/red_depview.py:43 src/red_packageview.py:445
+#: src/red_depview.py:43 src/red_packageview.py:449
 #, fuzzy
 msgid "Current Version"
 msgstr "Begärd version:"
@@ -826,7 +789,7 @@ msgstr "Begärd version:"
 msgid "New Version"
 msgstr "Version"
 
-#: src/red_depview.py:49 src/red_packageview.py:481
+#: src/red_depview.py:49 src/red_packageview.py:485
 msgid "Size"
 msgstr "Storlek"
 
@@ -944,7 +907,7 @@ msgstr "Sök"
 msgid "Time"
 msgstr ""
 
-#: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:313
+#: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:317
 #, fuzzy
 msgid "Action"
 msgstr "Plats"
@@ -963,6 +926,10 @@ msgstr "Gammal version"
 #. Define me!
 #: src/red_history.py:336 src/red_packagepage.py:45
 msgid "History"
+msgstr ""
+
+#: src/red_history.py:339
+msgid "_History"
 msgstr ""
 
 #: src/red_history.py:388
@@ -1222,6 +1189,10 @@ msgstr ""
 msgid "My Computer"
 msgstr ""
 
+#: src/red_my_computer.py:34
+msgid "_My Computer"
+msgstr ""
+
 #: src/red_my_computer.py:54
 msgid "Searching system for matching packages..."
 msgstr ""
@@ -1252,6 +1223,11 @@ msgstr "Nyheter"
 
 #: src/red_news.py:177
 msgid "Red Carpet News"
+msgstr "Red Carpet-nyheter"
+
+#: src/red_news.py:180
+#, fuzzy
+msgid "Red Carpet _News"
 msgstr "Red Carpet-nyheter"
 
 #. ##
@@ -1525,7 +1501,7 @@ msgstr "Är i konflikt med:"
 msgid "Name"
 msgstr "Namn"
 
-#: src/red_packagepage_info.py:79 src/red_packageview.py:435
+#: src/red_packagepage_info.py:79 src/red_packageview.py:439
 msgid "Version"
 msgstr "Version"
 
@@ -1553,7 +1529,7 @@ msgstr "Plats"
 msgid "Summary"
 msgstr "Sammanfattning"
 
-#: src/red_packagepage_info.py:86 src/red_prefs.py:372
+#: src/red_packagepage_info.py:86 src/red_prefs.py:388
 #, fuzzy
 msgid "Description"
 msgstr "Beskrivning:"
@@ -1611,32 +1587,32 @@ msgstr "Användarnamn"
 #. print "selected %s (%d)" % (pkg["name"], i)
 #. print "activated %s (%d)" % (pkg["name"], i)
 #. Install
-#: src/red_packageview.py:220
+#: src/red_packageview.py:224
 #, fuzzy
 msgid "Mark for Installation"
 msgstr "Paketinstallation"
 
 #. Remove
-#: src/red_packageview.py:233
+#: src/red_packageview.py:237
 #, fuzzy
 msgid "Mark for Removal"
 msgstr "Paketborttagning"
 
 #. Cancel
-#: src/red_packageview.py:246
+#: src/red_packageview.py:250
 msgid "Cancel"
 msgstr "Avbryt"
 
 #. Info
-#: src/red_packageview.py:264
+#: src/red_packageview.py:268
 msgid "Information"
 msgstr "Information"
 
-#: src/red_packageview.py:284
+#: src/red_packageview.py:288
 msgid "Status"
 msgstr ""
 
-#: src/red_packageview.py:455
+#: src/red_packageview.py:459
 msgid "Importance"
 msgstr ""
 
@@ -1883,27 +1859,32 @@ msgstr ""
 
 #: src/red_prefs.py:333
 #, fuzzy
+msgid "Are you sure you want to delete the package files in your cache?"
+msgstr "Är du säker på att du vill avbryta den aktuella överföringen?"
+
+#: src/red_prefs.py:349
+#, fuzzy
 msgid "Empty Cache"
 msgstr "Cache"
 
 #. Have to do this after the other widgets are created
-#: src/red_prefs.py:355
+#: src/red_prefs.py:371
 #, fuzzy, python-format
 msgid "%d MB"
 msgstr "%d kB"
 
 #. Don't set the pref if we didn't change anything.
-#: src/red_prefs.py:402
+#: src/red_prefs.py:418
 msgid "Value"
 msgstr ""
 
-#: src/red_prefs.py:413
+#: src/red_prefs.py:429
 #, fuzzy
 msgid "Loading preferences..."
 msgstr "Hämtar nyheter..."
 
 #. Remove the "loading" "page".
-#: src/red_prefs.py:473
+#: src/red_prefs.py:489
 #, fuzzy, python-format
 msgid "%s Preferences"
 msgstr "Inställningar"
@@ -2025,11 +2006,16 @@ msgstr "Sök"
 msgid "Search Packages"
 msgstr "Paket"
 
+#: src/red_search.py:41
+#, fuzzy
+msgid "S_earch Packages"
+msgstr "Paket"
+
 #: src/red_search.py:75
 msgid "Searching for matching packages..."
 msgstr ""
 
-#: src/red_search.py:113
+#: src/red_search.py:112
 msgid "No matching packages found."
 msgstr ""
 
@@ -2255,6 +2241,11 @@ msgstr ""
 msgid "Update Summary"
 msgstr "Sammanfattning"
 
+#: src/red_summary.py:36
+#, fuzzy
+msgid "_Update Summary"
+msgstr "Sammanfattning"
+
 #: src/red_summary.py:102
 msgid "The system is up-to-date."
 msgstr ""
@@ -2329,6 +2320,11 @@ msgstr ""
 #, fuzzy
 msgid "Are you sure you want to quit?"
 msgstr "Är du säker på att du vill avbryta den aktuella överföringen?"
+
+#: src/red_transaction.py:118
+#, fuzzy
+msgid "Installations and _Removals"
+msgstr "Installationen har slutförts."
 
 #: src/red_users.py:131
 #, fuzzy
@@ -2412,6 +2408,23 @@ msgstr ""
 #, python-format
 msgid "User '%s' already exists."
 msgstr ""
+
+#~ msgid "Preferences"
+#~ msgstr "Inställningar"
+
+#~ msgid "_About"
+#~ msgstr "_Om"
+
+#~ msgid "About"
+#~ msgstr "Om"
+
+#, fuzzy
+#~ msgid "View"
+#~ msgstr "_Visa"
+
+#, fuzzy
+#~ msgid "Actions"
+#~ msgstr "Plats"
 
 #~ msgid "Ximian Red Carpet"
 #~ msgstr "Ximian Red Carpet"
