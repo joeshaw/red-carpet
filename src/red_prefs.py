@@ -109,6 +109,10 @@ class PrefsView(gtk.Notebook):
                 except ValueError:
                     v = value
 
+                # Don't set the pref if we didn't change anything.
+                if v == pref.get("value"):
+                    return
+                
                 th = self.server.rcd.prefs.set_pref(pref["name"], v)
                 th.connect("ready", set_pref_cb, pref, v, model)
 

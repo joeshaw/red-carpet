@@ -1,5 +1,8 @@
 2003-02-27  Jon Trowbridge  <trow@ximian.com>
 
+	* red_prefs.py (PrefsView.editing_done_cb): Don't set the
+	preference if we didn't actually change it. (Fixes #38834)
+
 	* red_packagearray.py (pkg_status): "not installed" is better
 	than "uninstalled".
 
