@@ -1,3 +1,11 @@
+compile
+COPYING
+depcomp
+INSTALL
+install-sh
+missing
+mkinstalldirs
+py-compile
 libtool
 ltmain.sh
 configure
