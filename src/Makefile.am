@@ -51,7 +51,6 @@ red_carpetsupport_DATA =	\
 	red_statusoption.py			\
 	red_subscriptions.py			\
 	red_summary.py				\
-	red_system.py				\
 	red_thrashingtreeview.py		\
 	red_throbber.py				\
 	red_toolbar.py				\

@@ -1,3 +1,8 @@
+2003-02-26  Jon Trowbridge  <trow@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Removed red_system.py from
+	the list, since it doesn't exist anymore.
+
 2003-02-25  Tambet Ingo  <tambet@ximian.com>
 
 	* red_search.py (SearchComponent.activated): Add. Activate search entry
