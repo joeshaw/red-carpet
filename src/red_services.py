@@ -135,12 +135,16 @@ class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
         self.remove_button.connect("clicked", lambda x:self.remove_service())
         bbox.pack_start(self.remove_button, expand=0, fill=0, padding=3)
 
-        def selection_changed_cb(select, this):
+        def tree_changed_cb(this):
             this.remove_button_sensitize()
+
+        model.connect("changed",
+                      lambda x,y:tree_changed_cb(y),
+                      self)
 
         select = self.view.get_selection()
         select.connect("changed",
-                       selection_changed_cb,
+                       lambda x,y:tree_changed_cb(y),
                        self)
 
         button = gtk.Button(_("_Add service"))
@@ -164,7 +168,8 @@ class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
             sl.append(service)
 
         service_list = []
-        select.selected_foreach(selected_cb, service_list)
+        if select.get_tree_view().get_model():
+            select.selected_foreach(selected_cb, service_list)
 
         if not service_list:
             return None

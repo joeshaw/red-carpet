@@ -1,3 +1,8 @@
+2004-07-27  Tambet Ingo  <tambet@ximian.com>
+
+	* red_services.py (ServicesWindow.build): Disable "remove service"
+	button when no services is selected. Fixes #58115.
+
 2004-06-15  Tambet Ingo  <tambet@ximian.com>
 
 	* red_pendingops.py (patches_pending): Implement.
