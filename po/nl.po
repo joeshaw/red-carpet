@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-27 13:01+0200\n"
-"PO-Revision-Date: 2003-07-27 15:53+0200\n"
+"POT-Creation-Date: 2003-08-12 20:57+0200\n"
+"PO-Revision-Date: 2003-08-13 02:27+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
-"Language-Team: Dutch <nl@li.org>\n"
+"Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,20 +46,20 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Always run the dialog in the main thread.
 #. ##############################################################################
-#: src/rcd_util.py:376
+#: src/rcd_util.py:381
 msgid "Please wait while getting data."
 msgstr "Even geduld alstublieft, de gegevens worden opgehaald."
 
 #. ##############################################################################
-#: src/rcd_util.py:430 src/rcd_util.py:448
+#: src/rcd_util.py:435 src/rcd_util.py:453
 msgid "Please ensure that your network settings are correct."
 msgstr "Controleer of uw netwerkinstellingen goed zijn."
 
-#: src/rcd_util.py:437
+#: src/rcd_util.py:442
 msgid "Refreshing channel data"
 msgstr "Bezig met verversen vankanaalgegevens"
 
-#: src/rcd_util.py:439
+#: src/rcd_util.py:444
 msgid "Downloading channel information"
 msgstr "Bezig met ophalen van kanaalinformatie"
 
@@ -67,31 +67,31 @@ msgstr "Bezig met ophalen van kanaalinformatie"
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
-#: src/rcd_util.py:465
+#: src/rcd_util.py:470
 msgid "Verifying"
 msgstr "Bezig met controleren"
 
-#: src/rcd_util.py:466
+#: src/rcd_util.py:471
 msgid "Unable to verify package signature for"
-msgstr ""
+msgstr "Niet in staat pakket-handtekening te verifiëren voor"
 
-#: src/rcd_util.py:467
+#: src/rcd_util.py:472
 msgid "There is no package signature for"
 msgstr "Er is geen pakkethandtekening voor"
 
-#: src/rcd_util.py:468
+#: src/rcd_util.py:473
 msgid "Preparing Transaction"
 msgstr "Transactie wordt voorbereid "
 
-#: src/rcd_util.py:469
+#: src/rcd_util.py:474
 msgid "Installing"
 msgstr "Bezig met installeren"
 
-#: src/rcd_util.py:470
+#: src/rcd_util.py:475
 msgid "Removing"
 msgstr "Bezig met verwijderen"
 
-#: src/rcd_util.py:471
+#: src/rcd_util.py:476
 msgid "Configuring"
 msgstr "Bezig met configureren"
 
@@ -130,7 +130,7 @@ msgstr "Kusjes van:"
 
 #: src/red_about.py:43
 msgid "Best wishes from:"
-msgstr "De groeten vanL"
+msgstr "De groeten van:"
 
 #: src/red_about.py:44
 msgid "Sincerely:"
@@ -138,7 +138,7 @@ msgstr "Hoogachtend:"
 
 #: src/red_about.py:45
 msgid "Developed by chimps:"
-msgstr "Ontwikkeld door chimps:"
+msgstr "Ontwikkeld door de chimpansees:"
 
 #: src/red_about.py:80
 msgid "Licensed under the GNU General Public License, version 2"
@@ -445,6 +445,7 @@ msgstr "_Activeren..."
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
+"Daemon activeren via een Red Carpet Express of Red Carpet Enterprise server."
 
 #: src/red_appwindow.py:629
 msgid "Quit"
@@ -495,7 +496,7 @@ msgstr "_Gebruikers..."
 
 #: src/red_appwindow.py:671
 msgid "Edit user permissions for this daemon"
-msgstr ""
+msgstr "Gebruikers-permissies van deze daemon bewerken"
 
 #. #
 #. # Sidebar
@@ -506,7 +507,7 @@ msgstr "_Zijbalk"
 
 #: src/red_appwindow.py:685
 msgid "Hide or show the Pending Actions sidebar"
-msgstr ""
+msgstr "De zijbalk met de nog te verrichten acties tonen"
 
 #: src/red_appwindow.py:689
 msgid "_Advanced Search Options"
@@ -566,10 +567,10 @@ msgstr "De huidige transactie uitvoeren"
 msgid "_Verify System Dependencies"
 msgstr "Systeemafhankelijkheden _verifiëren"
 
+# 'of' beter dan 'dat'
 #: src/red_appwindow.py:742
-#, fuzzy
 msgid "Verify that all system dependencies are met"
-msgstr "Afhankelijkheidsproblemen"
+msgstr "Verifiëren of alle systeemafhankelijkheden zijn vervuld"
 
 #. #
 #. # Install Package
@@ -579,18 +580,16 @@ msgid "Mark for I_nstallation"
 msgstr "Markeer voor I_nstallatie"
 
 #: src/red_appwindow.py:754
-#, fuzzy
 msgid "Mark this package for installation"
-msgstr "Markeer geselecteerde pakketten voor installatie"
+msgstr "Dit pakket voor installatie markeren"
 
 #: src/red_appwindow.py:764
-#, fuzzy
 msgid "Mark this package for removal"
 msgstr "Dit pakket voor verwijdering markeren"
 
 #: src/red_appwindow.py:777
 msgid "Cancel installation or removal mark"
-msgstr ""
+msgstr "Installatie of verwijderings-markering weghalen"
 
 #. #
 #. # Refresh Channel Data
@@ -872,9 +871,8 @@ msgstr "Verbinden"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Red Carpet - Wachtwoord"
+msgstr "Red Carpet fouten-console"
 
 #. We put the text into the console window in a timeout.  That
 #. way we can be sure that it happens in the main thread and
@@ -929,19 +927,17 @@ msgstr "Red Carpet afsluiten"
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
 #: src/red_depcomponent.py:65 src/red_depcomponent.py:356
-#, fuzzy
 msgid "Dependency Resolution"
-msgstr "Afhankelijkheden"
+msgstr "Afhankelijkheden oplossing"
 
 #. Clean up
 #: src/red_depcomponent.py:117
 msgid "Verifying System"
-msgstr "Bezig met systeem controleren"
+msgstr "Systeem wordt nu geverifiëerd"
 
 #: src/red_depcomponent.py:123
-#, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Afhankelijkheden"
+msgstr "Afhankelijkheden worden nu opgelost"
 
 #: src/red_depcomponent.py:157
 msgid ""
@@ -965,7 +961,7 @@ msgstr "Accoord"
 #. Assemble our warning banner
 #: src/red_depcomponent.py:261
 msgid "Dependency Resolution Failed"
-msgstr ""
+msgstr "Afhankelijkheids-oplossing mislukt"
 
 #. double-space our dependency error to make it easier to read
 #: src/red_depcomponent.py:311
@@ -977,6 +973,8 @@ msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
 msgstr ""
+"Alle pakketafhankelijkheden zijn vervuld. Er zijn geen corrigerende acties "
+"nodig."
 
 #. Freeze the daemon listeners while we're doing a dependency
 #. resolution.  Otherwise we detect a change and slow things down.
@@ -991,14 +989,12 @@ msgid "Requested Removals"
 msgstr "Aangevraagde verwijderingen"
 
 #: src/red_depcomponent.py:375
-#, fuzzy
 msgid "Required Installations"
-msgstr "Aangevraagde installaties"
+msgstr "Vereisde installaties"
 
 #: src/red_depcomponent.py:379
-#, fuzzy
 msgid "Required Removals"
-msgstr "Aangevraagde verwijderingen"
+msgstr "Vereisde verwijderingen"
 
 #: src/red_depcomponent.py:405
 msgid "Continue"
@@ -1133,7 +1129,6 @@ msgid "Removals"
 msgstr "Verwijderingen"
 
 #: src/red_history.py:116
-#, fuzzy
 msgid "Upgrades"
 msgstr "Nieuwe Versies"
 
@@ -1220,9 +1215,9 @@ msgstr "Installeer vanaf Bestand"
 
 #. need trailing /
 #: src/red_installfiles.py:119
-#, fuzzy, python-format
+#, python-format
 msgid "Downloading %s..."
-msgstr "%s wordt binnengehaald"
+msgstr "%s wordt binnengehaald..."
 
 #: src/red_installfiles.py:158
 msgid "Install from URL"
@@ -1302,11 +1297,12 @@ msgstr "Pakket URL:"
 #: src/red_main.py:106
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr ""
+"FOUT: U kunt de opties -h/--host en -l/--local niet gelijktijdig gebruiken"
 
 #. This'll always fail and pop up the dialog.
 #: src/red_main.py:137
 msgid "ERROR: You cannot specify a user to a local daemon"
-msgstr ""
+msgstr "FOUT: U kunt niet een gebruiker voor een locale daemon opgeven"
 
 #. Try the command-line options or the saved data first
 #. Enclosed in an empty try-except because we don't care about the
@@ -1487,7 +1483,7 @@ msgstr "%s nieuws"
 #. ##
 #: src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr ""
+msgstr "Verbinding leggen met een locale daemon"
 
 #: src/red_option.py:25
 msgid "hostname"
@@ -1495,7 +1491,7 @@ msgstr "hostnaam"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr ""
+msgstr "Contact maken met daemon op opgegeven host"
 
 #: src/red_option.py:26
 msgid "username"
@@ -1515,12 +1511,11 @@ msgstr "Wachtwoord opgeven"
 
 #: src/red_option.py:28
 msgid "Print client version and exit"
-msgstr ""
+msgstr "Versie van client tonen en afsluiten"
 
 #: src/red_option.py:29
-#, fuzzy
 msgid "Get usage information"
-msgstr "Informatie"
+msgstr "Gebruiksinformatie ophalen"
 
 #. ##
 #. ## Expand our synthetic args.
@@ -1738,28 +1733,30 @@ msgstr "Naam"
 msgid "Version"
 msgstr "Versie"
 
+# Release in de pakketbeschrijving. De versie kan bijv 2.4.3. zijn, release 28
+# Dan is het dus de 28ste keer dat deze versie wordt uitgebracht
+# Dus zoiets als de zoveelste druk
+#
+# Creatief vertaald als Persing
 #: src/red_packagepage_info.py:80
-#, fuzzy
 msgid "Release"
-msgstr "Doorgaan"
+msgstr "Persing"
 
 #: src/red_packagepage_info.py:81
 msgid "Package Size"
 msgstr "Pakketgrootte"
 
 #: src/red_packagepage_info.py:82
-#, fuzzy
 msgid "Installed Size"
-msgstr "Geïnstalleerde Software"
+msgstr "Installatiegrootte"
 
 #: src/red_packagepage_info.py:84
 msgid "Section"
 msgstr "Sectie"
 
-# overzicht
 #: src/red_packagepage_info.py:85
 msgid "Summary"
-msgstr "Samenvatting"
+msgstr "Overzicht"
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:478
 msgid "Description"
@@ -1794,9 +1791,11 @@ msgstr "Naamloos"
 msgid "Status"
 msgstr "Status"
 
+# dit is de kolom-kop voor: suggested, urgent etc
+# Mogelijkheden: Belang, Gewichtigheid, Urgentie
 #: src/red_packageview.py:472
 msgid "Importance"
-msgstr ""
+msgstr "Urgentie"
 
 #. button,
 #. time
@@ -1888,23 +1887,20 @@ msgid "Transaction Finished"
 msgstr "Transactie voltooid"
 
 #: src/red_pendingview.py:626
-#, fuzzy
 msgid "Downloading packages"
-msgstr "%s wordt binnengehaald"
+msgstr "Pakketten worden binnengehaald"
 
 #: src/red_pendingview.py:639
-#, fuzzy
 msgid "Download Failed"
-msgstr "Bestanden worden binnengehaald"
+msgstr "Download is mislukt"
 
 #: src/red_pendingview.py:640
 msgid "Unknown Error"
 msgstr "Onbekende Fout"
 
 #: src/red_pendingview.py:657
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "Transactie wordt gestart..."
+msgstr "Transactie wordt verwerkt"
 
 #. We don't get step_pending notification every time, but
 #. we never want to reduce the total progress bar
@@ -1981,9 +1977,8 @@ msgid "Packages"
 msgstr "Pakketten"
 
 #: src/red_prefs.py:260
-#, fuzzy
 msgid "Require package signatures"
-msgstr "Handtekeningen van pakketten"
+msgstr "Pakket-handtekeningen eisen"
 
 #: src/red_prefs.py:265
 msgid "Maximum number of packages to download at once:"
@@ -2013,20 +2008,21 @@ msgstr "U heeft geen toestemming om de rpoxy-instellingen te bekijken"
 
 #: src/red_prefs.py:359
 msgid "Cache downloaded packages and metadata"
-msgstr ""
+msgstr "Binnegehaalde pakketen en metadata opslaan "
 
 #: src/red_prefs.py:365
 msgid "Location of cached data:"
-msgstr ""
+msgstr "Locatie van de opgeslagen data:"
 
+# betere term?
 #. Expiration section
 #: src/red_prefs.py:373
 msgid "Expiration"
-msgstr ""
+msgstr "Verloop"
 
 #: src/red_prefs.py:377
 msgid "Cache expires"
-msgstr ""
+msgstr "Cache verloopt"
 
 #: src/red_prefs.py:383
 msgid "Maximum age in days:"
@@ -2040,15 +2036,15 @@ msgstr "Maximum grootte in Mb:"
 msgid "Current cache size:"
 msgstr "Huidige cache grootte:"
 
+# uit uw cache?
 #: src/red_prefs.py:422
-#, fuzzy
 msgid "Are you sure you want to delete the package files in your cache?"
-msgstr "Weet u zeker dat u de huidige overdracht wilt annuleren?"
+msgstr "Weet u zeker dat u de pakketten in uw cache wilt verwijderen?"
 
+# was eerst: maak de buffer leeg
 #: src/red_prefs.py:438
-#, fuzzy
 msgid "Empty Cache"
-msgstr "Maak de buffer leeg"
+msgstr "Cache legen"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:460
@@ -2134,11 +2130,11 @@ msgstr "Productiviteit"
 
 #: src/red_searchbox.py:176
 msgid "Imaging"
-msgstr ""
+msgstr "Grafisch"
 
 #: src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
-msgstr ""
+msgstr "Persoonlijk databeheer"
 
 #: src/red_searchbox.py:178
 msgid "X Windows"
@@ -2184,18 +2180,19 @@ msgstr "Ontwikkelingsgereedschap"
 msgid "Miscellaneous"
 msgstr "Overige"
 
+# Dit is een vinkje
+# (ook) in de beschrijving zoeken | Beschrijvingen doorzoeken
 #: src/red_searchbox.py:274
-#, fuzzy
 msgid "Search descriptions"
-msgstr "A_bonnementen"
+msgstr "Ook in de beschrijving zoeken"
 
+# de keuzen zijn: Match any word & Match all words
 #. ##
 #. ## Match radio buttons
 #. ##
 #: src/red_searchbox.py:286
-#, fuzzy
 msgid "Match:"
-msgstr "Pad:"
+msgstr "Zoeken op:"
 
 #: src/red_searchbox.py:322
 msgid "Channel:"
@@ -2239,19 +2236,18 @@ msgid "Search"
 msgstr "Zoeken"
 
 #: src/red_search.py:38
-#, fuzzy
 msgid "S_earch Packages"
-msgstr "Pakket"
+msgstr "Pakketten door_zoeken"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
 #: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
 msgid "Searching for matching packages..."
-msgstr ""
+msgstr "Zoeken naar overeenkomende pakketten..."
 
 #: src/red_search.py:109
 msgid "No matching packages found."
-msgstr ""
+msgstr "Geen overeenkomende pakketten gevonden."
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2302,10 +2298,11 @@ msgstr "Daemon-info dumpen in XML-bestand"
 msgid "Could not open file '%s': %s"
 msgstr "Kon bestand '%s' niet openen: %s"
 
+# wat een lelijke Engelse zin
 #. We only allow one filesel window at a time
 #: src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
-msgstr ""
+msgstr "Bestand kiezen om XML naar te schrijven"
 
 #. need trailing /
 #. ##
@@ -2402,35 +2399,34 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_sidebar.py:61 src/red_transaction.py:112
-#, fuzzy
 msgid "Pending Actions"
-msgstr "Bezig met voorbereiden transactie "
+msgstr "Nog te doen"
 
-# Pending: iets met wachtrij?
+# Pending: iets met wachtrij? op stapel staan? nog te doen?
 #. PendingOpsListener implementation
 #: src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
-msgstr ""
+msgstr "%d installatie in de wachtrij"
 
 #: src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
-msgstr ""
+msgstr "%d installaties in de wachtrij"
 
 #: src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
-msgstr ""
+msgstr "%d verwijdering in de wachtrij"
 
 #: src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
-msgstr ""
+msgstr "%d verwijderingen in de wachtrij"
 
 #: src/red_sidebar.py:103
 msgid "No pending actions"
-msgstr ""
+msgstr "Niets te doen"
 
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
@@ -2449,14 +2445,12 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_software.py:28
-#, fuzzy
 msgid "Installed Software"
 msgstr "Geïnstalleerde Software"
 
 #: src/red_software.py:31
-#, fuzzy
 msgid "I_nstalled Software"
-msgstr "Geïnstalleerde Software"
+msgstr "Geï_nstalleerde Software"
 
 #. In some cases, the selection's changed signal doesn't get
 #. emitted when we unselect_all on it.  I'm not sure why.
@@ -2594,20 +2588,17 @@ msgid "Are you sure you want to quit?"
 msgstr "Weet u zeker dat u wilt stoppen?"
 
 #: src/red_transaction.py:115
-#, fuzzy
 msgid "_Pending Actions"
-msgstr "A_bonnementen"
+msgstr "_Te verrichten acties"
 
 #: src/red_updates.py:34
-#, fuzzy
 msgid "_Updates"
-msgstr "Nieuwe Versies"
+msgstr "_Nieuwe Versies"
 
 #. ## Update All button
 #: src/red_updates.py:77
-#, fuzzy
 msgid "_Update All"
-msgstr " Nieuwe versies"
+msgstr "_Alles bijwerken"
 
 #: src/red_updates.py:109
 msgid "The system is up-to-date."
