@@ -1,3 +1,13 @@
+2003-06-03  Joe Shaw  <joe@ximian.com>
+
+	* red_serverproxy.py (ServerThread.run): Also re-raise xmlrpc
+	faults if RC_ALWAYS_RAISE_FAULTS is set.  Be less-encompassing
+	with the dead daemon dialog, only catching a few socket and
+	protocol-related exceptions so we can shake out a few more bugs.
+
+	* red_thrashingtreeview.py (post_thrash_model): Only do all the
+	cursor/selection stuff if we have a model.
+
 2003-06-02  Joe Shaw  <joe@ximian.com>
 
 	* red_pendingview.py: Use "transaction" instead of "update"

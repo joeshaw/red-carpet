@@ -99,26 +99,27 @@ class TreeView(gtk.TreeView):
 
         select = self.get_selection()
 
-        # We want (as many of) the same items to be selected even if
-        # we sort it differently.  We have to make two passes since
-        # setting the cursor after the selection seems to break some
-        # of the time.
+        if model:
+            # We want (as many of) the same items to be selected even if
+            # we sort it differently.  We have to make two passes since
+            # setting the cursor after the selection seems to break some
+            # of the time.
 
-        def set_cursor_cb(model, path, iter, (view, curitem)):
-            model_item = model.get_list_item(path[0])
+            def set_cursor_cb(model, path, iter, (view, curitem)):
+                model_item = model.get_list_item(path[0])
 
-            if model_item == curitem:
-                view.set_cursor(path, view.saved_cursor_column)
+                if model_item == curitem:
+                    view.set_cursor(path, view.saved_cursor_column)
 
-        model.foreach(set_cursor_cb, (self, self.saved_cursor_item))
+            model.foreach(set_cursor_cb, (self, self.saved_cursor_item))
 
-        def set_selection_cb(model, path, iter, (select, selitems)):
-            model_item = model.get_list_item(path[0])
+            def set_selection_cb(model, path, iter, (select, selitems)):
+                model_item = model.get_list_item(path[0])
 
-            if model_item in selitems:
-                select.select_iter(iter)
+                if model_item in selitems:
+                    select.select_iter(iter)
 
-        model.foreach(set_selection_cb, (select, selected_items))
+            model.foreach(set_selection_cb, (select, selected_items))
 
         self.columns_autosize()
 

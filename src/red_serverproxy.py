@@ -15,7 +15,7 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import os, threading, gobject, gtk
+import os, socket, threading, gobject, gtk
 import red_deaddaemon
 import ximian_xmlrpclib
 
@@ -39,15 +39,22 @@ class ServerThread(threading.Thread, gobject.GObject):
 
         try:
             result = getattr(self.__server, self.__method)(*self.__args)
-        except ximian_xmlrpclib.Fault, f:
-            self.__fault = f
-        except:
-            # FIXME: Handle the correct exceptions, not just this catch-all.
-            # We will re-start the thread if the server comes back.
+        except Exception, e:
             if os.getenv("RC_ALWAYS_RAISE_FAULTS"):
                 raise
-            red_deaddaemon.show_daemon_dialog()
-            return
+
+            if isinstance(e, ximian_xmlrpclib.Fault):
+                self.__fault = e
+            else:
+                if not isinstance(e, socket.error) \
+                   and not (vars(socket).has_key("sslerror") \
+                            and isinstance(e, socket.sslerror)) \
+                   and not (isinstance(e, ximian_xmlrpclib.ProtocolError) \
+                            and e.errcode == -1):
+                    raise
+
+                red_deaddaemon.show_daemon_dialog()
+                return
 
         self.__lock.acquire()
         if not self.__cancelled and not self.__fault:
