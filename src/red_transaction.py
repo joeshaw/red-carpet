@@ -17,35 +17,38 @@
 
 import gobject
 
-class Transaction(gobject.GObject):
+import red_packagearray
+
+class Transaction(red_packagearray.PackageArray):
 
     def __init__(self):
 
-        gobject.GObject.__init__(self)
+        red_packagearray.PackageArray.__init__(self)
 
         self.install_packages = []
         self.uninstall_packages = []
 
+    def get_all(self):
+        return self.install_packages + self.uninstall_packages
+
+    def append_op(self, self2, pl, p):
+        pl.append(p)
+
+    def remove_op(self, self2, pl, p):
+        pl.remove(p)
+
     def add_install_package(self, package):
-        self.install_packages.append(package)
-        self.emit("changed")
+        self.changed(self.append_op,
+                     self.install_packages, package)
 
     def remove_install_package(self, package):
-        self.install_packages.remove(package)
-        self.emit("changed")
+        self.changed(self.remove_op,
+                     self.install_packages, package)
 
     def add_uninstall_package(self, package):
-        self.uninstall_packages.append(package)
-        self.emit("changed")
+        self.changed(self.append_op,
+                     self.uninstall_packages, package)
 
     def remove_uninstall_package(self, package):
-        self.uninstall_packages.remove(package)
-        self.emit("changed")
-
-gobject.type_register(Transaction)
-
-gobject.signal_new("changed",
-                   Transaction,
-                   gobject.SIGNAL_RUN_LAST,
-                   gobject.TYPE_NONE,
-                   ())
+        self.changed(self.remove_op,
+                     self.uninstall_packages, package)

@@ -27,6 +27,8 @@ class Component(gobject.GObject):
         self.have_server = 0
         self.server_obj = None
 
+        self.transaction = None
+
         self.widgets = {}
         self.did_build = 0
         self.visible_flag = 0
@@ -61,6 +63,9 @@ class Component(gobject.GObject):
         assert not self.have_server
         self.server_obj = server
         self.have_server = 1
+
+    def set_transaction(self, transaction):
+        self.transaction = transaction
 
     ###
     ### Virtual functions

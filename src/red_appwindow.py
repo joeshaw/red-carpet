@@ -147,6 +147,7 @@ class AppWindow(gtk.Window):
                          callback=lambda: self.activate_component(comp))
 
         comp.set_server(self.server)
+        comp.set_transaction(self.transaction)
 
         # We activate the first component that gets registered.
         if not self.components:

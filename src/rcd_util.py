@@ -140,6 +140,11 @@ def get_package_EVR(pkg):
         rel_str = "-%s" % pkg["release"]
     return "%s%s%s" % (epoch_str, pkg["version"], rel_str)
 
+def get_package_info(pkg):
+    return server.rcd.packsys.package_info(pkg)
+
+def get_package_history(pkg):
+    return server.rcd.log.query_log([["name", "=", pkg["name"]]])
 
 ###############################################################################
 

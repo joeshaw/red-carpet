@@ -30,6 +30,12 @@ class SummaryComponent(red_component.Component):
     def pixbuf(self):
         return "summary"
 
+    def package_selected_cb(self, pkg):
+        if pkg in self.transaction.install_packages:
+            self.transaction.remove_install_package(pkg)
+        else:
+            self.transaction.add_install_package(pkg)
+
     def build(self):
         self.array = red_packagearray.UpdatedPackages(self.server())
 
@@ -52,6 +58,8 @@ class SummaryComponent(red_component.Component):
         ex = red_packagetable.PackageTable()
         ex.set_exploder(by_importance=1)
         ex.set_array(self.array)
+
+        ex.connect("package_selected", lambda x,y:self.package_selected_cb(y))
 
         self.display("main", ex)
 
