@@ -102,7 +102,7 @@ class StartDaemon:
         if child_pid == 0: # child
             os.execv(self.cmd, self.args)
             # If we get here, the exec failed.
-            return None
+            return 0
 
         # parent
         self.service_pid = child_pid
@@ -182,7 +182,7 @@ def start_daemon():
         # This will block with a dialog.
         return sd.run()
 
-    return 0
+    return -1
 
 
 def munge_uri(local, uri):
@@ -293,7 +293,7 @@ def connect_from_window(parent=None):
         except ConnectException, e:
             if local and can_start_daemon():
                 started = start_daemon()
-                if started:
+                if started != -1:
                     try:
                         server = connect(*connect_info)
                     except ConnectException, e:
