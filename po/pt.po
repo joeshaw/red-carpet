@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.2\n"
-"POT-Creation-Date: 2003-04-17 19:11+0100\n"
-"PO-Revision-Date: 2003-04-17 19:15+0000\n"
+"POT-Creation-Date: 2003-04-27 13:45+0100\n"
+"PO-Revision-Date: 2003-04-27 13:50+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -103,6 +103,14 @@ msgstr "A configurar"
 #. ## along with this program; if not, write to the Free Software
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
+#: src/red_about.py:70
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "Licenciado sob a Licença Pública Geral GNU, versão 2"
+
+#: src/red_about.py:79
+msgid "Brought to you by:"
+msgstr "Trazido até si por:"
+
 #. ##
 #. ## Copyright (C) 2003 Ximian, Inc.
 #. ##
@@ -731,34 +739,48 @@ msgstr "Sair do Red Carpet"
 #. Call get_deps in an idle so that we are fully initialized
 #. before we being our computation.  (In particular, the
 #. parent isn't properly set on the component at this point.)
-#: src/red_depcomponent.py:64 src/red_depcomponent.py:282
+#: src/red_depcomponent.py:65 src/red_depcomponent.py:351
 msgid "Dependency Resolution"
 msgstr "Resolução Dependências"
 
 #. Clean up
-#: src/red_depcomponent.py:116
+#: src/red_depcomponent.py:117
 msgid "Verifying System"
 msgstr "A Verificar Sistema"
 
-#: src/red_depcomponent.py:122
+#: src/red_depcomponent.py:123
 msgid "Resolving Dependencies"
 msgstr "A Resolver Dependências"
+
+#: src/red_depcomponent.py:157
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr ""
+"Tem de concordar com as licenças que cobrem esta aplicação antes de o instalar."
+
+#. Try to estimate the size of the window we want.
+#. "W" being the widest glyph.
+#. Create a tag with our monospace font
+#. Get a mark to the start of the buffer and then scroll there
+#: src/red_depcomponent.py:199
+msgid "I Agree"
+msgstr "Eu Concordo"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
 #. pygtk bug 92955.
 #. a hack to let history component know we are updated.
 #. Assemble our warning banner
-#: src/red_depcomponent.py:190
+#: src/red_depcomponent.py:259
 msgid "Dependency Resolution Failed"
 msgstr "Falha na Resolução Dependências"
 
 #. double-space our dependency error to make it easier to read
-#: src/red_depcomponent.py:237
+#: src/red_depcomponent.py:306
 msgid "System Verified"
 msgstr "Sistema Verificado"
 
-#: src/red_depcomponent.py:239
+#: src/red_depcomponent.py:308
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -770,23 +792,23 @@ msgstr ""
 #. resolution.  Otherwise we detect a change and slow things down.
 #. red_serverlistener.freeze_polling()
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
-#: src/red_depcomponent.py:293
+#: src/red_depcomponent.py:362
 msgid "Requested Installations"
 msgstr "Instalações Pedidas"
 
-#: src/red_depcomponent.py:297
+#: src/red_depcomponent.py:366
 msgid "Requested Removals"
 msgstr "Remoções Pedidas"
 
-#: src/red_depcomponent.py:301
+#: src/red_depcomponent.py:370
 msgid "Required Installations"
 msgstr "Instalações Obrigatórias"
 
-#: src/red_depcomponent.py:305
+#: src/red_depcomponent.py:374
 msgid "Required Removals"
 msgstr "Remoções Obrigatórias"
 
-#: src/red_depcomponent.py:331
+#: src/red_depcomponent.py:400
 msgid "Continue"
 msgstr "Continuar"
 
@@ -1719,15 +1741,15 @@ msgstr "Erro Desconhecido"
 msgid "Processing Transaction"
 msgstr "A Processar Transação"
 
-#: src/red_pendingview.py:661
+#: src/red_pendingview.py:659
 msgid "The update has completed successfully"
 msgstr "A actualização terminou com sucesso"
 
-#: src/red_pendingview.py:665
+#: src/red_pendingview.py:663
 msgid "Transaction failed"
 msgstr "Transação falhou"
 
-#: src/red_pendingview.py:667
+#: src/red_pendingview.py:665
 msgid "Update Failed"
 msgstr "Actualização falhou"
 
