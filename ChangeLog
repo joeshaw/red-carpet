@@ -1,3 +1,8 @@
+2003-03-05  Peter Bowen  <pzb@ximian.com>
+
+    * red-carpet.console.in: contrary to the userhelper man page, it is 'true' 
+    not 'yes'
+
 2003-03-04  Jose Mercado    <jose@ximian.com>
 
     * src/rcd_util.py (StartDaemon): Use /etc/init.d instead of

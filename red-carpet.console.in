@@ -1,4 +1,4 @@
 USER=root
 PROGRAM=@prefix@/sbin/red-carpet
-FALLBACK=yes
-SESSION=yes
+FALLBACK=true
+SESSION=true
