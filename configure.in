@@ -99,6 +99,7 @@ AC_SUBST(LDIR)
 
 AC_OUTPUT([
 Makefile
+art/Makefile
 ximian_unmarshaller/Makefile
 red_extra/Makefile
 src/Makefile

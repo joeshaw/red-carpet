@@ -9,6 +9,7 @@ UNMARSHALLER_DIR =
 endif
 
 SUBDIRS = $(UNMARSHALLER_DIR)	\
+	art			\
 	red_extra		\
 	src
 

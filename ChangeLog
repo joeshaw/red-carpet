@@ -1,5 +1,14 @@
 2003-02-07  Frank Belew  <frb@ximian.com>
 
+	* configure.in: add art/Makefile to output
+
+	* art/Makefile.am: initial checkin, install all images to 
+	$(datadir)/pixmaps/red-carpet
+
+	* Makefile.am: add art to SUBDIRS
+
+2003-02-07  Frank Belew  <frb@ximian.com>
+
 	* configure.in: add LDIR so red-carpet.in can have the libdir replaced
 
 	* red_extra/Makefile.am: install into $(libdir)/red-carpet/red_extra
