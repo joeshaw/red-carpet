@@ -287,8 +287,14 @@ class PackageQuery(PackageArray):
             if type(self.query) == type(None):
                 packages = []
             else:
+                print "query:", self.query
+                import time
+                start = time.time()
                 packages = self.server.rcd.packsys.search(self.query)
+                end = time.time()
+                print "time=", end - start
                 packages.sort(pkg_cmp)
+
 
             self.seqno = current_seqno
             # FIXME: should only emit if packages != self.packages

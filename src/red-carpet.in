@@ -24,6 +24,7 @@ red_carpet_dir = "@DDIR@/rc"
 red_carpet_version = "@VERSION@"
 
 sys.path.insert(0, "/opt/pygtk/lib/python2.2/site-packages")
+sys.path.insert(0, "../ximian_unmarshaller/build/lib.linux-i686-2.2")
 
 # FIXME: This has a special check to allow us to run rc in-place
 # without having done a "make install".  We might want to take this
@@ -44,7 +45,7 @@ if "--rc-profile" in sys.argv:
     import profile
     sys.stderr.write("*** Profiling Enabled ***\n")
     sys.argv = filter(lambda x:x != "--rc-profile", sys.argv)
-    profile.run("red_main.main(rc_version)")
+    profile.run("red_main.main(red_carpet_version)")
 else:
     red_main.main(red_carpet_version)
     
