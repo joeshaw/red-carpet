@@ -94,12 +94,15 @@ def verify_deps_cb(app):
     dep_comp = red_depcomponent.DepComponent(verify=1)
     app.push_component(dep_comp)
 
-class AppWindow(gtk.Window, red_component.ComponentListener):
+class AppWindow(gtk.Window,
+                red_component.ComponentListener,
+                red_pendingops.PendingOpsListener):
 
     def __init__(self, server):
 
         gtk.Window.__init__(self)
         red_component.ComponentListener.__init__(self)
+        red_pendingops.PendingOpsListener.__init__(self)
 
         self.server = server
         self.__title = None
@@ -222,11 +225,6 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             self.hpaned.set_position(w)
 
     def connect_sidebar_buttons(self, bar):
-        ## Run button
-        run = bar.get_run_button()
-        run.connect("clicked", lambda x,y:run_transaction_cb(y), self)
-        bar.sensitize_run_button(0)
-
         ## Details button
         details = bar.get_details_button()
         for comp in self.components:
@@ -405,6 +403,12 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
                            callback=lambda x:self.package_info_cb())
 
         bar.append_space()
+
+        bar.run = bar.add(text=_("Run"),
+                          tooltip=_("Perform Pending Operations"),
+                          sensitive_fn=red_pendingops.pending_ops_exist,
+                          stock=gtk.STOCK_EXECUTE,
+                          callback=lambda x:run_transaction_cb(self))
 
         bar.subs = bar.add(text=_("Channels"),
                            tooltip=_("Change your channel subscriptions"),
@@ -604,21 +608,13 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         ## Run Transaction
         ##
 
-        def run_sensitive_cb():
-            sidebar = self.sidebar
-            button = sidebar.get_run_button()
-
-            return sidebar.get_property("sensitive") and \
-                   red_pendingops.pending_install_count() + \
-                   red_pendingops.pending_remove_count()
-
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_MENU)
 
         bar.add("/Actions/Run _Transaction",
                 image=image,
                 callback=run_transaction_cb,
-                sensitive_fn=run_sensitive_cb,
+                sensitive_fn=red_pendingops.pending_ops_exist,
                 accelerator="<Control>X")
 
         ##
@@ -814,6 +810,16 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
             self.busy_count -= 1
         if self.busy_count == 0:
             self.window.set_cursor(None)
+
+    ###
+    ### Handlers for PendingOpsListener
+    ###
+
+    def pendingops_changed(self, pkg, key, value, old_value):
+        def sensitize_run_cb(app):
+            have_pending = red_pendingops.pending_ops_exist()
+            app.toolbar.run.set_sensitive(have_pending)
+        gtk.idle_add(sensitize_run_cb, self)
         
     ###
     ### Handlers for Component signals (via the ComponentListener API)

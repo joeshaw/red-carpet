@@ -209,4 +209,6 @@ def pending_remove_count():
             count += 1
     return count
 
+def pending_ops_exist():
+    return pending_install_count() > 0 or pending_remove_count() > 0
 

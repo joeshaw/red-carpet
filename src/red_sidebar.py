@@ -76,19 +76,6 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         bbox.set_spacing(6)
         bbox.set_layout(gtk.BUTTONBOX_START)
 
-        ## Run button
-        self.run = gtk.Button()
-        align = gtk.Alignment(0.5, 0.5, 0, 0)
-        self.run.add(align)
-        box = gtk.HBox(spacing=2)
-        image = gtk.Image()
-        image.set_from_stock(gtk.STOCK_EXECUTE, gtk.ICON_SIZE_BUTTON)
-        box.pack_start(image, expand=0, fill=0)
-        box.pack_start(gtk.Label(_("Run")), 0, 0)
-        align.add(box)
-        bbox.add(self.run)
-        self.run.set_sensitive(0)
-
         ## Details Button
         self.details = gtk.Button()
         align = gtk.Alignment(0.5, 0.5, 0, 0)
@@ -107,12 +94,6 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
     def get_shortcut_bar(self):
         return self.shortcut_bar
 
-    def get_run_button(self):
-        return self.run
-
-    def sensitize_run_button(self, en):
-        self.run.set_sensitive(en)
-
     def get_details_button(self):
         return self.details
 
@@ -123,12 +104,9 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
     def pendingops_changed_cb(self):
         self.update_label()
-        if red_pendingops.pending_install_count() + \
-           red_pendingops.pending_remove_count():
-            self.run.set_sensitive(1)
+        if red_pendingops.pending_ops_exist():
             self.details.set_sensitive(1)
         else:
-            self.run.set_sensitive(0)
             self.details.set_sensitive(0)
 
         self.update_pending = 0

@@ -1,3 +1,23 @@
+2003-03-06  Jon Trowbridge  <trow@ximian.com>
+
+	* red_appwindow.py (AppWindow): Make AppWindow a
+	PendingOpsListener.
+	(AppWindow.__init__): Call PendingOpsListener.__init__.
+	(AppWindow.connect_sidebar_buttons): Removed code related to run
+	button.
+	(AppWindow.assemble_toolbar): Added code for run button in
+	toolbar.
+	(AppWindow.pendingop_changed): Sensitize/desensitize the run
+	button.
+
+	* red_sidebar.py (SideBar.build): Removed run button.
+	(SideBar.get_run_button): Removed.
+	(SideBar.sensitize_run_button): Removed.
+	(SideBar.pendingops_changed_cb): Use pending_ops_exist fn,
+	removed code related to run button.
+
+	* red_pendingops.py (pending_ops_exist): Added.
+
 2003-03-06  Tambet Ingo  <tambet@ximian.com>
 
 	* red_history.py (HistoryView.build): Moved "Time" column from last to
