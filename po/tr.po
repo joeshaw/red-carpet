@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet 0.9.2\n"
-"POT-Creation-Date: 2003-10-30 22:10-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-28 21:51+0000\n"
 "PO-Revision-Date: 2001-03-20 08:01+0100\n"
 "Last-Translator: Ömer Fadıl USTA <omer_fad@hotmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -1756,7 +1757,7 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. evil magic failure code
-#: src/red_packagepage_info.py:78
+#: src/red_packagepage_info.py:78 src/red_services.py:112
 msgid "Name"
 msgstr "İsim"
 
@@ -2096,6 +2097,9 @@ msgid "%s Preferences"
 msgstr "Ayarlar"
 
 #. Should only be called for toggle renderer
+#. For some reason, event is None on keyboard events, and
+#. r.activate() complains about it.  Things seem to work
+#. if we just don't call this if it's None, though.
 #. Should only be called for text renderer
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2394,6 +2398,61 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #. We want to emit our signal in the main thread.
+#. ##
+#. ## Copyright (C) 2002-2003 Ximian, Inc.
+#. ##
+#. ## This program is free software; you can redistribute it and/or modify
+#. ## it under the terms of the GNU General Public License, version 2,
+#. ## as published by the Free Software Foundation.
+#. ##
+#. ## This program is distributed in the hope that it will be useful,
+#. ## but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. ## GNU General Public License for more details.
+#. ##
+#. ## You should have received a copy of the GNU General Public License
+#. ## along with this program; if not, write to the Free Software
+#. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#. ##
+#. ##
+#. ## ListModel methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
+#: src/red_services.py:88
+#, fuzzy
+msgid "Edit Services"
+msgstr "Ayarlar"
+
+#: src/red_services.py:117
+msgid "URL"
+msgstr ""
+
+#: src/red_services.py:133
+msgid "_Remove service"
+msgstr ""
+
+#: src/red_services.py:146
+msgid "_Add service"
+msgstr ""
+
+#: src/red_services.py:226
+#, fuzzy
+msgid "Add Service"
+msgstr "Ayarlar"
+
+#: src/red_services.py:231
+#, fuzzy
+msgid "Service URL"
+msgstr "Ayarlar"
+
+#. ##
+#. ## ServerListener methods
+#. ##
+#. ##
+#. ## ServerListener methods
+#. ##
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
 #. ##
