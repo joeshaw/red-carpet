@@ -147,6 +147,20 @@ else
   AM_CONDITIONAL(HAVE_KDE_CONFIG, false)
 fi
 
+AC_ARG_ENABLE(kdesu,
+	[   --enable-kdesu       use kdesu],
+	use_kdesu="yes", use_kdesu="no")
+
+if test x$use_kdesu = "xyes"; then
+  AC_PATH_PROG(KDESU, kdesu, no)
+  if test "x$KDESU" = "xno"; then
+    AC_MSG_ERROR([You need to install kdesu])
+  fi
+  AM_CONDITIONAL(USE_KDESU, true)
+else
+  AM_CONDITIONAL(USE_KDESU, false)
+fi
+
 AC_OUTPUT([
 Makefile
 po/Makefile.in
@@ -162,6 +176,7 @@ ximian_unmarshaller/Makefile
 red_extra/Makefile
 src/Makefile
 src/red-carpet
+src/kdesu-wrapper
 trayicon/Makefile
 trayicon/red-carpet-icon
 trayicon/bindings/Makefile
