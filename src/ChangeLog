@@ -1,5 +1,25 @@
 2003-03-10  Joe Shaw  <joe@ximian.com>
 
+	* red_appwindow.py: Change the button to say "Information" instead
+	of "Info".
+
+	* red_depcomponent.py: Connect to the window's destroy signal and
+	pop the component in there, instead of in the finished signal
+	callback.
+
+	* red_pendingview.py: Change the semantics of the "finished"
+	signal.  It's now emitted whenever the pending view is done doing
+	whatever it's doing, not when the dialog is destroyed.  (For that,
+	connect to the destroy signal).  Now we destroy the window when
+	the "OK" button is clicked (for non-self destructive windows) or
+	immediately after calling the finished method (for self
+	destructive windows).
+	(transaction_finished): Call the finished method.
+	(update_transaction): Don't set the label to "Starting
+	Transaction", it causes a lot of flicker.
+
+2003-03-10  Joe Shaw  <joe@ximian.com>
+
 	* red_sidebar.py (construct): Calculate the number of rows based
 	on the number of visible, not total, components.
 

@@ -168,9 +168,12 @@ class DepComponent(gobject.GObject, red_component.Component):
             app.history_changed = 1
 
             comp.busy(0)
+
+        def destroy_cb(win, comp):
             comp.pop()
 
         trans_win.connect("finished", finished_cb, self)
+        trans_win.connect("destroy", destroy_cb, self)
 
     def build_dep_error_page(self):
         page = self.page

@@ -114,7 +114,7 @@ class PendingView(gtk.Window):
                 if pv.cancel_button:
                     pv.cancelled()
                 else:
-                    pv.finished()
+                    pv.destroy()
             self.button.connect("clicked", button_handler_cb, self)
 
         def delete_event_cb(self, x):
@@ -188,7 +188,6 @@ class PendingView(gtk.Window):
     def finished(self):
         self.stop_icon_anim()
         self.emit("finished")
-        self.destroy()
 
     def set_title(self, msg):
         ## Guard for None
@@ -335,6 +334,7 @@ class PendingView(gtk.Window):
             def finished_cb(x):
                 if x.self_destruct:
                     x.finished()
+                    x.destroy()
                 else:
                     # If necessary, change the button from "Cancel"
                     # to "OK".  Make sure the button sensitive.
@@ -585,7 +585,7 @@ class PendingView_Transaction(PendingView):
 
 
     def transaction_finished(self, msg, title=_("Update Finished")):
-        self.stop_icon_anim()
+        self.finished()
         self.switch_cancel_button_to_ok()
         self.set_title(title)
         self.set_label(msg)
@@ -627,7 +627,6 @@ class PendingView_Transaction(PendingView):
             return 1
 
         self.set_title(_("Processing Transaction"))
-        self.set_label(_("Starting Transaction"))
 
         def update_pending_cb(pending, step_pending, pv):
             if pv.__finished:

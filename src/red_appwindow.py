@@ -409,7 +409,7 @@ class AppWindow(gtk.Window,
                              sensitive_fn=self.cancel_sensitive_cb,
                              callback=lambda x:self.set_package_action_cb(red_pendingops.NO_ACTION))
 
-        bar.info = bar.add(text=_("Info"),
+        bar.info = bar.add(text=_("Information"),
                            tooltip=_("Package Information"),
                            pixbuf=red_pixbuf.get_pixbuf("info",
                                                         width=width, height=height),
