@@ -1,3 +1,9 @@
+2003-10-17  Joe Shaw  <joe@ximian.com>
+
+	* red_pendingops.py (package_action): We need to compare package
+	keys, not their names, when we're getting the action for a certain
+	package.  Fixes #49803.
+
 2003-10-03  Joe Shaw  <joe@ximian.com>
 
 	* red_depcomponent.py (DepComponent): Change over a few things to
