@@ -1,5 +1,8 @@
 2003-02-27  Jon Trowbridge  <trow@ximian.com>
 
+	* red_packagearray.py (pkg_status): "not installed" is better
+	than "uninstalled".
+
 	* red_appwindow.py (AppWindow.assemble_menubar): Added menu
 	option View->Advanced Search Options.
 
