@@ -405,8 +405,8 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
 
         bar.append_space()
 
-        bar.subs = bar.add(text=_("Subscriptions"),
-                           tooltip=_("Change your subscription options"),
+        bar.subs = bar.add(text=_("Channels"),
+                           tooltip=_("Change your channel subscriptions"),
                            pixbuf=red_pixbuf.get_pixbuf("subscribed",
                                                         width=16, height=16),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))

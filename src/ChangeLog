@@ -1,5 +1,8 @@
 2003-02-26  Jon Trowbridge  <trow@ximian.com>
 
+	* red_appwindow.py (AppWindow.assemble_toolbar): Renamed the
+	"Subscriptions" button to "Channels" and changed the tooltip.
+
 	* Makefile.am (red_carpetsupport_DATA): Removed red_system.py from
 	the list, since it doesn't exist anymore.
 
