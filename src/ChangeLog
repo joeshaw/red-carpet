@@ -1,5 +1,16 @@
 2003-06-04  Joe Shaw  <joe@ximian.com>
 
+	* red_depview.py (escape_markup): the python equivalent of
+	g_markup_escape_text() for passing strings to a gtk markup
+	function.
+	(DepView.add_note): Escape the notes, since they frequently
+	contain things like < and >.
+
+	* red_pendingview.py: Add an unscientific but useful total
+	progress bar.  Fixes #40419.
+
+2003-06-04  Joe Shaw  <joe@ximian.com>
+
 	* red_connection.py (StartDaemon.run): Fix an instance where we
 	were returning None instead of 0.
 	(start_daemon): If the user cancels the start, return -1.

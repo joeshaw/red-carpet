@@ -15,10 +15,20 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
+import string
 import gobject, gtk
 import rcd_util
 import red_extra, red_pixbuf
 from red_gettext import _
+
+def escape_markup(text):
+    text = string.replace(text, "&", "&amp;")
+    text = string.replace(text, "<", "&lt;")
+    text = string.replace(text, ">", "&gt;")
+    text = string.replace(text, "'", "&apos;")
+    text = string.replace(text, "\"", "&quot;")
+
+    return text
 
 class DepView(red_extra.ListView):
 
@@ -82,7 +92,8 @@ class DepView(red_extra.ListView):
     def add_note(self, msg):
         cell = gtk.CellRendererText()
         # \u2022 is the unicode bullet
-        cell.set_property("markup", u"    <i>\u2022 " + msg + "</i>")
+        cell.set_property("markup", u"    <i>\u2022 %s</i>" %
+                          escape_markup(msg))
 
         self.add_spanner(self.row, 1, -1, cell)
         self.add_empty_row()

@@ -28,13 +28,18 @@ from red_gettext import _
 MAX_LABEL_LEN = 20
 WRAP_LABEL_LEN = 40
 
+# We don't really have any idea how long the transaction will take, but
+# we'll guess that the download is 2/3 and the actual transaction 1/3.
+DOWNLOAD_MULTIPLIER = .667
+
 class PendingView(gtk.Window):
 
     def __init__(self, title=None, label=None,
                  parent=None,
                  timeout_len=200, show_rate=1, show_size=1, is_modal=1,
                  allow_cancel=0,
-                 self_destruct=0):
+                 self_destruct=0,
+                 total_progress_bar=0):
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 
         self.set_modal(is_modal)
@@ -105,6 +110,12 @@ class PendingView(gtk.Window):
 
         self.progress_bar = gtk.ProgressBar()
         mainbox.pack_start(self.progress_bar, expand=0, fill=0)
+
+        if total_progress_bar:
+            self.total_progress_bar = gtk.ProgressBar()
+            mainbox.pack_start(self.total_progress_bar, expand=0, fill=0)
+
+            self.update_total(0)
 
         self.button = None
         if self.allow_cancel or not self.self_destruct:
@@ -331,6 +342,10 @@ class PendingView(gtk.Window):
                                          show_size=show_size,
                                          show_rate=show_rate)
 
+    def update_total(self, percent):
+        self.total_progress_bar.set_fraction(percent / 100.0)
+        self.total_progress_bar.set_text(_("%.1f%% completed") % percent)
+
     # Define me!
     def poll_worker(self):
         return 0
@@ -487,7 +502,8 @@ class PendingView_Transaction(PendingView):
 
     def __init__(self, download_id, transact_id, step_id, parent=None):
         PendingView.__init__(self, _("Updating System"),
-                             allow_cancel=1, parent=parent)
+                             allow_cancel=1, parent=parent,
+                             total_progress_bar=1)
 
         self.download_id = download_id
         self.transact_id = transact_id
@@ -496,6 +512,8 @@ class PendingView_Transaction(PendingView):
         self.download_complete = 0
         self.__working_query = 0
         self.__finished = 0
+
+        self.total_percent = 0
 
         self.iconified = 0
         self.connect("window-state-event",
@@ -611,6 +629,7 @@ class PendingView_Transaction(PendingView):
             pv.__working_query = 0
             pending = th.get_result()
             pv.update_from_pending(pending)
+            pv.update_total(pending["percent_complete"] * DOWNLOAD_MULTIPLIER)
             if pending["status"] == "finished":
                 pv.download_complete = 1
                 pv.update_fill()
@@ -650,10 +669,33 @@ class PendingView_Transaction(PendingView):
                 else:
                     pv.update_pulse()
 
+            if pending:
+                if pv.download_complete:
+                    percent = DOWNLOAD_MULTIPLIER * 100 + \
+                              pending["percent_complete"] * (1 - DOWNLOAD_MULTIPLIER)
+                else:
+                    percent = pending["percent_complete"]
+
+                if step_pending \
+                   and pending.has_key("total_size"):
+                    slice = 1.0 / pending["total_size"]
+
+                    if pv.download_complete:
+                        slice *= 1 - DOWNLOAD_MULTIPLIER
+
+                    percent += slice * step_pending["percent_complete"]
+
+                # We don't get step_pending notification every time, but
+                # we never want to reduce the total progress bar
+                if percent > self.total_percent:
+                    pv.update_total(percent)
+                    self.total_percent = percent
+
             if pending and pending["status"] == "finished":
                 red_pendingops.clear_packages_with_actions()
                 pv.transaction_finished(msg=_("The transaction has " \
                                         "completed successfully"))
+                self.update_total(100)
                 pv.__finished = 1
             elif pending and pending["status"] == "failed":
                 msg = _("Transaction failed") + ":\n" + pending["error_msg"]
