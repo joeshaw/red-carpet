@@ -21,6 +21,7 @@ import exceptions
 import signal
 import string
 import time
+import gobject
 import gtk
 import ximian_xmlrpclib
 import rcd_util
@@ -200,6 +201,40 @@ class ConnectException(Exception):
     def __repr__(self):
         return "<ConnectException '%s'>" % self.err_msg
 
+class ConnectionNotify(gobject.GObject):
+    def __init__(self):
+        gobject.GObject.__init__(self)
+        self.current_host = None
+
+    def notify_real(self, host):
+        self.emit("connected", host)
+
+    def notify(self):
+        if self.current_host:
+            self.emit("connected", self.current_host)
+
+    def notify_new(self, host, local):
+        if local:
+            host = "Localhost"
+        self.current_host = host
+        self.notify_real(host)
+
+gobject.signal_new("connected",
+                   ConnectionNotify,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_PYOBJECT,))
+
+notifier = None
+
+def get_notifier():
+    global notifier
+
+    if not notifier:
+        notifier = ConnectionNotify()
+
+    return notifier
+
 # NOTE: password must be md5ified.
 def connect(local, host, user, password):
     server = None
@@ -222,6 +257,8 @@ def connect(local, host, user, password):
 
     if err_msg:
         raise ConnectException(err_msg)
+
+    get_notifier().notify_new(host, local)
 
     return server
 

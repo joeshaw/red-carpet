@@ -43,6 +43,7 @@ import red_searchbox
 import red_settings
 import red_actionbar
 import red_connection
+import red_statusbar
 from red_gettext import _
 
 
@@ -130,8 +131,8 @@ class AppWindow(gtk.Window,
 
         self.transient_windows = {}
 
-        self.progressbar = gtk.ProgressBar()
-        self.statusbar = gtk.Statusbar()
+        ## FIXME: We don't use it anywhere, remove if it's really deprecated.
+        # self.progressbar = gtk.ProgressBar()
 
         # A box to put component widgets in.  We use an EventBox
         # instead of just a [HV]Box so that we can control the
@@ -170,8 +171,15 @@ class AppWindow(gtk.Window,
         main_box.show_all()
         self.hpaned.show()
 
+        ## Statusbar
+        self.statusbar = red_statusbar.Statusbar()
         self.statusbar.show()
         self.vbox.pack_start(self.statusbar, expand=0, fill=1)
+        notifier = red_connection.get_notifier()
+        notifier.connect("connected",
+                         lambda x,y,z:z.set_connected(y), self.statusbar)
+        self.statusbar.connect("connect", lambda x:self.connect_to_daemon())
+        notifier.notify()
 
         self.connect("delete_event", lambda x, y:self.shutdown())
 

@@ -1,3 +1,16 @@
+2003-04-02  Tambet Ingo  <tambet@ximian.com>
+
+	* Makefile.am (red_carpetsupport_DATA): Add red_statusbar.py.
+
+	* red_statusbar.py: New file for custom statusbar. (Fixes #40468).
+
+	* red_connection.py (ConnectionNotify): Dumb new class to emit
+	signals notifing new rcd connection.
+	(connect): Notify the world we have a new server.
+
+	* red_appwindow.py (AppWindow.__init__): Create the new custom
+	statusbar.
+
 2003-04-01  Joe Shaw  <joe@ximian.com>
 
 	* red_about.py (About): Set the window title and icon.
