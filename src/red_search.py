@@ -91,9 +91,9 @@ class SearchComponent(red_component.Component):
             query.append(["", "end-or", ""])
 
         if self.match_status == "installed":
-            query.append(["installed", "=", "true"])
+            query.append(["package-installed", "=", "true"])
         elif self.match_status == "uninstalled":
-            query.append(["installed", "=", "false"])
+            query.append(["package-installed", "=", "false"])
             
         self.array.set_query(query)
 

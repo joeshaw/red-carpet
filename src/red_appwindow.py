@@ -38,7 +38,8 @@ def refresh_cb(app):
 class AppWindow(gtk.Window):
 
     def shutdown(self):
-        sys.exit(0)
+        gtk.mainquit()
+        #sys.exit(0)
 
     def assemble_menubar(self, bar):
 

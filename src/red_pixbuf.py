@@ -21,11 +21,16 @@ import gobject, gtk
 pixbuf_path = ["../art"]
 pixbuf_cache = {}
 
-def get_pixbuf(name, fail_gracefully=0):
+def get_pixbuf(name, fail_gracefully=0, width=0, height=0):
 
     if not name:
         assert fail_gracefully
         return None
+
+    if width > 0 and height > 0:
+        key = "%s %d %d" % (name, width, height)
+    else:
+        key = name
 
     # If this isn't a string, maybe it is a GdkPixbuf.  If so, just
     # pass it through.  Otherwise something is very wrong, so we
@@ -41,18 +46,29 @@ def get_pixbuf(name, fail_gracefully=0):
             assert 0
         
 
-    if pixbuf_cache.has_key(name):
-        return pixbuf_cache[name]
+    if pixbuf_cache.has_key(key):
+        return pixbuf_cache[key]
 
-    for dir in pixbuf_path:
-        filename = os.path.join(dir, name + ".png")
-        if os.path.isfile(filename):
-            pixbuf = gtk.gdk.pixbuf_new_from_file(filename)
-            if not pixbuf:
-                print "Couldn't load pixbuf from '%s'" % filename
-                assert 0
-            pixbuf_cache[name] = pixbuf
-            return pixbuf
+    pixbuf = None
+    
+    if width > 0 and height > 0:
+
+        original = get_pixbuf(name)
+        pixbuf = original.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
+
+    else:
+
+        for dir in pixbuf_path:
+            filename = os.path.join(dir, name + ".png")
+            if os.path.isfile(filename):
+                pixbuf = gtk.gdk.pixbuf_new_from_file(filename)
+                if not pixbuf:
+                    print "Couldn't load pixbuf from '%s'" % filename
+                    assert 0
+
+    if pixbuf:
+        pixbuf_cache[name] = pixbuf
+        return pixbuf
 
     if not fail_gracefully:
         print "Couldn't find pixbuf '%s'" % name
@@ -62,9 +78,9 @@ def get_pixbuf(name, fail_gracefully=0):
 
 
 
-def get_widget(name, fail_gracefully=0):
+def get_widget(name, fail_gracefully=0, width=0, height=0):
 
-    pixbuf = get_pixbuf(name, fail_gracefully)
+    pixbuf = get_pixbuf(name, fail_gracefully, width, height)
 
     img = None
     if pixbuf:
