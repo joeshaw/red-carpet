@@ -1,3 +1,12 @@
+2004-08-26  James Willcox  <james@ximian.com>
+
+	* Makefile.am:
+	* art/importance-*:
+	* configure.in:
+	* trayicon/*:
+
+	Added a notification area applet thingy
+
 2004-05-01  Adam Weinberger  <adamw@gnome.org>
 
 	* configure.in: Added en_CA to ALL_LINGUAS.

@@ -57,6 +57,10 @@ class Console:
     def write(self, msg):
         _original_stderr.write(msg)
 
+        #ignore deprecation warnings, sigh
+        if msg.find('DeprecationWarning') >= 0:
+            return
+
         if msg[:11] == "Traceback (":
             msg = "\n" + msg
 

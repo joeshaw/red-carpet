@@ -154,6 +154,9 @@ ximian_unmarshaller/Makefile
 red_extra/Makefile
 src/Makefile
 src/red-carpet
+trayicon/Makefile
+trayicon/red-carpet-icon
+trayicon/bindings/Makefile
 red-carpet.console
 ])
 

@@ -15,6 +15,7 @@ endif
 
 SUBDIRS = $(UNMARSHALLER_DIR)	\
 	  $(SRCDIR)		\
+          trayicon		\
           red_extra		\
 	  art			\
           help			\
