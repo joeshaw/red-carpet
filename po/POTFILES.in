@@ -43,6 +43,7 @@ src/red_serverproxy.py
 src/red_settings.py
 src/red_sidebar.py
 src/red_software.py
+src/red_statusbar.py
 src/red_subscriptions.py
 src/red_thrashingtreeview.py
 src/red_toolbar.py
