@@ -1,5 +1,11 @@
 2003-05-09  Joe Shaw  <joe@ximian.com>
 
+	* red_searchbox.py (filter_fn): If the __uninstalled_packages_only
+	flag is set and a channel is selected, actually filter out
+	packages which don't match the channel.
+
+2003-05-09  Joe Shaw  <joe@ximian.com>
+
 	* red_sidebar.py: Get rid of the frame around the "Pending
 	Actions" list in the sidebar.  It is discouraged by the HIG and
 	makes the GUI look less busy.

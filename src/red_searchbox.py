@@ -469,6 +469,11 @@ class SearchBox(gtk.VBox):
                and channel_id > 0 \
                and channel_id != p.get("channel_guess"):
                 return 0
+
+            if self.__uninstalled_packages_only \
+               and channel_id > 0 \
+               and channel_id != p.get("channel"):
+                return 0
             
             sect = p.get("section_num")
             return (not status_fn or status_fn(p)) and (n < 0 or sect == n)
