@@ -1,3 +1,7 @@
+2004-09-30  Craig Jeffares <cjeffares@novell.com>
+
+        * configure.in: Added zh_TW to ALL_LINGUAS.
+
 2004-09-26  Tambet Ingo  <tambet@ximian.com>
 
 	* ximian_unmarshaller/unmarshaller.c (node_new): Don't use
