@@ -35,16 +35,6 @@ class SubscriptionsView(gtk.ScrolledWindow):
 
         view = red_channelmodel.make_channel_view(model)
 
-        select = view.get_selection()
-        select.set_mode(gtk.SELECTION_SINGLE)
-
-        def selection_changed_cb(select, component):
-            model, iter = select.get_selected()
-            if iter:
-                path = model.get_path(iter)
-                c = model.channels[path[0]]
-        select.connect("changed", selection_changed_cb, self)
-
         view.show_all()
 
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)

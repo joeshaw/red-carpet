@@ -114,12 +114,12 @@ def poll_cb():
             if poll_count != 0:
                 signal_listeners(server,
                                  curr_package_seqno != last_package_seqno,
-                                 curr_subscription_seqno != last_subscription_seqno,
-                                 curr_channel_seqno != last_channel_seqno)
+                                 curr_channel_seqno != last_channel_seqno,
+                                 curr_subscription_seqno != last_subscription_seqno)
                 
             last_package_seqno = curr_package_seqno
-            last_subscription_seqno = curr_subscription_seqno
             last_channel_seqno = curr_channel_seqno
+            last_subscription_seqno = curr_subscription_seqno
 
             poll_lock.release()
             

@@ -1,3 +1,16 @@
+2003-01-23  Joe Shaw  <joe@ximian.com>
+
+	* red_channelmodel.py: Begin porting this over to be a
+	RedListModel and ServerListener.  Still need to thrash the model,
+	add filtering and proper sorting, and probably optimize for the
+	local subscription changed case.
+
+	* red_serverlistener.py: Fix a bug where channel seqno listeners
+	were being signaled for a change in the subscription seqno.
+
+	* red_subscriptions.py: Removed some code which didn't appear to
+	have any purpose and was causing tracebacks.
+
 2003-01-23  Jon Trowbridge  <trow@ximian.com>
 
 	* red_packagebrowser.py (PackageBrowser.show_popup_cb): Use the
