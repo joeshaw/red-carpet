@@ -16,32 +16,75 @@
 ###
 
 import sys
-import math
-import pango
+import os
 import gtk
+import ximian_xmlrpclib
+import packagemodel
 
-font_param = 0
-
-def resize(label):
-    global font_param
-    font_size = 8 + 96 * math.fabs(math.cos(font_param))
-    font = pango.FontDescription("Sans %g" % font_size)
-    font_param = font_param + 0.1
-    label.modify_font(font)
-    return 1
+def thrash_model(source,view):
+    view.set_model(None)
+    view.set_model(source)
 
 def main(version):
-    label = gtk.Label("")
-    label.set_markup('Red Carpet <span color="red">2</span>')
-    resize(label)
+    ## Make contact with the daemon.
+    ## We assume local access only
+    url = "/tmp/rcd"
+    username = None
+    password = None
+
+    transport_debug = os.environ.has_key("RC_TRANSPORT_DEBUG")
+
+    try:
+        server = ximian_xmlrpclib.Server(url,
+                                         auth_username=username,
+                                         auth_password=password,
+                                         verbose=transport_debug)
+    except:
+        sys.stderr.write("Unable to connect to the daemon.\n")
+        sys.exit(1)
+
+    store = packagemodel.PackageModel(server)
+    store.set_query([["name", "contains", "gnome"]])
+
+    view = gtk.TreeView(store)
+
+    col = gtk.TreeViewColumn("Installed",
+                             gtk.CellRendererText(),
+                             text=packagemodel.COLUMN_INSTALLED)
+    view.append_column(col)
+
+    col = gtk.TreeViewColumn("Channel",
+                             gtk.CellRendererText(),
+                             text=packagemodel.COLUMN_CHANNEL_NAME)
+    view.append_column(col)
+
+    col = gtk.TreeViewColumn("Name",
+                             gtk.CellRendererText(),
+                             text=packagemodel.COLUMN_NAME)
+    view.append_column(col)
+
+    col = gtk.TreeViewColumn("Version",
+                             gtk.CellRendererText(),
+                             text=packagemodel.COLUMN_EVR)
+    view.append_column(col)
+
+    # We have to thrash the model on a sync, because there is no way
+    # for a TreeModel to emit a global "everything-or-anything-
+    # has-changed" signal.  (I've bitched about this to jrb, so
+    # hopefully it will be get fixed for gtk+ 2.2.)
+    store.connect("sync", thrash_model, view)
+
+    sw = gtk.ScrolledWindow()
+    sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+    sw.add(view)
+
     win = gtk.Window()
-    win.add(label)
+    win.add(sw)
+
     win.show_all()
-
-    gtk.timeout_add(50, resize, label)
-
     win.connect("delete_event",
                 lambda x,y:sys.exit(0))
 
-    # Start the main loop
     gtk.main()
+    
+    
