@@ -107,7 +107,7 @@ def help_cb(app):
     help_files = ("%s/%s/red-carpet.xml" % (red_main.help_path, help_locale),
                   "%s/C/red-carpet.xml" % red_main.help_path)
 
-    url_handlers = ("gnome-url-show", "gnome-moz-remote")
+    url_handlers = ("gnome-url-show", "gnome-help", "gnome-moz-remote")
 
     for f in help_files:
         if not os.path.exists(f):

@@ -1,5 +1,9 @@
 2003-04-16  Joe Shaw  <joe@ximian.com>
 
+	* red_appwindow.py (help_cb): Prefer gnome-help to gnome-moz-remote.
+
+2003-04-16  Joe Shaw  <joe@ximian.com>
+
 	* red-carpet.in: Set up the help path, and set it in red_main.
 
 	* red_appwindow.py (help_cb): Added.  Tries to launch a help
