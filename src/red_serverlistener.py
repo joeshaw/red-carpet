@@ -34,8 +34,9 @@ timeout_len  = 3000
 
 last_package_seqno      = -1
 last_channel_seqno      = -1
-last_subs_seqno = -1
+last_subs_seqno         = -1
 last_user_seqno         = -1
+last_lock_seqno         = -1
 
 listeners = {}
 listener_id = 0
@@ -53,12 +54,14 @@ def unregister_listener(lid):
 def signal_listeners(packages_changed,
                      channels_changed,
                      subscriptions_changed,
-                     users_changed):
+                     users_changed,
+                     locks_changed):
 
     if packages_changed \
            or channels_changed \
            or subscriptions_changed \
-           or users_changed:
+           or users_changed \
+           or locks_changed:
 
         for lid in listeners.keys():
             listener_ref = listeners[lid]
@@ -77,6 +80,9 @@ def signal_listeners(packages_changed,
                 if users_changed:
                     listener.users_changed()
 
+                if locks_changed:
+                    listener.locks_changed()
+
             else:
                 unregister_listener(lid)
 
@@ -87,6 +93,7 @@ class SeqNoChecker:
         self.curr_channel_seqno = -1
         self.curr_subs_seqno    = -1
         self.curr_user_seqno    = -1
+        self.curr_lock_seqno    = -1
 
     def set_world_seqnos(self, pkg, ch, subs):
         self.curr_package_seqno = pkg
@@ -98,11 +105,16 @@ class SeqNoChecker:
         self.curr_user_seqno = usr
         self.check()
 
+    def set_lock_seqno(self, lock):
+        self.curr_lock_seqno = lock
+        self.check()
+
     def check(self):
         if self.curr_user_seqno < 0       \
            or self.curr_channel_seqno < 0 \
            or self.curr_subs_seqno < 0    \
-           or self.curr_user_seqno < 0:
+           or self.curr_user_seqno < 0 \
+           or self.curr_lock_seqno < 0:
             return
 
         global last_server
@@ -111,6 +123,7 @@ class SeqNoChecker:
         global last_subs_seqno
         global last_channel_seqno
         global last_user_seqno
+        global last_lock_seqno
 
         poll_lock.acquire()
 
@@ -123,10 +136,12 @@ class SeqNoChecker:
             last_channel_seqno      = -1
             last_subs_seqno         = -1
             last_user_seqno         = -1
+            last_lock_seqno         = -1
         last_server = id(server)
 
         if self.curr_channel_seqno != last_channel_seqno or \
-               self.curr_subs_seqno != last_subs_seqno:
+           self.curr_subs_seqno != last_subs_seqno or \
+           self.curr_lock_seqno != last_lock_seqno:
             rcd_util.reset_channels()
 
         if self.curr_user_seqno != last_user_seqno:
@@ -141,12 +156,14 @@ class SeqNoChecker:
                          self.curr_package_seqno != last_package_seqno,
                          self.curr_channel_seqno != last_channel_seqno,
                          self.curr_subs_seqno != last_subs_seqno,
-                         self.curr_user_seqno != last_user_seqno)
+                         self.curr_user_seqno != last_user_seqno,
+                         self.curr_lock_seqno != last_lock_seqno)
 
         last_package_seqno = self.curr_package_seqno
         last_subs_seqno = self.curr_subs_seqno
         last_channel_seqno = self.curr_channel_seqno
         last_user_seqno = self.curr_user_seqno
+        last_lock_seqno = self.curr_lock_seqno
 
         poll_count += 1
 
@@ -166,6 +183,7 @@ def poll_cb():
         snc = SeqNoChecker()
         t1 = server.rcd.packsys.world_sequence_numbers()
         t2 = server.rcd.users.sequence_number()
+        t3 = server.rcd.packsys.lock_sequence_number()
 
         t1.connect("ready",
                    lambda th, snc: apply(snc.set_world_seqnos,
@@ -173,6 +191,9 @@ def poll_cb():
                    snc)
         t2.connect("ready",
                    lambda th, snc: snc.set_user_seqno(th.get_result()),
+                   snc)
+        t3.connect("ready",
+                   lambda th, snc: snc.set_lock_seqno(th.get_result()),
                    snc)
 
         missed_polls = 0
@@ -232,6 +253,7 @@ class ServerListener:
         self.__missed_channel_changes = 0
         self.__missed_subscription_changes = 0
         self.__missed_user_changes = 0
+        self.__missed_lock_changes = 0
         self.__listener_id = register_listener(self)
 
     # These are the function that should be overrided in derived classes.
@@ -245,6 +267,9 @@ class ServerListener:
         pass
 
     def users_changed(self):
+        pass
+
+    def locks_changed(self):
         pass
 
     def process_package_changes(self):
@@ -275,6 +300,12 @@ class ServerListener:
             self.users_changed()
             self.__missed_user_changes = 0
 
+    def process_lock_changes(self):
+        if self.__freeze_count > 0:
+            self.__missed_lock_changes += 1
+        else:
+            self.locks_changed()
+            self.__missed_lock_changes = 0
 
     def freeze(self):
         self.__freeze_count += 1
@@ -291,6 +322,8 @@ class ServerListener:
                     self.process_subscription_changes()
                 if self.__missed_user_changes > 0:
                     self.process_user_changes()
+                if self.__missed_lock_changes > 0:
+                    self.process_lock_changes()
 
     def shutdown_listener(self):
         if self.freeze_count > 0:
@@ -305,6 +338,8 @@ class ServerListener:
                 pending.append("subscription")
             if self.__missed_user_changes > 0:
                 pending.append("user")
+            if self.__missed_user_changes > 0:
+                pending.append("lock")
 
             if pending:
                 msg = string.join(pending, ", ")

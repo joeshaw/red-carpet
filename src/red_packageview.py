@@ -21,6 +21,7 @@ import red_pendingops, red_packagearray
 import red_pixbuf
 import red_packagebook
 import red_thrashingtreeview
+import red_locks
 
 class CellRendererActivatablePixbuf(gtk.GenericCellRenderer):
 
@@ -215,6 +216,27 @@ class PackageView(red_thrashingtreeview.TreeView):
             item.connect("activate",
                          lambda x:red_pendingops.set_action(pkg, red_pendingops.TO_BE_INSTALLED))
 
+        item = gtk.SeparatorMenuItem()
+        item.show_all()
+        menu.append(item)
+
+        # Locking
+        if pkg["locked"]:
+            item = gtk.ImageMenuItem("Unlock")
+        else:
+            item = gtk.ImageMenuItem("Lock")
+
+        image = red_pixbuf.get_widget("lock")
+        item.set_image(image)
+        if not rcd_util.check_server_permission("lock"):
+            item.set_sensitive(0)
+        item.show_all()
+        menu.append(item)
+
+        item.connect("activate",
+                     lambda x:red_locks.toggle_lock(pkg))
+
+
         menu.popup(None, None, None, ev_button, ev_time)
         #print "popup on %s (%d)" % (pkg["name"], i)
 
@@ -350,6 +372,7 @@ class PackageView(red_thrashingtreeview.TreeView):
             col.pack_start(render_text, 0)
             col.set_attributes(render_text,
                                markup=red_packagearray.COLUMN_ACTION)
+            col.set_resizable(1)
 
         self.add_column(col,
                         title=column_title,
@@ -454,8 +477,9 @@ class PackageView(red_thrashingtreeview.TreeView):
         col = gtk.TreeViewColumn(None,
                                  gtk.CellRendererPixbuf(),
                                  pixbuf=red_packagearray.COLUMN_LOCKED_ICON)
-        widget = red_pixbuf.get_widget("lock");
+        widget = red_pixbuf.get_widget("lock")
         widget.show()
+
         self.add_column(col,
                         widget=widget,
                         initially_visible=1)
@@ -503,5 +527,3 @@ gobject.signal_new("popup",
                     gobject.TYPE_INT, # button,
                     gobject.TYPE_INT, # time
                     gobject.TYPE_PYOBJECT))
-
-

@@ -1,3 +1,26 @@
+2003-02-14  Tambet Ingo  <tambet@ximian.com>
+
+	* red_locks.py (toggle_lock): New file, new function. Locks
+	unlocked package and vice versa.
+
+	* red_serverlistener.py: Added listener for locks.
+	(ServerListener.users_changed): New method which should be
+	implemented by subclasses which want to catch locks changed events.
+
+	* red_packageview.py (PackageView.do_popup): Add Lock/Unlock item
+	to popup menu.
+	(PackageView.activated_cb): Allow resizing if action name is visible
+	and col can get wide.
+
+	* red_packagearray.py (UpdatedPackages.locks_changed): Refresh
+	itself on locks_changed event.
+
+	* rcd_util.py (get_package_channel_name): Return "None" instead of
+	"????" if package doesn't have channel (or even guessed channel).
+
+	* red_sidebar.py (SideBar.build): Set ButtonBox' layout to "start"
+	so it acts like shortcut bar.
+
 2003-02-13  Jon Trowbridge  <trow@ximian.com>
 
 	* red_packagearray.py (sort_pkgs_by_name): Fixed a bug that I

@@ -642,4 +642,5 @@ class UpdatedPackages(PackagesFromDaemon):
     def channels_changed(self):
         self.schedule_refresh()
 
-
+    def locks_changed(self):
+        self.schedule_refresh()

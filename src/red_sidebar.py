@@ -70,6 +70,7 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
 
         bbox = gtk.HButtonBox()
         bbox.set_spacing(6)
+        bbox.set_layout(gtk.BUTTONBOX_START)
 
         ## Run button
         self.run = gtk.Button()

@@ -263,7 +263,7 @@ def get_package_channel_name(pkg):
     elif pkg.has_key("channel_guess"):
         return get_channel_name(pkg["channel_guess"])
     else:
-        return "????"
+        return "None"
 
 def get_package_channel_icon(pkg, width=0, height=0):
     if pkg.has_key("channel") and pkg["channel"] > 0:
