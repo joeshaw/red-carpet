@@ -211,7 +211,7 @@ def get_channel_image(id, width=0, height=0):
     return img
 
 def get_package_channel_name(pkg):
-    if pkg.has_key("channel") and pkg["channel"] > 0:
+    if pkg.has_key("channel") and pkg["channel"]:
         return get_channel_name(pkg["channel"])
     elif pkg.has_key("channel_guess"):
         return get_channel_name(pkg["channel_guess"])
@@ -219,7 +219,7 @@ def get_package_channel_name(pkg):
         return "None"
 
 def get_package_channel_icon(pkg, width=0, height=0):
-    if pkg.has_key("channel") and pkg["channel"] > 0:
+    if pkg.has_key("channel") and pkg["channel"]:
         return get_channel_icon(pkg["channel"], width, height)
     elif pkg.has_key("channel_guess"):
         return get_channel_icon(pkg["channel_guess"], width, height)
@@ -246,7 +246,7 @@ def get_package_history(pkg):
     return server.rcd.log.query_log([["name", "=", pkg["name"]]])
 
 def is_system_package(pkg):
-    if pkg.get("channel", 0) == 0 or pkg.has_key("channel_quess"):
+    if not pkg.get("channel", "") or pkg.has_key("channel_guess"):
         return 1
     return 0
 
@@ -254,11 +254,11 @@ def get_package_key(pkg):
     key = pkg.get("__key")
     if not key:
         if is_system_package(pkg):
-            channel = pkg.get("channel_guess", 0)
+            channel = pkg.get("channel_guess", "")
         else:
             channel = pkg.get("channel")
 
-        key = pkg["__key"] = "%s/%s/%d" % (pkg["name"],
+        key = pkg["__key"] = "%s/%s/%s" % (pkg["name"],
                                            get_package_EVR(pkg),
                                            channel)
     return key
@@ -272,8 +272,8 @@ def get_dep_EVR(dep):
 def filter_package_dups(pkgs):
 
     def pkg_to_key(p):
-        ch = p["channel"] or p.get("channel_guess", 0);
-        return "%d:%s:%d:%s:%s" % \
+        ch = p["channel"] or p.get("channel_guess", "");
+        return "%s:%s:%d:%s:%s" % \
                (ch, p["name"], p["epoch"], p["version"], p["release"])
 
     in_channel = {}
@@ -283,7 +283,7 @@ def filter_package_dups(pkgs):
 
     filtered = []
     for p in pkgs:
-        if p["channel"] != 0 or not in_channel.has_key(pkg_to_key(p)):
+        if p["channel"] or not in_channel.has_key(pkg_to_key(p)):
             filtered.append(p)
 
     return filtered

@@ -1,3 +1,18 @@
+2003-04-18  Joe Shaw  <joe@ximian.com>
+
+	* rcd_util.py: A bunch of channel-related checks so we can work
+	against daemons that have both numeric and string channel ids.
+	(get_package_channel_name): Just check for boolean value of
+	pkg["channel"], not if it's greater than 0.
+	(get_package_channel_icon): Ditto.
+	(is_system_package): Default the channel id to an empty string and
+	check for boolean value, not 0.  Also fix a typo, "quess" to
+	"guess".
+	(get_package_key): Default the channel id to an empty string and
+	pass in a string to the package key.
+	(pkg_to_key): Pass in a string for the channel id.
+	(filter_package_dups): Check boolean value, not equality to 0.
+
 2003-04-16  Tambet Ingo  <tambet@ximian.com>
 
 	* red_componentbook.py (ComponentPage.__init__): Set border
