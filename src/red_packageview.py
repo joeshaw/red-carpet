@@ -77,6 +77,10 @@ class PackageView(gtk.TreeView):
         gtk.TreeView.set_model(self, model)
 
         if model:
+            def prepare_thrash():
+                print "thrashing model"
+                self.thrash_model()
+
             self.changed_id = model.connect("changed",
-                                            lambda x:self.thrash_model())
+                                            lambda x:prepare_thrash())
                                             
