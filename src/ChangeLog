@@ -1,5 +1,8 @@
 2003-03-06  Jon Trowbridge  <trow@ximian.com>
 
+	* red_packageview.py (PackageView.append_status_column): Turn
+	of status icons by default.
+
 	* red_appwindow.py (AppWindow): Make AppWindow a
 	PendingOpsListener.
 	(AppWindow.__init__): Call PendingOpsListener.__init__.

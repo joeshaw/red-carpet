@@ -249,7 +249,7 @@ class PackageView(red_thrashingtreeview.TreeView):
 
     def append_status_column(self,
                              column_title=_("Status"),
-                             show_status_icon=1,
+                             show_status_icon=0,
                              show_status_name=1):
         col = gtk.TreeViewColumn()
         col.set_title(column_title)
