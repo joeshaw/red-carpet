@@ -290,37 +290,67 @@ unmarshaller_end (PyObject *self, PyObject *args)
     PyUnmarshaller *unm = (PyUnmarshaller *) self;
     char *tag;
     char *data_str = NULL;
+    void (*fn) (PyUnmarshaller *, const char *str) = NULL;
 
     if (! PyArg_ParseTuple (args, "s", &tag))
         return NULL;
 
     data_str = unm->data->str;
 
-    /* FIXME: need to finish implementing tags */
+    switch (*tag) {
 
-    if (! strcmp (tag, "boolean")) {
-        end_boolean (unm, data_str);
-    } else if (! strcmp (tag, "i4") || ! strcmp (tag, "int")) {
-        end_int (unm, data_str);
-    } else if (! strcmp (tag, "double")) {
-        end_double (unm, data_str);
-    } else if (! strcmp (tag, "string") || ! strcmp (tag, "name")) {
-        end_string (unm, data_str);
-    } else if (! strcmp (tag, "array")) {
-        end_array (unm, data_str);
-    } else if (! strcmp (tag, "struct")) {
-        end_struct (unm, data_str);
-    } else if (! strcmp (tag, "base64")) {
-        end_base64 (unm, data_str);
-    } else if (! strcmp (tag, "value")) {
-        end_value (unm, data_str);
-    } else if (! strcmp (tag, "params")) {
-        end_params (unm, data_str);
-    } else if (! strcmp (tag, "fault")) {
-        end_fault (unm, data_str);
-    } else {
-        /* g_print ("*** Unknown tag '%s'\n", tag); */
+    case 'a':
+        if (! strcmp (tag, "array"))
+            fn = end_array;
+        break;
+
+    case 'b':
+        if (! strcmp (tag, "boolean"))
+            fn = end_boolean;
+        else if (! strcmp (tag, "base64"))
+            fn = end_base64;
+        break;
+
+    case 'd':
+        if (! strcmp (tag, "double"))
+            fn = end_double;
+        break;
+
+    case 'f':
+        if (! strcmp (tag, "fault"))
+            fn = end_fault;
+        break;
+
+    case 'i':
+        if (! strcmp (tag, "i4") || ! strcmp (tag, "int"))
+            fn = end_int;
+        break;
+
+    case 'n':
+        if (! strcmp (tag, "name"))
+            fn = end_string;
+        break;
+
+    case 'p':
+        if (! strcmp (tag, "params"))
+            fn = end_params;
+        break;
+
+    case 's':
+        if (! strcmp (tag, "string"))
+            fn = end_string;
+        else if (! strcmp (tag, "struct"))
+            fn = end_struct;
+        break;
+
+    case 'v':
+        if (! strcmp (tag, "value"))
+            fn = end_value;
+        break;
     }
+
+    if (fn)
+        fn (unm, data_str);
 
     Py_INCREF (Py_None);
     return Py_None;
@@ -356,9 +386,14 @@ static void
 unmarshaller_dealloc (PyObject *self)
 {
     PyUnmarshaller *unm = (PyUnmarshaller *) self;
+    int i;
 
-    /* FIXME: leaking objects on stack */
+    for (i = 0; i < unm->stack->len; ++i) {
+        PyObject *obj = g_ptr_array_index (unm->stack, i);
+        Py_DECREF (obj);
+    }
     g_ptr_array_free (unm->stack, TRUE);
+
     g_slist_free (unm->marks);
     g_string_free (unm->data, TRUE);
     g_free (unm->methodname);
