@@ -1,3 +1,11 @@
+2003-01-24  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packagearray.py (UpdatedPackages.subscriptions_changed): 
+	(UpdatedPackages.channels_changed): Removed server argument.
+
+	* test-listeners.py (MyServerListener.channels_changed): ditto,
+	just to be in sync.
+
 2003-01-24  Jon Trowbridge  <trow@ximian.com>
 
 	* red_packagebrowser.py (PackageBrowser.show_popup_cb):

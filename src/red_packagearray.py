@@ -673,10 +673,10 @@ class UpdatedPackages(PackagesFromDaemon):
 
     # The list of updates needs to refresh when the list of available
     # channels or subscriptions change.
-    def subscriptions_changed(self, server):
+    def subscriptions_changed(self):
         self.schedule_refresh()
 
-    def channels_changed(self, server):
+    def channels_changed(self):
         self.schedule_refresh()
 
 

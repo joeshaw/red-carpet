@@ -49,10 +49,10 @@ class MyServerListener(red_serverlistener.ServerListener):
     def server_changed(self, server):
         print "Server Changed!"
 
-    def channels_changed(self, server):
+    def channels_changed(self):
         print "Channels Changed!"
 
-    def subscriptions_changed(self, server):
+    def subscriptions_changed(self):
         print "Subscriptions changed!"
 
 
