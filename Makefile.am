@@ -32,7 +32,7 @@ gnomemimedir = $(datadir)/application-registry
 gnomemime_DATA = red-carpet.applications
 
 if HAVE_KDE_CONFIG
-kdemimedir = $(DESTDIR)`kde-config --prefix`/share/applnk/.hidden
+kdemimedir = `kde-config --prefix`/share/applnk/.hidden
 kdemime_DATA = red-carpet-mime.desktop
 KDE_MIME_FILES = $(kdemime_DATA)
 else
