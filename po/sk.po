@@ -7,13 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-01 20:15+0200\n"
+"POT-Creation-Date: 2004-05-05 20:28+0200\n"
 "PO-Revision-Date: 2004-05-02 23:11+0200\n"
 "Last-Translator: Ivan Noris <vix@vazka.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/rcd_util.py:402
 msgid "Please wait while getting data."
@@ -125,12 +126,16 @@ msgstr ""
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
-msgstr "Nepodarilo sa zobraziť pomocníka, pretože chýbajú jeho súbory.  Prosím, oznámte to svojmu dodávateľovi."
+msgstr ""
+"Nepodarilo sa zobraziť pomocníka, pretože chýbajú jeho súbory.  Prosím, "
+"oznámte to svojmu dodávateľovi."
 
 #: src/red_appwindow.py:131
 msgid ""
 "Unable to show help because there are no applications available to view help."
-msgstr "Nepodarilo sa zobraziť pomocníka, pretože nie sú k dispozícii aplikácie na zobrazenie pomocníka."
+msgstr ""
+"Nepodarilo sa zobraziť pomocníka, pretože nie sú k dispozícii aplikácie na "
+"zobrazenie pomocníka."
 
 #: src/red_appwindow.py:406
 #, python-format
@@ -269,7 +274,8 @@ msgstr "_Aktivovať..."
 #: src/red_appwindow.py:625
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Aktivovať démona voči Red Carpet Express alebo Red Carpet Enterprise serveru"
+msgstr ""
+"Aktivovať démona voči Red Carpet Express alebo Red Carpet Enterprise serveru"
 
 #: src/red_appwindow.py:631
 msgid "Quit"
@@ -456,8 +462,7 @@ msgstr "Žiaden kanál/Neznámy kanál"
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
-msgstr "Nepodarilo sa spojiť s démonom:\b"
-" '%s'."
+msgstr "Nepodarilo sa spojiť s démonom:\b '%s'."
 
 #: src/red_connection.py:67
 #, python-format
@@ -474,7 +479,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
-"Detekovaný protokol verzie %d.  Je požadovaná verzia %d.  Musíte aktualizovať verziu rcd."
+"Detekovaný protokol verzie %d.  Je požadovaná verzia %d.  Musíte "
+"aktualizovať verziu rcd."
 
 #: src/red_connection.py:123
 msgid "Starting daemon..."
@@ -484,7 +490,8 @@ msgstr "Štartuje démon..."
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
-msgstr "Red Carpet vyžaduje spustený Red Carpet Daemon.\n"
+msgstr ""
+"Red Carpet vyžaduje spustený Red Carpet Daemon.\n"
 "Chcete ho teraz spustiť?"
 
 #: src/red_connection.py:345
@@ -543,7 +550,8 @@ msgstr "Riešia sa závislosti"
 #: src/red_depcomponent.py:144
 msgid ""
 "You must agree to the licenses covering this software before installing it."
-msgstr "Pred nainštalovaním tohto softvéru musíte súhlasiť s licenčnými podmienkami."
+msgstr ""
+"Pred nainštalovaním tohto softvéru musíte súhlasiť s licenčnými podmienkami."
 
 #: src/red_depcomponent.py:188
 msgid "I Agree"
@@ -561,7 +569,8 @@ msgstr "Systém bol overený"
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
-msgstr "Všetky závislosti balíka sú splnené a nie sú požadované nijaké opravné akcie."
+msgstr ""
+"Všetky závislosti balíka sú splnené a nie sú požadované nijaké opravné akcie."
 
 #: src/red_depcomponent.py:377
 msgid "Requested Installations"
@@ -1296,7 +1305,9 @@ msgstr "Prihlásenia kanálov %s"
 msgid ""
 "You do not have permission to subscribe or unsubscribe from channels.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr "Nemáte právo prihlasovať alebo odhlasovať kanály.  Nebude možné zmeniť prihlásenia."
+msgstr ""
+"Nemáte právo prihlasovať alebo odhlasovať kanály.  Nebude možné zmeniť "
+"prihlásenia."
 
 #: src/red_thrashingtreeview.py:138
 msgid "Untitled"
@@ -1324,7 +1335,8 @@ msgstr "Systém je v aktuálnom stave."
 
 #: src/red_updates.py:110
 msgid "There are no software updates available in any subscribed channels."
-msgstr "V žiadnom prihlásenom kanáli nie sú dostupné žiadne aktualizácie softvéru."
+msgstr ""
+"V žiadnom prihlásenom kanáli nie sú dostupné žiadne aktualizácie softvéru."
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -1336,7 +1348,9 @@ msgid ""
 "add them.\n"
 "\n"
 "Are you sure you want to do this?"
-msgstr "Ak si odstránite administrátorské práva, nebudete schopní si ich opäť pridať.\n"
+msgstr ""
+"Ak si odstránite administrátorské práva, nebudete schopní si ich opäť "
+"pridať.\n"
 "\n"
 "Naozaj to chcete urobiť?"
 
@@ -1402,4 +1416,3 @@ msgstr "Neplatné meno používateľa"
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Používateľ '%s' už existuje."
-
