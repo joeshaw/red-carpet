@@ -184,7 +184,6 @@ def main(version):
     app.register_component(red_history.HistoryComponent())
     app.register_component(red_transaction.TransactionComponent())
 
-    app.set_size_request(780, 550)
     app.show()
 
     gtk.main()

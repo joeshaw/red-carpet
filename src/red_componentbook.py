@@ -87,11 +87,14 @@ class ComponentBook(gtk.HBox):
         self.__pages = []
         self.__comp_pagenum = {}
         self.__visible_page = -1
+
+        self.__book.set_scrollable(1)
+
         def switch_page_cb(nb, page, num):
             self.switch_page(page, num)
             comp = self.__pages[num].get_component()
             self.emit("switched", comp)
-            
+
         self.__book.connect("switch-page", switch_page_cb)
         self.__pushed_comp = None
 

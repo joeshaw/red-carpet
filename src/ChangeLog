@@ -1,3 +1,17 @@
+2003-05-01  Joe Shaw  <joe@ximian.com>
+
+	* red_appwindow.py: Make the sidebar request 1.5 times its normal
+	size so we have a decent default.  Change it back so that the
+	content area is resized when the window is resized.  Change it
+	back so that the content area is shrinkable.
+	(load_geometry): If we don't have any saved window geometry, make
+	a best guess at a good default size so we can get all the tabs and
+	have a nice aspect ratio.
+
+	* red_componentbook.py: Make our notebook scrollable.
+
+	* red_main.py: Don't set the default window size here anymore.
+
 2003-04-30  Joe Shaw  <joe@ximian.com>
 
 	* red_channeloption.py: The channel ID parameter is a string in

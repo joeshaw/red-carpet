@@ -179,12 +179,16 @@ class AppWindow(gtk.Window,
         self.vbox.pack_start(self.hpaned, expand=1, fill=1)
 
         self.sidebar = red_sidebar.SideBar()
+        # Ensure a sane width for the sidebar if visible
+        if self.sidebar.get_property("visible"):
+            w, h = self.sidebar.size_request()
+            self.sidebar.set_size_request(w * 1.5, -1)
 
-        self.hpaned.pack1(self.sidebar, resize=1, shrink=0)
+        self.hpaned.pack1(self.sidebar, resize=0, shrink=0)
 
         main_box = gtk.VBox(0, 6)
         main_box.set_border_width(6)
-        self.hpaned.pack2(main_box, resize=0, shrink=0)
+        self.hpaned.pack2(main_box, resize=1, shrink=1)
 
         ## Actionbar
         self.actionbar = red_actionbar.Actionbar()
@@ -227,8 +231,6 @@ class AppWindow(gtk.Window,
             self.set_title(comp.name())
             
         self.componentbook.connect("switched", componentbook_switched_cb)
-
-        
 
         main_box.pack_start(self.componentbook, expand=1, fill=1)
         main_box.show_all()
@@ -285,6 +287,11 @@ class AppWindow(gtk.Window,
         h = int(conf.get("Geometry/height=0"))
 
         if w and h:
+            self.set_default_size(w, h)
+        else:
+            w, h = self.size_request()
+            w *= 1.3
+            h = w * .667
             self.set_default_size(w, h)
 
         w = int(conf.get("Geometry/sidebar_width=0"))
