@@ -56,22 +56,18 @@ class SideBar(gtk.VBox, red_pendingops.PendingOpsListener):
         config.sync()
 
     def build(self):
-        frame = gtk.Frame("")
-        l = frame.get_label_widget()
+        l = gtk.Label("")
+        l.set_alignment(0, 0.5)
         l.set_markup("<b>%s</b>" % _("Pending Actions"))
-        self.pack_start(frame, 1, 1)
-
-        frame_content = gtk.VBox(0, 6)
-        frame_content.set_border_width(6)
-        frame.add(frame_content)
+        self.pack_start(l, expand=0, fill=1)
 
         view = red_transaction.TransactionSimple()
-        frame_content.pack_start(view, 1, 1)
+        self.pack_start(view, expand=1, fill=1)
 
         self.label = gtk.Label("")
         self.label.set_alignment(0.0, 0.5)
         self.update_label()
-        frame_content.pack_start(self.label, expand=0, fill=1)
+        self.pack_start(self.label, expand=0, fill=1)
 
     # PendingOpsListener implementation
     def pendingops_changed(self, pkg, key, value, old_value):

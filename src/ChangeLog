@@ -1,3 +1,9 @@
+2003-05-09  Joe Shaw  <joe@ximian.com>
+
+	* red_sidebar.py: Get rid of the frame around the "Pending
+	Actions" list in the sidebar.  It is discouraged by the HIG and
+	makes the GUI look less busy.
+
 2003-05-01  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py: Make the sidebar request 1.5 times its normal
