@@ -15,9 +15,10 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import os, gobject, gtk
+import os, gobject, gtk, sys
 
-pixbuf_path = ["../art"]
+pixbuf_path = sys.path
+pixbuf_path.append("../art");
 pixbuf_cache = {}
 
 def get_pixbuf(name, fail_gracefully=0, width=0, height=0):
