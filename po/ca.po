@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-01-23 14:10-0500\n"
-"PO-Revision-Date: 2003-10-29 20:00+0100\n"
+"PO-Revision-Date: 2004-01-25 15:47+0100\n"
 "Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -182,9 +182,8 @@ msgid "Group Activation"
 msgstr "Activació del grup"
 
 #: src/red_activation.py:44
-#, fuzzy
 msgid "Service:"
-msgstr "Servidor:"
+msgstr "Servei:"
 
 #: src/red_activation.py:48
 msgid "Email:"
@@ -348,7 +347,7 @@ msgstr "Cancel·la les accions dels paquets marcats"
 #. Info
 #: src/red_appwindow.py:481 src/red_packageview.py:276
 msgid "I_nformation"
-msgstr "I_informació"
+msgstr "I_nformació"
 
 #: src/red_appwindow.py:482
 msgid "Package information"
@@ -473,14 +472,12 @@ msgid "Deselect all items"
 msgstr "Desselecciona tots els elements"
 
 #: src/red_appwindow.py:661
-#, fuzzy
 msgid "Services..."
-msgstr "_Preferències..."
+msgstr "Serveis..."
 
 #: src/red_appwindow.py:662
-#, fuzzy
 msgid "Edit services"
-msgstr "Edita els usuaris"
+msgstr "Edita els serveis"
 
 #: src/red_appwindow.py:666
 msgid "Channel _Subscriptions..."
@@ -1438,7 +1435,7 @@ msgstr "Directori:"
 
 #: src/red_mount.py:168
 msgid "Look for packages recursively"
-msgstr ""
+msgstr "Cerca els paquets recursivament"
 
 #: src/red_mount.py:193
 msgid "Please choose the path for channel."
@@ -1956,7 +1953,7 @@ msgstr "Ha fallat la transacció"
 #. Title
 #: src/red_prefs.py:171
 msgid "Interval to refresh channel data (in hours):"
-msgstr ""
+msgstr "Interval per refrescar les dades del canal (en hores):"
 
 #. Packages section
 #: src/red_prefs.py:182
@@ -1973,7 +1970,7 @@ msgstr "Número de màxim de paquets a baixar en paral·lel:"
 
 #: src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr ""
+msgstr "Habilita les versions anteriors dels paquets"
 
 #. Proxy section - requires superuser
 #: src/red_prefs.py:210
@@ -2374,32 +2371,28 @@ msgstr "Escolliu el fitxer on escriure el XML"
 #. ## ServerListener methods
 #. ##
 #: src/red_services.py:88
-#, fuzzy
 msgid "Edit Services"
-msgstr "Edita els usuaris"
+msgstr "Edita els serveis"
 
 #: src/red_services.py:117
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/red_services.py:133
 msgid "_Remove service"
-msgstr ""
+msgstr "Sup_rimeix el servei"
 
 #: src/red_services.py:146
-#, fuzzy
 msgid "_Add service"
-msgstr "Edita els usuaris"
+msgstr "_Afegeix un servei"
 
 #: src/red_services.py:226
-#, fuzzy
 msgid "Add Service"
-msgstr "Servidor:"
+msgstr "Afegeix un servei"
 
 #: src/red_services.py:231
-#, fuzzy
 msgid "Service URL"
-msgstr "URL del servidor"
+msgstr "URL del servei"
 
 #. ##
 #. ## ServerListener methods
