@@ -42,6 +42,7 @@ red_carpetsupport_DATA =	\
 	red_prefs.py				\
 	red_search.py				\
 	red_searchbar.py			\
+	red_searchbox.py			\
 	red_sectionoption.py			\
 	red_serverinfo.py			\
 	red_serverlistener.py			\

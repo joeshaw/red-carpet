@@ -20,12 +20,20 @@ import red_serverlistener
 import string
 from red_gettext import _
 
+MATCH_ANY_CHANNEL      = -1
+MATCH_NO_CHANNEL       = -2
+MATCH_ANY_SUBD_CHANNEL = -3
+
 class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
-    def __init__(self, allow_any_channel=0, allow_no_channel=0):
+    def __init__(self,
+                 allow_any_channel=0,
+                 allow_any_subd_channel=0,
+                 allow_no_channel=0):
         gobject.GObject.__init__(self)
         red_serverlistener.ServerListener.__init__(self)
         self.__allow_any_channel=allow_any_channel
+        self.__allow_any_subd_channel=allow_any_subd_channel
         self.__allow_no_channel=allow_no_channel
         self.__assemble()
         self.__last_id = None
@@ -39,10 +47,17 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
                                      string.lower(y["name"])))
 
         if self.__allow_any_channel:
-            channels.insert(0, {"name": _("Any Channel"), "id": -1})
+            channels.insert(0, {"name": _("All Channels"),
+                                "id": MATCH_ANY_CHANNEL})
+
+        if self.__allow_any_subd_channel:
+            channels.insert(0,
+                            {"name": _("All Subscribed Channels"),
+                             "id": MATCH_ANY_SUBD_CHANNEL})
 
         if self.__allow_no_channel:
-            channels.append({"name": _("No Channel"), "id": -2})
+            channels.append({"name": _("No Channel"),
+                             "id": MATCH_NO_CHANNEL})
         
         for c in channels:
             hbox = gtk.HBox(0, 0)
@@ -87,10 +102,10 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
         return rcd_util.get_channel(id)
 
     def get_channel_id(self):
-        c = self.get_channel()
-        if c:
-            return c["id"]
-        return None
+        h = self.get_history()
+        if h < 0:
+            return None
+        return self.item_id_list[h]
 
     def set_channel_by_id(self, id):
         if not id in self.item_id_list:

@@ -40,6 +40,7 @@ import red_sidebar
 import red_toolbar
 import red_packagearray
 import red_packagebook
+import red_searchbox
 import red_settings
 from red_gettext import _
 
@@ -573,6 +574,10 @@ class AppWindow(gtk.Window, red_component.ComponentListener):
         bar.add("/View/_Sidebar",
                 checked_get=checked_get_cb,
                 checked_set=checked_set_cb)
+
+        bar.add("/View/Advanced Search Options",
+                checked_get=red_searchbox.show_advanced_get,
+                checked_set=red_searchbox.show_advanced_set)
 
         bar.add("/View/sep", is_separator=1)
 

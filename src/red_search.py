@@ -21,7 +21,7 @@ import red_packagearray
 import red_channeloption, red_sectionoption, red_statusoption
 import red_component, red_packageview
 import red_pendingops
-import red_searchbar
+import red_searchbox
 
 from red_gettext import _
 
@@ -64,17 +64,13 @@ class SearchComponent(red_component.Component):
         self.array = red_packagearray.PackagesFromQuery()
         self.connect_array(self.array)
 
-        page = gtk.VBox(0, 6)
+        self.__sbox = red_searchbox.SearchBox(_("Search"))
 
-        self.__bar = red_searchbar.SearchBar()
-        page.pack_start(self.__bar, expand=0, fill=1)
-        self.__bar.show_all()
-
-        def search_cb(bar, query, filter):
+        def search_cb(sbox, query, filter):
             self.array.set_query(query,
                                  query_msg=_("Searching for matching packages..."),
                                  query_filter=filter)
-        self.__bar.connect("search", search_cb)
+        self.__sbox.connect("search", search_cb)
 
 
         view = red_packageview.PackageView()
@@ -94,11 +90,14 @@ class SearchComponent(red_component.Component):
         scrolled.add(view)
         scrolled.show_all()
 
-        page.pack_start(scrolled, expand=1, fill=1)
-        return page
+        self.__sbox.set_widget(scrolled)
+        self.__sbox.show()
+
+        return self.__sbox
  
     def activated(self):
         def activated_cb(this):
-            entry = this.__bar.get_search_entry()
-            entry.grab_focus()
+            pass
+            #entry = this.__sbox.get_search_entry()
+            #entry.grab_focus()
         gtk.idle_add(activated_cb, self)
