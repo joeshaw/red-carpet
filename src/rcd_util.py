@@ -225,13 +225,11 @@ class StartDaemon:
 
         # parent
         self.service_pid = child_pid
-        print "service pid is %d" % self.service_pid
 
         gtk.timeout_add(500, self.wait_for_daemon_cb)
 
         gtk.threads_enter()
         response = self.dialog.run()
-        print "run exited, so a mainloop died somewhere"
         gtk.threads_leave()
         self.dialog.destroy()
 
@@ -252,9 +250,7 @@ class StartDaemon:
 
                 pidfile = open("/var/run/rcd.pid")
                 pidstr = pidfile.read()
-                print "pidstr: %s" % pidstr
                 self.rcd_pid = int(pidstr)
-                print "rcd pid: %d" % self.rcd_pid
 
         if self.rcd_pid != -1:
             # FIXME: allow other paths?
