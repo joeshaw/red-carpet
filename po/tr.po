@@ -1,14 +1,14 @@
-# Red Carpet's Spanish translation.
+# Turkish translation of red-carpet.
 # Copyright (C) 2001 Free Software Foundation, Inc.
-# Carlos Perelló Marín <carlos@gnome-db.org>, 2001.
-#
+# Ömer Fadıl USTA <omer_fad@hotmail.com>, 2001.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Red Carpet 0.9\n"
+"Project-Id-Version: red-carpet 0.9.2\n"
 "POT-Creation-Date: 2003-03-26 22:53+0100\n"
-"PO-Revision-Date: 2001-07-17 23:05+0200\n"
-"Last-Translator: Carlos Perelló Marín <carlos@gnome-db.org>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2001-03-20 08:01+0100\n"
+"Last-Translator: Ömer Fadıl USTA <omer_fad@hotmail.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,9 +49,8 @@ msgstr ""
 #. ## Format transaction status messages into readable text
 #. ##
 #: src/rcd_util.py:414
-#, fuzzy
 msgid "Verifying"
-msgstr "Versión"
+msgstr ""
 
 #: src/rcd_util.py:415
 msgid "Unable to verify package signature for"
@@ -66,14 +65,12 @@ msgid "Preparing Transaction"
 msgstr ""
 
 #: src/rcd_util.py:418
-#, fuzzy
 msgid "Installing"
-msgstr "Instalar"
+msgstr ""
 
 #: src/rcd_util.py:419
-#, fuzzy
 msgid "Removing"
-msgstr "Borrar"
+msgstr ""
 
 #: src/rcd_util.py:420
 msgid "Configuring"
@@ -220,7 +217,7 @@ msgstr ""
 #: src/red_appwindow.py:350
 #, fuzzy
 msgid "Channels"
-msgstr "Canal de información"
+msgstr "Kanal Hakkında"
 
 #: src/red_appwindow.py:351
 msgid "Change your channel subscriptions"
@@ -228,7 +225,7 @@ msgstr ""
 
 #: src/red_appwindow.py:356
 msgid "Refresh"
-msgstr "Refrescar"
+msgstr "Tazeleme"
 
 #: src/red_appwindow.py:357
 msgid "Refresh channel data"
@@ -238,14 +235,13 @@ msgstr ""
 #. # Actionbar.
 #. #
 #: src/red_appwindow.py:369
-#, fuzzy
 msgid "Mark for _Installation"
-msgstr "Instalaciones necesarias"
+msgstr ""
 
 #: src/red_appwindow.py:370
 #, fuzzy
 msgid "Mark selected packages for installation"
-msgstr "Borrar paquetes cacheados al iniciar"
+msgstr "Bölümlenen paketlerin kalıntılarını her başlangıçta temizle"
 
 #. #
 #. # Remove Package
@@ -257,7 +253,7 @@ msgstr ""
 #: src/red_appwindow.py:378
 #, fuzzy
 msgid "Mark selected packages for removal"
-msgstr "Instalar paquetes seleccionados"
+msgstr "Seçilen Paketleri yükle"
 
 #. #
 #. # Cancel Action
@@ -265,7 +261,7 @@ msgstr "Instalar paquetes seleccionados"
 #: src/red_appwindow.py:384 src/red_appwindow.py:647
 #, fuzzy
 msgid "_Cancel"
-msgstr "Caché"
+msgstr "Bölümleme sistemi"
 
 #: src/red_appwindow.py:385
 msgid "Cancel marked package actions"
@@ -274,12 +270,12 @@ msgstr ""
 #: src/red_appwindow.py:390
 #, fuzzy
 msgid "I_nformation"
-msgstr "Información"
+msgstr "Hakkında"
 
 #: src/red_appwindow.py:391
 #, fuzzy
 msgid "Package information"
-msgstr "Información"
+msgstr "Hakkında"
 
 #. The return value is for the benefit of our delete_event handler.
 #. #
@@ -295,12 +291,12 @@ msgstr ""
 
 #: src/red_appwindow.py:437
 msgid "_View"
-msgstr "_Ver"
+msgstr "_Görünüm"
 
 #: src/red_appwindow.py:438
 #, fuzzy
 msgid "_Actions"
-msgstr "S_uscripciones"
+msgstr "Abo_ne(Kayıt)"
 
 #: src/red_appwindow.py:439
 msgid "_Help"
@@ -357,21 +353,21 @@ msgstr ""
 #: src/red_appwindow.py:531
 #, fuzzy
 msgid "Select _All"
-msgstr "_Seleccionar todos"
+msgstr "_Hepsini Seç"
 
 #: src/red_appwindow.py:536
 msgid "Select _None"
-msgstr "Seleccionar _Ninguno"
+msgstr "Hiçbirini Seç_me"
 
 #: src/red_appwindow.py:543
 #, fuzzy
 msgid "Channel _Subscriptions..."
-msgstr "S_uscripciones"
+msgstr "Abo_ne(Kayıt)"
 
 #: src/red_appwindow.py:549
 #, fuzzy
 msgid "_Preferences..."
-msgstr "Preferencias"
+msgstr "Ayarlar"
 
 #: src/red_appwindow.py:553
 msgid "_Users..."
@@ -383,7 +379,7 @@ msgstr ""
 #: src/red_appwindow.py:565
 #, fuzzy
 msgid "View"
-msgstr "_Ver"
+msgstr "_Görünüm"
 
 #: src/red_appwindow.py:567
 msgid "_Sidebar"
@@ -396,17 +392,17 @@ msgstr ""
 #: src/red_appwindow.py:575
 #, fuzzy
 msgid "Channel Names"
-msgstr "Canal de información"
+msgstr "Kanal Hakkında"
 
 #: src/red_appwindow.py:581
 #, fuzzy
 msgid "Package _Information..."
-msgstr "Información"
+msgstr "Hakkında"
 
 #: src/red_appwindow.py:589
 #, fuzzy
 msgid "_Daemon Information..."
-msgstr "Información"
+msgstr "Hakkında"
 
 #. #
 #. # Run Transaction
@@ -414,7 +410,7 @@ msgstr "Información"
 #: src/red_appwindow.py:600
 #, fuzzy
 msgid "Actions"
-msgstr "Situación"
+msgstr "Yer"
 
 #: src/red_appwindow.py:602
 msgid "Run _Now"
@@ -426,15 +422,14 @@ msgstr ""
 #: src/red_appwindow.py:615
 #, fuzzy
 msgid "_Verify System Dependencies"
-msgstr "Dependencias"
+msgstr "Bağlılık"
 
 #. #
 #. # Install Package
 #. #
 #: src/red_appwindow.py:626
-#, fuzzy
 msgid "Mark for I_nstallation"
-msgstr "Instalaciones necesarias"
+msgstr ""
 
 #. #
 #. # Refresh Channel Data
@@ -448,9 +443,8 @@ msgid "Help"
 msgstr ""
 
 #: src/red_appwindow.py:669
-#, fuzzy
 msgid "_About..."
-msgstr "Acerca de"
+msgstr ""
 
 #. We need to make the component menu items checked
 #. instead of radio-style, because with a radio group you
@@ -516,14 +510,12 @@ msgstr "Acerca de"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_channeloption.py:50
-#, fuzzy
 msgid "All Channels"
-msgstr "Canales con prestaciones"
+msgstr ""
 
 #: src/red_channeloption.py:55
-#, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Canales suscritos"
+msgstr ""
 
 #: src/red_channeloption.py:60
 msgid "No Channel/Unknown Channel"
@@ -658,9 +650,8 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_console.py:50
-#, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Noticias de Red Carpet"
+msgstr ""
 
 #. We put the text into the console window in a timeout.  That
 #. way we can be sure that it happens in the main thread and
@@ -694,7 +685,7 @@ msgstr ""
 #: src/red_deaddaemon.py:69
 #, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Red Carpet de Ximian"
+msgstr "Ximian Kırmızı Halı"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -718,7 +709,7 @@ msgstr "Red Carpet de Ximian"
 #: src/red_depcomponent.py:64
 #, fuzzy
 msgid "Dependency Resolution"
-msgstr "Dependencias"
+msgstr "Bağlılık"
 
 #. Clean up
 #: src/red_depcomponent.py:116
@@ -728,7 +719,7 @@ msgstr ""
 #: src/red_depcomponent.py:122
 #, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Dependencias"
+msgstr "Bağlılık"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
@@ -756,26 +747,23 @@ msgstr ""
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
 #: src/red_depcomponent.py:293
 msgid "Requested Installations"
-msgstr "Instalaciones solicitadas"
+msgstr ""
 
 #: src/red_depcomponent.py:297
 msgid "Requested Removals"
-msgstr "Eliminaciones solicitadas"
+msgstr ""
 
 #: src/red_depcomponent.py:301
-#, fuzzy
 msgid "Required Installations"
-msgstr "Instalaciones solicitadas"
+msgstr ""
 
 #: src/red_depcomponent.py:305
-#, fuzzy
 msgid "Required Removals"
-msgstr "Eliminaciones solicitadas"
+msgstr ""
 
 #: src/red_depcomponent.py:331
-#, fuzzy
 msgid "Continue"
-msgstr "nueve"
+msgstr ""
 
 #. # That's all we can do here. We might (and usually don't)
 #. # have enough information here to decide what kind of page
@@ -801,27 +789,25 @@ msgstr "nueve"
 #: src/red_packageview.py:350
 #, fuzzy
 msgid "Channel"
-msgstr "Canal de información"
+msgstr "Kanal Hakkında"
 
 #: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:406
 msgid "Package"
-msgstr "Paquete"
+msgstr ""
 
 #: src/red_depview.py:43 src/red_packageview.py:445
-#, fuzzy
 msgid "Current Version"
-msgstr "Versión solicitada:"
+msgstr ""
 
 #. ## Main
 #: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:444
 #: src/red_summary.py:87
-#, fuzzy
 msgid "New Version"
-msgstr "Versión"
+msgstr ""
 
 #: src/red_depview.py:49 src/red_packageview.py:481
 msgid "Size"
-msgstr "Tamaño"
+msgstr ""
 
 #. \u2022 is the unicode bullet
 #. ##
@@ -901,19 +887,17 @@ msgid "All"
 msgstr ""
 
 #: src/red_history.py:114
-#, fuzzy
 msgid "Installations"
-msgstr "Instalaciones necesarias"
+msgstr ""
 
 #: src/red_history.py:115
-#, fuzzy
 msgid "Removals"
-msgstr "Borrar"
+msgstr ""
 
 #: src/red_history.py:116
 #, fuzzy
 msgid "Upgrades"
-msgstr "Actualizaciones"
+msgstr "Güncellemeler"
 
 #: src/red_history.py:121
 msgid "User:"
@@ -930,7 +914,7 @@ msgstr ""
 #: src/red_history.py:279
 #, fuzzy
 msgid "Searching..."
-msgstr "Buscar"
+msgstr "Ara"
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:440
@@ -940,17 +924,17 @@ msgstr ""
 #: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:313
 #, fuzzy
 msgid "Action"
-msgstr "Situación"
+msgstr "Yer"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:442 src/red_users.py:113
 #, fuzzy
 msgid "User"
-msgstr "Nombre de usuario"
+msgstr "Kullancı adı"
 
 #: src/red_history.py:305 src/red_history.py:443
 msgid "Old Version"
-msgstr "Versión antigua"
+msgstr ""
 
 #. Define me!
 #. Define me!
@@ -994,22 +978,20 @@ msgstr ""
 #: src/red_installfiles.py:102
 #, fuzzy
 msgid "Install from File"
-msgstr "Software instalado"
+msgstr "Yüklü Yazlım(lar)"
 
 #: src/red_installfiles.py:118
 #, fuzzy, python-format
 msgid "Downloading %s..."
-msgstr "Descargar"
+msgstr "Aşağı indir(çek)"
 
 #: src/red_installfiles.py:157
-#, fuzzy
 msgid "Install from URL"
-msgstr "Instalar"
+msgstr ""
 
 #: src/red_installfiles.py:162
-#, fuzzy
 msgid "Package URL:"
-msgstr "Paquete"
+msgstr ""
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1166,7 +1148,7 @@ msgstr ""
 #: src/red_mount.py:140
 #, fuzzy
 msgid "Mount channel"
-msgstr "subcanal predeterminado:"
+msgstr "Varsayılan altkanal:"
 
 #: src/red_mount.py:144
 msgid "Mount a directory as channel"
@@ -1175,7 +1157,7 @@ msgstr ""
 #: src/red_mount.py:152
 #, fuzzy
 msgid "Channel Name:"
-msgstr "Canal de información"
+msgstr "Kanal Hakkında"
 
 #: src/red_mount.py:156
 msgid "Directory:"
@@ -1186,9 +1168,8 @@ msgid "Please choose the path for channel."
 msgstr ""
 
 #: src/red_mount.py:209
-#, fuzzy
 msgid "Unmount Channel"
-msgstr "Canales no suscritos"
+msgstr ""
 
 #: src/red_mount.py:238
 msgid "Unmount?"
@@ -1244,8 +1225,9 @@ msgid "News"
 msgstr ""
 
 #: src/red_news.py:177
+#, fuzzy
 msgid "Red Carpet News"
-msgstr "Noticias de Red Carpet"
+msgstr "Kırmızı Halı - UYARI"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1278,17 +1260,17 @@ msgstr ""
 #: src/red_option.py:26
 #, fuzzy
 msgid "username"
-msgstr "Nombre de usuario"
+msgstr "Kullancı adı"
 
 #: src/red_option.py:26
 #, fuzzy
 msgid "Specify user name"
-msgstr "Nombre de usuario"
+msgstr "Kullancı adı"
 
 #: src/red_option.py:27
 #, fuzzy
 msgid "password"
-msgstr "Contraseña"
+msgstr "Parola"
 
 #: src/red_option.py:27
 msgid "Specify password"
@@ -1301,7 +1283,7 @@ msgstr ""
 #: src/red_option.py:29
 #, fuzzy
 msgid "Get usage information"
-msgstr "Información"
+msgstr "Hakkında"
 
 #. ##
 #. ## Expand our synthetic args.
@@ -1350,9 +1332,8 @@ msgstr ""
 #. ## Callbacks for our ListModel
 #. ##
 #: src/red_packagearray.py:91
-#, fuzzy
 msgid "installed"
-msgstr "Instalar"
+msgstr ""
 
 #. upgrade
 #: src/red_packagearray.py:93
@@ -1378,14 +1359,12 @@ msgid "downgrade"
 msgstr ""
 
 #: src/red_packagearray.py:125
-#, fuzzy
 msgid "install"
-msgstr "Instalar"
+msgstr ""
 
 #: src/red_packagearray.py:132
-#, fuzzy
 msgid "remove"
-msgstr "Borrar"
+msgstr ""
 
 #. ##
 #. ## Sort functions
@@ -1451,7 +1430,7 @@ msgstr ""
 #: src/red_packagebook.py:43
 #, fuzzy
 msgid "Package Information"
-msgstr "Información"
+msgstr "Hakkında"
 
 #. grab_default() is not sufficient here.
 #. print "Built page %d: '%s'" % (num, page_box.page.name())
@@ -1479,22 +1458,20 @@ msgstr "Información"
 #. ##
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
-msgstr "Dependencias"
+msgstr "Bağlılık"
 
 #: src/red_packagepage_deps.py:67
-#, fuzzy
 msgid "Provides"
-msgstr "Provee:"
+msgstr ""
 
 #: src/red_packagepage_deps.py:70
 #, fuzzy
 msgid "Requires"
-msgstr "Requiere:"
+msgstr "Tazeleme"
 
 #: src/red_packagepage_deps.py:73
-#, fuzzy
 msgid "Conflicts With"
-msgstr "Entra en conflicto:"
+msgstr ""
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1515,44 +1492,44 @@ msgstr "Entra en conflicto:"
 #. evil magic failure code
 #: src/red_packagepage_info.py:78
 msgid "Name"
-msgstr "Nombre"
+msgstr "İsim"
 
 #: src/red_packagepage_info.py:79 src/red_packageview.py:435
 msgid "Version"
-msgstr "Versión"
+msgstr ""
 
 #: src/red_packagepage_info.py:80
 #, fuzzy
 msgid "Release"
-msgstr "Continuar"
+msgstr "Devam et"
 
 #: src/red_packagepage_info.py:81
 #, fuzzy
 msgid "Package Size"
-msgstr "Paquete"
+msgstr "Paket İmzaları"
 
 #: src/red_packagepage_info.py:82
 #, fuzzy
 msgid "Installed Size"
-msgstr "Software instalado"
+msgstr "Yüklü Yazlım(lar)"
 
 #: src/red_packagepage_info.py:84
 #, fuzzy
 msgid "Section"
-msgstr "Situación"
+msgstr "Yer"
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
-msgstr "Resumen"
+msgstr ""
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:372
 #, fuzzy
 msgid "Description"
-msgstr "Descripción:"
+msgstr "Abo_ne(Kayıt)"
 
 #: src/red_packagepage_info.py:140
 msgid "Info"
-msgstr "Info"
+msgstr "Hakkında"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1574,7 +1551,7 @@ msgstr "Info"
 #: src/red_packagepage.py:32
 #, fuzzy
 msgid "Unnamed"
-msgstr "Nombre de usuario"
+msgstr "Kullancı adı"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1604,9 +1581,8 @@ msgstr "Nombre de usuario"
 #. print "activated %s (%d)" % (pkg["name"], i)
 #. Install
 #: src/red_packageview.py:220
-#, fuzzy
 msgid "Mark for Installation"
-msgstr "Instalaciones necesarias"
+msgstr ""
 
 #. Remove
 #: src/red_packageview.py:233
@@ -1617,12 +1593,12 @@ msgstr ""
 #: src/red_packageview.py:246
 #, fuzzy
 msgid "Cancel"
-msgstr "Caché"
+msgstr "Bölümleme sistemi"
 
 #. Info
 #: src/red_packageview.py:264
 msgid "Information"
-msgstr "Información"
+msgstr "Hakkında"
 
 #: src/red_packageview.py:284
 msgid "Status"
@@ -1697,12 +1673,11 @@ msgstr ""
 #: src/red_pendingview.py:563
 #, fuzzy
 msgid "Download cancelled"
-msgstr "Descargar"
+msgstr "Aşağı indir(çek)"
 
 #: src/red_pendingview.py:564
-#, fuzzy
 msgid "Update cancelled"
-msgstr "Actualizar paquetes"
+msgstr ""
 
 #. We can't cancel once the transaction begins
 #. We're in "download only" mode.
@@ -1713,7 +1688,7 @@ msgstr "Actualizar paquetes"
 #: src/red_pendingview.py:599
 #, fuzzy
 msgid "Update Finished"
-msgstr "Actualizaciones"
+msgstr "Güncellemeler"
 
 #: src/red_pendingview.py:611
 msgid "Downloading packages"
@@ -1722,16 +1697,15 @@ msgstr ""
 #: src/red_pendingview.py:623
 #, fuzzy
 msgid "Download Failed"
-msgstr "Descargar"
+msgstr "Aşağı indir(çek)"
 
 #: src/red_pendingview.py:624
 msgid "Unknown Error"
 msgstr ""
 
 #: src/red_pendingview.py:641
-#, fuzzy
 msgid "Processing Transaction"
-msgstr "Acciones posibles:"
+msgstr ""
 
 #: src/red_pendingview.py:660
 msgid "The update has completed successfully"
@@ -1742,9 +1716,8 @@ msgid "Transaction failed"
 msgstr ""
 
 #: src/red_pendingview.py:666
-#, fuzzy
 msgid "Update Failed"
-msgstr "Actualizar"
+msgstr ""
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1799,12 +1772,12 @@ msgstr ""
 #: src/red_prefs.py:160
 #, fuzzy
 msgid "Packages"
-msgstr "Paquete"
+msgstr "Paket İmzaları"
 
 #: src/red_prefs.py:168
 #, fuzzy
 msgid "Require package signatures"
-msgstr "Firmas del paquete"
+msgstr "Paket İmzaları"
 
 #: src/red_prefs.py:173
 msgid "Maximum number of packages to download at once:"
@@ -1813,28 +1786,28 @@ msgstr ""
 #. Proxy frame - requires superuser
 #: src/red_prefs.py:183
 msgid "Proxy"
-msgstr "Proxy"
+msgstr "Vekil Sunucu"
 
 #: src/red_prefs.py:191
 #, fuzzy
 msgid "Use a proxy"
-msgstr "Habilitar proxy"
+msgstr "Vekil sunucuyu aktifleştir"
 
 #: src/red_prefs.py:195
 #, fuzzy
 msgid "Proxy URL:"
-msgstr "Proxy"
+msgstr "Vekil Sunucu"
 
 #: src/red_prefs.py:202
 #, fuzzy
 msgid "Username:"
-msgstr "Nombre de usuario"
+msgstr "Kullancı adı"
 
 #: src/red_prefs.py:209 src/red_settings.py:247 src/red_users.py:192
 #: src/red_users.py:395
 #, fuzzy
 msgid "Password:"
-msgstr "Contraseña"
+msgstr "Parola"
 
 #. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:243
@@ -1874,7 +1847,7 @@ msgstr ""
 #: src/red_prefs.py:333
 #, fuzzy
 msgid "Empty Cache"
-msgstr "Caché"
+msgstr "Bölümleme sistemi"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:355
@@ -1890,13 +1863,13 @@ msgstr ""
 #: src/red_prefs.py:413
 #, fuzzy
 msgid "Loading preferences..."
-msgstr "Preferencias"
+msgstr "Ayarlar"
 
 #. Remove the "loading" "page".
 #: src/red_prefs.py:473
 #, fuzzy, python-format
 msgid "%s Preferences"
-msgstr "Preferencias"
+msgstr "Ayarlar"
 
 #. Should only be called for toggle renderer
 #. Should only be called for text renderer
@@ -1919,7 +1892,7 @@ msgstr "Preferencias"
 #: src/red_searchbox.py:143
 #, fuzzy
 msgid "Uninstalled Packages"
-msgstr "Instalar paquetes"
+msgstr "Yüklü Paketleri _Sına"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1939,22 +1912,21 @@ msgstr "Instalar paquetes"
 #. ##
 #: src/red_searchbox.py:144 src/red_summary.py:30
 msgid "Updates"
-msgstr "Actualizaciones"
+msgstr "Güncellemeler"
 
 #: src/red_searchbox.py:145
 #, fuzzy
 msgid "Installed Packages"
-msgstr "Instalar paquetes"
+msgstr "Yüklü Paketleri _Sına"
 
 #: src/red_searchbox.py:146
-#, fuzzy
 msgid "All Packages"
-msgstr "Paquete"
+msgstr ""
 
 #: src/red_searchbox.py:271
 #, fuzzy
 msgid "Search descriptions"
-msgstr "S_uscripciones"
+msgstr "Abo_ne(Kayıt)"
 
 #. ##
 #. ## Match radio buttons
@@ -1962,7 +1934,7 @@ msgstr "S_uscripciones"
 #: src/red_searchbox.py:283
 #, fuzzy
 msgid "Match:"
-msgstr "Ruta:"
+msgstr "Yol:"
 
 #. ##
 #. ## Build the top row of search UI, which contains the title and
@@ -1971,7 +1943,7 @@ msgstr "Ruta:"
 #: src/red_searchbox.py:340
 #, fuzzy
 msgid "Channel:"
-msgstr "Canal de información"
+msgstr "Kanal Hakkında"
 
 #. ##
 #. ## Build the second row of the search UI, which contains the
@@ -2008,12 +1980,11 @@ msgstr "Canal de información"
 #. ##
 #: src/red_search.py:35 src/red_search.py:71
 msgid "Search"
-msgstr "Buscar"
+msgstr "Ara"
 
 #: src/red_search.py:38
-#, fuzzy
 msgid "Search Packages"
-msgstr "Paquete"
+msgstr ""
 
 #: src/red_search.py:75
 msgid "Searching for matching packages..."
@@ -2169,7 +2140,7 @@ msgstr ""
 #: src/red_settings.py:243 src/red_users.py:389
 #, fuzzy
 msgid "User name:"
-msgstr "Nombre de usuario"
+msgstr "Kullancı adı"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
@@ -2218,17 +2189,17 @@ msgstr ""
 #: src/red_subscriptions.py:56
 #, fuzzy
 msgid "Subscribed"
-msgstr "_Suscribir"
+msgstr "_Abone ol"
 
 #: src/red_subscriptions.py:63
 #, fuzzy
 msgid "Channel Name"
-msgstr "Canal de información"
+msgstr "Kanal Hakkında"
 
 #: src/red_subscriptions.py:77
 #, fuzzy, python-format
 msgid "%s Channel Subscriptions"
-msgstr "S_uscripciones"
+msgstr "Abo_ne(Kayıt)"
 
 #. FIXME: Make transient of app
 #: src/red_subscriptions.py:94
@@ -2240,7 +2211,7 @@ msgstr ""
 #: src/red_summary.py:33
 #, fuzzy
 msgid "Update Summary"
-msgstr "Resumen"
+msgstr "Süratle çalıştır"
 
 #: src/red_summary.py:102
 msgid "The system is up-to-date."
@@ -2315,7 +2286,7 @@ msgstr ""
 #: src/red_transaction.py:75
 #, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "¿Está seguro que quiere abortar la transferencia actual?"
+msgstr "Aktif olarak çalışan transferi iptal etmek istediğinize emin misiniz?"
 
 #: src/red_users.py:131
 msgid "Privilege"
@@ -2334,21 +2305,20 @@ msgstr ""
 #: src/red_users.py:166
 #, fuzzy
 msgid "Enabled"
-msgstr "Habilitar proxy"
+msgstr "Vekil sunucuyu aktifleştir"
 
 #: src/red_users.py:181
 msgid "Edit Users"
 msgstr ""
 
 #: src/red_users.py:196 src/red_users.py:399
-#, fuzzy
 msgid "Confirm:"
-msgstr "Entra en conflicto:"
+msgstr ""
 
 #: src/red_users.py:217
 #, fuzzy
 msgid "Set Password"
-msgstr "Contraseña"
+msgstr "Parola"
 
 #. else:
 #: src/red_users.py:246 src/red_users.py:422
@@ -2375,16 +2345,16 @@ msgstr ""
 #: src/red_users.py:320
 #, fuzzy, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "¿Está seguro que quiere abortar la transferencia actual?"
+msgstr "Aktif olarak çalışan transferi iptal etmek istediğinize emin misiniz?"
 
 #: src/red_users.py:326
+#, fuzzy
 msgid "Remove"
-msgstr "Borrar"
+msgstr "Devam et"
 
 #: src/red_users.py:339
-#, fuzzy
 msgid "Privileges"
-msgstr "Provee:"
+msgstr ""
 
 #: src/red_users.py:379
 msgid "Add new user"
@@ -2399,153 +2369,142 @@ msgstr ""
 msgid "User '%s' already exists."
 msgstr ""
 
-#~ msgid "_Verify Installed Packages"
-#~ msgstr "_Verificar paquetes instalados"
+#~ msgid "Keyword not found"
+#~ msgstr "Anahtar kelimeler bulunamadı"
+
+#~ msgid ""
+#~ "Could not find '%s'.\n"
+#~ "Please make sure Red Carpet was installed correctly."
+#~ msgstr ""
+#~ "'%s' Bulunamadı. \n"
+#~ "Kırmızı Halının Düzgün birşekilde yüklendiğinizden emin olun."
+
+#~ msgid "Load file(s)"
+#~ msgstr "Dosya(lar) yükleniyor"
+
+#~ msgid "Install all packages in directory"
+#~ msgstr "Aktif dizinde bulunan tüm paketleri yükle"
+
+#~ msgid "Close"
+#~ msgstr "Kapat"
 
 #~ msgid "_Install Local Packages..."
-#~ msgstr "_Instalar paquetes locales..."
+#~ msgstr "Lokal Paketleri _Yükle"
 
 #~ msgid "_Refresh"
-#~ msgstr "_Refrescar"
+#~ msgstr "_Tazele"
 
 #~ msgid "_Unsubscribe"
-#~ msgstr "_Desuscribir"
+#~ msgstr "Abonelikten _Çık"
 
 #~ msgid "Main Page"
-#~ msgstr "Página principal"
+#~ msgstr "Ana Sayfa"
 
 #~ msgid "Pause"
-#~ msgstr "Pausa"
-
-#~ msgid "OK"
-#~ msgstr "Aceptar"
+#~ msgstr "Duraklat"
 
 #~ msgid "Error Page"
-#~ msgstr "Página de error"
+#~ msgstr "Hatalı Sayfa"
 
 #~ msgid "User Registration"
-#~ msgstr "Registro de usuario"
-
-#~ msgid "Executive Summary"
-#~ msgstr "Resumen de trabajo"
+#~ msgstr "Kullancını Kaydı"
 
 #~ msgid "Available Software"
-#~ msgstr "Software disponible"
+#~ msgstr "Ulaşılabilen Yazılım(lar)"
 
 #~ msgid ""
 #~ "Update packages individually (NOTE: This is an unsupported operation)"
-#~ msgstr ""
-#~ "Actualizar paquetes individualmente (NOTA: Esta es una operación no "
-#~ "soportada)"
+#~ msgstr "Paketleri ayrı ayrı güncelle (Not: Bu Desteklenmeyen bir işlemdir "
 
 #~ msgid "Actual widget tag"
-#~ msgstr "Etiqueta actual del widget"
+#~ msgstr "widget etiketini gerçekleştir"
 
 #~ msgid "Ximian Red Carpet - Preferences"
-#~ msgstr "Red Carpet de Ximian - Preferencias"
+#~ msgstr "Ximian Kırmızı Halı - Özellikleri"
 
 #~ msgid "Mirror"
-#~ msgstr "Réplica"
-
-#~ msgid "No Proxy"
-#~ msgstr "Sin Proxy"
-
-#~ msgid "HTTP Proxy"
-#~ msgstr "Proxy HTTP"
-
-#~ msgid "SOCKS 4 Proxy"
-#~ msgstr "Proxy SOCKS 4"
-
-#~ msgid "SOCKS 5 Proxy"
-#~ msgstr "Proxy SOCKS 5"
+#~ msgstr "Yansı adresi"
 
 #~ msgid "Host"
-#~ msgstr "Servidor"
+#~ msgstr "Ana sunucu"
 
 #~ msgid "Port"
-#~ msgstr "Puerto"
+#~ msgstr "Kapı"
 
-#~ msgid "Authenticated Proxy"
-#~ msgstr "Proxy autentificado"
+#~ msgid "Use authentication"
+#~ msgstr "Kimlikleme Kullan"
 
 #~ msgid "Enable caching of downloaded data"
-#~ msgstr "Habilitar caché de los datos descargados"
+#~ msgstr "Aşağı indirilen dosya için parçalama sistemini aktifleştir"
 
 #~ msgid "Allowed cache difference:"
-#~ msgstr "Permitido diferencias de cache:"
+#~ msgstr "İzin verilen Bölümleme sistemleri:"
 
 #~ msgid "seconds"
-#~ msgstr "segundos"
+#~ msgstr "Saniye(ler)"
 
 #~ msgid "Clear cached packages on exit"
-#~ msgstr "Borrar paquetes cacheados al salir"
+#~ msgstr "Bölümlenen paketlerin kalıntılarını her çıkışta temizle"
 
 #~ msgid "GUI Options"
-#~ msgstr "Opciones de la IGU (GUI)"
+#~ msgstr "GUI Özellikleri"
 
 #~ msgid "Show more descriptive package names instead of the actual names."
-#~ msgstr ""
-#~ "Mostrar nombres de paquetes más descriptivos en lugar de los nombres "
-#~ "actuales."
+#~ msgstr "Paketlerde gerçek adları yerine daha tanımlayıcı isimlar kullan."
 
 #~ msgid ""
 #~ "Ask before installing packages with signatures that cannot be verified."
-#~ msgstr ""
-#~ "Preguntar antes de instalar paquetes con firmas que no se pueden "
-#~ "verificar."
+#~ msgstr "İmzası sınanmamış paketlerin kuruluma devamı için izin iste."
 
 #~ msgid "General"
-#~ msgstr "General"
+#~ msgstr "Genel"
 
 #~ msgid "Ximian Red Carpet - Search"
-#~ msgstr "Red Carpet de Ximian - Buscar"
+#~ msgstr "Ximian Kırmızı Halı - Ara"
 
 #~ msgid "Find text:"
-#~ msgstr "Buscar texto:"
+#~ msgstr "Metin bul:"
 
 #~ msgid "Case sensitive"
-#~ msgstr "Sensible a mayúsculas/minúsculas"
+#~ msgstr "Duyarlı durumu"
 
 #~ msgid "Ximian Red Carpet - Please Wait"
-#~ msgstr "Red Carpet de Ximian - Espere"
+#~ msgstr "Ximian Kırmızı Halı - Lütfen Biraz Bekleyiniz"
 
 #~ msgid ""
 #~ "Please wait while Red Carpet downloads channel information relevent  to "
 #~ "your\n"
 #~ "system. This is done without sending any information to Ximian, Inc."
 #~ msgstr ""
-#~ "Espere mientras Red Carpet se descarga la información de los canales "
-#~ "relacionados \n"
-#~ "con su sistema. Esto se hará sin enviar ningún tipo de información a "
-#~ "Ximian, Inc."
+#~ "Lütfen Kırmızı Halı sizin yerinize sistem gereksimlerinizi araştırırken \n"
+#~ "arkanıza yaslanın ve bekleyin. Bu işlem asla Ximian Inc,'e ve 2.bir "
+#~ "şahsa \n"
+#~ "siz veya sisteminiz için hakkında hiç bir bilgi yollamayacaktır."
 
 #~ msgid "%P%%"
 #~ msgstr "%P%%"
 
 #~ msgid "%P%% (%V of %U)"
-#~ msgstr "%P%% (%V de %U)"
+#~ msgstr "%P%% (%U nun %V)"
 
 #~ msgid "Ximian Red Carpet - Verification"
-#~ msgstr "Red Carpet de Ximian - Verificación"
+#~ msgstr "Ximian Kırmızı Halı - Doğrulama"
 
 #~ msgid ""
-#~ "CAUTION: Red Carpet is unable to ensure the cryptographic integrity of "
+#~ "CAUTION: Red Carpet is unable to ensure the  cryptographic integrity of "
 #~ "this package. The package might not be signed, or Red Carpet may not have "
 #~ "the key needed to verify this package. You may continue and install this "
 #~ "package, but Red Carpet cannot ensure that it is safe or from a trusted "
 #~ "source."
 #~ msgstr ""
-#~ "PRECAUCIÓN: Red Carpet no puede asegurar la integridad criptográfica de "
-#~ "este paquete. El paquete puede no estar firmado, o Red Carpet puede que "
-#~ "no tenga la clave necesaria para verificar este paquete. Puede continuar "
-#~ "e instalar este paquete, pero Red Carpet no le puede asegurar que sea "
-#~ "seguro o de una fuente fiable."
-
-#~ msgid "Do you wish to install this package anyway?"
-#~ msgstr "¿Quiere instalar este paquete de todas formas?"
+#~ "UYARI:Kırmızı Halı Kriptolama yöntemi ile bu imzalan paket imzasına "
+#~ "ulaşamadı . Bunun 2 nedeni olabilir.Ya paket imzalanmamıştır. Veya Bu "
+#~ "imzayı sınayacak anahtar bulunmamaktadır. Kurulum işlemine devam "
+#~ "edilebilir lakin kurulum Sonrası dosyada bulunan zararlı içeriğin (varsa) "
+#~ "meydana getireceği zarardan Kırmızı Halı mesül değildir."
 
 #~ msgid "Do not show this warning again."
-#~ msgstr "No mostrar este aviso de nuevo."
+#~ msgstr "Bu Uyarıyı gelecekte tekrar almak ister misiniz ?"
 
 #~ msgid ""
 #~ "Warning! Removing this many packages can be dangerous\n"
@@ -2553,19 +2512,17 @@ msgstr ""
 #~ "\n"
 #~ "Are you sure you want to proceed with this transaction?"
 #~ msgstr ""
-#~ "¡Cuidado! Borrar tantos paquetes puede ser peligroso\n"
-#~ "y solo debe ser hecho si sabe lo que está haciendo.\n"
+#~ "İKAZ ! Bu paket(ler)in kaldırılması Sistemin kafayı yemesi ile \n"
+#~ "sonuçlanabilir. Ne yaptığınızı bilmiyorsanız lütfen devam etmeyiniz \n"
 #~ "\n"
-#~ "¿Está seguro que quiere continuar esta transacción?"
-
-#~ msgid "Red Carpet - Warning"
-#~ msgstr "Red Carpet - Cuidado"
+#~ "Bu işlemin devam etmesini istediğinizden Emin misiniz?"
 
 #~ msgid ""
-#~ "If you are behind a firewall and use a proxy to access web sites, you "
-#~ "should\n"
-#~ "enable proxy support here. If your proxy requires authentication, select\n"
-#~ "\"Use authentication\" and enter your username and password.\n"
+#~ "If you are behind a firewall and use a HTTP proxy, you should enable "
+#~ "proxy\n"
+#~ "support here. If your proxy requires authentication, select \"Use "
+#~ "authentication\"\n"
+#~ "and enter your username and password.\n"
 #~ "\n"
 #~ "You can change these settings in the future by selecting Preferences from "
 #~ "the\n"
@@ -2574,575 +2531,13 @@ msgstr ""
 #~ "When you have correctly entered your proxy information, click OK to "
 #~ "continue.\n"
 #~ msgstr ""
-#~ "Si está detrás de un cortafuegos  y emplea un proxy para acceder a "
-#~ "páginas web, debe \n"
-#~ "activar aquí, el soporte para proxy. Si su proxy necesita "
-#~ "autentificación,\n"
-#~ "seleccione «Utilizar autentificación» e introduzca su nombre de usuario y "
-#~ "contraseña.\n"
+#~ "Eğer bir Ateşten duvar(firewall) arkasında iseniz veya HTTP vekil "
+#~ "sunucu \n"
+#~ "kullanıyorsanız . Vekil sunucu özelliğini aktifleştirmelisiniz. Eğer \n"
+#~ "kullandığınız vekil sunucu Kimlikleme istiyorsa \"Kimlikleme Kullan\"'ı \n"
+#~ "seçiniz ve Kullanıcı adı ve Parolanızı giriniz. \n"
 #~ "\n"
-#~ "Puede modificar estas opciones en el futuro seleccionando Preferencias en "
-#~ "el\n"
-#~ "menú de Configuración. Estas opciones están en la pestaña Proxy.\n"
-#~ "\n"
-#~ "Cuando haya introducido correctamente la información de su proxy, pulse "
-#~ "Aceptar para continuar.\n"
-
-#~ msgid "Use authentication"
-#~ msgstr "Emplear autentificación"
-
-#~ msgid ""
-#~ "Hi. Thanks for testing out this beta version of Red Carpet.\n"
-#~ "This new version includes a number of improvements, including\n"
-#~ "improved dependency checking, RPM and dpkg backend\n"
-#~ "improvements for faster and more successful transactions,\n"
-#~ "a new and improved transfer layer, and more.\n"
-#~ "\n"
-#~ "Please keep in mind, however, that this version is not ready for\n"
-#~ "production use. You should expect things to break. If you\n"
-#~ "encounter a bug, please file it at the Ximian Bugzilla at\n"
-#~ "http://bugzilla.ximian.com and ensure that you file the bug\n"
-#~ "against the correct version (1.0.91). This will make everyone's\n"
-#~ "life easier. When reporting a bug via bugzilla or to the mailing\n"
-#~ "lists, please include the name and version of your distribution\n"
-#~ "and, if you encounter a problem when trying to install or remove\n"
-#~ "packages, the packages that you were trying to add or remove.\n"
-#~ "\n"
-#~ "Thanks again for testing Red Carpet; your contributions as\n"
-#~ "testers are paramount to its improvement.\n"
-#~ "\n"
-#~ "The Red Carpet team"
-#~ msgstr ""
-#~ "Hola, Gracias por probar esta versión beta de Red Carpet.\n"
-#~ "Esta nueva versión incluye muchas mejoras, entre otras, un sistema\n"
-#~ "de comprobación de dependencias mejorado, mejoras en los backends de RPM\n"
-#~ "y dpkg para realizar transacciones más rápidas y mejores, una capa de\n"
-#~ "transferencia nueva y mejorada, y más.\n"
-#~ "\n"
-#~ "De todas formas, tenga presente, que esta versión no está lista\n"
-#~ "para su uso en producción. Debe esperar que las cosas se rompan. Si\n"
-#~ "encuentra un fallo, notifíquelo en el Bugzilla de Ximian en\n"
-#~ "http://bugzilla.ximian.com y asegúrese que informa del fallo con la\n"
-#~ "versión correcta (1.0.91). Esto hará la vida de todo el mundo mucho más\n"
-#~ "simple. Cuando notifique un fallo mediante bugzilla o las listas de "
-#~ "correo,\n"
-#~ "incluya el nombre y la versión de su distribución y, si encontró un "
-#~ "problema\n"
-#~ "cuando intentaba instalar o eliminar paquetes, el paquete que intentaba "
-#~ "añadir\n"
-#~ "o eliminar.\n"
-#~ "\n"
-#~ "Gracias de nuevo por probar Red Carpet; sus contribuciones como "
-#~ "testeador\n"
-#~ "son imprescindibles para su mejora.\n"
-#~ "\n"
-#~ "El equipo de Red Carpet"
-
-#~ msgid "Do not show this dialog again"
-#~ msgstr "No mostrar este diálogo de nuevo."
-
-#~ msgid "<!--html-->Failed Dependencies"
-#~ msgstr "<!--html-->Fallo de dependencias"
-
-#~ msgid ""
-#~ "<!--html-->Red Carpet was unable to successfully locate all the necessary "
-#~ "files to complete this request. The errors and conflicts that occured are "
-#~ "listed here, along with a suggested action to take."
-#~ msgstr ""
-#~ "<!--html-->Red Carpet no ha podido localizar correctamente todos los "
-#~ "archivos necesarios para completar esta petición. Los errores y "
-#~ "conflictos que han ocurrido están listados aquí, junto con sugerencias "
-#~ "sobre que hacer."
-
-#~ msgid "needed by"
-#~ msgstr "necesitado por"
-
-#~ msgid "needs %s %s %s, which is being removed"
-#~ msgstr "necesita %s %s %s, que se va a eliminar"
-
-#~ msgid "needs %s %s %s, which cannot be found"
-#~ msgstr "necesita %s %s %s, que no se puede encontrar"
-
-#~ msgid "conflicts with %s %s %s"
-#~ msgstr "entra en conflicto con %s %s %s"
-
-#~ msgid "<!--html-->Package Dependencies"
-#~ msgstr "<!--html-->Dependencias de paquetes"
-
-#~ msgid ""
-#~ "<!--html-->Your system's package database is valid!<br><br>Click the "
-#~ "Previous button to go back."
-#~ msgstr ""
-#~ "<!--html-->¡Su base de datos de paquetes es válida!<br><br>Pulse el botón "
-#~ "Anterior para volver atrás."
-
-#~ msgid "<b>1</b> Requested Package"
-#~ msgstr "<b>1</b> Paquete solicitado"
-
-#~ msgid "<b>%d</b> %s"
-#~ msgstr "<b>%d</b> %s"
-
-#~ msgid "Requested Packages"
-#~ msgstr "Paquetes solicitados"
-
-#~ msgid "<b>1</b> Necessary Removal"
-#~ msgstr "<b>1</b> Eliminación necesaria"
-
-#~ msgid "Necessary Removals"
-#~ msgstr "Eliminaciones necesarias"
-
-#~ msgid "<b>1</b> Necessary Installation"
-#~ msgstr "<b>1</b> Instalaciones necesarias"
-
-#~ msgid "<!--html--><b>%s</b> will need to be downloaded. "
-#~ msgstr "<!--html--><b>%s</b> necesita ser descargado."
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be used."
-#~ msgstr ""
-#~ "<!--html-->Después de las operaciones, se usarán <b>%s</b> de espacio en "
-#~ "disco."
-
-#~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be freed."
-#~ msgstr ""
-#~ "<!--html-->Después de las operaciones, se liberarán <b>%s</b> de espacio "
-#~ "en disco."
-
-#~ msgid ""
-#~ "<!--html-->After operations, no additional space will be freed or used."
-#~ msgstr ""
-#~ "<!--html-->Después de las operaciones, ni se liberará ni se usará espacio "
-#~ "de disco adicional."
-
-#~ msgid ""
-#~ "<!--html-->You have insufficient disk space to download the requested "
-#~ "packages. You must free up some disk space before you can continue. Some "
-#~ "options include:"
-#~ msgstr ""
-#~ "<!--html-->No tiene espacio de disco suficiente para descargarse los "
-#~ "paquetes seleccionados. Debe liberar algo de espacio en disco antes de "
-#~ "poder continuar. Algunas opciones son:"
-
-#~ msgid "<!--html-->Removing some packages from your system"
-#~ msgstr "<!--html-->Eliminar algunos paquetes de su sistema"
-
-#~ msgid "Changing your <a href=\"updater:prefs_cache\">cache settings</a>."
-#~ msgstr ""
-#~ "Cambiar sus <a href=\"updater:prefs_cache\">preferencias de la caché</a>."
-
-#~ msgid "<a href=\"updater:cache_clear\">Clearing your cache</a>."
-#~ msgstr "<a href=\"updater:cache_clear\">Borrar su caché</a>."
-
-#~ msgid ""
-#~ "<font color=#ff0000>Warning!</font> There may not be sufficient disk "
-#~ "space to install this package, and installation of this package may fail. "
-#~ "You should free up some disk space before continuing."
-#~ msgstr ""
-#~ "<font color=#ff0000>¡Atención!</font> Puede no haber suficiente espacio "
-#~ "de disco para instalar este paquete, y la instalación de este paquete "
-#~ "puede fallar. Debe liberar algo de espacio de disco antes de continuar."
-
-#~ msgid "1&nbsp;Package"
-#~ msgstr "1&nbsp;Paquete"
-
-#~ msgid "%d&nbsp;Packages"
-#~ msgstr "%d&nbsp;Paquetes"
-
-#~ msgid "<html><body><b>Please wait, loading page...</b></body></html>"
-#~ msgstr "<html><body><b>Espere, cargando la página...</b></body></html>"
-
-#~ msgid ""
-#~ "You have no packages from this channel currently installed on your system."
-#~ msgstr ""
-#~ "En estos momentos no tiene ningún paquete de este canal instalado en su "
-#~ "sistema."
-
-#~ msgid ""
-#~ "You can visit the channel's <a href=\"updater:about\">about page</a> to "
-#~ "get more information about what software is available, or you can go "
-#~ "directly to the <a href=\"updater:available_page\">install page</a> to "
-#~ "install software."
-#~ msgstr ""
-#~ "Puede visitar la <a href=\"updater:about\">página información</a> del "
-#~ "canal para obtener más información sobre el software disponible, o puede "
-#~ "ir directamente a la <a href=\"updater:available_page\">página de "
-#~ "instalación</a> para instalar el software."
-
-#~ msgid "View the <a href=\"updater:about\">about page</a>."
-#~ msgstr "Ver la <a href=\"updater:about\">página información</a>."
-
-#~ msgid "View the <a href=\"updater:available_page\">install page</a>."
-#~ msgstr ""
-#~ "Ver la <a href=\"updater:available_page\">página de instalación</a>."
-
-#~ msgid "Return to the <a href=\"updater:summary\">Summary</a>."
-#~ msgstr "Volver al <a href=\"updater:summary\">Resumen</a>."
-
-#~ msgid ""
-#~ "You don't have any packages installed from this channel. The following "
-#~ "pre-defined sets of packages are available, or you may select individual "
-#~ "packages from the <a href=updater:available_page>Install page</a>."
-#~ msgstr ""
-#~ "No tiene ningún paquete instalado de este canal. Están disponibles los "
-#~ "siguientes juegos de paquetes predefinidos, o puede seleccionar paquetes "
-#~ "individuales desde la <a href=updater:available_page>página de "
-#~ "instalación</a>."
-
-#~ msgid "All of the software from this channel is up-to-date."
-#~ msgstr "Todo el software de este canal está actualizado."
-
-#~ msgid ""
-#~ "To install new software from this channel, visit the <a href=\"updater:"
-#~ "available_page\">install page</a>."
-#~ msgstr ""
-#~ "Para instalar el nuevo software de este canal, visite la <a href="
-#~ "\"updater:available_page\">página de instalación</a>."
-
-#~ msgid ""
-#~ "To remove already installed software from this channel, visit the <a href="
-#~ "\"updater:installed_page\">remove page</a>."
-#~ msgstr ""
-#~ "Para eliminar software ya instalado de este canal, visite la <a href="
-#~ "\"updater:installed_page\">página de borrado</a>."
-
-#~ msgid ""
-#~ "There is <b>1 update</b> available in this channel, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Hay <b>1 actualización</b> disponible en este canal, haciendo un total de "
-#~ "<b>%s</b> de datos a descargar."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available in this channel, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Hay <b>%s actualizaciones</b> disponibles en este canal, haciendo un "
-#~ "total de <b>%s</b> de datos a descargar."
-
-#~ msgid ""
-#~ "  You will not be able to update your system unless you run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "No podrá actualizar su sistema a no ser que ejecute Red Carpet como root."
-
-#~ msgid "Essential Updates"
-#~ msgstr "Actualizaciones esenciales"
-
-#~ msgid "Urgent Updates"
-#~ msgstr "Actualizaciones urgentes"
-
-#~ msgid "Suggested Updates"
-#~ msgstr "Actualizaciones sugeridas"
-
-#~ msgid "Feature Enhancements"
-#~ msgstr "Mejora de prestaciones"
-
-#~ msgid "Minor Fixes/Updates"
-#~ msgstr "Arreglos/actualizaciones menores"
-
-#~ msgid "1 update"
-#~ msgstr "1 actualización"
-
-#~ msgid "%d updates"
-#~ msgstr "%d actualizaciones"
-
-#~ msgid ""
-#~ "The following packages from this channel are currently installed on your "
-#~ "system."
-#~ msgstr ""
-#~ "Los siguientes paquetes de este canal están actualmente instalados en su "
-#~ "sistema."
-
-#~ msgid ""
-#~ "<!--html-->  To remove packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  Para eliminar paquetes, deberá ejecutar Red Carpet como root."
-
-#~ msgid ""
-#~ "<p>All packages available in this channel are already installed on your "
-#~ "system.</p>"
-#~ msgstr ""
-#~ "<p>Todos los paquetes disponibles en este canal ya están instalados en su "
-#~ "sistema.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:update_page\">Update page</a> to "
-#~ "view available updates for your software in this channel, or return to "
-#~ "the <a href=\"updater:summary\">Summary</a> to view all available updates."
-#~ "</p>"
-#~ msgstr ""
-#~ "<p>Puede ir  a la <a href=\"updater:update_page\">página de "
-#~ "actualización</a> para ver las actualizaciones disponibles en este canal "
-#~ "para su software, o volver al <ahref=\"updater:summary\">resumen</a> para "
-#~ "ver todas las actualizaciones disponibles.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:summary\">Summary</a> to view all "
-#~ "available updates for your system.</p>"
-#~ msgstr ""
-#~ "<p>Puede ir al <ahref=\"updater:summary\">resumen</a> para ver todas las "
-#~ "actualizaciones disponibles para su sistema.</p>"
-
-#~ msgid ""
-#~ "<!--html-->The following packages from this channel are available for "
-#~ "installation."
-#~ msgstr ""
-#~ "<!--html-->Los siguientes paquetes de este canal están disponibles para "
-#~ "instalar."
-
-#~ msgid ""
-#~ " Package names that are in <font color=\"#777777\">gray</font> indicate "
-#~ "that a newer version of this package is already installed."
-#~ msgstr ""
-#~ " Los nombres de los paquetes que están en <font color=\"#777777\">gris</"
-#~ "font> indican que ya hay instalada una versión más nueva de este paquete."
-
-#~ msgid ""
-#~ "<!--html-->  To install packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  Para instalar paquetes, deberá ejecutar Red Carpet como root."
-
-#~ msgid "Name:"
-#~ msgstr "Nombre:"
-
-#~ msgid "Installed Version:"
-#~ msgstr "Versión instalada:"
-
-#~ msgid "Size:"
-#~ msgstr "Tamaño:"
-
-#~ msgid "bytes"
-#~ msgstr "bytes"
-
-#~ msgid "Summary:"
-#~ msgstr "Resumen:"
-
-#~ msgid "or"
-#~ msgstr "o"
-
-#~ msgid " Update Now! "
-#~ msgstr "¡Actualizar ahora!"
-
-#~ msgid " Remove Packages "
-#~ msgstr "Eliminar paquetes"
-
-#~ msgid " Unsubscribe "
-#~ msgstr "Desuscribir"
-
-#~ msgid " Subscribe "
-#~ msgstr "Suscribir"
-
-#~ msgid "Keyword&nbsp;Search:"
-#~ msgstr "Búsqueda&nbsp;por&nbsp;palabras&nbsp;claves:"
-
-#~ msgid "Prefs"
-#~ msgstr "Preferencias"
-
-#~ msgid "Developers"
-#~ msgstr "Desarrolladores"
-
-#~ msgid "User Interface Design"
-#~ msgstr "Diseño de la interfaz de usuario"
-
-#~ msgid "Artwork"
-#~ msgstr "Diseño gráfico"
-
-#~ msgid ""
-#~ "<p>Red Carpet is the Ximian package management system and software "
-#~ "portal, allowing you to install, upgrade, and remove packages on your "
-#~ "system. For more information, please visit the <a href=\"http://www."
-#~ "ximian.com/redcarpet/\">Red Carpet web site</a>.</p><p>We welcome your "
-#~ "feedback and bug reports, either through the <a href=\"http://bugzilla."
-#~ "ximian.com/\">Ximian Bugzilla</a>, or the Red Carpet mailing list at <a "
-#~ "href=\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-"
-#~ "carpet@ximian.com</a>.  Thank you!"
-#~ msgstr ""
-#~ "<p>Red Carpet es el sistema de gestión de paquetes y el portal de "
-#~ "software de Ximian, le permite instalar, actualizar y eliminar paquetes "
-#~ "de su sistema. Para más información, visite la <a href=\"http://www."
-#~ "ximian.com/redcarpet/\">página web de Red Carpet</a>.</p><p>Agradecemos "
-#~ "su realimentación y notificaciones de fallos, o bien mediante el <a href="
-#~ "\"http://bugzilla.ximian.com/\">Bugzilla de Ximian</a> o la lista de "
-#~ "correo de Red Carpet en <a href=\"http://lists.ximian.com/mailman/"
-#~ "listinfo/red-carpet\">red-carpet@ximian.com</a>. ¡Gracias!"
-
-#~ msgid "All links will open in an external browser window."
-#~ msgstr "Todos los enlaces se abrirán en un navegador externo."
-
-#~ msgid "The following channels are our featured channels!"
-#~ msgstr "¡Los siguientes canales son nuestros canales con prestaciones!"
-
-#~ msgid "No description available"
-#~ msgstr "No hay descripción disponible"
-
-#~ msgid "You are currently subscribed to all available channels!"
-#~ msgstr "¡Ya está suscrito a todos los canales disponibles!"
-
-#~ msgid ""
-#~ "We are constantly working on making more software available through Red "
-#~ "Carpet, so watch the <a href=\"updater:news_page\">News Page</a> and this "
-#~ "space for more channels to be added in the future!"
-#~ msgstr ""
-#~ "¡Trabajamos constantemente para poner disponible más software mediante "
-#~ "Red Carpet, por tanto compruebe la <a href=\"updater:news_page\">página "
-#~ "de noticias</a> y este espacio para enterarse de los canales que se "
-#~ "añadirán en el futuro!"
-
-#~ msgid "View my <a href=\"updater:subscribed_page\">subscribed channels</a>."
-#~ msgstr "Ver mis <a href=\"updater:subscribed_page\">canales suscritos</a>."
-
-#~ msgid "View the <a href=\"updater:news_page\">News Page</a>."
-#~ msgstr "Ver la <a href=\"updater:news_page\">página de noticias</a>"
-
-#~ msgid ""
-#~ "You are currently not subscribed to any channels!<p>We suggest that you "
-#~ "subscribe to the <a href=\"updater:channel_name?Ximian GNOME "
-#~ "Desktop#updater:about\">Ximian GNOME Desktop channel</a> to keep your "
-#~ "Ximian GNOME desktop running smoothly.  You can also view the software "
-#~ "channels available from Ximian and our Red Carpet partners on the <a href="
-#~ "\"updater:unsubscribed_page\">unsubscribed channels page</a>."
-#~ msgstr ""
-#~ "¡No está suscrito a ningún canal!<p>Le sugerimos que se suscriba al <a "
-#~ "href=\"updater:channel_name?Ximian GNOME Desktop#updater:about\">canal "
-#~ "del Escritorio Ximian GNOME</a> para mantener su escritorio Ximian GNOME "
-#~ "actualizado. Puede también ver los canales de software disponibles de "
-#~ "Ximian o nuestros patrocinadores de Red Carpet en la <a href=\"updater:"
-#~ "unsubscribed_page\">página de canales no suscritos</a>."
-
-#~ msgid ""
-#~ "View <a href=\"updater:unsubscribed_page\">unsubscribed channels</a>."
-#~ msgstr "Ver <a href=\"updater:unsubscribed_page\">canales no suscritos</a>."
-
-#~ msgid ""
-#~ "Return to the <a href=\"updater:summary\">introduction to Red Carpet</a>."
-#~ msgstr ""
-#~ "Volver a la <a href=\"updater:summary\">introducción a Red Carpet</a>."
-
-#~ msgid ""
-#~ "<font size=6><b>Welcome to Red Carpet!</b></font><p>Thank you for using "
-#~ "Red Carpet. From resolving package dependencies to ensuring cryptographic "
-#~ "security, Red Carpet takes the headache out of managing your GNOME "
-#~ "desktop system. Red Carpet is also an excellent way to keep on top of the "
-#~ "latest software offerings. The software available to you is organized "
-#~ "into channels; you choose the channels you want and we'll make sure "
-#~ "they're full of great programs.</p><p><font size=4><b>Subscribing to "
-#~ "Channels</b></font></p><p>Since you've just started running Red Carpet, "
-#~ "you aren't yet subscribed to any channels. On the left of the Red Carpet "
-#~ "window is the <b>Navigation Bar</b>, which allows you to access the main "
-#~ "pages of Red Carpet.</p><p>To browse available channels which you are not "
-#~ "subscribed to, click on the <b>Unsubscribed Channels</b> icon in the "
-#~ "navigation bar. After you've done that, to subscribe to a channel, click "
-#~ "on it and click on the <b>Subscribe</b> button in the bottom right corner "
-#~ "of the main content area or select <b>Subscribe</b> from the "
-#~ "Subscriptions menu.</p><p>We welcome your feedback and bug reports, "
-#~ "either through the <a href=\"http://bugzilla.ximian.com/\">Ximian "
-#~ "Bugzilla</a>, or the Red Carpet mailing list at <a href=\"http://lists."
-#~ "ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian.com</a>.  "
-#~ "Thank you!</p>"
-#~ msgstr ""
-#~ "<font size=6><b>¡Bienvenido a Red Carpet!</b></font><p>Gracias por "
-#~ "utilizar Red Carpet. Desde resolver dependencias entre paquetes a "
-#~ "asegurar seguridad criptográfica, Red Carpet le quita el dolor de cabeza "
-#~ "que le produce el gestionar su escritorio GNOME. Red Carpet es también "
-#~ "una forma excelente de estar a la última de las ofertas de software. El "
-#~ "software que tiene disponible está organizado en canales; usted "
-#~ "seleccione los canales que quiere y nosotros nos aseguraremos que estén "
-#~ "llenos de buenos programas.</p><p><font size=4><b> Suscribiéndose a "
-#~ "canales</b></font></p><p>Como acaba de empezar a utilizar Red Carpet, no "
-#~ "está todavía suscrito a ningún canal. A la izquierda de la ventana de Red "
-#~ "Carpet está la <b>Barra de Navegación</b>, que le permitirá acceder a las "
-#~ "páginas principales de Red Carpet.</p><p>Para ver los canales disponibles "
-#~ "a los que no está suscrito, pulse sobre el icono de <b>Canales no "
-#~ "suscritos</b> en la barra de navegación. Después de hacer esto, para "
-#~ "suscribirse a un canal, pulse sobre él y pulse el botón <b>Suscribir</b> "
-#~ "de la esquina inferior derecha o seleccione <b>Suscribir</b> del menú de "
-#~ "suscripciones.</p><p>Agradecemos sus comentarios y sugerencias y los "
-#~ "informes de fallos mediante el <a href=\"http://bugzilla.ximian.com/"
-#~ "\">Bugzilla de Ximian</a>, o la lista de correo de Red Carpet en <a href="
-#~ "\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian."
-#~ "com</a>. ¡Gracias!</p>"
-
-#~ msgid ""
-#~ "<!--html-->  To update your system, you will have to run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "<!--html-->  Para actualizar su sistema, tendrá que ejecutar Red Carpet "
-#~ "como root."
-
-#~ msgid " Of these updates, <b>one</b> is <b>urgent</b>."
-#~ msgstr " De estas actualizaciones, <b>una</b> es <b>urgente</b>."
-
-#~ msgid " Of these updates, <b>%s</b> are <b>urgent</b>."
-#~ msgstr " De esta actualizaciones, <b>%s</b> son <b>urgentes</b>."
-
-#~ msgid "1 other in the %s channel..."
-#~ msgstr "1 más en el canal %s..."
-
-#~ msgid "%d others in the %s channel..."
-#~ msgstr "%d más en el canal %s..."
-
-#~ msgid "zero"
-#~ msgstr "cero"
-
-#~ msgid "one"
-#~ msgstr "uno"
-
-#~ msgid "two"
-#~ msgstr "dos"
-
-#~ msgid "three"
-#~ msgstr "tres"
-
-#~ msgid "four"
-#~ msgstr "cuatro"
-
-#~ msgid "five"
-#~ msgstr "cinco"
-
-#~ msgid "six"
-#~ msgstr "seis"
-
-#~ msgid "seven"
-#~ msgstr "siete"
-
-#~ msgid "eight"
-#~ msgstr "ocho"
-
-#~ msgid "Fatal Error"
-#~ msgstr "Error fatal"
-
-#~ msgid "Error"
-#~ msgstr "Error"
-
-#~ msgid ""
-#~ "Red Carpet has encountered an error while trying to process your request:"
-#~ msgstr ""
-#~ "Red Carpet ha encontrado un error mientras intentaba procesar su "
-#~ "solicitud:"
-
-#~ msgid "<li>Click <b>Quit</b> to quit."
-#~ msgstr "<li>Pulse <b>Salir</b> para salir."
-
-#~ msgid "<li>Click <b>Retry</b> to retry."
-#~ msgstr "<li>Pulse <b>Reintentar</b> para reintentar."
-
-#~ msgid "<li>Click <b>Cancel</b> to cancel."
-#~ msgstr "<li>Pulse <b>Cancelar</b> para cancelar."
-
-#~ msgid "Load file(s)"
-#~ msgstr "Cargar archivo(s)"
-
-#~ msgid "Install all packages in directory"
-#~ msgstr "Instalar todos los paquetes del directorio"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
-
-#~ msgid "Keyword not found"
-#~ msgstr "Palabra clave no encontrada"
-
-#~ msgid ""
-#~ "Could not find '%s'.\n"
-#~ "Please make sure Red Carpet was installed correctly."
-#~ msgstr ""
-#~ "No se ha podido encontrar '%s'.\n"
-#~ "Asegúrese que Red Carpet se ha instalado correctamente."
+#~ "Bu ayarları her zaman için Ayarlar kısmından düzenleyebilirsiniz. \n"
+#~ "Bu seçimler Vekil sunucu sekmesinde bulunmaktadır.\n"
+#~ "Herşeyi düzgün bir biçimde ayarladıktan sonra devam etmek için \"TAMAM\"\n"
+#~ "tıklayınız ... \n"

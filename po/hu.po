@@ -1,17 +1,16 @@
-# Red Carpet's Spanish translation.
 # Copyright (C) 2001 Free Software Foundation, Inc.
-# Carlos Perelló Marín <carlos@gnome-db.org>, 2001.
+# Andras Timar <timar@gnome.hu>, 2001.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Red Carpet 0.9\n"
+"Project-Id-Version: Ximian Red Carpet 1.3\n"
 "POT-Creation-Date: 2003-03-26 22:53+0100\n"
-"PO-Revision-Date: 2001-07-17 23:05+0200\n"
-"Last-Translator: Carlos Perelló Marín <carlos@gnome-db.org>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2002-06-17 11:16+0200\n"
+"Last-Translator: Andras Timar <timar@gnome.hu>\n"
+"Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8-bit\n"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -41,17 +40,17 @@ msgstr ""
 #. Always run the dialog in the main thread.
 #. ##############################################################################
 #: src/rcd_util.py:365
+#, fuzzy
 msgid "Please wait while getting data."
-msgstr ""
+msgstr "Várj, az oldalbetöltés folyamatban van..."
 
 #. ##############################################################################
 #. ##
 #. ## Format transaction status messages into readable text
 #. ##
 #: src/rcd_util.py:414
-#, fuzzy
 msgid "Verifying"
-msgstr "Versión"
+msgstr "Ellenőrzés"
 
 #: src/rcd_util.py:415
 msgid "Unable to verify package signature for"
@@ -62,22 +61,21 @@ msgid "There is no package signature for"
 msgstr ""
 
 #: src/rcd_util.py:417
+#, fuzzy
 msgid "Preparing Transaction"
-msgstr ""
+msgstr "Tranzakció kezdete..."
 
 #: src/rcd_util.py:418
-#, fuzzy
 msgid "Installing"
-msgstr "Instalar"
+msgstr "Telepítés"
 
 #: src/rcd_util.py:419
-#, fuzzy
 msgid "Removing"
-msgstr "Borrar"
+msgstr "Eltávolítás"
 
 #: src/rcd_util.py:420
 msgid "Configuring"
-msgstr ""
+msgstr "Beállítás"
 
 #. ##############################################################################
 #. ## XML-RPC faults that we care about back from the daemon.
@@ -140,7 +138,7 @@ msgstr ""
 
 #: src/red_activation.py:37
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #: src/red_activation.py:41
 msgid "Activation Code:"
@@ -181,12 +179,14 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_appwindow.py:60
+#, fuzzy
 msgid "Refreshing channel data"
-msgstr ""
+msgstr "Csatornaadatok letöltése..."
 
 #: src/red_appwindow.py:62
+#, fuzzy
 msgid "Downloading channel information"
-msgstr ""
+msgstr "Csatornaadatok letöltése..."
 
 #. FIXME: This feels like a hack.  Go through the remove_packages and
 #. if any of them have an __old_package field, use that package for
@@ -220,7 +220,7 @@ msgstr ""
 #: src/red_appwindow.py:350
 #, fuzzy
 msgid "Channels"
-msgstr "Canal de información"
+msgstr "Mégse"
 
 #: src/red_appwindow.py:351
 msgid "Change your channel subscriptions"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src/red_appwindow.py:356
 msgid "Refresh"
-msgstr "Refrescar"
+msgstr "Frissítés"
 
 #: src/red_appwindow.py:357
 msgid "Refresh channel data"
@@ -240,24 +240,25 @@ msgstr ""
 #: src/red_appwindow.py:369
 #, fuzzy
 msgid "Mark for _Installation"
-msgstr "Instalaciones necesarias"
+msgstr "Csomagok telepítése"
 
 #: src/red_appwindow.py:370
 #, fuzzy
 msgid "Mark selected packages for installation"
-msgstr "Borrar paquetes cacheados al iniciar"
+msgstr "Gyorstárazott csomagok törlése indításkor"
 
 #. #
 #. # Remove Package
 #. #
 #: src/red_appwindow.py:377 src/red_appwindow.py:635
+#, fuzzy
 msgid "Mark for _Removal"
-msgstr ""
+msgstr "Csomagok eltávolítása"
 
 #: src/red_appwindow.py:378
 #, fuzzy
 msgid "Mark selected packages for removal"
-msgstr "Instalar paquetes seleccionados"
+msgstr "Kiválasztott csomagok telepítése"
 
 #. #
 #. # Cancel Action
@@ -265,7 +266,7 @@ msgstr "Instalar paquetes seleccionados"
 #: src/red_appwindow.py:384 src/red_appwindow.py:647
 #, fuzzy
 msgid "_Cancel"
-msgstr "Caché"
+msgstr "Mégse"
 
 #: src/red_appwindow.py:385
 msgid "Cancel marked package actions"
@@ -274,12 +275,12 @@ msgstr ""
 #: src/red_appwindow.py:390
 #, fuzzy
 msgid "I_nformation"
-msgstr "Información"
+msgstr "Információ"
 
 #: src/red_appwindow.py:391
 #, fuzzy
 msgid "Package information"
-msgstr "Información"
+msgstr "Csomagok telepítése"
 
 #. The return value is for the benefit of our delete_event handler.
 #. #
@@ -295,12 +296,12 @@ msgstr ""
 
 #: src/red_appwindow.py:437
 msgid "_View"
-msgstr "_Ver"
+msgstr "_Nézet"
 
 #: src/red_appwindow.py:438
 #, fuzzy
 msgid "_Actions"
-msgstr "S_uscripciones"
+msgstr "_Előfizetések"
 
 #: src/red_appwindow.py:439
 msgid "_Help"
@@ -311,8 +312,9 @@ msgid "File"
 msgstr ""
 
 #: src/red_appwindow.py:443
+#, fuzzy
 msgid "Connect..."
-msgstr ""
+msgstr "Nem sikerült csatlakozni"
 
 #: src/red_appwindow.py:453
 msgid "Install from _File..."
@@ -345,7 +347,7 @@ msgstr ""
 
 #: src/red_appwindow.py:514
 msgid "Quit"
-msgstr ""
+msgstr "Kilépés"
 
 #. #
 #. # Select all/none
@@ -357,21 +359,22 @@ msgstr ""
 #: src/red_appwindow.py:531
 #, fuzzy
 msgid "Select _All"
-msgstr "_Seleccionar todos"
+msgstr "_Mindet kijelöli"
 
 #: src/red_appwindow.py:536
+#, fuzzy
 msgid "Select _None"
-msgstr "Seleccionar _Ninguno"
+msgstr "_Kijelölések megszüntetése"
 
 #: src/red_appwindow.py:543
 #, fuzzy
 msgid "Channel _Subscriptions..."
-msgstr "S_uscripciones"
+msgstr "_Előfizetések"
 
 #: src/red_appwindow.py:549
 #, fuzzy
 msgid "_Preferences..."
-msgstr "Preferencias"
+msgstr "Beállítások"
 
 #: src/red_appwindow.py:553
 msgid "_Users..."
@@ -383,7 +386,7 @@ msgstr ""
 #: src/red_appwindow.py:565
 #, fuzzy
 msgid "View"
-msgstr "_Ver"
+msgstr "_Nézet"
 
 #: src/red_appwindow.py:567
 msgid "_Sidebar"
@@ -396,17 +399,17 @@ msgstr ""
 #: src/red_appwindow.py:575
 #, fuzzy
 msgid "Channel Names"
-msgstr "Canal de información"
+msgstr "Csatornainfó"
 
 #: src/red_appwindow.py:581
 #, fuzzy
 msgid "Package _Information..."
-msgstr "Información"
+msgstr "Csomagok telepítése"
 
 #: src/red_appwindow.py:589
 #, fuzzy
 msgid "_Daemon Information..."
-msgstr "Información"
+msgstr "Információ"
 
 #. #
 #. # Run Transaction
@@ -414,7 +417,7 @@ msgstr "Información"
 #: src/red_appwindow.py:600
 #, fuzzy
 msgid "Actions"
-msgstr "Situación"
+msgstr "Hely"
 
 #: src/red_appwindow.py:602
 msgid "Run _Now"
@@ -426,7 +429,7 @@ msgstr ""
 #: src/red_appwindow.py:615
 #, fuzzy
 msgid "_Verify System Dependencies"
-msgstr "Dependencias"
+msgstr "Függőségi problémák"
 
 #. #
 #. # Install Package
@@ -434,7 +437,7 @@ msgstr "Dependencias"
 #: src/red_appwindow.py:626
 #, fuzzy
 msgid "Mark for I_nstallation"
-msgstr "Instalaciones necesarias"
+msgstr "Csomagok telepítése"
 
 #. #
 #. # Refresh Channel Data
@@ -450,7 +453,7 @@ msgstr ""
 #: src/red_appwindow.py:669
 #, fuzzy
 msgid "_About..."
-msgstr "Acerca de"
+msgstr "Névjegy"
 
 #. We need to make the component menu items checked
 #. instead of radio-style, because with a radio group you
@@ -518,12 +521,12 @@ msgstr "Acerca de"
 #: src/red_channeloption.py:50
 #, fuzzy
 msgid "All Channels"
-msgstr "Canales con prestaciones"
+msgstr "Hirdetett csatornák"
 
 #: src/red_channeloption.py:55
 #, fuzzy
 msgid "All Subscribed Channels"
-msgstr "Canales suscritos"
+msgstr "Előfizetett csatornák"
 
 #: src/red_channeloption.py:60
 msgid "No Channel/Unknown Channel"
@@ -660,7 +663,7 @@ msgstr ""
 #: src/red_console.py:50
 #, fuzzy
 msgid "Red Carpet Error Console"
-msgstr "Noticias de Red Carpet"
+msgstr "Red Carpet - Jelszó"
 
 #. We put the text into the console window in a timeout.  That
 #. way we can be sure that it happens in the main thread and
@@ -694,7 +697,7 @@ msgstr ""
 #: src/red_deaddaemon.py:69
 #, fuzzy
 msgid "Exit Red Carpet"
-msgstr "Red Carpet de Ximian"
+msgstr "Red Carpet"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -718,17 +721,18 @@ msgstr "Red Carpet de Ximian"
 #: src/red_depcomponent.py:64
 #, fuzzy
 msgid "Dependency Resolution"
-msgstr "Dependencias"
+msgstr "Függőségek"
 
 #. Clean up
 #: src/red_depcomponent.py:116
+#, fuzzy
 msgid "Verifying System"
-msgstr ""
+msgstr "%s ellenőrzése"
 
 #: src/red_depcomponent.py:122
 #, fuzzy
 msgid "Resolving Dependencies"
-msgstr "Dependencias"
+msgstr "Függőségek"
 
 #. FIXME: flags
 #. FIXME: Hold a reference to trans_win to work around
@@ -756,26 +760,26 @@ msgstr ""
 #. self.connect("destroy", lambda x:red_serverlistener.thaw_polling())
 #: src/red_depcomponent.py:293
 msgid "Requested Installations"
-msgstr "Instalaciones solicitadas"
+msgstr "Kért telepítések"
 
 #: src/red_depcomponent.py:297
 msgid "Requested Removals"
-msgstr "Eliminaciones solicitadas"
+msgstr "Kért törlések"
 
 #: src/red_depcomponent.py:301
 #, fuzzy
 msgid "Required Installations"
-msgstr "Instalaciones solicitadas"
+msgstr "Kért telepítések"
 
 #: src/red_depcomponent.py:305
 #, fuzzy
 msgid "Required Removals"
-msgstr "Eliminaciones solicitadas"
+msgstr "Kért törlések"
 
 #: src/red_depcomponent.py:331
 #, fuzzy
 msgid "Continue"
-msgstr "nueve"
+msgstr "kilenc"
 
 #. # That's all we can do here. We might (and usually don't)
 #. # have enough information here to decide what kind of page
@@ -801,27 +805,27 @@ msgstr "nueve"
 #: src/red_packageview.py:350
 #, fuzzy
 msgid "Channel"
-msgstr "Canal de información"
+msgstr "Mégse"
 
 #: src/red_depview.py:40 src/red_history.py:304 src/red_packageview.py:406
 msgid "Package"
-msgstr "Paquete"
+msgstr "Csomag"
 
 #: src/red_depview.py:43 src/red_packageview.py:445
 #, fuzzy
 msgid "Current Version"
-msgstr "Versión solicitada:"
+msgstr "Kért verzió:"
 
 #. ## Main
 #: src/red_depview.py:46 src/red_history.py:306 src/red_history.py:444
 #: src/red_summary.py:87
 #, fuzzy
 msgid "New Version"
-msgstr "Versión"
+msgstr "Verzió"
 
 #: src/red_depview.py:49 src/red_packageview.py:481
 msgid "Size"
-msgstr "Tamaño"
+msgstr "Méret"
 
 #. \u2022 is the unicode bullet
 #. ##
@@ -903,17 +907,17 @@ msgstr ""
 #: src/red_history.py:114
 #, fuzzy
 msgid "Installations"
-msgstr "Instalaciones necesarias"
+msgstr "Telepítés"
 
 #: src/red_history.py:115
 #, fuzzy
 msgid "Removals"
-msgstr "Borrar"
+msgstr "Eltávolítás naplója"
 
 #: src/red_history.py:116
 #, fuzzy
 msgid "Upgrades"
-msgstr "Actualizaciones"
+msgstr "FrissÍtések"
 
 #: src/red_history.py:121
 msgid "User:"
@@ -930,7 +934,7 @@ msgstr ""
 #: src/red_history.py:279
 #, fuzzy
 msgid "Searching..."
-msgstr "Buscar"
+msgstr "Keresés"
 
 #. 10 years
 #: src/red_history.py:301 src/red_history.py:440
@@ -940,17 +944,17 @@ msgstr ""
 #: src/red_history.py:302 src/red_history.py:441 src/red_packageview.py:313
 #, fuzzy
 msgid "Action"
-msgstr "Situación"
+msgstr "Hely"
 
 #. # Make sure we have at least 'view'
 #: src/red_history.py:303 src/red_history.py:442 src/red_users.py:113
 #, fuzzy
 msgid "User"
-msgstr "Nombre de usuario"
+msgstr "Felhasználói név"
 
 #: src/red_history.py:305 src/red_history.py:443
 msgid "Old Version"
-msgstr "Versión antigua"
+msgstr "Régi verzió"
 
 #. Define me!
 #. Define me!
@@ -994,22 +998,22 @@ msgstr ""
 #: src/red_installfiles.py:102
 #, fuzzy
 msgid "Install from File"
-msgstr "Software instalado"
+msgstr "Telepített programok"
 
 #: src/red_installfiles.py:118
 #, fuzzy, python-format
 msgid "Downloading %s..."
-msgstr "Descargar"
+msgstr "%s letöltése"
 
 #: src/red_installfiles.py:157
 #, fuzzy
 msgid "Install from URL"
-msgstr "Instalar"
+msgstr "Telepítés"
 
 #: src/red_installfiles.py:162
 #, fuzzy
 msgid "Package URL:"
-msgstr "Paquete"
+msgstr "Csomag"
 
 #. replace - with _
 #. emit the signal in the main thread.
@@ -1166,7 +1170,7 @@ msgstr ""
 #: src/red_mount.py:140
 #, fuzzy
 msgid "Mount channel"
-msgstr "subcanal predeterminado:"
+msgstr "Alapértelmezett alcsatorna"
 
 #: src/red_mount.py:144
 msgid "Mount a directory as channel"
@@ -1175,7 +1179,7 @@ msgstr ""
 #: src/red_mount.py:152
 #, fuzzy
 msgid "Channel Name:"
-msgstr "Canal de información"
+msgstr "Csatornainfó"
 
 #: src/red_mount.py:156
 msgid "Directory:"
@@ -1188,7 +1192,7 @@ msgstr ""
 #: src/red_mount.py:209
 #, fuzzy
 msgid "Unmount Channel"
-msgstr "Canales no suscritos"
+msgstr "Nem előfizetett csatornák"
 
 #: src/red_mount.py:238
 msgid "Unmount?"
@@ -1241,11 +1245,11 @@ msgstr ""
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
 msgid "News"
-msgstr ""
+msgstr "Hírek"
 
 #: src/red_news.py:177
 msgid "Red Carpet News"
-msgstr "Noticias de Red Carpet"
+msgstr "Red Carpet hírek"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1278,17 +1282,17 @@ msgstr ""
 #: src/red_option.py:26
 #, fuzzy
 msgid "username"
-msgstr "Nombre de usuario"
+msgstr "Felhasználói név"
 
 #: src/red_option.py:26
 #, fuzzy
 msgid "Specify user name"
-msgstr "Nombre de usuario"
+msgstr "Felhasználói név"
 
 #: src/red_option.py:27
 #, fuzzy
 msgid "password"
-msgstr "Contraseña"
+msgstr "Jelszó"
 
 #: src/red_option.py:27
 msgid "Specify password"
@@ -1301,7 +1305,7 @@ msgstr ""
 #: src/red_option.py:29
 #, fuzzy
 msgid "Get usage information"
-msgstr "Información"
+msgstr "Információ"
 
 #. ##
 #. ## Expand our synthetic args.
@@ -1352,7 +1356,7 @@ msgstr ""
 #: src/red_packagearray.py:91
 #, fuzzy
 msgid "installed"
-msgstr "Instalar"
+msgstr "Telepítés"
 
 #. upgrade
 #: src/red_packagearray.py:93
@@ -1380,12 +1384,12 @@ msgstr ""
 #: src/red_packagearray.py:125
 #, fuzzy
 msgid "install"
-msgstr "Instalar"
+msgstr "Telepítés"
 
 #: src/red_packagearray.py:132
 #, fuzzy
 msgid "remove"
-msgstr "Borrar"
+msgstr "Eltávolítás"
 
 #. ##
 #. ## Sort functions
@@ -1413,17 +1417,18 @@ msgstr "Borrar"
 #. it received from the daemon.
 #. ##############################################################################
 #: src/red_packagearray.py:612
-#, python-format
+#, fuzzy, python-format
 msgid "Found %d matching packages"
-msgstr ""
+msgstr " Csomagok eltávolítása "
 
 #: src/red_packagearray.py:614
 msgid "Found 1 matching package"
 msgstr ""
 
 #: src/red_packagearray.py:616
+#, fuzzy
 msgid "No matching packages found"
-msgstr ""
+msgstr " Csomagok eltávolítása "
 
 #. Find System packages
 #. Remove instelled Channel packages
@@ -1451,7 +1456,7 @@ msgstr ""
 #: src/red_packagebook.py:43
 #, fuzzy
 msgid "Package Information"
-msgstr "Información"
+msgstr "Csomagok telepítése"
 
 #. grab_default() is not sufficient here.
 #. print "Built page %d: '%s'" % (num, page_box.page.name())
@@ -1479,22 +1484,22 @@ msgstr "Información"
 #. ##
 #: src/red_packagepage_deps.py:29
 msgid "Dependencies"
-msgstr "Dependencias"
+msgstr "Függőségek"
 
 #: src/red_packagepage_deps.py:67
 #, fuzzy
 msgid "Provides"
-msgstr "Provee:"
+msgstr "Nyújtja:"
 
 #: src/red_packagepage_deps.py:70
 #, fuzzy
 msgid "Requires"
-msgstr "Requiere:"
+msgstr "Kell neki:"
 
 #: src/red_packagepage_deps.py:73
 #, fuzzy
 msgid "Conflicts With"
-msgstr "Entra en conflicto:"
+msgstr "Ütközik:"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1515,44 +1520,44 @@ msgstr "Entra en conflicto:"
 #. evil magic failure code
 #: src/red_packagepage_info.py:78
 msgid "Name"
-msgstr "Nombre"
+msgstr "Név"
 
 #: src/red_packagepage_info.py:79 src/red_packageview.py:435
 msgid "Version"
-msgstr "Versión"
+msgstr "Verzió"
 
 #: src/red_packagepage_info.py:80
 #, fuzzy
 msgid "Release"
-msgstr "Continuar"
+msgstr "Folytatás"
 
 #: src/red_packagepage_info.py:81
 #, fuzzy
 msgid "Package Size"
-msgstr "Paquete"
+msgstr "Csomag"
 
 #: src/red_packagepage_info.py:82
 #, fuzzy
 msgid "Installed Size"
-msgstr "Software instalado"
+msgstr "Telepített programok"
 
 #: src/red_packagepage_info.py:84
 #, fuzzy
 msgid "Section"
-msgstr "Situación"
+msgstr "Hely"
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
-msgstr "Resumen"
+msgstr "Összefoglaló"
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:372
 #, fuzzy
 msgid "Description"
-msgstr "Descripción:"
+msgstr "Leírás:"
 
 #: src/red_packagepage_info.py:140
 msgid "Info"
-msgstr "Info"
+msgstr "Infó"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1574,7 +1579,7 @@ msgstr "Info"
 #: src/red_packagepage.py:32
 #, fuzzy
 msgid "Unnamed"
-msgstr "Nombre de usuario"
+msgstr "Felhasználói név"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1606,23 +1611,23 @@ msgstr "Nombre de usuario"
 #: src/red_packageview.py:220
 #, fuzzy
 msgid "Mark for Installation"
-msgstr "Instalaciones necesarias"
+msgstr "Csomagok telepítése"
 
 #. Remove
 #: src/red_packageview.py:233
+#, fuzzy
 msgid "Mark for Removal"
-msgstr ""
+msgstr "Csomagok eltávolítása"
 
 #. Cancel
 #: src/red_packageview.py:246
-#, fuzzy
 msgid "Cancel"
-msgstr "Caché"
+msgstr "Mégse"
 
 #. Info
 #: src/red_packageview.py:264
 msgid "Information"
-msgstr "Información"
+msgstr "Információ"
 
 #: src/red_packageview.py:284
 msgid "Status"
@@ -1697,12 +1702,12 @@ msgstr ""
 #: src/red_pendingview.py:563
 #, fuzzy
 msgid "Download cancelled"
-msgstr "Descargar"
+msgstr "Csatornaadatok letöltése..."
 
 #: src/red_pendingview.py:564
 #, fuzzy
 msgid "Update cancelled"
-msgstr "Actualizar paquetes"
+msgstr "Megszakítva"
 
 #. We can't cancel once the transaction begins
 #. We're in "download only" mode.
@@ -1713,38 +1718,41 @@ msgstr "Actualizar paquetes"
 #: src/red_pendingview.py:599
 #, fuzzy
 msgid "Update Finished"
-msgstr "Actualizaciones"
+msgstr "FrissÍtések"
 
 #: src/red_pendingview.py:611
+#, fuzzy
 msgid "Downloading packages"
-msgstr ""
+msgstr "%s letöltése"
 
 #: src/red_pendingview.py:623
 #, fuzzy
 msgid "Download Failed"
-msgstr "Descargar"
+msgstr "Fájlok letöltése"
 
 #: src/red_pendingview.py:624
+#, fuzzy
 msgid "Unknown Error"
-msgstr ""
+msgstr "(nincs hiba)"
 
 #: src/red_pendingview.py:641
 #, fuzzy
 msgid "Processing Transaction"
-msgstr "Acciones posibles:"
+msgstr "Tranzakció kezdete..."
 
 #: src/red_pendingview.py:660
 msgid "The update has completed successfully"
 msgstr ""
 
 #: src/red_pendingview.py:664
+#, fuzzy
 msgid "Transaction failed"
-msgstr ""
+msgstr "Tranzakciók naplója"
 
 #: src/red_pendingview.py:666
 #, fuzzy
 msgid "Update Failed"
-msgstr "Actualizar"
+msgstr "Frissítés"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1799,12 +1807,12 @@ msgstr ""
 #: src/red_prefs.py:160
 #, fuzzy
 msgid "Packages"
-msgstr "Paquete"
+msgstr "Csomag"
 
 #: src/red_prefs.py:168
 #, fuzzy
 msgid "Require package signatures"
-msgstr "Firmas del paquete"
+msgstr "Csomagaláírások"
 
 #: src/red_prefs.py:173
 msgid "Maximum number of packages to download at once:"
@@ -1818,7 +1826,7 @@ msgstr "Proxy"
 #: src/red_prefs.py:191
 #, fuzzy
 msgid "Use a proxy"
-msgstr "Habilitar proxy"
+msgstr "Proxy engedélyezése"
 
 #: src/red_prefs.py:195
 #, fuzzy
@@ -1828,13 +1836,12 @@ msgstr "Proxy"
 #: src/red_prefs.py:202
 #, fuzzy
 msgid "Username:"
-msgstr "Nombre de usuario"
+msgstr "Felhasználói név"
 
 #: src/red_prefs.py:209 src/red_settings.py:247 src/red_users.py:192
 #: src/red_users.py:395
-#, fuzzy
 msgid "Password:"
-msgstr "Contraseña"
+msgstr "Jelszó:"
 
 #. Have to wait for the above widgets to be created.
 #: src/red_prefs.py:243
@@ -1874,13 +1881,13 @@ msgstr ""
 #: src/red_prefs.py:333
 #, fuzzy
 msgid "Empty Cache"
-msgstr "Caché"
+msgstr "Gyorstár"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:355
-#, python-format
+#, fuzzy, python-format
 msgid "%d MB"
-msgstr ""
+msgstr "%d KB"
 
 #. Don't set the pref if we didn't change anything.
 #: src/red_prefs.py:402
@@ -1890,13 +1897,13 @@ msgstr ""
 #: src/red_prefs.py:413
 #, fuzzy
 msgid "Loading preferences..."
-msgstr "Preferencias"
+msgstr "Hírek letöltése..."
 
 #. Remove the "loading" "page".
 #: src/red_prefs.py:473
 #, fuzzy, python-format
 msgid "%s Preferences"
-msgstr "Preferencias"
+msgstr "Beállítások"
 
 #. Should only be called for toggle renderer
 #. Should only be called for text renderer
@@ -1919,7 +1926,7 @@ msgstr "Preferencias"
 #: src/red_searchbox.py:143
 #, fuzzy
 msgid "Uninstalled Packages"
-msgstr "Instalar paquetes"
+msgstr " Csomagok telepítése "
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -1939,22 +1946,22 @@ msgstr "Instalar paquetes"
 #. ##
 #: src/red_searchbox.py:144 src/red_summary.py:30
 msgid "Updates"
-msgstr "Actualizaciones"
+msgstr "FrissÍtések"
 
 #: src/red_searchbox.py:145
 #, fuzzy
 msgid "Installed Packages"
-msgstr "Instalar paquetes"
+msgstr " Csomagok telepítése "
 
 #: src/red_searchbox.py:146
 #, fuzzy
 msgid "All Packages"
-msgstr "Paquete"
+msgstr "Csomag"
 
 #: src/red_searchbox.py:271
 #, fuzzy
 msgid "Search descriptions"
-msgstr "S_uscripciones"
+msgstr "_Előfizetések"
 
 #. ##
 #. ## Match radio buttons
@@ -1962,7 +1969,7 @@ msgstr "S_uscripciones"
 #: src/red_searchbox.py:283
 #, fuzzy
 msgid "Match:"
-msgstr "Ruta:"
+msgstr "Útvonal:"
 
 #. ##
 #. ## Build the top row of search UI, which contains the title and
@@ -1971,7 +1978,7 @@ msgstr "Ruta:"
 #: src/red_searchbox.py:340
 #, fuzzy
 msgid "Channel:"
-msgstr "Canal de información"
+msgstr "Mégse"
 
 #. ##
 #. ## Build the second row of the search UI, which contains the
@@ -2008,12 +2015,12 @@ msgstr "Canal de información"
 #. ##
 #: src/red_search.py:35 src/red_search.py:71
 msgid "Search"
-msgstr "Buscar"
+msgstr "Keresés"
 
 #: src/red_search.py:38
 #, fuzzy
 msgid "Search Packages"
-msgstr "Paquete"
+msgstr "Csomag"
 
 #: src/red_search.py:75
 msgid "Searching for matching packages..."
@@ -2058,8 +2065,9 @@ msgstr ""
 
 #. couldn't ping the server
 #: src/red_serverinfo.py:68
+#, fuzzy
 msgid "Unable to contact the daemon."
-msgstr ""
+msgstr "Hitelesítés sikertelen"
 
 #: src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
@@ -2169,13 +2177,14 @@ msgstr ""
 #: src/red_settings.py:243 src/red_users.py:389
 #, fuzzy
 msgid "User name:"
-msgstr "Nombre de usuario"
+msgstr "Felhasználói név"
 
 #. Don't activate the dropdown with enter
 #. desensitize the table by default.
 #: src/red_settings.py:323
+#, fuzzy
 msgid "Connect"
-msgstr ""
+msgstr "Nem sikerült csatlakozni"
 
 #. ##
 #. ## Copyright (C) 2002-2003 Ximian, Inc.
@@ -2194,8 +2203,9 @@ msgstr ""
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_sidebar.py:64 src/red_transaction.py:112 src/red_transaction.py:115
+#, fuzzy
 msgid "Installations and Removals"
-msgstr ""
+msgstr "A telepítés befejeződött."
 
 #. PendingOpsListener implementation
 #. Is this the last item and the only one on the row?
@@ -2218,17 +2228,17 @@ msgstr ""
 #: src/red_subscriptions.py:56
 #, fuzzy
 msgid "Subscribed"
-msgstr "_Suscribir"
+msgstr "_Feliratkozás"
 
 #: src/red_subscriptions.py:63
 #, fuzzy
 msgid "Channel Name"
-msgstr "Canal de información"
+msgstr "Csatornainfó"
 
 #: src/red_subscriptions.py:77
 #, fuzzy, python-format
 msgid "%s Channel Subscriptions"
-msgstr "S_uscripciones"
+msgstr "_Előfizetések"
 
 #. FIXME: Make transient of app
 #: src/red_subscriptions.py:94
@@ -2240,7 +2250,7 @@ msgstr ""
 #: src/red_summary.py:33
 #, fuzzy
 msgid "Update Summary"
-msgstr "Resumen"
+msgstr "Összefoglaló"
 
 #: src/red_summary.py:102
 msgid "The system is up-to-date."
@@ -2315,11 +2325,12 @@ msgstr ""
 #: src/red_transaction.py:75
 #, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "¿Está seguro que quiere abortar la transferencia actual?"
+msgstr "Tényleg meg akarod szakítani az átvitelt?"
 
 #: src/red_users.py:131
+#, fuzzy
 msgid "Privilege"
-msgstr ""
+msgstr "Futtatás egyszerű felhasználóként"
 
 #. Warn the user about removing their own superuser priv
 #: src/red_users.py:148
@@ -2334,7 +2345,7 @@ msgstr ""
 #: src/red_users.py:166
 #, fuzzy
 msgid "Enabled"
-msgstr "Habilitar proxy"
+msgstr "Proxy engedélyezése"
 
 #: src/red_users.py:181
 msgid "Edit Users"
@@ -2343,12 +2354,12 @@ msgstr ""
 #: src/red_users.py:196 src/red_users.py:399
 #, fuzzy
 msgid "Confirm:"
-msgstr "Entra en conflicto:"
+msgstr "Ütközik:"
 
 #: src/red_users.py:217
 #, fuzzy
 msgid "Set Password"
-msgstr "Contraseña"
+msgstr "Jelszó"
 
 #. else:
 #: src/red_users.py:246 src/red_users.py:422
@@ -2375,16 +2386,16 @@ msgstr ""
 #: src/red_users.py:320
 #, fuzzy, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "¿Está seguro que quiere abortar la transferencia actual?"
+msgstr "Tényleg meg akarod szakítani az átvitelt?"
 
 #: src/red_users.py:326
 msgid "Remove"
-msgstr "Borrar"
+msgstr "Eltávolítás"
 
 #: src/red_users.py:339
 #, fuzzy
 msgid "Privileges"
-msgstr "Provee:"
+msgstr "Nyújtja:"
 
 #: src/red_users.py:379
 msgid "Add new user"
@@ -2399,134 +2410,149 @@ msgstr ""
 msgid "User '%s' already exists."
 msgstr ""
 
+#~ msgid "Ximian Red Carpet"
+#~ msgstr "Ximian Red Carpet"
+
 #~ msgid "_Verify Installed Packages"
-#~ msgstr "_Verificar paquetes instalados"
+#~ msgstr "_Telepített csomagok ellenőrzése"
 
 #~ msgid "_Install Local Packages..."
-#~ msgstr "_Instalar paquetes locales..."
+#~ msgstr "_Helyi csomagok telepítése..."
 
 #~ msgid "_Refresh"
-#~ msgstr "_Refrescar"
+#~ msgstr "_Frissítés"
 
 #~ msgid "_Unsubscribe"
-#~ msgstr "_Desuscribir"
+#~ msgstr "_Leiratkozás"
+
+#~ msgid "_Users Manual"
+#~ msgstr "_Felhasználói kézikönyv"
 
 #~ msgid "Main Page"
-#~ msgstr "Página principal"
+#~ msgstr "Főoldal"
 
 #~ msgid "Pause"
-#~ msgstr "Pausa"
+#~ msgstr "Szünet"
+
+#~ msgid "Download"
+#~ msgstr "Letöltés"
 
 #~ msgid "OK"
-#~ msgstr "Aceptar"
+#~ msgstr "OK"
 
 #~ msgid "Error Page"
-#~ msgstr "Página de error"
+#~ msgstr "Hibaoldal"
 
-#~ msgid "User Registration"
-#~ msgstr "Registro de usuario"
+#~ msgid "Misc Page"
+#~ msgstr "Egyebek oldal"
 
 #~ msgid "Executive Summary"
-#~ msgstr "Resumen de trabajo"
+#~ msgstr "Rövid összefoglaló"
 
 #~ msgid "Available Software"
-#~ msgstr "Software disponible"
+#~ msgstr "Rendelkezésre álló programok"
 
 #~ msgid ""
 #~ "Update packages individually (NOTE: This is an unsupported operation)"
 #~ msgstr ""
-#~ "Actualizar paquetes individualmente (NOTA: Esta es una operación no "
-#~ "soportada)"
+#~ "Csomagok frissítése egyenként (Megjegyzés: ez a művelet nem támogatott)"
 
 #~ msgid "Actual widget tag"
-#~ msgstr "Etiqueta actual del widget"
+#~ msgstr "Elemfelirat"
 
 #~ msgid "Ximian Red Carpet - Preferences"
-#~ msgstr "Red Carpet de Ximian - Preferencias"
+#~ msgstr "Ximian Red Carpet - Beállítások"
 
 #~ msgid "Mirror"
-#~ msgstr "Réplica"
+#~ msgstr "Tükör"
 
 #~ msgid "No Proxy"
-#~ msgstr "Sin Proxy"
+#~ msgstr "Nincs proxy"
 
 #~ msgid "HTTP Proxy"
-#~ msgstr "Proxy HTTP"
+#~ msgstr "HTTP Proxy"
 
 #~ msgid "SOCKS 4 Proxy"
-#~ msgstr "Proxy SOCKS 4"
+#~ msgstr "SOCKS 4 Proxy"
 
 #~ msgid "SOCKS 5 Proxy"
-#~ msgstr "Proxy SOCKS 5"
+#~ msgstr "SOCKS 5 Proxy"
 
 #~ msgid "Host"
-#~ msgstr "Servidor"
+#~ msgstr "Gép"
 
 #~ msgid "Port"
-#~ msgstr "Puerto"
+#~ msgstr "Port"
 
 #~ msgid "Authenticated Proxy"
-#~ msgstr "Proxy autentificado"
+#~ msgstr "Hitelesítést kérő proxy"
+
+#~ msgid "Send requests using HTTP 1.0"
+#~ msgstr "HTTP 1.0 kérések küldése"
 
 #~ msgid "Enable caching of downloaded data"
-#~ msgstr "Habilitar caché de los datos descargados"
-
-#~ msgid "Allowed cache difference:"
-#~ msgstr "Permitido diferencias de cache:"
-
-#~ msgid "seconds"
-#~ msgstr "segundos"
+#~ msgstr "A letöltött adatok gyorstárazásának engedélyezése"
 
 #~ msgid "Clear cached packages on exit"
-#~ msgstr "Borrar paquetes cacheados al salir"
+#~ msgstr "Gyorstárazott csomagok törlése kilépéskor"
 
-#~ msgid "GUI Options"
-#~ msgstr "Opciones de la IGU (GUI)"
+#~ msgid "Clear cached packages after a period of time"
+#~ msgstr "Gyorstárazott csomagok törlése adott idő múlva"
+
+#~ msgid "Days:"
+#~ msgstr "Nap:"
+
+#~ msgid "User Interface"
+#~ msgstr "Felhasználói felület"
 
 #~ msgid "Show more descriptive package names instead of the actual names."
 #~ msgstr ""
-#~ "Mostrar nombres de paquetes más descriptivos en lugar de los nombres "
-#~ "actuales."
+#~ "A csomagok fájlnevei helyett mutassa a csomagok emberi fogyasztásra "
+#~ "alkalmas nevét."
 
 #~ msgid ""
 #~ "Ask before installing packages with signatures that cannot be verified."
 #~ msgstr ""
-#~ "Preguntar antes de instalar paquetes con firmas que no se pueden "
-#~ "verificar."
+#~ "Megerősítés kérése ellenőrizhetetlen aláírással rendelkező csomagok "
+#~ "telepítése előtt."
+
+#~ msgid "Red Carpet Premium Services"
+#~ msgstr "Red Carpet Premium Services"
+
+#~ msgid "Enable Premium Services"
+#~ msgstr "A Premium Services engedélyezése"
 
 #~ msgid "General"
-#~ msgstr "General"
+#~ msgstr "Általános"
 
 #~ msgid "Ximian Red Carpet - Search"
-#~ msgstr "Red Carpet de Ximian - Buscar"
+#~ msgstr "Ximian Red Carpet - Keresés"
 
 #~ msgid "Find text:"
-#~ msgstr "Buscar texto:"
+#~ msgstr "Szöveg keresése:"
 
 #~ msgid "Case sensitive"
-#~ msgstr "Sensible a mayúsculas/minúsculas"
+#~ msgstr "Kis- és nagybetűk megkülönböztetése"
 
 #~ msgid "Ximian Red Carpet - Please Wait"
-#~ msgstr "Red Carpet de Ximian - Espere"
+#~ msgstr "Ximian Red Carpet - Kérlek várj"
 
 #~ msgid ""
-#~ "Please wait while Red Carpet downloads channel information relevent  to "
-#~ "your\n"
-#~ "system. This is done without sending any information to Ximian, Inc."
+#~ "Please wait while Red Carpet downloads channel information relevant to "
+#~ "your system."
 #~ msgstr ""
-#~ "Espere mientras Red Carpet se descarga la información de los canales "
-#~ "relacionados \n"
-#~ "con su sistema. Esto se hará sin enviar ningún tipo de información a "
-#~ "Ximian, Inc."
+#~ "Kérlek várj, amíg a Red Carpet letölti a rendszered szempontjából "
+#~ "érdekes\n"
+#~ "csatornainformációkat."
 
 #~ msgid "%P%%"
 #~ msgstr "%P%%"
 
 #~ msgid "%P%% (%V of %U)"
-#~ msgstr "%P%% (%V de %U)"
+#~ msgstr "%P%% (%V / %U)"
 
 #~ msgid "Ximian Red Carpet - Verification"
-#~ msgstr "Red Carpet de Ximian - Verificación"
+#~ msgstr "Ximian Red Carpet - Ellenőrzés"
 
 #~ msgid ""
 #~ "CAUTION: Red Carpet is unable to ensure the cryptographic integrity of "
@@ -2535,17 +2561,17 @@ msgstr ""
 #~ "package, but Red Carpet cannot ensure that it is safe or from a trusted "
 #~ "source."
 #~ msgstr ""
-#~ "PRECAUCIÓN: Red Carpet no puede asegurar la integridad criptográfica de "
-#~ "este paquete. El paquete puede no estar firmado, o Red Carpet puede que "
-#~ "no tenga la clave necesaria para verificar este paquete. Puede continuar "
-#~ "e instalar este paquete, pero Red Carpet no le puede asegurar que sea "
-#~ "seguro o de una fuente fiable."
+#~ "FIGYELEM: A Red Carpet nem tudott meggyőződni a csomag kriptográfiai "
+#~ "értelemben vett sértetlenségéről. A csomag vagy nincs aláírva, vagy a Red "
+#~ "Carpet nem rendelkezik az ellenőrzéshez szükséges kulccsal. Folytathatod "
+#~ "a csomag telepítését, de a Red Carpet nem tud meggyőződni arról, hogy ez "
+#~ "a lépés biztonságos-e, illetve a csomag megbízható forrásból származik-e."
 
 #~ msgid "Do you wish to install this package anyway?"
-#~ msgstr "¿Quiere instalar este paquete de todas formas?"
+#~ msgstr "Ennek ellenére szeretnéd telepíteni ezt a csomagot?"
 
 #~ msgid "Do not show this warning again."
-#~ msgstr "No mostrar este aviso de nuevo."
+#~ msgstr "Ne jelenjen meg többet ez a figyelmeztetés."
 
 #~ msgid ""
 #~ "Warning! Removing this many packages can be dangerous\n"
@@ -2553,13 +2579,13 @@ msgstr ""
 #~ "\n"
 #~ "Are you sure you want to proceed with this transaction?"
 #~ msgstr ""
-#~ "¡Cuidado! Borrar tantos paquetes puede ser peligroso\n"
-#~ "y solo debe ser hecho si sabe lo que está haciendo.\n"
+#~ "Figyelem! Ilyen sok csomag eltávolítása veszélyes lehet,\n"
+#~ "és csak akkor tegyél ilyet, ha biztos vagy a dolgodban.\n"
 #~ "\n"
-#~ "¿Está seguro que quiere continuar esta transacción?"
+#~ "Biztos, hogy folytatni szeretnéd a műveletet?"
 
 #~ msgid "Red Carpet - Warning"
-#~ msgstr "Red Carpet - Cuidado"
+#~ msgstr "Red Carpet - Figyelmeztetés"
 
 #~ msgid ""
 #~ "If you are behind a firewall and use a proxy to access web sites, you "
@@ -2574,22 +2600,22 @@ msgstr ""
 #~ "When you have correctly entered your proxy information, click OK to "
 #~ "continue.\n"
 #~ msgstr ""
-#~ "Si está detrás de un cortafuegos  y emplea un proxy para acceder a "
-#~ "páginas web, debe \n"
-#~ "activar aquí, el soporte para proxy. Si su proxy necesita "
-#~ "autentificación,\n"
-#~ "seleccione «Utilizar autentificación» e introduzca su nombre de usuario y "
-#~ "contraseña.\n"
+#~ "Ha tűzfal mögött vagy és proxyt használsz a webhelyek eléréséhez, itt "
+#~ "kell \n"
+#~ "engedélyezned a proxy támogatását. Ha a proxyd megköveteli az "
+#~ "hitelesítést, \n"
+#~ "választ a \"Hitelesítés használata\" lehetőséget, és add meg a "
+#~ "felhasználóneved \n"
+#~ "és jelszavad.\n"
 #~ "\n"
-#~ "Puede modificar estas opciones en el futuro seleccionando Preferencias en "
-#~ "el\n"
-#~ "menú de Configuración. Estas opciones están en la pestaña Proxy.\n"
+#~ "A beállításokat később a Beállítások menü Beállítások menüpontjában "
+#~ "változtat-\n"
+#~ "hatod meg, a Proxy fülön.\n"
 #~ "\n"
-#~ "Cuando haya introducido correctamente la información de su proxy, pulse "
-#~ "Aceptar para continuar.\n"
+#~ "Miután megadtad a proxy adatait, kattints az OK gombra a folytatáshoz.\n"
 
 #~ msgid "Use authentication"
-#~ msgstr "Emplear autentificación"
+#~ msgstr "Hitelesítés használata"
 
 #~ msgid ""
 #~ "Hi. Thanks for testing out this beta version of Red Carpet.\n"
@@ -2602,7 +2628,7 @@ msgstr ""
 #~ "production use. You should expect things to break. If you\n"
 #~ "encounter a bug, please file it at the Ximian Bugzilla at\n"
 #~ "http://bugzilla.ximian.com and ensure that you file the bug\n"
-#~ "against the correct version (1.0.91). This will make everyone's\n"
+#~ "against the correct version (1.0.93). This will make everyone's\n"
 #~ "life easier. When reporting a bug via bugzilla or to the mailing\n"
 #~ "lists, please include the name and version of your distribution\n"
 #~ "and, if you encounter a problem when trying to install or remove\n"
@@ -2613,256 +2639,351 @@ msgstr ""
 #~ "\n"
 #~ "The Red Carpet team"
 #~ msgstr ""
-#~ "Hola, Gracias por probar esta versión beta de Red Carpet.\n"
-#~ "Esta nueva versión incluye muchas mejoras, entre otras, un sistema\n"
-#~ "de comprobación de dependencias mejorado, mejoras en los backends de RPM\n"
-#~ "y dpkg para realizar transacciones más rápidas y mejores, una capa de\n"
-#~ "transferencia nueva y mejorada, y más.\n"
+#~ "Szia! Köszönjük, hogy kipróbálod a Red Carpet béta változatát.\n"
+#~ "Ebbe az új verzióba sok új fejlesztés került bele, például\n"
+#~ "a továbbfejlesztett függőség-ellenőrzés, RPM és dpkg háttér\n"
+#~ "fejlesztése a gyorsabb és sikeresebb műveletek kedvéért, új\n"
+#~ "továbbfejlesztett átviteli réteg, stb.\n"
 #~ "\n"
-#~ "De todas formas, tenga presente, que esta versión no está lista\n"
-#~ "para su uso en producción. Debe esperar que las cosas se rompan. Si\n"
-#~ "encuentra un fallo, notifíquelo en el Bugzilla de Ximian en\n"
-#~ "http://bugzilla.ximian.com y asegúrese que informa del fallo con la\n"
-#~ "versión correcta (1.0.91). Esto hará la vida de todo el mundo mucho más\n"
-#~ "simple. Cuando notifique un fallo mediante bugzilla o las listas de "
-#~ "correo,\n"
-#~ "incluya el nombre y la versión de su distribución y, si encontró un "
-#~ "problema\n"
-#~ "cuando intentaba instalar o eliminar paquetes, el paquete que intentaba "
-#~ "añadir\n"
-#~ "o eliminar.\n"
+#~ "Ne feledd azért, hogy ez a változat nem való komoly munkára.\n"
+#~ "Valószínűleg vannak hibák. Ha hibát észlelsz, jelentsd a \n"
+#~ "Ximian Bugzillán (http://bugzilla.ximian.com), és győződj meg\n"
+#~ "arról, hogy a megfelelő verziószámot (1.2.1) adod meg. Ez\n"
+#~ "mindenki életét könnyebbé teszi. Ha a bugzillán vagy a levelező-\n"
+#~ "listán keresztül jelentesz egy hibát, add meg a disztribúciód \n"
+#~ "nevét és verzióját, és ha a hiba csomagok telepítése vagy\n"
+#~ "eltávolítása közben jelentkezik, add meg a kérdéses csomagok \n"
+#~ "nevét.\n"
 #~ "\n"
-#~ "Gracias de nuevo por probar Red Carpet; sus contribuciones como "
-#~ "testeador\n"
-#~ "son imprescindibles para su mejora.\n"
+#~ "Köszönjük még egyszer, hogy teszteled a Red Carpetet, a \n"
+#~ "hozzájárulásod tesztelőként nagyban segíti a fejlesztést.\n"
 #~ "\n"
-#~ "El equipo de Red Carpet"
+#~ "A Red Carpet csapat"
 
 #~ msgid "Do not show this dialog again"
-#~ msgstr "No mostrar este diálogo de nuevo."
+#~ msgstr "Ne jelenjen meg többet ez a figyelmeztetés"
+
+#~ msgid "The password you have entered is incorrect."
+#~ msgstr "A megadott jelszó nem megfelelő-"
+
+#~ msgid ""
+#~ "For most operations, Red Carpet requires administrator privileges.\n"
+#~ "\n"
+#~ "To acquire such privileges, enter your root password below. If you don't\n"
+#~ "specify a password, you will be unable to update, install, or remove "
+#~ "software"
+#~ msgstr ""
+#~ "A Red Carpet a legtöbb műveletéhez rendszergazdai jogok kellenek.\n"
+#~ "\n"
+#~ "A jogok megszerzéséhez be kell írnod a root jelszavát. Ha nem \n"
+#~ "adsz meg jelszót, nem fogsz tudni szoftvert telepíteni, frissíteni\n"
+#~ "vagy eltávolítani."
+
+#~ msgid "Name: "
+#~ msgstr "Név: "
+
+#~ msgid "%P %%"
+#~ msgstr "%P %%"
+
+#~ msgid "Downloading channel data (%s)"
+#~ msgstr "Csatornaadatok letöltése (%s)"
+
+#~ msgid "Downloading"
+#~ msgstr "Letöltés"
+
+#~ msgid "First, the requested packages are downloaded from their source"
+#~ msgstr "Először a kért csomagok letöltődnek a megadott forrásból"
+
+#~ msgid "Done"
+#~ msgstr "Kész"
+
+#~ msgid "Remaining"
+#~ msgstr "Hátralévő"
+
+#~ msgid "Percent Complete"
+#~ msgstr "Százalék kész"
+
+#~ msgid "Next, packages are verified to ensure cryptographic integrity"
+#~ msgstr "Ezután a csomagok kriptográfiai sértetlenség-ellenőrzésen esnek át"
+
+#~ msgid "Transacting"
+#~ msgstr "Tranzakció"
+
+#~ msgid "The new packages are installed and old packages are removed."
+#~ msgstr "Az új csomagok települnek, a régiek törlődnek."
+
+#~ msgid "Finishing up..."
+#~ msgstr "Befejezés..."
+
+#~ msgid ""
+#~ "The packages you requested are being downloaded and installed on your "
+#~ "system."
+#~ msgstr "A kért csomagok letöltődnek és települnek a rendszeredre."
+
+#~ msgid "Total"
+#~ msgstr "Összesen"
+
+#~ msgid "The packages you selected are being removed from your system"
+#~ msgstr "A kijelölt csomagok el lesznek távolítva a rendszeredről"
+
+#~ msgid "Removal has finished."
+#~ msgstr "Az eltávolítás befejeződött."
+
+#~ msgid "The packages you selected are being removed from your system."
+#~ msgstr "A kijelölt csomagok el lesznek távolítva a rendszeredről."
+
+#~ msgid "Keyword not found"
+#~ msgstr "A kulcsszó nem található"
 
 #~ msgid "<!--html-->Failed Dependencies"
-#~ msgstr "<!--html-->Fallo de dependencias"
+#~ msgstr "<!--html-->Függőségi problémák"
 
 #~ msgid ""
 #~ "<!--html-->Red Carpet was unable to successfully locate all the necessary "
 #~ "files to complete this request. The errors and conflicts that occured are "
 #~ "listed here, along with a suggested action to take."
 #~ msgstr ""
-#~ "<!--html-->Red Carpet no ha podido localizar correctamente todos los "
-#~ "archivos necesarios para completar esta petición. Los errores y "
-#~ "conflictos que han ocurrido están listados aquí, junto con sugerencias "
-#~ "sobre que hacer."
+#~ "<!--html-->A Red Carpet képtelen volt a kérés teljesítéséhez szükséges "
+#~ "összes fájl helyét meghatározni. A hibák és ütközések itt vannak "
+#~ "felsorolva, a megoldási javaslattal együtt."
+
+#~ msgid "needed by: <b>%s</b>"
+#~ msgstr "követeli: <b>%s</b>"
+
+#~ msgid "conflicts with: <b>%s</b>"
+#~ msgstr "ütközik: <b>%s</b>"
+
+#~ msgid "depends on: <b>%s</b>"
+#~ msgstr "függ ettől: <b>%s</b>"
 
 #~ msgid "needed by"
-#~ msgstr "necesitado por"
+#~ msgstr "követeli"
 
 #~ msgid "needs %s %s %s, which is being removed"
-#~ msgstr "necesita %s %s %s, que se va a eliminar"
+#~ msgstr "igényli %s %s %s-t, amely most el lesz távolítva"
 
 #~ msgid "needs %s %s %s, which cannot be found"
-#~ msgstr "necesita %s %s %s, que no se puede encontrar"
+#~ msgstr "igényli %s %s %s-t, amely nem található"
 
 #~ msgid "conflicts with %s %s %s"
-#~ msgstr "entra en conflicto con %s %s %s"
+#~ msgstr "ütközik %s %s %s"
+
+#~ msgid "<!--html-->This package will be pulled in from the %s channel."
+#~ msgstr "<!--html-->A csomag a %s csatornáról fog letöltődni."
+
+#~ msgid ""
+#~ "<!--html-->This package will be pulled in from the <b>unsubscribed</b> %s "
+#~ "channel."
+#~ msgstr ""
+#~ "<!--html-->A csomag a <b>nem előfizetett</b> %s csatornáról fog "
+#~ "letöltődni."
 
 #~ msgid "<!--html-->Package Dependencies"
-#~ msgstr "<!--html-->Dependencias de paquetes"
+#~ msgstr "<!--html-->Csomagfüggőségek"
 
 #~ msgid ""
 #~ "<!--html-->Your system's package database is valid!<br><br>Click the "
 #~ "Previous button to go back."
 #~ msgstr ""
-#~ "<!--html-->¡Su base de datos de paquetes es válida!<br><br>Pulse el botón "
-#~ "Anterior para volver atrás."
+#~ "<!--html-->A rendszeradatbázisod érvényes!<br><br>Kattints az Előző "
+#~ "gombra a visszalépéshez."
 
 #~ msgid "<b>1</b> Requested Package"
-#~ msgstr "<b>1</b> Paquete solicitado"
+#~ msgstr "<b>1</b> kért csomag"
 
-#~ msgid "<b>%d</b> %s"
-#~ msgstr "<b>%d</b> %s"
-
-#~ msgid "Requested Packages"
-#~ msgstr "Paquetes solicitados"
+#~ msgid "<b>%d</b> Requested Packages"
+#~ msgstr "<b>%d</b> kért csomag"
 
 #~ msgid "<b>1</b> Necessary Removal"
-#~ msgstr "<b>1</b> Eliminación necesaria"
+#~ msgstr "<b>1</b> eltávolítandó"
 
-#~ msgid "Necessary Removals"
-#~ msgstr "Eliminaciones necesarias"
+#~ msgid "<b>%d</b> Necessary Removals"
+#~ msgstr "<b>%d</b> eltávolítandó"
 
 #~ msgid "<b>1</b> Necessary Installation"
-#~ msgstr "<b>1</b> Instalaciones necesarias"
+#~ msgstr "<b>1</b> telepítendő"
+
+#~ msgid "<b>%d</b> Necessary Installations"
+#~ msgstr "<b>%d</b> telepítendő"
 
 #~ msgid "<!--html--><b>%s</b> will need to be downloaded. "
-#~ msgstr "<!--html--><b>%s</b> necesita ser descargado."
+#~ msgstr "<!--html--><b>%s</b> lesz letöltve. "
 
 #~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be used."
-#~ msgstr ""
-#~ "<!--html-->Después de las operaciones, se usarán <b>%s</b> de espacio en "
-#~ "disco."
+#~ msgstr "<!--html-->A műveletek után <b>%s</b> lemezterület lesz elfoglalva."
 
 #~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be freed."
 #~ msgstr ""
-#~ "<!--html-->Después de las operaciones, se liberarán <b>%s</b> de espacio "
-#~ "en disco."
+#~ "<!--html-->A műveletek után <b>%s</b> lemezterület lesz felszabadítva."
 
 #~ msgid ""
 #~ "<!--html-->After operations, no additional space will be freed or used."
 #~ msgstr ""
-#~ "<!--html-->Después de las operaciones, ni se liberará ni se usará espacio "
-#~ "de disco adicional."
+#~ "<!--html-->A műveletek után az elfoglalt lemezterület nem fog változni."
 
 #~ msgid ""
 #~ "<!--html-->You have insufficient disk space to download the requested "
 #~ "packages. You must free up some disk space before you can continue. Some "
 #~ "options include:"
 #~ msgstr ""
-#~ "<!--html-->No tiene espacio de disco suficiente para descargarse los "
-#~ "paquetes seleccionados. Debe liberar algo de espacio en disco antes de "
-#~ "poder continuar. Algunas opciones son:"
+#~ "<!--html-->Nincs elég helyed a lemezen a kért csomagok letöltéséhez. A "
+#~ "folytatás előtt fel kell szabadítanod egy helyet. Néhány lehetőség:"
 
 #~ msgid "<!--html-->Removing some packages from your system"
-#~ msgstr "<!--html-->Eliminar algunos paquetes de su sistema"
+#~ msgstr "<!--html-->Csomagok eltávolítása a rendszeredről"
 
 #~ msgid "Changing your <a href=\"updater:prefs_cache\">cache settings</a>."
 #~ msgstr ""
-#~ "Cambiar sus <a href=\"updater:prefs_cache\">preferencias de la caché</a>."
+#~ "A <a href=\"updater:prefs_cache\">gyorstár beállításainak</a> "
+#~ "megváltoztatása."
 
 #~ msgid "<a href=\"updater:cache_clear\">Clearing your cache</a>."
-#~ msgstr "<a href=\"updater:cache_clear\">Borrar su caché</a>."
+#~ msgstr "<a href=\"updater:cache_clear\">A gyorstár törlése</a>."
 
 #~ msgid ""
 #~ "<font color=#ff0000>Warning!</font> There may not be sufficient disk "
 #~ "space to install this package, and installation of this package may fail. "
 #~ "You should free up some disk space before continuing."
 #~ msgstr ""
-#~ "<font color=#ff0000>¡Atención!</font> Puede no haber suficiente espacio "
-#~ "de disco para instalar este paquete, y la instalación de este paquete "
-#~ "puede fallar. Debe liberar algo de espacio de disco antes de continuar."
+#~ "<font color=#ff0000>Figyelem!</font> Valószínűleg nem áll rendelkezésre "
+#~ "elegendő hely a lemezen a csomag telepítéséhez, ezért a csomag telepítése "
+#~ "sikertelen lehet. Szabadíts fel egy kis helyet, mielőtt továbblépsz."
 
 #~ msgid "1&nbsp;Package"
-#~ msgstr "1&nbsp;Paquete"
+#~ msgstr "1&nbsp;csomag"
 
 #~ msgid "%d&nbsp;Packages"
-#~ msgstr "%d&nbsp;Paquetes"
+#~ msgstr "%d&nbsp;csomag"
+
+#~ msgid "<td width=25%>Old Version</td>"
+#~ msgstr "<td width=25%>Régi verzió</td>"
+
+#~ msgid "Necessary Removals"
+#~ msgstr "Eltávolítandó"
+
+#~ msgid "Necessary Installations"
+#~ msgstr "Telepítendő"
 
 #~ msgid "<html><body><b>Please wait, loading page...</b></body></html>"
-#~ msgstr "<html><body><b>Espere, cargando la página...</b></body></html>"
+#~ msgstr ""
+#~ "<html><body><b>Várj, az oldalbetöltés folyamatban van...</b></body></html>"
 
 #~ msgid ""
 #~ "You have no packages from this channel currently installed on your system."
-#~ msgstr ""
-#~ "En estos momentos no tiene ningún paquete de este canal instalado en su "
-#~ "sistema."
+#~ msgstr "Egy csomag sincs telepítve a rendszeredre erről a csatornáról."
 
 #~ msgid ""
-#~ "You can visit the channel's <a href=\"updater:about\">about page</a> to "
-#~ "get more information about what software is available, or you can go "
+#~ "You can visit the channel's <a href=\"updater:info_page\">about page</a> "
+#~ "to get more information about what software is available, or you can go "
 #~ "directly to the <a href=\"updater:available_page\">install page</a> to "
 #~ "install software."
 #~ msgstr ""
-#~ "Puede visitar la <a href=\"updater:about\">página información</a> del "
-#~ "canal para obtener más información sobre el software disponible, o puede "
-#~ "ir directamente a la <a href=\"updater:available_page\">página de "
-#~ "instalación</a> para instalar el software."
+#~ "Megnézheted a csatorna  <a href=\"updater:info_page\">névjegyét</a>, hogy "
+#~ "megtudd, milyen szoftverek érhetőek el, vagy mehetsz közvetlenül a <a "
+#~ "href=\"updater:available_page\">telepítés oldalra</a> a szoftverek "
+#~ "telepítéséhez."
 
-#~ msgid "View the <a href=\"updater:about\">about page</a>."
-#~ msgstr "Ver la <a href=\"updater:about\">página información</a>."
+#~ msgid "View the <a href=\"updater:info_page\">about page</a>."
+#~ msgstr "A <a href=\"updater:info_page\">névjegyoldal</a> megtekintése."
 
 #~ msgid "View the <a href=\"updater:available_page\">install page</a>."
 #~ msgstr ""
-#~ "Ver la <a href=\"updater:available_page\">página de instalación</a>."
+#~ "A <a href=\"updater:available_page\">telepítési oldal</a> megtekintése."
 
 #~ msgid "Return to the <a href=\"updater:summary\">Summary</a>."
-#~ msgstr "Volver al <a href=\"updater:summary\">Resumen</a>."
+#~ msgstr ""
+#~ "Visszatérés az <a href=\"updater:summary\">Összefoglaló</a> oldalra."
 
 #~ msgid ""
 #~ "You don't have any packages installed from this channel. The following "
 #~ "pre-defined sets of packages are available, or you may select individual "
 #~ "packages from the <a href=updater:available_page>Install page</a>."
 #~ msgstr ""
-#~ "No tiene ningún paquete instalado de este canal. Están disponibles los "
-#~ "siguientes juegos de paquetes predefinidos, o puede seleccionar paquetes "
-#~ "individuales desde la <a href=updater:available_page>página de "
-#~ "instalación</a>."
+#~ "Nincs csomag telepítve erről a csatornáról. A következő előre megadott "
+#~ "csomagcsoportok érhetőek el, vagy kiválogathatod a csomagokat egyenként "
+#~ "is a <a href=updater:available_page>Telepítés oldalról</a>."
 
 #~ msgid "All of the software from this channel is up-to-date."
-#~ msgstr "Todo el software de este canal está actualizado."
+#~ msgstr "Az összes erről a csatornáról származó program naprakész."
 
 #~ msgid ""
 #~ "To install new software from this channel, visit the <a href=\"updater:"
 #~ "available_page\">install page</a>."
 #~ msgstr ""
-#~ "Para instalar el nuevo software de este canal, visite la <a href="
-#~ "\"updater:available_page\">página de instalación</a>."
+#~ "Ha új programot szeretnél telepíteni erről a csatornáról, menj a <a href="
+#~ "\"updater:available_page\">telepítés oldalra</a>."
 
 #~ msgid ""
 #~ "To remove already installed software from this channel, visit the <a href="
 #~ "\"updater:installed_page\">remove page</a>."
 #~ msgstr ""
-#~ "Para eliminar software ya instalado de este canal, visite la <a href="
-#~ "\"updater:installed_page\">página de borrado</a>."
+#~ "Ha el szeretnél távolítani erről a csatornáról telepített programokat, "
+#~ "menj az <a href=\"updater:installed_page\">eltávolítás oldalra</a>."
+
+#~ msgid "<a href=\"updater:unsubscribe\">Unsubscribe</a> from this channel."
+#~ msgstr ""
+#~ "<a href=\"updater:unsubscribe\">Leiratkozás</a> erről a csatornáról."
 
 #~ msgid ""
 #~ "There is <b>1 update</b> available in this channel, totalling <b>%s</b> "
 #~ "of data to be downloaded."
 #~ msgstr ""
-#~ "Hay <b>1 actualización</b> disponible en este canal, haciendo un total de "
-#~ "<b>%s</b> de datos a descargar."
+#~ "Összesen <b>1 frissítés</b> érhető el ezen a csatornán, <b>%s</b> adat "
+#~ "letöltése szükséges."
 
 #~ msgid ""
 #~ "There are <b>%s updates</b> available in this channel, totalling <b>%s</"
 #~ "b> of data to be downloaded."
 #~ msgstr ""
-#~ "Hay <b>%s actualizaciones</b> disponibles en este canal, haciendo un "
-#~ "total de <b>%s</b> de datos a descargar."
+#~ "Összesen <b>%s frissítés</b> érhető el ezen a csatornán, <b>%s</b> adat "
+#~ "letöltése szükséges."
 
 #~ msgid ""
 #~ "  You will not be able to update your system unless you run Red Carpet as "
 #~ "root."
 #~ msgstr ""
-#~ "No podrá actualizar su sistema a no ser que ejecute Red Carpet como root."
+#~ "  Nem frissítheted a rendszeredet, ha nem rootként futtatod a Red "
+#~ "Carpetet."
 
 #~ msgid "Essential Updates"
-#~ msgstr "Actualizaciones esenciales"
+#~ msgstr "Nélkülözhetetlen frissítések"
 
 #~ msgid "Urgent Updates"
-#~ msgstr "Actualizaciones urgentes"
+#~ msgstr "Sürgős frissítések"
 
 #~ msgid "Suggested Updates"
-#~ msgstr "Actualizaciones sugeridas"
+#~ msgstr "Javasolt frissítések"
 
 #~ msgid "Feature Enhancements"
-#~ msgstr "Mejora de prestaciones"
+#~ msgstr "Továbbfejlesztett funkciók"
 
 #~ msgid "Minor Fixes/Updates"
-#~ msgstr "Arreglos/actualizaciones menores"
+#~ msgstr "Kisebb hibajavítások/frissítések"
 
 #~ msgid "1 update"
-#~ msgstr "1 actualización"
+#~ msgstr "1 frissítés"
 
 #~ msgid "%d updates"
-#~ msgstr "%d actualizaciones"
+#~ msgstr "%d frissítés"
 
 #~ msgid ""
 #~ "The following packages from this channel are currently installed on your "
 #~ "system."
 #~ msgstr ""
-#~ "Los siguientes paquetes de este canal están actualmente instalados en su "
-#~ "sistema."
+#~ "A következő csomagok vannak a rendszeredre telepítve erről a csatornáról."
 
 #~ msgid ""
 #~ "<!--html-->  To remove packages, you will have to run Red Carpet as root."
 #~ msgstr ""
-#~ "<!--html-->  Para eliminar paquetes, deberá ejecutar Red Carpet como root."
+#~ "<!--html-->  A csomagok eltávolításához rootként kell futtatnod a Red "
+#~ "Carpetet."
 
 #~ msgid ""
 #~ "<p>All packages available in this channel are already installed on your "
 #~ "system.</p>"
 #~ msgstr ""
-#~ "<p>Todos los paquetes disponibles en este canal ya están instalados en su "
-#~ "sistema.</p>"
+#~ "<p>Minden ezen a csatornán elérhető csomag telepíve van már a "
+#~ "rendszeredre.</p>"
 
 #~ msgid ""
 #~ "<p>You can go to the <a href=\"updater:update_page\">Update page</a> to "
@@ -2870,81 +2991,74 @@ msgstr ""
 #~ "the <a href=\"updater:summary\">Summary</a> to view all available updates."
 #~ "</p>"
 #~ msgstr ""
-#~ "<p>Puede ir  a la <a href=\"updater:update_page\">página de "
-#~ "actualización</a> para ver las actualizaciones disponibles en este canal "
-#~ "para su software, o volver al <ahref=\"updater:summary\">resumen</a> para "
-#~ "ver todas las actualizaciones disponibles.</p>"
+#~ "<p>You can go to the <a href=\"updater:update_page\">Update page</a> to "
+#~ "view available updates for your software in this channel, or return to "
+#~ "the <a href=\"updater:summary\">Summary</a> to view all available updates."
+#~ "</p>"
 
 #~ msgid ""
 #~ "<p>You can go to the <a href=\"updater:summary\">Summary</a> to view all "
 #~ "available updates for your system.</p>"
 #~ msgstr ""
-#~ "<p>Puede ir al <ahref=\"updater:summary\">resumen</a> para ver todas las "
-#~ "actualizaciones disponibles para su sistema.</p>"
+#~ "<p>Az <a href=\"updater:summary\">Összefoglaló</a> oldalon a rendszeredre "
+#~ "elérhető összes frissítési lehetőség megtekinthető.</p>"
 
 #~ msgid ""
 #~ "<!--html-->The following packages from this channel are available for "
 #~ "installation."
-#~ msgstr ""
-#~ "<!--html-->Los siguientes paquetes de este canal están disponibles para "
-#~ "instalar."
+#~ msgstr "<!--html-->A következő csomagok telepíthetőek erről a csatornáról."
 
 #~ msgid ""
 #~ " Package names that are in <font color=\"#777777\">gray</font> indicate "
 #~ "that a newer version of this package is already installed."
 #~ msgstr ""
-#~ " Los nombres de los paquetes que están en <font color=\"#777777\">gris</"
-#~ "font> indican que ya hay instalada una versión más nueva de este paquete."
+#~ "A <font color=\"#777777\">szürke</font> színű csomagnevek azt jelzik, "
+#~ "hogy a csomag egy újabb változata már telepítve van."
 
 #~ msgid ""
 #~ "<!--html-->  To install packages, you will have to run Red Carpet as root."
 #~ msgstr ""
-#~ "<!--html-->  Para instalar paquetes, deberá ejecutar Red Carpet como root."
+#~ "<!--html-->  A csomagok telepítéséhez rootként kell futtatnod a Red "
+#~ "Carpetet."
 
 #~ msgid "Name:"
-#~ msgstr "Nombre:"
+#~ msgstr "Név:"
 
 #~ msgid "Installed Version:"
-#~ msgstr "Versión instalada:"
+#~ msgstr "Telepített verzió:"
 
 #~ msgid "Size:"
-#~ msgstr "Tamaño:"
+#~ msgstr "Méret:"
 
 #~ msgid "bytes"
-#~ msgstr "bytes"
+#~ msgstr "bájt"
 
 #~ msgid "Summary:"
-#~ msgstr "Resumen:"
+#~ msgstr "Összefoglaló:"
 
 #~ msgid "or"
-#~ msgstr "o"
+#~ msgstr "vagy"
 
 #~ msgid " Update Now! "
-#~ msgstr "¡Actualizar ahora!"
+#~ msgstr " Kezdődhet a frissítés! "
+
+#~ msgid " Update Packages "
+#~ msgstr " Csomagok frissítése "
 
 #~ msgid " Remove Packages "
-#~ msgstr "Eliminar paquetes"
+#~ msgstr " Csomagok eltávolítása "
 
 #~ msgid " Unsubscribe "
-#~ msgstr "Desuscribir"
+#~ msgstr " Leiratkozás "
 
 #~ msgid " Subscribe "
-#~ msgstr "Suscribir"
+#~ msgstr " Feliratkozás "
 
 #~ msgid "Keyword&nbsp;Search:"
-#~ msgstr "Búsqueda&nbsp;por&nbsp;palabras&nbsp;claves:"
+#~ msgstr "Keresés&nbsp;kulcsszóra:"
 
-#~ msgid "Prefs"
-#~ msgstr "Preferencias"
-
-#~ msgid "Developers"
-#~ msgstr "Desarrolladores"
-
-#~ msgid "User Interface Design"
-#~ msgstr "Diseño de la interfaz de usuario"
-
-#~ msgid "Artwork"
-#~ msgstr "Diseño gráfico"
+#~ msgid "Credits"
+#~ msgstr "Szerzők"
 
 #~ msgid ""
 #~ "<p>Red Carpet is the Ximian package management system and software "
@@ -2956,66 +3070,68 @@ msgstr ""
 #~ "href=\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-"
 #~ "carpet@ximian.com</a>.  Thank you!"
 #~ msgstr ""
-#~ "<p>Red Carpet es el sistema de gestión de paquetes y el portal de "
-#~ "software de Ximian, le permite instalar, actualizar y eliminar paquetes "
-#~ "de su sistema. Para más información, visite la <a href=\"http://www."
-#~ "ximian.com/redcarpet/\">página web de Red Carpet</a>.</p><p>Agradecemos "
-#~ "su realimentación y notificaciones de fallos, o bien mediante el <a href="
-#~ "\"http://bugzilla.ximian.com/\">Bugzilla de Ximian</a> o la lista de "
-#~ "correo de Red Carpet en <a href=\"http://lists.ximian.com/mailman/"
-#~ "listinfo/red-carpet\">red-carpet@ximian.com</a>. ¡Gracias!"
+#~ "<p>A Red Carpet a Ximian csomagkezelő rendszere és szoftverportálja, "
+#~ "amely lehetővé teszi a csomagok telepítését, eltávolítását és frissítését "
+#~ "a rendszereden. További információért keresd fel a <a href=\"http://www."
+#~ "ximian.com/redcarpet/\">Red Carpet weboldalát</a>.</p><p>Örömmel vesszük "
+#~ "a visszajelzéseidet és hibajelentéseidet akár a <a href=\"http://bugzilla."
+#~ "ximian.com/\">Ximian Bugzillán</a>, akár a Red Carpet levelezőlistán "
+#~ "keresztül, melynek címe <a href=\"http://lists.ximian.com/mailman/"
+#~ "listinfo/red-carpet\">red-carpet@ximian.com</a>.  Köszönjük!"
 
 #~ msgid "All links will open in an external browser window."
-#~ msgstr "Todos los enlaces se abrirán en un navegador externo."
+#~ msgstr "Minden hivatkozás külső böngészőablakban nyílik meg."
 
 #~ msgid "The following channels are our featured channels!"
-#~ msgstr "¡Los siguientes canales son nuestros canales con prestaciones!"
-
-#~ msgid "No description available"
-#~ msgstr "No hay descripción disponible"
+#~ msgstr "A következő csatornák a hirdetett csatornáink!"
 
 #~ msgid "You are currently subscribed to all available channels!"
-#~ msgstr "¡Ya está suscrito a todos los canales disponibles!"
+#~ msgstr "Pillanatnyilag az összes elérhető csatornára feliratkoztál."
 
 #~ msgid ""
 #~ "We are constantly working on making more software available through Red "
 #~ "Carpet, so watch the <a href=\"updater:news_page\">News Page</a> and this "
 #~ "space for more channels to be added in the future!"
 #~ msgstr ""
-#~ "¡Trabajamos constantemente para poner disponible más software mediante "
-#~ "Red Carpet, por tanto compruebe la <a href=\"updater:news_page\">página "
-#~ "de noticias</a> y este espacio para enterarse de los canales que se "
-#~ "añadirán en el futuro!"
+#~ "Egyfolytában dolgozunk azon, hogy minél több programcsomag legyen "
+#~ "elérhető a Red Carpeten keresztül, figyeld a <a href=\"updater:news_page"
+#~ "\">Hírek oldalát</a> és ezt a helyet is, hogy mikor jelennek meg új "
+#~ "csatornák!"
 
 #~ msgid "View my <a href=\"updater:subscribed_page\">subscribed channels</a>."
-#~ msgstr "Ver mis <a href=\"updater:subscribed_page\">canales suscritos</a>."
+#~ msgstr ""
+#~ "Az <a href=\"updater:subscribed_page\">előfizetett csatonáim</a> "
+#~ "megtekintése."
 
 #~ msgid "View the <a href=\"updater:news_page\">News Page</a>."
-#~ msgstr "Ver la <a href=\"updater:news_page\">página de noticias</a>"
+#~ msgstr "A <a href=\"updater:news_page\">Hírek oldalának</a> magtekintése."
 
 #~ msgid ""
 #~ "You are currently not subscribed to any channels!<p>We suggest that you "
 #~ "subscribe to the <a href=\"updater:channel_name?Ximian GNOME "
-#~ "Desktop#updater:about\">Ximian GNOME Desktop channel</a> to keep your "
+#~ "Desktop#updater:info_page\">Ximian GNOME Desktop channel</a> to keep your "
 #~ "Ximian GNOME desktop running smoothly.  You can also view the software "
 #~ "channels available from Ximian and our Red Carpet partners on the <a href="
 #~ "\"updater:unsubscribed_page\">unsubscribed channels page</a>."
 #~ msgstr ""
-#~ "¡No está suscrito a ningún canal!<p>Le sugerimos que se suscriba al <a "
-#~ "href=\"updater:channel_name?Ximian GNOME Desktop#updater:about\">canal "
-#~ "del Escritorio Ximian GNOME</a> para mantener su escritorio Ximian GNOME "
-#~ "actualizado. Puede también ver los canales de software disponibles de "
-#~ "Ximian o nuestros patrocinadores de Red Carpet en la <a href=\"updater:"
-#~ "unsubscribed_page\">página de canales no suscritos</a>."
+#~ "Pillanatnyilag egy csatornára sem fizettél elő!<p>Javasoljuk, hogy "
+#~ "iratkozz fel a <a href=\"updater:channel_name?Ximian GNOME "
+#~ "Desktop#updater:info_page\">Ximian GNOME Desktop channel</a> csatornára, "
+#~ "hogy a Ximian GNOME rendben fusson mindig. Nézd meg a  többi "
+#~ "programcsatornát is, amelyeket a Ximian és Red Carpet partnerei kínálnak "
+#~ "<a href=\"updater:unsubscribed_page\">ezen</a> az oldalon."
 
 #~ msgid ""
 #~ "View <a href=\"updater:unsubscribed_page\">unsubscribed channels</a>."
-#~ msgstr "Ver <a href=\"updater:unsubscribed_page\">canales no suscritos</a>."
+#~ msgstr ""
+#~ "A <a href=\"updater:unsubscribed_page\">nem előfizetett csatornák</a> "
+#~ "megtekintése."
 
 #~ msgid ""
 #~ "Return to the <a href=\"updater:summary\">introduction to Red Carpet</a>."
 #~ msgstr ""
-#~ "Volver a la <a href=\"updater:summary\">introducción a Red Carpet</a>."
+#~ "Visszatérés a <a href=\"updater:summary\">Red Carpet bevezető oldalához</"
+#~ "a>."
 
 #~ msgid ""
 #~ "<font size=6><b>Welcome to Red Carpet!</b></font><p>Thank you for using "
@@ -3039,110 +3155,304 @@ msgstr ""
 #~ "ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian.com</a>.  "
 #~ "Thank you!</p>"
 #~ msgstr ""
-#~ "<font size=6><b>¡Bienvenido a Red Carpet!</b></font><p>Gracias por "
-#~ "utilizar Red Carpet. Desde resolver dependencias entre paquetes a "
-#~ "asegurar seguridad criptográfica, Red Carpet le quita el dolor de cabeza "
-#~ "que le produce el gestionar su escritorio GNOME. Red Carpet es también "
-#~ "una forma excelente de estar a la última de las ofertas de software. El "
-#~ "software que tiene disponible está organizado en canales; usted "
-#~ "seleccione los canales que quiere y nosotros nos aseguraremos que estén "
-#~ "llenos de buenos programas.</p><p><font size=4><b> Suscribiéndose a "
-#~ "canales</b></font></p><p>Como acaba de empezar a utilizar Red Carpet, no "
-#~ "está todavía suscrito a ningún canal. A la izquierda de la ventana de Red "
-#~ "Carpet está la <b>Barra de Navegación</b>, que le permitirá acceder a las "
-#~ "páginas principales de Red Carpet.</p><p>Para ver los canales disponibles "
-#~ "a los que no está suscrito, pulse sobre el icono de <b>Canales no "
-#~ "suscritos</b> en la barra de navegación. Después de hacer esto, para "
-#~ "suscribirse a un canal, pulse sobre él y pulse el botón <b>Suscribir</b> "
-#~ "de la esquina inferior derecha o seleccione <b>Suscribir</b> del menú de "
-#~ "suscripciones.</p><p>Agradecemos sus comentarios y sugerencias y los "
-#~ "informes de fallos mediante el <a href=\"http://bugzilla.ximian.com/"
-#~ "\">Bugzilla de Ximian</a>, o la lista de correo de Red Carpet en <a href="
-#~ "\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian."
-#~ "com</a>. ¡Gracias!</p>"
+#~ "<font size=6><b>Üdvözöl a Red Carpet!</b></font><p>Köszönjük, hogy a Red "
+#~ "Carpetet használod. A Red Carpet átveszi tőled a GNOME grafikus felület "
+#~ "menedzselésének terheit, feloldja a csomagfüggőségeket, kriptográfialag "
+#~ "biztonságos. A Red Carpet segítségével értesülhetsz a programok legújabb "
+#~ "változatainak megjelenéséről. Az elérhető szoftverek csatornákba vannak "
+#~ "szervezve. Kiválasztod a kívánt csatornát, és mi teszünk róla, hogy tele "
+#~ "legyen nagyszerű programokkal.</p><p><font size=4><b>Előfizetés a "
+#~ "csatornákra</b></font></p><p>Mivel csak most kezdted használni a Red "
+#~ "Carpetet, egyetlen csatornára sem vagy feiratkozva. A Red Carpet "
+#~ "ablakának bal oldalán van a <b>Navigációs pult</b>, amelynek segítségével "
+#~ "elérhetőek a Red Carpet fő oldalai.</p><p>Ha azokat a csatornákat akarod "
+#~ "böngészni, amelyekre nem iratkoztál fel, kattints a <b>Nem előfizetett "
+#~ "csatornák</b> ikonjára a navigációs pulton. Ezután a csatornára történő "
+#~ "feliratkozáshoz kattints rá, és kattints a <b>Feliratkozás</b> gombra a "
+#~ "jobb alsó sarokban, vagy válaszd a <b>Feliratkozás</b> menüpontot az "
+#~ "Előfizetések menüből.</p><p>Örömmel vesszük a visszajelzéseidet és "
+#~ "hibajelentéseidet akár a <a href=\"http://bugzilla.ximian.com/\">Ximian "
+#~ "Bugzillán</a>, akár a Red Carpet levelezőlistán keresztül, melynek címe "
+#~ "<a href=\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-"
+#~ "carpet@ximian.com</a>.  Köszönjük!</p>"
+
+#~ msgid ""
+#~ "There is one <b>Essential Update</b> available for your system.  To "
+#~ "ensure that Ximian Red Carpet continues to function properly, you must "
+#~ "install this update before continuing.  After installing this update, "
+#~ "Ximian Red Carpet will automatically restart."
+#~ msgstr ""
+#~ "Egy <b>létfontosságú frissítés</b> érhető el a rendszeredre. A Ximian Red "
+#~ "Carpet csak akkor fog hibátlanul működni, ha telepíted ezt a frissítést. "
+#~ "A telepítés után a Ximian Red Carpet automatikusan újraindul."
+
+#~ msgid ""
+#~ "There are %s <b>Essential Updates</b> available for your system.  To "
+#~ "ensure that Ximian Red Carpet continues to function properly, you must "
+#~ "install this update before continuing.  After installing this update, "
+#~ "Ximian Red Carpet will automatically restart."
+#~ msgstr ""
+#~ "%s <b>létfontosságú frissítés</b> érhető el a rendszeredre. A Ximian Red "
+#~ "Carpet csak akkor fog hibátlanul működni, ha telepíted ezeket a "
+#~ "frissítéseket. A telepítés után a Ximian Red Carpet automatikusan "
+#~ "újraindul."
+
+#~ msgid ""
+#~ "There is <b>one update</b> available for your system, totalling <b>%s</b> "
+#~ "of data to be downloaded."
+#~ msgstr ""
+#~ "Összesen <b>1 frissítés</b> érhető el a rendszeredre, <b>%s</b> adat "
+#~ "letöltése szükséges."
+
+#~ msgid ""
+#~ "There are <b>%s updates</b> available for your system, totalling <b>%s</"
+#~ "b> of data to be downloaded."
+#~ msgstr ""
+#~ "Összesen <b>%s frissítés</b> érhető el a rendszeredre, <b>%s</b> adat "
+#~ "letöltése szükséges."
 
 #~ msgid ""
 #~ "<!--html-->  To update your system, you will have to run Red Carpet as "
 #~ "root."
 #~ msgstr ""
-#~ "<!--html-->  Para actualizar su sistema, tendrá que ejecutar Red Carpet "
-#~ "como root."
+#~ "<!--html-->  A rendszered frissítéséhez rootként kell futtatnod a Red "
+#~ "Carpetet."
 
 #~ msgid " Of these updates, <b>one</b> is <b>urgent</b>."
-#~ msgstr " De estas actualizaciones, <b>una</b> es <b>urgente</b>."
+#~ msgstr " A fissítések között <b>egy</b> <b>sürgős</b> van."
 
 #~ msgid " Of these updates, <b>%s</b> are <b>urgent</b>."
-#~ msgstr " De esta actualizaciones, <b>%s</b> son <b>urgentes</b>."
+#~ msgstr " A frissítések között <b>%s</b> <b>sürgős</b> van."
 
 #~ msgid "1 other in the %s channel..."
-#~ msgstr "1 más en el canal %s..."
+#~ msgstr "1 másik a %s csatornán..."
 
 #~ msgid "%d others in the %s channel..."
-#~ msgstr "%d más en el canal %s..."
-
-#~ msgid "zero"
-#~ msgstr "cero"
-
-#~ msgid "one"
-#~ msgstr "uno"
-
-#~ msgid "two"
-#~ msgstr "dos"
-
-#~ msgid "three"
-#~ msgstr "tres"
-
-#~ msgid "four"
-#~ msgstr "cuatro"
-
-#~ msgid "five"
-#~ msgstr "cinco"
-
-#~ msgid "six"
-#~ msgstr "seis"
-
-#~ msgid "seven"
-#~ msgstr "siete"
-
-#~ msgid "eight"
-#~ msgstr "ocho"
-
-#~ msgid "Fatal Error"
-#~ msgstr "Error fatal"
-
-#~ msgid "Error"
-#~ msgstr "Error"
-
-#~ msgid ""
-#~ "Red Carpet has encountered an error while trying to process your request:"
-#~ msgstr ""
-#~ "Red Carpet ha encontrado un error mientras intentaba procesar su "
-#~ "solicitud:"
-
-#~ msgid "<li>Click <b>Quit</b> to quit."
-#~ msgstr "<li>Pulse <b>Salir</b> para salir."
-
-#~ msgid "<li>Click <b>Retry</b> to retry."
-#~ msgstr "<li>Pulse <b>Reintentar</b> para reintentar."
-
-#~ msgid "<li>Click <b>Cancel</b> to cancel."
-#~ msgstr "<li>Pulse <b>Cancelar</b> para cancelar."
-
-#~ msgid "Load file(s)"
-#~ msgstr "Cargar archivo(s)"
-
-#~ msgid "Install all packages in directory"
-#~ msgstr "Instalar todos los paquetes del directorio"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
-
-#~ msgid "Keyword not found"
-#~ msgstr "Palabra clave no encontrada"
+#~ msgstr "%d másik a %s csatornán..."
 
 #~ msgid ""
 #~ "Could not find '%s'.\n"
 #~ "Please make sure Red Carpet was installed correctly."
 #~ msgstr ""
-#~ "No se ha podido encontrar '%s'.\n"
-#~ "Asegúrese que Red Carpet se ha instalado correctamente."
+#~ "'%s' nem található.\n"
+#~ "Ellenőrizd, hogy helyesen lett-e telepítve a Red Carpet."
+
+#~ msgid "Downloading channel list..."
+#~ msgstr "Csatornák listájának letöltése..."
+
+#~ msgid "Downloading mirror list..."
+#~ msgstr "Tükrök listájának letöltése..."
+
+#~ msgid "Downloading channel artwork..."
+#~ msgstr "Csatornák képeinek letöltése..."
+
+#~ msgid ""
+#~ "You are not running Red Carpet as root.\n"
+#~ "\n"
+#~ "You will be unable to install or remove\n"
+#~ "packages from your system and subscription\n"
+#~ "information will not be saved during this\n"
+#~ "session."
+#~ msgstr ""
+#~ "A Red Carpen programot nem root-ként futtatod.\n"
+#~ "\n"
+#~ "Nem fogsz tudni csomagokat telepíteni\n"
+#~ "vagy eltávolítani, és a feliratkozási\n"
+#~ "információk swem lesznek mentve ebben\n"
+#~ "a munkafolyamatban."
+
+#~ msgid "Navigation"
+#~ msgstr "Navigáció"
+
+#~ msgid "Premium Services"
+#~ msgstr "Premium Services"
+
+#~ msgid "Downloading mirrors..."
+#~ msgstr "Tükrök letöltése..."
+
+#~ msgid "packages"
+#~ msgstr "csomag"
+
+#~ msgid "%%p%%%% (%s of %s)"
+#~ msgstr "%%p%%%% (%s / %s)"
+
+#~ msgid "%s pulled from cache"
+#~ msgstr "%s a gyorstárból töltődik be"
+
+#~ msgid "%s downloaded %d bytes in %d seconds (%s/s)"
+#~ msgstr "%s töltődött le, %d bájt %d másodperc alatt (%s/mp)"
+
+#~ msgid "%p%% (%v of %u)"
+#~ msgstr "%p%% (%v / %u)"
+
+#~ msgid "Cryptographic verification of %s (%s) has FAILED."
+#~ msgstr "%s (%s) kriptográfiai ellenőrzése SIKERTELEN."
+
+#~ msgid ""
+#~ "INFO:\n"
+#~ "Name: %s (%s)\n"
+#~ "Version: %s\n"
+#~ "Release: %s\n"
+#~ "Package Filename:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "INFO:\n"
+#~ "Név: %s (%s)\n"
+#~ "Verzió: %s\n"
+#~ "Kiadás: %s\n"
+#~ "Csomag fájlneve:\n"
+#~ "%s"
+
+#~ msgid "Download Log"
+#~ msgstr "Letöltés naplója"
+
+#~ msgid "Verification Log"
+#~ msgstr "Ellenőrzés naplója"
+
+#~ msgid "%.2f MB"
+#~ msgstr "%.2f MB"
+
+#~ msgid "%d bytes"
+#~ msgstr "%d bájt"
+
+#~ msgid "%%p%%%% (%s of %s) - %s/s"
+#~ msgstr "%%p%%%% (%s / %s) - %s/mp"
+
+#~ msgid "%s - %s/s"
+#~ msgstr "%s - %s/mp"
+
+#~ msgid "Downloading data..."
+#~ msgstr "Adatok letöltése..."
+
+#~ msgid "%%p%%%% (%s of %s) - Paused"
+#~ msgstr "%%p%%%% (%s / %s) - Szünetel"
+
+#~ msgid "%s - Paused"
+#~ msgstr "%s - Szünetel"
+
+#~ msgid "Red Carpet encountered an error querying your system:<br>%s"
+#~ msgstr "A Red Carpet hibát észlelt a rendszered lekérdezése közben:<br>%s"
+
+#~ msgid "%.2f%sMB"
+#~ msgstr "%.2f%sMB"
+
+#~ msgid "%d%sKB"
+#~ msgstr "%d%sKB"
+
+#~ msgid "%d%sbytes"
+#~ msgstr "%d%sbájt"
+
+#~ msgid "zero"
+#~ msgstr "nulla"
+
+#~ msgid "one"
+#~ msgstr "egy"
+
+#~ msgid "two"
+#~ msgstr "kettő"
+
+#~ msgid "three"
+#~ msgstr "három"
+
+#~ msgid "four"
+#~ msgstr "négy"
+
+#~ msgid "five"
+#~ msgstr "öt"
+
+#~ msgid "six"
+#~ msgstr "hat"
+
+#~ msgid "seven"
+#~ msgstr "hét"
+
+#~ msgid "eight"
+#~ msgstr "nyolc"
+
+#~ msgid "Fatal Error"
+#~ msgstr "Végzetes hiba"
+
+#~ msgid "Error"
+#~ msgstr "Hiba"
+
+#~ msgid ""
+#~ "Red Carpet has encountered an error while trying to process your request:"
+#~ msgstr "A Red Carpet hibát észlelt a kérésed feldolgozása közben:"
+
+#~ msgid "Possible actions:"
+#~ msgstr "Lehetséges folytatások:"
+
+#~ msgid "<li>Click <b>Quit</b> to quit."
+#~ msgstr "<li>Kattints a <b>Kilépés</b> gombra."
+
+#~ msgid "<li>Click <b>Retry</b> to retry."
+#~ msgstr "<li>Kattints az <b>Újra</b> gombra."
+
+#~ msgid "<li>Click <b>Cancel</b> to cancel."
+#~ msgstr "<li>Kattints a <b>Mégse</b> gombra."
+
+#~ msgid "Retry"
+#~ msgstr "Újra"
+
+#~ msgid "Load file(s)"
+#~ msgstr "Fájl(ok) betöltése"
+
+#~ msgid "Install all packages in directory"
+#~ msgstr "Minden csomag telepítése a könyvtárból"
+
+#~ msgid "Close"
+#~ msgstr "Bezárás"
+
+#~ msgid "Ximian Red Carpet will now restart."
+#~ msgstr "A Ximian Red Carpet most újraindul."
+
+#~ msgid "No mirror (always use default host)"
+#~ msgstr "Nem kell tükör (mindig az alapértelmezett kiszolgálót használja)"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "Unable to parse mirror list."
+#~ msgstr "Nem lehet értelmezni a tükrök listáját."
+
+#~ msgid "Unable to save mirror list (%s)."
+#~ msgstr "Nem lehet menteni a tükrök listáját (%s)"
+
+#~ msgid "Allowed cache difference:"
+#~ msgstr "Megengedett különbség a gyorstárhoz képest"
+
+#~ msgid "seconds"
+#~ msgstr "másodperc"
+
+#~ msgid "<b>%d</b> %s"
+#~ msgstr "<b>%d</b> %s"
+
+#~ msgid "Requested Packages"
+#~ msgstr "Kért csomagok"
+
+#~ msgid "Prefs"
+#~ msgstr "Beállítások"
+
+#~ msgid "Developers"
+#~ msgstr "Fejlesztők"
+
+#~ msgid "User Interface Design"
+#~ msgstr "Felhasználói felület tervezése"
+
+#~ msgid "Artwork"
+#~ msgstr "Grafika"
+
+#~ msgid "File not found"
+#~ msgstr "A fájl nem található"
+
+#~ msgid "IO error"
+#~ msgstr "IO hiba"
+
+#~ msgid "User Registration"
+#~ msgstr "Felhasználó regisztrálása"
+
+#~ msgid "GUI Options"
+#~ msgstr "GUI beállításai"
+
+#~ msgid "No description available"
+#~ msgstr "Nincs leírás"
