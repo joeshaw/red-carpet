@@ -129,51 +129,6 @@ class PackageView(gtk.TreeView):
             self.__changed_id = model.connect_after("changed",
                                                     lambda x:self.thrash_model())
 
-
-    def append_status_column(self,
-                             column_title="Status",
-                             show_status_icon=1,
-                             show_status_name=1):
-        col = gtk.TreeViewColumn()
-        col.set_title(column_title)
-
-        if show_status_icon:
-            render_icon = gtk.CellRendererPixbuf()
-            col.pack_start(render_icon, 0)
-            col.set_attributes(render_icon,
-                               pixbuf=red_packagearray.COLUMN_STATUS_ICON)
-
-        if show_status_name:
-            render_text = gtk.CellRendererText()
-            col.pack_start(render_text, 0)
-            col.set_attributes(render_text,
-                               markup=red_packagearray.COLUMN_STATUS)
-
-        self.append_column(col)
-        return col
-
-    def append_action_column(self,
-                             column_title="Action",
-                             show_action_icon=1,
-                             show_action_name=1):
-        col = gtk.TreeViewColumn()
-        col.set_title(column_title)
-
-        if show_action_icon:
-            render_icon = gtk.CellRendererPixbuf()
-            col.pack_start(render_icon, 0)
-            col.set_attributes(render_icon,
-                               pixbuf=red_packagearray.COLUMN_ACTION_ICON)
-
-        if show_action_name:
-            render_text = gtk.CellRendererText()
-            col.pack_start(render_text, 0)
-            col.set_attributes(render_text,
-                               markup=red_packagearray.COLUMN_ACTION)
-
-        self.append_column(col)
-        return col
-
     def add_column(self, column,
                    title="Untitled",
                    initially_visible=0,
@@ -232,6 +187,60 @@ class PackageView(gtk.TreeView):
         self.__sorted_by = column
         self.__reverse_sort = reverse
         
+
+    def append_status_column(self,
+                             column_title="Status",
+                             show_status_icon=1,
+                             show_status_name=1):
+        col = gtk.TreeViewColumn()
+        col.set_title(column_title)
+
+        if show_status_icon:
+            render_icon = gtk.CellRendererPixbuf()
+            col.pack_start(render_icon, 0)
+            col.set_attributes(render_icon,
+                               pixbuf=red_packagearray.COLUMN_STATUS_ICON)
+
+        if show_status_name:
+            render_text = gtk.CellRendererText()
+            col.pack_start(render_text, 0)
+            col.set_attributes(render_text,
+                               markup=red_packagearray.COLUMN_STATUS)
+
+        self.add_column(col,
+                        title=column_title,
+                        initially_visible=1,
+                        sort_callback=lambda a, r: a.changed_sort_by_status(r)
+                        )
+
+        return col
+
+    def append_action_column(self,
+                             column_title="Action",
+                             show_action_icon=1,
+                             show_action_name=1):
+        col = gtk.TreeViewColumn()
+        col.set_title(column_title)
+
+        if show_action_icon:
+            render_icon = gtk.CellRendererPixbuf()
+            col.pack_start(render_icon, 0)
+            col.set_attributes(render_icon,
+                               pixbuf=red_packagearray.COLUMN_ACTION_ICON)
+
+        if show_action_name:
+            render_text = gtk.CellRendererText()
+            col.pack_start(render_text, 0)
+            col.set_attributes(render_text,
+                               markup=red_packagearray.COLUMN_ACTION)
+
+        self.add_column(col,
+                        title=column_title,
+                        initially_visible=1,
+                        sort_callback=lambda a, r: a.changed_sort_by_action(r)
+                        )
+
+        return col
 
     def append_channel_column(self,
                               column_title="Channel",

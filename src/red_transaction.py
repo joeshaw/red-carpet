@@ -300,7 +300,7 @@ class TransactionWindow(gtk.Window):
             else:
                 return self.update_transaction()
         except TransactionFailed, e:
-            self.transaction_failed(msg=e.message, title="Update Failed")
+            self.transaction_finished(msg=e.message, title="Update Failed")
 
             return 0
             

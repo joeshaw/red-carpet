@@ -74,9 +74,36 @@ class SideBar(gtk.EventBox):
             warn.set_markup("<small>(no callback)</small>")
             my_vbox.pack_start(warn, 0, 0, 0)
 
-        self.vbox.pack_start(my_vbox, 0, 0, 10)
+        eventbox = gtk.EventBox()
+        style = eventbox.get_style().copy()
+        style.bg[gtk.STATE_NORMAL] = self.color
+        style.bg[gtk.STATE_PRELIGHT] = self.color
+        eventbox.set_style(style)
 
-        my_vbox.show_all()
+        def button_press_cb(eb, ev, button):
+            if ev.button == 1:
+                button.set_state(gtk.STATE_ACTIVE)
+        eventbox.connect("button_press_event", button_press_cb, button)
+        
+        def button_release_cb(eb, ev, button):
+            if ev.button == 1:
+                button.clicked()
+                button.set_state(gtk.STATE_NORMAL)
+        eventbox.connect("button_release_event", button_release_cb, button)
+
+        def enter_notify_cb(eb, ev, button):
+            button.set_state(gtk.STATE_PRELIGHT)
+        eventbox.connect("enter_notify_event", enter_notify_cb, button)
+
+        def leave_notify_cb(eb, ev, button):
+            button.leave()
+        eventbox.connect("leave_notify_event", leave_notify_cb, button)
+        
+        eventbox.add(my_vbox)
+
+        self.vbox.pack_start(eventbox, 0, 0, 10)
+
+        eventbox.show_all()
         
            
         

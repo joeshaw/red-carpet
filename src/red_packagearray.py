@@ -204,6 +204,39 @@ def sort_pkgs_by_channel(a, b):
     return cmp(rcd_util.get_package_channel_name(a),
                rcd_util.get_package_channel_name(b))
 
+def sort_pkgs_by_status(a, b):
+    def rank_status(p):
+        if p["installed"]:
+            return 1
+        elif p["name_installed"] > 0: # upgrade
+            return 0
+        elif p["name_installed"] < 0: # downgrade
+            return 3
+        else:
+            return 2
+
+    return cmp(rank_status(a), rank_status(b))
+
+def sort_pkgs_by_action(a, b):
+    def rank_action(p):
+        pending = red_pendingops.get_action(p)
+        if pending:
+            if pending == red_pendingops.TO_BE_INSTALLED \
+               or pending == red_pendingops.TO_BE_INSTALLED_CANCELLED:
+                if p["name_installed"] > 0:
+                    return 0
+                elif p["name_installed"] < 0:
+                    return 1
+                else:
+                    return 2
+
+            elif pending == red_pending.TO_BE_REMOVED \
+                 or pending == red_pendingops.TO_BE_REMOVED_CANCELLED:
+                return 3
+        else:
+            return 4
+
+    return cmp(rank_action(a), rank_action(b))
 
 ###
 ### PackageArray: our magic-laden base class
@@ -271,6 +304,12 @@ class PackageArray(red_extra.ListModel,
 
     def changed_sort_by_channel(self, reverse=0):
         self.changed_sort_fn(sort_pkgs_by_channel, reverse)
+
+    def changed_sort_by_status(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_status, reverse)
+
+    def changed_sort_by_action(self, reverse=0):
+        self.changed_sort_fn(sort_pkgs_by_action, reverse)
 
     def do_changed_one(self, i):
         self.row_changed(i)
