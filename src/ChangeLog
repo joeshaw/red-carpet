@@ -1,5 +1,14 @@
 2003-06-02  Joe Shaw  <joe@ximian.com>
 
+	* red_thrashingtreeview.py (pre_thrash_model): Save the items, not
+	their paths for restoring post-thrash.
+	(post_thrash_model): Do a couple passes over the list's items to
+	set the cursor and selection so that selected items are maintained
+	across a thrashing (a re-sort or a change in the daemon).  Fixes
+	#43543.
+
+2003-06-02  Joe Shaw  <joe@ximian.com>
+
 	* red_pendingview.py (PendingView_Simple): Poll every 150ms.  Take
 	it easy on the polling; make sure we only do it on the interval,
 	not several times a second.  Fixes #42931.

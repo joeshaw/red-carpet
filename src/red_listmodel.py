@@ -114,7 +114,7 @@ class ListModel(red_extra.ListModel):
         print "ListModel.get_all not defined"
         assert 0
 
-        ## Busy/message functions
+    ## Busy/message functions
 
     def message_push(self, msg, context_id=-1, transient=0):
         if transient:

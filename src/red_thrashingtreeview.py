@@ -68,43 +68,57 @@ class TreeView(gtk.TreeView):
                                                          lambda x:self.post_thrash_model())
         
     def pre_thrash_model(self):
-        self.saved_curpath, self.saved_column = self.get_cursor()
+        self.saved_cursor_column = 0
+        self.saved_cursor_item = None
         
         model = self.get_model()
-        selpath = []
+        selected_items = []
+        
         if model:
-
             def add_path(model, path, iter, list):
                 if iter:
-                    list.append(path)
+                    list.append(model.get_list_item(path[0]))
 
             select = self.get_selection()
-            select.selected_foreach(add_path, selpath)
+            select.selected_foreach(add_path, selected_items)
+
+            cursor_path, self.saved_cursor_column = self.get_cursor()
+            if cursor_path:
+                self.saved_cursor_item = model.get_list_item(cursor_path[0])
  
-        self.saved_selpath = selpath
+        self.saved_items = selected_items
         self.saved_model = model
+        
         gtk.TreeView.set_model(self, None)
 
     def post_thrash_model(self):
-        selpath = self.saved_selpath
+        selected_items = self.saved_items
+
         model = self.saved_model
         gtk.TreeView.set_model(self, model)
 
         select = self.get_selection()
-        for path in selpath:
-            try:
-                iter = model.get_iter(path)
-            except ValueError:
-                # If there's nothing left in the tree, we'll get a
-                # ValueError when we try to get an iter from the
-                # (now invalid) path.
-                iter = None
 
-            if iter:
+        # We want (as many of) the same items to be selected even if
+        # we sort it differently.  We have to make two passes since
+        # setting the cursor after the selection seems to break some
+        # of the time.
+
+        def set_cursor_cb(model, path, iter, (view, curitem)):
+            model_item = model.get_list_item(path[0])
+
+            if model_item == curitem:
+                view.set_cursor(path, view.saved_cursor_column)
+
+        model.foreach(set_cursor_cb, (self, self.saved_cursor_item))
+
+        def set_selection_cb(model, path, iter, (select, selitems)):
+            model_item = model.get_list_item(path[0])
+
+            if model_item in selitems:
                 select.select_iter(iter)
 
-        if self.saved_curpath:
-            self.set_cursor(self.saved_curpath, self.saved_column)
+        model.foreach(set_selection_cb, (select, selected_items))
 
         self.columns_autosize()
 
