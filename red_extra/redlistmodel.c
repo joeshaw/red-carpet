@@ -598,10 +598,10 @@ red_list_model_add_column (RedListModel *model,
                            GType         type)
 {
     RedListModelColumn *col;
-
-    g_return_if_fail (RED_IS_LIST_MODEL (model));
-    g_return_if_fail (pycallback != NULL);
-    g_return_if_fail (PyCallable_Check (pycallback));
+    
+    g_return_val_if_fail (RED_IS_LIST_MODEL (model), -1);
+    g_return_val_if_fail (pycallback != NULL, -1);
+    g_return_val_if_fail (PyCallable_Check (pycallback), -1);
 
     col = g_new0 (RedListModelColumn, 1);
     col->pycallback = pycallback;
