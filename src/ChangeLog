@@ -1,5 +1,8 @@
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
+	* red_depcomponent.py (DepComponent.build_verified_ok_page): Make
+	the "yes, your system is valid" page prettier.
+
 	* red_searchbox.py (_ShowAdvanced): Store the state of
 	'view->advanced search options' in the config.
 

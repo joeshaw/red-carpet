@@ -198,14 +198,37 @@ class DepComponent(gobject.GObject, red_component.Component):
     def build_verified_ok_page(self):
         page = self.page
 
-        hbox = gtk.HBox(0, 0)
-        page.pack_start(hbox, expand=0, fill=0)
+        box = gtk.HBox(0, 0)
+        box.pack_start(gtk.Label(""), expand=1, fill=1)
 
-        image = red_pixbuf.get_widget("verify", width=48, height=48)
-        hbox.pack_start(image, 0, 0, 0)
+        img = red_pixbuf.get_widget("verify")
+        box.pack_start(img, expand=0, fill=1, padding=4)
 
-        label = gtk.Label(_("All package dependencies are satisfied"))
-        hbox.pack_start(label, 0, 0 ,0)
+        msg1 = "<span size=\"large\"><b>%s</b></span>" \
+               % _("System Verified")
+
+        msg2 = _("All package dependencies are satisfied, and no corrective actions are required.")
+
+        msg = msg1+"\n"+string.join(rcd_util.linebreak(msg2, width=30), "\n")
+
+        label = gtk.Label("")
+        label.set_markup(msg)
+        box.pack_start(label, expand=0, fill=1, padding=4)
+
+        box.pack_start(gtk.Label(""), expand=1, fill=1)
+
+        frame = gtk.Frame(None)
+        frame.add(box)
+
+        bg = gtk.EventBox()
+        style = bg.get_style().copy()
+        color = bg.get_colormap().alloc_color("white")
+        style.bg[gtk.STATE_NORMAL] = color
+        bg.set_style(style)
+
+        bg.add(frame)
+
+        page.pack_start(bg, expand=1, fill=1)
 
         buttons = gtk.HButtonBox()
         buttons.set_layout(gtk.BUTTONBOX_END)
