@@ -2,13 +2,13 @@
 # Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id: sv.po,v 1.22 2003/09/05 21:16:48 joeshaw Exp $
+# $Id: sv.po,v 1.23 2003/09/06 22:27:21 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
-"POT-Creation-Date: 2003-09-05 17:12-0400\n"
-"PO-Revision-Date: 2003-06-22 00:54+0200\n"
+"POT-Creation-Date: 2003-09-07 00:24+0200\n"
+"PO-Revision-Date: 2003-09-07 00:26+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -801,6 +801,8 @@ msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
 msgstr ""
+"Detekterade protokoll version %d. Version %d krävs. Du måste uppdatera din "
+"version av rcd."
 
 #. LSB compliant distros should have the
 #. following
