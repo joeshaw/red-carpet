@@ -128,6 +128,7 @@ red_list_model_get_value (GtkTreeModel *tree_model,
 
     args = Py_BuildValue("(O)", obj);
     py_value = PyEval_CallObject(col->pycallback, args);
+    Py_DECREF (args);
     if (py_value == NULL) {
         g_print ("error: col=%d i=%d len=%d\n",
                  column, i, model->array->len);

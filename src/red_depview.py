@@ -39,10 +39,10 @@ class DepView(red_extra.ListView):
         col = gtk.TreeViewColumn("Package", gtk.CellRendererText(), markup=1)
         self.append_column(col)
         
-        col = gtk.TreeViewColumn("New Version", gtk.CellRendererText(), markup=2)
-        self.append_column(col)
-        
         col = gtk.TreeViewColumn("Current Version", gtk.CellRendererText(), markup=3)
+        self.append_column(col)
+
+        col = gtk.TreeViewColumn("New Version", gtk.CellRendererText(), markup=2)
         self.append_column(col)
         
         col = gtk.TreeViewColumn("Size", gtk.CellRendererText(), markup=4)
@@ -56,12 +56,12 @@ class DepView(red_extra.ListView):
 
         if bold:
             name        = "<b>%s</b>" % name
-            new_version = "<b>%s</b>" % new_version
             old_version = "<b>%s</b>" % old_version
+            new_version = "<b>%s</b>" % new_version
             size        = "<b>%s</b>" % size
 
         iter = self.store.append()
-        self.store.set(iter, 0, icon, 1, name, 2, new_version, 3, old_version, 4, size)
+        self.store.set(iter, 0, icon, 1, name, 2, old_version, 3, new_version, 4, size)
         self.row += 1
 
     def add_empty_row(self, sizer=""):
@@ -69,14 +69,19 @@ class DepView(red_extra.ListView):
 
     def add_header(self, msg, fg_color=None, bg_color=None):
         cell = gtk.CellRendererText()
-        cell.set_property("markup", "<b><big>%s</big></b>" % msg)
 
-        # FIXME: We ignore the fg_color for now.
+        if fg_color:
+            t = '<span foreground="%s">%s</span>' % (fg_color, msg)
+        else:
+            t = '%s' % msg
+        cell.set_property("markup", "<b><big>%s</big></b>" % t)
 
         if not bg_color:
-            bg_color = self.get_colormap().alloc_color("red")
+            bg_color = "red"
+
+        bg = self.get_colormap().alloc_color(bg_color)
             
-        self.add_spanner_with_background(self.row, 0, -1, cell, bg_color)
+        self.add_spanner_with_background(self.row, 0, -1, cell, bg)
         self.add_empty_row(sizer="<b><big>Ayq</big></b>")
 
     def add_note(self, msg):
@@ -86,17 +91,23 @@ class DepView(red_extra.ListView):
         self.add_spanner(self.row, 1, -1, cell)
         self.add_empty_row()
 
-    def add_package(self, pkg):
+    def add_package(self, pkg, is_removal=0):
 
         ch_icon = rcd_util.get_package_channel_icon(pkg, width=24, height=24)
         name = pkg.get("name", "???")
-        new_evr = rcd_util.get_package_EVR(pkg)
-        old_evr = "-"
-        if pkg.has_key("__old_package"):
-            old_evr = rcd_util.get_package_EVR(pkg["__old_package"])
-        size = rcd_util.byte_size_to_string(pkg.get("file_size"))
+        if not is_removal:
+            new_evr = rcd_util.get_package_EVR(pkg)
+            old_evr = "-"
+            if pkg.has_key("__old_package"):
+                old_evr = rcd_util.get_package_EVR(pkg["__old_package"])
+            size = rcd_util.byte_size_to_string(pkg.get("file_size"))
+        else:
+            new_evr = "-"
+            old_evr = rcd_util.get_package_EVR(pkg)
+            size = rcd_util.byte_size_to_string(pkg.get("installed_size"))
+            
 
-        self.add_row(ch_icon, name, new_evr, old_evr, size, bold=1)
+        self.add_row(ch_icon, name, old_evr, new_evr, size, bold=1)
         
         
     

@@ -38,9 +38,10 @@ class PackageView(gtk.TreeView):
 
         def selection_changed_cb(select, view):
             model, iter = select.get_selected()
-            path = model.get_path(iter)
-            pkg = model.get(path[0])
-            self.emit("selected", path[0], pkg)
+            if iter:
+                path = model.get_path(iter)
+                pkg = model.get(path[0])
+                self.emit("selected", path[0], pkg)
 
         # This callback gets invoked before the selection has
         # been updated, which causes get_selected to return
@@ -50,9 +51,10 @@ class PackageView(gtk.TreeView):
             if ev.button == 3:
                 def clicked_idle_cb(view, ev, select):
                     model, iter = select.get_selected()
-                    path = model.get_path(iter)
-                    pkg = model.get(path[0])
-                    view.emit("popup", ev, path[0], pkg)
+                    if iter:
+                        path = model.get_path(iter)
+                        pkg = model.get(path[0])
+                        view.emit("popup", ev, path[0], pkg)
                     return 0
                 gtk.idle_add(clicked_idle_cb, view, ev, select)
 
