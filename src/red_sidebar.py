@@ -162,64 +162,67 @@ class ShortcutBar(gtk.HBox):
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_BUTTON)
 
         row = 0
-        for comp, callback in components:
-            button = gtk.ToggleButton()
-            align = gtk.Alignment(0.5, 0.5, 0, 0)
-            button.add(align)
-            box = gtk.HBox(0, 2)
+        for comp, callback in self.components:
+            button = None
+            if comp.show_in_shortcuts():
+                button = gtk.ToggleButton()
+                align = gtk.Alignment(0.5, 0.5, 0, 0)
+                button.add(align)
+                box = gtk.HBox(0, 2)
 
-            image = None
+                image = None
 
-            if comp.stock():
-                assert not comp.pixbuf()
+                if comp.stock():
+                    assert not comp.pixbuf()
 
-                stock_id = comp.stock()
+                    stock_id = comp.stock()
 
-                image = gtk.Image()
-                image.set_from_stock(stock_id, gtk.ICON_SIZE_BUTTON)
+                    image = gtk.Image()
+                    image.set_from_stock(stock_id, gtk.ICON_SIZE_BUTTON)
 
-            if comp.pixbuf():
-                assert not comp.stock()
-                image = red_pixbuf.get_widget(comp.pixbuf(),
-                                              width=width, height=height)
+                if comp.pixbuf():
+                    assert not comp.stock()
+                    image = red_pixbuf.get_widget(comp.pixbuf(),
+                                                  width=width, height=height)
 
 
-            if image:
-                box.pack_start(image, 0, 0)
+                if image:
+                    box.pack_start(image, 0, 0)
 
-            box.pack_start(gtk.Label(comp.name()), 0, 0)
-            align.add(box)
+                box.pack_start(gtk.Label(comp.name()), 0, 0)
+                align.add(box)
 
-            self.tooltips.set_tip(button, comp.long_name())
+                self.tooltips.set_tip(button, comp.long_name())
 
-            y = int(row)
-            if row > y:
-                x = 1
-            else:
-                x = 0
-
-            # Is this the last item and the only one on the row?
-            if x == 0 and (comp, callback) == components[-1]:
-                span = 2
-            else:
-                span = 1
-                
-            table.attach(button,
-                         x, x+span, y, y+1,
-                         gtk.FILL, 0, 0, 0)
-
-            row += 0.5
-
-            def toggled(button, callback):
-                if button.get_active():
-                    callback()
+                y = int(row)
+                if row > y:
+                    x = 1
                 else:
-                    button.set_active(1)
+                    x = 0
 
-            sid = button.connect("toggled", toggled, callback)
+                # Is this the last item and the only one on the row?
+                if x == 0 and (comp, callback) == components[-1]:
+                    span = 2
+                else:
+                    span = 1
+                
+                table.attach(button,
+                             x, x+span, y, y+1,
+                             gtk.FILL, 0, 0, 0)
+
+                row += 0.5
+
+                def toggled(button, callback):
+                    if button.get_active():
+                        callback()
+                    else:
+                        button.set_active(1)
+
+                sid = button.connect("toggled", toggled, callback)
+
+                self.buttons.append((button, sid))
 
             comp.connect("display", self.active_changed, button)
-            self.buttons.append((button, sid))
 
         self.pack_start(table)
         table.show_all()

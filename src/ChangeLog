@@ -1,3 +1,8 @@
+2003-03-28  Tambet Ingo  <tambet@ximian.com>
+
+	* red_sidebar.py (ShortcutBar.construct): Connect to all registered
+	components' "display" signal. Fixes #40414.
+
 2003-03-27  Joe Shaw  <joe@ximian.com>
 
 	* red_packageview.py (PackageView.do_popup): If there's no valid
