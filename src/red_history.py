@@ -183,7 +183,7 @@ class HistoryComponent(red_component.Component):
         hbox.pack_start(container, 0, 0)
         hbox.show_all()
 
-        view = HistoryView(search_bar)
+        view = HistoryView(search_bar, self)
         page.add(view)
 
         page.show_all()
@@ -192,18 +192,19 @@ class HistoryComponent(red_component.Component):
 
 class HistoryView(gtk.ScrolledWindow):
 
-    def __init__(self, search_bar):
+    def __init__(self, search_bar, component):
         gtk.ScrolledWindow.__init__(self)
 
         global model
         if not model:
             model = HistoryModel(search_bar)
 
-        self.model = model
-        self.build()
+        model.set_component(component)
 
-    def build(self):
-        self.view = gtk.TreeView(self.model)
+        self.build(model)
+
+    def build(self, model):
+        self.view = gtk.TreeView(model)
         self.view.set_rules_hint(1)
 
         cols = [("Action",      COLUMN_ACTION,  1),
@@ -253,6 +254,7 @@ class HistoryModel(gtk.ListStore):
 
         self.__worker = None
         self.__worker_handler_id = 0
+        self.__component = None
 
         self.filter = filter
         filter.connect("updated", self.update)
@@ -298,6 +300,9 @@ class HistoryModel(gtk.ListStore):
     def get_worker(self):
         return self.__worker
 
+    def set_component(self, component):
+        self.__component = component
+
     def update(self, filter, query):
         if self.__worker:
             if self.__worker_handler_id:
@@ -309,6 +314,9 @@ class HistoryModel(gtk.ListStore):
             return
 
         def get_history_cb(worker, this):
+            if this.__component:
+                this.__component.busy(0)
+
             if not worker.is_cancelled():
                 try:
                     entries = worker.get_result()
@@ -330,6 +338,10 @@ class HistoryModel(gtk.ListStore):
         self.clear()
 
         server = rcd_util.get_server_proxy()
+
+        if self.__component:
+            self.__component.busy(1)
+        
         self.__worker = server.rcd.log.query_log(query)
         self.__worker_handler_id = self.__worker.connect("ready",
                                                          get_history_cb,

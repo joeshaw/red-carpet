@@ -16,6 +16,7 @@
 ###
 
 import string, threading, gobject, gtk
+import ximian_xmlrpclib
 import rcd_util
 import red_pendingops, red_serverlistener
 
@@ -243,7 +244,6 @@ class PendingView(gtk.Window):
             self.button.cancel = 0
 
     def poll(self):
-
         polling = self.poll_worker()
 
         if not polling:
@@ -444,7 +444,15 @@ class PendingView_Transaction(PendingView):
             return
 
         serv = rcd_util.get_server()
-        ret = serv.rcd.packsys.abort_download(self.download_id)
+
+        try:
+            ret = serv.rcd.packsys.abort_download(self.download_id)
+        except ximian_xmlrpclib.Fault, f:
+            ## FIXME: This is really ugly hack, but otherwise ui will be
+            ## unresponsive if connection with rcd is lost (even if rcd
+            ## comes back).
+            rcd_util.dialog_from_fault(f)
+            ret = 1
 
         if ret:
             print "Download aborted"

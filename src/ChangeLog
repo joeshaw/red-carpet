@@ -1,5 +1,15 @@
 2003-02-20  Tambet Ingo  <tambet@ximian.com>
 
+	* red_pendingview.py (PendingView_Transaction.cancelled): As added
+	to FIXME: This is really ugly hack, but otherwise ui will be
+	unresponsive if connection with rcd is lost (even if rcd comes back).
+
+	* red_history.py (HistoryModel.set_component): New method. Model
+	uses component to put it in busy state.
+	(HistoryModel.get_history_cb): If we have a component, make it busy.
+
+2003-02-20  Tambet Ingo  <tambet@ximian.com>
+
 	* red_pendingview.py (PendingView.finished): Emit "finished" singal
 	here instead of in poll() method.
 
