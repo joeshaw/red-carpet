@@ -190,6 +190,10 @@ def clear_action_cancellations():
            or act == TO_BE_REMOVED_CANCELLED:
             set(pkg, "action", NO_ACTION)
 
+def clear_packages_with_actions():
+    for pkg in packages_with_actions():
+        clear(pkg, "action")
+
 def pending_install_count():
     count = 0
     for dict in package_data.values():

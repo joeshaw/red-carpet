@@ -23,6 +23,7 @@ import red_pendingops
 import red_component
 import red_depwindow
 import red_main
+import red_serverlistener
 
 class TransactionArray(red_packagearray.PackageArray,
                        red_pendingops.PendingOpsListener):
@@ -213,13 +214,8 @@ class TransactionWindow(gtk.Window):
         self.set_default_size(400, 250)
         self.set_modal(1)
 
-        # shim
-        hbox = gtk.HBox(0, 10)
-        self.add(hbox)
-        hbox.show()
-
         self.mainbox = gtk.VBox(0, 10)
-        hbox.pack_start(self.mainbox)
+        self.add(self.mainbox)
 
         self.title_label = gtk.Label("")
         self.title_label.set_markup("<b><big>Updating System</big></b>")
@@ -260,6 +256,10 @@ class TransactionWindow(gtk.Window):
             return self.poll_transaction()
 
         self.poll_id = gtk.timeout_add(timeout_len, poll_cb)
+
+        # We don't want to bog down the daemon with changes while a
+        # transaction is running.
+        red_serverlistener.freeze_polling()
 
     def abort_download(self):
         if self.download_id == -1 or self.download_complete:
@@ -339,6 +339,9 @@ class TransactionWindow(gtk.Window):
         self.button.cancel = 0
         self.button.set_sensitive(1)
 
+        # Restart the polling of the daemon.
+        red_serverlistener.thaw_polling()
+
     def update_download(self):
         serv = rcd_util.get_server()
         pending = serv.rcd.system.poll_pending(self.download_id)
@@ -360,7 +363,12 @@ class TransactionWindow(gtk.Window):
         pending = serv.rcd.system.poll_pending(self.transact_id)
         step_pending = serv.rcd.system.poll_pending(self.step_id)
 
-        self.step_label.set_text("Processing Transaction")
+        msg = "Processing Transaction"
+
+        if pending["percent_complete"]:
+            msg = msg + " (%d%% complete)" % int(pending["percent_complete"])
+
+        self.step_label.set_text(msg)
         
         self.progress_text.set_markup("<i>%s</i>" % rcd_util.transaction_status(pending["messages"][-1]))
 
@@ -368,6 +376,7 @@ class TransactionWindow(gtk.Window):
             self.update_progress_from_pending(step_pending, show_rate=0)
 
         if pending["status"] == "finished":
+            red_pendingops.clear_packages_with_actions()
             self.transaction_finished(msg="The update has completed successfully")
             return 0
         elif pending["status"] == "failed":
