@@ -71,7 +71,10 @@ def main(version):
     app.set_size_request(780, 550)
     app.show()
 
+    gtk.threads_init()
+    gtk.threads_enter()
     gtk.main()
+    gtk.threads_leave()
     
 
 

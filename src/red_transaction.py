@@ -195,16 +195,20 @@ def resolve_deps_and_transact(app):
     deps = red_depcomponent.DepComponent()
     app.activate_component(deps)
 
-def begin_transaction(install_packages, remove_packages):
+def begin_transaction(install_packages, remove_packages, parent=None):
     serv = rcd_util.get_server()
 
     try:
-        download_id, transact_id, step_id = serv.rcd.packsys.transact(
+        F = serv.rcd.packsys.transact(
             install_packages,
             remove_packages,
             0, # FIXME: flags
             red_main.red_name,
             red_main.red_version)
+
+        print len(F), F
+        download_id, transact_id, step_id = F
+        
     except ximian_xmlrpclib.Fault, f:
         rcd_util.dialog_from_fault(f)
         return
@@ -215,7 +219,8 @@ def begin_transaction(install_packages, remove_packages):
 
     trans_win = red_pendingview.PendingView_Transaction(download_id,
                                                         transact_id,
-                                                        step_id)
+                                                        step_id,
+                                                        parent=parent)
     trans_win.show()
 
 #########################################################################

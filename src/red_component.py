@@ -32,6 +32,7 @@ class Component(gobject.GObject):
         self.widgets = {}
         self.did_build = 0
         self.visible_flag = 0
+        self.__parent = None
 
     def get(self, type):
         assert type in valid_widget_types
@@ -57,6 +58,12 @@ class Component(gobject.GObject):
 
     def is_user_selectable(self):
         return 1
+
+    def parent(self):
+        return self.__parent
+
+    def set_parent(self, p):
+        self.__parent = p
 
     def server(self):
         assert self.have_server

@@ -15,17 +15,17 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import string
+import string, threading
 import gobject, gtk
 import rcd_util
 import red_main
-import red_transaction
+import red_transaction, red_pendingops, red_serverlistener
 
 class PendingView(gtk.Window):
 
     def __init__(self, title=None, label=None,
                  parent=None,
-                 timeout_len=400, show_rate=1, show_size=1, is_modal=1,
+                 timeout_len=200, show_rate=1, show_size=1, is_modal=1,
                  allow_cancel=0,
                  self_destruct=0):
         gtk.Window.__init__(self, gtk.WINDOW_POPUP)
@@ -34,11 +34,10 @@ class PendingView(gtk.Window):
 
         self.set_modal(is_modal)
 
+        self.window_parent = parent
         if parent:
             self.set_transient_for(parent)
-            self.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
-        else:
-            self.set_position(gtk.WIN_POS_CENTER)
+        self.position_window()
 
         self.pending_list = []
         self.polling_timeout = 0
@@ -95,6 +94,16 @@ class PendingView(gtk.Window):
 
         self.ourframe.show_all()
 
+    def position_window(self):
+        if self.window_parent:
+            self.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        else:
+            self.set_position(gtk.WIN_POS_CENTER)
+
+    def disable_cancellation(self):
+        if self.allow_cancel:
+            self.button.set_sensitive(0)
+
     def cancelled(self):
         print "Cancelled!"
 
@@ -104,9 +113,11 @@ class PendingView(gtk.Window):
 
     def set_title(self, msg):
         self.title_label.set_markup("<b><big>%s</big></b>" % (msg or ""))
+        self.position_window() # keep window centered
 
     def set_label(self, msg):
         self.step_label.set_text(msg or "")
+        self.position_window() # keep window centered
 
     def start_polling(self):
         if self.polling_timeout:
@@ -122,14 +133,21 @@ class PendingView(gtk.Window):
         gtk.timeout_remove(self.polling_timeout)
         self.polling_timeout = 0
 
+    def update_pulse(self):
+        self.progress_bar.set_text("")
+        self.progress_bar.pulse()
+
+    def update_fill(self):
+        self.progress_bar.set_fraction(1.0)
+        self.progress_bar.set_text("")
+
     def update(self, percent,
                elapsed_sec, remaining_sec,
                completed_size, total_size,
                show_size=1, show_rate=1):
 
         if percent <= 0:
-            self.progress_bar.set_text("")
-            self.progress_bar.pulse()
+            self.update_pulse()
         else:
             rate = 0
             if elapsed_sec > 0:
@@ -155,6 +173,10 @@ class PendingView(gtk.Window):
                     msg = msg + " - " + rate_str
 
             self.progress_bar.set_text(msg)
+
+        # If our window has grown our shrunk, we want to make sure
+        # that it stays centered.
+        self.position_window()
 
 
     def update_from_pendings(self, pending_list,
@@ -187,8 +209,9 @@ class PendingView(gtk.Window):
 
 
     def update_from_pending(self, pending, show_size=1, show_rate=1):
-        update_from_pendings([pending],
-                             show_size=show_size, show_rate=show_rate)
+        self.update_from_pendings([pending],
+                                  show_size=show_size,
+                                  show_rate=show_rate)
 
     # Define me!
     def poll_worker(self):
@@ -261,17 +284,36 @@ class PendingView_Simple(PendingView):
 
 ##############################################################################
 
+class PollPending_Thread(threading.Thread):
+
+    def __init__(self, server, transact_id, step_id):
+        threading.Thread.__init__(self)
+        self.__server = server
+        self.__transact_id = transact_id
+        self.__step_id = step_id
+
+    def run(self):
+        s = self.__server
+        self.transact_pending = s.rcd.system.poll_pending(self.__transact_id)
+        self.step_pending     = s.rcd.system.poll_pending(self.__step_id)
+
+
 class PendingView_Transaction(PendingView):
 
-    def __init__(self, download_id, transact_id, step_id):
+    def __init__(self, download_id, transact_id, step_id, parent=None):
         PendingView.__init__(self, "Updating System",
-                             allow_cancel=1)
+                             allow_cancel=1, parent=parent)
 
         self.download_id = download_id
         self.transact_id = transact_id
         self.step_id     = step_id
 
         self.download_complete = 0
+
+        self.pp_thread = None
+
+        red_serverlistener.freeze_polling()
+        self.start_polling() # this is a different kind of polling
 
     def abort_download(self):
 
@@ -295,9 +337,9 @@ class PendingView_Transaction(PendingView):
 
         print "Polling..."
 
+        # We can't cancel once the transaction begins
         if self.download_complete:
-            #self.button.set_sensitive(0)
-            print "Need to disable cancellation here"
+            self.disable_cancellation()
 
         try:
             if self.download_id != -1 and not self.download_complete:
@@ -325,14 +367,12 @@ class PendingView_Transaction(PendingView):
 
         self.set_title(title)
         self.set_label(msg)
-        #self.progress_bar.set_fraction(1.0)
-        #self.progress_bar.set_text("")
-
-        # Restart the polling of the daemon.
+        self.update_fill()
         red_serverlistener.thaw_polling()
 
 
     def update_download(self):
+        print "Update download"
         serv = rcd_util.get_server()
         pending = serv.rcd.system.poll_pending(self.download_id)
 
@@ -342,22 +382,41 @@ class PendingView_Transaction(PendingView):
 
         if pending["status"] == "finished":
             self.download_complete = 1
-            #self.progress_bar.set_fraction(1.0)
-            #self.progress_bar.set_text("")
+            self.update_fill()
         elif pending["status"] == "failed":
             self.download_complete = 1
             raise red_transaction.TransactionFailed, "Download failed"
         
     def update_transaction(self):
-        serv = rcd_util.get_server()
-        pending = serv.rcd.system.poll_pending(self.transact_id)
-        step_pending = serv.rcd.system.poll_pending(self.step_id)
+        print "Update transaction"
+
+        fresh_thread = 0
+        if self.pp_thread is None:
+            print "Starting new thread"
+            fresh_thread = 1
+            self.pp_thread = PollPending_Thread(rcd_util.get_server(),
+                                                self.transact_id,
+                                                self.step_id)
+            self.pp_thread.start()
+            
+        if self.pp_thread.isAlive():
+            if not fresh_thread:
+                self.update_pulse()
+            return 1
+
+        pending = self.pp_thread.transact_pending
+        step_pending = self.pp_thread.step_pending
+
+        self.pp_thread = None
 
         self.set_title("Processing Transaction")
-        self.set_label(rcd_util.transaction_status(pending["messages"][-1]))
+        if pending["messages"]:
+            self.set_label(rcd_util.transaction_status(pending["messages"][-1]))
 
         if step_pending["status"] == "running":
             self.update_from_pending(step_pending, show_rate=0)
+        else:
+            self.update_pulse()
 
         if pending["status"] == "finished":
             red_pendingops.clear_packages_with_actions()

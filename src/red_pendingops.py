@@ -219,10 +219,11 @@ def resolve_dependencies():
             remove_packages.append(dict["__package"])
 
     serv = rcd_util.get_server()
-    dep_install, dep_remove, dep_info = \
-                 serv.rcd.packsys.resolve_dependencies(install_packages,
-                                                       remove_packages,
-                                                       [])
+    F = serv.rcd.packsys.resolve_dependencies(install_packages,
+                                              remove_packages,
+                                              [])
+    print len(F)
+    dep_install, dep_remove, dep_info = F
 
     return install_packages, remove_packages, dep_install, dep_remove
 

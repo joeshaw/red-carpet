@@ -290,8 +290,10 @@ class AppWindow(gtk.Window):
 
         # Show the new component, hide the old one.
         comp.visible(1)
+        comp.set_parent(self)
         if self.current_comp:
             self.current_comp.visible(0)
+            self.current_comp.set_parent(None)
 
         self.current_comp = comp
 
