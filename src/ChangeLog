@@ -1,3 +1,13 @@
+2004-01-14  Joe Shaw  <joe@ximian.com>
+
+	* red_packageview.py (_ShowChannelNames.__init__): Use
+	config.getboolean() so we can properly handle loading python 2.3's
+	boolean values from the config file.
+
+	* red_searchbox.py (_ShowAdvanced.__init__): Ditto.
+
+	* red_sidebar.py (SideBar.__init__): Ditto.
+
 2003-12-05  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (AppWindow.__init__): Cast the sidebar
