@@ -8,6 +8,11 @@
 
 2003-02-25  Joe Shaw  <joe@ximian.com>
 
+	* red_main.py (main): Always save our local flag, so -l works
+	correctly.
+
+2003-02-25  Joe Shaw  <joe@ximian.com>
+
 	* rcd_util.py (check_rcd_version_: Require rcd 1.2.1.
 
 	* red_main.py: Add argument parsing.  Get host info from

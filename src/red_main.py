@@ -139,13 +139,15 @@ def main(version):
         if opt_dict.has_key("host"):
             url = opt_dict["host"]
 
+    dd = red_settings.DaemonData()
+    dd.local_set(local)
+
     if host:
-        dd = red_settings.DaemonData()
         dd.url_set(host)
         dd.user_set(username)
         dd.password_set(password)
-        dd.local_set(local)
-        dd.save_config()
+
+    dd.save_config()
 
     server = rcd_util.get_server()
 
