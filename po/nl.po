@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-12 20:57+0200\n"
+"POT-Creation-Date: 2003-08-26 13:10+0200\n"
 "PO-Revision-Date: 2003-08-13 02:27+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -279,7 +279,6 @@ msgstr ""
 #. # Toolbar and menubar callback and sensitivity functions
 #. #
 #: src/red_appwindow.py:405
-#, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Weet u zeker dat u %d pakket-informatievensters wilt openen?"
 
@@ -619,7 +618,6 @@ msgid "About Red Carpet"
 msgstr "Over Red Carpet"
 
 #: src/red_appwindow.py:827
-#, python-format
 msgid "Go to the '%s' page"
 msgstr "Naar de '%s' pagina gaan"
 
@@ -782,7 +780,6 @@ msgstr "Geen kanaal/Onbekend kanaal"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_connection.py:41
-#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
@@ -793,7 +790,6 @@ msgstr ""
 #. Gnome HIG says no titles on these sorts of dialogs
 #. Guard for NoneType
 #: src/red_connection.py:61
-#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
@@ -1201,7 +1197,6 @@ msgstr "Geen resultaten gevonden."
 #. get the parent directory for that file, not the file itself.
 #. File probably doesn't exist.
 #: src/red_installfiles.py:82 src/red_installfiles.py:142
-#, python-format
 msgid "%s is not a valid package"
 msgstr "%s is geen geldig pakket"
 
@@ -1215,7 +1210,6 @@ msgstr "Installeer vanaf Bestand"
 
 #. need trailing /
 #: src/red_installfiles.py:119
-#, python-format
 msgid "Downloading %s..."
 msgstr "%s wordt binnengehaald..."
 
@@ -1394,13 +1388,11 @@ msgstr "Een Mirror kiezen"
 #. ##
 #. Handle ~ to mean $HOME
 #: src/red_mount.py:61
-#, python-format
 msgid "Unable to mount '%s' as a channel"
 msgstr "Kon '%s' niet als een kanaal aankoppelen"
 
 #. Always run the dialog in the main thread
 #: src/red_mount.py:91
-#, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Kon '%s' niet afkoppelen"
 
@@ -1461,7 +1453,6 @@ msgstr "Afkoppelen?"
 #. some sort of intelligent way.
 #. FIXME: Special hacks for current (bad) news file
 #: src/red_news.py:174
-#, python-format
 msgid "%s News"
 msgstr "%s nieuws"
 
@@ -1534,7 +1525,6 @@ msgstr "Gebruiksinformatie ophalen"
 #. ## Store our options in a dictionary
 #. ##
 #: src/red_option.py:120
-#, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Gebruik: %s <opties> ..."
 
@@ -1627,7 +1617,6 @@ msgstr "verwijderen"
 #. it received from the daemon.
 #. ##############################################################################
 #: src/red_packagearray.py:614
-#, python-format
 msgid "Found %d matching packages"
 msgstr "%d pakketten gevonden"
 
@@ -1736,9 +1725,6 @@ msgstr "Versie"
 # Release in de pakketbeschrijving. De versie kan bijv 2.4.3. zijn, release 28
 # Dan is het dus de 28ste keer dat deze versie wordt uitgebracht
 # Dus zoiets als de zoveelste druk
-#
-# Creatief vertaald als Persing
-#: src/red_packagepage_info.py:80
 msgid "Release"
 msgstr "Persing"
 
@@ -1756,7 +1742,7 @@ msgstr "Sectie"
 
 #: src/red_packagepage_info.py:85
 msgid "Summary"
-msgstr "Overzicht"
+msgstr "Samenvatting"
 
 #: src/red_packagepage_info.py:86 src/red_prefs.py:478
 msgid "Description"
@@ -1849,7 +1835,6 @@ msgstr "Urgentie"
 #. If our window has grown our shrunk, we want to make sure
 #. that it stays centered.
 #: src/red_pendingview.py:347
-#, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% voltooid"
 
@@ -2048,7 +2033,6 @@ msgstr "Cache legen"
 
 #. Have to do this after the other widgets are created
 #: src/red_prefs.py:460
-#, python-format
 msgid "%d MB"
 msgstr "%d Mb"
 
@@ -2063,7 +2047,6 @@ msgstr "Voorkeuren worden geladen..."
 
 #. Remove the "loading" "page".
 #: src/red_prefs.py:585
-#, python-format
 msgid "%s Preferences"
 msgstr "%s Voorkeuren"
 
@@ -2178,7 +2161,7 @@ msgstr "Ontwikkelingsgereedschap"
 
 #: src/red_searchbox.py:188
 msgid "Miscellaneous"
-msgstr "Overige"
+msgstr "Diversen"
 
 # Dit is een vinkje
 # (ook) in de beschrijving zoeken | Beschrijvingen doorzoeken
@@ -2294,7 +2277,6 @@ msgid "Dump daemon info to XML file"
 msgstr "Daemon-info dumpen in XML-bestand"
 
 #: src/red_serverinfo.py:94
-#, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Kon bestand '%s' niet openen: %s"
 
@@ -2405,22 +2387,18 @@ msgstr "Nog te doen"
 # Pending: iets met wachtrij? op stapel staan? nog te doen?
 #. PendingOpsListener implementation
 #: src/red_sidebar.py:89
-#, python-format
 msgid "%d pending install"
 msgstr "%d installatie in de wachtrij"
 
 #: src/red_sidebar.py:91
-#, python-format
 msgid "%d pending installs"
 msgstr "%d installaties in de wachtrij"
 
 #: src/red_sidebar.py:97
-#, python-format
 msgid "%d pending removal"
 msgstr "%d verwijdering in de wachtrij"
 
 #: src/red_sidebar.py:99
-#, python-format
 msgid "%d pending removals"
 msgstr "%d verwijderingen in de wachtrij"
 
@@ -2481,7 +2459,6 @@ msgstr "_Beschikbare software"
 #. ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #. ##
 #: src/red_statusbar.py:49
-#, python-format
 msgid "Connected to %s"
 msgstr "Verbonden met %s"
 
@@ -2512,7 +2489,6 @@ msgid "Channel Name"
 msgstr "Kanaalnaam"
 
 #: src/red_subscriptions.py:78
-#, python-format
 msgid "%s Channel Subscriptions"
 msgstr "%s kanaalabonnementen"
 
@@ -2654,7 +2630,6 @@ msgstr "Wachtwoorden zijn niet gelijk."
 
 # instellen - stel in
 #: src/red_users.py:268
-#, python-format
 msgid "Set %s's password"
 msgstr "Stel %s's wachtwoord in"
 
@@ -2667,7 +2642,6 @@ msgid "Add"
 msgstr "Toevoegen"
 
 #: src/red_users.py:320
-#, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Weet u zeker dat u de '%s' wilt verwijderen?"
 
@@ -2688,6 +2662,5 @@ msgid "Invalid user name."
 msgstr "Ongeldige gebruikersnaam"
 
 #: src/red_users.py:428
-#, python-format
 msgid "User '%s' already exists."
 msgstr "Gebruiker '%s' bestaat al."
