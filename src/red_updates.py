@@ -20,6 +20,7 @@ import red_packagearray, red_packageview
 import red_pendingops
 import red_component
 import rcd_util, red_pixbuf
+import red_emptypage
 
 from red_gettext import _
 
@@ -43,44 +44,6 @@ class SummaryComponent(red_component.Component):
     def show_in_shortcuts(self):
         return 1
 
-    def __build_no_updates(self):
-
-        img = red_pixbuf.get_widget("verify")
-
-        box = gtk.HBox(0, 0)
-        box.pack_start(gtk.Label(""), expand=1, fill=1)
-        
-        box.pack_start(img, expand=0, fill=1, padding=4)
-
-        msg1 = "<span size=\"large\"><b>%s</b></span>" \
-               % _("The system is up-to-date.")
-        
-        msg2 = _("There are no software upgrades available in any subscribed channels.")
-
-        msg = msg1+"\n"+string.join(rcd_util.linebreak(msg2, width=30), "\n")
-
-        label = gtk.Label("")
-        label.set_markup(msg)
-        box.pack_start(label, expand=0, fill=1, padding=4)
-
-        box.pack_start(gtk.Label(""), expand=1, fill=1)
-
-        frame = gtk.Frame(None)
-        frame.add(box)
-
-        page = gtk.EventBox()
-        page.add(frame)
-
-        style = page.get_style().copy()
-        color = page.get_colormap().alloc_color("white")
-        style.bg[gtk.STATE_NORMAL] = color
-        page.set_style(style)
-
-        page.show_all()
-        page.hide()
-
-        return page
-    
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
         self.connect_array(self.array)
@@ -133,7 +96,14 @@ class SummaryComponent(red_component.Component):
         scrolled.hide()
 
         self.__have_updates = scrolled
-        self.__no_updates = self.__build_no_updates()
+
+        msg1 = "<span size=\"large\"><b>%s</b></span>" \
+               % _("The system is up-to-date.")
+        msg2 = _("There are no software upgrades available in any subscribed channels.")
+        msg = msg1+"\n"+string.join(rcd_util.linebreak(msg2, width=30), "\n")
+
+        self.__no_updates = red_emptypage.EmptyPage(pixbuf_name="verify",
+                                                    formatted_text=msg)
 
         self.__built = 1
 

@@ -1,3 +1,23 @@
+2003-03-14  Tambet Ingo  <tambet@ximian.com>
+
+	* red_emptypage.py: New file.
+
+	* Makefile.am (red_carpetsupport_DATA): Add red_emptypage.py
+
+	* red_summary.py (SummaryComponent.__build_no_updates): Remove. Use
+	common component for that.
+	(SummaryComponent.build): Use the new code for "empty" page.
+
+	* red_search.py (SearchComponent.build): Build empty page with
+	apropriate message for cases where search doesn't return any fields.
+
+	* red_packagearray.py (PackagesFromQuery.__init__): Run query only
+	if needed. Prevents "empty" page on first time.
+
+	* red_history.py: Removed some old commented out cruft.
+	(HistoryComponent.build): Build empty page with
+	apropriate message for cases where search doesn't return any fields.
+
 2003-03-13  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py: Don't connect to and change the sensitivity of

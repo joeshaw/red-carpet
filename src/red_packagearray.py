@@ -597,7 +597,8 @@ class PackagesFromQuery(PackagesFromDaemon):
         self.__worker_handler_id = 0
         self.__query_msg = None
         self.__query_filter = None
-        self.set_query(query)
+        if query:
+            self.set_query(query)
 
     def set_packages(self, pkgs, quiet=0):
         if not quiet:

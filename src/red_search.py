@@ -21,6 +21,7 @@ import red_packagearray
 import red_component, red_packageview
 import red_pendingops
 import red_searchbox
+import red_emptypage
 
 from red_gettext import _
 
@@ -72,6 +73,20 @@ class SearchComponent(red_component.Component):
                                  query_filter=filter)
         self.__sbox.connect("search", search_cb)
 
+        self.__built = 0
+
+        def search_finished_cb(array, comp):
+            if not self.__built:
+                return
+            if array.len() == 0:
+                comp.__have_results.hide()
+                comp.__no_results.show()
+            else:
+                comp.__have_results.show()
+                comp.__no_results.hide()
+
+        self.array.connect_after("changed", search_finished_cb, self)
+
 
         view = red_packageview.PackageView(self.array)
         self.connect_view(view)
@@ -90,7 +105,17 @@ class SearchComponent(red_component.Component):
         scrolled.add(view)
         scrolled.show_all()
 
-        self.__sbox.set_widget(scrolled)
+        self.__have_results = scrolled
+        self.__no_results = red_emptypage.EmptyPage(text=_("No matching packages found."))
+
+        self.__built = 1
+
+        self.__sbox.set_widget(self.__have_results)
+        self.__sbox.set_widget(self.__no_results)
+
+        self.__have_results.show()
+        self.__no_results.hide()
+
         self.__sbox.show()
 
         self.__sbox.try_to_grab_focus()

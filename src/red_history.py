@@ -21,7 +21,7 @@ import red_extra
 import rcd_util
 import red_component
 import red_users
-
+import red_emptypage
 import red_listmodel
 import red_thrashingtreeview
 
@@ -368,10 +368,32 @@ class HistoryComponent(red_component.Component):
         search_bar.connect("updated", lambda x,q,m:m.refresh(q), model)
         self.filter = search_bar
 
-        view = HistoryView(model)
-        page.add(view)
+        self.__built = 0
 
-        page.show_all()
+        def search_finished_cb(model, comp):
+            if not self.__built:
+                return
+            if model.len() == 0:
+                comp.__have_results.hide()
+                comp.__no_results.show()
+            else:
+                comp.__have_results.show()
+                comp.__no_results.hide()
+
+        model.connect_after("changed", search_finished_cb, self)
+
+        view = HistoryView(model)
+
+        self.__have_results = view
+        self.__no_results = red_emptypage.EmptyPage(text=_("No results found."))
+        self.__built = 1
+
+        page.add(self.__have_results)
+        page.add(self.__no_results)
+
+        self.__have_results.show()
+        self.__no_results.hide()
+
         return page
 
     def activated(self):
@@ -435,10 +457,3 @@ class PackageHistory(gtk.ScrolledWindow):
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.add(view)
         self.view = view
-
-##     def add_note(self, msg):
-##         cell = gtk.CellRendererText()
-##         cell.set_property("text", msg)
-##         self.view.add_spanner(0, 0, -1, cell)
-
-##         iter = self.model.append()
