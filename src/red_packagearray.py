@@ -198,7 +198,7 @@ def sort_pkgs_by_name(a, b):
         a["_lower_name"] = xa = string.lower(a["name"])
     xb = b.get("_lower_name")
     if not xb:
-        b["_lower_name"] = xb = string.lower(a["name"])
+        b["_lower_name"] = xb = string.lower(b["name"])
     return cmp(xa, xb)
 
 def sort_pkgs_by_size(a, b):

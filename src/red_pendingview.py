@@ -438,8 +438,6 @@ class PendingView_Transaction(PendingView):
 
     def poll_worker(self):
 
-        print "Polling..."
-
         # We can't cancel once the transaction begins
         if self.download_complete:
             self.disable_cancellation()
@@ -474,7 +472,6 @@ class PendingView_Transaction(PendingView):
         red_serverlistener.thaw_polling(do_immediate_poll=1)
 
     def update_download(self):
-        print "Update download"
         serv = rcd_util.get_server()
         pending = serv.rcd.system.poll_pending(self.download_id)
 
@@ -490,11 +487,8 @@ class PendingView_Transaction(PendingView):
             raise PendingView_TransactionFailed, "Download failed"
         
     def update_transaction(self):
-        print "Update transaction"
-
         fresh_thread = 0
         if self.pp_thread is None:
-            print "Starting new thread"
             fresh_thread = 1
             self.pp_thread = PollPending_Thread(rcd_util.get_server(),
                                                 self.transact_id,

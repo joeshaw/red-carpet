@@ -1,3 +1,11 @@
+2003-02-13  Jon Trowbridge  <trow@ximian.com>
+
+	* red_packagearray.py (sort_pkgs_by_name): Fixed a bug that I
+	introduced yesterday, which caused sorting to stop working
+	properly.
+	
+	* red_pendingview.py: Removed some annoying debug spew.
+
 2003-02-12  Joe Shaw  <joe@ximian.com>
 
 	* red_appwindow.py (open_or_raise_window): Set the window
