@@ -1,3 +1,19 @@
+2003-02-24  Tambet Ingo  <tambet@ximian.com>
+
+	* red_summary.py (SummaryComponent.build): Catch busy signals.
+
+	* red_packagearray.py (PackagesFromDaemon.schedule_refresh): We had
+	problems with determining pending refresh. It got reset right after
+	get_packages_from_daemon returned, but that function just kicked off
+	query, results came later from different thread.
+	(PackagesFromDaemon.refresh_start): New method. We need it to be
+	"protected" data. Also, moved setting busy cursor here.
+	(PackagesFromDaemon.refresh_end): New method, restore cursor here.
+	(PackagesFromDaemon.refresh_pending): New method.
+	(PackagesFromQuery.get_packages_from_daemon): Removed cursor changing,
+	notify, that we are finshed getting data.
+	(UpdatedPackages.get_packages_from_daemon): Ditto.
+
 2003-02-22  Tambet Ingo  <tambet@ximian.com>
 
 	* rcd_util.py (check_rcd_version): Implement.

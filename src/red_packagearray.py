@@ -495,16 +495,27 @@ class PackagesFromDaemon(PackageArray, red_serverlistener.ServerListener):
             me.__packages = p
         self.changed(set_pkg_cb, packages)
 
-    def refresh(self):
-        self.get_packages_from_daemon()
+    def refresh_start(self):
+        self.busy(1)
+        self.pending_refresh = 1
+
+    def refresh_end(self):
+        self.busy(0)
         self.pending_refresh = 0
 
+    def refresh_pending(self):
+        return self.pending_refresh
+
+    def refresh(self):
+        self.get_packages_from_daemon()
+
     def schedule_refresh(self):
-        if self.pending_refresh == 0:
+        if not self.refresh_pending():
             def schedule_cb(s):
                 s.refresh()
                 return 0
-            self.pending_refresh = gtk.timeout_add(20, schedule_cb, self)
+            gtk.idle_add(schedule_cb, self)
+            self.refresh_start()
 
     def packages_changed(self):
         self.schedule_refresh()
@@ -568,6 +579,7 @@ class PackagesFromQuery(PackagesFromDaemon):
 
         if self.query is None:
             self.set_packages([], quiet=1)
+            self.refresh_end()
             return
 
         cached = _get_query_from_cache(self.query)
@@ -575,6 +587,7 @@ class PackagesFromQuery(PackagesFromDaemon):
             if self.__query_filter:
                 cached = filter(self.__query_filter, cached)
             self.set_packages(cached)
+            self.refresh_end()
             return
         
         server = rcd_util.get_server_proxy()
@@ -587,7 +600,6 @@ class PackagesFromQuery(PackagesFromDaemon):
 
         def query_finished_cb(worker, array):
             array.message_pop()
-            array.busy(0)
 
             if not worker.is_cancelled():
                 try:
@@ -605,9 +617,9 @@ class PackagesFromQuery(PackagesFromDaemon):
                     packages = self.filter_duplicates(packages)
 
                 array.set_packages(packages or [])
+            self.refresh_end()
 
 
-        self.busy(1)
         if self.__query_msg:
             self.message_push(self.__query_msg)
         self.set_packages([], quiet=1)
@@ -694,11 +706,9 @@ class UpdatedPackages(PackagesFromDaemon):
                         packages.append(pkg)
                 array.set_packages(packages)
             array.message_pop()
-            array.busy(0)
+            self.refresh_end()
 
-        self.busy(1)
         self.message_push(_("Looking for updates..."))
-        self.set_packages([])
 
         server = rcd_util.get_server_proxy()
         self.__worker = server.rcd.packsys.get_updates()

@@ -45,6 +45,7 @@ class SummaryComponent(red_component.Component):
 
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
+        self.connect_array(self.array)
 
         page = gtk.VBox(0, 6)
 
