@@ -12,10 +12,11 @@ pythondir=$(PYGTK_PREFIX)/lib/python2.2
 pkgpythondir = $(pythondir)/gtk-2.0
 pkgpyexecdir = $(pythondir)/gtk-2.0
 
-red_extradir = $(pkgpythondir)/red_extra
-red_extra_PYTHON = __init__.py
+# FIXME: We are installing libs under $(datadir), which isn't really
+# the right thing to do
 
 red_extraexecdir = $(datadir)/red-carpet/red_extra
+red_extraexec_DATA = __init__.py
 
 red_extraexec_LTLIBRARIES = xxx_red_extra.la
 xxx_red_extra_la_CFLAGS = $(GTK_CFLAGS)
