@@ -1,5 +1,8 @@
 2003-02-28  Jon Trowbridge  <trow@ximian.com>
 
+	* red_summary.py (SummaryComponent.build): Added a "the system
+	is up-to-date" page that gets displayed if there are no updates.
+
 	* red_packagearray.py (PackagesFromDaemon.schedule_refresh): Track
 	the id of the idle handler.
 	(PackagesFromQuery.set_query): Explicitly disconnect any existing

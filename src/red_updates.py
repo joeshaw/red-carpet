@@ -15,11 +15,11 @@
 ### Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###
 
-import gtk
+import string, gtk
 import red_packagearray, red_packageview
 import red_pendingops
 import red_component
-import rcd_util
+import rcd_util, red_pixbuf
 
 from red_gettext import _
 
@@ -43,9 +43,60 @@ class SummaryComponent(red_component.Component):
     def show_in_shortcuts(self):
         return 1
 
+    def __build_no_updates(self):
+
+        img = red_pixbuf.get_widget("verify")
+
+        box = gtk.HBox(0, 0)
+        box.pack_start(gtk.Label(""), expand=1, fill=1)
+        
+        box.pack_start(img, expand=0, fill=1, padding=4)
+
+        msg1 = "<span size=\"large\"><b>%s</b></span>" \
+               % _("The system is up-to-date.")
+        
+        msg2 = _("There are no software upgrades available in any subscribed channels.")
+
+        msg = msg1+"\n"+string.join(rcd_util.linebreak(msg2, width=30), "\n")
+
+        label = gtk.Label("")
+        label.set_markup(msg)
+        box.pack_start(label, expand=0, fill=1, padding=4)
+
+        box.pack_start(gtk.Label(""), expand=1, fill=1)
+
+        frame = gtk.Frame(None)
+        frame.add(box)
+
+        page = gtk.EventBox()
+        page.add(frame)
+
+        style = page.get_style().copy()
+        color = page.get_colormap().alloc_color("white")
+        style.bg[gtk.STATE_NORMAL] = color
+        page.set_style(style)
+
+        page.show_all()
+        page.hide()
+
+        return page
+    
     def build(self):
         self.array = red_packagearray.UpdatedPackages()
         self.connect_array(self.array)
+
+        self.__built = 0
+
+        def updates_changed_cb(array, comp):
+            if not self.__built:
+                return
+            if array.len() == 0:
+                comp.__have_updates.hide()
+                comp.__no_updates.show()
+            else:
+                comp.__have_updates.show()
+                comp.__no_updates.hide()
+        self.array.connect_after("changed", updates_changed_cb, self)
 
         page = gtk.VBox(0, 6)
 
@@ -79,8 +130,17 @@ class SummaryComponent(red_component.Component):
         scrolled.set_shadow_type(gtk.SHADOW_OUT)
         scrolled.add(view)
         scrolled.show_all()
+        scrolled.hide()
 
-        page.pack_start(scrolled, expand=1, fill=1)
+        self.__have_updates = scrolled
+        self.__no_updates = self.__build_no_updates()
+
+        self.__built = 1
+
+        page.pack_start(self.__have_updates, expand=1, fill=1)
+        page.pack_start(self.__no_updates, expand=1, fill=1)
+
+        updates_changed_cb(self.array, self)
 
         return page
 
