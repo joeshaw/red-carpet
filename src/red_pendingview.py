@@ -84,7 +84,15 @@ class PendingView(gtk.Window):
         (width, height) = self.calculate_required_text_size(MAX_LABEL_LEN)
         self.step_label.set_size_request(width, -1)
 
-        textbox.pack_start(self.step_label, 0, 0, 0)
+        viewport = gtk.Viewport()
+        viewport.set_shadow_type(gtk.SHADOW_NONE)
+        viewport.add(self.step_label)
+
+        scrolled = gtk.ScrolledWindow()
+        scrolled.add(viewport)
+        scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        textbox.pack_start(scrolled, expand=1, fill=1)
+
         if label:
             self.set_label(label)
 
