@@ -24,7 +24,7 @@ red_carpetsupport_DATA =	\
 	red_news.py				\
 	red_packagearray.py			\
 	red_packagebook.py			\
-	red_packagebrowser.py			\
+	red_packagepage.py			\
 	red_packagepage_deps.py			\
 	red_packagepage_info.py			\
 	red_packageview.py			\
