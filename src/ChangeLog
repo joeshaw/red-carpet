@@ -1,3 +1,8 @@
+2005-05-20  James Willcox  <james@ximian.com>
+
+	* red_connection.py: try to start /etc/init.d/novell-zmd instead of
+	/etc/init.d/rcd.
+
 2004-11-04  Tambet Ingo  <tambet@ximian.com>
 
 	* red_component.py (Component.message_push): Remove abs(), statusbar is

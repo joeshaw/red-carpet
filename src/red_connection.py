@@ -113,7 +113,7 @@ class StartDaemon:
 
         # LSB compliant distros should have the
         # following
-        self.cmd = "/etc/init.d/rcd"
+        self.cmd = "/etc/init.d/novell-zmd"
         self.args = (self.cmd, "start")
 
     def run(self):
@@ -187,7 +187,7 @@ class StartDaemon:
 
 
 def can_start_daemon():
-    return os.geteuid() == 0 and os.path.exists("/etc/init.d/rcd")
+    return os.geteuid() == 0 and os.path.exists("/etc/init.d/novell-zmd")
 
 def start_daemon():
     dialog = gtk.MessageDialog(None,
