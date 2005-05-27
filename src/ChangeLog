@@ -1,5 +1,10 @@
 2005-05-27  Tambet Ingo  <tambet@ximian.com>
 
+	* red_services.py (ServiceAddWindow): Refactor code to it's own class.
+	(ServiceTypesOption): Implement. Provides combo box filled with
+	available service types.
+	(ServicesWindow.add_service): Use the nice ServiceAddWindow class.
+
 	* red_about.py: Update copyright.
 
 	* red_main.py: Update copyright, application name.

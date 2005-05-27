@@ -82,6 +82,44 @@ class ServicesModel(red_listmodel.ListModel,
             me.__services = rcd_util.get_all_services()
         self.changed(refresh_cb)
 
+class ServiceAddWindow(gtk.Dialog):
+
+    def __init__(self):
+        gtk.Dialog.__init__(self, _("Add Service"))
+        self.build()
+
+    def build(self):
+        ## self.set_has_separator(0)
+
+        table = gtk.Table(rows=3, columns=2)
+        table.set_border_width(5)
+        table.set_col_spacings(5)
+        table.set_row_spacings(5)
+
+        label = gtk.Label(_("Service URL"))
+        table.attach(label, 0, 1, 0, 1)
+
+        self.url = gtk.Entry()
+        table.attach(self.url, 1, 2, 0, 1)
+
+        label = gtk.Label(_("Service type"))
+        table.attach(label, 0, 1, 1, 2)
+
+        self.service_type = ServiceTypesOption()
+        table.attach(self.service_type, 1, 2, 1, 2)
+
+        label = gtk.Label(_("Registration key"))
+        table.attach(label, 0, 1, 2, 3)
+
+        self.key = gtk.Entry()
+        table.attach(self.key, 1, 2, 2, 3)
+
+        table.show_all()
+        self.vbox.pack_start(table, expand=1, fill=1, padding=12)
+
+        self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        self.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+
 class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
 
     def __init__(self):
@@ -202,67 +240,34 @@ class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
         th.connect("ready", remove_service_cb, self)
 
     def add_service(self):
-        def get_url_cb(b, w, e):
-            def service_added_cb (th, parent):
-                if th.is_cancelled():
-                    return
 
-                try:
-                    th.get_result()
-                except ximian_xmlrpclib.Fault, f:
-                    rcd_util.dialog_from_fault(f)
-                    return
-                else:
-                    parent.busy_start()
-                    
-            w.destroy()
-
-            url = e.get_text()
-
-            server = rcd_util.get_server_proxy()
+        def service_added_cb (th, parent):
+            if th.is_cancelled():
+                return
 
             try:
-                th = server.rcd.service.add(url)
+                th.get_result()
+            except ximian_xmlrpclib.Fault, f:
+                rcd_util.dialog_from_fault(f)
+                return
+            else:
+                parent.busy_start()
+
+        win = ServiceAddWindow()
+        response = win.run()
+        if response == gtk.RESPONSE_OK:
+            server = rcd_util.get_server_proxy()
+            try:
+                th = server.rcd.service.add(win.service_type.get_service_id(),
+                                            win.url.get_text(),
+                                            win.key.get_text())
             except ximian_xmlrpclib.Fault, f:
                 rcd_util.dialog_from_fault(f)
                 return
 
             rcd_util.server_proxy_dialog(th, callback=service_added_cb,
                                          user_data=self, parent=self)
-        
-        win = gtk.Dialog(_("Add Service"))
-        win.set_has_separator(0)
-
-        hbox = gtk.HBox(0, 6)
-
-        label = gtk.Label(_("Service URL"))
-        hbox.pack_start(label)
-
-        entry = gtk.Entry()
-        entry.set_activates_default(1)
-        hbox.pack_start(entry)
-
-        hbox.show_all()
-        win.vbox.pack_start(hbox)
-
-        button = win.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
-        button.connect("clicked", lambda x,y:y.destroy(), win)
-
-        button = win.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
-        button.grab_default()
-        button.connect("clicked", get_url_cb, win, entry)
-        button.set_sensitive(0)
-
-        def changed_cb(e, b):
-            if string.strip(e.get_text()):
-                b.set_sensitive(1)
-            else:
-                b.set_sensitive(0)
-
-        entry.connect("changed", changed_cb, button)
-
-        win.set_transient_for(self)
-        win.show()
+        win.destroy()
 
     def busy_start(self):
         self.__busy = 1
@@ -345,6 +350,83 @@ gobject.type_register(ServicesOption)
 
 gobject.signal_new("selected",
                    ServicesOption,
+                   gobject.SIGNAL_RUN_LAST,
+                   gobject.TYPE_NONE,
+                   (gobject.TYPE_STRING,))
+
+class ServiceTypesOption(gtk.OptionMenu, red_serverlistener.ServerListener):
+
+    def __init__(self):
+        gobject.GObject.__init__(self)
+        red_serverlistener.ServerListener.__init__(self)
+
+        self.build()
+        self.__last_id = None
+
+    def build(self):
+        self.item_id_list = []
+        
+        menu = gtk.Menu()
+
+        server = rcd_util.get_server()
+        services = server.rcd.service.list_types()
+
+        services.sort(lambda x,y:cmp(string.lower(x["alias"]),
+                                     string.lower(y["alias"])))
+
+        for s in services:
+            self.item_id_list.append(s["alias"])
+            
+            item = gtk.MenuItem(s["name"])
+            item.show()
+
+            def activate_cb(item, id, opt):
+                if id != self.__last_id:
+                    opt.__last_id = id
+                    opt.emit("selected", id)
+
+            item.connect("activate", activate_cb, s["alias"], self)
+
+            menu.append(item)
+
+        menu.show()
+        self.set_menu(menu)
+
+        ## Let's try to advertise zenworks.
+        for id in self.item_id_list:
+            if id == "zenworks":
+                self.set_service_by_id(id)
+                break
+
+
+    def get_service_id(self):
+        h = self.get_history()
+        if h < 0:
+            return None
+        return self.item_id_list[h]
+
+    def set_service_by_id(self, id):
+        if not id in self.item_id_list:
+            print "Unknown service '%s'" % id
+            assert 0
+
+        i = self.item_id_list.index(id)
+        self.set_history(i)
+
+    ###
+    ### ServerListener methods
+    ###
+
+    def channels_changed(self):
+        id = self.get_service_id()
+        self.build()
+        if id is not None and id in self.item_id_list:
+            self.set_service_by_id(id)
+
+gobject.type_register(ServiceTypesOption)
+
+gobject.signal_new("selected",
+                   ServiceTypesOption,
                    gobject.SIGNAL_RUN_LAST,
                    gobject.TYPE_NONE,
                    (gobject.TYPE_STRING,))
