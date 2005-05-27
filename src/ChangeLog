@@ -1,3 +1,10 @@
+2005-05-27  Tambet Ingo  <tambet@ximian.com>
+
+	* red_packagebook.py (show_package_info): Fix a typo.
+
+	* red_prefs.py (PrefsViewPage_Cache.build): Some preferences got
+	renamed fix that.
+
 2005-05-20  James Willcox  <james@ximian.com>
 
 	* red_connection.py: try to start /etc/init.d/novell-zmd instead of

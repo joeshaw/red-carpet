@@ -171,7 +171,7 @@ class PrefsViewPage_General(PrefsViewPage):
         label = gtk.Label(_("Interval to refresh channel data (in hours):"))
         hbox.pack_start(label, expand=0, fill=0)
 
-        refresh_spin = self.create_spinbutton("heartbeat-interval",
+        refresh_spin = self.create_spinbutton("refresh-interval",
                                               (1, 24),
                                               lambda x:x / 3600 or 1,
                                               lambda x:x * 3600)
@@ -319,7 +319,7 @@ class PrefsViewPage_Cache(PrefsViewPage):
         label.set_alignment(0.0, 0.5)
         hbox.pack_start(label, expand=0, fill=1)
 
-        self.cache_age_spin = self.create_spinbutton("cache-max-age-in-days",
+        self.cache_age_spin = self.create_spinbutton("max-cache-age",
                                                      (0, 1460))
         hbox.pack_start(self.cache_age_spin, expand=0, fill=1)
 
