@@ -1,5 +1,8 @@
 2005-05-27  Tambet Ingo  <tambet@ximian.com>
 
+	* red_searchbox.py (SearchBox.get_query): Query "language" doesn't work
+	with channels anymore, switch to "catalog".
+
 	* red_services.py (ServiceAddWindow): Refactor code to it's own class.
 	(ServiceTypesOption): Implement. Provides combo box filled with
 	available service types.

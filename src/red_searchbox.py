@@ -435,7 +435,7 @@ class SearchBox(gtk.VBox):
         else:
             channel_id = self.__ch_opt.get_channel_id()
             if red_channeloption.is_valid_channel(channel_id):
-                query.append(["channel", "is", channel_id])
+                query.append(["catalog", "is", channel_id])
 
         return query
     
