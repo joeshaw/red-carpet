@@ -17,9 +17,10 @@
 
 import getpass, os, string, sys, time, threading, gtk
 
-red_name      = "Red Carpet"
+red_name      = "ZENworks Linux Management Update Client"
 red_version   = None
-red_copyright = "2002-2003"
+red_copyright = u"Copyright \u00a9 2002-2003 Ximian, Inc.\n" + \
+                u"Copyright \u00a9 2005 Novell, Inc."
 debug         = os.getenv("RC_GUI_DEBUG")
 
 help_path     = None
@@ -92,8 +93,8 @@ def main(version):
     global red_version
     red_version = version
     
-    print "Red Carpet Client %s" % version
-    print "Copyright (C) 2002-2003 Ximian Inc."
+    print "%s %s" % (red_name, version)
+    print red_copyright
     print
 
     argv = sys.argv[1:]
