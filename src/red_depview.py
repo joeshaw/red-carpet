@@ -44,7 +44,7 @@ class DepView(red_extra.ListView):
         sel = self.get_selection()
         sel.set_mode(gtk.SELECTION_NONE)
 
-        col = gtk.TreeViewColumn(_("Channel"), gtk.CellRendererPixbuf(), pixbuf=0)
+        col = gtk.TreeViewColumn(_("Catalog"), gtk.CellRendererPixbuf(), pixbuf=0)
         self.append_column(col)
 
         col = gtk.TreeViewColumn(_("Package"), gtk.CellRendererText(), markup=1)

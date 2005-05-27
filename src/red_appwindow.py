@@ -448,8 +448,8 @@ class AppWindow(gtk.Window,
 
         bar.append_space()
 
-        bar.subs = bar.add(text=_("Channels"),
-                           tooltip=_("Change your channel subscriptions"),
+        bar.subs = bar.add(text=_("Catalogs"),
+                           tooltip=_("Change your catalog subscriptions"),
                            pixbuf=red_pixbuf.get_pixbuf("channels-24"),
                            callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow))
 
@@ -458,7 +458,7 @@ class AppWindow(gtk.Window,
             return comp.run_sensitized()
 
         bar.refresh = bar.add(text=_("Refresh"),
-                              tooltip=_("Refresh channel data"),
+                              tooltip=_("Refresh catalog data"),
                               stock = gtk.STOCK_REFRESH,
                               sensitive_fn=verify_and_refresh_sensitive_cb,
                               callback=lambda x:rcd_util.refresh(self))
@@ -597,7 +597,7 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("superuser")
 
         bar.add("/%s/%s" % (file_str, _("_Mount Directory...")),
-                description=_("Mount a directory as a channel"),
+                description=_("Mount a directory as a catalog"),
                 callback=mount_callback,
                 sensitive_fn=mount_sensitive_fn,
                 accelerator="<Control>M")
@@ -672,8 +672,8 @@ class AppWindow(gtk.Window,
                 callback=lambda x:self.open_or_raise_window(red_services.ServicesWindow),
                 accelerator="<Control>E")
 
-        bar.add("/%s/%s" % (edit_str, _("Channel _Subscriptions...")),
-                description=_("Edit your channel subscriptions"),
+        bar.add("/%s/%s" % (edit_str, _("Catalog _Subscriptions...")),
+                description=_("Edit your catalog subscriptions"),
                 callback=lambda x:self.open_or_raise_window(red_subscriptions.SubscriptionsWindow),
                 pixbuf=red_pixbuf.get_pixbuf("channels-16"),
                 accelerator="<Control>B")
@@ -707,8 +707,8 @@ class AppWindow(gtk.Window,
                 checked_get=red_searchbox.show_advanced_get,
                 checked_set=red_searchbox.show_advanced_set)
 
-        bar.add("/%s/%s" % (view_str, _("_Channel Names")),
-                description=_("Hide or show channel names in package lists"),
+        bar.add("/%s/%s" % (view_str, _("_Catalog Names")),
+                description=_("Hide or show catalog names in package lists"),
                 checked_get=red_packageview.show_channel_names_get,
                 checked_set=red_packageview.show_channel_names_set)
 
@@ -804,8 +804,8 @@ class AppWindow(gtk.Window,
         image = gtk.Image()
         image.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
 
-        bar.add("/%s/%s" % (actions_str, _("Re_fresh Channel Data")),
-                description=_("Download latest channel data"),
+        bar.add("/%s/%s" % (actions_str, _("Re_fresh Catalog Data")),
+                description=_("Download latest catalog data"),
                 image=image,
                 callback=rcd_util.refresh,
                 sensitive_fn=verify_and_refresh_sensitive_cb,

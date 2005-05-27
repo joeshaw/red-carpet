@@ -484,9 +484,9 @@ def refresh(parent):
         
         import red_pendingview
 
-        pend = red_pendingview.PendingView_Simple(title=_("Refreshing channel data"),
+        pend = red_pendingview.PendingView_Simple(title=_("Refreshing catalog data"),
                                                   parent=parent)
-        pend.set_label(_("Downloading channel information"))
+        pend.set_label(_("Downloading catalog information"))
         pend.set_icon("dialog-refreshing")
         pend.show_all()
         pend.set_pending_list(stuff_to_poll)

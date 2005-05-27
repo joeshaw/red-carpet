@@ -168,7 +168,7 @@ class PrefsViewPage_General(PrefsViewPage):
         hbox = gtk.HBox(spacing=6)
         vbox.pack_start(hbox, expand=0, fill=0)
 
-        label = gtk.Label(_("Interval to refresh channel data (in hours):"))
+        label = gtk.Label(_("Interval to refresh catalog data (in hours):"))
         hbox.pack_start(label, expand=0, fill=0)
 
         refresh_spin = self.create_spinbutton("refresh-interval",

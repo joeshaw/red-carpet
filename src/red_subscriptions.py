@@ -61,7 +61,7 @@ class SubscriptionsView(gtk.ScrolledWindow):
         view.append_column(col)
 
         col = gtk.TreeViewColumn()
-        col.set_title(_("Channel Name"))
+        col.set_title(_("Catalog Name"))
         r1 = gtk.CellRendererPixbuf()
         r2 = gtk.CellRendererText()
         col.pack_start(r1, 0)
@@ -75,7 +75,7 @@ class SubscriptionsView(gtk.ScrolledWindow):
 class SubscriptionsWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, _("%s Channel Subscriptions") % red_main.red_name)
+        gtk.Dialog.__init__(self, _("%s Catalog Subscriptions") % red_main.red_name)
         self.set_default_size(500, 300)
 
         view = SubscriptionsView()
@@ -98,7 +98,7 @@ def show_sub_privs_dialog():
                                     gtk.BUTTONS_OK,
                                     _("You do not have permission to "
                                     "subscribe or unsubscribe from "
-                                    "channels.  You will be unable "
+                                    "catalogs.  You will be unable "
                                     "to make any changes to the "
                                     "subscriptions."))
 

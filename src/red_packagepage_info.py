@@ -92,7 +92,7 @@ _info_rows = (
     (_("Release"),        TYPE_TEXT,   pkg_element,      "release",        NO_SPAN),
     (_("Package Size"),   TYPE_TEXT,   pkg_size,         "file_size",      NO_SPAN),
     (_("Installed Size"), TYPE_TEXT,   pkg_size,         "installed_size", NO_SPAN),
-    (_("Channel"),        TYPE_WIDGET, pkg_channel,      "channel",        NO_SPAN),
+    (_("Catalog"),        TYPE_WIDGET, pkg_channel,      "channel",        NO_SPAN),
     (_("Section"),        TYPE_WIDGET, pkg_section,      "section",        NO_SPAN),
     (_("Summary"),        TYPE_TEXT,   pkg_info_element, "summary",        NO_SPAN),
     (_("Description"),    TYPE_WIDGET, pkg_description,  "description",    SPAN),

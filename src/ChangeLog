@@ -1,5 +1,7 @@
 2005-05-27  Tambet Ingo  <tambet@ximian.com>
 
+	* s/channel/catalog/gi for all UI strings.
+
 	* red_packagebook.py (show_package_info): Fix a typo.
 
 	* red_prefs.py (PrefsViewPage_Cache.build): Some preferences got

@@ -61,17 +61,17 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
                                      string.lower(y["name"])))
 
         if self.__allow_any_channel:
-            channels.insert(0, {"name": _("All Channels"),
+            channels.insert(0, {"name": _("All Catalogs"),
                                 "id": MATCH_ANY_CHANNEL})
 
         if self.__allow_any_subd_channel:
             channels.insert(0,
-                            {"name": _("All Subscribed Channels"),
+                            {"name": _("All Subscribed Catalogs"),
                              "id": MATCH_ANY_SUBD_CHANNEL,
                              "subscribed": 1})
 
         if self.__allow_no_channel:
-            channels.append({"name": _("No Channel/Unknown Channel"),
+            channels.append({"name": _("No Catalog/Unknown Catalog"),
                              "id": MATCH_NO_CHANNEL})
 
         width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
@@ -134,7 +134,7 @@ class ChannelOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 
     def set_channel_by_id(self, id):
         if not id in self.item_id_list:
-            print "Unknown channel '%s'" % id
+            print "Unknown catalog '%s'" % id
             assert 0
 
         i = self.item_id_list.index(id)

@@ -364,7 +364,7 @@ class PackageView(red_thrashingtreeview.TreeView):
         return col
 
     def append_channel_column(self,
-                              column_title=_("Channel"),
+                              column_title=_("Catalog"),
                               show_channel_icon=1,
                               show_channel_name=1,
                               optionally_show_channel_name=0):

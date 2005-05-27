@@ -138,11 +138,11 @@ class FileEntry(gtk.HBox):
 class MountWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, _("Mount channel"))
+        gtk.Dialog.__init__(self, _("Mount catalog"))
         self.build()
         
     def build(self):
-        frame = gtk.Frame(_("Mount a directory as channel"))
+        frame = gtk.Frame(_("Mount a directory as catalog"))
         frame.set_border_width(5)
 
         table = gtk.Table(3, 2)
@@ -150,7 +150,7 @@ class MountWindow(gtk.Dialog):
         table.set_col_spacings(5)
         table.set_row_spacings(5)
 
-        l = gtk.Label(_("Channel Name:"))
+        l = gtk.Label(_("Catalog Name:"))
         l.set_alignment(0, 0.5)
         table.attach(l, 0, 1, 0, 1)
 
@@ -190,7 +190,7 @@ class MountWindow(gtk.Dialog):
         if not path:
             dialog = gtk.MessageDialog(self, 0, gtk.MESSAGE_ERROR,
                                        gtk.BUTTONS_OK,
-                                       _("Please choose the path for channel."))
+                                       _("Please choose the path for catalog."))
             dialog.run()
             dialog.destroy()
             return
@@ -211,7 +211,7 @@ class UnmountWindow(gtk.Dialog):
 
     def __init__(self):
 
-        gtk.Dialog.__init__(self, _("Unmount Channel"))
+        gtk.Dialog.__init__(self, _("Unmount Catalog"))
 
         self.set_default_size(300, 300)
 
@@ -227,7 +227,7 @@ class UnmountWindow(gtk.Dialog):
         view = red_thrashingtreeview.TreeView(model)
 
         r = gtk.CellRendererText()
-        col = gtk.TreeViewColumn(_("Channel"), r, text=COLUMN_NAME)
+        col = gtk.TreeViewColumn(_("Catalog"), r, text=COLUMN_NAME)
         view.append_column(col)
 
         def toggle_cb(cr, path, mod):

@@ -319,7 +319,7 @@ class SearchBox(gtk.VBox):
         top_row = gtk.HBox(0, 0)
 
         channel_label = gtk.Label("")
-        channel_label.set_markup(_("Channel:"))
+        channel_label.set_markup(_("Catalog:"))
         top_row.pack_start(channel_label, expand=0, fill=0, padding=2)
 
         any_subd = 1
