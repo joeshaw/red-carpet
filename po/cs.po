@@ -1,118 +1,118 @@
 # Czech translation of red-carpet.
-# Copyright (C) 2003, 2004 red carpet'S COPYRIGHT HOLDER
-# Copyright (C) 2003, 2004 Miloslav Trmac <mitr@volny.cz>
+# Copyright (C) 2003, 2004, 2005 red carpet'S COPYRIGHT HOLDER
+# Copyright (C) 2003, 2004, 2005 Miloslav Trmac <mitr@volny.cz>
 # This file is distributed under the same license as the red-carpet package.
-# Miloslav Trmac <mitr@volny.cz>, 2003, 2004.
+# Miloslav Trmac <mitr@volny.cz>, 2003 - 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-04 21:33+0200\n"
-"PO-Revision-Date: 2004-07-05 12:12+0200\n"
+"POT-Creation-Date: 2005-05-29 04:07+0000\n"
+"PO-Revision-Date: 2005-05-29 14:08+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/rcd_util.py:412
+#: ../src/rcd_util.py:426
 msgid "Please wait while getting data."
 msgstr "Počkejte prosím, než získám data."
 
-#: src/rcd_util.py:466 src/rcd_util.py:484
+#: ../src/rcd_util.py:480 ../src/rcd_util.py:498
 msgid "Please ensure that your network settings are correct."
 msgstr "Zkontrolujte prosím, zda jsou vaše nastavení sítě správně."
 
-#: src/rcd_util.py:473
-msgid "Refreshing channel data"
-msgstr "Obnovuji data kanálu"
+#: ../src/rcd_util.py:487
+msgid "Refreshing catalog data"
+msgstr "Obnovuji data katalogu"
 
-#: src/rcd_util.py:475
-msgid "Downloading channel information"
-msgstr "Stahuji informace o kanálu"
+#: ../src/rcd_util.py:489
+msgid "Downloading catalog information"
+msgstr "Stahuji informace o katalogu"
 
-#: src/rcd_util.py:501
+#: ../src/rcd_util.py:515
 msgid "Verifying"
 msgstr "Ověřuji"
 
-#: src/rcd_util.py:502
+#: ../src/rcd_util.py:516
 msgid "Unable to verify package signature for"
 msgstr "Nemohu ověřit podpis balíčku pro"
 
-#: src/rcd_util.py:503
+#: ../src/rcd_util.py:517
 msgid "There is no package signature for"
 msgstr "Chybí podpis balíčku pro"
 
-#: src/rcd_util.py:504
+#: ../src/rcd_util.py:518
 msgid "Preparing Transaction"
 msgstr "Připravuji transakci"
 
-#: src/rcd_util.py:505
+#: ../src/rcd_util.py:519
 msgid "Installing"
 msgstr "Instaluji"
 
-#: src/rcd_util.py:506
+#: ../src/rcd_util.py:520
 msgid "Removing"
 msgstr "Odstraňuji"
 
-#: src/rcd_util.py:507
+#: ../src/rcd_util.py:521
 msgid "Configuring"
 msgstr "Nastavuji"
 
-#: src/red_about.py:41
+#: ../src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "Pro vás od:"
 
-#: src/red_about.py:42
+#: ../src/red_about.py:42
 msgid "With love from:"
 msgstr "S láskou od:"
 
-#: src/red_about.py:43
+#: ../src/red_about.py:43
 msgid "Best wishes from:"
 msgstr "Vše nejlepší od:"
 
-#: src/red_about.py:44
+#: ../src/red_about.py:44
 msgid "Sincerely:"
 msgstr "Vaši:"
 
-#: src/red_about.py:45
+#: ../src/red_about.py:45
 msgid "Developed by chimps:"
 msgstr "Vyvinuto šimpanzi:"
 
-#: src/red_about.py:80
+#: ../src/red_about.py:79
 msgid "Licensed under the GNU General Public License, version 2"
 msgstr "Licencováno pod podmínkami GNU General Public License, verze 2"
 
-#: src/red_activation.py:27
+#: ../src/red_activation.py:27
 msgid "Group Activation"
 msgstr "Aktivace skupiny"
 
-#: src/red_activation.py:44
+#: ../src/red_activation.py:44
 msgid "Service:"
 msgstr "Služba:"
 
-#: src/red_activation.py:48
+#: ../src/red_activation.py:48
 msgid "Email:"
 msgstr "E-mail:"
 
-#: src/red_activation.py:52
+#: ../src/red_activation.py:52
 msgid "Activation Code:"
 msgstr "Aktivační kód:"
 
-#: src/red_activation.py:78
+#: ../src/red_activation.py:78
 msgid "Activate"
 msgstr "Aktivovat"
 
-#: src/red_activation.py:99
+#: ../src/red_activation.py:99
 msgid "Please fill in both email and activation code."
 msgstr "Zadejte prosím jak e-mail, tak aktivační kód."
 
-#: src/red_activation.py:114
+#: ../src/red_activation.py:114
 msgid "Unable to activate"
 msgstr "Nemohu aktivovat"
 
-#: src/red_activation.py:115
+#: ../src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
 "Zkontrolujte prosím, zda jste zadali e-mailovou adresu a aktivační kód "
@@ -120,11 +120,11 @@ msgstr ""
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:92
+#: ../src/red_appwindow.py:93
 msgid "C"
 msgstr "C"
 
-#: src/red_appwindow.py:129
+#: ../src/red_appwindow.py:130
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -132,48 +132,48 @@ msgstr ""
 "Nemohu zobrazit nápovědu, protože soubory nápovědy chybí. Ohlaste to prosím "
 "svému dodavateli."
 
-#: src/red_appwindow.py:139
+#: ../src/red_appwindow.py:140
 msgid ""
 "Unable to show help because there are no applications available to view help."
 msgstr ""
 "Nemohu zobrazit nápovědu, protože pro zobrazení nápovědy nejsou k dispozici "
 "žádné aplikace."
 
-#: src/red_appwindow.py:414
+#: ../src/red_appwindow.py:415
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Jste si jisti, že chcete otevřít %d oken informací o balíčku?"
 
-#: src/red_appwindow.py:442
+#: ../src/red_appwindow.py:443
 msgid "Run Now"
 msgstr "Spustit nyní"
 
-#: src/red_appwindow.py:443
+#: ../src/red_appwindow.py:444
 msgid "Perform installations and removals"
 msgstr "Provést instalace a odebrání"
 
-#: src/red_appwindow.py:450
-msgid "Channels"
-msgstr "Kanály"
+#: ../src/red_appwindow.py:451
+msgid "Catalogs"
+msgstr "Katalogy"
 
-#: src/red_appwindow.py:451
-msgid "Change your channel subscriptions"
-msgstr "Změnit vaše přihlášení ke kanálům"
+#: ../src/red_appwindow.py:452
+msgid "Change your catalog subscriptions"
+msgstr "Změnit vaše přihlášení ke katalogům"
 
-#: src/red_appwindow.py:459
+#: ../src/red_appwindow.py:460
 msgid "Refresh"
 msgstr "Obnovit"
 
-#: src/red_appwindow.py:460
-msgid "Refresh channel data"
-msgstr "Obnovit data o kanálech"
+#: ../src/red_appwindow.py:461
+msgid "Refresh catalog data"
+msgstr "Obnovit data o katalozích"
 
 #. Install
-#: src/red_appwindow.py:471 src/red_packageview.py:232
+#: ../src/red_appwindow.py:472 ../src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Označit pro _instalaci"
 
-#: src/red_appwindow.py:472
+#: ../src/red_appwindow.py:473
 msgid "Mark selected packages for installation"
 msgstr "Označit vybrané balíčky pro _instalaci"
 
@@ -181,285 +181,285 @@ msgstr "Označit vybrané balíčky pro _instalaci"
 #. # Remove Package
 #. #
 #. Remove
-#: src/red_appwindow.py:477 src/red_appwindow.py:778
-#: src/red_packageview.py:245
+#: ../src/red_appwindow.py:478 ../src/red_appwindow.py:779
+#: ../src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Označit pro _odebrání"
 
-#: src/red_appwindow.py:478
+#: ../src/red_appwindow.py:479
 msgid "Mark selected packages for removal"
 msgstr "Označit vybrané balíčky pro _odebrání"
 
 #. Cancel
-#: src/red_appwindow.py:483 src/red_appwindow.py:791
-#: src/red_packageview.py:258
+#: ../src/red_appwindow.py:484 ../src/red_appwindow.py:792
+#: ../src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: src/red_appwindow.py:484
+#: ../src/red_appwindow.py:485
 msgid "Cancel marked package actions"
 msgstr "Zrušit označené akce s balíčky"
 
 #. Info
-#: src/red_appwindow.py:489 src/red_packageview.py:276
+#: ../src/red_appwindow.py:490 ../src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformace"
 
-#: src/red_appwindow.py:490
+#: ../src/red_appwindow.py:491
 msgid "Package information"
 msgstr "Informace o balíčku"
 
-#: src/red_appwindow.py:547
+#: ../src/red_appwindow.py:548
 msgid "_File"
 msgstr "_Soubor"
 
-#: src/red_appwindow.py:548
+#: ../src/red_appwindow.py:549
 msgid "_Edit"
 msgstr "_Upravit"
 
-#: src/red_appwindow.py:549 src/red_appwindow.py:841
+#: ../src/red_appwindow.py:550 ../src/red_appwindow.py:842
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: src/red_appwindow.py:550
+#: ../src/red_appwindow.py:551
 msgid "_Actions"
 msgstr "_Akce"
 
-#: src/red_appwindow.py:551
+#: ../src/red_appwindow.py:552
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: src/red_appwindow.py:559
+#: ../src/red_appwindow.py:560
 msgid "Connect to daemon..."
 msgstr "Připojit se k démonovi..."
 
-#: src/red_appwindow.py:560
+#: ../src/red_appwindow.py:561
 msgid "Connect to a remote daemon"
 msgstr "Připojit se ke vzdálenému démonovi"
 
-#: src/red_appwindow.py:570
+#: ../src/red_appwindow.py:571
 msgid "Install from _File..."
 msgstr "Instalovat ze _souboru..."
 
-#: src/red_appwindow.py:571
+#: ../src/red_appwindow.py:572
 msgid "Install a package from a local file"
 msgstr "Instalovat balíček z místního souboru"
 
-#: src/red_appwindow.py:580
+#: ../src/red_appwindow.py:581
 msgid "Install from _URL..."
 msgstr "Instalovat z _URL..."
 
-#: src/red_appwindow.py:581
+#: ../src/red_appwindow.py:582
 msgid "Install a package from a remote URL"
 msgstr "Instalovat balíček ze vzdáleného URL"
 
-#: src/red_appwindow.py:598
+#: ../src/red_appwindow.py:599
 msgid "_Mount Directory..."
 msgstr "_Připojit adresář..."
 
-#: src/red_appwindow.py:599
-msgid "Mount a directory as a channel"
-msgstr "Připojit adresář jako kanál"
+#: ../src/red_appwindow.py:600
+msgid "Mount a directory as a catalog"
+msgstr "Připojit adresář jako katalog"
 
-#: src/red_appwindow.py:615
+#: ../src/red_appwindow.py:616
 msgid "U_nmount Directory..."
 msgstr "O_dpojit adresář..."
 
-#: src/red_appwindow.py:616
+#: ../src/red_appwindow.py:617
 msgid "Unmount a directory"
 msgstr "Odpojit adresář"
 
-#: src/red_appwindow.py:632
+#: ../src/red_appwindow.py:633
 msgid "_Activate..."
 msgstr "_Aktivovat..."
 
-#: src/red_appwindow.py:633
+#: ../src/red_appwindow.py:634
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
 msgstr ""
 "Aktivovat démona vůči serveru Red Carpet Express nebo Red Carpet Enterprise"
 
-#: src/red_appwindow.py:639
+#: ../src/red_appwindow.py:640
 msgid "Quit"
 msgstr "Ukončit"
 
-#: src/red_appwindow.py:640
+#: ../src/red_appwindow.py:641
 msgid "Quit Red Carpet"
 msgstr "Ukončit Red Carpet"
 
-#: src/red_appwindow.py:655
+#: ../src/red_appwindow.py:656
 msgid "Select _All"
 msgstr "Vybrat _vše"
 
-#: src/red_appwindow.py:656
+#: ../src/red_appwindow.py:657
 msgid "Select all items"
 msgstr "Vybrat všechny položky"
 
-#: src/red_appwindow.py:661
+#: ../src/red_appwindow.py:662
 msgid "Select _None"
 msgstr "Nevybrat _nic"
 
-#: src/red_appwindow.py:662
+#: ../src/red_appwindow.py:663
 msgid "Deselect all items"
 msgstr "Zrušit výběr všech položek"
 
-#: src/red_appwindow.py:669
+#: ../src/red_appwindow.py:670
 msgid "Services..."
 msgstr "Služby..."
 
-#: src/red_appwindow.py:670
+#: ../src/red_appwindow.py:671
 msgid "Edit services"
 msgstr "Upravit služby"
 
-#: src/red_appwindow.py:674
-msgid "Channel _Subscriptions..."
-msgstr "_Přihlášení ke kanálům..."
+#: ../src/red_appwindow.py:675
+msgid "Catalog _Subscriptions..."
+msgstr "_Přihlášení ke katalogům..."
 
-#: src/red_appwindow.py:675
-msgid "Edit your channel subscriptions"
-msgstr "Upravte své přihlášení ke kanálům"
+#: ../src/red_appwindow.py:676
+msgid "Edit your catalog subscriptions"
+msgstr "Upravte své přihlášení ke katalogům"
 
-#: src/red_appwindow.py:680
+#: ../src/red_appwindow.py:681
 msgid "_Preferences..."
 msgstr "_Nastavení..."
 
-#: src/red_appwindow.py:681
+#: ../src/red_appwindow.py:682
 msgid "Edit your Red Carpet preferences"
 msgstr "Upravte svá nastavení Red Carpet"
 
-#: src/red_appwindow.py:685
+#: ../src/red_appwindow.py:686
 msgid "_Users..."
 msgstr "_Uživatelé..."
 
-#: src/red_appwindow.py:686
+#: ../src/red_appwindow.py:687
 msgid "Edit user permissions for this daemon"
 msgstr "Upravit oprávnění uživatelů pro tohoto démona"
 
-#: src/red_appwindow.py:699
+#: ../src/red_appwindow.py:700
 msgid "_Sidebar"
 msgstr "_Boční lišta"
 
-#: src/red_appwindow.py:700
+#: ../src/red_appwindow.py:701
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Zobrazit nebo skrýt boční lištu Čekající akce"
 
-#: src/red_appwindow.py:704
+#: ../src/red_appwindow.py:705
 msgid "_Advanced Search Options"
 msgstr "_Pokročilé možnosti hledání"
 
-#: src/red_appwindow.py:705
+#: ../src/red_appwindow.py:706
 msgid "Hide or show advanced search options"
 msgstr "Skrýt nebo zobrazit pokročilé možnosti hledání"
 
-#: src/red_appwindow.py:709
-msgid "_Channel Names"
-msgstr "Názvy _kanálů"
+#: ../src/red_appwindow.py:710
+msgid "_Catalog Names"
+msgstr "Názvy _katalogů"
 
-#: src/red_appwindow.py:710
-msgid "Hide or show channel names in package lists"
-msgstr "Zobrazit nebo skrýt názvy kanálů v seznamech balíčků"
+#: ../src/red_appwindow.py:711
+msgid "Hide or show catalog names in package lists"
+msgstr "Zobrazit nebo skrýt názvy katalogů v seznamech balíčků"
 
-#: src/red_appwindow.py:716
+#: ../src/red_appwindow.py:717
 msgid "Package _Information..."
 msgstr "_Informace o balíčcích..."
 
-#: src/red_appwindow.py:717
+#: ../src/red_appwindow.py:718
 msgid "View information about currently selected packages"
 msgstr "Zobrazit informace o momentálně vybraných balíčcích"
 
-#: src/red_appwindow.py:725
+#: ../src/red_appwindow.py:726
 msgid "_Daemon Information..."
 msgstr "Informace o _démonovi..."
 
-#: src/red_appwindow.py:726
+#: ../src/red_appwindow.py:727
 msgid "View information about this daemon"
 msgstr "Zobrazit informace o tomto démonovi"
 
-#: src/red_appwindow.py:728
+#: ../src/red_appwindow.py:729
 msgid "Red Carpet Ne_ws..."
 msgstr "_Novinky Red Carpet..."
 
-#: src/red_appwindow.py:729
+#: ../src/red_appwindow.py:730
 msgid "View the latest Red Carpet news"
 msgstr "Zobrazit nejnovější zprávy o Red Carpet"
 
-#: src/red_appwindow.py:741
+#: ../src/red_appwindow.py:742
 msgid "Run _Now"
 msgstr "Spustit _nyní"
 
-#: src/red_appwindow.py:742
+#: ../src/red_appwindow.py:743
 msgid "Run the current transaction"
 msgstr "Spustit aktuální transakci"
 
-#: src/red_appwindow.py:756
+#: ../src/red_appwindow.py:757
 msgid "_Verify System Dependencies"
 msgstr "Ověřit systémové závislosti"
 
-#: src/red_appwindow.py:757
+#: ../src/red_appwindow.py:758
 msgid "Verify that all system dependencies are met"
 msgstr "Ověřit, že všechny systémové závislosti jsou splněny"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:768
+#: ../src/red_appwindow.py:769
 msgid "Mark for I_nstallation"
 msgstr "Označit pro i_nstalaci"
 
-#: src/red_appwindow.py:769
+#: ../src/red_appwindow.py:770
 msgid "Mark this package for installation"
 msgstr "Označit tento balíček pro instalaci"
 
-#: src/red_appwindow.py:779
+#: ../src/red_appwindow.py:780
 msgid "Mark this package for removal"
 msgstr "Označit tento balíček pro odebrání"
 
-#: src/red_appwindow.py:792
+#: ../src/red_appwindow.py:793
 msgid "Cancel installation or removal mark"
 msgstr "Zrušit označení pro instalaci nebo odebrání"
 
-#: src/red_appwindow.py:806
-msgid "Re_fresh Channel Data"
-msgstr "_Obnovit data o kanálu"
+#: ../src/red_appwindow.py:807
+msgid "Re_fresh Catalog Data"
+msgstr "_Obnovit data o katalogu"
 
-#: src/red_appwindow.py:807
-msgid "Download latest channel data"
-msgstr "Stáhnout nejnovější data o kanálu"
+#: ../src/red_appwindow.py:808
+msgid "Download latest catalog data"
+msgstr "Stáhnout nejnovější data o katalogu"
 
-#: src/red_appwindow.py:816
+#: ../src/red_appwindow.py:817
 msgid "_Contents"
 msgstr "_Obsah"
 
-#: src/red_appwindow.py:817
+#: ../src/red_appwindow.py:818
 msgid "View Red Carpet help"
 msgstr "Zobrazit nápovědu o Red Carpet"
 
-#: src/red_appwindow.py:822
+#: ../src/red_appwindow.py:823
 msgid "_About..."
 msgstr "O _aplikaci..."
 
-#: src/red_appwindow.py:823
+#: ../src/red_appwindow.py:824
 msgid "About Red Carpet"
 msgstr "O Red Carpet"
 
-#: src/red_appwindow.py:842
+#: ../src/red_appwindow.py:843
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Jít na stránku '%s'"
 
-#: src/red_channeloption.py:64
-msgid "All Channels"
-msgstr "Všechny kanály"
+#: ../src/red_channeloption.py:64
+msgid "All Catalogs"
+msgstr "Všechny katalogy"
 
-#: src/red_channeloption.py:69
-msgid "All Subscribed Channels"
-msgstr "Všechny přihlášené kanály"
+#: ../src/red_channeloption.py:69
+msgid "All Subscribed Catalogs"
+msgstr "Všechny přihlášené katalogy"
 
-#: src/red_channeloption.py:74
-msgid "No Channel/Unknown Channel"
-msgstr "Žádný kanál/neznámý kanál"
+#: ../src/red_channeloption.py:74
+msgid "No Catalog/Unknown Catalog"
+msgstr "Žádný katalog/neznámý katalog"
 
-#: src/red_connection.py:49
+#: ../src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -468,7 +468,7 @@ msgstr ""
 "Nemohu se připojit k démonovi:\n"
 " '%s'."
 
-#: src/red_connection.py:67
+#: ../src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -477,7 +477,7 @@ msgstr ""
 "Detekován démon Red Carpet verze %d.%d.%d.\n"
 "Je vyžadována verze %d.%d.%d (nebo novější)"
 
-#: src/red_connection.py:93
+#: ../src/red_connection.py:93
 #, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
@@ -486,11 +486,11 @@ msgstr ""
 "Detekována verze protokolu %d. Je vyžadována verze %d. Musíte aktualizovat "
 "svou verzi rcd."
 
-#: src/red_connection.py:123
+#: ../src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Spouštím démona..."
 
-#: src/red_connection.py:197
+#: ../src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -498,884 +498,893 @@ msgstr ""
 "Red Carpet vyžaduje běžícího démona Red Carpet.\n"
 "Chcete jej nyní spustit?"
 
-#: src/red_connection.py:345
+#: ../src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Připojit se k tomuto systému"
 
-#: src/red_connection.py:349
+#: ../src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Připojit se ke vzdálenému systému"
 
-#: src/red_connection.py:357
+#: ../src/red_connection.py:357
 msgid "Server:"
 msgstr "Server:"
 
-#: src/red_connection.py:361 src/red_users.py:389
+#: ../src/red_connection.py:361 ../src/red_users.py:389
 msgid "User name:"
 msgstr "Jméno uživatele:"
 
-#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
-#: src/red_users.py:395
+#: ../src/red_connection.py:365 ../src/red_prefs.py:237
+#: ../src/red_users.py:192 ../src/red_users.py:395
 msgid "Password:"
 msgstr "Heslo:"
 
-#: src/red_connection.py:401
+#: ../src/red_connection.py:401
 msgid "Connect"
 msgstr "Připojit"
 
-#: src/red_console.py:50
+#: ../src/red_console.py:50
 msgid "Red Carpet Error Console"
 msgstr "Konzola chyb Red Carpet"
 
-#: src/red_deaddaemon.py:35
+#: ../src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
 msgstr "Připojení k démonovi obnoveno.\n"
 
-#: src/red_deaddaemon.py:68
+#: ../src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
 msgstr "Ztracen kontakt s démonem!"
 
-#: src/red_deaddaemon.py:69
+#: ../src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
 msgstr "Ukončit Red Carpet"
 
-#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
+#: ../src/red_depcomponent.py:75 ../src/red_depcomponent.py:403
 msgid "Dependency Resolution"
 msgstr "Řešení závislostí"
 
-#: src/red_depcomponent.py:122
+#: ../src/red_depcomponent.py:125
 msgid "Verifying System"
 msgstr "Ověřuji systém"
 
-#: src/red_depcomponent.py:128
+#: ../src/red_depcomponent.py:137
 msgid "Resolving Dependencies"
 msgstr "Řeším závislosti"
 
-#: src/red_depcomponent.py:150
+#: ../src/red_depcomponent.py:159
 msgid ""
 "You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Před instalací tohoto software musíte souhlasit s licencemi, které se tohoto "
 "software týkají."
 
-#: src/red_depcomponent.py:194
+#: ../src/red_depcomponent.py:203
 msgid "I Agree"
 msgstr "Souhlasím"
 
-#: src/red_depcomponent.py:288
+#: ../src/red_depcomponent.py:308
 msgid "Dependency Resolution Failed"
 msgstr "Řešení závislostí selhalo"
 
-#: src/red_depcomponent.py:338
+#: ../src/red_depcomponent.py:358
 msgid "System Verified"
 msgstr "Systém ověřen"
 
-#: src/red_depcomponent.py:340
+#: ../src/red_depcomponent.py:360
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
 msgstr ""
 "Všechny závislosti balíčků jsou splněny a nejsou potřeba žádné opravné akce."
 
-#: src/red_depcomponent.py:394
+#: ../src/red_depcomponent.py:414
 msgid "Requested Installations"
 msgstr "Vyžadované instalace"
 
-#: src/red_depcomponent.py:398
+#: ../src/red_depcomponent.py:418
 msgid "Requested Removals"
 msgstr "Vyžadovaná odebrání"
 
-#: src/red_depcomponent.py:402
+#: ../src/red_depcomponent.py:422
 msgid "Required Installations"
 msgstr "Vyžadované instalace"
 
-#: src/red_depcomponent.py:406
+#: ../src/red_depcomponent.py:426
 msgid "Required Removals"
 msgstr "Vyžadovaná odebrání"
 
-#: src/red_depcomponent.py:432
+#: ../src/red_depcomponent.py:452
 msgid "Continue"
 msgstr "Pokračovat"
 
-#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
-#: src/red_packageview.py:367
-msgid "Channel"
-msgstr "Kanál"
+#: ../src/red_depview.py:47 ../src/red_mount.py:230
+#: ../src/red_packagepage_info.py:95 ../src/red_packageview.py:367
+msgid "Catalog"
+msgstr "Katalog"
 
-#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
+#: ../src/red_depview.py:50 ../src/red_history.py:305
+#: ../src/red_packageview.py:423
 msgid "Package"
 msgstr "Balíček"
 
-#: src/red_depview.py:53 src/red_packageview.py:462
+#: ../src/red_depview.py:53 ../src/red_packageview.py:462
 msgid "Current Version"
 msgstr "Aktuální verze"
 
-#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
-#: src/red_updates.py:94
+#: ../src/red_depview.py:56 ../src/red_history.py:307
+#: ../src/red_history.py:440 ../src/red_updates.py:94
 msgid "New Version"
 msgstr "Nová verze"
 
-#: src/red_depview.py:59 src/red_packageview.py:498
+#: ../src/red_depview.py:59 ../src/red_packageview.py:498
 msgid "Size"
 msgstr "Velikost"
 
-#: src/red_history.py:113 src/red_users.py:30
+#: ../src/red_history.py:114 ../src/red_users.py:30
 msgid "All"
 msgstr "Vše"
 
-#: src/red_history.py:114
+#: ../src/red_history.py:115
 msgid "Installations"
 msgstr "Instalace"
 
-#: src/red_history.py:115
+#: ../src/red_history.py:116
 msgid "Removals"
 msgstr "Odebrání"
 
-#: src/red_history.py:116
+#: ../src/red_history.py:117
 msgid "Upgrades"
 msgstr "Aktualizace"
 
-#: src/red_history.py:121
+#: ../src/red_history.py:122
 msgid "User:"
 msgstr "Uživatel:"
 
-#: src/red_history.py:127
+#: ../src/red_history.py:128
 msgid "Timeframe (days):"
 msgstr "Rozsah času (dny):"
 
-#: src/red_history.py:279
+#: ../src/red_history.py:280
 msgid "Searching..."
 msgstr "Hledám..."
 
-#: src/red_history.py:301 src/red_history.py:435
+#: ../src/red_history.py:302 ../src/red_history.py:436
 msgid "Time"
 msgstr "Čas"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
+#: ../src/red_history.py:303 ../src/red_history.py:437
+#: ../src/red_packageview.py:330
 msgid "Action"
 msgstr "Akce"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
+#: ../src/red_history.py:304 ../src/red_history.py:438 ../src/red_users.py:113
 msgid "User"
 msgstr "Uživatel"
 
-#: src/red_history.py:305 src/red_history.py:438
+#: ../src/red_history.py:306 ../src/red_history.py:439
 msgid "Old Version"
 msgstr "Stará verze"
 
-#: src/red_history.py:336 src/red_packagepage.py:45
+#: ../src/red_history.py:337 ../src/red_packagepage.py:45
 msgid "History"
 msgstr "Historie"
 
-#: src/red_history.py:339
+#: ../src/red_history.py:340
 msgid "_History"
 msgstr "_Historie"
 
-#: src/red_history.py:383
+#: ../src/red_history.py:384
 msgid "No results found."
 msgstr "Nenalezeny žádné výsledky."
 
-#: src/red_installfiles.py:82 src/red_installfiles.py:142
+#: ../src/red_installfiles.py:80 ../src/red_installfiles.py:149
 #, python-format
 msgid "%s is not a valid package"
 msgstr "%s není platný balíček"
 
-#: src/red_installfiles.py:92
+#: ../src/red_installfiles.py:90
 msgid "There are no valid packages to install"
 msgstr "Nejsou žádné platné balíčky k instalaci"
 
-#: src/red_installfiles.py:102
+#: ../src/red_installfiles.py:109
 msgid "Install from File"
 msgstr "Instalovat ze souboru"
 
-#: src/red_installfiles.py:119
+#: ../src/red_installfiles.py:126
 #, python-format
 msgid "Downloading %s..."
 msgstr "Stahuji %s..."
 
-#: src/red_installfiles.py:158
+#: ../src/red_installfiles.py:165
 msgid "Install from URL"
 msgstr "Instalovat z URL"
 
-#: src/red_installfiles.py:163
+#: ../src/red_installfiles.py:170
 msgid "Package URL:"
 msgstr "URL balíčku:"
 
-#: src/red_main.py:108
+#: ../src/red_main.py:111
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr "CHYBA: Nemůžete zadat přepínač -h/--host i -l/--local"
 
-#: src/red_main.py:139
+#: ../src/red_main.py:142
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "CHYBA: Nemůžete zadat uživatele místního démona"
 
-#: src/red_mirrors.py:76
+#: ../src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Mirror"
 
-#: src/red_mirrors.py:81
+#: ../src/red_mirrors.py:81
 msgid "Location"
 msgstr "Umístění"
 
-#: src/red_mirrors.py:108
+#: ../src/red_mirrors.py:108
 msgid "Choose a Mirror"
 msgstr "Zvolte mirror"
 
-#: src/red_mount.py:91
+#: ../src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Nemohu odpojit '%s'"
 
-#: src/red_mount.py:117
+#: ../src/red_mount.py:117
 msgid "Browse..."
 msgstr "Procházet..."
 
-#: src/red_mount.py:128
+#: ../src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Připojit adresář"
 
-#: src/red_mount.py:141
-msgid "Mount channel"
-msgstr "Připojit kanál"
+#: ../src/red_mount.py:141
+msgid "Mount catalog"
+msgstr "Připojit katalog"
 
-#: src/red_mount.py:145
-msgid "Mount a directory as channel"
-msgstr "Připojit adresář jako kanál"
+#: ../src/red_mount.py:145
+msgid "Mount a directory as catalog"
+msgstr "Připojit adresář jako katalog"
 
-#: src/red_mount.py:153
-msgid "Channel Name:"
-msgstr "Název kanálu:"
+#: ../src/red_mount.py:153
+msgid "Catalog Name:"
+msgstr "Název katalogu:"
 
-#: src/red_mount.py:157
+#: ../src/red_mount.py:157
 msgid "Directory:"
 msgstr "Adresář:"
 
-#: src/red_mount.py:168
+#: ../src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Rekurzivně hledat balíčky"
 
-#: src/red_mount.py:193
-msgid "Please choose the path for channel."
-msgstr "Zvolte prosím cestu kanálu."
+#: ../src/red_mount.py:193
+msgid "Please choose the path for catalog."
+msgstr "Zvolte prosím cestu katalogu."
 
-#: src/red_mount.py:214
-msgid "Unmount Channel"
-msgstr "Odpojit kanál"
+#: ../src/red_mount.py:214
+msgid "Unmount Catalog"
+msgstr "Odpojit katalog"
 
-#: src/red_mount.py:243
+#: ../src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Odpojit?"
 
-#: src/red_news.py:174
+#: ../src/red_news.py:174
 #, python-format
 msgid "%s News"
 msgstr "Novinky %s"
 
-#: src/red_option.py:24
+#: ../src/red_option.py:24
 msgid "Connect to a locally running daemon"
 msgstr "Připojit k místnímu běžícímu démonovi"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "hostname"
 msgstr "jméno počítače"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "Contact daemon on specified host"
 msgstr "Kontaktovat démona na určeném počítači"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "username"
 msgstr "jméno uživatele"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "Specify user name"
 msgstr "Určení jména uživatele"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "password"
 msgstr "heslo"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "Specify password"
 msgstr "Určení hesla"
 
-#: src/red_option.py:28
+#: ../src/red_option.py:28
 msgid "Print client version and exit"
 msgstr "Vypsat verzi klienta a skončit"
 
-#: src/red_option.py:29
+#: ../src/red_option.py:29
 msgid "Get usage information"
 msgstr "Získat informace o použití"
 
-#: src/red_option.py:120
+#: ../src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Použití: %s <přepínače> ..."
 
-#: src/red_option.py:122
+#: ../src/red_option.py:122
 msgid "The following options are understood:"
 msgstr "Jsou rozpoznávány následující přepínače:"
 
-#: src/red_packagearray.py:91
+#: ../src/red_packagearray.py:91
 msgid "installed"
 msgstr "nainstalován"
 
 #. upgrade
-#: src/red_packagearray.py:93
+#: ../src/red_packagearray.py:93
 msgid "newer"
 msgstr "novější"
 
-#: src/red_packagearray.py:95
+#: ../src/red_packagearray.py:95
 msgid "older"
 msgstr "starší"
 
-#: src/red_packagearray.py:97
+#: ../src/red_packagearray.py:97
 msgid "not installed"
 msgstr "nenainstalován"
 
-#: src/red_packagearray.py:123
+#: ../src/red_packagearray.py:123
 msgid "upgrade"
 msgstr "aktualizovat"
 
-#: src/red_packagearray.py:125
+#: ../src/red_packagearray.py:125
 msgid "downgrade"
 msgstr "přejít na nižší verzi"
 
-#: src/red_packagearray.py:127
+#: ../src/red_packagearray.py:127
 msgid "install"
 msgstr "instalovat"
 
-#: src/red_packagearray.py:134
+#: ../src/red_packagearray.py:134
 msgid "remove"
 msgstr "odstranit"
 
-#: src/red_packagearray.py:614
+#: ../src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
 msgstr "Nalezeno %d odpovídajících balíčků"
 
-#: src/red_packagearray.py:616
+#: ../src/red_packagearray.py:616
 msgid "Found 1 matching package"
 msgstr "Nalezen 1 odpovídající balíček"
 
-#: src/red_packagearray.py:618
+#: ../src/red_packagearray.py:618
 msgid "No matching packages found"
 msgstr "Nenalezeny žádné odpovídající balíčky"
 
-#: src/red_packagearray.py:776
+#: ../src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Hledám aktualizace..."
 
-#: src/red_packagearray.py:801
+#: ../src/red_packagearray.py:801
 #, python-format
 msgid "Found %d matching patches"
 msgstr "Nalezeno %d odpovídajících záplat"
 
-#: src/red_packagearray.py:803
+#: ../src/red_packagearray.py:803
 msgid "Found 1 matching patch"
 msgstr "Nalezena 1 odpovídající záplata"
 
-#: src/red_packagearray.py:805
+#: ../src/red_packagearray.py:805
 msgid "No matching patches found"
 msgstr "Nenalezeny žádné odpovídající záplaty"
 
-#: src/red_packagebook.py:44
+#: ../src/red_packagebook.py:44
 msgid "Package Information"
 msgstr "Informace o balíčku"
 
-#: src/red_packagepage.py:32
+#: ../src/red_packagepage.py:32
 msgid "Unnamed"
 msgstr "Nepojmenované"
 
-#: src/red_packagepage_deps.py:29
+#: ../src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Závislosti"
 
-#: src/red_packagepage_deps.py:67
+#: ../src/red_packagepage_deps.py:67
 msgid "Provides"
 msgstr "Poskytuje"
 
-#: src/red_packagepage_deps.py:70
+#: ../src/red_packagepage_deps.py:70
 msgid "Requires"
 msgstr "Vyžaduje"
 
-#: src/red_packagepage_deps.py:73
+#: ../src/red_packagepage_deps.py:73
 msgid "Conflicts With"
 msgstr "Koliduje s"
 
-#: src/red_packagepage_info.py:90 src/red_services.py:112
+#: ../src/red_packagepage_info.py:90 ../src/red_services.py:150
 msgid "Name"
 msgstr "Název"
 
-#: src/red_packagepage_info.py:91 src/red_packageview.py:452
+#: ../src/red_packagepage_info.py:91 ../src/red_packageview.py:452
 msgid "Version"
 msgstr "Verze"
 
-#: src/red_packagepage_info.py:92
+#: ../src/red_packagepage_info.py:92
 msgid "Release"
 msgstr "Vydání"
 
-#: src/red_packagepage_info.py:93
+#: ../src/red_packagepage_info.py:93
 msgid "Package Size"
 msgstr "Velikost balíčku"
 
-#: src/red_packagepage_info.py:94
+#: ../src/red_packagepage_info.py:94
 msgid "Installed Size"
 msgstr "Nainstalovaná velikost"
 
-#: src/red_packagepage_info.py:96
+#: ../src/red_packagepage_info.py:96
 msgid "Section"
 msgstr "Oddíl"
 
-#: src/red_packagepage_info.py:97
+#: ../src/red_packagepage_info.py:97
 msgid "Summary"
 msgstr "Souhrn"
 
-#: src/red_packagepage_info.py:98 src/red_prefs.py:413
+#: ../src/red_packagepage_info.py:98 ../src/red_prefs.py:413
 msgid "Description"
 msgstr "Popis"
 
-#: src/red_packagepage_info.py:152
+#: ../src/red_packagepage_info.py:152
 msgid "Info"
 msgstr "Informace"
 
-#: src/red_packageview.py:301
+#: ../src/red_packageview.py:301
 msgid "Status"
 msgstr "Stav"
 
-#: src/red_packageview.py:472
+#: ../src/red_packageview.py:472
 msgid "Importance"
 msgstr "Důležitost"
 
-#: src/red_patches.py:35
+#: ../src/red_patches.py:35
 msgid "Patches"
 msgstr "Záplaty"
 
-#: src/red_patches.py:38
+#: ../src/red_patches.py:38
 msgid "YOU Patches"
 msgstr "Záplaty YOU"
 
-#: src/red_patches.py:72
+#: ../src/red_patches.py:72
 msgid "Searching for matching patches..."
 msgstr "Hledám odpovídající záplaty..."
 
-#: src/red_patches.py:111
+#: ../src/red_patches.py:111
 msgid "No matching patches found."
 msgstr "Nenalezeny žádné odpovídající záplaty."
 
-#: src/red_pendingview.py:347
+#: ../src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
 msgstr "dokončeno %.1f%%"
 
-#: src/red_pendingview.py:536
+#: ../src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Aktualizuji systém"
 
-#: src/red_pendingview.py:609
+#: ../src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Stahování zrušeno"
 
-#: src/red_pendingview.py:610
+#: ../src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transakce zrušena"
 
-#: src/red_pendingview.py:645
+#: ../src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transakce dokončena"
 
-#: src/red_pendingview.py:658
+#: ../src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Stahuji balíčky"
 
-#: src/red_pendingview.py:671
+#: ../src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Stahování selhalo"
 
-#: src/red_pendingview.py:672
+#: ../src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Neznámá chyba"
 
-#: src/red_pendingview.py:689
+#: ../src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Zpracovávám transakci"
 
-#: src/red_pendingview.py:728
+#: ../src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "Transakce byla úspěšně dokončena"
 
-#: src/red_pendingview.py:733
+#: ../src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Transakce selhala"
 
-#: src/red_pendingview.py:735
+#: ../src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transakce selhala"
 
-#: src/red_prefs.py:171
-msgid "Interval to refresh channel data (in hours):"
-msgstr "Interval pro obnovu dat o kanálu (v hodinách):"
+#: ../src/red_prefs.py:171
+msgid "Interval to refresh catalog data (in hours):"
+msgstr "Interval pro obnovu dat o katalogu (v hodinách):"
 
 #. Packages section
-#: src/red_prefs.py:182
+#: ../src/red_prefs.py:182
 msgid "Packages"
 msgstr "Balíčky"
 
-#: src/red_prefs.py:191
+#: ../src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Vyžadovat podpisy balíčků"
 
-#: src/red_prefs.py:196
+#: ../src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Maximální počet balíčků, které najednou stahovat"
 
-#: src/red_prefs.py:206
+#: ../src/red_prefs.py:206
 msgid "Enable package rollback"
 msgstr "Povolit obnovování balíčků"
 
 #. Proxy section - requires superuser
-#: src/red_prefs.py:210
+#: ../src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:219
+#: ../src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Používat proxy"
 
-#: src/red_prefs.py:223
+#: ../src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "URL proxy:"
 
-#: src/red_prefs.py:230
+#: ../src/red_prefs.py:230
 msgid "Username:"
 msgstr "Jméno uživatele:"
 
-#: src/red_prefs.py:270
+#: ../src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr "Nemáte oprávnění zobrazit nastavení proxy"
 
-#: src/red_prefs.py:294
+#: ../src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Kešovat stahované balíčky a metadata"
 
-#: src/red_prefs.py:300
+#: ../src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Umístění kešovaných dat:"
 
 #. Expiration section
-#: src/red_prefs.py:308
+#: ../src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Vypršení"
 
-#: src/red_prefs.py:312
+#: ../src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Keš vyprší"
 
-#: src/red_prefs.py:318
+#: ../src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Maximální stáří ve dnech:"
 
-#: src/red_prefs.py:329
+#: ../src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Maximální velikost v MB:"
 
-#: src/red_prefs.py:340
+#: ../src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Aktuální velikost cache:"
 
-#: src/red_prefs.py:357
+#: ../src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Jste si jisti, že chcete odstranit soubory balíčků z vaší cache:"
 
-#: src/red_prefs.py:373
+#: ../src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Vyprázdnit cache"
 
-#: src/red_prefs.py:395
+#: ../src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
-#: src/red_prefs.py:443
+#: ../src/red_prefs.py:443
 msgid "Value"
 msgstr "Hodnota"
 
-#: src/red_prefs.py:456
+#: ../src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Načítám nastavení..."
 
-#: src/red_prefs.py:520
+#: ../src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "Nastavení %s"
 
-#: src/red_search.py:35
+#: ../src/red_search.py:35
 msgid "Search"
 msgstr "Hledat"
 
-#: src/red_search.py:38
+#: ../src/red_search.py:38
 msgid "S_earch Packages"
 msgstr "_Hledat balíčky"
 
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+#: ../src/red_search.py:72 ../src/red_software.py:50
+#: ../src/red_software.py:119
 msgid "Searching for matching packages..."
 msgstr "Hledám odpovídající balíčky..."
 
-#: src/red_search.py:109
+#: ../src/red_search.py:109
 msgid "No matching packages found."
 msgstr "Nenalezeny žádné odpovídající balíčky."
 
-#: src/red_searchbox.py:146
+#: ../src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Všechny balíčky"
 
-#: src/red_searchbox.py:147 src/red_updates.py:31
+#: ../src/red_searchbox.py:147 ../src/red_updates.py:31
 msgid "Updates"
 msgstr "Aktualizace"
 
-#: src/red_searchbox.py:148
+#: ../src/red_searchbox.py:148
 msgid "Uninstalled Packages"
 msgstr "Odinstalované balíčky"
 
-#: src/red_searchbox.py:149
+#: ../src/red_searchbox.py:149
 msgid "Installed Packages"
 msgstr "Nainstalované balíčky"
 
-#: src/red_searchbox.py:174
+#: ../src/red_searchbox.py:174
 msgid "All Sections"
 msgstr "Všechny oddíly"
 
-#: src/red_searchbox.py:175
+#: ../src/red_searchbox.py:175
 msgid "Productivity"
 msgstr "Produktivita"
 
-#: src/red_searchbox.py:176
+#: ../src/red_searchbox.py:176
 msgid "Imaging"
 msgstr "Práce s obrázky"
 
-#: src/red_searchbox.py:177
+#: ../src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
 msgstr "Správa osobních informací"
 
-#: src/red_searchbox.py:178
+#: ../src/red_searchbox.py:178
 msgid "X Windows"
 msgstr "X Windows"
 
-#: src/red_searchbox.py:179
+#: ../src/red_searchbox.py:179
 msgid "Games"
 msgstr "Hry"
 
-#: src/red_searchbox.py:180
+#: ../src/red_searchbox.py:180
 msgid "Multimedia"
 msgstr "Multimédia"
 
-#: src/red_searchbox.py:181
+#: ../src/red_searchbox.py:181
 msgid "Internet"
 msgstr "Internet"
 
-#: src/red_searchbox.py:182
+#: ../src/red_searchbox.py:182
 msgid "Utilities"
 msgstr "Pomůcky"
 
-#: src/red_searchbox.py:183
+#: ../src/red_searchbox.py:183
 msgid "System"
 msgstr "Systém"
 
-#: src/red_searchbox.py:184
+#: ../src/red_searchbox.py:184
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: src/red_searchbox.py:185
+#: ../src/red_searchbox.py:185
 msgid "Libraries"
 msgstr "Knihovny"
 
-#: src/red_searchbox.py:186
+#: ../src/red_searchbox.py:186
 msgid "Development"
 msgstr "Vývoj"
 
-#: src/red_searchbox.py:187
+#: ../src/red_searchbox.py:187
 msgid "Development Tools"
 msgstr "Vývojové nástroje"
 
-#: src/red_searchbox.py:188
+#: ../src/red_searchbox.py:188
 msgid "Miscellaneous"
 msgstr "Různé"
 
-#: src/red_searchbox.py:274
+#: ../src/red_searchbox.py:274
 msgid "Search descriptions"
 msgstr "Hledat v popisech"
 
 #. ##
 #. ## Match radio buttons
 #. ##
-#: src/red_searchbox.py:286
+#: ../src/red_searchbox.py:286
 msgid "Match:"
 msgstr "Hledat:"
 
-#: src/red_searchbox.py:322
-msgid "Channel:"
-msgstr "Kanál:"
+#: ../src/red_searchbox.py:322
+msgid "Catalog:"
+msgstr "Katalog:"
 
-#: src/red_serverinfo.py:46
+#: ../src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
 msgstr "Démon se identifikoval jako:"
 
-#: src/red_serverinfo.py:57
+#: ../src/red_serverinfo.py:57
 msgid "System type"
 msgstr "Typ systému"
 
-#: src/red_serverinfo.py:60
+#: ../src/red_serverinfo.py:60
 msgid "Server URL"
 msgstr "URL serveru"
 
-#: src/red_serverinfo.py:63
+#: ../src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
 msgstr "Server podporuje rozšířené funkce."
 
-#: src/red_serverinfo.py:68
+#: ../src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
 msgstr "Nemohu kontaktovat démona."
 
-#: src/red_serverinfo.py:76
+#: ../src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
 msgstr "Vypsat informace o démonovi do souboru XML"
 
-#: src/red_serverinfo.py:94
+#: ../src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Nemohu otevřít soubor '%s': %s"
 
-#: src/red_serverinfo.py:135
+#: ../src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
 msgstr "Zvolte soubor, kam zapsat XML"
 
-#: src/red_services.py:88
-msgid "Edit Services"
-msgstr "Upravit služby"
-
-#: src/red_services.py:117
-msgid "URL"
-msgstr "URL"
-
-#: src/red_services.py:133
-msgid "_Remove service"
-msgstr "_Odstranit službu"
-
-#: src/red_services.py:146
-msgid "_Add service"
-msgstr "_Přidat službu"
-
-#: src/red_services.py:226
+#: ../src/red_services.py:88
 msgid "Add Service"
 msgstr "Přidat službu"
 
-#: src/red_services.py:231
+#: ../src/red_services.py:99
 msgid "Service URL"
 msgstr "URL služby"
 
-#: src/red_sidebar.py:61 src/red_transaction.py:133
+#: ../src/red_services.py:105
+msgid "Service type"
+msgstr "Typ služby:"
+
+#: ../src/red_services.py:111
+msgid "Registration key"
+msgstr "Registrační klíč"
+
+#: ../src/red_services.py:126
+msgid "Edit Services"
+msgstr "Upravit služby"
+
+#: ../src/red_services.py:155
+msgid "URL"
+msgstr "URL"
+
+#: ../src/red_services.py:171
+msgid "_Remove service"
+msgstr "_Odstranit službu"
+
+#: ../src/red_services.py:188
+msgid "_Add service"
+msgstr "_Přidat službu"
+
+#: ../src/red_sidebar.py:61 ../src/red_transaction.py:133
 msgid "Pending Actions"
 msgstr "Čekající akce"
 
-#: src/red_sidebar.py:89
+#: ../src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
 msgstr "%d čekající instalace"
 
-#: src/red_sidebar.py:91
+#: ../src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
 msgstr "%d čekající instalace"
 
-#: src/red_sidebar.py:97
+#: ../src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
 msgstr "%d čekající odstranění"
 
-#: src/red_sidebar.py:99
+#: ../src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
 msgstr "%d čekající odstranění"
 
-#: src/red_sidebar.py:103
+#: ../src/red_sidebar.py:103
 msgid "No pending actions"
 msgstr "Žádné čekající akce"
 
-#: src/red_software.py:28
+#: ../src/red_software.py:28
 msgid "Installed Software"
 msgstr "Nainstalovaný software"
 
-#: src/red_software.py:31
+#: ../src/red_software.py:31
 msgid "I_nstalled Software"
 msgstr "_Nainstalovaný software"
 
-#: src/red_software.py:97
+#: ../src/red_software.py:97
 msgid "Available Software"
 msgstr "Dostupný software"
 
-#: src/red_software.py:100
+#: ../src/red_software.py:100
 msgid "A_vailable Software"
 msgstr "_Dostupný software"
 
-#: src/red_statusbar.py:49
+#: ../src/red_statusbar.py:50
 #, python-format
 msgid "Connected to %s"
 msgstr "Připojen k %s"
 
-#: src/red_subscriptions.py:57
+#: ../src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "Přihlášen"
 
-#: src/red_subscriptions.py:64
-msgid "Channel Name"
-msgstr "Název kanálu"
+#: ../src/red_subscriptions.py:64
+msgid "Catalog Name"
+msgstr "Název katalogu"
 
-#: src/red_subscriptions.py:78
+#: ../src/red_subscriptions.py:78
 #, python-format
-msgid "%s Channel Subscriptions"
-msgstr "%s přihlášených kanálů"
+msgid "%s Catalog Subscriptions"
+msgstr "%s přihlášených katalogů"
 
-#: src/red_subscriptions.py:99
+#: ../src/red_subscriptions.py:99
 msgid ""
-"You do not have permission to subscribe or unsubscribe from channels.  You "
+"You do not have permission to subscribe or unsubscribe from catalogs.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr ""
-"Nemáte oprávnění přihlásit se ke kanálům nebo se od nich odhlásit. Nebudete "
-"moci provádět změny v přihlášení."
+msgstr "Nemáte oprávnění přihlásit se ke katalogům nebo se od nich odhlásit. Nebudete moci provádět změny v přihlášení."
 
-#: src/red_thrashingtreeview.py:138
+#: ../src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Nepojmenovaný"
 
-#: src/red_transaction.py:96
+#: ../src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
 msgstr "Jste si jisti, že chcete skončit?"
 
-#: src/red_transaction.py:136
+#: ../src/red_transaction.py:136
 msgid "_Pending Actions"
 msgstr "_Čekající akce"
 
-#: src/red_updates.py:34
+#: ../src/red_updates.py:34
 msgid "_Updates"
 msgstr "_Aktualizace"
 
-#: src/red_updates.py:77
+#: ../src/red_updates.py:77
 msgid "_Update All"
 msgstr "_Aktualizovat vše"
 
-#: src/red_updates.py:109
+#: ../src/red_updates.py:109
 msgid "The system is up-to-date."
 msgstr "Systém je aktuální."
 
-#: src/red_updates.py:110
-msgid "There are no software updates available in any subscribed channels."
-msgstr "V žádném přihlášeném kanálu nejsou k dispozici aktualizace software."
+#: ../src/red_updates.py:110
+msgid "There are no software updates available in any subscribed catalogs."
+msgstr "V žádném přihlášeném katalogu nejsou k dispozici aktualizace software."
 
-#: src/red_users.py:131
+#: ../src/red_users.py:131
 msgid "Privilege"
 msgstr "Oprávnění"
 
-#: src/red_users.py:148
+#: ../src/red_users.py:148
 msgid ""
 "If you remove superuser privileges from yourself, you will be unable to re-"
 "add them.\n"
@@ -1387,65 +1396,65 @@ msgstr ""
 "\n"
 "Jste si jisti, že to chcete udělat?"
 
-#: src/red_users.py:166
+#: ../src/red_users.py:166
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: src/red_users.py:181
+#: ../src/red_users.py:181
 msgid "Edit Users"
 msgstr "Upravit uživatele"
 
-#: src/red_users.py:196 src/red_users.py:399
+#: ../src/red_users.py:196 ../src/red_users.py:399
 msgid "Confirm:"
 msgstr "Potvrdit:"
 
-#: src/red_users.py:217
+#: ../src/red_users.py:217
 msgid "Set Password"
 msgstr "Nastavit heslo"
 
-#: src/red_users.py:246 src/red_users.py:422
+#: ../src/red_users.py:246 ../src/red_users.py:422
 msgid "Password can not be empty."
 msgstr "Heslo nesmí být prázdné."
 
-#: src/red_users.py:248 src/red_users.py:424
+#: ../src/red_users.py:248 ../src/red_users.py:424
 msgid "Passwords do not match."
 msgstr "Hesla nesouhlasí."
 
-#: src/red_users.py:268
+#: ../src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
 msgstr "Nastavit heslo %s"
 
-#: src/red_users.py:289
+#: ../src/red_users.py:289
 msgid "Users"
 msgstr "Uživatelé"
 
-#: src/red_users.py:306
+#: ../src/red_users.py:306
 msgid "Add"
 msgstr "Přidat"
 
-#: src/red_users.py:320
+#: ../src/red_users.py:320
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Jste si jisti, že chcete odstranit '%s'?"
 
-#: src/red_users.py:326
+#: ../src/red_users.py:326
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/red_users.py:339
+#: ../src/red_users.py:339
 msgid "Privileges"
 msgstr "Oprávnění"
 
-#: src/red_users.py:379
+#: ../src/red_users.py:379
 msgid "Add new user"
 msgstr "Přidat nového uživatele"
 
-#: src/red_users.py:426
+#: ../src/red_users.py:426
 msgid "Invalid user name."
 msgstr "Neplatné jméno uživatele."
 
-#: src/red_users.py:428
+#: ../src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Uživatel '%s' již existuje."
