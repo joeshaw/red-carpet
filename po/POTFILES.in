@@ -3,6 +3,10 @@ src/red_about.py
 src/red_actionbar.py
 src/red_activation.py
 src/red_appwindow.py
+src/red_bundlearray.py
+src/red_bundlesearchbox.py
+src/red_bundleview.py
+src/red_catalog.py
 src/red_channelmodel.py
 src/red_channeloption.py
 src/red_component.py
@@ -53,3 +57,5 @@ src/red_transaction.py
 src/red_updates.py
 src/red_users.py
 src/ximian_xmlrpclib.py
+trayicon/bindings/eggtrayicon.c
+trayicon/red_icon_main.py
