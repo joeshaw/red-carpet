@@ -36,11 +36,7 @@ missed_polls  = 0
 poll_timeout  = 0
 timeout_len   = 3000
 
-last_package_seqno      = -1
-last_channel_seqno      = -1
-last_subs_seqno         = -1
-last_user_seqno         = -1
-last_lock_seqno         = -1
+last_seqnos = {}
 
 listeners = {}
 listener_id = 0
@@ -55,37 +51,40 @@ def unregister_listener(lid):
     global listeners
     del listeners[lid]
 
-def signal_listeners(packages_changed,
-                     channels_changed,
-                     subscriptions_changed,
-                     users_changed,
-                     locks_changed):
+def signal_listeners(old, new):
 
-    if packages_changed \
-           or channels_changed \
-           or subscriptions_changed \
-           or users_changed \
-           or locks_changed:
+    packages = old.get("packages") != new.get("packages")
+    channels = old.get("channels") != new.get("channels")
+    subscriptions = old.get("subscriptions") != new.get("subscriptions")
+    locks = old.get("locks") != new.get("locks")
+    users = old.get("users") != new.get("users")
+    bundles = old.get("bundles") != new.get("bundles")
+
+    if packages or channels or subscriptions or locks \
+           or users or bundles:
 
         for lid in listeners.keys():
             listener_ref = listeners[lid]
             listener = listener_ref()
             if listener:
 
-                if packages_changed:
+                if packages:
                     listener.packages_changed()
 
-                if channels_changed:
+                if channels:
                     listener.channels_changed()
 
-                if subscriptions_changed:
+                if subscriptions:
                     listener.subscriptions_changed()
 
-                if users_changed:
+                if users:
                     listener.users_changed()
 
-                if locks_changed:
+                if locks:
                     listener.locks_changed()
+
+                if bundles:
+                    listener.bundles_changed()
 
             else:
                 unregister_listener(lid)
@@ -93,42 +92,19 @@ def signal_listeners(packages_changed,
 class SeqNoChecker:
 
     def __init__(self):
-        self.curr_package_seqno = -1
-        self.curr_channel_seqno = -1
-        self.curr_subs_seqno    = -1
-        self.curr_user_seqno    = -1
-        self.curr_lock_seqno    = -1
+        self.curr_seqnos = {}
 
-    def set_world_seqnos(self, pkg, ch, subs, lock):
-        self.curr_package_seqno = pkg
-        self.curr_channel_seqno = ch
-        self.curr_subs_seqno    = subs
-        self.curr_lock_seqno    = lock
-        self.check()
-
-    def set_user_seqno(self, usr):
-        self.curr_user_seqno = usr
-        self.check()
-
-    def set_lock_seqno(self, lock):
-        self.curr_lock_seqno = lock
+    def set_sequence_numbers(self, seq_no):
+        self.curr_seqnos = seq_no
         self.check()
 
     def check(self):
-        if self.curr_user_seqno < 0       \
-           or self.curr_channel_seqno < 0 \
-           or self.curr_subs_seqno < 0    \
-           or self.curr_user_seqno < 0 \
-           or self.curr_lock_seqno < 0:
+        if not self.curr_seqnos:
             return
 
+        global last_seqnos
         global last_server
         global poll_count, working_polls
-        global last_package_seqno
-        global last_subs_seqno
-        global last_channel_seqno
-        global last_user_seqno
-        global last_lock_seqno
 
         poll_lock.acquire()
 
@@ -137,20 +113,17 @@ class SeqNoChecker:
         # This lets us do the right thing if the server changes
         # out from under us.
         if id(server) != last_server:
-            last_package_seqno      = -1
-            last_channel_seqno      = -1
-            last_subs_seqno         = -1
-            last_user_seqno         = -1
-            last_lock_seqno         = -1
+            last_seqnos = {}
         last_server = id(server)
 
-        if self.curr_channel_seqno != last_channel_seqno or \
-           self.curr_subs_seqno != last_subs_seqno or \
-           self.curr_lock_seqno != last_lock_seqno:
+        s = self.curr_seqnos
+
+        if s.get("channels") != last_seqnos.get("channels") or \
+           s.get("subscriptions") != last_seqnos.get("subscriptions"):
             rcd_util.reset_services()
             rcd_util.reset_channels()
 
-        if self.curr_user_seqno != last_user_seqno:
+        if s.get("users") != last_seqnos.get("users"):
             rcd_util.reset_server_permissions()
 
         # Ignore any problems on the first poll, since we know we
@@ -158,18 +131,9 @@ class SeqNoChecker:
         if poll_count != 0:
             # We signal the listeners in an idle function so that
             # it will always happen in the main thread.
-            gtk.idle_add(signal_listeners,
-                         self.curr_package_seqno != last_package_seqno,
-                         self.curr_channel_seqno != last_channel_seqno,
-                         self.curr_subs_seqno != last_subs_seqno,
-                         self.curr_user_seqno != last_user_seqno,
-                         self.curr_lock_seqno != last_lock_seqno)
+            gtk.idle_add(signal_listeners, last_seqnos, s)
 
-        last_package_seqno = self.curr_package_seqno
-        last_subs_seqno = self.curr_subs_seqno
-        last_channel_seqno = self.curr_channel_seqno
-        last_user_seqno = self.curr_user_seqno
-        last_lock_seqno = self.curr_lock_seqno
+        last_seqnos = s
 
         poll_count += 1
         working_polls -= 1
@@ -191,10 +155,9 @@ def poll_cb():
         working_polls += 1
 
         snc = SeqNoChecker()
-        t1 = server.rcd.packsys.world_sequence_numbers()
-        t2 = server.rcd.users.sequence_number()
+        t = server.rcd.system.sequence_numbers()
 
-        def world_seqno_cb(th, snc):
+        def got_seqno_cb(th, snc):
             try:
                 r = th.get_result()
             except ximian_xmlrpclib.Fault, f:
@@ -203,18 +166,9 @@ def poll_cb():
                 # if something has gone badly wrong.
                 pass
             else:
-                apply(snc.set_world_seqnos, r)
+                snc.set_sequence_numbers(r)
 
-        def user_seqno_cb(th, snc):
-            try:
-                r = th.get_result()
-            except ximian_xmlrpclib.Fault, f:
-                pass # FIXME?
-            else:
-                snc.set_user_seqno(r)            
-
-        t1.connect("ready", world_seqno_cb, snc)
-        t2.connect("ready", user_seqno_cb, snc)
+        t.connect("ready", got_seqno_cb, snc)
 
         missed_polls = 0
 
@@ -274,6 +228,7 @@ class ServerListener:
         self.__missed_subscription_changes = 0
         self.__missed_user_changes = 0
         self.__missed_lock_changes = 0
+        self.__missed_bundle_changes = 0
         self.__listener_id = register_listener(self)
 
     # These are the function that should be overrided in derived classes.
@@ -290,6 +245,9 @@ class ServerListener:
         pass
 
     def locks_changed(self):
+        pass
+
+    def bundles_changed(self):
         pass
 
     def process_package_changes(self):
@@ -327,6 +285,13 @@ class ServerListener:
             self.locks_changed()
             self.__missed_lock_changes = 0
 
+    def process_bundle_changes(self):
+        if self.__freeze_count > 0:
+            self.__missed_bundle_changes += 1
+        else:
+            self.bundles_changed()
+            self.__missed_bundle_changes = 0
+
     def freeze(self):
         self.__freeze_count += 1
 
@@ -344,6 +309,8 @@ class ServerListener:
                     self.process_user_changes()
                 if self.__missed_lock_changes > 0:
                     self.process_lock_changes()
+                if self.__missed_bundle_changes > 0:
+                    self.process_bundle_changes()
 
     def shutdown_listener(self):
         if self.freeze_count > 0:
@@ -360,6 +327,8 @@ class ServerListener:
                 pending.append("user")
             if self.__missed_user_changes > 0:
                 pending.append("lock")
+            if self.__missed_bundle_changes > 0:
+                pending.append("bundle")
 
             if pending:
                 msg = string.join(pending, ", ")

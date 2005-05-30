@@ -71,7 +71,7 @@ class CatalogOption(gtk.OptionMenu, red_serverlistener.ServerListener):
 		i = self.item_id_list.index(id)
 		self.set_history(i)
 
-	def catalogs_changed(self):
+	def channels_changed(self):
 		id = self.get_catalog_id()
 		self.__assemble()
 		if id is not None and id in self.item_id_list:

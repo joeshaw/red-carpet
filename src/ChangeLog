@@ -1,3 +1,10 @@
+2005-05-30  Tambet Ingo  <tambet@ximian.com>
+
+	* red_catalogoption.py (CatalogOption.channels_changed): Fix a typo.
+
+	* red_serverlistener.py: Refactor listeners, add bundle changes
+	listener.
+
 2005-05-27  Tambet Ingo  <tambet@ximian.com>
 
 	* red_searchbox.py (SearchBox.get_query): Query "language" doesn't work
