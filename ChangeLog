@@ -1,3 +1,7 @@
+2005-06-01  Dan Mills  <thunder@ximian.com>
+
+	* configure.in: Hardcode @mkdir_p@ to "mkdir -p".
+
 2005-04-05  James Willcox  <james@ximian.com>
 
 	* red_extra/redlistmodel.c: (red_list_model_add_column):
