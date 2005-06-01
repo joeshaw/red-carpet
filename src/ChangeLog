@@ -1,3 +1,15 @@
+2005-06-01  Tambet Ingo  <tambet@ximian.com>
+
+	* red_transaction.py (TransactionArray.refresh): Handle bundles.
+
+	* red_packagebook.py (show_package_info): Don't try to show dependency
+	information for bundles.
+
+	* red_packagearray.py (pkg_size): Handle bundles.
+
+	* red_bundlecomponent.py (BundleComponent.accelerator): Set acclerator
+	to "ctrl+z", "ctrl+b" is already used for subscriptions.
+
 2005-05-30  Tambet Ingo  <tambet@ximian.com>
 
 	* red_catalogoption.py (CatalogOption.channels_changed): Fix a typo.

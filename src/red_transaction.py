@@ -58,7 +58,7 @@ class TransactionArray(red_packagearray.PackageArray,
         actions = (red_pendingops.TO_BE_INSTALLED,
                    red_pendingops.TO_BE_INSTALLED_CANCELLED)
         for pkg in red_pendingops.packages_with_actions(*actions):
-            if not rcd_util.get_channel(pkg["channel"]):
+            if not rcd_util.get_channel(pkg.get("channel", "")):
                 red_pendingops.set_action(pkg, red_pendingops.NO_ACTION)
 
         self.changed(lambda x:x) # noop

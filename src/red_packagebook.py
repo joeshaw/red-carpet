@@ -35,7 +35,7 @@ def show_package_info(pkg, parent=None):
     book = PackageBook()
     book.set_tab_pos(gtk.POS_TOP)
     book.add_page(red_packagepage_info.PackagePage_Info())
-    if not rcd_util.get_package_type(pkg) == rcd_util.PACKAGE_TYPE_PATCH:
+    if rcd_util.get_package_type(pkg) == rcd_util.PACKAGE_TYPE_PACKAGE:
         book.add_page(red_packagepage.PackagePage_History())
         book.add_page(red_packagepage_deps.PackagePage_Deps())
 

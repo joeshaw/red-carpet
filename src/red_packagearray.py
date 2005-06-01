@@ -44,7 +44,7 @@ def pkg_old_EVR(pkg):
     return ""
 
 def pkg_size(pkg):
-    return rcd_util.byte_size_to_string(pkg["file_size"])
+    return rcd_util.byte_size_to_string(pkg.get("file_size"))
 
 def pkg_ch_name(pkg):
     return rcd_util.get_package_channel_name(pkg)

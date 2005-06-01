@@ -20,7 +20,7 @@ class BundleComponent(red_component.Component):
         return gtk.STOCK_FIND
 
     def accelerator(self):
-        return "<Control>b"
+        return "<Control>z"
 
     def show_in_shortcuts(self):
         return 1
