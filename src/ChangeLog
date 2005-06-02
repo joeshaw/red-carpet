@@ -1,3 +1,7 @@
+2005-06-02  Tambet Ingo  <tambet@ximian.com>
+
+	* red_history.py: Add bundle history.
+
 2005-06-01  Tambet Ingo  <tambet@ximian.com>
 
 	* red_transaction.py (TransactionArray.refresh): Handle bundles.

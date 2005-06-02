@@ -16,6 +16,7 @@
 ###
 
 import string
+import time
 import gobject, gtk
 import red_extra
 import rcd_util
@@ -155,8 +156,8 @@ class HistorySearchBar(HistoryFilter):
         HistoryFilter.updated(self)
 
 
-PKG_INITIAL = "pkg_initial"
-PKG_FINAL   = "pkg_final"
+PKG_INITIAL = "initial"
+PKG_FINAL   = "final"
 
 def pkg_name(item):
     if item.has_key(PKG_FINAL):
@@ -167,8 +168,19 @@ def pkg_name(item):
 
 def pkg_version(item, flag):
     if item.has_key(flag):
-        return item[flag]["version"] + "-" + item[flag]["release"]
+        return item[flag]["version"]
     return ""
+
+def pkg_time(item):
+    return time.strftime("%Y-%m-%d", time.localtime(item["timestamp"]))
+
+def pkg_type(item):
+    s = item.get("type")
+    if s == "pkg":
+        return _("Package");
+    if s == "bundle":
+        return _("Bundle");
+    return s or _("Unknown")
 
 ###
 ### Sort functions
@@ -193,13 +205,17 @@ def sort_by_user(a, b):
 def sort_by_action(a, b):
     return cmp(a.get("action"), b.get("action"))
 
+def sort_by_type(a, b):
+    return cmp(a.get("type"), b.get("type"))
+
 COLUMN_ITEM        = 0
 COLUMN_ACTION      = 1
 COLUMN_USER        = 2
-COLUMN_PKG         = 3
-COLUMN_PKG_INITIAL = 4
-COLUMN_PKG_FINAL   = 5
-COLUMN_TIME        = 6
+COLUMN_TYPE        = 3
+COLUMN_NAME        = 4
+COLUMN_PKG_INITIAL = 5
+COLUMN_PKG_FINAL   = 6
+COLUMN_TIME        = 7
 
 COLUMNS = (
     (COLUMN_ITEM,
@@ -217,7 +233,12 @@ COLUMNS = (
      sort_by_user,
      gobject.TYPE_STRING),
 
-    (COLUMN_PKG,
+    (COLUMN_TYPE,
+     lambda x:pkg_type(x),
+     sort_by_type,
+     gobject.TYPE_STRING),
+
+    (COLUMN_NAME,
      lambda x:pkg_name(x),
      sort_by_pkg,
      gobject.TYPE_STRING),
@@ -233,7 +254,7 @@ COLUMNS = (
      gobject.TYPE_STRING),
 
     (COLUMN_TIME,
-     lambda x:x["time_str"],
+     lambda x:pkg_time(x),
      sort_by_time,
      gobject.TYPE_STRING),
     )
@@ -302,7 +323,8 @@ class HistoryView(gtk.ScrolledWindow):
         cols = [(_("Time"),        COLUMN_TIME),
                 (_("Action"),      COLUMN_ACTION),
                 (_("User"),        COLUMN_USER),
-                (_("Package"),     COLUMN_PKG),
+                (_("Type"),        COLUMN_TYPE),
+                (_("Name"),        COLUMN_NAME),
                 (_("Old Version"), COLUMN_PKG_INITIAL),
                 (_("New Version"), COLUMN_PKG_FINAL),
                 ]
