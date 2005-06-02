@@ -1,7 +1,8 @@
 import string
 import gobject
 import gtk
-import red_catalogoption
+import rcd_util
+import red_channeloption
 
 from red_gettext import _
 
@@ -30,7 +31,7 @@ class BundleSearchBox(gtk.VBox):
     def __emit(self):
         query = self.get_query()
         filter_fn = self.get_filter
-        cid = self.__catalog_opt.get_catalog_id()
+        cid = self.__channel_opt.get_channel_id()
 
         if query != self.__last_query \
                or self.__status_filter != self.__last_status_filter \
@@ -100,10 +101,12 @@ class BundleSearchBox(gtk.VBox):
         catalog_label.set_markup(_("Catalog:"))
         top_row.pack_start(catalog_label, expand=0, fill=0, padding=2)
 
-        self.__catalog_opt = red_catalogoption.CatalogOption()
-        self.__catalog_opt.connect("selected", lambda x,y,z: z.__changed(),
+        self.__channel_opt = red_channeloption.ChannelOption(allow_any_channel=1,
+                                                             allow_any_subd_channel=0,
+                                                             allow_no_channel=0)
+        self.__channel_opt.connect("selected", lambda x,y,z: z.__changed(),
                                   self)
-        top_row.pack_start(self.__catalog_opt, expand=1, fill=1, padding=0)
+        top_row.pack_start(self.__channel_opt, expand=1, fill=1, padding=0)
         top_row.show_all()
 
         entry_row = gtk.HBox(0, 6)
@@ -169,9 +172,10 @@ class BundleSearchBox(gtk.VBox):
         if status_filter:
             query.append(status_filter)
 
-        catalog = self.__catalog_opt.get_catalog()
-        if catalog != None and not catalog.is_wildcard():
-            query.append(["catalog", "is", catalog.name])
+        channel_id = self.__channel_opt.get_channel_id()
+        if red_channeloption.is_valid_channel(channel_id):
+            channel = rcd_util.get_channel(channel_id)
+            query.append(["catalog", "is", channel.get("name")])
 
         return query
 

@@ -1,5 +1,17 @@
 2005-06-02  Tambet Ingo  <tambet@ximian.com>
 
+	* red_bundleview.py: Don't import red_catalog.
+
+	* red_bundlesearchbox.py: Use ChannelOption widget instead of
+	CatalogOption, the daemon's API doesn't make difference in channels
+	and catalogs anymore.
+
+	* Makefile.am: Get rid of red_catalog.py and red_catalogoption.py.
+
+	* red_catalog.py: Remove. We only have one type of channels/catalogs.
+
+	* red_catalogoption.py: Ditto.
+
 	* red_history.py: Add bundle history.
 
 2005-06-01  Tambet Ingo  <tambet@ximian.com>

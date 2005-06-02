@@ -17,8 +17,6 @@ red_carpetsupport_DATA =	\
 	red_bundlecomponent.py			\
 	red_bundlesearchbox.py			\
 	red_bundleview.py			\
-	red_catalog.py				\
-	red_catalogoption.py			\
 	red_channelmodel.py			\
 	red_channeloption.py			\
 	red_component.py			\

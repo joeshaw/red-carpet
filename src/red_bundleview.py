@@ -3,8 +3,6 @@ import red_thrashingtreeview
 import red_packageview
 import red_bundlearray
 
-from red_catalog import Catalog
-
 from red_gettext import _
 
 class BundleView(red_packageview.PackageView):
