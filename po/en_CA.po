@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 05:01-0400\n"
-"PO-Revision-Date: 2005-06-01 01:59-0400\n"
+"POT-Creation-Date: 2005-06-02 11:34-0400\n"
+"PO-Revision-Date: 2005-06-02 01:59-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -466,46 +466,46 @@ msgstr "Found 1 matching bundle"
 msgid "No matching bundles found"
 msgstr "No matching bundles found"
 
-#: src/red_bundlesearchbox.py:72
+#: src/red_bundlesearchbox.py:73
 msgid "All Bundles"
 msgstr "All Bundles"
 
-#: src/red_bundlesearchbox.py:73
+#: src/red_bundlesearchbox.py:74
 msgid "Uninstalled Bundles"
 msgstr "Uninstalled Bundles"
 
-#: src/red_bundlesearchbox.py:74
+#: src/red_bundlesearchbox.py:75
 msgid "Installed Bundles"
 msgstr "Installed Bundles"
 
-#: src/red_bundlesearchbox.py:100 src/red_searchbox.py:322
+#: src/red_bundlesearchbox.py:101 src/red_searchbox.py:322
 msgid "Catalog:"
 msgstr "Catalogue:"
 
-#: src/red_bundleview.py:16 src/red_bundleview.py:128
+#: src/red_bundleview.py:14 src/red_bundleview.py:126 src/red_history.py:327
 #: src/red_packagepage_info.py:90 src/red_services.py:150
 msgid "Name"
 msgstr "Name"
 
-#: src/red_bundleview.py:26 src/red_bundleview.py:100
+#: src/red_bundleview.py:24 src/red_bundleview.py:98
 #: src/red_packageview.py:301
 msgid "Status"
 msgstr "Status"
 
-#: src/red_bundleview.py:54 src/red_bundleview.py:139
+#: src/red_bundleview.py:52 src/red_bundleview.py:137
 #: src/red_packagepage_info.py:91 src/red_packageview.py:452
 msgid "Version"
 msgstr "Version"
 
-#: src/red_bundleview.py:64 src/red_bundleview.py:149
+#: src/red_bundleview.py:62 src/red_bundleview.py:147
 msgid "Installed"
 msgstr "Installed"
 
-#: src/red_bundleview.py:74 src/red_bundleview.py:159
+#: src/red_bundleview.py:72 src/red_bundleview.py:157 src/red_history.py:326
 msgid "Type"
 msgstr "Type"
 
-#: src/red_catalog.py:32 src/red_channeloption.py:64
+#: src/red_channeloption.py:64
 msgid "All Catalogs"
 msgstr "All Catalogues"
 
@@ -660,7 +660,7 @@ msgstr "Continue"
 msgid "Catalog"
 msgstr "Catalogue"
 
-#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
+#: src/red_depview.py:50 src/red_history.py:180 src/red_packageview.py:423
 msgid "Package"
 msgstr "Package"
 
@@ -668,7 +668,7 @@ msgstr "Package"
 msgid "Current Version"
 msgstr "Current Version"
 
-#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
+#: src/red_depview.py:56 src/red_history.py:329 src/red_history.py:462
 #: src/red_updates.py:94
 msgid "New Version"
 msgstr "New Version"
@@ -677,59 +677,67 @@ msgstr "New Version"
 msgid "Size"
 msgstr "Size"
 
-#: src/red_history.py:114 src/red_users.py:30
+#: src/red_history.py:115 src/red_users.py:30
 msgid "All"
 msgstr "All"
 
-#: src/red_history.py:115
+#: src/red_history.py:116
 msgid "Installations"
 msgstr "Installations"
 
-#: src/red_history.py:116
+#: src/red_history.py:117
 msgid "Removals"
 msgstr "Removals"
 
-#: src/red_history.py:117
+#: src/red_history.py:118
 msgid "Upgrades"
 msgstr "Upgrades"
 
-#: src/red_history.py:122
+#: src/red_history.py:123
 msgid "User:"
 msgstr "User:"
 
-#: src/red_history.py:128
+#: src/red_history.py:129
 msgid "Timeframe (days):"
 msgstr "Timeframe (days):"
 
-#: src/red_history.py:280
+#: src/red_history.py:182
+msgid "Bundle"
+msgstr "Bundle"
+
+#: src/red_history.py:183
+msgid "Unknown"
+msgstr "Unknown"
+
+#: src/red_history.py:301
 msgid "Searching..."
 msgstr "Searching..."
 
-#: src/red_history.py:302 src/red_history.py:436
+#: src/red_history.py:323 src/red_history.py:458
 msgid "Time"
 msgstr "Time"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
+#: src/red_history.py:324 src/red_history.py:459 src/red_packageview.py:330
 msgid "Action"
 msgstr "Action"
 
-#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
+#: src/red_history.py:325 src/red_history.py:460 src/red_users.py:113
 msgid "User"
 msgstr "User"
 
-#: src/red_history.py:306 src/red_history.py:439
+#: src/red_history.py:328 src/red_history.py:461
 msgid "Old Version"
 msgstr "Old Version"
 
-#: src/red_history.py:337 src/red_packagepage.py:45
+#: src/red_history.py:359 src/red_packagepage.py:45
 msgid "History"
 msgstr "History"
 
-#: src/red_history.py:340
+#: src/red_history.py:362
 msgid "_History"
 msgstr "_History"
 
-#: src/red_history.py:384
+#: src/red_history.py:406
 msgid "No results found."
 msgstr "No results found."
 
@@ -1502,4 +1510,5 @@ msgstr "The orientation of the tray."
 
 #: trayicon/red_icon_main.py:185
 msgid "There appears to be a Red Carpet update icon already running.  Exiting."
-msgstr "There appears to be a Red Carpet update icon already running.  Exiting."
+msgstr ""
+"There appears to be a Red Carpet update icon already running.  Exiting."
