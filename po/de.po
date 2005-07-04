@@ -2,14 +2,15 @@
 # Copyright (C) 2001-2003 Free Software Foundation, Inc.
 # Christian Meyer <chrisime@gnome.org>, 2001, 2002.
 # Christian Neumair <chris@gnome-de.org>, 2003.
+# Hendrik Richter <hendi@gnome-de.org>, 2005.
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-13 16:52+0100\n"
-"PO-Revision-Date: 2005-01-13 16:52+0100\n"
-"Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
+"PO-Revision-Date: 2005-07-04 20:12+0200\n"
+"Last-Translator: Hendrik Richter <hendi@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -175,7 +176,7 @@ msgstr "Zur _Installation vormerken"
 
 #: src/red_appwindow.py:472
 msgid "Mark selected packages for installation"
-msgstr "Die gewählten Pakte zur Installation vormerken"
+msgstr "Die gewählten Pakete zur Installation vormerken"
 
 #. #
 #. # Remove Package
@@ -188,7 +189,7 @@ msgstr "Zum _Entfernen vormerken"
 
 #: src/red_appwindow.py:478
 msgid "Mark selected packages for removal"
-msgstr "Die gewählten Pakte zum Entfernen vormerken"
+msgstr "Die gewählten Pakete zum Entfernen vormerken"
 
 #. Cancel
 #: src/red_appwindow.py:483 src/red_appwindow.py:791
@@ -789,7 +790,7 @@ msgstr "Rechnername"
 
 #: src/red_option.py:25
 msgid "Contact daemon on specified host"
-msgstr "Daemon auf dem angegebenen Rechner kontakieren"
+msgstr "Daemon auf dem angegebenen Rechner kontaktieren"
 
 #: src/red_option.py:26
 msgid "username"
@@ -1236,7 +1237,7 @@ msgstr "Kanal:"
 
 #: src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
-msgstr "Der Daemon hat sich identifziert als:"
+msgstr "Der Daemon hat sich identifiziert als:"
 
 #: src/red_serverinfo.py:57
 msgid "System type"
