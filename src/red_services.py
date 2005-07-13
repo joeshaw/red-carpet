@@ -233,7 +233,8 @@ class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
                 rcd_util.dialog_from_fault(f)
                 return
             else:
-                win.busy_start()
+                rcd_util.reset_services()
+                win.view.get_model().refresh()
 
         server = rcd_util.get_server_proxy()
         th = server.rcd.service.remove(selected_service["id"])
@@ -251,7 +252,8 @@ class ServicesWindow(gtk.Dialog, red_serverlistener.ServerListener):
                 rcd_util.dialog_from_fault(f)
                 return
             else:
-                parent.busy_start()
+                rcd_util.reset_services()
+                parent.view.get_model().refresh()
 
         win = ServiceAddWindow()
         response = win.run()

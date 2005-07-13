@@ -1,5 +1,9 @@
 2005-07-13  Tambet Ingo  <tambet@ximian.com>
 
+	* red_services.py (ServicesWindow.remove_service_cb) 
+	(ServicesWindow.service_added_cb): Don't rely on changed channels to
+	update the services list, some services don't offer any channels.
+
 	* red_users.py (UserAdd.add_cb): Explicitly make new users with default
 	"view" privilege.
 
