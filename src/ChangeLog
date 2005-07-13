@@ -1,3 +1,10 @@
+2005-07-13  Tambet Ingo  <tambet@ximian.com>
+
+	* red_users.py (UserAdd.add_cb): Explicitly make new users with default
+	"view" privilege.
+
+	* red_console.py (Console.__init__): s/red carpet/zenworks/.
+
 2005-06-02  Tambet Ingo  <tambet@ximian.com>
 
 	* red_bundleview.py: Don't import red_catalog.

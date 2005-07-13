@@ -434,7 +434,7 @@ class UserAdd(gtk.Dialog):
                 dialog.run()
                 dialog.destroy()
             else:
-                user = User(name, p1)
+                user = User(name, p1, ["view"])
                 opt.add_user(user)
                 this.destroy()
 

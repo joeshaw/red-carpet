@@ -47,7 +47,7 @@ class Console:
         box.pack_start(self.scrolled, expand=1, fill=1)
 
         self.window = gtk.Dialog()
-        self.window.set_title(_("Red Carpet Error Console"))
+        self.window.set_title(_("ZENworks Error Console"))
         self.window.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
 
         self.window.vbox.add(box)
