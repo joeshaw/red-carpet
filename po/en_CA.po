@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-02 11:34-0400\n"
-"PO-Revision-Date: 2005-06-02 01:59-0400\n"
+"POT-Creation-Date: 2005-07-18 05:06-0400\n"
+"PO-Revision-Date: 2005-07-18 01:59-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -582,8 +582,8 @@ msgid "Connect"
 msgstr "Connect"
 
 #: src/red_console.py:50
-msgid "Red Carpet Error Console"
-msgstr "Red Carpet Error Console"
+msgid "ZENworks Error Console"
+msgstr "ZENworks Error Console"
 
 #: src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
