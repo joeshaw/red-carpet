@@ -3,129 +3,133 @@
 # Meilof Veeningen <meilof@hotmail.com>, 2001.
 # Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>, 2001.
 # Gahan Zwart <linux@innertruth.net>
-# Tino Meinen <a.t.meinen@chello.nl>, 2003, 2004.
+# Tino Meinen <a.t.meinen@chello.nl>, 2003, 2004, 2005.
 #
+# Catalogs - Catalogi (voorheen Channels|Kanalen)
 msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-11 21:03+0200\n"
-"PO-Revision-Date: 2004-07-12 05:15+0200\n"
+"POT-Creation-Date: 2005-07-16 12:17+0000\n"
+"PO-Revision-Date: 2005-07-17 01:16+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
-"Language-Team: Dutch <vertaling@nl.linux.org>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/rcd_util.py:412
+#: ../src/rcd_util.py:426
 msgid "Please wait while getting data."
-msgstr "Even geduld alstublieft, de gegevens worden opgehaald."
+msgstr "Even ogenblik geduld, de gegevens worden opgehaald."
 
-#: src/rcd_util.py:466 src/rcd_util.py:484
+#: ../src/rcd_util.py:480 ../src/rcd_util.py:498
 msgid "Please ensure that your network settings are correct."
-msgstr "Controleer of uw netwerkinstellingen goed zijn."
+msgstr "Controleer of uw netwerkinstellingen correct zijn."
 
-#: src/rcd_util.py:473
-msgid "Refreshing channel data"
-msgstr "Bezig met verversen vankanaalgegevens"
+#: ../src/rcd_util.py:487
+msgid "Refreshing catalog data"
+msgstr "Verversen van catalogusgegevens"
 
-#: src/rcd_util.py:475
-msgid "Downloading channel information"
-msgstr "Bezig met ophalen van kanaalinformatie"
+# Downloaden/ophalen
+#: ../src/rcd_util.py:489
+msgid "Downloading catalog information"
+msgstr "Downloaden van catalogusinformatie"
 
-#: src/rcd_util.py:501
+# verifieren
+#: ../src/rcd_util.py:515
 msgid "Verifying"
-msgstr "Bezig met controleren"
+msgstr "Controleren"
 
-#: src/rcd_util.py:502
+#: ../src/rcd_util.py:516
 msgid "Unable to verify package signature for"
 msgstr "Niet in staat pakket-handtekening te verifiëren voor"
 
-#: src/rcd_util.py:503
+#: ../src/rcd_util.py:517
 msgid "There is no package signature for"
 msgstr "Er is geen pakkethandtekening voor"
 
-#: src/rcd_util.py:504
+#: ../src/rcd_util.py:518
 msgid "Preparing Transaction"
-msgstr "Transactie wordt voorbereid "
+msgstr "Transactie wordt voorbereid"
 
-#: src/rcd_util.py:505
+# aan het installeren/bezig
+#: ../src/rcd_util.py:519
 msgid "Installing"
-msgstr "Bezig met installeren"
+msgstr "Installeren"
 
-#: src/rcd_util.py:506
+#: ../src/rcd_util.py:520
 msgid "Removing"
-msgstr "Bezig met verwijderen"
+msgstr "Verwijderen"
 
-#: src/rcd_util.py:507
+#: ../src/rcd_util.py:521
 msgid "Configuring"
 msgstr "Bezig met configureren"
 
-#: src/red_about.py:41
+#: ../src/red_about.py:41
 msgid "Brought to you by:"
 msgstr "U gebracht door:"
 
-#: src/red_about.py:42
+#: ../src/red_about.py:42
 msgid "With love from:"
 msgstr "Kusjes van:"
 
-#: src/red_about.py:43
+#: ../src/red_about.py:43
 msgid "Best wishes from:"
 msgstr "De groeten van:"
 
-#: src/red_about.py:44
+#: ../src/red_about.py:44
 msgid "Sincerely:"
 msgstr "Hoogachtend:"
 
-#: src/red_about.py:45
+#: ../src/red_about.py:45
 msgid "Developed by chimps:"
 msgstr "Ontwikkeld door de chimpansees:"
 
-#: src/red_about.py:80
+#: ../src/red_about.py:79
 msgid "Licensed under the GNU General Public License, version 2"
 msgstr "Uitgebracht onder de GNU General Public License, versie 2"
 
-#: src/red_activation.py:27
+#: ../src/red_activation.py:27
 msgid "Group Activation"
 msgstr "Groepsactivering"
 
-#: src/red_activation.py:44
+#: ../src/red_activation.py:44
 msgid "Service:"
 msgstr "Service:"
 
-#: src/red_activation.py:48
+#: ../src/red_activation.py:48
 msgid "Email:"
 msgstr "E-mail:"
 
-#: src/red_activation.py:52
+#: ../src/red_activation.py:52
 msgid "Activation Code:"
 msgstr "Activeringscode:"
 
-#: src/red_activation.py:78
+#: ../src/red_activation.py:78
 msgid "Activate"
 msgstr "Activeren"
 
-#: src/red_activation.py:99
+#: ../src/red_activation.py:99
 msgid "Please fill in both email and activation code."
 msgstr "Voer zowel het e-mailadres als de activeringscode in."
 
 # dit is vrij vertaald
-#: src/red_activation.py:114
+#: ../src/red_activation.py:114
 msgid "Unable to activate"
 msgstr "Het activeren is mislukt"
 
-#: src/red_activation.py:115
+#: ../src/red_activation.py:115
 msgid "Please ensure you typed the email address and activation code correctly"
 msgstr ""
 "Controleer of u het e-mailadres en de activeringscode goed hebt ingevoerd"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:92
+#: ../src/red_appwindow.py:93
 msgid "C"
 msgstr "C"
 
-#: src/red_appwindow.py:129
+#: ../src/red_appwindow.py:130
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -133,338 +137,404 @@ msgstr ""
 "Kon de hulp niet tonen omdat de hulp-bestanden ontbreken. Rapporteer dit bij "
 "de leverancier."
 
-#: src/red_appwindow.py:139
+#: ../src/red_appwindow.py:140
 msgid ""
 "Unable to show help because there are no applications available to view help."
-msgstr ""
-"Kon de hulp niet tonen omdat er geen toepassingen beschikbaar waren waarmee "
-"de jhulp getoond kan worden."
+msgstr "Kon de hulp niet tonen omdat er geen toepassingen beschikbaar zijn waarmee de hulp getoond kan worden."
 
-#: src/red_appwindow.py:414
+#: ../src/red_appwindow.py:415
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Weet u zeker dat u %d pakket-informatievensters wilt openen?"
 
-#: src/red_appwindow.py:442
+# nu uitvoeren
+#: ../src/red_appwindow.py:443
 msgid "Run Now"
 msgstr "Uitvoeren"
 
 # de-installatie?
-#: src/red_appwindow.py:443
+# installeren en verwijderen
+# Installaties en verwijderingen uitvoeren
+#: ../src/red_appwindow.py:444
 msgid "Perform installations and removals"
-msgstr "Installaties en verwijderingen uitvoeren"
+msgstr "Installeren en verwijderen"
 
-#: src/red_appwindow.py:450
-msgid "Channels"
-msgstr "Kanalen"
+#: ../src/red_appwindow.py:451
+msgid "Catalogs"
+msgstr "Catalogi"
 
-#: src/red_appwindow.py:451
-msgid "Change your channel subscriptions"
-msgstr "Verander uw kanaalabonnementen"
+#: ../src/red_appwindow.py:452
+msgid "Change your catalog subscriptions"
+msgstr "Uw catalogusabonnementen wijzigen"
 
-#: src/red_appwindow.py:459
+#: ../src/red_appwindow.py:460
 msgid "Refresh"
 msgstr "Verversen"
 
-#: src/red_appwindow.py:460
-msgid "Refresh channel data"
-msgstr "Ververs kanaalgegevens"
+#: ../src/red_appwindow.py:461
+msgid "Refresh catalog data"
+msgstr "Catalogusgegevens verversen"
 
 #. Install
-#: src/red_appwindow.py:471 src/red_packageview.py:232
+#: ../src/red_appwindow.py:472 ../src/red_packageview.py:232
 msgid "Mark for _Installation"
-msgstr "Markeer voor _Installatie"
+msgstr "Markeren voor _Installatie"
 
-#: src/red_appwindow.py:472
+#: ../src/red_appwindow.py:473
 msgid "Mark selected packages for installation"
-msgstr "Markeer geselecteerde pakketten voor installatie"
+msgstr "Markeer de geselecteerde pakketten voor installatie"
 
 #. #
 #. # Remove Package
 #. #
 #. Remove
-#: src/red_appwindow.py:477 src/red_appwindow.py:778
-#: src/red_packageview.py:245
+#: ../src/red_appwindow.py:478 ../src/red_appwindow.py:779
+#: ../src/red_packageview.py:245
 msgid "Mark for _Removal"
-msgstr "Markeer voor _Verwijdering"
+msgstr "Markeren voor _verwijderen"
 
-#: src/red_appwindow.py:478
+#: ../src/red_appwindow.py:479
 msgid "Mark selected packages for removal"
-msgstr "Markeer geselecteerde pakketten voor verwijdering"
+msgstr "Markeer de geselecteerde pakketten voor verwijderen"
 
 #. Cancel
-#: src/red_appwindow.py:483 src/red_appwindow.py:791
-#: src/red_packageview.py:258
+#: ../src/red_appwindow.py:484 ../src/red_appwindow.py:792
+#: ../src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Annuleren"
 
 # dit kan beter
-#: src/red_appwindow.py:484
+#: ../src/red_appwindow.py:485
 msgid "Cancel marked package actions"
 msgstr "Gemarkeerde pakketacties annuleren"
 
 #. Info
-#: src/red_appwindow.py:489 src/red_packageview.py:276
+#: ../src/red_appwindow.py:490 ../src/red_packageview.py:276
 msgid "I_nformation"
-msgstr "_Informatie"
+msgstr "I_nformatie"
 
-#: src/red_appwindow.py:490
+#: ../src/red_appwindow.py:491
 msgid "Package information"
 msgstr "Pakketinformatie"
 
-#: src/red_appwindow.py:547
+#: ../src/red_appwindow.py:548
 msgid "_File"
 msgstr "_Bestand"
 
-#: src/red_appwindow.py:548
+#: ../src/red_appwindow.py:549
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: src/red_appwindow.py:549 src/red_appwindow.py:841
+#: ../src/red_appwindow.py:550 ../src/red_appwindow.py:842
 msgid "_View"
 msgstr "Beel_d"
 
-#: src/red_appwindow.py:550
+#: ../src/red_appwindow.py:551
 msgid "_Actions"
 msgstr "_Acties"
 
-#: src/red_appwindow.py:551
+#: ../src/red_appwindow.py:552
 msgid "_Help"
 msgstr "_Hulp"
 
-#: src/red_appwindow.py:559
+#: ../src/red_appwindow.py:560
 msgid "Connect to daemon..."
 msgstr "Met de daemon verbinden..."
 
-#: src/red_appwindow.py:560
+#: ../src/red_appwindow.py:561
 msgid "Connect to a remote daemon"
-msgstr "Verbinden met daemon op afstand"
+msgstr "Verbinden met externe daemon"
 
-# 'met' is hier beter dan 'vanaf'
-#: src/red_appwindow.py:570
+# 'via' is hier beter dan 'vanaf'
+#: ../src/red_appwindow.py:571
 msgid "Install from _File..."
-msgstr "Installeren met _bestand..."
+msgstr "Installeren via _bestand..."
 
-#: src/red_appwindow.py:571
+#: ../src/red_appwindow.py:572
 msgid "Install a package from a local file"
-msgstr "Een pakket installeren met een lokaal bestand"
+msgstr "Een pakket installeren via een lokaal bestand"
 
-#: src/red_appwindow.py:580
+#: ../src/red_appwindow.py:581
 msgid "Install from _URL..."
 msgstr "Installeren vanaf _URL..."
 
-#: src/red_appwindow.py:581
+#: ../src/red_appwindow.py:582
 msgid "Install a package from a remote URL"
-msgstr "Een pakket installeren vanaf een URL op afstand"
+msgstr "Een pakket installeren via een externe URL"
 
-#: src/red_appwindow.py:598
+#: ../src/red_appwindow.py:599
 msgid "_Mount Directory..."
 msgstr "_Map aankoppelen..."
 
-#: src/red_appwindow.py:599
-msgid "Mount a directory as a channel"
-msgstr "Een map aankoppelen als kanaal"
+#: ../src/red_appwindow.py:600
+msgid "Mount a directory as a catalog"
+msgstr "Een map aankoppelen als een catalogus"
 
-#: src/red_appwindow.py:615
+#: ../src/red_appwindow.py:616
 msgid "U_nmount Directory..."
 msgstr "Map _afkoppelen..."
 
-#: src/red_appwindow.py:616
+#: ../src/red_appwindow.py:617
 msgid "Unmount a directory"
 msgstr "Een map afkoppelen"
 
-#: src/red_appwindow.py:632
+#: ../src/red_appwindow.py:633
 msgid "_Activate..."
 msgstr "_Activeren..."
 
-#: src/red_appwindow.py:633
+#: ../src/red_appwindow.py:634
 msgid ""
 "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr ""
-"Daemon activeren via een Red Carpet Express of Red Carpet Enterprise server."
+msgstr "Daemon activeren via een Red Carpet Express of Red Carpet Enterprise server"
 
-#: src/red_appwindow.py:639
+#: ../src/red_appwindow.py:640
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/red_appwindow.py:640
+#: ../src/red_appwindow.py:641
 msgid "Quit Red Carpet"
 msgstr "Red Carpet afsluiten"
 
-#: src/red_appwindow.py:655
+#: ../src/red_appwindow.py:656
 msgid "Select _All"
 msgstr "_Alles selecteren"
 
-#: src/red_appwindow.py:656
+#: ../src/red_appwindow.py:657
 msgid "Select all items"
 msgstr "Alle items selecteren"
 
-#: src/red_appwindow.py:661
+#: ../src/red_appwindow.py:662
 msgid "Select _None"
 msgstr "_Niets selecteren"
 
-#: src/red_appwindow.py:662
+#: ../src/red_appwindow.py:663
 msgid "Deselect all items"
 msgstr "Alle items deselecteren"
 
-#: src/red_appwindow.py:669
+#: ../src/red_appwindow.py:670
 msgid "Services..."
 msgstr "Services..."
 
-#: src/red_appwindow.py:670
+#: ../src/red_appwindow.py:671
 msgid "Edit services"
 msgstr "Services bewerken"
 
-#: src/red_appwindow.py:674
-msgid "Channel _Subscriptions..."
-msgstr "Kanaala_bonnementen..."
+#: ../src/red_appwindow.py:675
+msgid "Catalog _Subscriptions..."
+msgstr "Catalogusa_bonnementen..."
 
-#: src/red_appwindow.py:675
-msgid "Edit your channel subscriptions"
-msgstr "Uw kanaalabonnementen aanpassen"
+#: ../src/red_appwindow.py:676
+msgid "Edit your catalog subscriptions"
+msgstr "Uw catalogusabonnementen bewerken"
 
-#: src/red_appwindow.py:680
+#: ../src/red_appwindow.py:681
 msgid "_Preferences..."
 msgstr "_Voorkeuren..."
 
-#: src/red_appwindow.py:681
+#: ../src/red_appwindow.py:682
 msgid "Edit your Red Carpet preferences"
 msgstr "Uw Red Carpet voorkeuren bewerken"
 
-#: src/red_appwindow.py:685
+#: ../src/red_appwindow.py:686
 msgid "_Users..."
 msgstr "_Gebruikers..."
 
-#: src/red_appwindow.py:686
+#: ../src/red_appwindow.py:687
 msgid "Edit user permissions for this daemon"
-msgstr "Gebruikers-permissies van deze daemon bewerken"
+msgstr "Gebruiksrechten van deze daemon bewerken"
 
-#: src/red_appwindow.py:699
+#: ../src/red_appwindow.py:700
 msgid "_Sidebar"
 msgstr "_Zijbalk"
 
-#: src/red_appwindow.py:700
+#: ../src/red_appwindow.py:701
 msgid "Hide or show the Pending Actions sidebar"
-msgstr "De zijbalk met de nog te verrichten acties tonen"
+msgstr "De zijbalk met de nog te verrichten acties tonen of verbergen"
 
-#: src/red_appwindow.py:704
+#: ../src/red_appwindow.py:705
 msgid "_Advanced Search Options"
 msgstr "_Geavanceerde zoekopties"
 
-#: src/red_appwindow.py:705
+#: ../src/red_appwindow.py:706
 msgid "Hide or show advanced search options"
 msgstr "_Geavanceerde zoekopties tonen of verbergen"
 
-#: src/red_appwindow.py:709
-msgid "_Channel Names"
-msgstr "_Kanaalnamen"
+#: ../src/red_appwindow.py:710
+msgid "_Catalog Names"
+msgstr "_Catalogusnamen"
 
-#: src/red_appwindow.py:710
-msgid "Hide or show channel names in package lists"
-msgstr "Kanaalnamen in pakketlijsten tonen of verbergen"
+#: ../src/red_appwindow.py:711
+msgid "Hide or show catalog names in package lists"
+msgstr "Catalogusnamen in pakketlijsten tonen of verbergen"
 
-#: src/red_appwindow.py:716
+#: ../src/red_appwindow.py:717
 msgid "Package _Information..."
-msgstr "Pakket _Informatie..."
+msgstr "Pakketi_nformatie..."
 
-#: src/red_appwindow.py:717
+#: ../src/red_appwindow.py:718
 msgid "View information about currently selected packages"
-msgstr "Informatie tonen over huidige geselecteerde pakketten"
+msgstr "Informatie tonen over de huidige geselecteerde pakketten"
 
-#: src/red_appwindow.py:725
+#: ../src/red_appwindow.py:726
 msgid "_Daemon Information..."
 msgstr "_Daemon-informatie..."
 
-#: src/red_appwindow.py:726
+#: ../src/red_appwindow.py:727
 msgid "View information about this daemon"
 msgstr "Informatie over deze daemon tonen"
 
-#: src/red_appwindow.py:728
+#: ../src/red_appwindow.py:729
 msgid "Red Carpet Ne_ws..."
 msgstr "Red Carpet nieuws..."
 
-#: src/red_appwindow.py:729
+#: ../src/red_appwindow.py:730
 msgid "View the latest Red Carpet news"
 msgstr "Het laatste Red Carpet nieuws tonen"
 
-#: src/red_appwindow.py:741
+#: ../src/red_appwindow.py:742
 msgid "Run _Now"
 msgstr "_Nu uitvoeren"
 
-#: src/red_appwindow.py:742
+#: ../src/red_appwindow.py:743
 msgid "Run the current transaction"
 msgstr "De huidige transactie uitvoeren"
 
-#: src/red_appwindow.py:756
+#: ../src/red_appwindow.py:757
 msgid "_Verify System Dependencies"
 msgstr "Systeemafhankelijkheden _verifiëren"
 
 # 'of' beter dan 'dat'
-#: src/red_appwindow.py:757
+#: ../src/red_appwindow.py:758
 msgid "Verify that all system dependencies are met"
 msgstr "Verifiëren of alle systeemafhankelijkheden zijn vervuld"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:768
+#: ../src/red_appwindow.py:769
 msgid "Mark for I_nstallation"
-msgstr "Markeer voor I_nstallatie"
+msgstr "Markeren voor i_nstallatie"
 
-#: src/red_appwindow.py:769
+#: ../src/red_appwindow.py:770
 msgid "Mark this package for installation"
 msgstr "Dit pakket voor installatie markeren"
 
-#: src/red_appwindow.py:779
+#: ../src/red_appwindow.py:780
 msgid "Mark this package for removal"
-msgstr "Dit pakket voor verwijdering markeren"
+msgstr "Dit pakket voor verwijderen markeren"
 
-#: src/red_appwindow.py:792
+#: ../src/red_appwindow.py:793
 msgid "Cancel installation or removal mark"
-msgstr "Installatie of verwijderings-markering weghalen"
+msgstr "Markering voor installeren of verwijderen weghalen"
 
-#: src/red_appwindow.py:806
-msgid "Re_fresh Channel Data"
-msgstr "_Kanaalgegevens verversen"
+#: ../src/red_appwindow.py:807
+msgid "Re_fresh Catalog Data"
+msgstr "_Catalogusgegevens verversen"
 
-#: src/red_appwindow.py:807
-msgid "Download latest channel data"
-msgstr "Laatste kanaalgegevens binnenhalen"
+# downloaden/binnenhalen/ophalen
+#: ../src/red_appwindow.py:808
+msgid "Download latest catalog data"
+msgstr "Nieuwste Catalogusgegevens downloaden"
 
-#: src/red_appwindow.py:816
+#: ../src/red_appwindow.py:817
 msgid "_Contents"
 msgstr "_Inhoud"
 
-#: src/red_appwindow.py:817
+#: ../src/red_appwindow.py:818
 msgid "View Red Carpet help"
 msgstr "Red Carpet hulp tonen"
 
-#: src/red_appwindow.py:822
+#: ../src/red_appwindow.py:823
 msgid "_About..."
-msgstr "_Info..."
+msgstr "In_fo..."
 
-#: src/red_appwindow.py:823
+#: ../src/red_appwindow.py:824
 msgid "About Red Carpet"
 msgstr "Over Red Carpet"
 
-#: src/red_appwindow.py:842
+# de pagina voor s
+#: ../src/red_appwindow.py:843
 #, python-format
 msgid "Go to the '%s' page"
-msgstr "Naar de '%s' pagina gaan"
+msgstr "Naar de pagina '%s' gaan"
 
-#: src/red_channeloption.py:64
-msgid "All Channels"
-msgstr "Alle kanalen"
+#: ../src/red_bundlearray.py:32 ../src/red_packagearray.py:91
+msgid "installed"
+msgstr "geïnstalleerd"
 
-#: src/red_channeloption.py:69
-msgid "All Subscribed Channels"
-msgstr "Alle geabonneerde kanalen"
+#: ../src/red_bundlearray.py:34 ../src/red_packagearray.py:97
+msgid "not installed"
+msgstr "niet geïnstalleerd"
 
-#: src/red_channeloption.py:74
-msgid "No Channel/Unknown Channel"
-msgstr "Geen kanaal/Onbekend kanaal"
+# passende bundels
+#: ../src/red_bundlearray.py:231
+#, python-format
+msgid "Found %d matching bundles"
+msgstr "%d bundels gevonden"
 
-#: src/red_connection.py:49
+# controleren of het weglaten van 'overeenkomende/passende' hier kan
+#: ../src/red_bundlearray.py:233
+msgid "Found 1 matching bundle"
+msgstr "1 bundel gevonden"
+
+#: ../src/red_bundlearray.py:235
+msgid "No matching bundles found"
+msgstr "Geen passende bundels gevonden"
+
+#: ../src/red_bundlesearchbox.py:73
+msgid "All Bundles"
+msgstr "Alle bundels"
+
+#: ../src/red_bundlesearchbox.py:74
+msgid "Uninstalled Bundles"
+msgstr "Gedeïnstalleerde bundels"
+
+#: ../src/red_bundlesearchbox.py:75
+msgid "Installed Bundles"
+msgstr "Geïnstalleerde bundels"
+
+#: ../src/red_bundlesearchbox.py:101 ../src/red_searchbox.py:322
+msgid "Catalog:"
+msgstr "Catalogus:"
+
+#: ../src/red_bundleview.py:14 ../src/red_bundleview.py:126
+#: ../src/red_history.py:327 ../src/red_packagepage_info.py:90
+#: ../src/red_services.py:150
+msgid "Name"
+msgstr "Naam"
+
+#: ../src/red_bundleview.py:24 ../src/red_bundleview.py:98
+#: ../src/red_packageview.py:301
+msgid "Status"
+msgstr "Status"
+
+#: ../src/red_bundleview.py:52 ../src/red_bundleview.py:137
+#: ../src/red_packagepage_info.py:91 ../src/red_packageview.py:452
+msgid "Version"
+msgstr "Versie"
+
+#: ../src/red_bundleview.py:62 ../src/red_bundleview.py:147
+msgid "Installed"
+msgstr "Geïnstalleerd"
+
+#: ../src/red_bundleview.py:72 ../src/red_bundleview.py:157
+#: ../src/red_history.py:326
+msgid "Type"
+msgstr "Type"
+
+#: ../src/red_channeloption.py:64
+msgid "All Catalogs"
+msgstr "Alle catalogi"
+
+#: ../src/red_channeloption.py:69
+msgid "All Subscribed Catalogs"
+msgstr "Alle geabonneerde catalogi"
+
+#: ../src/red_channeloption.py:74
+msgid "No Catalog/Unknown Catalog"
+msgstr "Geen catalogus/Onbekende catalogus"
+
+#: ../src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -473,7 +543,7 @@ msgstr ""
 "Kon geen verbinding met de daemon maken:\n"
 " '%s'."
 
-#: src/red_connection.py:67
+#: ../src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -482,20 +552,19 @@ msgstr ""
 "Red Carpet Daemon versie %d.%d.%d gevonden.\n"
 "Versie %d.%d.%d (of nieuwer) is vereist"
 
-#: src/red_connection.py:93
+# updaten/bijwerken
+#: ../src/red_connection.py:93
 #, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
-msgstr ""
-"Protocolversie %d ontdekt.  Versie %d is benodigd.  U moet uw versie van rcd "
-"bijwerken."
+msgstr "Protocolversie %d ontdekt.  Versie %d is vereist.  U moet uw versie van rcd bijwerken."
 
-#: src/red_connection.py:123
+#: ../src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Daemon opstarten..."
 
-#: src/red_connection.py:197
+#: ../src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -503,79 +572,79 @@ msgstr ""
 "Red Carpet vereist een Red Carpet Daemon op de achtergrond.\n"
 "Wilt u er nu een opstarten?"
 
-#: src/red_connection.py:345
+#: ../src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Met dit systeem verbinden"
 
-#: src/red_connection.py:349
+#: ../src/red_connection.py:349
 msgid "Connect to a remote system"
-msgstr "Met een systeem op afstand verbinden"
+msgstr "Met een extern systeem verbinden"
 
-#: src/red_connection.py:357
+#: ../src/red_connection.py:357
 msgid "Server:"
 msgstr "Server:"
 
-#: src/red_connection.py:361 src/red_users.py:389
+#: ../src/red_connection.py:361 ../src/red_users.py:389
 msgid "User name:"
 msgstr "Gebruikersnaam:"
 
-#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
-#: src/red_users.py:395
+#: ../src/red_connection.py:365 ../src/red_prefs.py:237
+#: ../src/red_users.py:192 ../src/red_users.py:395
 msgid "Password:"
 msgstr "Wachtwoord:"
 
-#: src/red_connection.py:401
+#: ../src/red_connection.py:401
 msgid "Connect"
 msgstr "Verbinden"
 
-#: src/red_console.py:50
-msgid "Red Carpet Error Console"
-msgstr "Red Carpet fouten-console"
+#: ../src/red_console.py:50
+msgid "ZENworks Error Console"
+msgstr "ZENworks fouten-console"
 
-#: src/red_deaddaemon.py:35
+#: ../src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
 msgstr "Verbinding met daemon hersteld.\n"
 
-#: src/red_deaddaemon.py:68
+#: ../src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
 msgstr "Verbinding met daemon verbroken!"
 
-#: src/red_deaddaemon.py:69
+#: ../src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
 msgstr "Red Carpet afsluiten"
 
-#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
+# bekijken/oplossen
+#: ../src/red_depcomponent.py:75 ../src/red_depcomponent.py:403
 msgid "Dependency Resolution"
-msgstr "Afhankelijkheden oplossing"
+msgstr "Afhankelijkheden oplossen"
 
-#: src/red_depcomponent.py:122
+#: ../src/red_depcomponent.py:125
 msgid "Verifying System"
 msgstr "Systeem wordt nu geverifiëerd"
 
-#: src/red_depcomponent.py:128
+# bekeken/opgelost
+#: ../src/red_depcomponent.py:137
 msgid "Resolving Dependencies"
 msgstr "Afhankelijkheden worden nu opgelost"
 
-#: src/red_depcomponent.py:150
+#: ../src/red_depcomponent.py:159
 msgid ""
 "You must agree to the licenses covering this software before installing it."
-msgstr ""
-"U moet accoord gaan met de licentie van deze software voordat u het "
-"installeert."
+msgstr "Voordat u deze software installeert, moet u accoord gaan met de licentie."
 
-#: src/red_depcomponent.py:194
+#: ../src/red_depcomponent.py:203
 msgid "I Agree"
 msgstr "Accoord"
 
-#: src/red_depcomponent.py:288
+#: ../src/red_depcomponent.py:308
 msgid "Dependency Resolution Failed"
 msgstr "Afhankelijkheids-oplossing mislukt"
 
-#: src/red_depcomponent.py:338
+#: ../src/red_depcomponent.py:358
 msgid "System Verified"
 msgstr "Systeem geverifieerd"
 
-#: src/red_depcomponent.py:340
+#: ../src/red_depcomponent.py:360
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -583,900 +652,926 @@ msgstr ""
 "Alle pakketafhankelijkheden zijn vervuld. Er zijn geen corrigerende acties "
 "nodig."
 
-#: src/red_depcomponent.py:394
+#: ../src/red_depcomponent.py:414
 msgid "Requested Installations"
 msgstr "Aangevraagde installaties"
 
-#: src/red_depcomponent.py:398
+#: ../src/red_depcomponent.py:418
 msgid "Requested Removals"
 msgstr "Aangevraagde verwijderingen"
 
-#: src/red_depcomponent.py:402
+#: ../src/red_depcomponent.py:422
 msgid "Required Installations"
 msgstr "Vereisde installaties"
 
-#: src/red_depcomponent.py:406
+#: ../src/red_depcomponent.py:426
 msgid "Required Removals"
 msgstr "Vereisde verwijderingen"
 
-#: src/red_depcomponent.py:432
+#: ../src/red_depcomponent.py:452
 msgid "Continue"
 msgstr "Doorgaan"
 
-#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
-#: src/red_packageview.py:367
-msgid "Channel"
-msgstr "Kanaal"
+#: ../src/red_depview.py:47 ../src/red_mount.py:230
+#: ../src/red_packagepage_info.py:95 ../src/red_packageview.py:367
+msgid "Catalog"
+msgstr "Catalogus"
 
-#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
+#: ../src/red_depview.py:50 ../src/red_history.py:180
+#: ../src/red_packageview.py:423
 msgid "Package"
 msgstr "Pakket"
 
-#: src/red_depview.py:53 src/red_packageview.py:462
+#: ../src/red_depview.py:53 ../src/red_packageview.py:462
 msgid "Current Version"
-msgstr "Huidige Versie"
+msgstr "Huidige versie"
 
-#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
-#: src/red_updates.py:94
+#: ../src/red_depview.py:56 ../src/red_history.py:329
+#: ../src/red_history.py:462 ../src/red_updates.py:94
 msgid "New Version"
-msgstr "Nieuwe Versie"
+msgstr "Nieuwe versie"
 
-#: src/red_depview.py:59 src/red_packageview.py:498
+#: ../src/red_depview.py:59 ../src/red_packageview.py:498
 msgid "Size"
 msgstr "Grootte"
 
-#: src/red_history.py:113 src/red_users.py:30
+# alles/alle
+#: ../src/red_history.py:115 ../src/red_users.py:30
 msgid "All"
-msgstr "Alle"
+msgstr "Alles"
 
-#: src/red_history.py:114
+#: ../src/red_history.py:116
 msgid "Installations"
 msgstr "Installaties"
 
-#: src/red_history.py:115
+#: ../src/red_history.py:117
 msgid "Removals"
 msgstr "Verwijderingen"
 
-#: src/red_history.py:116
+#: ../src/red_history.py:118
 msgid "Upgrades"
 msgstr "Nieuwe Versies"
 
-#: src/red_history.py:121
+#: ../src/red_history.py:123
 msgid "User:"
 msgstr "Gebruiker:"
 
-#: src/red_history.py:127
+#: ../src/red_history.py:129
 msgid "Timeframe (days):"
 msgstr "Tijdsbestek (dagen):"
 
-#: src/red_history.py:279
-msgid "Searching..."
-msgstr "Bezig met zoeken..."
+#: ../src/red_history.py:182
+msgid "Bundle"
+msgstr "Bundel"
 
-#: src/red_history.py:301 src/red_history.py:435
+#: ../src/red_history.py:183
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: ../src/red_history.py:301
+msgid "Searching..."
+msgstr "Zoeken..."
+
+#: ../src/red_history.py:323 ../src/red_history.py:458
 msgid "Time"
 msgstr "Tijd"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
+#: ../src/red_history.py:324 ../src/red_history.py:459
+#: ../src/red_packageview.py:330
 msgid "Action"
 msgstr "Actie"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
+#: ../src/red_history.py:325 ../src/red_history.py:460 ../src/red_users.py:113
 msgid "User"
 msgstr "Gebruiker"
 
-#: src/red_history.py:305 src/red_history.py:438
+#: ../src/red_history.py:328 ../src/red_history.py:461
 msgid "Old Version"
 msgstr "Oude versie"
 
-#: src/red_history.py:336 src/red_packagepage.py:45
+# verleden/geschiedenis
+#: ../src/red_history.py:359 ../src/red_packagepage.py:45
 msgid "History"
 msgstr "Geschiedenis"
 
-#: src/red_history.py:339
+#: ../src/red_history.py:362
 msgid "_History"
 msgstr "_Geschiedenis"
 
-#: src/red_history.py:383
+#: ../src/red_history.py:406
 msgid "No results found."
 msgstr "Geen resultaten gevonden."
 
-#: src/red_installfiles.py:82 src/red_installfiles.py:142
+#: ../src/red_installfiles.py:80 ../src/red_installfiles.py:149
 #, python-format
 msgid "%s is not a valid package"
 msgstr "%s is geen geldig pakket"
 
-#: src/red_installfiles.py:92
+#: ../src/red_installfiles.py:90
 msgid "There are no valid packages to install"
 msgstr "Er zijn geen geldige pakketten om te installeren"
 
-#: src/red_installfiles.py:102
+#: ../src/red_installfiles.py:109
 msgid "Install from File"
-msgstr "Installeer vanaf Bestand"
+msgstr "Installeren via bestand"
 
-#: src/red_installfiles.py:119
+# Gedownload/binnegehaald
+#: ../src/red_installfiles.py:126
 #, python-format
 msgid "Downloading %s..."
 msgstr "%s wordt binnengehaald..."
 
-#: src/red_installfiles.py:158
+#: ../src/red_installfiles.py:165
 msgid "Install from URL"
-msgstr "Installeer vanaf URL"
+msgstr "Installeren via URL"
 
-#: src/red_installfiles.py:163
+#: ../src/red_installfiles.py:170
 msgid "Package URL:"
 msgstr "Pakket URL:"
 
-#: src/red_main.py:108
+#: ../src/red_main.py:111 ../trayicon/red_icon_main.py:211
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr ""
 "FOUT: U kunt de opties -h/--host en -l/--local niet gelijktijdig gebruiken"
 
-#: src/red_main.py:139
+#: ../src/red_main.py:142 ../trayicon/red_icon_main.py:242
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "FOUT: U kunt niet een gebruiker voor een locale daemon opgeven"
 
-#: src/red_mirrors.py:76
+#: ../src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Spiegelen"
 
-#: src/red_mirrors.py:81
+#: ../src/red_mirrors.py:81
 msgid "Location"
 msgstr "Lokatie"
 
-#: src/red_mirrors.py:108
+#: ../src/red_mirrors.py:108
 msgid "Choose a Mirror"
-msgstr "Een Mirror kiezen"
+msgstr "Een mirror kiezen"
 
-#: src/red_mount.py:91
+#: ../src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Kon '%s' niet afkoppelen"
 
-#: src/red_mount.py:117
+#: ../src/red_mount.py:117
 msgid "Browse..."
 msgstr "Bladeren..."
 
-#: src/red_mount.py:128
+#: ../src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Map aankoppelen"
 
-#: src/red_mount.py:141
-msgid "Mount channel"
-msgstr "Kanaal aankoppelen"
+#: ../src/red_mount.py:141
+msgid "Mount catalog"
+msgstr "Catalogus aankoppelen"
 
-#: src/red_mount.py:145
-msgid "Mount a directory as channel"
-msgstr "Een map als kanaal aankoppelen"
+#: ../src/red_mount.py:145
+msgid "Mount a directory as catalog"
+msgstr "Een map aankoppelen als catalogus"
 
-#: src/red_mount.py:153
-msgid "Channel Name:"
-msgstr "Kanaalnaam:"
+#: ../src/red_mount.py:153
+msgid "Catalog Name:"
+msgstr "Catalogusnaam:"
 
-#: src/red_mount.py:157
+#: ../src/red_mount.py:157
 msgid "Directory:"
 msgstr "Map:"
 
-#: src/red_mount.py:168
+#: ../src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Recursief zoeken naar pakketten"
 
-#: src/red_mount.py:193
-msgid "Please choose the path for channel."
-msgstr "Kies het pad voor kanaal."
+#: ../src/red_mount.py:193
+msgid "Please choose the path for catalog."
+msgstr "Kies het pad voor de catalogus."
 
-#: src/red_mount.py:214
-msgid "Unmount Channel"
-msgstr "Kanaal afkoppelen"
+#: ../src/red_mount.py:214
+msgid "Unmount Catalog"
+msgstr "Catalogus afkoppelen"
 
-#: src/red_mount.py:243
+#: ../src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Afkoppelen?"
 
-#: src/red_news.py:174
+#: ../src/red_news.py:174
 #, python-format
 msgid "%s News"
 msgstr "%s nieuws"
 
-#: src/red_option.py:24
+#: ../src/red_option.py:24
 msgid "Connect to a locally running daemon"
-msgstr "Verbinding leggen met een locale daemon"
+msgstr "Verbinding leggen met een lokale daemon"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "hostname"
 msgstr "hostnaam"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "Contact daemon on specified host"
 msgstr "Contact maken met daemon op opgegeven host"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "username"
 msgstr "gebruikersnaam"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "Specify user name"
 msgstr "Gebruikersnaam opgeven"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "password"
 msgstr "wachtwoord"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "Specify password"
 msgstr "Wachtwoord opgeven"
 
-#: src/red_option.py:28
+#: ../src/red_option.py:28
 msgid "Print client version and exit"
-msgstr "Versie van client tonen en afsluiten"
+msgstr "Versie van cliënt tonen en afsluiten"
 
-#: src/red_option.py:29
+#: ../src/red_option.py:29
 msgid "Get usage information"
 msgstr "Gebruiksinformatie ophalen"
 
-#: src/red_option.py:120
+#: ../src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Gebruik: %s <opties> ..."
 
-#: src/red_option.py:122
+#: ../src/red_option.py:122
 msgid "The following options are understood:"
 msgstr "De volgende opties kunnen worden gebruikt:"
 
-#: src/red_packagearray.py:91
-msgid "installed"
-msgstr "geïnstalleerd"
-
 #. upgrade
-#: src/red_packagearray.py:93
+#: ../src/red_packagearray.py:93
 msgid "newer"
 msgstr "nieuwer"
 
-#: src/red_packagearray.py:95
+#: ../src/red_packagearray.py:95
 msgid "older"
 msgstr "ouder"
 
-#: src/red_packagearray.py:97
-msgid "not installed"
-msgstr "niet geïnstalleerd"
-
-#: src/red_packagearray.py:123
+#: ../src/red_packagearray.py:123
 msgid "upgrade"
-msgstr "upgrade"
+msgstr "upgraden"
 
-#: src/red_packagearray.py:125
+#: ../src/red_packagearray.py:125
 msgid "downgrade"
-msgstr "downgrade"
+msgstr "downgraden"
 
-#: src/red_packagearray.py:127
+#: ../src/red_packagearray.py:127
 msgid "install"
 msgstr "installeren"
 
-#: src/red_packagearray.py:134
+#: ../src/red_packagearray.py:134
 msgid "remove"
 msgstr "verwijderen"
 
 # controleren of het weglaten van 'overeenkomende' hier kan
-#: src/red_packagearray.py:614
+#: ../src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
 msgstr "%d pakketten gevonden"
 
 # controleren of het weglaten van 'overeenkomende' hier kan
-#: src/red_packagearray.py:616
+# passend
+#: ../src/red_packagearray.py:616
 msgid "Found 1 matching package"
 msgstr "1 pakket gevonden"
 
-#: src/red_packagearray.py:618
+# passende pakketten
+#: ../src/red_packagearray.py:618
 msgid "No matching packages found"
 msgstr "Geen pakketten gevonden"
 
-#: src/red_packagearray.py:776
+#: ../src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Zoeken naar updates..."
 
-#: src/red_packagearray.py:801
+#: ../src/red_packagearray.py:801
 #, python-format
 msgid "Found %d matching patches"
 msgstr "%d passende patches gevonden"
 
-#: src/red_packagearray.py:803
+#: ../src/red_packagearray.py:803
 msgid "Found 1 matching patch"
 msgstr "1 passende patch gevonden"
 
-#: src/red_packagearray.py:805
+#: ../src/red_packagearray.py:805
 msgid "No matching patches found"
 msgstr "Geen passende patches gevonden"
 
-#: src/red_packagebook.py:44
+#: ../src/red_packagebook.py:44
 msgid "Package Information"
 msgstr "Pakketinformatie"
 
-#: src/red_packagepage.py:32
+#: ../src/red_packagepage.py:32
 msgid "Unnamed"
 msgstr "Naamloos"
 
-#: src/red_packagepage_deps.py:29
+#: ../src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Afhankelijkheden"
 
-# biedt?
-#: src/red_packagepage_deps.py:67
+# biedt/levert
+#: ../src/red_packagepage_deps.py:67
 msgid "Provides"
 msgstr "Levert"
 
-#: src/red_packagepage_deps.py:70
+#: ../src/red_packagepage_deps.py:70
 msgid "Requires"
 msgstr "Vereist"
 
-#: src/red_packagepage_deps.py:73
+#: ../src/red_packagepage_deps.py:73
 msgid "Conflicts With"
 msgstr "Conflicteert met"
-
-#: src/red_packagepage_info.py:90 src/red_services.py:112
-msgid "Name"
-msgstr "Naam"
-
-#: src/red_packagepage_info.py:91 src/red_packageview.py:452
-msgid "Version"
-msgstr "Versie"
 
 # Release in de pakketbeschrijving. De versie kan bijv 2.4.3. zijn, release 28
 # Dan is het dus de 28ste keer dat deze versie wordt uitgebracht
 # Dus zoiets als de zoveelste druk
-#: src/red_packagepage_info.py:92
+#: ../src/red_packagepage_info.py:92
 msgid "Release"
 msgstr "Persing"
 
-#: src/red_packagepage_info.py:93
+#: ../src/red_packagepage_info.py:93
 msgid "Package Size"
 msgstr "Pakketgrootte"
 
-#: src/red_packagepage_info.py:94
+#: ../src/red_packagepage_info.py:94
 msgid "Installed Size"
 msgstr "Installatiegrootte"
 
-#: src/red_packagepage_info.py:96
+#: ../src/red_packagepage_info.py:96
 msgid "Section"
 msgstr "Sectie"
 
-#: src/red_packagepage_info.py:97
+#: ../src/red_packagepage_info.py:97
 msgid "Summary"
 msgstr "Samenvatting"
 
-#: src/red_packagepage_info.py:98 src/red_prefs.py:413
+# omschrijving/beschrijving
+#: ../src/red_packagepage_info.py:98 ../src/red_prefs.py:413
 msgid "Description"
-msgstr "Beschrijving"
+msgstr "Omschrijving"
 
-#: src/red_packagepage_info.py:152
+#: ../src/red_packagepage_info.py:152
 msgid "Info"
 msgstr "Info"
 
-#: src/red_packageview.py:301
-msgid "Status"
-msgstr "Status"
-
 # dit is de kolom-kop voor: suggested, urgent etc
 # Mogelijkheden: Belang, Gewichtigheid, Urgentie
-#: src/red_packageview.py:472
+#: ../src/red_packageview.py:472
 msgid "Importance"
 msgstr "Urgentie"
 
 # vertaling?
-#: src/red_patches.py:35
+#: ../src/red_patches.py:35
 msgid "Patches"
 msgstr "Patches"
 
 # huh?
-#: src/red_patches.py:38
+#: ../src/red_patches.py:38
 msgid "YOU Patches"
 msgstr "YOU Patches"
 
-#: src/red_patches.py:72
+#: ../src/red_patches.py:72
 msgid "Searching for matching patches..."
-msgstr "Zoeken naar overeenkomende patches..."
+msgstr "Zoeken naar passende patches..."
 
-#: src/red_patches.py:111
+#: ../src/red_patches.py:111
 msgid "No matching patches found."
 msgstr "Geen passende patches gevonden"
 
-#: src/red_pendingview.py:347
+#: ../src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% voltooid"
 
 # bijwerken?
-#: src/red_pendingview.py:536
+#: ../src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Systeem updaten"
 
-#: src/red_pendingview.py:609
+#: ../src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Download geannuleerd"
 
-#: src/red_pendingview.py:610
+#: ../src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transactie geannuleerd"
 
-#: src/red_pendingview.py:645
+#: ../src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transactie voltooid"
 
-#: src/red_pendingview.py:658
+#: ../src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Pakketten worden binnengehaald"
 
-#: src/red_pendingview.py:671
+#: ../src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Download is mislukt"
 
-#: src/red_pendingview.py:672
+#: ../src/red_pendingview.py:672
 msgid "Unknown Error"
-msgstr "Onbekende Fout"
+msgstr "Onbekende fout"
 
-#: src/red_pendingview.py:689
+#: ../src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Transactie wordt verwerkt"
 
-#: src/red_pendingview.py:728
+# voltooid/verlopen
+#: ../src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "De transactie is succesvol verlopen"
 
-#: src/red_pendingview.py:733
+#: ../src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Transactie mislukt"
 
-#: src/red_pendingview.py:735
+#: ../src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transactie mislukt"
 
-#: src/red_prefs.py:171
-msgid "Interval to refresh channel data (in hours):"
-msgstr "Interval waarmee kanaaldata wordt ververst (in uren):"
+#: ../src/red_prefs.py:171
+msgid "Interval to refresh catalog data (in hours):"
+msgstr "Interval waarmee catalogusgegevens worden ververst (in uren):"
 
 #. Packages section
-#: src/red_prefs.py:182
+#: ../src/red_prefs.py:182
 msgid "Packages"
 msgstr "Pakketten"
 
-#: src/red_prefs.py:191
+#: ../src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Pakket-handtekeningen eisen"
 
-#: src/red_prefs.py:196
+#: ../src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
-msgstr "Maximum aantal pakketten in een keer downloaden:"
+msgstr "Maximum aantal pakketten dat in een keer wordt gedownload:"
 
-#: src/red_prefs.py:206
+#: ../src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr "Pakket-rollback mogelijk maken"
+msgstr "Pakket-terugval mogelijk maken"
 
 #. Proxy section - requires superuser
-#: src/red_prefs.py:210
+#: ../src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:219
+#: ../src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Een proxy gebruiken"
 
-#: src/red_prefs.py:223
+#: ../src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "Proxy URL:"
 
-#: src/red_prefs.py:230
+#: ../src/red_prefs.py:230
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#: src/red_prefs.py:270
+#: ../src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
-msgstr "U heeft geen toestemming om de rpoxy-instellingen te bekijken"
+msgstr "U heeft geen toestemming om de proxy-instellingen te bekijken"
 
-#: src/red_prefs.py:294
+#: ../src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Binnegehaalde pakketten en metadata opslaan "
 
-#: src/red_prefs.py:300
+# gegevens/data
+# data is verwarrend hier: lijkt op datums
+#: ../src/red_prefs.py:300
 msgid "Location of cached data:"
-msgstr "Locatie van de opgeslagen data:"
+msgstr "Lokatie van de opgeslagen gegevens:"
 
 # betere term?
 #. Expiration section
-#: src/red_prefs.py:308
+#: ../src/red_prefs.py:308
 msgid "Expiration"
-msgstr "Verloop"
+msgstr "Verloopt"
 
-#: src/red_prefs.py:312
+#: ../src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Cache verloopt"
 
-#: src/red_prefs.py:318
+#: ../src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Maximum leeftijd in dagen:"
 
-#: src/red_prefs.py:329
+#: ../src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Maximumgrootte in MB:"
 
-#: src/red_prefs.py:340
+#: ../src/red_prefs.py:340
 msgid "Current cache size:"
-msgstr "Huidige buffergrootte:"
+msgstr "Huidige cache-grootte:"
 
 # uit uw cache?
-#: src/red_prefs.py:357
+#: ../src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Weet u zeker dat u de pakketten in uw cache wilt verwijderen?"
 
 # was eerst: maak de buffer leeg
-#: src/red_prefs.py:373
+#: ../src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Cache legen"
 
-#: src/red_prefs.py:395
+#: ../src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
-#: src/red_prefs.py:443
+#: ../src/red_prefs.py:443
 msgid "Value"
 msgstr "Waarde"
 
-#: src/red_prefs.py:456
+#: ../src/red_prefs.py:456
 msgid "Loading preferences..."
-msgstr "Voorkeuren worden geladen..."
+msgstr "Voorkeuren laden..."
 
-#: src/red_prefs.py:520
+#: ../src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "%s Voorkeuren"
 
-#: src/red_search.py:35
+#: ../src/red_search.py:35
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/red_search.py:38
+#: ../src/red_search.py:38
 msgid "S_earch Packages"
 msgstr "Pakketten door_zoeken"
 
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+#: ../src/red_search.py:72 ../src/red_software.py:50
+#: ../src/red_software.py:119
 msgid "Searching for matching packages..."
-msgstr "Zoeken naar overeenkomende pakketten..."
+msgstr "Zoeken naar passende pakketten..."
 
-#: src/red_search.py:109
+#: ../src/red_search.py:109
 msgid "No matching packages found."
-msgstr "Geen overeenkomende pakketten gevonden."
+msgstr "Geen passende pakketten gevonden."
 
-#: src/red_searchbox.py:146
+#: ../src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Alle pakketten"
 
-#: src/red_searchbox.py:147 src/red_updates.py:31
+#: ../src/red_searchbox.py:147 ../src/red_updates.py:31
 msgid "Updates"
 msgstr "Nieuwe versies"
 
-#: src/red_searchbox.py:148
+#: ../src/red_searchbox.py:148
 msgid "Uninstalled Packages"
 msgstr "Verwijderde pakketten"
 
-#: src/red_searchbox.py:149
+#: ../src/red_searchbox.py:149
 msgid "Installed Packages"
-msgstr "GeïnstalleerdepPakketten"
+msgstr "Geïnstalleerde pakketten"
 
-#: src/red_searchbox.py:174
+#: ../src/red_searchbox.py:174
 msgid "All Sections"
 msgstr "Alle secties"
 
-#: src/red_searchbox.py:175
+#: ../src/red_searchbox.py:175
 msgid "Productivity"
 msgstr "Productiviteit"
 
-#: src/red_searchbox.py:176
+#: ../src/red_searchbox.py:176
 msgid "Imaging"
 msgstr "Grafisch"
 
-#: src/red_searchbox.py:177
+#: ../src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
 msgstr "Persoonlijk databeheer"
 
-#: src/red_searchbox.py:178
+#: ../src/red_searchbox.py:178
 msgid "X Windows"
 msgstr "X Windows"
 
-#: src/red_searchbox.py:179
+#: ../src/red_searchbox.py:179
 msgid "Games"
 msgstr "Spelletjes"
 
-#: src/red_searchbox.py:180
+#: ../src/red_searchbox.py:180
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: src/red_searchbox.py:181
+#: ../src/red_searchbox.py:181
 msgid "Internet"
 msgstr "Internet"
 
-#: src/red_searchbox.py:182
+#: ../src/red_searchbox.py:182
 msgid "Utilities"
 msgstr "Hulpmiddelen"
 
-#: src/red_searchbox.py:183
+#: ../src/red_searchbox.py:183
 msgid "System"
 msgstr "Systeem"
 
-#: src/red_searchbox.py:184
+#: ../src/red_searchbox.py:184
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: src/red_searchbox.py:185
+#: ../src/red_searchbox.py:185
 msgid "Libraries"
 msgstr "Bibliotheken"
 
-#: src/red_searchbox.py:186
+#: ../src/red_searchbox.py:186
 msgid "Development"
 msgstr "Ontwikkeling"
 
-#: src/red_searchbox.py:187
+#: ../src/red_searchbox.py:187
 msgid "Development Tools"
 msgstr "Ontwikkelingsgereedschap"
 
-#: src/red_searchbox.py:188
+#: ../src/red_searchbox.py:188
 msgid "Miscellaneous"
 msgstr "Diversen"
 
 # Dit is een vinkje
 # (ook) in de beschrijving zoeken | Beschrijvingen doorzoeken
-#: src/red_searchbox.py:274
+#: ../src/red_searchbox.py:274
 msgid "Search descriptions"
-msgstr "Ook in de beschrijving zoeken"
+msgstr "Ook in de omschrijving zoeken"
 
 # de keuzen zijn: Match any word & Match all words
+# zoeken op/naar:
 #. ##
 #. ## Match radio buttons
 #. ##
-#: src/red_searchbox.py:286
+#: ../src/red_searchbox.py:286
 msgid "Match:"
-msgstr "Zoeken op:"
+msgstr "Zoeken naar:"
 
-#: src/red_searchbox.py:322
-msgid "Channel:"
-msgstr "Kanaal:"
-
-#: src/red_serverinfo.py:46
+#: ../src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
 msgstr "De daemon identificeerde zich als:"
 
-#: src/red_serverinfo.py:57
+#: ../src/red_serverinfo.py:57
 msgid "System type"
 msgstr "Systeemtype"
 
-#: src/red_serverinfo.py:60
+#: ../src/red_serverinfo.py:60
 msgid "Server URL"
-msgstr "Server URL"
+msgstr "Server-URL"
 
-#: src/red_serverinfo.py:63
+#: ../src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
 msgstr "Server ondersteunt extra mogelijkheden."
 
-#: src/red_serverinfo.py:68
+#: ../src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
 msgstr "Kon geen contact maken met de daemon."
 
-#: src/red_serverinfo.py:76
+#: ../src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
 msgstr "Daemon-info dumpen in XML-bestand"
 
-#: src/red_serverinfo.py:94
+#: ../src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Kon bestand '%s' niet openen: %s"
 
 # wat een lelijke Engelse zin
-#: src/red_serverinfo.py:135
+#: ../src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
 msgstr "Bestand kiezen om XML naar te schrijven"
 
-#: src/red_services.py:88
-msgid "Edit Services"
-msgstr "Services bewerken"
-
-#: src/red_services.py:117
-msgid "URL"
-msgstr "URL"
-
-#: src/red_services.py:133
-msgid "_Remove service"
-msgstr "Service _verwijderen"
-
-#: src/red_services.py:146
-msgid "_Add service"
-msgstr "Service _toevoegen"
-
-#: src/red_services.py:226
+#: ../src/red_services.py:88
 msgid "Add Service"
 msgstr "Service toevoegen"
 
-#: src/red_services.py:231
+#: ../src/red_services.py:99
 msgid "Service URL"
 msgstr "Service-URL"
 
-#: src/red_sidebar.py:61 src/red_transaction.py:133
+#: ../src/red_services.py:105
+msgid "Service type"
+msgstr "Servicetype:"
+
+#: ../src/red_services.py:111
+msgid "Registration key"
+msgstr "Registratiesleutel"
+
+#: ../src/red_services.py:126
+msgid "Edit Services"
+msgstr "Services bewerken"
+
+#: ../src/red_services.py:155
+msgid "URL"
+msgstr "URL"
+
+#: ../src/red_services.py:171
+msgid "_Remove service"
+msgstr "Service _verwijderen"
+
+#: ../src/red_services.py:188
+msgid "_Add service"
+msgstr "Service _toevoegen"
+
+#: ../src/red_sidebar.py:61 ../src/red_transaction.py:133
 msgid "Pending Actions"
 msgstr "Nog te doen"
 
 # Pending: iets met wachtrij? op stapel staan? nog te doen?
-#: src/red_sidebar.py:89
+#: ../src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
 msgstr "%d installatie in de wachtrij"
 
-#: src/red_sidebar.py:91
+#: ../src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
 msgstr "%d installaties in de wachtrij"
 
-#: src/red_sidebar.py:97
+#: ../src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
 msgstr "%d verwijdering in de wachtrij"
 
-#: src/red_sidebar.py:99
+#: ../src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
 msgstr "%d verwijderingen in de wachtrij"
 
-#: src/red_sidebar.py:103
+#: ../src/red_sidebar.py:103
 msgid "No pending actions"
 msgstr "Niets te doen"
 
-#: src/red_software.py:28
+#: ../src/red_software.py:28
 msgid "Installed Software"
-msgstr "Geïnstalleerde Software"
+msgstr "Geïnstalleerde software"
 
-#: src/red_software.py:31
+#: ../src/red_software.py:31
 msgid "I_nstalled Software"
-msgstr "Geï_nstalleerde Software"
+msgstr "Geï_nstalleerde software"
 
-#: src/red_software.py:97
+#: ../src/red_software.py:97
 msgid "Available Software"
 msgstr "Beschikbare software"
 
-#: src/red_software.py:100
+#: ../src/red_software.py:100
 msgid "A_vailable Software"
 msgstr "_Beschikbare software"
 
-#: src/red_statusbar.py:49
+#: ../src/red_statusbar.py:50
 #, python-format
 msgid "Connected to %s"
 msgstr "Verbonden met %s"
 
-#: src/red_subscriptions.py:57
+#: ../src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "Geabonneerd"
 
-#: src/red_subscriptions.py:64
-msgid "Channel Name"
-msgstr "Kanaalnaam"
+#: ../src/red_subscriptions.py:64
+msgid "Catalog Name"
+msgstr "Catalogusnaam"
 
-#: src/red_subscriptions.py:78
+#: ../src/red_subscriptions.py:78
 #, python-format
-msgid "%s Channel Subscriptions"
-msgstr "%s kanaalabonnementen"
+msgid "%s Catalog Subscriptions"
+msgstr "%s catalogusabonnementen"
 
-#: src/red_subscriptions.py:99
+#: ../src/red_subscriptions.py:99
 msgid ""
-"You do not have permission to subscribe or unsubscribe from channels.  You "
+"You do not have permission to subscribe or unsubscribe from catalogs.  You "
 "will be unable to make any changes to the subscriptions."
-msgstr ""
-"U heeft geen toestemming om op kanalen te abonneren of deze op te zeggen.  U "
-"zult geen veranderingen kunnen aanbrengen in de abonnementen."
+msgstr "U heeft geen rechten om u op catalogi te abonneren of deze op te zeggen.  U zult geen wijzigingen kunnen aanbrengen in de abonnementen."
 
-#: src/red_thrashingtreeview.py:138
+#: ../src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Naamloos"
 
-#: src/red_transaction.py:96
+#: ../src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
 msgstr "Weet u zeker dat u wilt stoppen?"
 
-#: src/red_transaction.py:136
+#: ../src/red_transaction.py:136
 msgid "_Pending Actions"
 msgstr "_Te verrichten acties"
 
-#: src/red_updates.py:34
+#: ../src/red_updates.py:34
 msgid "_Updates"
-msgstr "_Nieuwe Versies"
+msgstr "_Nieuwe versies"
 
-#: src/red_updates.py:77
+#: ../src/red_updates.py:77
 msgid "_Update All"
 msgstr "_Alles bijwerken"
 
-#: src/red_updates.py:109
+#: ../src/red_updates.py:109
 msgid "The system is up-to-date."
 msgstr "Het systeem is up-to-date."
 
-#: src/red_updates.py:110
-msgid "There are no software updates available in any subscribed channels."
-msgstr "Er zijn geen software updates beschikbaar in de geabonneerde kanalen."
+#: ../src/red_updates.py:110
+msgid "There are no software updates available in any subscribed catalogs."
+msgstr "Er zijn geen software-updates beschikbaar in de geabonneerde catalogi."
 
-#: src/red_users.py:131
+# voorrecht/privilege
+#: ../src/red_users.py:131
 msgid "Privilege"
 msgstr "Privilege"
 
-#: src/red_users.py:148
+#: ../src/red_users.py:148
 msgid ""
 "If you remove superuser privileges from yourself, you will be unable to re-"
 "add them.\n"
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
-"Als u de superuser privileges van uzelf verwijdert, zult u deze later niet "
-"meer kunnen toevoegen.\n"
+"Indien u de superuser privileges bij uzelf weghaalt, zult u deze later niet meer kunnen toevoegen.\n"
 "\n"
 "Weet u zeker dat u dit wilt doen?"
 
 # aangezet
-#: src/red_users.py:166
+#: ../src/red_users.py:166
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: src/red_users.py:181
+#: ../src/red_users.py:181
 msgid "Edit Users"
 msgstr "Gebruikers bewerken"
 
-#: src/red_users.py:196 src/red_users.py:399
+#: ../src/red_users.py:196 ../src/red_users.py:399
 msgid "Confirm:"
 msgstr "Bevestigen:"
 
-#: src/red_users.py:217
+#: ../src/red_users.py:217
 msgid "Set Password"
 msgstr "Wachtwoord instellen"
 
-#: src/red_users.py:246 src/red_users.py:422
+#: ../src/red_users.py:246 ../src/red_users.py:422
 msgid "Password can not be empty."
 msgstr "Wachtwoord mag niet leeg zijn."
 
-#: src/red_users.py:248 src/red_users.py:424
+# komen niet overeen/zijn niet gelijk
+#: ../src/red_users.py:248 ../src/red_users.py:424
 msgid "Passwords do not match."
 msgstr "Wachtwoorden zijn niet gelijk."
 
 # instellen - stel in
-#: src/red_users.py:268
+#: ../src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
 msgstr "Stel %s's wachtwoord in"
 
-#: src/red_users.py:289
+#: ../src/red_users.py:289
 msgid "Users"
 msgstr "Gebruikers"
 
-#: src/red_users.py:306
+#: ../src/red_users.py:306
 msgid "Add"
 msgstr "Toevoegen"
 
-#: src/red_users.py:320
+# was eerst: dat u de s wilt
+#: ../src/red_users.py:320
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Weet u zeker dat u de '%s' wilt verwijderen?"
+msgstr "Weet u zeker dat u '%s' wilt verwijderen?"
 
-#: src/red_users.py:326
+#: ../src/red_users.py:326
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/red_users.py:339
+#: ../src/red_users.py:339
 msgid "Privileges"
 msgstr "Privileges"
 
-#: src/red_users.py:379
+#: ../src/red_users.py:379
 msgid "Add new user"
 msgstr "Nieuwe gebruiker toevoegen"
 
-#: src/red_users.py:426
+#: ../src/red_users.py:426
 msgid "Invalid user name."
 msgstr "Ongeldige gebruikersnaam"
 
-#: src/red_users.py:428
+#: ../src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Gebruiker '%s' bestaat al."
+
+#: ../trayicon/bindings/eggtrayicon.c:117
+msgid "Orientation"
+msgstr "Oriëntatie"
+
+#: ../trayicon/bindings/eggtrayicon.c:118
+msgid "The orientation of the tray."
+msgstr "De oriëntatie van het item."
+
+#: ../trayicon/red_icon_main.py:185
+msgid "There appears to be a Red Carpet update icon already running.  Exiting."
+msgstr "Kennelijk is er reeds een Red Carpet update-pictogram actief.  Afsluiten."
+
+#~ msgid "Channels"
+#~ msgstr "Kanalen"
+
+#~ msgid "Channel"
+#~ msgstr "Kanaal"
+
+#~ msgid "Channel:"
+#~ msgstr "Kanaal:"
 
 #~ msgid ""
 #~ "System could not be activated: Invalid activation code or email address."
