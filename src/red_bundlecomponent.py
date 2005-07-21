@@ -14,7 +14,7 @@ class BundleComponent(red_component.Component):
         return "Bundles"
 
     def menu_name(self):
-        return "ZenWorks bundles"
+        return "ZENworks bundles"
 
     def stock(self):
         return gtk.STOCK_FIND

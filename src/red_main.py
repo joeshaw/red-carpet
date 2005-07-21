@@ -17,10 +17,9 @@
 
 import getpass, os, string, sys, time, threading, gtk
 
-red_name      = "ZENworks Linux Management Update Client"
+red_name      = "ZENworks 7 Linux Management Update Manager"
 red_version   = None
-red_copyright = u"Copyright \u00a9 2002-2003 Ximian, Inc.\n" + \
-                u"Copyright \u00a9 2005 Novell, Inc."
+red_copyright = u"Copyright \u00a9 2000-2005 Novell, Inc. All Rights Reserved."
 debug         = os.getenv("RC_GUI_DEBUG")
 
 help_path     = None
@@ -83,7 +82,7 @@ def ticker():
     TickThread().start()
 
 def get_title():
-    return red_name + " " + red_version
+    return red_name
 
 ###
 ### main

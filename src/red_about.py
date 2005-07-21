@@ -21,37 +21,11 @@ import red_main
 import red_pixbuf
 from red_gettext import _
 
-contributors = [
-    "Tambet Ingo",
-    "Joe Shaw",
-    "Jon Trowbridge",
-    "Anna Dirks",
-    "Jakub Steiner",
-    ]
-
-if time.localtime()[1:3] == (1<<1<<1, 8>>(6<<1>>2)):
-    contributors = ["%s %s" % x for x in \
-                    zip((lambda x: random.shuffle(x) or x) \
-                        (map(lambda x:x[:x.find(" ")], contributors)),
-                        map(lambda x:x[x.find(" "):].strip(), contributors))]
-
-# Translators: you can translate these into any cute greetings in your own
-# language.  Just nothing offensive please. :)
-greetings = [
-    _("Brought to you by:"),
-    _("With love from:"),
-    _("Best wishes from:"),
-    _("Sincerely:"),
-    _("Developed by chimps:"),
-    ]
-    
 class About(gtk.Dialog):
 
     def __init__(self):
 
         gtk.Dialog.__init__(self, red_main.get_title())
-
-        self.set_icon(red_pixbuf.get_pixbuf("red-carpet"))
 
         b = self.add_button(gtk.STOCK_OK, gtk.RESPONSE_CLOSE)
         b.connect("clicked", lambda b,w:w.destroy(), self)
@@ -59,16 +33,13 @@ class About(gtk.Dialog):
         hbox = gtk.HBox(spacing=6)
         self.vbox.pack_start(hbox, padding=6)
 
-        image = red_pixbuf.get_widget("about")
-        hbox.pack_start(image, fill=0, expand=0, padding=6)
-
         vbox = gtk.VBox(spacing=2)
         hbox.pack_start(vbox, padding=6)
 
         title = gtk.Label("")
         title.set_alignment(0.0, 0.5)
-        title.set_markup('<span size="xx-large"><b>%s %s</b></span>' %
-                         (red_main.red_name, red_main.red_version))
+        title.set_markup('<span size="xx-large"><b>%s</b></span>' %
+                         red_main.red_name)
 
         vbox.pack_start(title)
 
@@ -80,23 +51,5 @@ class About(gtk.Dialog):
                             "General Public License, version 2"))
         license.set_alignment(0.0, 0.5)
         vbox.pack_start(license)
-
-        sep = gtk.HSeparator()
-        vbox.pack_start(sep, padding=4)
-
-        random.seed()
-        random.shuffle(greetings)
-        
-        l = gtk.Label("")
-        l.set_markup("<b>%s</b>" % greetings[0])
-        l.set_alignment(0.0, 0.5)
-        vbox.pack_start(l)
-
-        random.shuffle(contributors)
-
-        for x in contributors:
-            l = gtk.Label(x)
-            l.set_alignment(0.0, 0.5)
-            vbox.pack_start(l)
 
         self.vbox.show_all()

@@ -45,7 +45,6 @@ import red_settings
 import red_actionbar
 import red_connection
 import red_statusbar
-import red_news
 from red_gettext import _
 
 def run_transaction_cb(app):
@@ -726,9 +725,6 @@ class AppWindow(gtk.Window,
         bar.add("/%s/%s" % (view_str, _("_Daemon Information...")),
                 description=_("View information about this daemon"),
                 callback=red_serverinfo.view_server_info_cb)
-        bar.add("/%s/%s" % (view_str, _("Red Carpet Ne_ws...")),
-                description=_("View the latest Red Carpet news"),
-                callback=lambda x:self.open_or_raise_window(red_news.NewsWindow))
 
         bar.add("/%s/sep2" % view_str, is_separator=1)
 

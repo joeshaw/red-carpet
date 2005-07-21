@@ -1,3 +1,14 @@
+2005-07-21  Tambet Ingo  <tambet@ximian.com>
+
+	* red_main.py: Update name and copyright information.
+
+	* red_bundlecomponent.py (BundleComponent.menu_name): Fix the
+	case of word "ZENworks".
+
+	* red_appwindow.py (AppWindow.checked_set_cb): Remove News.
+
+	* red_about.py: Remove red-carpet icon and developer names.
+
 2005-07-13  Tambet Ingo  <tambet@ximian.com>
 
 	* red_services.py (ServicesWindow.remove_service_cb) 
