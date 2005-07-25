@@ -338,6 +338,12 @@ def get_all_services():
     fetch_services()
     return cached_services.values()
 
+def get_service_by_id(id):
+    for s in get_all_services():
+        if s["id"] == id:
+            return s
+    return None
+
 ###############################################################################
 
 def byte_size_to_string(sz):

@@ -1,3 +1,17 @@
+2005-07-22  Tambet Ingo  <tambet@ximian.com>
+
+	* red_appwindow.py (AppWindow.activate_sensitive_fn): Replace
+	"Activate" with "Register".
+
+	* red_activation.py (ActivationWindow.sensitize_window_elements):
+	Email entry is now not sensitive if selected service type is
+	"zenworks".
+	(ActivationWindow.activate): If service type is "zenworks", don't
+	require email.
+	s/activation/registration everywhere.
+
+	* rcd_util.py (get_service_by_id): Implement.
+
 2005-07-21  Tambet Ingo  <tambet@ximian.com>
 
 	* red_main.py: Update name and copyright information.

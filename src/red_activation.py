@@ -24,16 +24,25 @@ from red_gettext import _
 class ActivationWindow(gtk.Dialog):
 
     def __init__(self):
-        gtk.Dialog.__init__(self, _("Group Activation"))
+        gtk.Dialog.__init__(self, _("Registration"))
         self.build()
         self.fill()
 
     def sensitize_window_elements(self):
-        any_services = self.service_opt.get_service_id() is not None
+        sensitive = 0
+        id = self.service_opt.get_service_id()
+        if id:
+            service = rcd_util.get_service_by_id(id)
+            sensitive = service is not None
 
-        self.email.set_sensitive(any_services)
-        self.code.set_sensitive(any_services)
-        self.activate_button.set_sensitive(any_services)
+        self.code.set_sensitive(sensitive)
+        self.activate_button.set_sensitive(sensitive)
+
+        ## ZENworks services do not have email
+        if service and service["type"] == "zenworks":
+            sensitive = 0
+
+        self.email.set_sensitive(sensitive)
 
     def build(self):
         table = gtk.Table(rows=3, columns=2)
@@ -49,7 +58,7 @@ class ActivationWindow(gtk.Dialog):
         l.set_alignment(0, 0.5)
         table.attach(l, 0, 1, 1, 2)
 
-        l = gtk.Label(_("Activation Code:"))
+        l = gtk.Label(_("Registration Code:"))
         l.set_alignment(0, 0.5)
         table.attach(l, 0, 1, 2, 3)
 
@@ -75,7 +84,7 @@ class ActivationWindow(gtk.Dialog):
         button = self.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         button.connect("clicked", lambda x:self.destroy())
 
-        self.activate_button = self.add_button(_("Activate"),
+        self.activate_button = self.add_button(_("Register"),
                                                gtk.RESPONSE_CLOSE)
         self.activate_button.grab_default()
         self.activate_button.connect("clicked", self.activate)
@@ -90,13 +99,18 @@ class ActivationWindow(gtk.Dialog):
 
     def activate(self, button):
         service_id = self.service_opt.get_service_id()
+        service = rcd_util.get_service_by_id(service_id)
         email = self.email.get_text()
         code = self.code.get_text()
+        email_required = 1
+        if service and service["type"] == "zenworks":
+            email_required = 0
+            email = ""
 
-        if not email or not code:
+        if not code or (email_required and not email):
             dialog = gtk.MessageDialog(self, gtk.DIALOG_DESTROY_WITH_PARENT,
                                        gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                                       _("Please fill in both email and activation code."))
+                                       _("Please fill in both email and registration code."))
             dialog.run()
             dialog.destroy()
             return
@@ -114,7 +128,7 @@ class ActivationWindow(gtk.Dialog):
                                            error_text=_("Unable to activate"),
                                            additional_text=_("Please ensure "
                                            "you typed the email address "
-                                           "and activation code correctly"),
+                                           "and registration code correctly"),
                                            parent=self)
                 return
             

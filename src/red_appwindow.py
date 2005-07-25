@@ -629,8 +629,8 @@ class AppWindow(gtk.Window,
             return rcd_util.check_server_permission("superuser") \
                    and rcd_util.get_all_services()
         
-        bar.add("/%s/%s" % (file_str, _("_Activate...")),
-                description=_("Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"),
+        bar.add("/%s/%s" % (file_str, _("_Register...")),
+                description=_("Register daemon"),
                 callback=lambda x:self.open_or_raise_window(red_activation.ActivationWindow),
                 sensitive_fn=activate_sensitive_fn)
 
