@@ -1,3 +1,7 @@
+2005-07-26  Tambet Ingo  <tambet@ximian.com>
+
+	* art/verify.png: Updated to match Novell branding.
+
 2005-06-01  Dan Mills  <thunder@ximian.com>
 
 	* configure.in: Hardcode @mkdir_p@ to "mkdir -p".
