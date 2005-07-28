@@ -1,107 +1,54 @@
 <?xml version='1.0'?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
     "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  
-<!ENTITY rcversion "2.0">
-<!ENTITY manversion "2.0">
-<!ENTITY pubdate "March, 2003">
+
+<!ENTITY rcversion "6.7.0">
+<!ENTITY manversion "6.7.0">
+<!ENTITY pubdate "August, 2005">
 
 ]>
 
 <article id="index" lang="en">
  <articleinfo>
-    <title>Ximian Red Carpet</title>
+    <title>ZENworks Linux Management Update Client</title>
     <copyright>
-      <year>2000-2003</year>
-      <holder>Ximian Inc.</holder>
-    </copyright>    
-    <legalnotice id="legalnotice">     
+      <year>2000-2005</year>
+      <holder>Novell, Inc.</holder>
+    </copyright>
+    <legalnotice id="legalnotice">
       <para>
-        Permission is granted to copy, distribute and/or modify this
-        document under the terms of the <ulink type="help"
-        url="gnome-help:fdl"><citetitle>GNU Free Documentation
-        License</citetitle></ulink>, Version 1.1 or any later version
-        published by the Free Software Foundation with no Invariant
-        Sections, no Front-Cover Texts, and no Back-Cover Texts. You
-        may obtain a copy of the <citetitle>GNU Free Documentation
-        License</citetitle> from the Free Software Foundation by
-        visiting <ulink type="http" url="http://www.fsf.org">their Web
-        site</ulink> or by writing to: Free Software Foundation, Inc.,
-        59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-      </para>
-      <para>
-        Many of the names used by companies to distinguish their
-        products and services are claimed as trademarks. Where those
-        names appear in any GNOME documentation, and those trademarks
-        are made aware to the members of the GNOME Documentation
-        Project, the names have been printed in caps or initial caps.
+      Novell, Inc. has intellectual property rights relating to
+      technology embodied in the product that is described in this
+      document. In particular, and without limitation, these
+      intellectual property rights may include one or more of the
+      U.S. patents listed at
+      <ulink type="http" url="http://www.novell.com/company/legal/patents/"></ulink>
+      and one or more additional patents or pending patent applications
+      in the U.S. and in other countries.
       </para>
     </legalnotice>
-    <releaseinfo>
-       This is version &manversion; of the guide to Ximian Red Carpet, describing Ximian Red
-       Carpet &rcversion;. It was last updated &pubdate;.
-    </releaseinfo>
   </articleinfo>
 
   <sect1 id="introduction">
     <title>Introduction</title>
 
     <para>
-       <application>Ximian Red Carpet</application> is a program designed to
-       help you manage the software you have on your computer. It can
-       help you install, update, and remove programs, without making you keep
-       track of dependencies and conflicts yourself.  It works with
-       the package management structures your operating systems
-       already has, so you can use it alongside unrelated command-line
-       tools.
+      The <application>ZENworks Linux Management Update Client</application>
+      formerly known as <application>Ximian Red Carpet</application>,
+      is a program designed to help you manage the software you have on
+      your computer. It can help you install, update, and remove programs,
+      without making you keep track of dependencies and conflicts yourself.
+      It works with the package management rules your operating system
+      already has, so you can use it alongside unrelated command-line
+      tools.
     </para>
-    
-    <para>
-      Red Carpet 2 has a number of important differences from the
-      previous version.  The appearance and interface have been
-      completely overhauled, and there are several new features like
-      enhanced search tools and the ability to make a list of removals
-      and installations, then then do everything at once.
-    </para>
-
-    <para>
-      One important structural difference is that, as of version
-      2.0, Red Carpet the graphical tool is actually a client for
-      <application>rcd</application>, the Red Carpet Daemon.
-      Having two pieces means:
-      <itemizedlist>
-        <listitem>
-          <para>
-            You can update remote systems that are running the
-            daemon. Select
-            <menuchoice><guimenu>File</guimenu><guimenuitem>Connect</guimenuitem></menuchoice>
-            to choose a remote host.
-          </para>
-        </listitem>
-
-        <listitem>
-          <para>
-            You have a choice between the graphical
-            <systemitem>red-carpet</systemitem> program and the
-            command line <systemitem>rug</systemitem> tools. Both tools
-            require the <systemitem>rcd</systemitem> package.   Detailed information about
-            <application>rug</application> and <application>rcd</application>
-            are available in their man pages (standard UNIX manuals). You
-            can read them by typing <userinput>man rug</userinput> or
-            <userinput>man rcd</userinput> at the command line. 
-          </para>
-        </listitem>
-      </itemizedlist>
-    </para>
-
 
     <note id="whats-a-package">
       <title>What is a Package?</title>
       <para>
         Software for most versions of Linux is shipped as a
-        <emphasis>package</emphasis> file, most commonly the 
-        <systemitem>rpm</systemitem> or <systemitem>deb</systemitem>
-        format. Each package contains a set of files that constitute
+        <emphasis>package</emphasis> file. Each
+        package contains a set of files that constitute
         the software itself, plus additional information about what
         the software is, what requirements it has, and where it should
         be installed.  Proper packaging makes software easier to
@@ -109,71 +56,53 @@
         interdependencies among various programs.
       </para>
       <para>
-        Ximian Red Carpet supports the <systemitem>rpm</systemitem>
-        (Red Hat Package Manager, used by most distributions), and the
-        <systemitem>deb</systemitem> (Debian) package formats.
+        ZENworks Linux Management supports only the <systemitem>RPM</systemitem>
+        (Red Hat Package Manager) package format, which is used by most distributions.
       </para>
     </note>
 
 
     <note id="whats-a-channel">
-      <title>What are Channels and Sections?</title>
+      <title>What are Catalogs?</title>
       <para>
-        Ximian Red Carpet groups software into channels.  For example,
-        "Red Hat 8.0," "Ximian Evolution Beta Snapshots,"
-        and "Ximian Desktop" are all channels.  You can subscribe to
-        channels that interest you, and ignore those that do
-        not. Ximian Red Carpet will not install or update software
-        from channels to which you are not installed.
-      </para>
-   
-      <para>
-        To subscribe to a channel, select    <menuchoice>
-        <guimenu>Edit</guimenu><guimenuitem>Channel Subscriptions</guimenuitem>
-        </menuchoice> or click the <guibutton>Channels</guibutton> button
-        in the toolbar. A window will open to show you the list of
-        available channels. Check the box next to a channel to subscribe.
+        ZENworks Linux Management groups software into catalogs.
+        You can subscribe to
+        catalogs that interest you, and ignore those that do
+        not.
       </para>
 
       <para>
-        Some channels also have groupings called sections, which
-        describe the purpose of the individual pieces of
-        software. "Imaging," "Productivity," and "Development" are
-        examples of sections.
+        To subscribe to a catalog, select    <menuchoice>
+        <guimenu>Edit</guimenu><guimenuitem>Catalog Subscriptions</guimenuitem>
+        </menuchoice> or click the <guibutton>Catalogs</guibutton> button
+        on the toolbar. A window will open to show you the list of
+        available catalogs. Check the box next to a catalog to subscribe.
+      </para>
+      
+      <para>
+        You can also mount a directory as a catalog, adding all packages within 
+        the directory to the catalog. Click <guimenu>File</guimenu>, then click 
+        <guimenu>Mount Directory</guimenu>. Specify
+        the catalog name and browse to the directory that you want to mount as a
+        catalog. Select the Look for Packages Recursively option to search the selected
+        directory's subdirectories.
       </para>
     </note>
 
-    <para>
-      Ximian Red Carpet also gives you access to two important
-      services from Ximian, Inc.  The first service, Red Carpet
-      Express, is for individuals, and offers
-      access to special high-speed servers with faster connections,
-      so you get better download rates.  The other service, Ximian Red
-      Carpet Enterprise, is aimed at businesses and workgroups that
-      want to manage software deployment on a larger scale.
-    </para>
-
-    <para>
-      To find out more about using Red Carpet Express, read <xref
-      linkend="rcx" />.  For more about Red Carpet Enterprise
-      visit the <ulink
-      url="http://ximian.com/products/red_carpet_enterprise">Ximian
-      website</ulink>.
-    </para>
-
+    
     <note id="note-requirements">
-      <title>Software Requirements</title>
+      <title>Requirements</title>
       <para>
          <itemizedlist>
 	  <listitem>
 	    <para>
-            Ximian update and installation services require a network
-              connection. If you do not have a network connection, you
-              can still use Ximian Red Carpet to remove software or
-              install local packages that you already have on disk. To
-              install from a file, select
+              A network connection is required for the ZENworks Linux Management
+              Update Client to connect to a ZENworks Server and to gain access 
+              to the catalogs and packages it provides. Without a connection, 
+              the client can still perform installs, updates, and removals of 
+              packages on the local machine. To install from a file, click
               <menuchoice> <guimenu>File</guimenu> <guimenuitem>Install
-              Local Packages</guimenuitem>
+              from File</guimenuitem>
             </menuchoice>. For information on removing software, see
           <xref linkend="rc-my-computer" />.
           </para>
@@ -187,16 +116,6 @@
              your system.
           </para>
 	  </listitem>
-
-	  <listitem>
-	    <para>
-              Ximian ships software for a limited number of operating
-              systems. Not all software is available for all systems.
-              The official list of supported systems is available at
-              the <ulink url="http://support.ximian.com/q?5">Ximian
-              Support Center</ulink>.
-            </para>
-	  </listitem>
 	</itemizedlist>
       </para>
      </note>
@@ -205,8 +124,8 @@
   <sect1 id="getting-started">
     <title>Getting Started</title>
     <para>
-      To start using <application>Ximian Red Carpet</application>, select
-      <menuchoice>
+      To start using the <application>ZENworks Linux Management Update Client</application>,
+      click <menuchoice>
       <guimenu>System</guimenu><guimenuitem>Software
       Update</guimenuitem></menuchoice> from the menu panel, or type
       <userinput>red-carpet</userinput> at the command line. Enter
@@ -214,13 +133,21 @@
     </para>
 
     <para>
-      The Red Carpet window has two major sections that display
-      information.  In the center, there is a list of software
+      The default view of the ZENworks Linux Management Update Client window 
+      has two major sections that display
+      information.  On the right side, there is a list of software
       packages.  On the left side of the window is a list of
-      transactions.  As you use Red Carpet, you will choose software
+      transactions.  As you use the ZENworks Linux Management Update Client, you will choose software
       from the package list to install or remove, adding the
       installation or removal to the list of actions.
-    </para>
+     </para>
+    
+     <para>
+      If you do not see any packages listed under any of the tabs,
+      you may need to activate services. For more information, see
+      <xref linkend="services" />.
+     </para>
+    
       <para>
         For detailed information about a package, select it and click
         the <guibutton>Information</guibutton> button.
@@ -238,7 +165,7 @@
       </tip>
 
      <para>
-       To select a package, click on it with the left mouse button. You
+       To select a package, click it with the left mouse button. You
        can select multiple packages by holding down
        <keycap>Ctrl</keycap> and clicking, or select a range using
        <keycap>Shift</keycap>. To select all packages in the list,
@@ -256,17 +183,19 @@
     <note id="transaction-types">
       <title>How Many Kinds of Transactions Are There?</title>
       <para>
-        There are only two basic kinds of transactions in Red
-        Carpet: installation and removal.  An upgrade is essentially
-        the removal of the old version and installation of the new
+        There are two transactions you can perform using the
+        ZENworks Linux Management Update Client:
+        installation and removal. An upgrade is essentially
+        the removal of the package's old version and installation of the new
         one. Therefore, there are only two actions you can choose:
         <guibutton>Mark for Installation</guibutton> and <guibutton>Mark for
         Removal.</guibutton>
       </para>
       <para>
-        Where appropriate, Red Carpet displays upgrades as though
-        they were single transactions. For example, the 
-        <guilabel>History</guilabel> view has an
+        Where appropriate, the ZENworks Linux Management Update Client
+        displays upgrades as though
+        they were single transactions. For example, the
+        <guilabel>Installed Software</guilabel> view has an
         <guilabel>Action</guilabel> column that displays upgrades as
         well as installs or removals.
       </para>
@@ -274,20 +203,22 @@
 
     <para>
       To remove an item from the list of pending transactions, select
-      it and click <guibutton>Cancel</guibutton> or right-click on it and
-      select <guimenuitem>Cancel</guimenuitem>.
+      it and click <guibutton>Cancel</guibutton> or right-click it and
+      click <guimenuitem>Cancel</guimenuitem>.
     </para>
 
     <para>
       When you are done choosing actions, click the <guibutton>Run
-      Now</guibutton> button. Red Carpet will then check to see if
+      Now</guibutton> button. The ZENworks Linux Management Update Client
+      will then check to see if
       additional actions are required. For example, if you attempt to
-      install a new spelling dictionary, but do not have the spelling
-      tool, you will need to install the the spelling tool as well as
+      install a new spelling dictionary, but you do not have the spelling
+      tool, you will need to install the spelling tool as well as
       the dictionary.
     </para>
     <para>
-       Red Carpet will present you with a list of the actions that it
+       The ZENworks Linux Management Update Client will present you with
+       a list of the actions that it
        is about to take, and ask you to confirm or cancel. If you are
        satisfied with the set of actions, click
        <guibutton>Continue</guibutton>.
@@ -300,14 +231,13 @@
         download, read <xref linkend="prefs-general" />.
       </para>
     </tip>
-
   </sect1>
 
   <sect1 id="five-views">
-    <title>Five Ways of Looking at Software</title>
-   
+    <title>Seven Ways of Looking at Software</title>
+
     <para>
-      Along the top of the right side of the window are five tabs that
+      Along the top of the right side of the window are seven tabs that
       give you different views of your system:
     </para>
     <variablelist>
@@ -315,39 +245,60 @@
           <term>Updates</term>
           <listitem>
             <para>
-              This is the view you will see when you start Ximian Red
-              Carpet. It displays updates to software that you have
-              installed and that is in channels to which you are subscribed.
+              This is the view you will see when you start the
+              ZENworks Linux Management Update Client.
+              The Updates view displays updates to software that you have
+              installed and that is in catalogs to which you are subscribed.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>My Computer</term>
+          <term>Installed Software</term>
           <listitem>
             <para>
-              This displays software that is installed on your
+              This view displays software that is installed on your
               computer.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
+	   <term>Available Software</term>
+	   <listitem>
+	     <para>
+	       This view displays software that is available to be installed on your
+	       computer.
+	      </para>
+	   </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>Search</term>
           <listitem>
             <para>
-              This lets you search the largest possible list of
+              This view lets you search the largest possible list of
               packages: those installed on your system, and those
-              available for installation in all channels.
+              available for installation in all catalogs.
             </para>
           </listitem>
+        </varlistentry>
+
+        <varlistentry>
+	   <term>Bundles</term>
+	   <listitem>
+	     <para>
+	       This view displays Bundles that are installed on your
+	       computer.
+	      </para>
+	   </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>History</term>
           <listitem>
             <para>
-              This displays a list of actions you have performed in
+              This view displays a list of actions you have performed in
               the past.
             </para>
           </listitem>
@@ -357,7 +308,7 @@
           <term>Pending Actions</term>
           <listitem>
             <para>
-              This displays a detailed list of upcoming software
+              This view displays a detailed list of upcoming software
               transactions you have chosen. To perform them, click the
               <guibutton>Run Now</guibutton> button in the upper left
               hand corner of the window.
@@ -365,23 +316,32 @@
           </listitem>
         </varlistentry>
       </variablelist>
+      
+     <tip id="refresh">
+     <title>Refresh</title>
+      <para>
+        Click the <guibutton>Refresh</guibutton> button to cause the 
+        ZENworks Linux Management Update Client to communicate with the 
+        ZENworks Server and get the lists of catalogs, packages, etc., that 
+        the device has access to.
+      </para>
+     </tip>
 
       <sect2 id="rc-update">
         <title>Perform Updates</title>
         <para>
-          When you start Ximian Red Carpet it will show you a list of
+          When you start the ZENworks Linux Management Update Client it will show you a list of
           software packages that you can update. An update notice is only
           shown for software that you already have installed, that is in a
-          channel to which you are subscribed, and for which there is a
+          catalog to which you are subscribed, and for which there is a
           newer version than what you already have. New software, and new
-          versions of software that you have but that is in a channel to
+          versions of software that you have but that is in a catalog to
           which you do not subscribe, is not part of the update screen.
         </para>
 
         <para>
           If you do not see any updates, make sure that you are subscribed
-          to the right channels. See <xref linkend="whats-a-channel" /> to learn
-          how to adjust channel subscriptions.
+          to the right catalogs.
         </para>
 
 
@@ -395,50 +355,51 @@
                 The action you are performing for this package. This
                 entry will be blank if you are neither installing nor
                 removing it.  If you have selected an action, it will
-                have an installation or removal icon. You can click on
+                have an installation or removal icon. You can click
                 the blank space to perform an action (install a package
                 if it is not installed, remove a package if it is
-                installed), or click on the icon to cancel the action.
+                installed), or click the icon to cancel the action.
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Importance</term>
             <listitem>
               <para>
-                Ximian will indicate how important it is for you to
+                The ZENworks Linux Management Update Client
+                will indicate how important it is for you to
                 install this update. From least to most important,
                 an update can be listed as minor, feature, suggested,
                 urgent, or necessary.
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
-            <term>Channel</term>
+            <term>Catalog</term>
             <listitem>
               <para>
-                The name of the channel in which this package is
-                shipped. 
+                The name of the catalog in which this package is
+                shipped.
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>New Version</term>
             <listitem>
               <para>
                 The version number for the updated package. Note that
                 version numbers do not count by digits, but instead
-                use numbers separated by. In other words, version 1.10
+                use numbers separated by a period (.). In other words, version 1.10
                 is newer than version 1.9. You can remember this by
                 referring to "one point ten" instead of "one point one
                 zero."
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Current Version</term>
             <listitem>
@@ -449,7 +410,7 @@
           </varlistentry>
         </variablelist>
          </para>
-   
+
         <para>
           To perform a simple update of software that is already on your system:
           <orderedlist>
@@ -466,12 +427,20 @@
             </listitem>
             <listitem>
               <para>
-                Click the <guibutton>Run Now</guibutton> button to have Ximian
-                Red Carpet perform the updates.
+                Click the <guibutton>Run Now</guibutton> button to have the
+                ZENworks Linux Management Update Client perform the updates.
               </para>
             </listitem>
           </orderedlist>
         </para>
+        
+        <tip id="update-all">
+	      <title>Update All</title>
+	      <para>
+	        You can also click the <guibutton>Update All</guibutton> button to select
+	        and update all pending updates.
+	      </para>
+    </tip>
     </sect2>
 
 
@@ -479,7 +448,8 @@
         <title>Remove Software on My Computer</title>
         <para>
           To uninstall software that is on your computer now, click
-          the <guilabel>My Computer</guilabel> tab. Red Carpet will
+          the <guilabel>Installed Software</guilabel> tab. The ZENworks Linux
+          Management Update Client will
           display a list of the software that is on your system now.
         </para>
         <para>
@@ -502,17 +472,17 @@
               </para>
             </listitem>
           </varlistentry>
-                    
+
           <varlistentry>
-            <term>Channel</term>
+            <term>Catalog</term>
             <listitem>
               <para>
-                The name of the channel in which this package is
-                shipped. 
+                The name of the catalog in which this package is
+                shipped.
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Package</term>
             <listitem>
@@ -521,7 +491,7 @@
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Current Version</term>
             <listitem>
@@ -531,18 +501,18 @@
             </listitem>
           </varlistentry>
         </variablelist>
-    
+
         <para>
           There are three ways to change the items in the list:
         </para>
-    
+
         <variablelist>
           <varlistentry>
-            <term>Channel</term>
+            <term>Catalog</term>
             <listitem>
               <para>
-                Choose from the list of channels to show only the software
-                that comes from a particular channel.
+                Choose from the list of catalogs to show only the software
+                that comes from a particular catalog.
               </para>
             </listitem>
           </varlistentry>
@@ -552,7 +522,7 @@
             <listitem>
               <para>
                 Choose from the list of software sections to show only the
-                software of that type. Some channels do not use section
+                software of that type. Some catalogs do not use section
                 divisions.
               </para>
             </listitem>
@@ -618,7 +588,7 @@
             find new software to install, click the <guibutton>Search</guibutton>
             tab. This will <emphasis>not</emphasis> immediately display a list of all
             available software.  You must first search for the software
-            you want to see. If you really wish to see every available
+            you want to see. If you really want to see every available
             piece of software, enter a blank search in the search
             box.
           </para>
@@ -629,28 +599,28 @@
           </para>
           <variablelist>
             <varlistentry>
-              <term>Channel</term>
+              <term>Catalog</term>
               <listitem>
                 <para>
-                  Narrow your search to a specific channel. If you do not
-                  select anything, you will search in all channels to
+                  Narrow your search to a specific catalog. If you do not
+                  select anything, you will search in all catalogs to
                   which you are subscribed.
                 </para>
               </listitem>
             </varlistentry>
-            
+
             <varlistentry>
               <term>Section</term>
               <listitem>
                 <para>
                   The type of software you are looking for, such as
                   <guilabel>Productivity</guilabel> or
-                  <guilabel>Imaging</guilabel>.The default is to search in
+                  <guilabel>Imaging</guilabel>. The default is to search in
                   all sections.
                 </para>
               </listitem>
             </varlistentry>
-            
+
             <varlistentry>
               <term>Status</term>
               <listitem>
@@ -659,21 +629,21 @@
                   packages that are installed, packages that you have
                   installed but for which a newer version is available, or
                   for packages of any status. The default is to search for
-                  packages which you do not have installed.
+                  all packages.
                 </para>
               </listitem>
             </varlistentry>
-            
+
             <varlistentry>
               <term>Text Search</term>
               <listitem>
                 <para>
-                  Enter words or word fragments to search for, and
+                  Type words or word fragments to search for, and then
                   press <keycap>Enter</keycap>.
               </para>
             </listitem>
           </varlistentry>
-        </variablelist> 
+        </variablelist>
       <para>
         The advanced search options are the same as in <guilabel>My
         Computer</guilabel>. See <xref linkend="rc-my-computer" /> for
@@ -694,7 +664,7 @@
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Status</term>
             <listitem>
@@ -703,7 +673,7 @@
                 if so, whether an update is available. If you do not
                 have the software, the value is listed as <guilabel>not
                 installed</guilabel>.  If you have the same version of
-              the software as the one listed, the status will be 
+              the software as the one listed, the status will be
                 <guilabel>installed</guilabel>. If you have a
                 different version, the listed package will be
                 described as <guilabel>older</guilabel> or
@@ -711,17 +681,17 @@
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
-            <term>Channel</term>
+            <term>Catalog</term>
             <listitem>
               <para>
-                The name of the channel in which this package is
-                shipped. 
+                The name of the catalog in which this package is
+                shipped.
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Lock Icon</term>
             <listitem>
@@ -731,7 +701,7 @@
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Package</term>
             <listitem>
@@ -740,7 +710,7 @@
               </para>
             </listitem>
           </varlistentry>
-          
+
           <varlistentry>
             <term>Version</term>
             <listitem>
@@ -754,7 +724,7 @@
     <sect2 id="rc-history">
       <title>View Past Transactions with History</title>
       <para>
-        The history view displays a list of of your past
+        The history view displays a list of your past
         transactions. That is, each time you install, remove, or
         upgrade a piece of software, it's recorded here.
       </para>
@@ -796,7 +766,7 @@
               <para>
                 The user who performed the action. In most cases, this
                 will be <guilabel>root</guilabel>, but you may allow
-                other users to use Red Carpet.
+                other users to use the ZENworks Linux Management Update Client.
               </para>
             </listitem>
           </varlistentry>
@@ -841,7 +811,7 @@
             <listitem>
               <para>
                 Normally, the <guilabel>History</guilabel> view shows
-                you all transactions. You may choose instead to display just 
+                you all transactions. You may choose instead to display just
                 installations,  removals, or  upgrades.
               </para>
             </listitem>
@@ -850,9 +820,9 @@
             <term>User</term>
             <listitem>
               <para>
-                 Normally, Red Carpet will show you transactions
+                Normally, the ZENworks Linux Management Update Client will show you transactions
                 performed by all permitted users. If you have allowed
-                other users to use Red Carpet, you may choose to
+                other users to use the ZENworks Linux Management Update Client, you may choose to
                 display just their actions. If you have not allowed
                 any other users to change the system, the only option
                 here will be <guilabel>All</guilabel>.
@@ -863,7 +833,7 @@
             <term>Date Range</term>
             <listitem>
               <para>
-                Normally, Red Carpet will show you the transactions in the last
+                Normally, the ZENworks Linux Management Update Client will show you the transactions in the last
                 thirty days. You can choose a longer or shorter time frame if you wish..
               </para>
             </listitem>
@@ -874,7 +844,7 @@
     <sect2 id="rc-transaction-view">
       <title>The Detailed Transaction View</title>
       <para>
-        The left side of the main Red Carpet window shows you
+        The left side of the main ZENworks Linux Management Update Client window shows you
         a list of transactions you have selected, but it doesn't have
         room to give you a lot of detail. For more information about
         your pending transaction list, click the
@@ -882,70 +852,18 @@
       </para>
       <para>
         In addition to the action and package name available in the
-        concise view, the detailed transaction view lets you see see
+        concise view, the detailed transaction view lets you see 
         the package version number and the amount of disk space taken
         up by the package.
       </para>
     </sect2>
   </sect1>
 
-
-  <sect1 id="rcx">
-    <title>Red Carpet Express: More Software, Faster</title>
-    <para>
-       Red Carpet Express is a premium service that
-       provides you with exclusive access to high speed download
-       servers, plus additional software not available through the free
-       service. Red Carpet Express works like basic regular Red Carpet
-      service, except there are more channels of software available,
-      and you connect to a dedicated high-bandwidth server. A one-year
-       subscription is included with the purchase of Ximian Desktop. 
-    </para>
-    <para>
-      When you purchase a subscription, you will be given an
-      activation key, which is a string of numbers and letters like
-      <userinput>83ab2f90e821f000</userinput>. To activate your
-      subscription, select <menuchoice> <guimenu>File</guimenu>
-      <guimenuitem>Activate</guimenuitem></menuchoice>. A dialog will
-      open and ask for your email address and the activation code.
-    </para>
-    <para>
-      You can turn Red Carpet Express and other premium services on or
-      off by selecting  <menuchoice> <guimenu>Edit</guimenu>
-      <guimenuitem>Preferences</guimenuitem> </menuchoice> and, under
-      the <guilabel>General</guilabel> section, clicking the
-      <guilabel>Enable Premium Services</guilabel> checkbox.
-    </para>
-    <para>
-      To sign up for Red Carpet Express, or find more information about
-      its benefits, visit <ulink
-      url="http://store.ximian.com">http://store.ximian.com</ulink>. 
-    </para>
-
-    <note id="rce">
-      <title>Red Carpet Enterprise</title>
-      <para>
-        Red Carpet Enterprise allows you to run your own Ximian Red
-        Carpet server and distribute software to your network in a
-        secure and convenient manner. Clients may connect with either
-        Red Carpet or the <command>rug</command> command line tool,
-        simplifying automated updates. The server includes a web
-        interface and scriptable command line tools.  You can use Red
-        Carpet Enterprise to manage installs and updates for internal
-        or purchased software, plus easy redistribution of software
-        from Ximian, SuSE YaST, and the Red Hat Network. For
-        additional information, visit <ulink
-        url="http://ximian.com">http://ximian.com</ulink>.
-      </para>
-    </note>
-
-  </sect1>
  
-
   <sect1 id="preferences">
-    <title>Ximian Red Carpet Preferences</title>
+    <title>ZENworks Linux Management Update Client Preferences</title>
     <para>
-      To open the preferences window, select <menuchoice>
+      To open the preferences window, click <menuchoice>
       <guimenu>Edit</guimenu> <guimenuitem>Preferences</guimenuitem>
       </menuchoice>. The window has four tabbed pages: General, Cache,
       Daemon, and Advanced.
@@ -956,75 +874,51 @@
          You can set the following preferences here:
          <variablelist>
            <varlistentry>
-             <term>Server URL</term>
+             <term>Interval to Refresh Catalog Data</term>
                <listitem>
                  <para>
-                 The location of the Red Carpet server you are
-                   using. If you know the exact URL of a server, you can enter it here,
-                   or choose one from the list of mirrors by clicking
-                   the <guibutton>Mirrors</guibutton> button.
+                 Specify how often you want to refresh catalog data. The
+                 default is two hours. 
                  </para>
                </listitem>
              </varlistentry>
-
-               <varlistentry>
-                 <term>Mirrors</term>
-                 <listitem>
-                   <para>
-                     Click this button to get a list of mirrors you
-                     can choose from. All of these servers have the
-                     same software as the main Ximian server, and
-                     update at least once per day. 
-                   </para>
-                   <para>
-                     For best results, choose a mirror with a physical
-                     location near yours.  That generally means that
-                     there are fewer intermediate connections between
-                     the server and your computer.  In addition, the
-                     primary Ximian site is often crowded, so even a
-                     relatively distant mirror can be faster. Another
-                     way to get a faster connection is with Red Carpet
-                     Express. See <xref linkend="rcx" /> for more information.
-                   </para>
-                 </listitem>
-               </varlistentry>
-
-
-
-             <varlistentry>
-               <term>Enable Premium Services</term>
-               <listitem>
-                 <para>
-                   If you have already activated Red Carpet Express or
-                   Red Carpet Enterprise services, you can turn them on and off here.
-                 </para>
-               </listitem>
-             </varlistentry>
-
+             
              <varlistentry>
                <term>Require Package Signatures</term>
                <listitem>
                  <para>
-                   Ximian ships software with a cryptographic
-                   signature. Unless you absolutely trust your server
-                   (for example, you are using Red Carpet Enterprise)
-                   you should leave this setting on for security.
+                   ZENworks Linux Management ships software with a cryptographic
+                   signature. Unless you absolutely trust your server,
+                   you should leave this setting on for increased security.
                  </para>
                </listitem>
              </varlistentry>
 
              <varlistentry>
-               <term>Maximum number of packages to download at once</term>
+               <term>Maximum Number of Packages to Download at Once</term>
                <listitem>
                  <para>
-                   If possible, Ximian Red Carpet will download
+                   If possible, the ZENworks Linux Management Update Client will download
                    several packages at once in order to make the best
                    use of your network connection. If you have a very
-                   fast connection, you may wish to increase this
+                   fast connection, you can increase this
                    number. If you are sharing your connection with
-                   others, you may wish to reduce it.
+                   others, you can reduce it.
                  </para>
                </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	       <term>Enable Package Rollback</term>
+	        <listitem>
+	         <para>
+	           Select this option to allow for packages to be rolled back.
+	           When you upgrade or remove software, the ZENworks Linux Management
+	           Update Client normally deletes the earlier version of the packages. If 
+	           you select this option, earlier versions of packages are not deleted, and
+	           you can roll back the software contained in them.
+	          </para>
+	          </listitem>
              </varlistentry>
 
 
@@ -1033,9 +927,9 @@
                <listitem>
                  <para>
                    If your network uses an HTTP proxy, check this box,
-                   then enter the proxy URL. If necessary, also enter
-                   your username and password. Because Ximian Red
-                   Carpet does not depend on a particular desktop,
+                   then specify the proxy URL. If necessary, also specify
+                   your username and password. Because the ZENworks Linux
+                   Management Update Client does not depend on a particular desktop,
                    this setting must be entered independently of
                    the GNOME desktop proxy setting.
                  </para>
@@ -1045,39 +939,43 @@
          </para>
        </sect2>
        <sect2 id="rc-prefs-cache">
-         <title>Download Cache Preferences</title>
+         <title>Cache Preferences</title>
          <para>
-           Ximian Red Carpet stores downloaded files so that if you
+           The ZENworks Linux Management Update Client stores downloaded files so that if you
            quit or cancel an operation, you can resume it quickly
            without downloading again. The <guilabel>Cache</guilabel>
            tab in the Preferences window lets you change cache handling
            behavior. Your options are:
            <variablelist>
              <varlistentry>
-               <term>Cache downloaded packages and metadata</term>
+               <term>Cache Downloaded Packages and Metadata</term>
                <listitem>
                  <para>
                    If you don't want to cache anything, uncheck this box. It is normally on.
                  </para>
                </listitem>
              </varlistentry>
-
+             
              <varlistentry>
-               <term>Location of cached data</term>
-               <listitem>
-                 <para>
-                   Enter the location where you will save cached files.
-                 </para>
-               </listitem>
+	       <term>Location of Cached Data</term>
+	        <listitem>
+	        <para>
+	          Specify the location where you will save cached files. 
+	          By default, this is /var/opt/novell
+	          /zenworks/cache/zmd/web.
+	                      </para>
+	                    </listitem>
              </varlistentry>
-
+             
              <varlistentry>
-               <term>Cache Expiration</term>
+               <term>Expiration</term>
                <listitem>
                  <para>
-                   You can the cache to empty after a certain number
-                   of days, or if its contents take up more than a certain amount of
-                   space. By default, this happens after 30 days or
+                   Check the Cache Expires box to specify that the cache is emptied
+                   according to the settings you configure. This option is set by default.
+                   You can specify that the cache empties after a certain number
+                   of days or if its contents take up more than a certain amount of
+                   space. By default, this happens after 30 days or after the cache size reaches
                    300 MB. If you turn off cache expiration, packages
                    will be kept until you delete them yourself by
                    clicking the <guibutton>Empty Cache</guibutton> button.
@@ -1093,115 +991,134 @@
          </para>
          </sect2>
          <sect2 id="rc-prefs-advanced">
-           <title>Advanced Red Carpet Preferences</title>
+           <title>Advanced Preferences</title>
            <para>
-             The options available in this section are:
+             To change the preferences on the Advanced page, select the check box or click the Setting in the Value column, then 
+             type the new setting. The options available in this section are:
            </para>
            <variablelist>
-       
+
              <varlistentry>
-               <term>Dispatcher host</term>
+               <term>Port to Listen On for Remote Clients</term>
                <listitem>
                  <para>
-                   The dispatcher, or "magic" proxy, is used only in
-                   complex Red Carpet Enterprise deployments. If you
-                   are using one, your system administrator will give
-                   you a hostname to enter here.
+                   Specify the port to listen on for remote clients. The default is 2544.
                  </para>
                </listitem>
              </varlistentry>
-
-
+             
              <varlistentry>
-               <term>Repackage for rollback</term>
-               <listitem>
-                 <para>
-                    When you upgrade or remove software, Ximian Red
-                   Carpet normally just deletes the old
-                   version. However, it is possible to "repackage" it,
-                   creating an archived version so you can switch back 
-                   if necessary.  Repackaging is time consuming and
-                   uses significant amounts of disk space.
-                 </para>
-               </listitem>
+	      <term>Allow Clients to Connect Remotely to this Daemon</term>
+	      <listitem>
+	       <para>
+	        This setting is enabled by default.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>The Number of Milliseconds to Delay Before Retrying a Download</term>
+	      <listitem>
+	       <para>
+	        The default setting is 2000 milliseconds.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>Debug Level (Off, Min, Max)</term>
+	      <listitem>
+	       <para>
+	        The default setting is Min.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>How Long Before Sending Delayed Actions, in Seconds</term>
+	      <listitem>
+	       <para>
+	        The default setting is 900 seconds.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>Number of Seconds until HTTP Requests Timeout</term>
+	      <listitem>
+	       <para>
+	        The default setting is 1800 seconds.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>Time of Day to Refresh Inventory</term>
+	      <listitem>
+	       <para>
+	        The default setting is 00.00:00 (midnight).
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>How Long to Wait between Retries of a Service Addition, in Seconds</term>
+	      <listitem>
+	       <para>
+	        The default setting is 300 seconds.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	       <term>Whether of Not Verified SSL Certificates are Required</term>
+	       <listitem>
+	        <para>
+	         This setting demands that the ZENworks Linux Management Server
+		 have an identity certificate that is verified by
+		 external authority organizations. An external
+		 certificate is expensive and most servers will not
+                 have one. The default setting for this option is enabled.
+	        </para>
+	       </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>The Maximum Number of Download Retries</term>
+	      <listitem>
+	       <para>
+	        The default setting is 3.
+	       </para>
+	      </listitem>
+             </varlistentry>
+             
+             <varlistentry>
+	      <term>IP Address to Bind To</term>
+	      <listitem>
+	       <para>
+	        The default setting is empty, which means "all."
+	       </para>
+	      </listitem>
              </varlistentry>
 
-
-             <varlistentry>
-               <term>Verify server SSL certificates with external authority</term>
-               <listitem>
-                 <para>
-                   This setting demands that the Red Carpet server
-                   have an identity certificate which is verified by
-                   external authority organizations. An external
-                   certificate is expensive and most servers will not
-                   have one.
-                 </para>
-               </listitem>
-             </varlistentry>
-
-             <varlistentry>
-               <term>Use HTTP/1.0 for server communication</term>
-               <listitem>
-                 <para>
-                   Check this box if your proxy or server insists on
-                   strict HTTP/1.0 protocol for communications.
-                 </para>
-               </listitem>
-             </varlistentry>
-
-             <varlistentry>
-               <term></term>
-               <listitem>
-                 <para>
-                 </para>
-               </listitem>
-             </varlistentry>
-
-             <varlistentry>
-               <term>Logging level for rcd-messages</term>
-               <listitem>
-                 <para>
-                   Operation messages are saved to the file
-                   <filename>/var/log/rcd/rcd-messages</filename>
-                   depending upon the degree of importance assigned to
-                   them by the developer. A value of 1 will send
-                   only the messages that are flagged as most important; 
-                   6 will send every message, and 0 will send no messages.
-                 </para>
-               </listitem>
-             </varlistentry>
-
-             <varlistentry>
-               <term>Logging level for syslog</term>
-               <listitem>
-                 <para>
-                   Determines the amount of information sent to the
-                   central operating system log. Messages are sent 
-                   depending upon the degree of importance assigned to
-                   them by the developer. A value of 1 will send only
-                   the messages that are flagged as most important;
-                   6 will send every message, and 0 will send no
-                   messages.
-                 </para>
-               </listitem>
-             </varlistentry>
+                       
            </variablelist>
 
              <para>
                If you require finer control over the operation
-               of Ximian Red Carpet, you may wish to edit the
+               of the ZENworks Linux Management Update Client, you may want to edit the
                configuration files, as described in the man pages for
                <command>rug</command>, <command>rcd</command>, and
                <command>rcd.conf</command>.
              </para>
            </sect2>
          </sect1>
-         
+
   <sect1 id="remote">
-    <title>Using Red Carpet with Remote Systems</title>
+    <title>Using the ZENworks Linux Management Update Client with Remote Systems</title>
     <para>
-      Ximian Red Carpet may be used with remote systems running the
+      The ZENworks Linux Management Update Client
+      may be used with remote systems running the
       Red Carpet Daemon, <command>rcd</command>.  You will need to
       have an account with the daemon on the remote system.
     </para>
@@ -1216,19 +1133,19 @@
       <orderedlist>
         <listitem>
           <para>
-            Select <menuchoice><guimenu>File</guimenu><guimenuitem>Connect</guimenuitem></menuchoice>.
+            Click <menuchoice><guimenu>File</guimenu><guimenuitem>Connect to Daemon</guimenuitem></menuchoice>.
           </para>
         </listitem>
 
         <listitem>
           <para>
-            Click the <guibutton>Connect to a remote daemon</guibutton> button.
+            Click <guibutton>Connect to a Remote System</guibutton>.
           </para>
         </listitem>
 
         <listitem>
           <para>
-            Enter the hostname and, if necessary, port for connection to the remote system.
+            Select the remote server.
           </para>
         </listitem>
 
@@ -1256,5 +1173,67 @@
       tools, use the <command>man rug</command> command.
     </para>
   </sect1>
+  
+  <sect1 id="services">
+      <title>Adding and Activating Services</title>
+      <para>
+        Using the ZENworks Linux Management Update Client, you can use 
+        multiple servers for a single client. Each server is called a
+        service.
+      </para>
+      <para>
+        To add a service, do the following:
+        <orderedlist>
+          <listitem>
+            <para>
+              Click <menuchoice><guimenu>Edit</guimenu><guimenuitem>Services</guimenuitem></menuchoice>.
+            </para>
+          </listitem>
+  
+          <listitem>
+            <para>
+              Click <guibutton>Add Service</guibutton>.
+            </para>
+          </listitem>
+  
+          <listitem>
+            <para>
+              Type the service URL, select the service type from the drop-down list, then
+              type the registration key (optional).
+            </para>
+          </listitem>
+  
+          <listitem>
+            <para>
+              Click OK to add the service.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+          
+       <para>
+        To activate a service, do the following:
+        <orderedlist>  
+          <listitem>
+	   <para>
+	     Click <menuchoice><guimenu>File</guimenu><guimenuitem>Activate</guimenuitem></menuchoice>.
+	   </para>
+          </listitem>
+          
+          <listitem>
+	   <para>
+	     Select the service from the drop-down list, type an e-mail address (or ensure that 
+	     it is correct), then enter an activation code (optional).
+	   </para>
+          </listitem>
+          
+          <listitem>
+	   <para>
+	    Click Activate.
+	   </para>
+          </listitem>
+        </orderedlist>
+      </para>
+   </sect1>
 
 </article>
