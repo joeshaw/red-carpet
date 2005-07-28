@@ -374,7 +374,7 @@ msgstr "_Tehtävät"
 
 #: src/red_appwindow.py:543
 msgid "_Help"
-msgstr "_Ohje"
+msgstr "O_hje"
 
 #: src/red_appwindow.py:551
 msgid "Connect to daemon..."
@@ -1843,7 +1843,7 @@ msgstr "Tärkeys"
 #: src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
-msgstr "%.1f%% valmiina"
+msgstr "%.1f %% valmiina"
 
 #. Define me!
 #. If necessary, change the button from "Cancel"
