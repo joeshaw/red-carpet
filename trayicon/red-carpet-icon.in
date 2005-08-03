@@ -78,6 +78,7 @@ try:
     import red_gettext
     red_gettext.init(red_carpet_localedir)
 
+    import red_main
     import red_icon_main
 
     red_icon_main.help_path = red_carpet_help_path

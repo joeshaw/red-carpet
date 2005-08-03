@@ -1,3 +1,9 @@
+2005-08-03  Dan Mills  <thunder@ximian.com>
+
+	* trayicon/red-carpet-icon.in: import red_main before
+	red_icon_main, to bypass some loading problems.  This is part
+	of the fix for DEFECT000420475.
+
 2005-07-28  Tambet Ingo  <tambet@ximian.com>
 
 	* help/C/red-carpet.xml: New help file.
