@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Red-carpet 1.1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-01 04:18+0000\n"
-"PO-Revision-Date: 2005-07-17 01:16+0200\n"
+"POT-Creation-Date: 2005-08-13 12:28+0000\n"
+"PO-Revision-Date: 2005-08-13 19:55+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,9 +70,8 @@ msgid "Licensed under the GNU General Public License, version 2"
 msgstr "Uitgebracht onder de GNU General Public License, versie 2"
 
 #: ../src/red_activation.py:27
-#, fuzzy
 msgid "Registration"
-msgstr "Registratiesleutel"
+msgstr "Registratie"
 
 #: ../src/red_activation.py:53
 msgid "Service:"
@@ -82,19 +81,19 @@ msgstr "Service:"
 msgid "Email:"
 msgstr "E-mail:"
 
+# code/sleutel
 #: ../src/red_activation.py:61
-#, fuzzy
 msgid "Registration Code:"
-msgstr "Registratiesleutel"
+msgstr "Registratiecode:"
 
+# aanmelden/registreren/activeren
 #: ../src/red_activation.py:87
 msgid "Register"
-msgstr ""
+msgstr "Registreren"
 
 #: ../src/red_activation.py:113
-#, fuzzy
 msgid "Please fill in both email and registration code."
-msgstr "Voer zowel het e-mailadres als de activeringscode in."
+msgstr "Voer zowel het e-mailadres als de registratiecode in."
 
 # dit is vrij vertaald
 #: ../src/red_activation.py:128
@@ -102,11 +101,9 @@ msgid "Unable to activate"
 msgstr "Het activeren is mislukt"
 
 #: ../src/red_activation.py:129
-#, fuzzy
 msgid ""
 "Please ensure you typed the email address and registration code correctly"
-msgstr ""
-"Controleer of u het e-mailadres en de activeringscode goed hebt ingevoerd"
+msgstr "Controleer of u het e-mailadres en de registratiecode correct hebt ingevoerd"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
@@ -266,14 +263,12 @@ msgid "Unmount a directory"
 msgstr "Een map afkoppelen"
 
 #: ../src/red_appwindow.py:632
-#, fuzzy
 msgid "_Register..."
-msgstr "_Gebruikers..."
+msgstr "_Registreren..."
 
 #: ../src/red_appwindow.py:633
-#, fuzzy
 msgid "Register daemon"
-msgstr "Registratiesleutel"
+msgstr "Registratie-daemon"
 
 #: ../src/red_appwindow.py:639
 msgid "Quit"
@@ -758,7 +753,7 @@ msgstr "Er zijn geen geldige pakketten om te installeren"
 msgid "Install from File"
 msgstr "Installeren via bestand"
 
-# Gedownload/binnegehaald
+# Gedownload/binnengehaald
 #: ../src/red_installfiles.py:126
 #, python-format
 msgid "Downloading %s..."
@@ -1123,7 +1118,7 @@ msgstr "U heeft geen toestemming om de proxy-instellingen te bekijken"
 
 #: ../src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
-msgstr "Binnegehaalde pakketten en metadata opslaan "
+msgstr "Binnengehaalde pakketten en metadata opslaan "
 
 # gegevens/data
 # data is verwarrend hier: lijkt op datums
