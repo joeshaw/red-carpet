@@ -1,3 +1,7 @@
+2005-08-19  James Willcox  <james@ximian.com>
+
+	* configure.in: version is 7.0.0
+
 2005-08-03  Dan Mills  <thunder@ximian.com>
 
 	* trayicon/red-carpet-icon.in: import red_main before
