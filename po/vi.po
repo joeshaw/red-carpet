@@ -1,0 +1,1478 @@
+# Vietnamese translation for Red Carpet.
+# Copyright © 2005 Gnome i18n Project for Vietnamese.
+# Clytie Siddall <clytie@riverland.net.au>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: red-carpet Gnome HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-08-18 04:44+0000\n"
+"PO-Revision-Date: 2005-08-26 17:35+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.2.2\n"
+
+#: ../src/rcd_util.py:432
+msgid "Please wait while getting data."
+msgstr "Vui lòng đời khi lấy dữ liệu."
+
+#: ../src/rcd_util.py:486 ../src/rcd_util.py:504
+msgid "Please ensure that your network settings are correct."
+msgstr "Hãy kiểm tra lại thiết đặt mạng xem có đúng không."
+
+#: ../src/rcd_util.py:493
+msgid "Refreshing catalog data"
+msgstr "Đang cập nhật dữ liệu phân loại"
+
+#: ../src/rcd_util.py:495
+msgid "Downloading catalog information"
+msgstr "Đang tải về thông tin phân loại"
+
+#: ../src/rcd_util.py:521
+msgid "Verifying"
+msgstr "Đang thẩm tra"
+
+#: ../src/rcd_util.py:522
+msgid "Unable to verify package signature for"
+msgstr "Không thể thẩm tra chữ ký gói cho"
+
+#: ../src/rcd_util.py:523
+msgid "There is no package signature for"
+msgstr "Không có chữ ký gói cho"
+
+#: ../src/rcd_util.py:524
+msgid "Preparing Transaction"
+msgstr "Đang chuẩn bị phiên giao dịch"
+
+#: ../src/rcd_util.py:525
+msgid "Installing"
+msgstr "Đang cài đặt"
+
+#: ../src/rcd_util.py:526
+msgid "Removing"
+msgstr "Đang gỡ bỏ"
+
+#: ../src/rcd_util.py:527
+msgid "Configuring"
+msgstr "Đang cấu hình"
+
+#: ../src/red_about.py:50
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "Được phát hành với điều kiện của Quyền Công Chung GNU (GPL) phiên bản 2."
+
+#: ../src/red_activation.py:27
+msgid "Registration"
+msgstr "Đang ký"
+
+#: ../src/red_activation.py:53
+msgid "Service:"
+msgstr "Dịch vụ:"
+
+#: ../src/red_activation.py:57
+msgid "Email:"
+msgstr "Địa chỉ thư :"
+
+#: ../src/red_activation.py:61
+msgid "Registration Code:"
+msgstr "Mã đăng ký :"
+
+#: ../src/red_activation.py:87
+msgid "Register"
+msgstr "Đăng ký"
+
+#: ../src/red_activation.py:113
+msgid "Please fill in both email and registration code."
+msgstr "Hãy điền vào cả địa chỉ thư điện tử lẫn mã đăng ký đều."
+
+#: ../src/red_activation.py:128
+msgid "Unable to activate"
+msgstr "Không thể kích hoạt"
+
+#: ../src/red_activation.py:129
+msgid ""
+"Please ensure you typed the email address and registration code correctly"
+msgstr "Hãy kiểm tra xem bạn đã nhập đúng địa chỉ thư và mã đăng ký chưa."
+
+#. TRANSLATORS: *Only* localize this to the language code if the
+#. Red Carpet help is localized.
+#: ../src/red_appwindow.py:92
+msgid "C"
+msgstr "C"
+
+#: ../src/red_appwindow.py:129
+msgid ""
+"Unable to show help because the help files were missing.  Please report this "
+"to your vendor."
+msgstr "Không thể hiển thị trợ giúp vì thiếu tập tin trợ giúp. Vui lòng thông báo trường hợp này cho nhà sản xuất."
+
+#: ../src/red_appwindow.py:139
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr "Không thể hiển thị trợ giúp vì không có ứng dụng xem nó."
+
+#: ../src/red_appwindow.py:414
+#, python-format
+msgid "Are you sure you want to open %d package information windows?"
+msgstr "Bạn có chắc muốn mở %d cửa sổ thông tin gói không?"
+
+#: ../src/red_appwindow.py:442
+msgid "Run Now"
+msgstr "Chạy ngay"
+
+#: ../src/red_appwindow.py:443
+msgid "Perform installations and removals"
+msgstr "Thực hiện mọi việc cài đặt hay gỡ bỏ"
+
+#: ../src/red_appwindow.py:450
+msgid "Catalogs"
+msgstr "Phân loại"
+
+#: ../src/red_appwindow.py:451
+msgid "Change your catalog subscriptions"
+msgstr "Sửa đổi cách đang ký với phân loại"
+
+#: ../src/red_appwindow.py:459
+msgid "Refresh"
+msgstr "Cập nhật"
+
+#: ../src/red_appwindow.py:460
+msgid "Refresh catalog data"
+msgstr "Cập nhật dữ liệu phân loại"
+
+#. Install
+#: ../src/red_appwindow.py:471 ../src/red_packageview.py:232
+msgid "Mark for _Installation"
+msgstr "Đánh dấu để cà_i đặt"
+
+#: ../src/red_appwindow.py:472
+msgid "Mark selected packages for installation"
+msgstr "Đánh dấu (các) gói đã chọn để cài đặt"
+
+#. #
+#. # Remove Package
+#. #
+#. Remove
+#: ../src/red_appwindow.py:477 ../src/red_appwindow.py:775
+#: ../src/red_packageview.py:245
+msgid "Mark for _Removal"
+msgstr "Đánh dấu để loại _bỏ"
+
+#: ../src/red_appwindow.py:478
+msgid "Mark selected packages for removal"
+msgstr "Đánh dấu (các) gói đã chọn để gỡ bỏ"
+
+#. Cancel
+#: ../src/red_appwindow.py:483 ../src/red_appwindow.py:788
+#: ../src/red_packageview.py:258
+msgid "_Cancel"
+msgstr "_Hủy bỏ"
+
+#: ../src/red_appwindow.py:484
+msgid "Cancel marked package actions"
+msgstr "Hủy bỏ các hành động gói đã đánh dấu"
+
+#. Info
+#: ../src/red_appwindow.py:489 ../src/red_packageview.py:276
+msgid "I_nformation"
+msgstr "Thông ti_n"
+
+#: ../src/red_appwindow.py:490
+msgid "Package information"
+msgstr "Thông tin gói"
+
+#: ../src/red_appwindow.py:547
+msgid "_File"
+msgstr "_Tập tin"
+
+#: ../src/red_appwindow.py:548
+msgid "_Edit"
+msgstr "_Hiệu chỉnh"
+
+#: ../src/red_appwindow.py:549 ../src/red_appwindow.py:838
+msgid "_View"
+msgstr "_Xem"
+
+#: ../src/red_appwindow.py:550
+msgid "_Actions"
+msgstr "_Hành động"
+
+#: ../src/red_appwindow.py:551
+msgid "_Help"
+msgstr "Trợ _giúp"
+
+#: ../src/red_appwindow.py:559
+msgid "Connect to daemon..."
+msgstr "Kết nối đến trình nền..."
+
+#: ../src/red_appwindow.py:560
+msgid "Connect to a remote daemon"
+msgstr "Kết nối đến trình nền ở xa"
+
+#: ../src/red_appwindow.py:570
+msgid "Install from _File..."
+msgstr "Cài đặt từ _tập tin..."
+
+#: ../src/red_appwindow.py:571
+msgid "Install a package from a local file"
+msgstr "Cài đặt gói từ tập tin địa phương"
+
+#: ../src/red_appwindow.py:580
+msgid "Install from _URL..."
+msgstr "Cài đặt từ địa chỉ _Mạng..."
+
+#: ../src/red_appwindow.py:581
+msgid "Install a package from a remote URL"
+msgstr "Cài đặt gói từ địa chỉ Mạng ở xa"
+
+#: ../src/red_appwindow.py:598
+msgid "_Mount Directory..."
+msgstr "_Gắn kết thư mục..."
+
+#: ../src/red_appwindow.py:599
+msgid "Mount a directory as a catalog"
+msgstr "Gắn kết thư mục là phân loại"
+
+#: ../src/red_appwindow.py:615
+msgid "U_nmount Directory..."
+msgstr "Thá_o gắn kết thư mục..."
+
+#: ../src/red_appwindow.py:616
+msgid "Unmount a directory"
+msgstr "Tháo gắn kết thư mục"
+
+#: ../src/red_appwindow.py:632
+msgid "_Register..."
+msgstr "Đăng _ký..."
+
+#: ../src/red_appwindow.py:633
+msgid "Register daemon"
+msgstr "Đăng ký trình nền"
+
+#: ../src/red_appwindow.py:639
+msgid "Quit"
+msgstr "Thoát"
+
+#: ../src/red_appwindow.py:640
+msgid "Quit Red Carpet"
+msgstr "Thoát khỏi Red Carpet"
+
+#: ../src/red_appwindow.py:655
+msgid "Select _All"
+msgstr "Chọn tất _cả"
+
+#: ../src/red_appwindow.py:656
+msgid "Select all items"
+msgstr "Chọn tất cả mục"
+
+#: ../src/red_appwindow.py:661
+msgid "Select _None"
+msgstr "Chọn _không gì"
+
+#: ../src/red_appwindow.py:662
+msgid "Deselect all items"
+msgstr "Thôi chọn tất cả mục"
+
+#: ../src/red_appwindow.py:669
+msgid "Services..."
+msgstr "Dịch vụ..."
+
+#: ../src/red_appwindow.py:670
+msgid "Edit services"
+msgstr "Sửa đổi dịch vụ"
+
+#: ../src/red_appwindow.py:674
+msgid "Catalog _Subscriptions..."
+msgstr "_Mục đăng ký phân loại..."
+
+#: ../src/red_appwindow.py:675
+msgid "Edit your catalog subscriptions"
+msgstr "Sửa đổi mục đăng ký phân loại"
+
+#: ../src/red_appwindow.py:680
+msgid "_Preferences..."
+msgstr "_Sở thích..."
+
+#: ../src/red_appwindow.py:681
+msgid "Edit your Red Carpet preferences"
+msgstr "Biên soạn Sở thích của Red Carpet"
+
+#: ../src/red_appwindow.py:685
+msgid "_Users..."
+msgstr "_Người dùng..."
+
+#: ../src/red_appwindow.py:686
+msgid "Edit user permissions for this daemon"
+msgstr "Sửa đổi quyền truy cập trình nền này"
+
+#: ../src/red_appwindow.py:699
+msgid "_Sidebar"
+msgstr "Khung _lề"
+
+#: ../src/red_appwindow.py:700
+msgid "Hide or show the Pending Actions sidebar"
+msgstr "Ẩn hoặc hiển thị khung lề Hành động Treo"
+
+#: ../src/red_appwindow.py:704
+msgid "_Advanced Search Options"
+msgstr "Tùy chọn tìm kiếm nâng c_ao"
+
+#: ../src/red_appwindow.py:705
+msgid "Hide or show advanced search options"
+msgstr "Ẩn hoặc hiển thị tùy chọn tìm kiếm nâng cao"
+
+#: ../src/red_appwindow.py:709
+msgid "_Catalog Names"
+msgstr "Tên _phân loại"
+
+#: ../src/red_appwindow.py:710
+msgid "Hide or show catalog names in package lists"
+msgstr "Ẩn hoặc hiển thị tên phân loại trong danh sách gói"
+
+#: ../src/red_appwindow.py:716
+msgid "Package _Information..."
+msgstr "Thông t_in gói..."
+
+#: ../src/red_appwindow.py:717
+msgid "View information about currently selected packages"
+msgstr "Hiển thị thông tin về gói tin đã chọn hiện thời."
+
+#: ../src/red_appwindow.py:725
+msgid "_Daemon Information..."
+msgstr "Thông tin trình _nền..."
+
+#: ../src/red_appwindow.py:726
+msgid "View information about this daemon"
+msgstr "Xem thông tin về trình nền này."
+
+#: ../src/red_appwindow.py:738
+msgid "Run _Now"
+msgstr "Chạy _ngay"
+
+#: ../src/red_appwindow.py:739
+msgid "Run the current transaction"
+msgstr "Chạy phiên giao dịch hiện thời"
+
+#: ../src/red_appwindow.py:753
+msgid "_Verify System Dependencies"
+msgstr "Thẩ_m tra cách phụ thuộc trong hệ thống"
+
+#: ../src/red_appwindow.py:754
+msgid "Verify that all system dependencies are met"
+msgstr "Thẩm tra đã thỏa mọi cách phụ thuộc trong hệ thống."
+
+#. #
+#. # Install Package
+#. #
+#: ../src/red_appwindow.py:765
+msgid "Mark for I_nstallation"
+msgstr "Đánh dấu để _cài đặt"
+
+#: ../src/red_appwindow.py:766
+msgid "Mark this package for installation"
+msgstr "Đánh dấu gói này để cài đặt"
+
+#: ../src/red_appwindow.py:776
+msgid "Mark this package for removal"
+msgstr "Đánh dấu gói này để gỡ bỏ"
+
+#: ../src/red_appwindow.py:789
+msgid "Cancel installation or removal mark"
+msgstr "Bỏ dấu cài đặt hoặc gỡ bỏ"
+
+#: ../src/red_appwindow.py:803
+msgid "Re_fresh Catalog Data"
+msgstr "_Cập nhật dữ liệu phân loại :"
+
+#: ../src/red_appwindow.py:804
+msgid "Download latest catalog data"
+msgstr "Tải về dữ liệu phân loại mới nhất"
+
+#: ../src/red_appwindow.py:813
+msgid "_Contents"
+msgstr "_Nội dung"
+
+#: ../src/red_appwindow.py:814
+msgid "View Red Carpet help"
+msgstr "Xem trợ giúp Red Carpet"
+
+#: ../src/red_appwindow.py:819
+msgid "_About..."
+msgstr "_Giới thiệu..."
+
+#: ../src/red_appwindow.py:820
+msgid "About Red Carpet"
+msgstr "Giới thiệu Red Carpet"
+
+#: ../src/red_appwindow.py:839
+#, python-format
+msgid "Go to the '%s' page"
+msgstr "Đi tới trang « %s »"
+
+#: ../src/red_bundlearray.py:32 ../src/red_packagearray.py:91
+msgid "installed"
+msgstr "đã cài đặt"
+
+#: ../src/red_bundlearray.py:34 ../src/red_packagearray.py:97
+msgid "not installed"
+msgstr "chưa cài đặt"
+
+#: ../src/red_bundlearray.py:231
+#, python-format
+msgid "Found %d matching bundles"
+msgstr "Tìm thấy %d bó khớp"
+
+#: ../src/red_bundlearray.py:233
+msgid "Found 1 matching bundle"
+msgstr "Tìm thấy 1 bó khớp"
+
+#: ../src/red_bundlearray.py:235
+msgid "No matching bundles found"
+msgstr "Không tìm thấy bó khớp nào"
+
+#: ../src/red_bundlesearchbox.py:73
+msgid "All Bundles"
+msgstr "Mọi bó"
+
+#: ../src/red_bundlesearchbox.py:74
+msgid "Uninstalled Bundles"
+msgstr "Bó bị gỡ cài đặt"
+
+#: ../src/red_bundlesearchbox.py:75
+msgid "Installed Bundles"
+msgstr "Bó đã cài đặt"
+
+#: ../src/red_bundlesearchbox.py:101 ../src/red_searchbox.py:322
+msgid "Catalog:"
+msgstr "Phân loại :"
+
+#: ../src/red_bundleview.py:14 ../src/red_bundleview.py:126
+#: ../src/red_history.py:327 ../src/red_packagepage_info.py:90
+#: ../src/red_services.py:150
+msgid "Name"
+msgstr "Tên"
+
+#: ../src/red_bundleview.py:24 ../src/red_bundleview.py:98
+#: ../src/red_packageview.py:301
+msgid "Status"
+msgstr "Trạng thái"
+
+#: ../src/red_bundleview.py:52 ../src/red_bundleview.py:137
+#: ../src/red_packagepage_info.py:91 ../src/red_packageview.py:452
+msgid "Version"
+msgstr "Phiên bản"
+
+#: ../src/red_bundleview.py:62 ../src/red_bundleview.py:147
+msgid "Installed"
+msgstr "Đã cài đặt"
+
+#: ../src/red_bundleview.py:72 ../src/red_bundleview.py:157
+#: ../src/red_history.py:326
+msgid "Type"
+msgstr "Kiểu"
+
+#: ../src/red_channeloption.py:64
+msgid "All Catalogs"
+msgstr "Mọi phân loại"
+
+#: ../src/red_channeloption.py:69
+msgid "All Subscribed Catalogs"
+msgstr "Mọi phân loại đã đăng ký"
+
+#: ../src/red_channeloption.py:74
+msgid "No Catalog/Unknown Catalog"
+msgstr "Không có / Không biết Phân loại"
+
+#: ../src/red_connection.py:49
+#, python-format
+msgid ""
+"Unable to connect to the daemon:\n"
+" '%s'."
+msgstr "Không thể kết nối đến trình nền:\n"
+" « %s »."
+
+#: ../src/red_connection.py:67
+#, python-format
+msgid ""
+"Detected Red Carpet Daemon version %d.%d.%d.\n"
+"Version %d.%d.%d (or newer) is required"
+msgstr "Mới phát hiện trình nền Red Carpet phiên bản %d.%d.%d.\n"
+"Mà cần thiết phiên bản %d.%d.%d (hoặc sau)."
+
+#: ../src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr "Mới phát hiện giao thức phiên bản %d. Mà cần thiết phiên bản %d: bạn cần phải cập nhật phiên bản rcd mình."
+
+#: ../src/red_connection.py:123
+msgid "Starting daemon..."
+msgstr "Đang khởi chạy trình nền..."
+
+#: ../src/red_connection.py:197
+msgid ""
+"Red Carpet requires a Red Carpet Daemon to be running.\n"
+"Would you like to start one now?"
+msgstr "Red Carpet cần thiết trình nền Red Carpet đang chạy.\n"
+"Bạn có muốn khởi chạy nó ngay bây giờ không?"
+
+#: ../src/red_connection.py:345
+msgid "Connect to this system"
+msgstr "Kết nối đến hệ thống này"
+
+#: ../src/red_connection.py:349
+msgid "Connect to a remote system"
+msgstr "Kết nối đến hệ thống ở xa"
+
+#: ../src/red_connection.py:357
+msgid "Server:"
+msgstr "Máy phục vụ :"
+
+#: ../src/red_connection.py:361 ../src/red_users.py:389
+msgid "User name:"
+msgstr "Tên người dùng :"
+
+#: ../src/red_connection.py:365 ../src/red_prefs.py:237
+#: ../src/red_users.py:192 ../src/red_users.py:395
+msgid "Password:"
+msgstr "Mật khẩu :"
+
+#: ../src/red_connection.py:401
+msgid "Connect"
+msgstr "Kết nối"
+
+#: ../src/red_console.py:50
+msgid "ZENworks Error Console"
+msgstr "Bàn giao tiếp Lỗi ZENworks"
+
+#: ../src/red_deaddaemon.py:35
+msgid "Connection to daemon restored.\n"
+msgstr "Mới phục hồi kết nối đến trình nền.\n"
+
+#: ../src/red_deaddaemon.py:68
+msgid "Lost contact with the daemon!"
+msgstr "Mới mất liên lạc với trình nền."
+
+#: ../src/red_deaddaemon.py:69
+msgid "Exit Red Carpet"
+msgstr "Thoát khỏi Red Carpet"
+
+#: ../src/red_depcomponent.py:75 ../src/red_depcomponent.py:403
+msgid "Dependency Resolution"
+msgstr "Phân giải cách phụ thuộc"
+
+#: ../src/red_depcomponent.py:125
+msgid "Verifying System"
+msgstr "Đang thẩm tra hệ thống"
+
+#: ../src/red_depcomponent.py:137
+msgid "Resolving Dependencies"
+msgstr "Đang phân giải cách phụ thuộc:"
+
+#: ../src/red_depcomponent.py:159
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr "Bạn pải chấp nhận các điều kiện của bản quyền dùng phần mềm này trước khi cài đặt nó."
+
+#: ../src/red_depcomponent.py:203
+msgid "I Agree"
+msgstr "Tôi chấp nhận"
+
+#: ../src/red_depcomponent.py:308
+msgid "Dependency Resolution Failed"
+msgstr "Lỗi phân giải cách phụ thuộc"
+
+#: ../src/red_depcomponent.py:358
+msgid "System Verified"
+msgstr "Thẩm tra xong hệ thống"
+
+#: ../src/red_depcomponent.py:360
+msgid ""
+"All package dependencies are satisfied, and no corrective actions are "
+"required."
+msgstr "Đã thỏa mọi cách phụ thuộc của gói, không cần hành động sửa nào."
+
+#: ../src/red_depcomponent.py:414
+msgid "Requested Installations"
+msgstr "Việc cài đặt đã yêu cầu"
+
+#: ../src/red_depcomponent.py:418
+msgid "Requested Removals"
+msgstr "Việc gỡ bỏ đã yêu cầu"
+
+#: ../src/red_depcomponent.py:422
+msgid "Required Installations"
+msgstr "Việc cài đặt cần thiết"
+
+#: ../src/red_depcomponent.py:426
+msgid "Required Removals"
+msgstr "Việc gỡ bỏ cần thiết"
+
+#: ../src/red_depcomponent.py:452
+msgid "Continue"
+msgstr "Tiếp tục"
+
+#: ../src/red_depview.py:47 ../src/red_mount.py:230
+#: ../src/red_packagepage_info.py:95 ../src/red_packageview.py:367
+msgid "Catalog"
+msgstr "Phân loại"
+
+#: ../src/red_depview.py:50 ../src/red_history.py:180
+#: ../src/red_packageview.py:423
+msgid "Package"
+msgstr "Gói"
+
+#: ../src/red_depview.py:53 ../src/red_packageview.py:462
+msgid "Current Version"
+msgstr "Phiên bản hiện thời"
+
+#: ../src/red_depview.py:56 ../src/red_history.py:329
+#: ../src/red_history.py:462 ../src/red_updates.py:94
+msgid "New Version"
+msgstr "Phiên bản mới"
+
+#: ../src/red_depview.py:59 ../src/red_packageview.py:498
+msgid "Size"
+msgstr "Cỡ"
+
+#: ../src/red_history.py:115 ../src/red_users.py:30
+msgid "All"
+msgstr "Tất cả"
+
+#: ../src/red_history.py:116
+msgid "Installations"
+msgstr "Lần cài đặt"
+
+#: ../src/red_history.py:117
+msgid "Removals"
+msgstr "Lần gỡ bỏ"
+
+#: ../src/red_history.py:118
+msgid "Upgrades"
+msgstr "Lần nâng cấp"
+
+#: ../src/red_history.py:123
+msgid "User:"
+msgstr "Người dùng:"
+
+#: ../src/red_history.py:129
+msgid "Timeframe (days):"
+msgstr "Thời hạn (ngày):"
+
+#: ../src/red_history.py:182
+msgid "Bundle"
+msgstr "Bó"
+
+#: ../src/red_history.py:183
+msgid "Unknown"
+msgstr "Chưa biết"
+
+#: ../src/red_history.py:301
+msgid "Searching..."
+msgstr "Đang tìm kiếm..."
+
+#: ../src/red_history.py:323 ../src/red_history.py:458
+msgid "Time"
+msgstr "Thời gian"
+
+#: ../src/red_history.py:324 ../src/red_history.py:459
+#: ../src/red_packageview.py:330
+msgid "Action"
+msgstr "Hành động"
+
+#: ../src/red_history.py:325 ../src/red_history.py:460 ../src/red_users.py:113
+msgid "User"
+msgstr "Người dùng"
+
+#: ../src/red_history.py:328 ../src/red_history.py:461
+msgid "Old Version"
+msgstr "Phiên bản cũ"
+
+#: ../src/red_history.py:359 ../src/red_packagepage.py:45
+msgid "History"
+msgstr "Lịch sử"
+
+#: ../src/red_history.py:362
+msgid "_History"
+msgstr "_Lịch sử"
+
+#: ../src/red_history.py:406
+msgid "No results found."
+msgstr "Chưa tìm kết quả."
+
+#: ../src/red_installfiles.py:80 ../src/red_installfiles.py:149
+#, python-format
+msgid "%s is not a valid package"
+msgstr "%s không phải là một gói hợp lệ."
+
+#: ../src/red_installfiles.py:90
+msgid "There are no valid packages to install"
+msgstr "Không có gói hợp lệ cần cài gói"
+
+#: ../src/red_installfiles.py:109
+msgid "Install from File"
+msgstr "Cài đặt từ tập tin"
+
+#: ../src/red_installfiles.py:126
+#, python-format
+msgid "Downloading %s..."
+msgstr "Đang tải về %s..."
+
+#: ../src/red_installfiles.py:165
+msgid "Install from URL"
+msgstr "Cài đặt từ địa chỉ Mạng"
+
+#: ../src/red_installfiles.py:170
+msgid "Package URL:"
+msgstr "Địa chỉ Mạng của gói:"
+
+#: ../src/red_main.py:110 ../trayicon/red_icon_main.py:211
+msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
+msgstr "• Lỗi • : bạn không thể xác định tùy chọn cả « -h/--host » (máy) lẫn « -l/--local » (địa phương) đều."
+
+#: ../src/red_main.py:141 ../trayicon/red_icon_main.py:242
+msgid "ERROR: You cannot specify a user to a local daemon"
+msgstr "• Lỗi • : bạn không thể xác định người dùng tới trình nền địa phương."
+
+#: ../src/red_mirrors.py:76
+msgid "Mirror"
+msgstr "Nhân bản"
+
+#: ../src/red_mirrors.py:81
+msgid "Location"
+msgstr "Địa điểm"
+
+#: ../src/red_mirrors.py:108
+msgid "Choose a Mirror"
+msgstr "Chọn nhân bản"
+
+#: ../src/red_mount.py:91
+#, python-format
+msgid "Unable to unmount '%s'"
+msgstr "Không thể tháo gắn kết « %s »"
+
+#: ../src/red_mount.py:117
+msgid "Browse..."
+msgstr "Duyệt..."
+
+#: ../src/red_mount.py:128
+msgid "Mount Directory"
+msgstr "Gắn kết thư mục"
+
+#: ../src/red_mount.py:141
+msgid "Mount catalog"
+msgstr "Gắn kết phân loại"
+
+#: ../src/red_mount.py:145
+msgid "Mount a directory as catalog"
+msgstr "Gắn kết thư mục là phân loại"
+
+#: ../src/red_mount.py:153
+msgid "Catalog Name:"
+msgstr "Tên phân loại :"
+
+#: ../src/red_mount.py:157
+msgid "Directory:"
+msgstr "Thư mục:"
+
+#: ../src/red_mount.py:168
+msgid "Look for packages recursively"
+msgstr "Tìm gói một cách đệ qui"
+
+#: ../src/red_mount.py:193
+msgid "Please choose the path for catalog."
+msgstr "Hãy chọn đường dẫn đến phân loại."
+
+#: ../src/red_mount.py:214
+msgid "Unmount Catalog"
+msgstr "Tháo gắn kết phân loại"
+
+#: ../src/red_mount.py:243
+msgid "Unmount?"
+msgstr "Tháo gắn kết ?"
+
+#: ../src/red_news.py:174
+#, python-format
+msgid "%s News"
+msgstr "Tin tức %s"
+
+#: ../src/red_option.py:24
+msgid "Connect to a locally running daemon"
+msgstr "Kết nối đến trình nền đang chạy địa phương"
+
+#: ../src/red_option.py:25
+msgid "hostname"
+msgstr "tên máy"
+
+#: ../src/red_option.py:25
+msgid "Contact daemon on specified host"
+msgstr "Liên lạc với trình nền trên máy đã xác định"
+
+#: ../src/red_option.py:26
+msgid "username"
+msgstr "tên người dùng"
+
+#: ../src/red_option.py:26
+msgid "Specify user name"
+msgstr "Ghi rõ tên người dùng"
+
+#: ../src/red_option.py:27
+msgid "password"
+msgstr "mật khẩu"
+
+#: ../src/red_option.py:27
+msgid "Specify password"
+msgstr "Xác định mật khẩu"
+
+#: ../src/red_option.py:28
+msgid "Print client version and exit"
+msgstr "In ra phiên bản của trình khách rồi thoát"
+
+#: ../src/red_option.py:29
+msgid "Get usage information"
+msgstr "Gọi thông tin về cách sử dụng"
+
+#: ../src/red_option.py:120
+#, python-format
+msgid "Usage: %s <options> ..."
+msgstr "Cách sử dụng: %s <tùy_chọn> ..."
+
+# Type: text
+# Description
+#: ../src/red_option.py:122
+msgid "The following options are understood:"
+msgstr "Trình này hiểu những tùy chọn theo đây :"
+
+#. upgrade
+#: ../src/red_packagearray.py:93
+msgid "newer"
+msgstr "mới hơn"
+
+#: ../src/red_packagearray.py:95
+msgid "older"
+msgstr "cũ hơn"
+
+#: ../src/red_packagearray.py:123
+msgid "upgrade"
+msgstr "nâng cấp"
+
+#: ../src/red_packagearray.py:125
+msgid "downgrade"
+msgstr "hạ cấp"
+
+#: ../src/red_packagearray.py:127
+msgid "install"
+msgstr "cài đặt"
+
+#: ../src/red_packagearray.py:134
+msgid "remove"
+msgstr "gỡ bỏ"
+
+#: ../src/red_packagearray.py:614
+#, python-format
+msgid "Found %d matching packages"
+msgstr "Tìm thấy %d gói khớp"
+
+#: ../src/red_packagearray.py:616
+msgid "Found 1 matching package"
+msgstr "Tìm thấy 1 gói khớp"
+
+#: ../src/red_packagearray.py:618
+msgid "No matching packages found"
+msgstr "Không tìm thấy gói khớp nào"
+
+#: ../src/red_packagearray.py:776
+msgid "Looking for updates..."
+msgstr "Đang kiểm tra có cập nhật ..."
+
+#: ../src/red_packagearray.py:801
+#, python-format
+msgid "Found %d matching patches"
+msgstr "Tìm thấy %d đắp vá khớp"
+
+#: ../src/red_packagearray.py:803
+msgid "Found 1 matching patch"
+msgstr "Tìm thấy 1 đắp vá khớp"
+
+#: ../src/red_packagearray.py:805
+msgid "No matching patches found"
+msgstr "Không tìm thấy đắp vá khớp nào"
+
+#: ../src/red_packagebook.py:44
+msgid "Package Information"
+msgstr "Thông tin gói"
+
+#: ../src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "Không tên"
+
+#: ../src/red_packagepage_deps.py:29
+msgid "Dependencies"
+msgstr "Cách phụ thuộc"
+
+#: ../src/red_packagepage_deps.py:67
+msgid "Provides"
+msgstr "Cung cấp"
+
+#: ../src/red_packagepage_deps.py:70
+msgid "Requires"
+msgstr "Cần thết"
+
+#: ../src/red_packagepage_deps.py:73
+msgid "Conflicts With"
+msgstr "Xung đột với"
+
+#: ../src/red_packagepage_info.py:92
+msgid "Release"
+msgstr "Bản phát hành"
+
+#: ../src/red_packagepage_info.py:93
+msgid "Package Size"
+msgstr "Cỡ gói"
+
+#: ../src/red_packagepage_info.py:94
+msgid "Installed Size"
+msgstr "Cỡ đã cài đặt"
+
+#: ../src/red_packagepage_info.py:96
+msgid "Section"
+msgstr "Phần"
+
+#: ../src/red_packagepage_info.py:97
+msgid "Summary"
+msgstr "Tóm tắt"
+
+#: ../src/red_packagepage_info.py:98 ../src/red_prefs.py:413
+msgid "Description"
+msgstr "Mô tả"
+
+#: ../src/red_packagepage_info.py:152
+msgid "Info"
+msgstr "Thông tin"
+
+#: ../src/red_packageview.py:472
+msgid "Importance"
+msgstr "Độ quan trọng"
+
+#: ../src/red_patches.py:35
+msgid "Patches"
+msgstr "Đắp vá"
+
+#: ../src/red_patches.py:38
+msgid "YOU Patches"
+msgstr "Đắp vá YOU"
+
+#: ../src/red_patches.py:72
+msgid "Searching for matching patches..."
+msgstr "Đang tìm kiếm đắp vá khớp..."
+
+#: ../src/red_patches.py:111
+msgid "No matching patches found."
+msgstr "Không tìm thấy đắp vá khớp nào."
+
+#: ../src/red_pendingview.py:347
+#, python-format
+msgid "%.1f%% completed"
+msgstr "%.1f%% hoàn tất)"
+
+#: ../src/red_pendingview.py:536
+msgid "Updating System"
+msgstr "Đang cập nhật hệ thống"
+
+#: ../src/red_pendingview.py:609
+msgid "Download cancelled"
+msgstr "Việc tải về bị hủy bỏ"
+
+#: ../src/red_pendingview.py:610
+msgid "Transaction cancelled"
+msgstr "Giao dịch bị hủy bỏ"
+
+#: ../src/red_pendingview.py:645
+msgid "Transaction Finished"
+msgstr "Giao dịch xong"
+
+#: ../src/red_pendingview.py:658
+msgid "Downloading packages"
+msgstr "đang tài về gói"
+
+#: ../src/red_pendingview.py:671
+msgid "Download Failed"
+msgstr "Việc tải về đã thất bại"
+
+#: ../src/red_pendingview.py:672
+msgid "Unknown Error"
+msgstr "Lỗi không xác định"
+
+#: ../src/red_pendingview.py:689
+msgid "Processing Transaction"
+msgstr "Đang xử lý phiên giao dịch"
+
+#: ../src/red_pendingview.py:728
+msgid "The transaction has completed successfully"
+msgstr "Giao dịch xong."
+
+#: ../src/red_pendingview.py:733
+msgid "Transaction failed"
+msgstr "Giao dịch đã thất bại"
+
+#: ../src/red_pendingview.py:735
+msgid "Transaction Failed"
+msgstr "Giao dịch thất bại"
+
+#: ../src/red_prefs.py:171
+msgid "Interval to refresh catalog data (in hours):"
+msgstr "Thời gian giữa hai lần cập nhật dữ liệu phân loại (theo giờ):"
+
+#. Packages section
+#: ../src/red_prefs.py:182
+msgid "Packages"
+msgstr "Gói"
+
+#: ../src/red_prefs.py:191
+msgid "Require package signatures"
+msgstr "Cần thiết chữ ký với gói"
+
+#: ../src/red_prefs.py:196
+msgid "Maximum number of packages to download at once:"
+msgstr "Số gói tối đa cần tải về đồng thời :"
+
+#: ../src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "Hiệu lực hoàn nguyên gói"
+
+#. Proxy section - requires superuser
+#: ../src/red_prefs.py:210
+msgid "Proxy"
+msgstr "Ủy nhiệm"
+
+#: ../src/red_prefs.py:219
+msgid "Use a proxy"
+msgstr "Sử dụng ủy nhiệm"
+
+#: ../src/red_prefs.py:223
+msgid "Proxy URL:"
+msgstr "Địa chỉ Mạng của ủy nhiệm:"
+
+#: ../src/red_prefs.py:230
+msgid "Username:"
+msgstr "Tên người dùng:"
+
+#: ../src/red_prefs.py:270
+msgid "You do not have permissions to view proxy settings"
+msgstr "Bạn không có quyền xem thiết lập ủy nhiệm"
+
+#: ../src/red_prefs.py:294
+msgid "Cache downloaded packages and metadata"
+msgstr "Lưu tạm các gói và siêu dữ liệu đã tải về"
+
+#: ../src/red_prefs.py:300
+msgid "Location of cached data:"
+msgstr "Địa điểm của dữ liệu đã lưu tạm:"
+
+#. Expiration section
+#: ../src/red_prefs.py:308
+msgid "Expiration"
+msgstr "Quá hạn"
+
+#: ../src/red_prefs.py:312
+msgid "Cache expires"
+msgstr "Bộ nhớ tạm quá hạn"
+
+#: ../src/red_prefs.py:318
+msgid "Maximum age in days:"
+msgstr "Số ngày tối đa:"
+
+#: ../src/red_prefs.py:329
+msgid "Maximum size in MB:"
+msgstr "Cỡ tối đa theo MB:"
+
+#: ../src/red_prefs.py:340
+msgid "Current cache size:"
+msgstr "Cỡ bộ nhớ tạm hiện có :"
+
+#: ../src/red_prefs.py:357
+msgid "Are you sure you want to delete the package files in your cache?"
+msgstr "Bạn có chắc muốn xóa bỏ các tập tin gói trong bộ nhớ tạm không?"
+
+#: ../src/red_prefs.py:373
+msgid "Empty Cache"
+msgstr "Đổ bộ nhớ tạm"
+
+#: ../src/red_prefs.py:395
+#, python-format
+msgid "%d MB"
+msgstr "%d MB"
+
+#: ../src/red_prefs.py:443
+msgid "Value"
+msgstr "Giá trị"
+
+#: ../src/red_prefs.py:456
+msgid "Loading preferences..."
+msgstr "Đang tải sở thích..."
+
+#: ../src/red_prefs.py:520
+#, python-format
+msgid "%s Preferences"
+msgstr "Sở thích %s"
+
+#: ../src/red_search.py:35
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: ../src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "Tìm _kiếm gói"
+
+#: ../src/red_search.py:72 ../src/red_software.py:50
+#: ../src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "Đang tìm kiếm gói khớp..."
+
+#: ../src/red_search.py:109
+msgid "No matching packages found."
+msgstr "Không tìm thấy gói khớp nào."
+
+#: ../src/red_searchbox.py:146
+msgid "All Packages"
+msgstr "Mọi gói"
+
+#: ../src/red_searchbox.py:147 ../src/red_updates.py:31
+msgid "Updates"
+msgstr "Lần cập nhật"
+
+#: ../src/red_searchbox.py:148
+msgid "Uninstalled Packages"
+msgstr "Gói bị gỡ cài đặt"
+
+#: ../src/red_searchbox.py:149
+msgid "Installed Packages"
+msgstr "Gói đã cài đặt"
+
+#: ../src/red_searchbox.py:174
+msgid "All Sections"
+msgstr "Mọi phần"
+
+#: ../src/red_searchbox.py:175
+msgid "Productivity"
+msgstr "Hiệu suất"
+
+#: ../src/red_searchbox.py:176
+msgid "Imaging"
+msgstr "Cách tạo ảnh"
+
+#: ../src/red_searchbox.py:177
+msgid "Personal Info. Mgmt"
+msgstr "Thông tin cá nhân. Quản lý"
+
+#: ../src/red_searchbox.py:178
+msgid "X Windows"
+msgstr "Cửa sổ X"
+
+#: ../src/red_searchbox.py:179
+msgid "Games"
+msgstr "Trò chơi"
+
+# #-#-#-#-#  compendium4.po (alleyoop HEAD)  #-#-#-#-#
+# #-#-#-#-#  compendium3.po (alleyoop HEAD)  #-#-#-#-#
+# #-#-#-#-#  compendium2.po (alleyoop HEAD)  #-#-#-#-#
+# 48x48/emblems/emblem-multimedia.icon.in.h:1
+# 48x48/emblems/emblem-multimedia.icon.in.h:1
+#: ../src/red_searchbox.py:180
+msgid "Multimedia"
+msgstr "Đa phương tiện"
+
+#: ../src/red_searchbox.py:181
+msgid "Internet"
+msgstr "Mạng"
+
+#: ../src/red_searchbox.py:182
+msgid "Utilities"
+msgstr "Tiện ích"
+
+#: ../src/red_searchbox.py:183
+msgid "System"
+msgstr "Hệ thống"
+
+#: ../src/red_searchbox.py:184
+msgid "Documentation"
+msgstr "Tài liệu"
+
+#: ../src/red_searchbox.py:185
+msgid "Libraries"
+msgstr "Thư viên"
+
+#: ../src/red_searchbox.py:186
+msgid "Development"
+msgstr "Phát triển"
+
+#: ../src/red_searchbox.py:187
+msgid "Development Tools"
+msgstr "Công cụ phát triển"
+
+#: ../src/red_searchbox.py:188
+msgid "Miscellaneous"
+msgstr "Linh tinh"
+
+#: ../src/red_searchbox.py:274
+msgid "Search descriptions"
+msgstr "Mô tả tìm kiếm"
+
+#. ##
+#. ## Match radio buttons
+#. ##
+#: ../src/red_searchbox.py:286
+msgid "Match:"
+msgstr "Khớp:"
+
+#: ../src/red_serverinfo.py:46
+msgid "The daemon identified itself as:"
+msgstr "Trình nền đã nhận diện chính nó là :"
+
+#: ../src/red_serverinfo.py:57
+msgid "System type"
+msgstr "Kiểu hệ thống"
+
+#: ../src/red_serverinfo.py:60
+msgid "Server URL"
+msgstr "Địa chỉ Mạng của máy phục vụ"
+
+#: ../src/red_serverinfo.py:63
+msgid "Server supports enhanced features."
+msgstr "Trình phục vụ có hỗ trợ tính năng tăng cường."
+
+#: ../src/red_serverinfo.py:68
+msgid "Unable to contact the daemon."
+msgstr "Không thể liên lạc với trình nền."
+
+#: ../src/red_serverinfo.py:76
+msgid "Dump daemon info to XML file"
+msgstr "Đổ thông tin trình nền vào tập tin XML"
+
+#: ../src/red_serverinfo.py:94
+#, python-format
+msgid "Could not open file '%s': %s"
+msgstr "Không thể mở tập tin « %s »: %s"
+
+#: ../src/red_serverinfo.py:135
+msgid "Choose file to write XML to"
+msgstr "Hãy chọn tập tin vào đó cần ghi XML"
+
+#: ../src/red_services.py:88
+msgid "Add Service"
+msgstr "Thêm dịch vụ"
+
+#: ../src/red_services.py:99
+msgid "Service URL"
+msgstr "Địa chỉ Mạng của dịch vụ"
+
+#: ../src/red_services.py:105
+msgid "Service type"
+msgstr "Kiểu dịch vụ"
+
+#: ../src/red_services.py:111
+msgid "Registration key"
+msgstr "Khóa đăng ký"
+
+#: ../src/red_services.py:126
+msgid "Edit Services"
+msgstr "Sửa đổi dịch vụ"
+
+#: ../src/red_services.py:155
+msgid "URL"
+msgstr "Địa chỉ Mạng"
+
+#: ../src/red_services.py:171
+msgid "_Remove service"
+msgstr "Gỡ _bỏ dịch vụ"
+
+#: ../src/red_services.py:188
+msgid "_Add service"
+msgstr "Th_êm dịch vụ"
+
+#: ../src/red_sidebar.py:61 ../src/red_transaction.py:133
+msgid "Pending Actions"
+msgstr "Hành động treo"
+
+#: ../src/red_sidebar.py:89
+#, python-format
+msgid "%d pending install"
+msgstr "%d việc cài đặt treo"
+
+#: ../src/red_sidebar.py:91
+#, python-format
+msgid "%d pending installs"
+msgstr "%d việc cài đặt treo"
+
+#: ../src/red_sidebar.py:97
+#, python-format
+msgid "%d pending removal"
+msgstr "%d việc gỡ bỏ treo"
+
+#: ../src/red_sidebar.py:99
+#, python-format
+msgid "%d pending removals"
+msgstr "%d việc gỡ bỏ treo"
+
+#: ../src/red_sidebar.py:103
+msgid "No pending actions"
+msgstr "Không có hành động treo"
+
+#: ../src/red_software.py:28
+msgid "Installed Software"
+msgstr "Phần mềm đã cài đặt"
+
+#: ../src/red_software.py:31
+msgid "I_nstalled Software"
+msgstr "Phần mềm đã _cài đặt"
+
+#: ../src/red_software.py:97
+msgid "Available Software"
+msgstr "Phần mềm công bố"
+
+#: ../src/red_software.py:100
+msgid "A_vailable Software"
+msgstr "Phần mềm _công bố"
+
+#: ../src/red_statusbar.py:50
+#, python-format
+msgid "Connected to %s"
+msgstr "Đã kết nối đến %s"
+
+#: ../src/red_subscriptions.py:57
+msgid "Subscribed"
+msgstr "Đã đăng ký"
+
+#: ../src/red_subscriptions.py:64
+msgid "Catalog Name"
+msgstr "Tên phân loại"
+
+#: ../src/red_subscriptions.py:78
+#, python-format
+msgid "%s Catalog Subscriptions"
+msgstr "%s mục đăng ký với phân loại"
+
+#: ../src/red_subscriptions.py:99
+msgid ""
+"You do not have permission to subscribe or unsubscribe from catalogs.  You "
+"will be unable to make any changes to the subscriptions."
+msgstr "Bạn không có đủ quyền truy cập để đăng ký với, hoặc bỏ đăng ký ra phân loại. Vì vậy bạn sẽ không thể sửa đổi mục đăng ký."
+
+#: ../src/red_thrashingtreeview.py:138
+msgid "Untitled"
+msgstr "Không tên"
+
+#: ../src/red_transaction.py:96
+msgid "Are you sure you want to quit?"
+msgstr "Bạn có chắc muốn thoát không?"
+
+#: ../src/red_transaction.py:136
+msgid "_Pending Actions"
+msgstr "Hành động tr_eo"
+
+#: ../src/red_updates.py:34
+msgid "_Updates"
+msgstr "_Lần cập nhật"
+
+#: ../src/red_updates.py:77
+msgid "_Update All"
+msgstr "_Cập nhật tất cả"
+
+#: ../src/red_updates.py:109
+msgid "The system is up-to-date."
+msgstr "Hệ thống này toàn mới nhất."
+
+#: ../src/red_updates.py:110
+msgid "There are no software updates available in any subscribed catalogs."
+msgstr "Không có bản cập nhật phần mềm công bố trong phân loại đã đăng ký nào."
+
+#: ../src/red_users.py:131
+msgid "Privilege"
+msgstr "Quyền"
+
+#: ../src/red_users.py:148
+msgid ""
+"If you remove superuser privileges from yourself, you will be unable to re-"
+"add them.\n"
+"\n"
+"Are you sure you want to do this?"
+msgstr "Nếu bạn gỡ bỏ quyền của siêu người dùng ra mình thì bạn sẽ không thể thêm lại nó."
+
+#: ../src/red_users.py:166
+msgid "Enabled"
+msgstr "Đã bật"
+
+#: ../src/red_users.py:181
+msgid "Edit Users"
+msgstr "Sửa đổi người dung"
+
+#: ../src/red_users.py:196 ../src/red_users.py:399
+msgid "Confirm:"
+msgstr "Xác nhận:"
+
+#: ../src/red_users.py:217
+msgid "Set Password"
+msgstr "Đặt mật khẩu"
+
+#: ../src/red_users.py:246 ../src/red_users.py:422
+msgid "Password can not be empty."
+msgstr "Mật khẩu không thể là rỗng."
+
+#: ../src/red_users.py:248 ../src/red_users.py:424
+msgid "Passwords do not match."
+msgstr "Hai mật khẩu không trùng nhau."
+
+#: ../src/red_users.py:268
+#, python-format
+msgid "Set %s's password"
+msgstr "Đặt mật khẩu của %s"
+
+#: ../src/red_users.py:289
+msgid "Users"
+msgstr "Người dùng"
+
+#: ../src/red_users.py:306
+msgid "Add"
+msgstr "Thêm"
+
+#: ../src/red_users.py:320
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "Bạn có chắc muốn xóa bỏ « %s » không?"
+
+#: ../src/red_users.py:326
+msgid "Remove"
+msgstr "Gỡ bỏ"
+
+#: ../src/red_users.py:339
+msgid "Privileges"
+msgstr "Quyền"
+
+#: ../src/red_users.py:379
+msgid "Add new user"
+msgstr "Thêm người dùng mới"
+
+#: ../src/red_users.py:426
+msgid "Invalid user name."
+msgstr "Tên người dùng không hợp lệ."
+
+#: ../src/red_users.py:428
+#, python-format
+msgid "User '%s' already exists."
+msgstr "Đã có người dùng « %s »."
+
+#: ../trayicon/bindings/eggtrayicon.c:117
+msgid "Orientation"
+msgstr "Hướng"
+
+#: ../trayicon/bindings/eggtrayicon.c:118
+msgid "The orientation of the tray."
+msgstr "Hướng khay"
+
+#: ../trayicon/red_icon_main.py:185
+msgid "There appears to be a Red Carpet update icon already running.  Exiting."
+msgstr "Hình như đã có một biểu tượng cập nhật Red Carpet đang chạy, nên thoát."
