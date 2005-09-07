@@ -1,128 +1,107 @@
-# Albanian translation of red-carpet
+# Përkthimi i mesazheve të red-carpet në shqip
 # This file is distributed under the same license as the Red Carpet package.
-# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
-# Laurent Dhima <laurenti@alblinux.net>, 2003, 2004.
+# Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
+# Laurent Dhima <laurenti@alblinux.net>, 2003, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-19 12:16+0200\n"
-"PO-Revision-Date: 2004-07-29 11:38+0200\n"
+"POT-Creation-Date: 2005-09-07 13:49+0200\n"
+"PO-Revision-Date: 2005-09-07 18:55+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/rcd_util.py:412
+#: ../src/rcd_util.py:432
 msgid "Please wait while getting data."
 msgstr "Durim gjatë marrjes së së dhënave."
 
-#: src/rcd_util.py:466 src/rcd_util.py:484
+#: ../src/rcd_util.py:486 ../src/rcd_util.py:504
 msgid "Please ensure that your network settings are correct."
 msgstr "Sigurohuni që parametrat tuaj të rrjetit janë korrekte."
 
-#: src/rcd_util.py:473
-msgid "Refreshing channel data"
-msgstr "Rifrekim i të dhënave të kanalit"
+#: ../src/rcd_util.py:493
+msgid "Refreshing catalog data"
+msgstr "Rifrekimi i të dhënave të katalogut"
 
-#: src/rcd_util.py:475
-msgid "Downloading channel information"
-msgstr "Shkarkimi i informacioneve të kanalit"
+#: ../src/rcd_util.py:495
+msgid "Downloading catalog information"
+msgstr "Shkarkimi i informacioneve të katalogut"
 
-#: src/rcd_util.py:501
+#: ../src/rcd_util.py:521
 msgid "Verifying"
 msgstr "Duke verifikuar"
 
-#: src/rcd_util.py:502
+#: ../src/rcd_util.py:522
 msgid "Unable to verify package signature for"
 msgstr "I pamundur verifikimi i firmës së pakos për"
 
-#: src/rcd_util.py:503
+#: ../src/rcd_util.py:523
 msgid "There is no package signature for"
 msgstr "Asnjë firmë paketi në dispozicion për"
 
-#: src/rcd_util.py:504
+#: ../src/rcd_util.py:524
 msgid "Preparing Transaction"
 msgstr "Duke përgatitur shkëmbimin"
 
-#: src/rcd_util.py:505
+#: ../src/rcd_util.py:525
 msgid "Installing"
 msgstr "Duke instaluar"
 
-#: src/rcd_util.py:506
+#: ../src/rcd_util.py:526
 msgid "Removing"
 msgstr "Duke hequr"
 
-#: src/rcd_util.py:507
+#: ../src/rcd_util.py:527
 msgid "Configuring"
 msgstr "Duke konfiguruar"
 
-#: src/red_about.py:41
-msgid "Brought to you by:"
-msgstr "Zhvilluar për ju nga:"
-
-#: src/red_about.py:42
-msgid "With love from:"
-msgstr "Me dashuri nga:"
-
-#: src/red_about.py:43
-msgid "Best wishes from:"
-msgstr "Me urimet më të mira nga:"
-
-#: src/red_about.py:44
-msgid "Sincerely:"
-msgstr "Sinqerisht:"
-
-#: src/red_about.py:45
-msgid "Developed by chimps:"
-msgstr "Zhvilluar nga majmunët:"
-
-#: src/red_about.py:80
+#: ../src/red_about.py:50
 msgid "Licensed under the GNU General Public License, version 2"
 msgstr "Lëshuar nën Liçencën Publike Gjenerale GNU, versioni 2"
 
-#: src/red_activation.py:27
-msgid "Group Activation"
-msgstr "Aktivimi i grupit"
+#: ../src/red_activation.py:27
+msgid "Registration"
+msgstr "Regjistrimi"
 
-#: src/red_activation.py:44
+#: ../src/red_activation.py:53
 msgid "Service:"
 msgstr "Shërbimi:"
 
-#: src/red_activation.py:48
+#: ../src/red_activation.py:57
 msgid "Email:"
 msgstr "Email:"
 
-#: src/red_activation.py:52
-msgid "Activation Code:"
-msgstr "Kodi i Aktivimit:"
+#: ../src/red_activation.py:61
+msgid "Registration Code:"
+msgstr "Kodi i Regjistrimit:"
 
-#: src/red_activation.py:78
-msgid "Activate"
-msgstr "Aktivo"
+#: ../src/red_activation.py:87
+msgid "Register"
+msgstr "Regjistro"
 
-#: src/red_activation.py:99
-msgid "Please fill in both email and activation code."
-msgstr "Plotëso si email ashtu dhe kodin e aktivimit."
+#: ../src/red_activation.py:113
+msgid "Please fill in both email and registration code."
+msgstr "Plotëso si email ashtu dhe kodin e regjistrimit."
 
-#: src/red_activation.py:114
+#: ../src/red_activation.py:128
 msgid "Unable to activate"
 msgstr "Aktivimi nuk është i mundur"
 
-#: src/red_activation.py:115
-msgid "Please ensure you typed the email address and activation code correctly"
-msgstr ""
-"Sigurohuni që keni shkruar si duhet adresën email dhe kodin e aktivimit"
+#: ../src/red_activation.py:129
+msgid "Please ensure you typed the email address and registration code correctly"
+msgstr "Sigurohuni që keni shkruar si duhet adresën email dhe kodin e regjistrimit"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:92
+#: ../src/red_appwindow.py:92
 msgid "C"
 msgstr "C"
 
-#: src/red_appwindow.py:129
+#: ../src/red_appwindow.py:129
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -130,46 +109,45 @@ msgstr ""
 "E pamundur hapja e ndihmës pasi mungojnë files e ndihmës.  Të lutem vihu në "
 "kontakt me shitësin tuaj."
 
-#: src/red_appwindow.py:139
-msgid ""
-"Unable to show help because there are no applications available to view help."
-msgstr ""
-"E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
+#: ../src/red_appwindow.py:139
+msgid "Unable to show help because there are no applications available to view help."
+msgstr "E pamundur shfaqja e ndihmës pasi mungojnë programet për të shikuar ndihmën."
 
-#: src/red_appwindow.py:414
+#: ../src/red_appwindow.py:414
+#, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Dëshironi të hapni dritaren e informacionit të pakos %d?"
 
-#: src/red_appwindow.py:442
+#: ../src/red_appwindow.py:442
 msgid "Run Now"
 msgstr "Zbato tani"
 
-#: src/red_appwindow.py:443
+#: ../src/red_appwindow.py:443
 msgid "Perform installations and removals"
 msgstr "Kryen instalime dhe disinstalime"
 
-#: src/red_appwindow.py:450
-msgid "Channels"
-msgstr "Kanalet"
+#: ../src/red_appwindow.py:450
+msgid "Catalogs"
+msgstr "Katalogë"
 
-#: src/red_appwindow.py:451
-msgid "Change your channel subscriptions"
-msgstr "Ndrysho nënshkrimet e kanalit"
+#: ../src/red_appwindow.py:451
+msgid "Change your catalog subscriptions"
+msgstr "Ndrysho nënshkrimet e katalogut"
 
-#: src/red_appwindow.py:459
+#: ../src/red_appwindow.py:459
 msgid "Refresh"
 msgstr "Rifresko"
 
-#: src/red_appwindow.py:460
-msgid "Refresh channel data"
-msgstr "Rifresko të dhënat e kanalit"
+#: ../src/red_appwindow.py:460
+msgid "Refresh catalog data"
+msgstr "Rifresko të dhënat e katalogut"
 
 #. Install
-#: src/red_appwindow.py:471 src/red_packageview.py:232
+#: ../src/red_appwindow.py:471 ../src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Shënoje për _Instalim"
 
-#: src/red_appwindow.py:472
+#: ../src/red_appwindow.py:472
 msgid "Mark selected packages for installation"
 msgstr "Shëno pakot e zgjedhura për instalim"
 
@@ -177,285 +155,338 @@ msgstr "Shëno pakot e zgjedhura për instalim"
 #. # Remove Package
 #. #
 #. Remove
-#: src/red_appwindow.py:477 src/red_appwindow.py:778
-#: src/red_packageview.py:245
+#: ../src/red_appwindow.py:477 ../src/red_appwindow.py:775
+#: ../src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Shëno për _Heqje"
 
-#: src/red_appwindow.py:478
+#: ../src/red_appwindow.py:478
 msgid "Mark selected packages for removal"
 msgstr "Shëno pakot e zgjedhura për heqje"
 
 #. Cancel
-#: src/red_appwindow.py:483 src/red_appwindow.py:791
-#: src/red_packageview.py:258
+#: ../src/red_appwindow.py:483 ../src/red_appwindow.py:788
+#: ../src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Anullo"
 
-#: src/red_appwindow.py:484
+#: ../src/red_appwindow.py:484
 msgid "Cancel marked package actions"
 msgstr "Anullo veprimet tek paketi i shënuar"
 
 #. Info
-#: src/red_appwindow.py:489 src/red_packageview.py:276
+#: ../src/red_appwindow.py:489 ../src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "i_nformacione"
 
-#: src/red_appwindow.py:490
+#: ../src/red_appwindow.py:490
 msgid "Package information"
 msgstr "Informacione mbi paketin"
 
-#: src/red_appwindow.py:547
+#: ../src/red_appwindow.py:547
 msgid "_File"
 msgstr "_File"
 
-#: src/red_appwindow.py:548
+#: ../src/red_appwindow.py:548
 msgid "_Edit"
 msgstr "_Ndrysho"
 
-#: src/red_appwindow.py:549 src/red_appwindow.py:841
+#: ../src/red_appwindow.py:549 ../src/red_appwindow.py:838
 msgid "_View"
 msgstr "_Shfaq"
 
-#: src/red_appwindow.py:550
+#: ../src/red_appwindow.py:550
 msgid "_Actions"
 msgstr "_Veprimet"
 
-#: src/red_appwindow.py:551
+#: ../src/red_appwindow.py:551
 msgid "_Help"
 msgstr "_Ndihmë"
 
-#: src/red_appwindow.py:559
+#: ../src/red_appwindow.py:559
 msgid "Connect to daemon..."
 msgstr "Lidhu me daemon..."
 
-#: src/red_appwindow.py:560
+#: ../src/red_appwindow.py:560
 msgid "Connect to a remote daemon"
 msgstr "Lidhu me një daemon remot"
 
-#: src/red_appwindow.py:570
+#: ../src/red_appwindow.py:570
 msgid "Install from _File..."
 msgstr "Instalo nga _File..."
 
-#: src/red_appwindow.py:571
+#: ../src/red_appwindow.py:571
 msgid "Install a package from a local file"
 msgstr "Instalo nga një file lokal"
 
-#: src/red_appwindow.py:580
+#: ../src/red_appwindow.py:580
 msgid "Install from _URL..."
 msgstr "Instalo nga _URL..."
 
-#: src/red_appwindow.py:581
+#: ../src/red_appwindow.py:581
 msgid "Install a package from a remote URL"
 msgstr "Instalo nga URL"
 
-#: src/red_appwindow.py:598
+#: ../src/red_appwindow.py:598
 msgid "_Mount Directory..."
 msgstr "_Monto Directory..."
 
-#: src/red_appwindow.py:599
-msgid "Mount a directory as a channel"
-msgstr "Monto një directory si kanal"
+#: ../src/red_appwindow.py:599
+msgid "Mount a directory as a catalog"
+msgstr "Monto një directory si katalog"
 
-#: src/red_appwindow.py:615
+#: ../src/red_appwindow.py:615
 msgid "U_nmount Directory..."
 msgstr "s_monto Directory..."
 
-#: src/red_appwindow.py:616
+#: ../src/red_appwindow.py:616
 msgid "Unmount a directory"
 msgstr "Smonto një directory"
 
-#: src/red_appwindow.py:632
-msgid "_Activate..."
-msgstr "_Aktivo..."
+#: ../src/red_appwindow.py:632
+msgid "_Register..."
+msgstr "_Regjistro..."
 
-#: src/red_appwindow.py:633
-msgid ""
-"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr ""
-"Aktivo shërbimet Premium (Red Carpet Express ose Red Carpet Enterprise)"
+#: ../src/red_appwindow.py:633
+msgid "Register daemon"
+msgstr "Daemon i regjistrimit"
 
-#. GRUT modified this item
-#: src/red_appwindow.py:639
+#: ../src/red_appwindow.py:639
 msgid "Quit"
 msgstr "Dalja"
 
-#: src/red_appwindow.py:640
+#: ../src/red_appwindow.py:640
 msgid "Quit Red Carpet"
 msgstr "Dalja nga Red Carpet"
 
-#: src/red_appwindow.py:655
+#: ../src/red_appwindow.py:655
 msgid "Select _All"
 msgstr "Zgjidh _gjithçka"
 
-#: src/red_appwindow.py:656
+#: ../src/red_appwindow.py:656
 msgid "Select all items"
 msgstr "Zgjidh të gjithë zërat"
 
-#: src/red_appwindow.py:661
+#: ../src/red_appwindow.py:661
 msgid "Select _None"
 msgstr "_Asnjë zgjedhje"
 
-#: src/red_appwindow.py:662
+#: ../src/red_appwindow.py:662
 msgid "Deselect all items"
 msgstr "Ç'zgjidh të gjithë zërat"
 
-#: src/red_appwindow.py:669
+#: ../src/red_appwindow.py:669
 msgid "Services..."
 msgstr "Shërbimet..."
 
-#: src/red_appwindow.py:670
+#: ../src/red_appwindow.py:670
 msgid "Edit services"
 msgstr "Ndrysho shërbimet"
 
-#: src/red_appwindow.py:674
-msgid "Channel _Subscriptions..."
-msgstr "Nën_shkrimi i kanalit..."
+#: ../src/red_appwindow.py:674
+msgid "Catalog _Subscriptions..."
+msgstr "Nën_shkrimi i katalogut..."
 
-#: src/red_appwindow.py:675
-msgid "Edit your channel subscriptions"
-msgstr "Ndrysho nënshkrimet e kanalit"
+#: ../src/red_appwindow.py:675
+msgid "Edit your catalog subscriptions"
+msgstr "Ndrysho nënshkrimet e katalogut"
 
-#: src/red_appwindow.py:680
+#: ../src/red_appwindow.py:680
 msgid "_Preferences..."
 msgstr "_Preferime..."
 
-#: src/red_appwindow.py:681
+#: ../src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
 msgstr "Ndrysho preferimet e Red Carpet"
 
-#: src/red_appwindow.py:685
+#: ../src/red_appwindow.py:685
 msgid "_Users..."
 msgstr "_Përdorues..."
 
-#: src/red_appwindow.py:686
+#: ../src/red_appwindow.py:686
 msgid "Edit user permissions for this daemon"
 msgstr "Ndrysho të drejtat e përdoruesve për këtë shërbim"
 
-#: src/red_appwindow.py:699
+#: ../src/red_appwindow.py:699
 msgid "_Sidebar"
 msgstr "_Korniza anësore"
 
-#: src/red_appwindow.py:700
+#: ../src/red_appwindow.py:700
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Fshi ose shfaq kornizën anësore të Veprimeve në Pritje"
 
-#: src/red_appwindow.py:704
+#: ../src/red_appwindow.py:704
 msgid "_Advanced Search Options"
 msgstr "Opcionet e _Detajuara të Kërkimit"
 
-#: src/red_appwindow.py:705
+#: ../src/red_appwindow.py:705
 msgid "Hide or show advanced search options"
 msgstr "Fshih ose shfaq opcionet e detajuara të kërkimit"
 
-#: src/red_appwindow.py:709
-msgid "_Channel Names"
-msgstr "Emrat e _Kanaleve"
+#: ../src/red_appwindow.py:709
+msgid "_Catalog Names"
+msgstr "Emrat e _Katalogut"
 
-#: src/red_appwindow.py:710
-msgid "Hide or show channel names in package lists"
-msgstr "Fshih ose shfaq emrat e kanaleve tek lista e pakove"
+#: ../src/red_appwindow.py:710
+msgid "Hide or show catalog names in package lists"
+msgstr "Fshih ose shfaq emrat e katalogut tek lista e pakove"
 
-#: src/red_appwindow.py:716
+#: ../src/red_appwindow.py:716
 msgid "Package _Information..."
 msgstr "_Informacionet mbi Paketin..."
 
-#: src/red_appwindow.py:717
+#: ../src/red_appwindow.py:717
 msgid "View information about currently selected packages"
 msgstr "Shiko informacionet në lidhje me pakot aktualisht të zgjedhura "
 
-#: src/red_appwindow.py:725
+#: ../src/red_appwindow.py:725
 msgid "_Daemon Information..."
 msgstr "Informacione mbi _Daemon..."
 
-#: src/red_appwindow.py:726
+#: ../src/red_appwindow.py:726
 msgid "View information about this daemon"
 msgstr "Shiko informacionet në lidhje me këtë shërbim"
 
-#: src/red_appwindow.py:728
-msgid "Red Carpet Ne_ws..."
-msgstr "Red Carpet La_jme..."
-
-#: src/red_appwindow.py:729
-msgid "View the latest Red Carpet news"
-msgstr "Shiko të rejat e fundit të Red Carpet"
-
-#: src/red_appwindow.py:741
+#: ../src/red_appwindow.py:738
 msgid "Run _Now"
 msgstr "Fillo _Tani"
 
-#: src/red_appwindow.py:742
+#: ../src/red_appwindow.py:739
 msgid "Run the current transaction"
 msgstr "Fillo operacionin aktual"
 
-#: src/red_appwindow.py:756
+#: ../src/red_appwindow.py:753
 msgid "_Verify System Dependencies"
 msgstr "_Verifiko Varësitë e Sistemit"
 
-#: src/red_appwindow.py:757
+#: ../src/red_appwindow.py:754
 msgid "Verify that all system dependencies are met"
 msgstr "Verifiko që të gjitha varësitë e sistemit të plotësohen"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:768
+#: ../src/red_appwindow.py:765
 msgid "Mark for I_nstallation"
 msgstr "Shëno për I_nstalim"
 
-#: src/red_appwindow.py:769
+#: ../src/red_appwindow.py:766
 msgid "Mark this package for installation"
 msgstr "Shëno këtë paket për instalim"
 
-#: src/red_appwindow.py:779
+#: ../src/red_appwindow.py:776
 msgid "Mark this package for removal"
 msgstr "Shëno këtë paket për t'u hequr"
 
-#: src/red_appwindow.py:792
+#: ../src/red_appwindow.py:789
 msgid "Cancel installation or removal mark"
 msgstr "Anullo shënimet për instalim apo heqje"
 
-#: src/red_appwindow.py:806
-msgid "Re_fresh Channel Data"
-msgstr "Ri_fresko të dhënat e kanalit"
+#: ../src/red_appwindow.py:803
+msgid "Re_fresh Catalog Data"
+msgstr "Ri_fresko të dhënat e katalogut"
 
-#: src/red_appwindow.py:807
-msgid "Download latest channel data"
-msgstr "Shkarko të dhënat e fundit të kanalit"
+#: ../src/red_appwindow.py:804
+msgid "Download latest catalog data"
+msgstr "Shkarko të dhënat e fundit të katalogut"
 
-#: src/red_appwindow.py:816
+#: ../src/red_appwindow.py:813
 msgid "_Contents"
 msgstr "_Përmbajtja"
 
-#: src/red_appwindow.py:817
+#: ../src/red_appwindow.py:814
 msgid "View Red Carpet help"
 msgstr "Shiko ndihmën e Red Carpet"
 
-#: src/red_appwindow.py:822
+#: ../src/red_appwindow.py:819
 msgid "_About..."
 msgstr "_Informacione..."
 
-#: src/red_appwindow.py:823
+#: ../src/red_appwindow.py:820
 msgid "About Red Carpet"
 msgstr "Informacione mbi Red Carpet"
 
-#: src/red_appwindow.py:842
+#: ../src/red_appwindow.py:839
+#, python-format
 msgid "Go to the '%s' page"
 msgstr "Shko tek faqja '%s'"
 
-#: src/red_channeloption.py:64
-msgid "All Channels"
-msgstr "Të gjithë kanalet"
+#: ../src/red_bundlearray.py:32 ../src/red_packagearray.py:91
+msgid "installed"
+msgstr "instaluar"
 
-#: src/red_channeloption.py:69
-msgid "All Subscribed Channels"
-msgstr "Të gjithë kanalet e nënshkruar"
+#: ../src/red_bundlearray.py:34 ../src/red_packagearray.py:97
+msgid "not installed"
+msgstr "i pa instaluar"
 
-#: src/red_channeloption.py:74
-msgid "No Channel/Unknown Channel"
-msgstr "Kanal jo ekzistues/Kanal i panjohur"
+#: ../src/red_bundlearray.py:231
+#, python-format
+msgid "Found %d matching bundles"
+msgstr "U gjetën %d paketa korrisponduese"
 
-#: src/red_connection.py:49
+#: ../src/red_bundlearray.py:233
+msgid "Found 1 matching bundle"
+msgstr "U gjet 1 pako korrisponduese"
+
+#: ../src/red_bundlearray.py:235
+msgid "No matching bundles found"
+msgstr "Nuk u gjet asnjë paketë korrisponduese"
+
+#: ../src/red_bundlesearchbox.py:73
+msgid "All Bundles"
+msgstr "Të gjitha paketat"
+
+#: ../src/red_bundlesearchbox.py:74
+msgid "Uninstalled Bundles"
+msgstr "Pako të painstaluar"
+
+#: ../src/red_bundlesearchbox.py:75
+msgid "Installed Bundles"
+msgstr "Paketa të instaluara"
+
+#: ../src/red_bundlesearchbox.py:101 ../src/red_searchbox.py:322
+msgid "Catalog:"
+msgstr "Katallogu:"
+
+#: ../src/red_bundleview.py:14 ../src/red_bundleview.py:126
+#: ../src/red_history.py:327 ../src/red_packagepage_info.py:90
+#: ../src/red_services.py:150
+msgid "Name"
+msgstr "Emri"
+
+#: ../src/red_bundleview.py:24 ../src/red_bundleview.py:98
+#: ../src/red_packageview.py:301
+msgid "Status"
+msgstr "Gjendja"
+
+#: ../src/red_bundleview.py:52 ../src/red_bundleview.py:137
+#: ../src/red_packagepage_info.py:91 ../src/red_packageview.py:452
+msgid "Version"
+msgstr "Versioni"
+
+#: ../src/red_bundleview.py:62 ../src/red_bundleview.py:147
+msgid "Installed"
+msgstr "instaluar"
+
+#: ../src/red_bundleview.py:72 ../src/red_bundleview.py:157
+#: ../src/red_history.py:326
+msgid "Type"
+msgstr "Lloji"
+
+#: ../src/red_channeloption.py:64
+msgid "All Catalogs"
+msgstr "Të gjithë katalogët"
+
+#: ../src/red_channeloption.py:69
+msgid "All Subscribed Catalogs"
+msgstr "Të gjithë katalogët e nënshkruar"
+
+#: ../src/red_channeloption.py:74
+msgid "No Catalog/Unknown Catalog"
+msgstr "Katalog jo ekzistues/Katalog i panjohur"
+
+#: ../src/red_connection.py:49
+#, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
 " '%s'."
@@ -463,7 +494,8 @@ msgstr ""
 "E pamundur lidhja me shërbimin:\n"
 " '%s'."
 
-#: src/red_connection.py:67
+#: ../src/red_connection.py:67
+#, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
 "Version %d.%d.%d (or newer) is required"
@@ -471,7 +503,8 @@ msgstr ""
 "U zbulua versioni %d.%d.%d i Daemon të Red Carpet.\n"
 "Nevoitet versioni %d.%d.%d (ose më i ri)"
 
-#: src/red_connection.py:93
+#: ../src/red_connection.py:93
+#, python-format
 msgid ""
 "Detected protocol version %d.  Version %d is required.  You must update your "
 "version of rcd."
@@ -479,11 +512,11 @@ msgstr ""
 "U zbulua versioni %d i protokollit.  Nevoitet versioni %d.  Duhet të "
 "rifreskoni versionin tuaj të rcd."
 
-#: src/red_connection.py:123
+#: ../src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Duke filluar daemon..."
 
-#: src/red_connection.py:197
+#: ../src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -491,79 +524,78 @@ msgstr ""
 "Red Carpet ka nevojë për një Daemon Red Carpet në ekzekutim.\n"
 "Dëshironi të nis një tani?"
 
-#: src/red_connection.py:345
+#: ../src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Lidhu me këtë sistem"
 
-#: src/red_connection.py:349
+#: ../src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Lidhu me një sistem remot"
 
-#: src/red_connection.py:357
+#: ../src/red_connection.py:357
 msgid "Server:"
 msgstr "Serveri:"
 
-#: src/red_connection.py:361 src/red_users.py:389
+#: ../src/red_connection.py:361 ../src/red_users.py:389
 msgid "User name:"
 msgstr "Emri i përdoruesit:"
 
-#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
-#: src/red_users.py:395
+#: ../src/red_connection.py:365 ../src/red_prefs.py:237
+#: ../src/red_users.py:192 ../src/red_users.py:395
 msgid "Password:"
 msgstr "Fjalëkalimi:"
 
-#: src/red_connection.py:401
+#: ../src/red_connection.py:401
 msgid "Connect"
 msgstr "Lidhu"
 
-#: src/red_console.py:50
-msgid "Red Carpet Error Console"
-msgstr "Konsolë e mesazheve të gabimit të Red Carpet"
+#: ../src/red_console.py:50
+msgid "ZENworks Error Console"
+msgstr "Konsola e mesazheve të gabimit të ZENworks"
 
-#: src/red_deaddaemon.py:35
+#: ../src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
 msgstr "Lidhja me daemon u rikrye.\n"
 
-#: src/red_deaddaemon.py:68
+#: ../src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
 msgstr "Humbi lidhja me daemon!"
 
-#: src/red_deaddaemon.py:69
+#: ../src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
 msgstr "Dalja nga Red Carpet"
 
-#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
+#: ../src/red_depcomponent.py:75 ../src/red_depcomponent.py:403
 msgid "Dependency Resolution"
 msgstr "Zgjidhja e varësisë"
 
-#: src/red_depcomponent.py:122
+#: ../src/red_depcomponent.py:125
 msgid "Verifying System"
 msgstr "Duke verifikuar sistemin"
 
-#: src/red_depcomponent.py:128
+#: ../src/red_depcomponent.py:137
 msgid "Resolving Dependencies"
 msgstr "Duke zgjidhur varësitë"
 
-#: src/red_depcomponent.py:150
-msgid ""
-"You must agree to the licenses covering this software before installing it."
+#: ../src/red_depcomponent.py:159
+msgid "You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Duhet të pranoni liçencat që shoqërojnë këtë software përpara se t'a "
 "instaloni."
 
-#: src/red_depcomponent.py:194
+#: ../src/red_depcomponent.py:203
 msgid "I Agree"
 msgstr "Pranoj"
 
-#: src/red_depcomponent.py:288
+#: ../src/red_depcomponent.py:308
 msgid "Dependency Resolution Failed"
 msgstr "Zgjidhja e varësive dështoi"
 
-#: src/red_depcomponent.py:338
+#: ../src/red_depcomponent.py:358
 msgid "System Verified"
 msgstr "Sistemi u verifikua"
 
-#: src/red_depcomponent.py:340
+#: ../src/red_depcomponent.py:360
 msgid ""
 "All package dependencies are satisfied, and no corrective actions are "
 "required."
@@ -571,793 +603,802 @@ msgstr ""
 "Të gjitha varësitë e pakove plotësohen, dhe nuk ka nevojë për veprime "
 "korrigjuese."
 
-#: src/red_depcomponent.py:394
+#: ../src/red_depcomponent.py:414
 msgid "Requested Installations"
 msgstr "Instalimet e kërkuara"
 
-#: src/red_depcomponent.py:398
+#: ../src/red_depcomponent.py:418
 msgid "Requested Removals"
 msgstr "Heqjet e kërkuara"
 
-#: src/red_depcomponent.py:402
+#: ../src/red_depcomponent.py:422
 msgid "Required Installations"
 msgstr "Instalimet e nevojshme"
 
-#: src/red_depcomponent.py:406
+#: ../src/red_depcomponent.py:426
 msgid "Required Removals"
 msgstr "Heqjet e nevojshme"
 
-#: src/red_depcomponent.py:432
+#: ../src/red_depcomponent.py:452
 msgid "Continue"
 msgstr "Vazhdo"
 
-#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
-#: src/red_packageview.py:367
-msgid "Channel"
-msgstr "Kanali"
+#: ../src/red_depview.py:47 ../src/red_mount.py:230
+#: ../src/red_packagepage_info.py:95 ../src/red_packageview.py:367
+msgid "Catalog"
+msgstr "Katallogu"
 
-#: src/red_depview.py:50 src/red_history.py:305 src/red_packageview.py:423
+#: ../src/red_depview.py:50 ../src/red_history.py:180
+#: ../src/red_packageview.py:423
 msgid "Package"
 msgstr "Paketa"
 
-#: src/red_depview.py:53 src/red_packageview.py:462
+#: ../src/red_depview.py:53 ../src/red_packageview.py:462
 msgid "Current Version"
 msgstr "Versioni aktual"
 
-#: src/red_depview.py:56 src/red_history.py:307 src/red_history.py:440
-#: src/red_updates.py:94
+#: ../src/red_depview.py:56 ../src/red_history.py:329
+#: ../src/red_history.py:462 ../src/red_updates.py:94
 msgid "New Version"
 msgstr "Versioni i ri"
 
-#: src/red_depview.py:59 src/red_packageview.py:498
+#: ../src/red_depview.py:59 ../src/red_packageview.py:498
 msgid "Size"
 msgstr "Madhësia"
 
-#: src/red_history.py:114 src/red_users.py:30
+#: ../src/red_history.py:115 ../src/red_users.py:30
 msgid "All"
 msgstr "Gjithçka"
 
-#: src/red_history.py:115
+#: ../src/red_history.py:116
 msgid "Installations"
 msgstr "Instalimet"
 
-#: src/red_history.py:116
+#: ../src/red_history.py:117
 msgid "Removals"
 msgstr "Heqjet"
 
-#: src/red_history.py:117
+#: ../src/red_history.py:118
 msgid "Upgrades"
 msgstr "Rifreskimet"
 
-#: src/red_history.py:122
+#: ../src/red_history.py:123
 msgid "User:"
 msgstr "Përdoruesi:"
 
-#: src/red_history.py:128
+#: ../src/red_history.py:129
 msgid "Timeframe (days):"
 msgstr "Intervali (ditë):"
 
-#: src/red_history.py:280
+#: ../src/red_history.py:182
+msgid "Bundle"
+msgstr "Paketa"
+
+#: ../src/red_history.py:183
+msgid "Unknown"
+msgstr "Nuk njihet"
+
+#: ../src/red_history.py:301
 msgid "Searching..."
 msgstr "Duke kërkuar..."
 
-#: src/red_history.py:302 src/red_history.py:436
+#: ../src/red_history.py:323 ../src/red_history.py:458
 msgid "Time"
 msgstr "Ora"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_packageview.py:330
+#: ../src/red_history.py:324 ../src/red_history.py:459
+#: ../src/red_packageview.py:330
 msgid "Action"
 msgstr "Veprimi"
 
-#: src/red_history.py:304 src/red_history.py:438 src/red_users.py:113
+#: ../src/red_history.py:325 ../src/red_history.py:460 ../src/red_users.py:113
 msgid "User"
 msgstr "Përdoruesi"
 
-#: src/red_history.py:306 src/red_history.py:439
+#: ../src/red_history.py:328 ../src/red_history.py:461
 msgid "Old Version"
 msgstr "Versioni i vjetër"
 
-#: src/red_history.py:337 src/red_packagepage.py:45
+#: ../src/red_history.py:359 ../src/red_packagepage.py:45
 msgid "History"
 msgstr "Kronollogjia"
 
-#: src/red_history.py:340
+#: ../src/red_history.py:362
 msgid "_History"
 msgstr "_Kronollogjia"
 
-#: src/red_history.py:384
+#: ../src/red_history.py:406
 msgid "No results found."
 msgstr "Nuk u gjet asnjë rezultat."
 
-#: src/red_installfiles.py:82 src/red_installfiles.py:142
+#: ../src/red_installfiles.py:80 ../src/red_installfiles.py:149
+#, python-format
 msgid "%s is not a valid package"
 msgstr "%s nuk është një pako e vlefshme"
 
-#: src/red_installfiles.py:92
+#: ../src/red_installfiles.py:90
 msgid "There are no valid packages to install"
 msgstr "Nuk ka pako të vlefshme për t'u instaluar"
 
-#: src/red_installfiles.py:102
+#: ../src/red_installfiles.py:109
 msgid "Install from File"
 msgstr "Instalo nga file"
 
-#: src/red_installfiles.py:119
+#: ../src/red_installfiles.py:126
+#, python-format
 msgid "Downloading %s..."
 msgstr "Duke shkarkuar %s..."
 
-#: src/red_installfiles.py:158
+#: ../src/red_installfiles.py:165
 msgid "Install from URL"
 msgstr "Instalo nga URL"
 
-#: src/red_installfiles.py:163
+#: ../src/red_installfiles.py:170
 msgid "Package URL:"
 msgstr "Adresa URL e pakos:"
 
-#: src/red_main.py:108
+#: ../src/red_main.py:110 ../trayicon/red_icon_main.py:211
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr ""
 "GABIM: nuk mund të specifikohen të dy opcionet së bashku -h/--host dhe -l/--"
 "lokal"
 
-#: src/red_main.py:139
+#: ../src/red_main.py:141 ../trayicon/red_icon_main.py:242
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "GABIM: nuk mund të specifikoni një përdorues daemon-it lokal"
 
-#: src/red_mirrors.py:76
+#: ../src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Pasqyrë"
 
-#: src/red_mirrors.py:81
+#: ../src/red_mirrors.py:81
 msgid "Location"
 msgstr "Vendodhja"
 
-#: src/red_mirrors.py:108
+#: ../src/red_mirrors.py:108
 msgid "Choose a Mirror"
 msgstr "Zgjidh një Mirror"
 
-#: src/red_mount.py:91
+#: ../src/red_mount.py:91
+#, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Nuk arrij të zmontoj '%s'"
 
-#: src/red_mount.py:117
+#: ../src/red_mount.py:117
 msgid "Browse..."
 msgstr "Shfleto..."
 
-#: src/red_mount.py:128
+#: ../src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Monto directory"
 
-#: src/red_mount.py:141
-msgid "Mount channel"
-msgstr "Monto kanalin"
+#: ../src/red_mount.py:141
+msgid "Mount catalog"
+msgstr "Monto katalogun"
 
-#: src/red_mount.py:145
-msgid "Mount a directory as channel"
-msgstr "Monto një directory si një kanal"
+#: ../src/red_mount.py:145
+msgid "Mount a directory as catalog"
+msgstr "Monto një directory si një katalog"
 
-#: src/red_mount.py:153
-msgid "Channel Name:"
-msgstr "Emri i kanalit:"
+#: ../src/red_mount.py:153
+msgid "Catalog Name:"
+msgstr "Emri i katalogut:"
 
-#: src/red_mount.py:157
+#: ../src/red_mount.py:157
 msgid "Directory:"
 msgstr "Directory:"
 
-#: src/red_mount.py:168
+#: ../src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Kontrollo për paketët në menyrë rekursive"
 
-#: src/red_mount.py:193
-msgid "Please choose the path for channel."
-msgstr "Zgjidh pozicionin e kanalit."
+#: ../src/red_mount.py:193
+msgid "Please choose the path for catalog."
+msgstr "Zgjidh pozicionin e katalogut."
 
-#: src/red_mount.py:214
-msgid "Unmount Channel"
-msgstr "Zmonto Kanalin"
+#: ../src/red_mount.py:214
+msgid "Unmount Catalog"
+msgstr "Zmonto Katalogun"
 
-#: src/red_mount.py:243
+#: ../src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Zmontoj?"
 
-#: src/red_news.py:174
+#: ../src/red_news.py:174
+#, python-format
 msgid "%s News"
 msgstr "%s të reja"
 
-#: src/red_option.py:24
+#: ../src/red_option.py:24
 msgid "Connect to a locally running daemon"
 msgstr "Lidhet me një daemon në ekzekutim lokalisht"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "hostname"
 msgstr "emri i host"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "Contact daemon on specified host"
 msgstr "Vihu në kontakt me daemon-in e host-it të specifikuar"
 
-#. GRUT modified this item
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "username"
 msgstr "përdoruesi"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "Specify user name"
 msgstr "Specifiko emrin e përdoruesit"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "password"
 msgstr "password"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "Specify password"
 msgstr "Specifiko password"
 
-#: src/red_option.py:28
+#: ../src/red_option.py:28
 msgid "Print client version and exit"
 msgstr "Printon versionin e klientit dhe del"
 
-#: src/red_option.py:29
+#: ../src/red_option.py:29
 msgid "Get usage information"
 msgstr "Merr informacionet mbi përdorimin"
 
-#: src/red_option.py:120
+#: ../src/red_option.py:120
+#, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Përdorimi: %s <opcione> ..."
 
-#: src/red_option.py:122
+#: ../src/red_option.py:122
 msgid "The following options are understood:"
 msgstr "Opcionet në vazhdim janë të paqarta:"
 
-#: src/red_packagearray.py:91
-msgid "installed"
-msgstr "instaluar"
-
 #. upgrade
-#: src/red_packagearray.py:93
+#: ../src/red_packagearray.py:93
 msgid "newer"
 msgstr "e(i) freskët"
 
-#: src/red_packagearray.py:95
+#: ../src/red_packagearray.py:95
 msgid "older"
 msgstr "e(i) vjetër"
 
-#: src/red_packagearray.py:97
-msgid "not installed"
-msgstr "i pa instaluar"
-
-#: src/red_packagearray.py:123
+#: ../src/red_packagearray.py:123
 msgid "upgrade"
 msgstr "upgrade"
 
-#: src/red_packagearray.py:125
+#: ../src/red_packagearray.py:125
 msgid "downgrade"
 msgstr "rikthe versionin e vjetër"
 
-#: src/red_packagearray.py:127
+#: ../src/red_packagearray.py:127
 msgid "install"
 msgstr "instalo"
 
-#: src/red_packagearray.py:134
+#: ../src/red_packagearray.py:134
 msgid "remove"
 msgstr "hiq"
 
-#: src/red_packagearray.py:614
+#: ../src/red_packagearray.py:614
+#, python-format
 msgid "Found %d matching packages"
 msgstr "U gjetën %d pako korrisponduese"
 
-#: src/red_packagearray.py:616
+#: ../src/red_packagearray.py:616
 msgid "Found 1 matching package"
 msgstr "U gjet 1 pako korrisponduese"
 
-#: src/red_packagearray.py:618
+#: ../src/red_packagearray.py:618
 msgid "No matching packages found"
 msgstr "Nuk u gjet asnjë pako korrisponduese"
 
-#: src/red_packagearray.py:776
+#: ../src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Duke kontrolluar për versione të rinj..."
 
-#: src/red_packagearray.py:801
+#: ../src/red_packagearray.py:801
+#, python-format
 msgid "Found %d matching patches"
 msgstr "U gjetën %d korrigjime korrispondues"
 
-#: src/red_packagearray.py:803
+#: ../src/red_packagearray.py:803
 msgid "Found 1 matching patch"
 msgstr "U gjet 1 patch korrispondues"
 
-#: src/red_packagearray.py:805
+#: ../src/red_packagearray.py:805
 msgid "No matching patches found"
 msgstr "Nuk u gjet asnjë korrigjim korrispondues"
 
-#: src/red_packagebook.py:44
+#: ../src/red_packagebook.py:44
 msgid "Package Information"
 msgstr "Informacione mbi pakon"
 
-#: src/red_packagepage.py:32
+#: ../src/red_packagepage.py:32
 msgid "Unnamed"
 msgstr "Pa emër"
 
-#: src/red_packagepage_deps.py:29
+#: ../src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Varësitë"
 
-#: src/red_packagepage_deps.py:67
+#: ../src/red_packagepage_deps.py:67
 msgid "Provides"
 msgstr "Afron"
 
-#: src/red_packagepage_deps.py:70
+#: ../src/red_packagepage_deps.py:70
 msgid "Requires"
 msgstr "Kërkon"
 
-#: src/red_packagepage_deps.py:73
+#: ../src/red_packagepage_deps.py:73
 msgid "Conflicts With"
 msgstr "Konflikte me"
 
-#: src/red_packagepage_info.py:90 src/red_services.py:112
-msgid "Name"
-msgstr "Emri"
-
-#: src/red_packagepage_info.py:91 src/red_packageview.py:452
-msgid "Version"
-msgstr "Versioni"
-
-#: src/red_packagepage_info.py:92
+#: ../src/red_packagepage_info.py:92
 msgid "Release"
 msgstr "Release"
 
-#: src/red_packagepage_info.py:93
+#: ../src/red_packagepage_info.py:93
 msgid "Package Size"
 msgstr "Madhësia e Pakos"
 
-#: src/red_packagepage_info.py:94
+#: ../src/red_packagepage_info.py:94
 msgid "Installed Size"
 msgstr "Madhësia e të instaluarit"
 
-#: src/red_packagepage_info.py:96
+#: ../src/red_packagepage_info.py:96
 msgid "Section"
 msgstr "Seksioni"
 
-#: src/red_packagepage_info.py:97
+#: ../src/red_packagepage_info.py:97
 msgid "Summary"
 msgstr "Përmbledhja"
 
-#: src/red_packagepage_info.py:98 src/red_prefs.py:413
+#: ../src/red_packagepage_info.py:98 ../src/red_prefs.py:413
 msgid "Description"
 msgstr "Përshkrimi"
 
-#: src/red_packagepage_info.py:152
+#: ../src/red_packagepage_info.py:152
 msgid "Info"
 msgstr "Informacione"
 
-#: src/red_packageview.py:301
-msgid "Status"
-msgstr "Gjendja"
-
-#: src/red_packageview.py:472
+#: ../src/red_packageview.py:472
 msgid "Importance"
 msgstr "Rendësia"
 
-#: src/red_patches.py:35
+#: ../src/red_patches.py:35
 msgid "Patches"
 msgstr "Korrigjime"
 
-#: src/red_patches.py:38
+#: ../src/red_patches.py:38
 msgid "YOU Patches"
 msgstr "Korrigjimet TUAJA"
 
-#: src/red_patches.py:72
+#: ../src/red_patches.py:72
 msgid "Searching for matching patches..."
 msgstr "Duke kërkuar për korrigjime korrisponduese..."
 
-#: src/red_patches.py:111
+#: ../src/red_patches.py:111
 msgid "No matching patches found."
 msgstr "Nuk u gjet asnjë korrigjim korrispondues."
 
-#: src/red_pendingview.py:347
+#: ../src/red_pendingview.py:347
+#, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% u kompletua"
 
-#: src/red_pendingview.py:536
+#: ../src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Duke rifreskuar sistemin"
 
-#: src/red_pendingview.py:609
+#: ../src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Shkarkimi u anullua"
 
-#: src/red_pendingview.py:610
+#: ../src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Operacioni u anullua"
 
-#: src/red_pendingview.py:645
+#: ../src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Shkëmbimi përfundoi"
 
-#: src/red_pendingview.py:658
+#: ../src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Duke shkarkuar pakot"
 
-#: src/red_pendingview.py:671
+#: ../src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Shkarkimi dështoi"
 
-#: src/red_pendingview.py:672
+#: ../src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Gabim i panjohur"
 
-#: src/red_pendingview.py:689
+#: ../src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Duke procesuar shkëmbimin"
 
-#: src/red_pendingview.py:728
+#: ../src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "Shkëmbimi u plotësua me sukses"
 
-#: src/red_pendingview.py:733
+#: ../src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Shkëmbimi dështoi"
 
-#: src/red_pendingview.py:735
+#: ../src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Shkëmbimi Dështoi"
 
-#: src/red_prefs.py:171
-msgid "Interval to refresh channel data (in hours):"
-msgstr "Intervali për rifreskimin e të dhënave të kanalit (në orë):"
+#: ../src/red_prefs.py:171
+msgid "Interval to refresh catalog data (in hours):"
+msgstr "Intervali për rifreskimin e të dhënave të katalogut (në orë):"
 
 #. Packages section
-#: src/red_prefs.py:182
+#: ../src/red_prefs.py:182
 msgid "Packages"
 msgstr "Pakot"
 
-#: src/red_prefs.py:191
+#: ../src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Kërkon firmën e paketit"
 
-#: src/red_prefs.py:196
+#: ../src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Numri maksimum i pakove që mund të shkarkohen njëkohësisht:"
 
-#: src/red_prefs.py:206
+#: ../src/red_prefs.py:206
 msgid "Enable package rollback"
 msgstr "Aktivo rikthimin e paketës"
 
 #. Proxy section - requires superuser
-#: src/red_prefs.py:210
+#: ../src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/red_prefs.py:219
+#: ../src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Përdor një proxy"
 
-#: src/red_prefs.py:223
+#: ../src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "URL e Proxy:"
 
-#. GRUT modified this item
-#: src/red_prefs.py:230
+#: ../src/red_prefs.py:230
 msgid "Username:"
 msgstr "Përdoruesi:"
 
-#: src/red_prefs.py:270
+#: ../src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr "Nuk ke të drejtë të shikosh rregullimet e proxy"
 
-#: src/red_prefs.py:294
+#: ../src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Pako e metadata të shkarkuar në cache"
 
-#: src/red_prefs.py:300
+#: ../src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Pozicioni i cache:"
 
 #. Expiration section
-#: src/red_prefs.py:308
+#: ../src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Skadenca"
 
-#: src/red_prefs.py:312
+#: ../src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Cache skadon"
 
-#: src/red_prefs.py:318
+#: ../src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Periudha maksimum në ditë:"
 
-#: src/red_prefs.py:329
+#: ../src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Madhësia maksimum në MB:"
 
-#: src/red_prefs.py:340
+#: ../src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Madhësia aktuale e cache:"
 
-#: src/red_prefs.py:357
+#: ../src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Je i sigurt që dëshiron të eleminosh files e pakos në cache?"
 
-#: src/red_prefs.py:373
+#: ../src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Zbraz Cache"
 
-#: src/red_prefs.py:395
+#: ../src/red_prefs.py:395
+#, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
-#: src/red_prefs.py:443
+#: ../src/red_prefs.py:443
 msgid "Value"
 msgstr "Vlera"
 
-#: src/red_prefs.py:456
+#: ../src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Duke ngarkuar preferimet..."
 
-#: src/red_prefs.py:520
+#: ../src/red_prefs.py:520
+#, python-format
 msgid "%s Preferences"
 msgstr "Preferimet e %s"
 
-#: src/red_search.py:35
+#: ../src/red_search.py:35
 msgid "Search"
 msgstr "Kërko"
 
-#: src/red_search.py:38
+#: ../src/red_search.py:38
 msgid "S_earch Packages"
 msgstr "_Kërko Pakot"
 
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+#: ../src/red_search.py:72 ../src/red_software.py:50
+#: ../src/red_software.py:119
 msgid "Searching for matching packages..."
 msgstr "Duke kërkuar për pako korrisponduese..."
 
-#: src/red_search.py:109
+#: ../src/red_search.py:109
 msgid "No matching packages found."
 msgstr "Nuk u gjet asnjë pako korrisponduese."
 
-#: src/red_searchbox.py:146
+#: ../src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Të gjitha pakot"
 
-#: src/red_searchbox.py:147 src/red_updates.py:31
+#: ../src/red_searchbox.py:147 ../src/red_updates.py:31
 msgid "Updates"
 msgstr "Të reja"
 
-#: src/red_searchbox.py:148
+#: ../src/red_searchbox.py:148
 msgid "Uninstalled Packages"
 msgstr "Pako të painstaluar"
 
-#: src/red_searchbox.py:149
+#: ../src/red_searchbox.py:149
 msgid "Installed Packages"
 msgstr "Pako të instaluara"
 
-#: src/red_searchbox.py:174
+#: ../src/red_searchbox.py:174
 msgid "All Sections"
 msgstr "Të gjithë seksionet"
 
-#: src/red_searchbox.py:175
+#: ../src/red_searchbox.py:175
 msgid "Productivity"
 msgstr "Prodhim"
 
-#: src/red_searchbox.py:176
+#: ../src/red_searchbox.py:176
 msgid "Imaging"
 msgstr "Grafikë"
 
-#: src/red_searchbox.py:177
+#: ../src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
 msgstr "Manazhues informacionesh personale"
 
-#: src/red_searchbox.py:178
+#: ../src/red_searchbox.py:178
 msgid "X Windows"
 msgstr "X Windows"
 
-#: src/red_searchbox.py:179
+#: ../src/red_searchbox.py:179
 msgid "Games"
 msgstr "Lojra"
 
-#: src/red_searchbox.py:180
+#: ../src/red_searchbox.py:180
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: src/red_searchbox.py:181
+#: ../src/red_searchbox.py:181
 msgid "Internet"
 msgstr "Internet"
 
-#: src/red_searchbox.py:182
+#: ../src/red_searchbox.py:182
 msgid "Utilities"
 msgstr "Vegla"
 
-#: src/red_searchbox.py:183
+#: ../src/red_searchbox.py:183
 msgid "System"
 msgstr "Sistemi"
 
-#: src/red_searchbox.py:184
+#: ../src/red_searchbox.py:184
 msgid "Documentation"
 msgstr "Dokumente"
 
-#: src/red_searchbox.py:185
+#: ../src/red_searchbox.py:185
 msgid "Libraries"
 msgstr "Libreri"
 
-#: src/red_searchbox.py:186
+#: ../src/red_searchbox.py:186
 msgid "Development"
 msgstr "Zhvillim"
 
-#: src/red_searchbox.py:187
+#: ../src/red_searchbox.py:187
 msgid "Development Tools"
 msgstr "Instrumentë për zhvillim"
 
-#: src/red_searchbox.py:188
+#: ../src/red_searchbox.py:188
 msgid "Miscellaneous"
 msgstr "Të ndryshme"
 
-#: src/red_searchbox.py:274
+#: ../src/red_searchbox.py:274
 msgid "Search descriptions"
 msgstr "Përshkrimi i kërkimit:"
 
 #. ##
 #. ## Match radio buttons
 #. ##
-#: src/red_searchbox.py:286
+#: ../src/red_searchbox.py:286
 msgid "Match:"
 msgstr "Përputhja:"
 
-#: src/red_searchbox.py:322
-msgid "Channel:"
-msgstr "Kanali:"
-
-#: src/red_serverinfo.py:46
+#: ../src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
 msgstr "Daemon u identifikua si:"
 
-#: src/red_serverinfo.py:57
+#: ../src/red_serverinfo.py:57
 msgid "System type"
 msgstr "Lloji i sistemit"
 
-#: src/red_serverinfo.py:60
+#: ../src/red_serverinfo.py:60
 msgid "Server URL"
 msgstr "URL e Server-it"
 
-#: src/red_serverinfo.py:63
+#: ../src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
 msgstr "Server-i suporton karakteristikat e detajuara."
 
-#: src/red_serverinfo.py:68
+#: ../src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
 msgstr "Nuk arrij të vihem në kontakt me daemon."
 
-#: src/red_serverinfo.py:76
+#: ../src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
 msgstr "Dump i informacioneve mbi daemon në file XML"
 
-#: src/red_serverinfo.py:94
+#: ../src/red_serverinfo.py:94
+#, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Nuk arrij të hap file '%s': %s"
 
-#: src/red_serverinfo.py:135
+#: ../src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
 msgstr "Zgjidh file ku të shkruash në XML"
 
-#: src/red_services.py:88
-msgid "Edit Services"
-msgstr "Ndrysho Shërbimet"
-
-#: src/red_services.py:117
-msgid "URL"
-msgstr "URL"
-
-#: src/red_services.py:133
-msgid "_Remove service"
-msgstr "_Hiq shërbimin"
-
-#: src/red_services.py:150
-msgid "_Add service"
-msgstr "_Shto shërbimin"
-
-#: src/red_services.py:231
+#: ../src/red_services.py:88
 msgid "Add Service"
 msgstr "Shto Shërbimin"
 
-#: src/red_services.py:236
+#: ../src/red_services.py:99
 msgid "Service URL"
 msgstr "URL e Shërbimit"
 
-#: src/red_sidebar.py:61 src/red_transaction.py:133
+#: ../src/red_services.py:105
+msgid "Service type"
+msgstr "Lloji i shërbimit"
+
+#: ../src/red_services.py:111
+msgid "Registration key"
+msgstr "Kyçi i regjistrimit"
+
+#: ../src/red_services.py:126
+msgid "Edit Services"
+msgstr "Ndrysho Shërbimet"
+
+#: ../src/red_services.py:155
+msgid "URL"
+msgstr "URL"
+
+#: ../src/red_services.py:171
+msgid "_Remove service"
+msgstr "_Hiq shërbimin"
+
+#: ../src/red_services.py:188
+msgid "_Add service"
+msgstr "_Shto shërbimin"
+
+#: ../src/red_sidebar.py:61 ../src/red_transaction.py:133
 msgid "Pending Actions"
 msgstr "Veprime në pritje"
 
-#: src/red_sidebar.py:89
+#: ../src/red_sidebar.py:89
+#, python-format
 msgid "%d pending install"
 msgstr "%d instalim në pritje"
 
-#: src/red_sidebar.py:91
+#: ../src/red_sidebar.py:91
+#, python-format
 msgid "%d pending installs"
 msgstr "%d instalime në pritje"
 
-#: src/red_sidebar.py:97
+#: ../src/red_sidebar.py:97
+#, python-format
 msgid "%d pending removal"
 msgstr "%d disinstalim në pritje"
 
-#: src/red_sidebar.py:99
+#: ../src/red_sidebar.py:99
+#, python-format
 msgid "%d pending removals"
 msgstr "%d disinstalime në pritje"
 
-#: src/red_sidebar.py:103
+#: ../src/red_sidebar.py:103
 msgid "No pending actions"
 msgstr "Asnjë veprim në pritje"
 
-#: src/red_software.py:28
+#: ../src/red_software.py:28
 msgid "Installed Software"
 msgstr "Software i instaluar"
 
-#: src/red_software.py:31
+#: ../src/red_software.py:31
 msgid "I_nstalled Software"
 msgstr "Software i i_nstaluar"
 
-#: src/red_software.py:97
+#: ../src/red_software.py:97
 msgid "Available Software"
 msgstr "Software në dispozicion"
 
-#: src/red_software.py:100
+#: ../src/red_software.py:100
 msgid "A_vailable Software"
 msgstr "Software në dis_pozicion"
 
-#: src/red_statusbar.py:49
+#: ../src/red_statusbar.py:50
+#, python-format
 msgid "Connected to %s"
 msgstr "Lidhur me %s"
 
-#. GRUT modified this item
-#: src/red_subscriptions.py:57
+#: ../src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "I regjistruar"
 
-#: src/red_subscriptions.py:64
-msgid "Channel Name"
-msgstr "Emri i kanalit"
+#: ../src/red_subscriptions.py:64
+msgid "Catalog Name"
+msgstr "Emri i katalogut"
 
-#: src/red_subscriptions.py:78
-msgid "%s Channel Subscriptions"
-msgstr "Nënshkrime tek kanali %s"
+#: ../src/red_subscriptions.py:78
+#, python-format
+msgid "%s Catalog Subscriptions"
+msgstr "Nënshkrime tek katalogu %s"
 
-#: src/red_subscriptions.py:99
+#: ../src/red_subscriptions.py:99
 msgid ""
-"You do not have permission to subscribe or unsubscribe from channels.  You "
+"You do not have permission to subscribe or unsubscribe from catalogs.  You "
 "will be unable to make any changes to the subscriptions."
 msgstr ""
-"Nuk ke të drejtë të regjistrohesh apo çregjistrohesh nga kanalet. Nuk do të "
-"kesh mundësi të kryesh asnjë lloj ndryshimi tek nënshkrimet."
+"Nuk ke të drejtë të regjistrohesh apo ç'regjistrohesh nga katalogët.  Nuk "
+"do të kesh mundësi të kryesh asnjë lloj ndryshimi tek nënshkrimet."
 
-#: src/red_thrashingtreeview.py:138
+#: ../src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: src/red_transaction.py:96
+#: ../src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
 msgstr "Je i sigurt që dëshiron të dalësh?"
 
-#: src/red_transaction.py:136
+#: ../src/red_transaction.py:136
 msgid "_Pending Actions"
 msgstr "Veprime në _Pritje"
 
-#: src/red_updates.py:34
+#: ../src/red_updates.py:34
 msgid "_Updates"
 msgstr "_Rifreskime"
 
-#: src/red_updates.py:77
+#: ../src/red_updates.py:77
 msgid "_Update All"
 msgstr "_Rifresko gjithçka"
 
-#: src/red_updates.py:109
+#: ../src/red_updates.py:109
 msgid "The system is up-to-date."
 msgstr "Sistemi është i azhornuar. "
 
-#: src/red_updates.py:110
-msgid "There are no software updates available in any subscribed channels."
-msgstr "Nuk ka asnjë version të ri software në të gjithë kanalet e nënshkruar."
+#: ../src/red_updates.py:110
+msgid "There are no software updates available in any subscribed catalogs."
+msgstr "Nuk ka asnjë version të ri software në të gjithë katalogët e nënshkruar."
 
-#: src/red_users.py:131
+#: ../src/red_users.py:131
 msgid "Privilege"
 msgstr "Privilegji"
 
-#: src/red_users.py:148
+#: ../src/red_users.py:148
 msgid ""
 "If you remove superuser privileges from yourself, you will be unable to re-"
 "add them.\n"
@@ -1369,64 +1410,78 @@ msgstr ""
 "\n"
 "Jeni akoma i sigurt që doni t'a hiqni?"
 
-#: src/red_users.py:166
+#: ../src/red_users.py:166
 msgid "Enabled"
 msgstr "Aktiv"
 
-#: src/red_users.py:181
+#: ../src/red_users.py:181
 msgid "Edit Users"
 msgstr "Ndrysho përdoruesit"
 
-#: src/red_users.py:196 src/red_users.py:399
+#: ../src/red_users.py:196 ../src/red_users.py:399
 msgid "Confirm:"
 msgstr "Konfermo:"
 
-#. GRUT modified this item
-#: src/red_users.py:217
+#: ../src/red_users.py:217
 msgid "Set Password"
 msgstr "Përcakto fjalëkalimin"
 
-#: src/red_users.py:246 src/red_users.py:422
+#: ../src/red_users.py:246 ../src/red_users.py:422
 msgid "Password can not be empty."
 msgstr "Password nuk mund të jetë boshe."
 
-#: src/red_users.py:248 src/red_users.py:424
+#: ../src/red_users.py:248 ../src/red_users.py:424
 msgid "Passwords do not match."
 msgstr "Password-et nuk korrispondojnë."
 
-#: src/red_users.py:268
+#: ../src/red_users.py:268
+#, python-format
 msgid "Set %s's password"
 msgstr "Vendos password-in e %s"
 
-#: src/red_users.py:289
+#: ../src/red_users.py:289
 msgid "Users"
 msgstr "Përdorues"
 
-#: src/red_users.py:306
+#: ../src/red_users.py:306
 msgid "Add"
 msgstr "Shto"
 
-#: src/red_users.py:320
+#: ../src/red_users.py:320
+#, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Jeni i sigurt që dëshironi të hiqni '%s'?"
 
-#: src/red_users.py:326
+#: ../src/red_users.py:326
 msgid "Remove"
 msgstr "Hiq"
 
-#: src/red_users.py:339
+#: ../src/red_users.py:339
 msgid "Privileges"
 msgstr "Të drejtat"
 
-#: src/red_users.py:379
+#: ../src/red_users.py:379
 msgid "Add new user"
 msgstr "Shto një përdorues të ri"
 
-#: src/red_users.py:426
+#: ../src/red_users.py:426
 msgid "Invalid user name."
 msgstr "Emër përdoruesi i pasaktë."
 
-#: src/red_users.py:428
+#: ../src/red_users.py:428
+#, python-format
 msgid "User '%s' already exists."
 msgstr "Përdoruesi '%s' ekziston."
+
+#: ../trayicon/bindings/eggtrayicon.c:117
+msgid "Orientation"
+msgstr "Orientimi"
+
+#: ../trayicon/bindings/eggtrayicon.c:118
+msgid "The orientation of the tray."
+msgstr "Orientimi i sirtarit."
+
+#: ../trayicon/red_icon_main.py:185
+msgid "There appears to be a Red Carpet update icon already running.  Exiting."
+msgstr "Një ikonë rifreskimi i Red Carpet është duke funksionuar.  Duke dalë."
 
