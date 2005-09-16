@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: red-carpet Gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-08-18 04:44+0000\n"
-"PO-Revision-Date: 2005-08-26 17:35+0930\n"
+"PO-Revision-Date: 2005-09-16 17:25+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -294,11 +294,11 @@ msgstr "Sửa đổi mục đăng ký phân loại"
 
 #: ../src/red_appwindow.py:680
 msgid "_Preferences..."
-msgstr "_Sở thích..."
+msgstr "_Tùy thích..."
 
 #: ../src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
-msgstr "Biên soạn Sở thích của Red Carpet"
+msgstr "Biên soạn Tùy thích của Red Carpet"
 
 #: ../src/red_appwindow.py:685
 msgid "_Users..."
@@ -1118,7 +1118,7 @@ msgstr "Đang tải sở thích..."
 #: ../src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
-msgstr "Sở thích %s"
+msgstr "Tùy thích %s"
 
 #: ../src/red_search.py:35
 msgid "Search"
@@ -1184,7 +1184,7 @@ msgstr "Trò chơi"
 # 48x48/emblems/emblem-multimedia.icon.in.h:1
 #: ../src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr "Đa phương tiện"
+msgstr "Đa vật chứa"
 
 #: ../src/red_searchbox.py:181
 msgid "Internet"
