@@ -1,3 +1,7 @@
+2005-10-04  Pawan Chitrakar  <pchitrakar@gmail.com>
+
+	* configure.in: Added ne in ALL_LINGUAS
+
 2005-08-19  James Willcox  <james@ximian.com>
 
 	* configure.in: version is 7.0.0

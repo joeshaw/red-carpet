@@ -1,0 +1,1572 @@
+# translation of red-carpet.HEAD.po to Nepali
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Pawan Chitrakar <pawan@mpp.org.np>, 2005.
+# Jaydeep Bhusal <zaydeep@hotmail.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: red-carpet.HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-04 12:04+0545\n"
+"PO-Revision-Date: 2005-06-27 11:20+0545\n"
+"Last-Translator: Jaydeep Bhusal <zaydeep@hotmail.com>\n"
+"Language-Team: Nepali <info@mpp.org.np>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: Nplurals=2;plural=(n!=0)\n"
+
+#: ../src/rcd_util.py:432
+msgid "Please wait while getting data."
+msgstr "कृपया डाटा प्राप्त गर्दा पर्खनुहोस"
+
+#: ../src/rcd_util.py:486 ../src/rcd_util.py:504
+msgid "Please ensure that your network settings are correct."
+msgstr "कृपया तपाईंको संजाल सेटिंगहरु सहि छन भनेर विश्वस्त हुनुहोस"
+
+#: ../src/rcd_util.py:493
+#, fuzzy
+msgid "Refreshing catalog data"
+msgstr "च्यानल डाटाहरु ताजा गर्दै"
+
+#: ../src/rcd_util.py:495
+#, fuzzy
+msgid "Downloading catalog information"
+msgstr "च्यानल जानकारी डाउनलोड गर्दै"
+
+#: ../src/rcd_util.py:521
+msgid "Verifying"
+msgstr "रुजु गर्दै"
+
+#: ../src/rcd_util.py:522
+msgid "Unable to verify package signature for"
+msgstr "को लागि प्याकेज हस्ताक्षर रुजु गर्न असमर्थ"
+
+#: ../src/rcd_util.py:523
+msgid "There is no package signature for"
+msgstr "को लागि कुनै प्याकेज हस्ताक्षर छैन"
+
+#: ../src/rcd_util.py:524
+msgid "Preparing Transaction"
+msgstr "कारोबार तयारी गर्दै"
+
+#: ../src/rcd_util.py:525
+msgid "Installing"
+msgstr "स्थापना गर्दै"
+
+#: ../src/rcd_util.py:526
+msgid "Removing"
+msgstr "हटाउँदै"
+
+#: ../src/rcd_util.py:527
+msgid "Configuring"
+msgstr "कन्फिगर गर्दै"
+
+#: ../src/red_about.py:50
+msgid "Licensed under the GNU General Public License, version 2"
+msgstr "जिएनयु साधारण सार्वजनिक लाइसेन्स अन्तर्गत लाइसेन्स प्राप्त,संस्करण २"
+
+#: ../src/red_activation.py:27
+#, fuzzy
+msgid "Registration"
+msgstr "समाप्ति"
+
+#: ../src/red_activation.py:53
+msgid "Service:"
+msgstr "सेवा"
+
+#: ../src/red_activation.py:57
+msgid "Email:"
+msgstr "इमेल"
+
+#: ../src/red_activation.py:61
+#, fuzzy
+msgid "Registration Code:"
+msgstr "क्रियाशिलता संकेत"
+
+#: ../src/red_activation.py:87
+msgid "Register"
+msgstr ""
+
+#: ../src/red_activation.py:113
+#, fuzzy
+msgid "Please fill in both email and registration code."
+msgstr "कृपया दुवै इमेल र क्रियाशिलता संकेत भर्नुहोस"
+
+#: ../src/red_activation.py:128
+msgid "Unable to activate"
+msgstr "क्रियाशिल गर्न असमर्थ"
+
+#: ../src/red_activation.py:129
+#, fuzzy
+msgid ""
+"Please ensure you typed the email address and registration code correctly"
+msgstr ""
+"तपाईंले इमेल ठेगाना र क्रियाशिलता संकेत सहि तरीकाले टाइप गर्नुभयो भनेर विश्वस्त हुनुहोस"
+
+#. TRANSLATORS: *Only* localize this to the language code if the
+#. Red Carpet help is localized.
+#: ../src/red_appwindow.py:92
+msgid "C"
+msgstr "सि"
+
+#: ../src/red_appwindow.py:129
+msgid ""
+"Unable to show help because the help files were missing.  Please report this "
+"to your vendor."
+msgstr ""
+"देखाउन असमर्थ किनभने मद्दत फाइलहरु हराइरहेका थिए कृपया यो प्रतिवेदन तपाईंको बिक्रेतालाइ "
+"दिनुहोस"
+
+#: ../src/red_appwindow.py:139
+msgid ""
+"Unable to show help because there are no applications available to view help."
+msgstr "मद्दत देखाउन असमर्थ किनभने मद्दत हेर्नको लागि कुनै अनुप्रयोगहरु उपलब्ध छैनन"
+
+#: ../src/red_appwindow.py:414
+#, python-format
+msgid "Are you sure you want to open %d package information windows?"
+msgstr "के तपाईं विश्वस्त हुनुहुन्छ कि तपाईं %d प्याकेज जानकारी विन्डोहरु खोल्न चाहनुहुन्छ ?"
+
+#: ../src/red_appwindow.py:442
+msgid "Run Now"
+msgstr "अहिले सञ्चालन गर्नुहोस"
+
+#: ../src/red_appwindow.py:443
+msgid "Perform installations and removals"
+msgstr "स्थापनाहरु र विस्थापनहरु गर्नुहोस"
+
+#: ../src/red_appwindow.py:450
+msgid "Catalogs"
+msgstr ""
+
+#: ../src/red_appwindow.py:451
+#, fuzzy
+msgid "Change your catalog subscriptions"
+msgstr "तपाईँको माध्यम सदस्यताहरु परिवर्तन गर्नुहोस"
+
+#: ../src/red_appwindow.py:459
+msgid "Refresh"
+msgstr "ताजा गर्नुहोस्"
+
+#: ../src/red_appwindow.py:460
+#, fuzzy
+msgid "Refresh catalog data"
+msgstr "माध्यम डाटा ताजा गर्नुहोस्"
+
+#. Install
+#: ../src/red_appwindow.py:471 ../src/red_packageview.py:232
+msgid "Mark for _Installation"
+msgstr "स्थापना को लागि चिन्ह लगाउनुहोस"
+
+#: ../src/red_appwindow.py:472
+msgid "Mark selected packages for installation"
+msgstr "स्थापना को लागि छानिएका प्याकेजहरु चिन्ह लगाउनुहोस"
+
+#. #
+#. # Remove Package
+#. #
+#. Remove
+#: ../src/red_appwindow.py:477 ../src/red_appwindow.py:775
+#: ../src/red_packageview.py:245
+msgid "Mark for _Removal"
+msgstr "विस्थापन को लागि चिन्ह लगाउनुहोस"
+
+#: ../src/red_appwindow.py:478
+msgid "Mark selected packages for removal"
+msgstr "विस्थापनको लागि छानिएका प्याकेजहरु चिन्ह लगाउनुहोस"
+
+#. Cancel
+#: ../src/red_appwindow.py:483 ../src/red_appwindow.py:788
+#: ../src/red_packageview.py:258
+msgid "_Cancel"
+msgstr "रद्द गर्नुहोस"
+
+#: ../src/red_appwindow.py:484
+msgid "Cancel marked package actions"
+msgstr "चिन्ह लगाइएका प्याकेज क्रियाहरु रद्द गर्नुहोस"
+
+#. Info
+#: ../src/red_appwindow.py:489 ../src/red_packageview.py:276
+msgid "I_nformation"
+msgstr "जानकारी"
+
+#: ../src/red_appwindow.py:490
+msgid "Package information"
+msgstr "प्याकेज जानकारी"
+
+#: ../src/red_appwindow.py:547
+msgid "_File"
+msgstr "फाईल"
+
+#: ../src/red_appwindow.py:548
+msgid "_Edit"
+msgstr "-सम्पादन गर्नुहोस"
+
+#: ../src/red_appwindow.py:549 ../src/red_appwindow.py:838
+msgid "_View"
+msgstr "_दृष्य"
+
+#: ../src/red_appwindow.py:550
+msgid "_Actions"
+msgstr "_कार्यहरु"
+
+#: ../src/red_appwindow.py:551
+msgid "_Help"
+msgstr "मद्दत"
+
+#: ../src/red_appwindow.py:559
+msgid "Connect to daemon..."
+msgstr "डेमोनमा जडान गर्नुहोस"
+
+#: ../src/red_appwindow.py:560
+msgid "Connect to a remote daemon"
+msgstr "टाढाको डेमोन संग जडान गर्नुहोस"
+
+#: ../src/red_appwindow.py:570
+msgid "Install from _File..."
+msgstr "फाएल बाट स्थापना गर्नुहोस"
+
+#: ../src/red_appwindow.py:571
+msgid "Install a package from a local file"
+msgstr "स्थानीय फाइल बाट एउटा प्याकेज स्थापना गर्नुहोस"
+
+#: ../src/red_appwindow.py:580
+msgid "Install from _URL..."
+msgstr "युआरएल बाट स्थापना गर्नुहोस"
+
+#: ../src/red_appwindow.py:581
+msgid "Install a package from a remote URL"
+msgstr "टाढाको युआरएल बाट एउटा प्याकेज स्थापना गर्नुहोस"
+
+#: ../src/red_appwindow.py:598
+msgid "_Mount Directory..."
+msgstr "माउन्ट निर्देशिका॒."
+
+#: ../src/red_appwindow.py:599
+#, fuzzy
+msgid "Mount a directory as a catalog"
+msgstr "माध्यमको रुपमा निर्देशिका माउन्ट गर्नुहोस"
+
+#: ../src/red_appwindow.py:615
+msgid "U_nmount Directory..."
+msgstr "निर्देशिका अनमाउन्ट"
+
+#: ../src/red_appwindow.py:616
+msgid "Unmount a directory"
+msgstr "निर्देशिका अनमाउन्ट गर्नुहोस"
+
+#: ../src/red_appwindow.py:632
+#, fuzzy
+msgid "_Register..."
+msgstr "प्रयोगकर्ताहरु."
+
+#: ../src/red_appwindow.py:633
+msgid "Register daemon"
+msgstr ""
+
+#: ../src/red_appwindow.py:639
+msgid "Quit"
+msgstr "अन्त्य गर्नुहोस"
+
+#: ../src/red_appwindow.py:640
+msgid "Quit Red Carpet"
+msgstr "रेड कार्पेट अन्त्य गर्नुहोस"
+
+#: ../src/red_appwindow.py:655
+msgid "Select _All"
+msgstr "सबै छान्नुहोस"
+
+#: ../src/red_appwindow.py:656
+msgid "Select all items"
+msgstr "सबै चीजहरु छनोट गर्नुहोस"
+
+#: ../src/red_appwindow.py:661
+msgid "Select _None"
+msgstr "कुनै पनि चयन नगर्नुहोस"
+
+#: ../src/red_appwindow.py:662
+msgid "Deselect all items"
+msgstr "सबै चीजहरु चयन हटाउनुहोस"
+
+#: ../src/red_appwindow.py:669
+msgid "Services..."
+msgstr "सेवाहरु."
+
+#: ../src/red_appwindow.py:670
+msgid "Edit services"
+msgstr "सेवाहरु सम्पादन गर्नुहोस"
+
+#: ../src/red_appwindow.py:674
+#, fuzzy
+msgid "Catalog _Subscriptions..."
+msgstr "माध्यम सदस्यताहरु"
+
+#: ../src/red_appwindow.py:675
+#, fuzzy
+msgid "Edit your catalog subscriptions"
+msgstr "तपाईंको माध्यम सदस्यताहरु सम्पादन गर्नुहोस"
+
+#: ../src/red_appwindow.py:680
+msgid "_Preferences..."
+msgstr "_प्राथमिकताहरु..."
+
+#: ../src/red_appwindow.py:681
+msgid "Edit your Red Carpet preferences"
+msgstr "तपाईंको रेड कार्पेट प्राथमिकताहरु सम्पादन गर्नुहोस"
+
+#: ../src/red_appwindow.py:685
+msgid "_Users..."
+msgstr "प्रयोगकर्ताहरु."
+
+#: ../src/red_appwindow.py:686
+msgid "Edit user permissions for this daemon"
+msgstr "यो डेमोनको लागि प्रयोगकर्ता अनुमतिहरु सम्पादन गर्नुहोस"
+
+#: ../src/red_appwindow.py:699
+msgid "_Sidebar"
+msgstr "छेउपट्टि"
+
+#: ../src/red_appwindow.py:700
+msgid "Hide or show the Pending Actions sidebar"
+msgstr "अनिर्णीत कार्यहरु छेउपट्टि लुकाउनु॒ अथवा देखाउनुहोस् "
+
+#: ../src/red_appwindow.py:704
+msgid "_Advanced Search Options"
+msgstr "उन्नत खोजी विकल्पहरु"
+
+#: ../src/red_appwindow.py:705
+msgid "Hide or show advanced search options"
+msgstr "उन्नत खोजी विकल्पहरु लुकाउनुहोस अथवा देखाउनुहोस"
+
+#: ../src/red_appwindow.py:709
+#, fuzzy
+msgid "_Catalog Names"
+msgstr "माध्यम नामहरु"
+
+#: ../src/red_appwindow.py:710
+#, fuzzy
+msgid "Hide or show catalog names in package lists"
+msgstr "प्याकेज सुचिहरुमा माध्यम नामहरु लुकाउनुहोस अथवा देखाउनुहोस"
+
+#: ../src/red_appwindow.py:716
+msgid "Package _Information..."
+msgstr "प्याकेज जानकारी"
+
+#: ../src/red_appwindow.py:717
+msgid "View information about currently selected packages"
+msgstr "हालै छानिएको प्याकेजहरु को बारेमा दृश्य जानकारी"
+
+#: ../src/red_appwindow.py:725
+msgid "_Daemon Information..."
+msgstr "डेइमोन जानकारी"
+
+#: ../src/red_appwindow.py:726
+msgid "View information about this daemon"
+msgstr "यो डेइमोनको बारेमा दृश्य जानकारी"
+
+#: ../src/red_appwindow.py:738
+msgid "Run _Now"
+msgstr "अहिले सञ्चालन गर्नुहोस"
+
+#: ../src/red_appwindow.py:739
+msgid "Run the current transaction"
+msgstr "हालको कारोबार सञ्चालन गर्नुहोस"
+
+#: ../src/red_appwindow.py:753
+msgid "_Verify System Dependencies"
+msgstr "प्रणाली अधिनस्थता रुजु गर्नुहोस"
+
+#: ../src/red_appwindow.py:754
+msgid "Verify that all system dependencies are met"
+msgstr "सबै प्रणाली अधिनस्थताहरु भेटिएका हुन्छन भनेर रुजु गर्नुहोस"
+
+#. #
+#. # Install Package
+#. #
+#: ../src/red_appwindow.py:765
+msgid "Mark for I_nstallation"
+msgstr "स्थापनाको लागि चिन्ह लगाउनुहोस"
+
+#: ../src/red_appwindow.py:766
+msgid "Mark this package for installation"
+msgstr "यो प्याकेजलाइ स्थापनाको लागि चिन्ह लगाउनुहोस"
+
+#: ../src/red_appwindow.py:776
+msgid "Mark this package for removal"
+msgstr "विस्थापनको लागि यो प्याकेजलाइ चिन्ह लगाउनुहोस"
+
+#: ../src/red_appwindow.py:789
+msgid "Cancel installation or removal mark"
+msgstr "स्थापना वा विस्थापन चिन्ह रद्द गर्नुहोस"
+
+#: ../src/red_appwindow.py:803
+#, fuzzy
+msgid "Re_fresh Catalog Data"
+msgstr "माध्यम डाटा ताजा गर्नुहोस"
+
+#: ../src/red_appwindow.py:804
+#, fuzzy
+msgid "Download latest catalog data"
+msgstr "नविनतम माध्यम डाटा डाउनलोड गर्नुहोस"
+
+#: ../src/red_appwindow.py:813
+msgid "_Contents"
+msgstr "सामग्रीहरु"
+
+#: ../src/red_appwindow.py:814
+msgid "View Red Carpet help"
+msgstr "रातो कार्पेट मद्दत हेर्नुहोस"
+
+#: ../src/red_appwindow.py:819
+msgid "_About..."
+msgstr "_बारेमा..."
+
+#: ../src/red_appwindow.py:820
+msgid "About Red Carpet"
+msgstr "रातो कार्पेटको बारेमा"
+
+#: ../src/red_appwindow.py:839
+#, python-format
+msgid "Go to the '%s' page"
+msgstr "'%s' पृष्ठमा जानुहोस"
+
+#: ../src/red_bundlearray.py:32 ../src/red_packagearray.py:91
+msgid "installed"
+msgstr "स्थापित"
+
+#: ../src/red_bundlearray.py:34 ../src/red_packagearray.py:97
+msgid "not installed"
+msgstr "स्थापना नगरिएको"
+
+#: ../src/red_bundlearray.py:231
+#, fuzzy, python-format
+msgid "Found %d matching bundles"
+msgstr "%d जोडा मिल्ने टालोहरु भेटियो"
+
+#: ../src/red_bundlearray.py:233
+#, fuzzy
+msgid "Found 1 matching bundle"
+msgstr "जोडा मिल्ने १ प्याकेज भेटियो"
+
+#: ../src/red_bundlearray.py:235
+#, fuzzy
+msgid "No matching bundles found"
+msgstr "कुनै जोडा मिल्दो टालोहरु भेटिएन"
+
+#: ../src/red_bundlesearchbox.py:73
+#, fuzzy
+msgid "All Bundles"
+msgstr "सबै माध्यमहरू"
+
+#: ../src/red_bundlesearchbox.py:74
+#, fuzzy
+msgid "Uninstalled Bundles"
+msgstr "स्थापना नगरिएका प्याकेजहरु"
+
+#: ../src/red_bundlesearchbox.py:75
+#, fuzzy
+msgid "Installed Bundles"
+msgstr "स्थापना गरिएको आकार"
+
+#: ../src/red_bundlesearchbox.py:101 ../src/red_searchbox.py:322
+msgid "Catalog:"
+msgstr ""
+
+#: ../src/red_bundleview.py:14 ../src/red_bundleview.py:126
+#: ../src/red_history.py:327 ../src/red_packagepage_info.py:90
+#: ../src/red_services.py:150
+msgid "Name"
+msgstr "नाम"
+
+#: ../src/red_bundleview.py:24 ../src/red_bundleview.py:98
+#: ../src/red_packageview.py:301
+msgid "Status"
+msgstr "वस्तुस्थिति"
+
+#: ../src/red_bundleview.py:52 ../src/red_bundleview.py:137
+#: ../src/red_packagepage_info.py:91 ../src/red_packageview.py:452
+msgid "Version"
+msgstr "संस्करण"
+
+#: ../src/red_bundleview.py:62 ../src/red_bundleview.py:147
+#, fuzzy
+msgid "Installed"
+msgstr "स्थापित"
+
+#: ../src/red_bundleview.py:72 ../src/red_bundleview.py:157
+#: ../src/red_history.py:326
+msgid "Type"
+msgstr ""
+
+#: ../src/red_channeloption.py:64
+#, fuzzy
+msgid "All Catalogs"
+msgstr "सबै प्याकेजहरु"
+
+#: ../src/red_channeloption.py:69
+#, fuzzy
+msgid "All Subscribed Catalogs"
+msgstr "सबै सदस्यता भएका माध्यमहरू"
+
+#: ../src/red_channeloption.py:74
+#, fuzzy
+msgid "No Catalog/Unknown Catalog"
+msgstr "माध्यम/अज्ञात माध्यम होइन"
+
+#: ../src/red_connection.py:49
+#, python-format
+msgid ""
+"Unable to connect to the daemon:\n"
+" '%s'."
+msgstr ""
+"डेइमोनसंग जडान गर्न असमर्थ:\n"
+" '%s'."
+
+#: ../src/red_connection.py:67
+#, python-format
+msgid ""
+"Detected Red Carpet Daemon version %d.%d.%d.\n"
+"Version %d.%d.%d (or newer) is required"
+msgstr ""
+"पत्ता लगाइएको रेड कार्पेट डेइमोन संस्करण %d.%d.%d.\n"
+"संस्करण %d.%d.%d (वा झन नयाँ) आवश्यक छ"
+
+#: ../src/red_connection.py:93
+#, python-format
+msgid ""
+"Detected protocol version %d.  Version %d is required.  You must update your "
+"version of rcd."
+msgstr ""
+"पत्ता लगाइएको प्रोटोकोल संस्करण %d.  संस्करण %d आवश्यक छ.  तपाइंले तपाईंको आरसिडि को "
+"संस्करण अद्यावधिक गर्नैपर्छ"
+
+#: ../src/red_connection.py:123
+msgid "Starting daemon..."
+msgstr "डेइमोन सुरु हुँदै"
+
+#: ../src/red_connection.py:197
+msgid ""
+"Red Carpet requires a Red Carpet Daemon to be running.\n"
+"Would you like to start one now?"
+msgstr ""
+"रेड कार्पेटलाइ संचालन हुनको लागि रेड कार्पेट डेइमोन आवश्यक पर्दछ.\n"
+"तपाईं एउटा अहिले शुरु गर्न चाहनुहुन्छ?"
+
+#: ../src/red_connection.py:345
+msgid "Connect to this system"
+msgstr "यो प्रणालीमा जडान गर्नुहोस"
+
+#: ../src/red_connection.py:349
+msgid "Connect to a remote system"
+msgstr "टाढाको प्रणाली संग जडान गर्नुहोस"
+
+#: ../src/red_connection.py:357
+msgid "Server:"
+msgstr "सर्भर"
+
+#: ../src/red_connection.py:361 ../src/red_users.py:389
+msgid "User name:"
+msgstr "प्रयोगकर्ताको नाम:"
+
+#: ../src/red_connection.py:365 ../src/red_prefs.py:237
+#: ../src/red_users.py:192 ../src/red_users.py:395
+msgid "Password:"
+msgstr "पासवर्ड"
+
+#: ../src/red_connection.py:401
+msgid "Connect"
+msgstr "जडान गर्नुहोस"
+
+#: ../src/red_console.py:50
+#, fuzzy
+msgid "ZENworks Error Console"
+msgstr "रेड कार्पेट त्रुटि कन्सोल"
+
+#: ../src/red_deaddaemon.py:35
+msgid "Connection to daemon restored.\n"
+msgstr "डेइमोन संग जडान पुर्वावस्थामा ल्याइयो.\n"
+
+#: ../src/red_deaddaemon.py:68
+msgid "Lost contact with the daemon!"
+msgstr "डेइमोन संग सम्पर्क हरायो"
+
+#: ../src/red_deaddaemon.py:69
+msgid "Exit Red Carpet"
+msgstr "रेड कार्पेट बाट निस्कनुहोस"
+
+#: ../src/red_depcomponent.py:75 ../src/red_depcomponent.py:403
+msgid "Dependency Resolution"
+msgstr "निर्भरता रिजोल्युसन"
+
+#: ../src/red_depcomponent.py:125
+msgid "Verifying System"
+msgstr "रुजु गर्ने प्रणाली"
+
+#: ../src/red_depcomponent.py:137
+msgid "Resolving Dependencies"
+msgstr "निर्भरताहरु निश्चित गर्दै"
+
+#: ../src/red_depcomponent.py:159
+msgid ""
+"You must agree to the licenses covering this software before installing it."
+msgstr ""
+"यो सफ्टवेयर स्थापना गर्नु भन्दा अगाडि यसलाइ अधिनस्थ गर्ने लाइसेन्सहरु संग तपाईं सहमत हुनुपर्दछ"
+
+#: ../src/red_depcomponent.py:203
+msgid "I Agree"
+msgstr "म सहमत छु"
+
+#: ../src/red_depcomponent.py:308
+msgid "Dependency Resolution Failed"
+msgstr "निर्भरता रिजोल्युसन असफल"
+
+#: ../src/red_depcomponent.py:358
+msgid "System Verified"
+msgstr "प्रणाली रुजु गरियो"
+
+#: ../src/red_depcomponent.py:360
+msgid ""
+"All package dependencies are satisfied, and no corrective actions are "
+"required."
+msgstr "सबै प्याकेज निर्भरताहरु सन्तुष्ट छन, अनि कुनै संशोधन कार्यहरु आवश्यक छैन"
+
+#: ../src/red_depcomponent.py:414
+msgid "Requested Installations"
+msgstr "अनुरोध गरिएको स्थापनाहरु"
+
+#: ../src/red_depcomponent.py:418
+msgid "Requested Removals"
+msgstr "अनुरोध गरिएको विस्थापनहरु"
+
+#: ../src/red_depcomponent.py:422
+msgid "Required Installations"
+msgstr "आवश्यक स्थापनाहरु"
+
+#: ../src/red_depcomponent.py:426
+msgid "Required Removals"
+msgstr "आवश्यक विस्थापनहरु"
+
+#: ../src/red_depcomponent.py:452
+msgid "Continue"
+msgstr "जारी राख्नुहोस्"
+
+#: ../src/red_depview.py:47 ../src/red_mount.py:230
+#: ../src/red_packagepage_info.py:95 ../src/red_packageview.py:367
+msgid "Catalog"
+msgstr ""
+
+#: ../src/red_depview.py:50 ../src/red_history.py:180
+#: ../src/red_packageview.py:423
+msgid "Package"
+msgstr "प्याकेज"
+
+#: ../src/red_depview.py:53 ../src/red_packageview.py:462
+msgid "Current Version"
+msgstr "हालको संस्करण"
+
+#: ../src/red_depview.py:56 ../src/red_history.py:329
+#: ../src/red_history.py:462 ../src/red_updates.py:94
+msgid "New Version"
+msgstr "नयाँ संस्करण"
+
+#: ../src/red_depview.py:59 ../src/red_packageview.py:498
+msgid "Size"
+msgstr "आकार"
+
+#: ../src/red_history.py:115 ../src/red_users.py:30
+msgid "All"
+msgstr "सबै"
+
+#: ../src/red_history.py:116
+msgid "Installations"
+msgstr "स्थापनाहरु"
+
+#: ../src/red_history.py:117
+msgid "Removals"
+msgstr "विस्थापनहरु"
+
+#: ../src/red_history.py:118
+msgid "Upgrades"
+msgstr "स्तरवृद्धि गर्नुहोस"
+
+#: ../src/red_history.py:123
+msgid "User:"
+msgstr "प्रयोगकर्ता:"
+
+#: ../src/red_history.py:129
+msgid "Timeframe (days):"
+msgstr "समयफ्रेम (दिनहरु):"
+
+#: ../src/red_history.py:182
+msgid "Bundle"
+msgstr ""
+
+#: ../src/red_history.py:183
+#, fuzzy
+msgid "Unknown"
+msgstr "अज्ञात त्रुटि"
+
+#: ../src/red_history.py:301
+msgid "Searching..."
+msgstr "खोजी गर्दै..."
+
+#: ../src/red_history.py:323 ../src/red_history.py:458
+msgid "Time"
+msgstr "समय"
+
+#: ../src/red_history.py:324 ../src/red_history.py:459
+#: ../src/red_packageview.py:330
+msgid "Action"
+msgstr "कार्य"
+
+#: ../src/red_history.py:325 ../src/red_history.py:460 ../src/red_users.py:113
+msgid "User"
+msgstr "प्रयोगकर्ता"
+
+#: ../src/red_history.py:328 ../src/red_history.py:461
+msgid "Old Version"
+msgstr "पुरानो संस्करण"
+
+#: ../src/red_history.py:359 ../src/red_packagepage.py:45
+msgid "History"
+msgstr "इतिहास"
+
+#: ../src/red_history.py:362
+msgid "_History"
+msgstr "_ईतिहास"
+
+#: ../src/red_history.py:406
+msgid "No results found."
+msgstr "परिणामहरू भेटिएन"
+
+#: ../src/red_installfiles.py:80 ../src/red_installfiles.py:149
+#, python-format
+msgid "%s is not a valid package"
+msgstr "%s मान्य प्याकेज होइन"
+
+#: ../src/red_installfiles.py:90
+msgid "There are no valid packages to install"
+msgstr "स्थापना गर्नको लागि मान्य प्याकेजहरु छैन"
+
+#: ../src/red_installfiles.py:109
+msgid "Install from File"
+msgstr "फाइलबाट स्थापना गर्नुहोस"
+
+#: ../src/red_installfiles.py:126
+#, python-format
+msgid "Downloading %s..."
+msgstr "डाउनलोड गर्दै %s..."
+
+#: ../src/red_installfiles.py:165
+msgid "Install from URL"
+msgstr "युआरएल बाट स्थापना गर्नुहोस"
+
+#: ../src/red_installfiles.py:170
+msgid "Package URL:"
+msgstr "प्याकेज युआरएल:"
+
+#: ../src/red_main.py:110 ../trayicon/red_icon_main.py:211
+msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
+msgstr "त्रुटि; तपाईंले दुवै  -एच/--होस्ट र -एल/--स्थानीय विकल्पहरु तोक्न सक्नुहुन्न"
+
+#: ../src/red_main.py:141 ../trayicon/red_icon_main.py:242
+msgid "ERROR: You cannot specify a user to a local daemon"
+msgstr "त्रुटि; तपाईंले स्थानीय डेइमोनमा प्रयोगकर्ता तोक्न सक्नुहुन्न"
+
+#: ../src/red_mirrors.py:76
+msgid "Mirror"
+msgstr "मिरर गर्नुहोस"
+
+#: ../src/red_mirrors.py:81
+msgid "Location"
+msgstr "स्थान"
+
+#: ../src/red_mirrors.py:108
+msgid "Choose a Mirror"
+msgstr "एउटा मिरर रोज्नुहोस"
+
+#: ../src/red_mount.py:91
+#, python-format
+msgid "Unable to unmount '%s'"
+msgstr "'%s' अनमाउन्ट गर्न असमर्थ"
+
+#: ../src/red_mount.py:117
+msgid "Browse..."
+msgstr "ब्राउज गर्नुहोस"
+
+#: ../src/red_mount.py:128
+msgid "Mount Directory"
+msgstr "माउन्ट निर्देशिका॒"
+
+#: ../src/red_mount.py:141
+#, fuzzy
+msgid "Mount catalog"
+msgstr "माउन्ट माध्यम"
+
+#: ../src/red_mount.py:145
+#, fuzzy
+msgid "Mount a directory as catalog"
+msgstr "निर्देशिकालाइ माध्यमको रुपमा माउन्ट गर्नुहोस"
+
+#: ../src/red_mount.py:153
+#, fuzzy
+msgid "Catalog Name:"
+msgstr "माध्यमको नाम:"
+
+#: ../src/red_mount.py:157
+msgid "Directory:"
+msgstr "निर्देशिका"
+
+#: ../src/red_mount.py:168
+msgid "Look for packages recursively"
+msgstr "प्याकेज पुनरावर्ति तरीकाले खोज्नुहोस"
+
+#: ../src/red_mount.py:193
+#, fuzzy
+msgid "Please choose the path for catalog."
+msgstr "कृपया माध्यमको लागि बाटो रोज्नुहोस"
+
+#: ../src/red_mount.py:214
+#, fuzzy
+msgid "Unmount Catalog"
+msgstr "माध्यम अनमाउन्ट गर्नुहोस"
+
+#: ../src/red_mount.py:243
+msgid "Unmount?"
+msgstr "अनमाउन्ट?"
+
+#: ../src/red_news.py:174
+#, python-format
+msgid "%s News"
+msgstr "%s समाचारहरु"
+
+#: ../src/red_option.py:24
+msgid "Connect to a locally running daemon"
+msgstr "स्थानीय संचालित डेइमोन संग जडान गर्नुहोस"
+
+#: ../src/red_option.py:25
+msgid "hostname"
+msgstr "होस्टनाम"
+
+#: ../src/red_option.py:25
+msgid "Contact daemon on specified host"
+msgstr "तोकिएको होस्टमा डेइमोन सम्पर्क गर्नुहोस"
+
+#: ../src/red_option.py:26
+msgid "username"
+msgstr "प्रयोगकर्ता को नाम"
+
+#: ../src/red_option.py:26
+msgid "Specify user name"
+msgstr "प्रयोगकर्ता को नाम तोक्नुहोस"
+
+#: ../src/red_option.py:27
+msgid "password"
+msgstr "पासवर्ड"
+
+#: ../src/red_option.py:27
+msgid "Specify password"
+msgstr "पासवर्ड तोक्नुहोस"
+
+#: ../src/red_option.py:28
+msgid "Print client version and exit"
+msgstr "ग्राहक संस्करं छाप्नुहोस र निस्कनुहोस"
+
+#: ../src/red_option.py:29
+msgid "Get usage information"
+msgstr "प्रयोग जानकारी प्राप्त गर्नुहोस"
+
+#: ../src/red_option.py:120
+#, python-format
+msgid "Usage: %s <options> ..."
+msgstr "प्रयोग: %s <options> ..."
+
+#: ../src/red_option.py:122
+msgid "The following options are understood:"
+msgstr "निम्न विकल्पहरु बुझिएका छन"
+
+#. upgrade
+#: ../src/red_packagearray.py:93
+msgid "newer"
+msgstr "झन नयाँ"
+
+#: ../src/red_packagearray.py:95
+msgid "older"
+msgstr "झन पुरानो"
+
+#: ../src/red_packagearray.py:123
+msgid "upgrade"
+msgstr "स्तरवृद्धि गर्नुहोस"
+
+#: ../src/red_packagearray.py:125
+msgid "downgrade"
+msgstr "स्तरकमी गर्नुहोस"
+
+#: ../src/red_packagearray.py:127
+msgid "install"
+msgstr "स्थापना गर्नुहोस"
+
+#: ../src/red_packagearray.py:134
+msgid "remove"
+msgstr "हटाउनुहोस"
+
+#: ../src/red_packagearray.py:614
+#, python-format
+msgid "Found %d matching packages"
+msgstr "%d जोडा मिल्ने प्याकेजहरु भेटियो"
+
+#: ../src/red_packagearray.py:616
+msgid "Found 1 matching package"
+msgstr "जोडा मिल्ने १ प्याकेज भेटियो"
+
+#: ../src/red_packagearray.py:618
+msgid "No matching packages found"
+msgstr "जोडा मिल्दो प्याकेजहरु भेटिएन"
+
+#: ../src/red_packagearray.py:776
+msgid "Looking for updates..."
+msgstr "स्तरवृद्धिहरु को लागि हेर्दै"
+
+#: ../src/red_packagearray.py:801
+#, python-format
+msgid "Found %d matching patches"
+msgstr "%d जोडा मिल्ने टालोहरु भेटियो"
+
+#: ../src/red_packagearray.py:803
+msgid "Found 1 matching patch"
+msgstr "जोडा मिल्ने १ टालो भेटियो"
+
+#: ../src/red_packagearray.py:805
+msgid "No matching patches found"
+msgstr "कुनै जोडा मिल्दो टालोहरु भेटिएन"
+
+#: ../src/red_packagebook.py:44
+msgid "Package Information"
+msgstr "प्याकेज जानकारी"
+
+#: ../src/red_packagepage.py:32
+msgid "Unnamed"
+msgstr "बेनाम"
+
+#: ../src/red_packagepage_deps.py:29
+msgid "Dependencies"
+msgstr "निर्भरताहरु"
+
+#: ../src/red_packagepage_deps.py:67
+msgid "Provides"
+msgstr "उपलब्ध गर्दछ"
+
+#: ../src/red_packagepage_deps.py:70
+msgid "Requires"
+msgstr "माग्छ"
+
+#: ../src/red_packagepage_deps.py:73
+msgid "Conflicts With"
+msgstr "संग द्वन्द गर्छ"
+
+#: ../src/red_packagepage_info.py:92
+msgid "Release"
+msgstr "निष्काशन"
+
+#: ../src/red_packagepage_info.py:93
+msgid "Package Size"
+msgstr "प्याकेज आकार"
+
+#: ../src/red_packagepage_info.py:94
+msgid "Installed Size"
+msgstr "स्थापना गरिएको आकार"
+
+#: ../src/red_packagepage_info.py:96
+msgid "Section"
+msgstr "सेक्सन"
+
+#: ../src/red_packagepage_info.py:97
+msgid "Summary"
+msgstr "सारांश"
+
+#: ../src/red_packagepage_info.py:98 ../src/red_prefs.py:413
+msgid "Description"
+msgstr "बर्णन"
+
+#: ../src/red_packagepage_info.py:152
+msgid "Info"
+msgstr "सुचना"
+
+#: ../src/red_packageview.py:472
+msgid "Importance"
+msgstr "महत्व"
+
+#: ../src/red_patches.py:35
+msgid "Patches"
+msgstr "टालोहरु"
+
+#: ../src/red_patches.py:38
+msgid "YOU Patches"
+msgstr "तपाईं टालोहरु"
+
+#: ../src/red_patches.py:72
+msgid "Searching for matching patches..."
+msgstr "जोडा मिल्दो टालोहरुको लागि खोजि गर्दै"
+
+#: ../src/red_patches.py:111
+msgid "No matching patches found."
+msgstr "कुनै जोडा मिल्दो टालोहरु भेटिएन"
+
+#: ../src/red_pendingview.py:347
+#, python-format
+msgid "%.1f%% completed"
+msgstr "%.1f%% पुरा भयो"
+
+#: ../src/red_pendingview.py:536
+msgid "Updating System"
+msgstr "प्रणाली अद्यावधिक गर्दै"
+
+#: ../src/red_pendingview.py:609
+msgid "Download cancelled"
+msgstr "डाउनलोड रद्द गरियो"
+
+#: ../src/red_pendingview.py:610
+msgid "Transaction cancelled"
+msgstr "कारोबार रद्द गरियो"
+
+#: ../src/red_pendingview.py:645
+msgid "Transaction Finished"
+msgstr "कारोबार सकियो"
+
+#: ../src/red_pendingview.py:658
+msgid "Downloading packages"
+msgstr "प्याकेज डाउनलोड गर्दै"
+
+#: ../src/red_pendingview.py:671
+msgid "Download Failed"
+msgstr "डाउनलोड असफल"
+
+#: ../src/red_pendingview.py:672
+msgid "Unknown Error"
+msgstr "अज्ञात त्रुटि"
+
+#: ../src/red_pendingview.py:689
+msgid "Processing Transaction"
+msgstr "कारोबार प्रशोधित गर्दै"
+
+#: ../src/red_pendingview.py:728
+msgid "The transaction has completed successfully"
+msgstr "कारोबार सफलतापुर्वक पुरा भयो"
+
+#: ../src/red_pendingview.py:733
+msgid "Transaction failed"
+msgstr "कारोवार असफल भयो"
+
+#: ../src/red_pendingview.py:735
+msgid "Transaction Failed"
+msgstr "कारोवार असफल भयो"
+
+#: ../src/red_prefs.py:171
+#, fuzzy
+msgid "Interval to refresh catalog data (in hours):"
+msgstr "माध्यम डाटा ताजा गर्न समयान्तर (घण्टामा):"
+
+#. Packages section
+#: ../src/red_prefs.py:182
+msgid "Packages"
+msgstr "प्याकेजहरु"
+
+#: ../src/red_prefs.py:191
+msgid "Require package signatures"
+msgstr "प्याकेज हस्ताक्षरहरु आवश्यक"
+
+#: ../src/red_prefs.py:196
+msgid "Maximum number of packages to download at once:"
+msgstr "अधिकतम संख्या को प्याकेजहरु तुरुन्त डाउनलोड गरिनुपर्ने"
+
+#: ../src/red_prefs.py:206
+msgid "Enable package rollback"
+msgstr "प्याकेज रोलब्याक सक्षम पार्नुहोस"
+
+#. Proxy section - requires superuser
+#: ../src/red_prefs.py:210
+msgid "Proxy"
+msgstr "प्रोक्सि"
+
+#: ../src/red_prefs.py:219
+msgid "Use a proxy"
+msgstr "एउटा प्रोक्सी प्रयोग गर्नुहोस"
+
+#: ../src/red_prefs.py:223
+msgid "Proxy URL:"
+msgstr "प्रोक्सि युआरएल:"
+
+#: ../src/red_prefs.py:230
+msgid "Username:"
+msgstr "प्रयोगकर्ता नाम:"
+
+#: ../src/red_prefs.py:270
+msgid "You do not have permissions to view proxy settings"
+msgstr "प्रोक्सी सेटिंगहरु हेर्नको लागि तपाईंलाइ अनुमति छैन"
+
+#: ../src/red_prefs.py:294
+msgid "Cache downloaded packages and metadata"
+msgstr "क्यास डाउनलोड प्याकेजहरु र मेटाडाटा"
+
+#: ../src/red_prefs.py:300
+msgid "Location of cached data:"
+msgstr "क्यासड डाटा को स्थान"
+
+#. Expiration section
+#: ../src/red_prefs.py:308
+msgid "Expiration"
+msgstr "समाप्ति"
+
+#: ../src/red_prefs.py:312
+msgid "Cache expires"
+msgstr "क्याचे समाप्त हुन्छ"
+
+#: ../src/red_prefs.py:318
+msgid "Maximum age in days:"
+msgstr "दिनहरु मा अधिकतम आयु"
+
+#: ../src/red_prefs.py:329
+msgid "Maximum size in MB:"
+msgstr "एमबी मा अधिकतम साईज :"
+
+#: ../src/red_prefs.py:340
+msgid "Current cache size:"
+msgstr "हालको क्यास साईज:"
+
+#: ../src/red_prefs.py:357
+msgid "Are you sure you want to delete the package files in your cache?"
+msgstr "के तपाईं विश्वस्त हुनुहुन्छ तपाईं को क्यास भित्रको फाइलहरु तपाईं मेट्न चाहनुहुन्छ?"
+
+#: ../src/red_prefs.py:373
+msgid "Empty Cache"
+msgstr "खाली क्यास"
+
+#: ../src/red_prefs.py:395
+#, python-format
+msgid "%d MB"
+msgstr "%d एमबी"
+
+#: ../src/red_prefs.py:443
+msgid "Value"
+msgstr "मान"
+
+#: ../src/red_prefs.py:456
+msgid "Loading preferences..."
+msgstr "प्राथमिकताहरु लोड गर्दै."
+
+#: ../src/red_prefs.py:520
+#, python-format
+msgid "%s Preferences"
+msgstr "%s प्राथमिकताहरु"
+
+#: ../src/red_search.py:35
+msgid "Search"
+msgstr "खोज्नुहोस्"
+
+#: ../src/red_search.py:38
+msgid "S_earch Packages"
+msgstr "प्याकेजहरु खोज्नुहोस"
+
+#: ../src/red_search.py:72 ../src/red_software.py:50
+#: ../src/red_software.py:119
+msgid "Searching for matching packages..."
+msgstr "जोडा मिल्दो प्याकेजहरुको लागि खोजि गर्दै"
+
+#: ../src/red_search.py:109
+msgid "No matching packages found."
+msgstr "कुनै जोडा मिल्दो प्याकेजहरु भेटिएन"
+
+#: ../src/red_searchbox.py:146
+msgid "All Packages"
+msgstr "सबै प्याकेजहरु"
+
+#: ../src/red_searchbox.py:147 ../src/red_updates.py:31
+msgid "Updates"
+msgstr "अद्यावधिकहरु"
+
+#: ../src/red_searchbox.py:148
+msgid "Uninstalled Packages"
+msgstr "स्थापना नगरिएका प्याकेजहरु"
+
+#: ../src/red_searchbox.py:149
+msgid "Installed Packages"
+msgstr "स्थापना गरिएका प्याकेजहरु"
+
+#: ../src/red_searchbox.py:174
+msgid "All Sections"
+msgstr "सबै सेक्सनहरु"
+
+#: ../src/red_searchbox.py:175
+msgid "Productivity"
+msgstr "उत्पादकत्व"
+
+#: ../src/red_searchbox.py:176
+msgid "Imaging"
+msgstr "छवि बनाउँदै"
+
+#: ../src/red_searchbox.py:177
+msgid "Personal Info. Mgmt"
+msgstr "व्यक्तिगत सुचना .व्यवस्थापन"
+
+#: ../src/red_searchbox.py:178
+msgid "X Windows"
+msgstr "एक्स विन्डोहरु"
+
+#: ../src/red_searchbox.py:179
+msgid "Games"
+msgstr "खेलहरू"
+
+#: ../src/red_searchbox.py:180
+msgid "Multimedia"
+msgstr "मल्टिमिडिया"
+
+#: ../src/red_searchbox.py:181
+msgid "Internet"
+msgstr "इन्टरनेट"
+
+#: ../src/red_searchbox.py:182
+msgid "Utilities"
+msgstr "उपयोगिताहरु"
+
+#: ../src/red_searchbox.py:183
+msgid "System"
+msgstr "प्रणाली"
+
+#: ../src/red_searchbox.py:184
+msgid "Documentation"
+msgstr "मिसिलिकरण"
+
+#: ../src/red_searchbox.py:185
+msgid "Libraries"
+msgstr "पुस्तकालयहरु"
+
+#: ../src/red_searchbox.py:186
+msgid "Development"
+msgstr "विकास"
+
+#: ../src/red_searchbox.py:187
+msgid "Development Tools"
+msgstr "विकास उपकरणहरु"
+
+#: ../src/red_searchbox.py:188
+msgid "Miscellaneous"
+msgstr "विविध"
+
+#: ../src/red_searchbox.py:274
+msgid "Search descriptions"
+msgstr "बर्णनहरु खोज्नुहोस्"
+
+#. ##
+#. ## Match radio buttons
+#. ##
+#: ../src/red_searchbox.py:286
+msgid "Match:"
+msgstr "जोडा मिलाउनुहोस:"
+
+#: ../src/red_serverinfo.py:46
+msgid "The daemon identified itself as:"
+msgstr "को रुपमा डेइमोनले आफैलाइ पहिचान गरायो"
+
+#: ../src/red_serverinfo.py:57
+msgid "System type"
+msgstr "प्रणाली प्रकार"
+
+#: ../src/red_serverinfo.py:60
+msgid "Server URL"
+msgstr "सर्भर युआरएल"
+
+#: ../src/red_serverinfo.py:63
+msgid "Server supports enhanced features."
+msgstr "सर्भर समर्थनहरु बढाइएको विशेषताहरु"
+
+#: ../src/red_serverinfo.py:68
+msgid "Unable to contact the daemon."
+msgstr "डेइमोन संग सम्पर्क गर्न असमर्थ"
+
+#: ../src/red_serverinfo.py:76
+msgid "Dump daemon info to XML file"
+msgstr "एक्सएमएल फाइलमा डेइमोन सुचना डम्प गर्नुहोस"
+
+#: ../src/red_serverinfo.py:94
+#, python-format
+msgid "Could not open file '%s': %s"
+msgstr "फाइल खोल्न सकेन '%s': %s"
+
+#: ../src/red_serverinfo.py:135
+msgid "Choose file to write XML to"
+msgstr "एक्सएमएल मा लेख्नको लागि फाइल रोज्नुहोस"
+
+#: ../src/red_services.py:88
+msgid "Add Service"
+msgstr "सेवा जोड्नुहोस"
+
+#: ../src/red_services.py:99
+msgid "Service URL"
+msgstr "सेवा युआरएल"
+
+#: ../src/red_services.py:105
+#, fuzzy
+msgid "Service type"
+msgstr "सेवा"
+
+#: ../src/red_services.py:111
+msgid "Registration key"
+msgstr ""
+
+#: ../src/red_services.py:126
+msgid "Edit Services"
+msgstr "सेवाहरु सम्पादन गर्नुहोस"
+
+#: ../src/red_services.py:155
+msgid "URL"
+msgstr "युआरएल"
+
+#: ../src/red_services.py:171
+msgid "_Remove service"
+msgstr "सेवा हटाऊनुहोस"
+
+#: ../src/red_services.py:188
+msgid "_Add service"
+msgstr "सेवा जोड्नुहोस"
+
+#: ../src/red_sidebar.py:61 ../src/red_transaction.py:133
+msgid "Pending Actions"
+msgstr "विचाराधिन कार्यहरु"
+
+#: ../src/red_sidebar.py:89
+#, python-format
+msgid "%d pending install"
+msgstr "%d विचाराधिन स्थापना"
+
+#: ../src/red_sidebar.py:91
+#, python-format
+msgid "%d pending installs"
+msgstr "%d विचाराधिन स्थापनाहरु"
+
+#: ../src/red_sidebar.py:97
+#, python-format
+msgid "%d pending removal"
+msgstr "%d विचाराधिन विस्थापन"
+
+#: ../src/red_sidebar.py:99
+#, python-format
+msgid "%d pending removals"
+msgstr "%d विचाराधिन विस्थापनहरु"
+
+#: ../src/red_sidebar.py:103
+msgid "No pending actions"
+msgstr "विचाराधिन कार्यहरु छैन"
+
+#: ../src/red_software.py:28
+msgid "Installed Software"
+msgstr "स्थापना गरिएको सफ्टवेयर"
+
+#: ../src/red_software.py:31
+msgid "I_nstalled Software"
+msgstr "स्थापना गरिएको सफ्टवेयर"
+
+#: ../src/red_software.py:97
+msgid "Available Software"
+msgstr "उपलब्ध सफ्टवेयर"
+
+#: ../src/red_software.py:100
+msgid "A_vailable Software"
+msgstr "उपलब्ध सफ्टवेयर"
+
+#: ../src/red_statusbar.py:50
+#, python-format
+msgid "Connected to %s"
+msgstr "%s मा जडान गरियो"
+
+#: ../src/red_subscriptions.py:57
+msgid "Subscribed"
+msgstr "सदस्यता भयो"
+
+#: ../src/red_subscriptions.py:64
+#, fuzzy
+msgid "Catalog Name"
+msgstr "माध्यम नाम"
+
+#: ../src/red_subscriptions.py:78
+#, fuzzy, python-format
+msgid "%s Catalog Subscriptions"
+msgstr "%s माध्यम सदस्यताहरु"
+
+#: ../src/red_subscriptions.py:99
+#, fuzzy
+msgid ""
+"You do not have permission to subscribe or unsubscribe from catalogs.  You "
+"will be unable to make any changes to the subscriptions."
+msgstr ""
+"तपाइँलाइ माध्यमहरुबाट सदस्यता बनाउने वा नबनाउने अनुमति छैन.  तपाईं सदस्यताहरुमा कुनै "
+"परिवर्तनहरु गर्न असमर्थ हुनुहुनेछ"
+
+#: ../src/red_thrashingtreeview.py:138
+msgid "Untitled"
+msgstr "शीर्षक नभएको"
+
+#: ../src/red_transaction.py:96
+msgid "Are you sure you want to quit?"
+msgstr "के तपाईं विश्वस्त हुनुहुन्छ तपाईं अन्त्य गर्न चाहनुहुन्छ?"
+
+#: ../src/red_transaction.py:136
+msgid "_Pending Actions"
+msgstr "विचाराधिन कार्यहरु"
+
+#: ../src/red_updates.py:34
+msgid "_Updates"
+msgstr "अद्यावधिकहरु"
+
+#: ../src/red_updates.py:77
+msgid "_Update All"
+msgstr "सबै अद्यावधिक गर्नुहोस"
+
+#: ../src/red_updates.py:109
+msgid "The system is up-to-date."
+msgstr "प्रणाली अद्यावधिक गरिंदैछ"
+
+#: ../src/red_updates.py:110
+#, fuzzy
+msgid "There are no software updates available in any subscribed catalogs."
+msgstr "कुनै सदस्यता बनाइएको माध्यमहरुमा कुनै सफ्टवेयर अद्यावधिकहरु उपलब्ध छैन"
+
+#: ../src/red_users.py:131
+msgid "Privilege"
+msgstr "विशेषाधिकार"
+
+#: ../src/red_users.py:148
+msgid ""
+"If you remove superuser privileges from yourself, you will be unable to re-"
+"add them.\n"
+"\n"
+"Are you sure you want to do this?"
+msgstr ""
+"यदि तपाईंले सुपरप्रयोगकर्ता विशेषाधिकारहरु आफै हटाउनुभयो भने, तपाईं तिनिहरुलाइ फेरि थप्न "
+"असमर्थ हुनुहुनेछ.\n"
+"\n"
+"के तपाईं विश्वस्त हुनुहुन्छ तपाईं यो गर्न चाहनुहुन्छ?"
+
+#: ../src/red_users.py:166
+msgid "Enabled"
+msgstr "सक्षम पारिएको"
+
+#: ../src/red_users.py:181
+msgid "Edit Users"
+msgstr "प्रयोगकर्ताहरु सम्पादन गर्नुहोस"
+
+#: ../src/red_users.py:196 ../src/red_users.py:399
+msgid "Confirm:"
+msgstr "निश्चित गर्नुहोस्:"
+
+#: ../src/red_users.py:217
+msgid "Set Password"
+msgstr "पासवर्ड सेट गर्नुहोस"
+
+#: ../src/red_users.py:246 ../src/red_users.py:422
+msgid "Password can not be empty."
+msgstr "पासवर्ड खालि गर्न सकिंदैन"
+
+#: ../src/red_users.py:248 ../src/red_users.py:424
+msgid "Passwords do not match."
+msgstr "पासवर्डहरु जोडा मिल्दैनन"
+
+#: ../src/red_users.py:268
+#, python-format
+msgid "Set %s's password"
+msgstr "%sको पासवर्ड सेट गर्नुहोस"
+
+#: ../src/red_users.py:289
+msgid "Users"
+msgstr "प्रयोगकर्ताहरु"
+
+#: ../src/red_users.py:306
+msgid "Add"
+msgstr "थप्नुहोस"
+
+#: ../src/red_users.py:320
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "के तपाईं विश्वस्त हुनुहुन्छ कि तपाईं '%s' मेट्न चाहनुहुन्छ?"
+
+#: ../src/red_users.py:326
+msgid "Remove"
+msgstr "हटाऊनुहोस"
+
+#: ../src/red_users.py:339
+msgid "Privileges"
+msgstr "विशेषाधिकारहरु"
+
+#: ../src/red_users.py:379
+msgid "Add new user"
+msgstr "नयाँ प्रयोगकर्ता थप्नुहोस"
+
+#: ../src/red_users.py:426
+msgid "Invalid user name."
+msgstr "अमान्य प्रयोगकर्ता नाम."
+
+#: ../src/red_users.py:428
+#, python-format
+msgid "User '%s' already exists."
+msgstr "प्रयोगकर्ता '%s' पहिल्यै अस्तित्वमा छ"
+
+#: ../trayicon/bindings/eggtrayicon.c:117
+#, fuzzy
+msgid "Orientation"
+msgstr "मिसिलिकरण"
+
+#: ../trayicon/bindings/eggtrayicon.c:118
+msgid "The orientation of the tray."
+msgstr ""
+
+#: ../trayicon/red_icon_main.py:185
+msgid "There appears to be a Red Carpet update icon already running.  Exiting."
+msgstr ""
+
+#~ msgid "Brought to you by:"
+#~ msgstr "तपाईं लाइ द्धारा ल्याइएको "
+
+#~ msgid "With love from:"
+#~ msgstr "बाट प्रेम साथ"
+
+#~ msgid "Best wishes from:"
+#~ msgstr "बाट शुभ ईच्छा"
+
+#~ msgid "Sincerely:"
+#~ msgstr "इमानदारी पूर्वक"
+
+#~ msgid "Developed by chimps:"
+#~ msgstr "चिम्पहरु द्वारा विकसित"
+
+#~ msgid "Group Activation"
+#~ msgstr "समुह क्रियाशिलता"
+
+#~ msgid "Activate"
+#~ msgstr "क्रियाशिल गर्नुहोस"
+
+#~ msgid "Channels"
+#~ msgstr "माध्यमहरू"
+
+#~ msgid "_Activate..."
+#~ msgstr "क्रियाशिल बनाउनुहोस"
+
+#~ msgid ""
+#~ "Activate daemon against a Red Carpet Express or Red Carpet Enterprise "
+#~ "server"
+#~ msgstr ""
+#~ "एउटा रेड कार्पेट एक्सप्रेस वा रेड कार्पेट इन्टरप्राइज सर्भर को विरुद्धमा डेमोन क्रियाशिल "
+#~ "गर्नुहोस"
+
+#~ msgid "Red Carpet Ne_ws..."
+#~ msgstr "रेड कार्पेट समाचार"
+
+#~ msgid "View the latest Red Carpet news"
+#~ msgstr "नवीनतम रेड कार्पेट समाचार हेर्नुहोस"
+
+#~ msgid "Channel"
+#~ msgstr "माध्यम"
+
+#~ msgid "Channel:"
+#~ msgstr "माध्यम:"
