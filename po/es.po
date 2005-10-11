@@ -1,4 +1,4 @@
-# translation of es.po to 
+# translation of es.po to
 # traducción de es.po al Spanish
 # translation of es.po to Spanish
 # translation of red-carpet.HEAD.po to Spanish
@@ -14,127 +14,107 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: gnome-screensaver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-04 12:54+0200\n"
-"PO-Revision-Date: 2005-06-04 13:04+0200\n"
-"Last-Translator: \n"
-"Language-Team:  <es@li.org>\n"
+"POT-Creation-Date: 2005-10-12 01:15+0200\n"
+"PO-Revision-Date: 2005-10-12 01:17+0200\n"
+"Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
+"Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../src/rcd_util.py:426
+#: ../src/rcd_util.py:432
 msgid "Please wait while getting data."
 msgstr "Por favor, espere mientras se obtienen los datos."
 
-#: ../src/rcd_util.py:480 ../src/rcd_util.py:498
+#: ../src/rcd_util.py:486 ../src/rcd_util.py:504
 msgid "Please ensure that your network settings are correct."
 msgstr "Por favor, asegúrese de que la configuración de la red es correcta."
 
-#: ../src/rcd_util.py:487
+#: ../src/rcd_util.py:493
 msgid "Refreshing catalog data"
 msgstr "Actualizando datos del catálogo"
 
-#: ../src/rcd_util.py:489
+#: ../src/rcd_util.py:495
 msgid "Downloading catalog information"
 msgstr "Descargando información del catálogo"
 
-#: ../src/rcd_util.py:515
+#: ../src/rcd_util.py:521
 msgid "Verifying"
 msgstr "Verificando"
 
-#: ../src/rcd_util.py:516
+#: ../src/rcd_util.py:522
 msgid "Unable to verify package signature for"
 msgstr "No se pudo verificar la firma del paquete para"
 
-#: ../src/rcd_util.py:517
+#: ../src/rcd_util.py:523
 msgid "There is no package signature for"
 msgstr "No hay firma del paquete para"
 
-#: ../src/rcd_util.py:518
+#: ../src/rcd_util.py:524
 msgid "Preparing Transaction"
 msgstr "Preparando transacción"
 
-#: ../src/rcd_util.py:519
+#: ../src/rcd_util.py:525
 msgid "Installing"
 msgstr "Instalando"
 
-#: ../src/rcd_util.py:520
+#: ../src/rcd_util.py:526
 msgid "Removing"
 msgstr "Eliminar"
 
-#: ../src/rcd_util.py:521
+#: ../src/rcd_util.py:527
 msgid "Configuring"
 msgstr "Configurar"
 
-#: ../src/red_about.py:41
-msgid "Brought to you by:"
-msgstr "Traído hasta usted por:"
-
-#: ../src/red_about.py:42
-msgid "With love from:"
-msgstr "Con amor desde:"
-
-#: ../src/red_about.py:43
-msgid "Best wishes from:"
-msgstr "Mejores deseos de:"
-
-#: ../src/red_about.py:44
-msgid "Sincerely:"
-msgstr "Sinceramente:"
-
-#: ../src/red_about.py:45
-msgid "Developed by chimps:"
-msgstr "Desarrollado por chimpancés:"
-
-#: ../src/red_about.py:79
+#: ../src/red_about.py:50
 msgid "Licensed under the GNU General Public License, version 2"
 msgstr "Licenciado bajo la Licencia Pública General GNU, versión 2"
 
 #: ../src/red_activation.py:27
-msgid "Group Activation"
-msgstr "Activación de grupos"
+msgid "Registration"
+msgstr "Registro"
 
-#: ../src/red_activation.py:44
+#: ../src/red_activation.py:53
 msgid "Service:"
 msgstr "Servicio:"
 
-#: ../src/red_activation.py:48
+#: ../src/red_activation.py:57
 msgid "Email:"
-msgstr "Correo:"
+msgstr "Correo-e:"
 
-#: ../src/red_activation.py:52
-msgid "Activation Code:"
-msgstr "Código de activación:"
+#: ../src/red_activation.py:61
+msgid "Registration Code:"
+msgstr "Código de registro:"
 
-#: ../src/red_activation.py:78
-msgid "Activate"
-msgstr "Activar"
+#: ../src/red_activation.py:87
+msgid "Register"
+msgstr "Registrarse"
 
-#: ../src/red_activation.py:99
-msgid "Please fill in both email and activation code."
-msgstr "Por favor, rellene tanto el correo-e como el código de activación."
+#: ../src/red_activation.py:113
+msgid "Please fill in both email and registration code."
+msgstr "Por favor, rellene tanto el correo-e como el código de registro."
 
-#: ../src/red_activation.py:114
+#: ../src/red_activation.py:128
 msgid "Unable to activate"
 msgstr "No se pudo activar"
 
-#: ../src/red_activation.py:115
-msgid "Please ensure you typed the email address and activation code correctly"
+#: ../src/red_activation.py:129
+msgid "Please ensure you typed the email address and registration code correctly"
 msgstr ""
-"Asegúrese de que ha tecleado correctamente tanto la dirección de correo como "
+"Asegúrese de que ha tecleado correctamente tanto la dirección de correo-e como "
 "el código de activación"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: ../src/red_appwindow.py:93
+#: ../src/red_appwindow.py:92
 msgid "C"
 msgstr "C"
 
-#: ../src/red_appwindow.py:130
+#: ../src/red_appwindow.py:129
 msgid ""
 "Unable to show help because the help files were missing.  Please report this "
 "to your vendor."
@@ -142,47 +122,47 @@ msgstr ""
 "No se puede mostrar la ayuda porque no se encuentran los archivos de ayuda.  "
 "Informa de esto a su vendedor."
 
-#: ../src/red_appwindow.py:140
+#: ../src/red_appwindow.py:139
 msgid "Unable to show help because there are no applications available to view help."
 msgstr ""
 "No se puede mostrar la ayuda porque no hay aplicaciones disponibles para ver "
 "la ayuda."
 
-#: ../src/red_appwindow.py:415
+#: ../src/red_appwindow.py:414
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "¿Seguro que quiere abrir %d ventanas de información de paquetes?"
 
-#: ../src/red_appwindow.py:443
+#: ../src/red_appwindow.py:442
 msgid "Run Now"
 msgstr "Ejecutar ahora"
 
-#: ../src/red_appwindow.py:444
+#: ../src/red_appwindow.py:443
 msgid "Perform installations and removals"
 msgstr "Efectuar instalaciones y desinstalaciones"
 
-#: ../src/red_appwindow.py:451
+#: ../src/red_appwindow.py:450
 msgid "Catalogs"
 msgstr "Catálogos"
 
-#: ../src/red_appwindow.py:452
+#: ../src/red_appwindow.py:451
 msgid "Change your catalog subscriptions"
 msgstr "Cambiar sus suscripciones a los catálogos"
 
-#: ../src/red_appwindow.py:460
+#: ../src/red_appwindow.py:459
 msgid "Refresh"
 msgstr "Refrescar"
 
-#: ../src/red_appwindow.py:461
+#: ../src/red_appwindow.py:460
 msgid "Refresh catalog data"
 msgstr "Refrescar datos del catálogo"
 
 #. Install
-#: ../src/red_appwindow.py:472 ../src/red_packageview.py:232
+#: ../src/red_appwindow.py:471 ../src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Marcar para _instalar"
 
-#: ../src/red_appwindow.py:473
+#: ../src/red_appwindow.py:472
 msgid "Mark selected packages for installation"
 msgstr "Marca los paquetes seleccionados para instalar"
 
@@ -190,266 +170,258 @@ msgstr "Marca los paquetes seleccionados para instalar"
 #. # Remove Package
 #. #
 #. Remove
-#: ../src/red_appwindow.py:478 ../src/red_appwindow.py:779
+#: ../src/red_appwindow.py:477 ../src/red_appwindow.py:775
 #: ../src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Marcar para _desinstalar"
 
-#: ../src/red_appwindow.py:479
+#: ../src/red_appwindow.py:478
 msgid "Mark selected packages for removal"
 msgstr "Marca los paquetes seleccionados para desinstalación"
 
 #. Cancel
-#: ../src/red_appwindow.py:484 ../src/red_appwindow.py:792
+#: ../src/red_appwindow.py:483 ../src/red_appwindow.py:788
 #: ../src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: ../src/red_appwindow.py:485
+#: ../src/red_appwindow.py:484
 msgid "Cancel marked package actions"
 msgstr "Cancela las acciones marcadas"
 
 #. Info
-#: ../src/red_appwindow.py:490 ../src/red_packageview.py:276
+#: ../src/red_appwindow.py:489 ../src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformación"
 
-#: ../src/red_appwindow.py:491
+#: ../src/red_appwindow.py:490
 msgid "Package information"
 msgstr "Información del paquete"
 
-#: ../src/red_appwindow.py:548
+#: ../src/red_appwindow.py:547
 msgid "_File"
 msgstr "_Archivo"
 
-#: ../src/red_appwindow.py:549
+#: ../src/red_appwindow.py:548
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../src/red_appwindow.py:550 ../src/red_appwindow.py:842
+#: ../src/red_appwindow.py:549 ../src/red_appwindow.py:838
 msgid "_View"
 msgstr "_Ver"
 
-#: ../src/red_appwindow.py:551
+#: ../src/red_appwindow.py:550
 msgid "_Actions"
 msgstr "Accio_nes"
 
-#: ../src/red_appwindow.py:552
+#: ../src/red_appwindow.py:551
 msgid "_Help"
 msgstr "A_yuda"
 
-#: ../src/red_appwindow.py:560
+#: ../src/red_appwindow.py:559
 msgid "Connect to daemon..."
 msgstr "Conectar a un demonio..."
 
-#: ../src/red_appwindow.py:561
+#: ../src/red_appwindow.py:560
 msgid "Connect to a remote daemon"
 msgstr "Conectar a un demonio remoto"
 
-#: ../src/red_appwindow.py:571
+#: ../src/red_appwindow.py:570
 msgid "Install from _File..."
 msgstr "Instalar desde el _archivo..."
 
-#: ../src/red_appwindow.py:572
+#: ../src/red_appwindow.py:571
 msgid "Install a package from a local file"
 msgstr "Instalar un paquetes desde un archivo local"
 
-#: ../src/red_appwindow.py:581
+#: ../src/red_appwindow.py:580
 msgid "Install from _URL..."
 msgstr "Instalar desde la _URL..."
 
-#: ../src/red_appwindow.py:582
+#: ../src/red_appwindow.py:581
 msgid "Install a package from a remote URL"
 msgstr "Instalar un paquete desde una URL remota"
 
-#: ../src/red_appwindow.py:599
+#: ../src/red_appwindow.py:598
 msgid "_Mount Directory..."
 msgstr "_Montar directorio..."
 
-#: ../src/red_appwindow.py:600
+#: ../src/red_appwindow.py:599
 msgid "Mount a directory as a catalog"
 msgstr "Montar un directorio como un catálogo"
 
-#: ../src/red_appwindow.py:616
+#: ../src/red_appwindow.py:615
 msgid "U_nmount Directory..."
 msgstr "_Desmontar directorio..."
 
-#: ../src/red_appwindow.py:617
+#: ../src/red_appwindow.py:616
 msgid "Unmount a directory"
 msgstr "Desmontar un directorio"
 
+#: ../src/red_appwindow.py:632
+msgid "_Register..."
+msgstr "_Registrarse..."
+
 #: ../src/red_appwindow.py:633
-msgid "_Activate..."
-msgstr "_Activar..."
+msgid "Register daemon"
+msgstr "Demonio de registro"
 
-#: ../src/red_appwindow.py:634
-msgid "Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr "Activar demonio contra un servidor Red Carpet Express o Enterprise"
-
-#: ../src/red_appwindow.py:640
+#: ../src/red_appwindow.py:639
 msgid "Quit"
 msgstr "Salir"
 
-#: ../src/red_appwindow.py:641
+#: ../src/red_appwindow.py:640
 msgid "Quit Red Carpet"
 msgstr "Salir de Red Carpet"
 
-#: ../src/red_appwindow.py:656
+#: ../src/red_appwindow.py:655
 msgid "Select _All"
 msgstr "Seleccionar _todos"
 
-#: ../src/red_appwindow.py:657
+#: ../src/red_appwindow.py:656
 msgid "Select all items"
 msgstr "Seleccionar todos los elementos"
 
-#: ../src/red_appwindow.py:662
+#: ../src/red_appwindow.py:661
 msgid "Select _None"
 msgstr "Seleccionar _ninguno"
 
-#: ../src/red_appwindow.py:663
+#: ../src/red_appwindow.py:662
 msgid "Deselect all items"
 msgstr "Deseleccionar todos los elementos"
 
-#: ../src/red_appwindow.py:670
+#: ../src/red_appwindow.py:669
 msgid "Services..."
 msgstr "Servicios..."
 
-#: ../src/red_appwindow.py:671
+#: ../src/red_appwindow.py:670
 msgid "Edit services"
 msgstr "Editar servicios"
 
-#: ../src/red_appwindow.py:675
+#: ../src/red_appwindow.py:674
 msgid "Catalog _Subscriptions..."
 msgstr "S_uscripciones al catálogo..."
 
-#: ../src/red_appwindow.py:676
+#: ../src/red_appwindow.py:675
 msgid "Edit your catalog subscriptions"
 msgstr "Editar sus suscripciones a los catálogo"
 
-#: ../src/red_appwindow.py:681
+#: ../src/red_appwindow.py:680
 msgid "_Preferences..."
 msgstr "_Preferencias..."
 
-#: ../src/red_appwindow.py:682
+#: ../src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
 msgstr "Editar sus preferencias de Red Carpet"
 
-#: ../src/red_appwindow.py:686
+#: ../src/red_appwindow.py:685
 msgid "_Users..."
 msgstr "_Usuarios..."
 
-#: ../src/red_appwindow.py:687
+#: ../src/red_appwindow.py:686
 msgid "Edit user permissions for this daemon"
 msgstr "Editar los permisos de usuario de este demonio"
 
-#: ../src/red_appwindow.py:700
+#: ../src/red_appwindow.py:699
 msgid "_Sidebar"
 msgstr "_Barra lateral"
 
-#: ../src/red_appwindow.py:701
+#: ../src/red_appwindow.py:700
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Ocultar o mostrar la barra lateral de acciones pendientes"
 
-#: ../src/red_appwindow.py:705
+#: ../src/red_appwindow.py:704
 msgid "_Advanced Search Options"
 msgstr "Opciones de búsqueda _avanzadas"
 
-#: ../src/red_appwindow.py:706
+#: ../src/red_appwindow.py:705
 msgid "Hide or show advanced search options"
 msgstr "Ocultar o mostrar opciones de búsqueda avanzadas"
 
-#: ../src/red_appwindow.py:710
+#: ../src/red_appwindow.py:709
 msgid "_Catalog Names"
 msgstr "Nombres de _catálogos"
 
-#: ../src/red_appwindow.py:711
+#: ../src/red_appwindow.py:710
 msgid "Hide or show catalog names in package lists"
 msgstr "Ocultar y mostrar nombres de catálogos en listas de paquetes"
 
-#: ../src/red_appwindow.py:717
+#: ../src/red_appwindow.py:716
 msgid "Package _Information..."
 msgstr "_Información del paquete..."
 
-#: ../src/red_appwindow.py:718
+#: ../src/red_appwindow.py:717
 msgid "View information about currently selected packages"
 msgstr "Ver información acerca de los paquetes actualmente seleccionados"
 
-#: ../src/red_appwindow.py:726
+#: ../src/red_appwindow.py:725
 msgid "_Daemon Information..."
 msgstr "Información del _demonio..."
 
-#: ../src/red_appwindow.py:727
+#: ../src/red_appwindow.py:726
 msgid "View information about this daemon"
 msgstr "Ver información acerca de este demonio"
 
-#: ../src/red_appwindow.py:729
-msgid "Red Carpet Ne_ws..."
-msgstr "No_ticias de Red Carpet..."
-
-#: ../src/red_appwindow.py:730
-msgid "View the latest Red Carpet news"
-msgstr "Ver las últimas noticias de Red Carpet"
-
-#: ../src/red_appwindow.py:742
+#: ../src/red_appwindow.py:738
 msgid "Run _Now"
 msgstr "Ejecutar _ahora"
 
-#: ../src/red_appwindow.py:743
+#: ../src/red_appwindow.py:739
 msgid "Run the current transaction"
 msgstr "Ejecutar la transacción actual"
 
-#: ../src/red_appwindow.py:757
+#: ../src/red_appwindow.py:753
 msgid "_Verify System Dependencies"
 msgstr "_Verificar dependencias del sistema"
 
-#: ../src/red_appwindow.py:758
+#: ../src/red_appwindow.py:754
 msgid "Verify that all system dependencies are met"
 msgstr "Verificar que todas las dependencias del sistema se encuentran"
 
 #. #
 #. # Install Package
 #. #
-#: ../src/red_appwindow.py:769
+#: ../src/red_appwindow.py:765
 msgid "Mark for I_nstallation"
 msgstr "Marcar para i_nstalación"
 
-#: ../src/red_appwindow.py:770
+#: ../src/red_appwindow.py:766
 msgid "Mark this package for installation"
 msgstr "Marcar este paquetes para instalar"
 
-#: ../src/red_appwindow.py:780
+#: ../src/red_appwindow.py:776
 msgid "Mark this package for removal"
 msgstr "Marcar este paquete para desinstalación"
 
-#: ../src/red_appwindow.py:793
+#: ../src/red_appwindow.py:789
 msgid "Cancel installation or removal mark"
 msgstr "Cancelar marca de instalación o desinstalación"
 
-#: ../src/red_appwindow.py:807
+#: ../src/red_appwindow.py:803
 msgid "Re_fresh Catalog Data"
 msgstr "Re_frescar datos del catálogo"
 
-#: ../src/red_appwindow.py:808
+#: ../src/red_appwindow.py:804
 msgid "Download latest catalog data"
 msgstr "Descargar los últimos datos del catálogo"
 
-#: ../src/red_appwindow.py:817
+#: ../src/red_appwindow.py:813
 msgid "_Contents"
-msgstr "_Contenidos"
+msgstr "_Contenido"
 
-#: ../src/red_appwindow.py:818
+#: ../src/red_appwindow.py:814
 msgid "View Red Carpet help"
 msgstr "Ver ayuda de Red Carpet"
 
-#: ../src/red_appwindow.py:823
+#: ../src/red_appwindow.py:819
 msgid "_About..."
 msgstr "A_cerca de..."
 
-#: ../src/red_appwindow.py:824
+#: ../src/red_appwindow.py:820
 msgid "About Red Carpet"
 msgstr "Acerca de Red Carpet"
 
-#: ../src/red_appwindow.py:843
+#: ../src/red_appwindow.py:839
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Ir a la página «%s»"
@@ -593,8 +565,8 @@ msgid "Connect"
 msgstr "Conectar"
 
 #: ../src/red_console.py:50
-msgid "Red Carpet Error Console"
-msgstr "Consola de error de Red Carpet"
+msgid "ZENworks Error Console"
+msgstr "Consola de error de ZENworks"
 
 #: ../src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
@@ -780,11 +752,11 @@ msgstr "Instalar desde URL"
 msgid "Package URL:"
 msgstr "URL del paquete:"
 
-#: ../src/red_main.py:111 ../trayicon/red_icon_main.py:211
+#: ../src/red_main.py:110 ../trayicon/red_icon_main.py:211
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr "ERROR : no puede especificar a la vez -h/--host y -l/--local"
 
-#: ../src/red_main.py:142 ../trayicon/red_icon_main.py:242
+#: ../src/red_main.py:141 ../trayicon/red_icon_main.py:242
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "ERROR: No puede especificar un usuario a un demonio local"
 
@@ -1523,5 +1495,7 @@ msgstr "La orientación de la bandeja."
 
 #: ../trayicon/red_icon_main.py:185
 msgid "There appears to be a Red Carpet update icon already running.  Exiting."
-msgstr "Parece que hay una actualización de Red Carpet que se está ejecutando. Saliendo."
+msgstr ""
+"Parece que hay una actualización de Red Carpet que se está ejecutando. "
+"Saliendo."
 
