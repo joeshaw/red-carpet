@@ -1,4 +1,8 @@
-2005-10-04  Pawan Chitrakar  <pchitrakar@gmail.com>
+2006-01-24  Clytie Siddall <clytie@riverland.net.au>
+
+	* configure.in	Added vi in ALL_LINGUAS line.
+	
+	2005-10-04  Pawan Chitrakar  <pchitrakar@gmail.com>
 
 	* configure.in: Added ne in ALL_LINGUAS
 
