@@ -1,177 +1,153 @@
 # Swedish messages for Red Carpet.
-# Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2002, 2003, 2004, 2006 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004.
+# Daniel Nylander <po@danielnylander.se>, 2006.
 #
-# $Id: sv.po,v 1.28 2004/07/04 10:36:59 menthos Exp $
+# $Id: sv.po,v 1.29 2006/04/19 19:53:23 dnylande Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: red-carpet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-04 12:35+0200\n"
-"PO-Revision-Date: 2004-07-04 12:35+0200\n"
-"Last-Translator: Christian Rose <menthos@menthos.com>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"POT-Creation-Date: 2006-04-12 20:22+0200\n"
+"PO-Revision-Date: 2006-04-19 21:35+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/rcd_util.py:412
+#: ../src/rcd_util.py:432
 msgid "Please wait while getting data."
 msgstr "Var vänlig vänta vid hämtande av data."
 
-#: src/rcd_util.py:466 src/rcd_util.py:484
+#: ../src/rcd_util.py:486
+#: ../src/rcd_util.py:504
 msgid "Please ensure that your network settings are correct."
 msgstr "Försäkra dig om att dina nätverksinställningar är korrekta."
 
-#: src/rcd_util.py:473
-msgid "Refreshing channel data"
+#: ../src/rcd_util.py:493
+msgid "Refreshing catalog data"
 msgstr "Uppdaterar kanaldata"
 
-#: src/rcd_util.py:475
-msgid "Downloading channel information"
+#: ../src/rcd_util.py:495
+msgid "Downloading catalog information"
 msgstr "Hämtar kanalinformation"
 
-#: src/rcd_util.py:501
+#: ../src/rcd_util.py:521
 msgid "Verifying"
 msgstr "Verifierar"
 
-#: src/rcd_util.py:502
+#: ../src/rcd_util.py:522
 msgid "Unable to verify package signature for"
 msgstr "Kan inte verifiera paketsignatur för"
 
-#: src/rcd_util.py:503
+#: ../src/rcd_util.py:523
 msgid "There is no package signature for"
 msgstr "Det finns ingen paketsignatur för"
 
-#: src/rcd_util.py:504
+#: ../src/rcd_util.py:524
 msgid "Preparing Transaction"
 msgstr "Förbereder transaktion"
 
-#: src/rcd_util.py:505
+#: ../src/rcd_util.py:525
 msgid "Installing"
 msgstr "Installerar"
 
-#: src/rcd_util.py:506
+#: ../src/rcd_util.py:526
 msgid "Removing"
 msgstr "Tar bort"
 
-#: src/rcd_util.py:507
+#: ../src/rcd_util.py:527
 msgid "Configuring"
 msgstr "Konfigurerar"
 
-#: src/red_about.py:41
-msgid "Brought to you by:"
-msgstr "Presenteras av:"
-
-#: src/red_about.py:42
-msgid "With love from:"
-msgstr "Kramar från:"
-
-#: src/red_about.py:43
-msgid "Best wishes from:"
-msgstr "Hälsningar från:"
-
-#: src/red_about.py:44
-msgid "Sincerely:"
-msgstr "Med vänliga hälsningar:"
-
-#: src/red_about.py:45
-msgid "Developed by chimps:"
-msgstr "Utvecklat av chimpanser:"
-
-#: src/red_about.py:80
+#: ../src/red_about.py:50
 msgid "Licensed under the GNU General Public License, version 2"
 msgstr "Licensierat under GNU General Public License, version 2"
 
-#: src/red_activation.py:27
-msgid "Group Activation"
-msgstr "Gruppaktivering"
+#: ../src/red_activation.py:27
+msgid "Registration"
+msgstr "Registrering"
 
-#: src/red_activation.py:44
+#: ../src/red_activation.py:53
 msgid "Service:"
 msgstr "Tjänst:"
 
-#: src/red_activation.py:48
+#: ../src/red_activation.py:57
 msgid "Email:"
 msgstr "E-post:"
 
-#: src/red_activation.py:52
-msgid "Activation Code:"
-msgstr "Aktiveringskod:"
+#: ../src/red_activation.py:61
+msgid "Registration Code:"
+msgstr "Registreringskod:"
 
-#: src/red_activation.py:78
-msgid "Activate"
-msgstr "Aktivera"
+#: ../src/red_activation.py:87
+msgid "Register"
+msgstr "Registrera"
 
-#: src/red_activation.py:99
-msgid "Please fill in both email and activation code."
-msgstr "Fyll i både e-postadress och aktiveringskod."
+#: ../src/red_activation.py:113
+msgid "Please fill in both email and registration code."
+msgstr "Fyll i både e-postadress och registreringskod."
 
-#: src/red_activation.py:114
+#: ../src/red_activation.py:128
 msgid "Unable to activate"
 msgstr "Kan inte aktivera"
 
-#: src/red_activation.py:115
-msgid "Please ensure you typed the email address and activation code correctly"
-msgstr ""
-"Försäkra dig om att du angav e-postadressen och aktiveringskoden korrekt"
+#: ../src/red_activation.py:129
+msgid "Please ensure you typed the email address and registration code correctly"
+msgstr "Försäkra dig om att du angav e-postadressen och registreringskoden korrekt"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
-#: src/red_appwindow.py:92
+#: ../src/red_appwindow.py:92
 msgid "C"
 msgstr "C"
 
-#: src/red_appwindow.py:129
-msgid ""
-"Unable to show help because the help files were missing.  Please report this "
-"to your vendor."
-msgstr ""
-"Kan inte visa hjälp eftersom hjälpfilerna saknas. Rapportera detta till din "
-"leverantör."
+#: ../src/red_appwindow.py:129
+msgid "Unable to show help because the help files were missing.  Please report this to your vendor."
+msgstr "Kan inte visa hjälp eftersom hjälpfilerna saknas. Rapportera detta till din leverantör."
 
-#: src/red_appwindow.py:139
-msgid ""
-"Unable to show help because there are no applications available to view help."
-msgstr ""
-"Kan inte visa hjälp eftersom inga program för att visa hjälp är tillgängliga."
+#: ../src/red_appwindow.py:139
+msgid "Unable to show help because there are no applications available to view help."
+msgstr "Kan inte visa hjälp eftersom inga program för att visa hjälp är tillgängliga."
 
-#: src/red_appwindow.py:414
+#: ../src/red_appwindow.py:414
 #, python-format
 msgid "Are you sure you want to open %d package information windows?"
 msgstr "Är du säker på att du vill öppna %d fönster med paketinformation?"
 
-#: src/red_appwindow.py:442
+#: ../src/red_appwindow.py:442
 msgid "Run Now"
 msgstr "Kör nu"
 
-#: src/red_appwindow.py:443
+#: ../src/red_appwindow.py:443
 msgid "Perform installations and removals"
 msgstr "Utför installationer och borttagningar"
 
-#: src/red_appwindow.py:450
-msgid "Channels"
+#: ../src/red_appwindow.py:450
+msgid "Catalogs"
 msgstr "Kanaler"
 
-#: src/red_appwindow.py:451
-msgid "Change your channel subscriptions"
+#: ../src/red_appwindow.py:451
+msgid "Change your catalog subscriptions"
 msgstr "Ändra dina kanalprenumerationer"
 
-#: src/red_appwindow.py:459
+#: ../src/red_appwindow.py:459
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: src/red_appwindow.py:460
-msgid "Refresh channel data"
+#: ../src/red_appwindow.py:460
+msgid "Refresh catalog data"
 msgstr "Uppdatera kanaldata"
 
 #. Install
-#: src/red_appwindow.py:471 src/red_packageview.py:232
+#: ../src/red_appwindow.py:471
+#: ../src/red_packageview.py:232
 msgid "Mark for _Installation"
 msgstr "Markera för _installation"
 
-#: src/red_appwindow.py:472
+#: ../src/red_appwindow.py:472
 msgid "Mark selected packages for installation"
 msgstr "Markera valda paket för installation"
 
@@ -179,285 +155,353 @@ msgstr "Markera valda paket för installation"
 #. # Remove Package
 #. #
 #. Remove
-#: src/red_appwindow.py:477 src/red_appwindow.py:778
-#: src/red_packageview.py:245
+#: ../src/red_appwindow.py:477
+#: ../src/red_appwindow.py:775
+#: ../src/red_packageview.py:245
 msgid "Mark for _Removal"
 msgstr "Markera för _borttagning"
 
-#: src/red_appwindow.py:478
+#: ../src/red_appwindow.py:478
 msgid "Mark selected packages for removal"
 msgstr "Markera valda paket för borttagning"
 
 #. Cancel
-#: src/red_appwindow.py:483 src/red_appwindow.py:791
-#: src/red_packageview.py:258
+#: ../src/red_appwindow.py:483
+#: ../src/red_appwindow.py:788
+#: ../src/red_packageview.py:258
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: src/red_appwindow.py:484
+#: ../src/red_appwindow.py:484
 msgid "Cancel marked package actions"
 msgstr "Avbryt markerade paketåtgärder"
 
 #. Info
-#: src/red_appwindow.py:489 src/red_packageview.py:276
+#: ../src/red_appwindow.py:489
+#: ../src/red_packageview.py:276
 msgid "I_nformation"
 msgstr "I_nformation"
 
-#: src/red_appwindow.py:490
+#: ../src/red_appwindow.py:490
 msgid "Package information"
 msgstr "Paketinformation"
 
-#: src/red_appwindow.py:547
+#: ../src/red_appwindow.py:547
 msgid "_File"
 msgstr "_Arkiv"
 
-#: src/red_appwindow.py:548
+#: ../src/red_appwindow.py:548
 msgid "_Edit"
 msgstr "_Redigera"
 
-#: src/red_appwindow.py:549 src/red_appwindow.py:841
+#: ../src/red_appwindow.py:549
+#: ../src/red_appwindow.py:838
 msgid "_View"
 msgstr "_Visa"
 
-#: src/red_appwindow.py:550
+#: ../src/red_appwindow.py:550
 msgid "_Actions"
 msgstr "_Åtgärder"
 
-#: src/red_appwindow.py:551
+#: ../src/red_appwindow.py:551
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/red_appwindow.py:559
+#: ../src/red_appwindow.py:559
 msgid "Connect to daemon..."
 msgstr "Anslut till demon..."
 
-#: src/red_appwindow.py:560
+#: ../src/red_appwindow.py:560
 msgid "Connect to a remote daemon"
 msgstr "Anslut till en fjärrdemon"
 
-#: src/red_appwindow.py:570
+#: ../src/red_appwindow.py:570
 msgid "Install from _File..."
 msgstr "Installera från _fil..."
 
-#: src/red_appwindow.py:571
+#: ../src/red_appwindow.py:571
 msgid "Install a package from a local file"
 msgstr "Installera ett paket från en lokal fil"
 
-#: src/red_appwindow.py:580
+#: ../src/red_appwindow.py:580
 msgid "Install from _URL..."
 msgstr "Installera från _URL..."
 
-#: src/red_appwindow.py:581
+#: ../src/red_appwindow.py:581
 msgid "Install a package from a remote URL"
 msgstr "Installera ett paket från en fjärr-URL"
 
-#: src/red_appwindow.py:598
+#: ../src/red_appwindow.py:598
 msgid "_Mount Directory..."
 msgstr "_Montera katalog..."
 
-#: src/red_appwindow.py:599
-msgid "Mount a directory as a channel"
+#: ../src/red_appwindow.py:599
+msgid "Mount a directory as a catalog"
 msgstr "Montera en katalog som en kanal"
 
-#: src/red_appwindow.py:615
+#: ../src/red_appwindow.py:615
 msgid "U_nmount Directory..."
 msgstr "A_vmontera katalog..."
 
-#: src/red_appwindow.py:616
+#: ../src/red_appwindow.py:616
 msgid "Unmount a directory"
 msgstr "Avmontera en katalog"
 
-#: src/red_appwindow.py:632
-msgid "_Activate..."
-msgstr "_Aktivera..."
+#: ../src/red_appwindow.py:632
+msgid "_Register..."
+msgstr "_Registrera..."
 
-#: src/red_appwindow.py:633
-msgid ""
-"Activate daemon against a Red Carpet Express or Red Carpet Enterprise server"
-msgstr ""
-"Aktivera demon mot Red Carpet Express eller Red Carpet Enterprise server"
+#: ../src/red_appwindow.py:633
+msgid "Register daemon"
+msgstr "Registrera demon"
 
-#: src/red_appwindow.py:639
+#: ../src/red_appwindow.py:639
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/red_appwindow.py:640
+#: ../src/red_appwindow.py:640
 msgid "Quit Red Carpet"
 msgstr "Avsluta Red Carpet"
 
-#: src/red_appwindow.py:655
+#: ../src/red_appwindow.py:655
 msgid "Select _All"
 msgstr "Markera _alla"
 
-#: src/red_appwindow.py:656
+#: ../src/red_appwindow.py:656
 msgid "Select all items"
 msgstr "Markera alla objekt"
 
-#: src/red_appwindow.py:661
+#: ../src/red_appwindow.py:661
 msgid "Select _None"
 msgstr "Markera _inga"
 
-#: src/red_appwindow.py:662
+#: ../src/red_appwindow.py:662
 msgid "Deselect all items"
 msgstr "Avmarkera alla objekt"
 
-#: src/red_appwindow.py:669
+#: ../src/red_appwindow.py:669
 msgid "Services..."
 msgstr "Tjänster..."
 
-#: src/red_appwindow.py:670
+#: ../src/red_appwindow.py:670
 msgid "Edit services"
 msgstr "Redigera tjänster"
 
-#: src/red_appwindow.py:674
-msgid "Channel _Subscriptions..."
+#: ../src/red_appwindow.py:674
+msgid "Catalog _Subscriptions..."
 msgstr "Kanal_prenumerationer..."
 
-#: src/red_appwindow.py:675
-msgid "Edit your channel subscriptions"
+#: ../src/red_appwindow.py:675
+msgid "Edit your catalog subscriptions"
 msgstr "Redigera dina kanalprenumerationer"
 
-#: src/red_appwindow.py:680
+#: ../src/red_appwindow.py:680
 msgid "_Preferences..."
 msgstr "_Inställningar..."
 
-#: src/red_appwindow.py:681
+#: ../src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
 msgstr "Redigera dina Red Carpet-inställningar"
 
-#: src/red_appwindow.py:685
+#: ../src/red_appwindow.py:685
 msgid "_Users..."
 msgstr "_Användare..."
 
-#: src/red_appwindow.py:686
+#: ../src/red_appwindow.py:686
 msgid "Edit user permissions for this daemon"
 msgstr "Redigera användarrättigheter för denna demon"
 
-#: src/red_appwindow.py:699
+#: ../src/red_appwindow.py:699
 msgid "_Sidebar"
 msgstr "_Sidopanel"
 
-#: src/red_appwindow.py:700
+#: ../src/red_appwindow.py:700
 msgid "Hide or show the Pending Actions sidebar"
 msgstr "Dölj eller visa sidopanelen med förestående åtgärder"
 
-#: src/red_appwindow.py:704
+#: ../src/red_appwindow.py:704
 msgid "_Advanced Search Options"
 msgstr "_Avancerade sökalternativ"
 
-#: src/red_appwindow.py:705
+#: ../src/red_appwindow.py:705
 msgid "Hide or show advanced search options"
 msgstr "Dölj eller visa avancerade sökalternativ"
 
-#: src/red_appwindow.py:709
-msgid "_Channel Names"
+#: ../src/red_appwindow.py:709
+msgid "_Catalog Names"
 msgstr "_Kanalnamn"
 
-#: src/red_appwindow.py:710
-msgid "Hide or show channel names in package lists"
+#: ../src/red_appwindow.py:710
+msgid "Hide or show catalog names in package lists"
 msgstr "Dölj eller visa kanalnamn i paketlistor"
 
-#: src/red_appwindow.py:716
+#: ../src/red_appwindow.py:716
 msgid "Package _Information..."
 msgstr "Paket_information..."
 
-#: src/red_appwindow.py:717
+#: ../src/red_appwindow.py:717
 msgid "View information about currently selected packages"
 msgstr "Visa information om för tillfället markerade paket"
 
-#: src/red_appwindow.py:725
+#: ../src/red_appwindow.py:725
 msgid "_Daemon Information..."
 msgstr "_Demoninformation..."
 
-#: src/red_appwindow.py:726
+#: ../src/red_appwindow.py:726
 msgid "View information about this daemon"
 msgstr "Visa information om denna demon"
 
-#: src/red_appwindow.py:728
-msgid "Red Carpet Ne_ws..."
-msgstr "Red Carpet-ny_heter..."
-
-#: src/red_appwindow.py:729
-msgid "View the latest Red Carpet news"
-msgstr "Visa de senaste Red Carpet-nyheterna"
-
-#: src/red_appwindow.py:741
+#: ../src/red_appwindow.py:738
 msgid "Run _Now"
 msgstr "Kör _nu"
 
-#: src/red_appwindow.py:742
+#: ../src/red_appwindow.py:739
 msgid "Run the current transaction"
 msgstr "Kör den aktuella transaktionen"
 
-#: src/red_appwindow.py:756
+#: ../src/red_appwindow.py:753
 msgid "_Verify System Dependencies"
 msgstr "_Verifiera systemberoenden"
 
-#: src/red_appwindow.py:757
+#: ../src/red_appwindow.py:754
 msgid "Verify that all system dependencies are met"
 msgstr "Verifiera att alla systemberoenden är lösta"
 
 #. #
 #. # Install Package
 #. #
-#: src/red_appwindow.py:768
+#: ../src/red_appwindow.py:765
 msgid "Mark for I_nstallation"
 msgstr "Markera för i_nstallation"
 
-#: src/red_appwindow.py:769
+#: ../src/red_appwindow.py:766
 msgid "Mark this package for installation"
 msgstr "Markera detta paket för installation"
 
-#: src/red_appwindow.py:779
+#: ../src/red_appwindow.py:776
 msgid "Mark this package for removal"
 msgstr "Markera detta paket för borttagning"
 
-#: src/red_appwindow.py:792
+#: ../src/red_appwindow.py:789
 msgid "Cancel installation or removal mark"
 msgstr "Ta bort installations- eller borttagningsmarkering"
 
-#: src/red_appwindow.py:806
-msgid "Re_fresh Channel Data"
+#: ../src/red_appwindow.py:803
+msgid "Re_fresh Catalog Data"
 msgstr "_Uppdatera kanaldata"
 
-#: src/red_appwindow.py:807
-msgid "Download latest channel data"
+#: ../src/red_appwindow.py:804
+msgid "Download latest catalog data"
 msgstr "Hämta senaste kanaldata"
 
-#: src/red_appwindow.py:816
+#: ../src/red_appwindow.py:813
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: src/red_appwindow.py:817
+#: ../src/red_appwindow.py:814
 msgid "View Red Carpet help"
 msgstr "Visa hjälp för Red Carpet"
 
-#: src/red_appwindow.py:822
+#: ../src/red_appwindow.py:819
 msgid "_About..."
 msgstr "_Om..."
 
-#: src/red_appwindow.py:823
+#: ../src/red_appwindow.py:820
 msgid "About Red Carpet"
 msgstr "Om Red Carpet"
 
-#: src/red_appwindow.py:842
+#: ../src/red_appwindow.py:839
 #, python-format
 msgid "Go to the '%s' page"
 msgstr "Gå till sidan \"%s\""
 
-#: src/red_channeloption.py:64
-msgid "All Channels"
+#: ../src/red_bundlearray.py:32
+#: ../src/red_packagearray.py:91
+msgid "installed"
+msgstr "installerad"
+
+#: ../src/red_bundlearray.py:34
+#: ../src/red_packagearray.py:97
+msgid "not installed"
+msgstr "inte installerad"
+
+# Patch = programfix enligt Datatermgruppen
+# http://www.nada.kth.se/dataterm/rek.html#a141
+#: ../src/red_bundlearray.py:231
+#, python-format
+msgid "Found %d matching bundles"
+msgstr "Hittade %d matchande paketeringar"
+
+#: ../src/red_bundlearray.py:233
+msgid "Found 1 matching bundle"
+msgstr "Hittade 1 matchande paketering"
+
+#: ../src/red_bundlearray.py:235
+msgid "No matching bundles found"
+msgstr "Inga matchande paketeringar hittades"
+
+#: ../src/red_bundlesearchbox.py:73
+msgid "All Bundles"
+msgstr "Alla paketeringar"
+
+#: ../src/red_bundlesearchbox.py:74
+msgid "Uninstalled Bundles"
+msgstr "Avinstallerade paketeringar"
+
+#: ../src/red_bundlesearchbox.py:75
+msgid "Installed Bundles"
+msgstr "Installerade paketeringar"
+
+#: ../src/red_bundlesearchbox.py:101
+#: ../src/red_searchbox.py:322
+msgid "Catalog:"
+msgstr "Kanal:"
+
+#: ../src/red_bundleview.py:14
+#: ../src/red_bundleview.py:126
+#: ../src/red_history.py:327
+#: ../src/red_packagepage_info.py:90
+#: ../src/red_services.py:150
+msgid "Name"
+msgstr "Namn"
+
+#: ../src/red_bundleview.py:24
+#: ../src/red_bundleview.py:98
+#: ../src/red_packageview.py:301
+msgid "Status"
+msgstr "Status"
+
+#: ../src/red_bundleview.py:52
+#: ../src/red_bundleview.py:137
+#: ../src/red_packagepage_info.py:91
+#: ../src/red_packageview.py:452
+msgid "Version"
+msgstr "Version"
+
+#: ../src/red_bundleview.py:62
+#: ../src/red_bundleview.py:147
+msgid "Installed"
+msgstr "Installerad"
+
+#: ../src/red_bundleview.py:72
+#: ../src/red_bundleview.py:157
+#: ../src/red_history.py:326
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/red_channeloption.py:64
+msgid "All Catalogs"
 msgstr "Alla kanaler"
 
-#: src/red_channeloption.py:69
-msgid "All Subscribed Channels"
+#: ../src/red_channeloption.py:69
+msgid "All Subscribed Catalogs"
 msgstr "Alla prenumererade kanaler"
 
-#: src/red_channeloption.py:74
-msgid "No Channel/Unknown Channel"
+#: ../src/red_channeloption.py:74
+msgid "No Catalog/Unknown Catalog"
 msgstr "Ingen kanal/Okänd kanal"
 
-#: src/red_connection.py:49
+#: ../src/red_connection.py:49
 #, python-format
 msgid ""
 "Unable to connect to the daemon:\n"
@@ -466,7 +510,7 @@ msgstr ""
 "Kan inte ansluta till demonen:\n"
 " \"%s\"."
 
-#: src/red_connection.py:67
+#: ../src/red_connection.py:67
 #, python-format
 msgid ""
 "Detected Red Carpet Daemon version %d.%d.%d.\n"
@@ -475,20 +519,16 @@ msgstr ""
 "Detekterade Red Carpet-demon version %d.%d.%d.\n"
 "Version %d.%d.%d (eller nyare) krävs"
 
-#: src/red_connection.py:93
+#: ../src/red_connection.py:93
 #, python-format
-msgid ""
-"Detected protocol version %d.  Version %d is required.  You must update your "
-"version of rcd."
-msgstr ""
-"Detekterade protokoll version %d. Version %d krävs. Du måste uppdatera din "
-"version av rcd."
+msgid "Detected protocol version %d.  Version %d is required.  You must update your version of rcd."
+msgstr "Detekterade protokoll version %d. Version %d krävs. Du måste uppdatera din version av rcd."
 
-#: src/red_connection.py:123
+#: ../src/red_connection.py:123
 msgid "Starting daemon..."
 msgstr "Startar demon..."
 
-#: src/red_connection.py:197
+#: ../src/red_connection.py:197
 msgid ""
 "Red Carpet requires a Red Carpet Daemon to be running.\n"
 "Would you like to start one now?"
@@ -496,1260 +536,1219 @@ msgstr ""
 "Red Carpet kräver att en Red Carpet-demon körs.\n"
 "Vill du starta en nu?"
 
-#: src/red_connection.py:345
+#: ../src/red_connection.py:345
 msgid "Connect to this system"
 msgstr "Anslut till detta system"
 
-#: src/red_connection.py:349
+#: ../src/red_connection.py:349
 msgid "Connect to a remote system"
 msgstr "Anslut till ett fjärrsystem"
 
-#: src/red_connection.py:357
+#: ../src/red_connection.py:357
 msgid "Server:"
 msgstr "Server:"
 
-#: src/red_connection.py:361 src/red_users.py:389
+#: ../src/red_connection.py:361
+#: ../src/red_users.py:389
 msgid "User name:"
 msgstr "Användarnamn:"
 
-#: src/red_connection.py:365 src/red_prefs.py:237 src/red_users.py:192
-#: src/red_users.py:395
+#: ../src/red_connection.py:365
+#: ../src/red_prefs.py:237
+#: ../src/red_users.py:192
+#: ../src/red_users.py:395
 msgid "Password:"
 msgstr "Lösenord:"
 
-#: src/red_connection.py:401
+#: ../src/red_connection.py:401
 msgid "Connect"
 msgstr "Anslut"
 
-#: src/red_console.py:50
-msgid "Red Carpet Error Console"
-msgstr "Red Carpet-felkonsoll"
+#: ../src/red_console.py:50
+msgid "ZENworks Error Console"
+msgstr "ZENworks-felkonsoll"
 
-#: src/red_deaddaemon.py:35
+#: ../src/red_deaddaemon.py:35
 msgid "Connection to daemon restored.\n"
 msgstr "Anslutningen till demonen återställd.\n"
 
-#: src/red_deaddaemon.py:68
+#: ../src/red_deaddaemon.py:68
 msgid "Lost contact with the daemon!"
 msgstr "Tappade kontakten med demonen!"
 
-#: src/red_deaddaemon.py:69
+#: ../src/red_deaddaemon.py:69
 msgid "Exit Red Carpet"
 msgstr "Avsluta Red Carpet"
 
-#: src/red_depcomponent.py:75 src/red_depcomponent.py:383
+#: ../src/red_depcomponent.py:75
+#: ../src/red_depcomponent.py:403
 msgid "Dependency Resolution"
 msgstr "Beroendeupplösning"
 
-#: src/red_depcomponent.py:122
+#: ../src/red_depcomponent.py:125
 msgid "Verifying System"
 msgstr "Verifierar system"
 
-#: src/red_depcomponent.py:128
+#: ../src/red_depcomponent.py:137
 msgid "Resolving Dependencies"
 msgstr "Löser beroenden"
 
-#: src/red_depcomponent.py:150
-msgid ""
-"You must agree to the licenses covering this software before installing it."
-msgstr ""
-"Du måste acceptera villkoren i licenserna som rör denna programvara innan du "
-"kan installera den."
+#: ../src/red_depcomponent.py:159
+msgid "You must agree to the licenses covering this software before installing it."
+msgstr "Du måste acceptera villkoren i licenserna som rör denna programvara innan du kan installera den."
 
-#: src/red_depcomponent.py:194
+#: ../src/red_depcomponent.py:203
 msgid "I Agree"
 msgstr "Jag accepterar"
 
-#: src/red_depcomponent.py:288
+#: ../src/red_depcomponent.py:308
 msgid "Dependency Resolution Failed"
 msgstr "Beroendeupplösning misslyckades"
 
-#: src/red_depcomponent.py:338
+#: ../src/red_depcomponent.py:358
 msgid "System Verified"
 msgstr "Systemet verifierat"
 
-#: src/red_depcomponent.py:340
-msgid ""
-"All package dependencies are satisfied, and no corrective actions are "
-"required."
-msgstr ""
-"Alla paketberoenden tillfredsställs och inga korrigeringsåtgärder behövs."
+#: ../src/red_depcomponent.py:360
+msgid "All package dependencies are satisfied, and no corrective actions are required."
+msgstr "Alla paketberoenden tillfredsställs och inga korrigeringsåtgärder behövs."
 
-#: src/red_depcomponent.py:394
+#: ../src/red_depcomponent.py:414
 msgid "Requested Installations"
 msgstr "Begärda installationer"
 
-#: src/red_depcomponent.py:398
+#: ../src/red_depcomponent.py:418
 msgid "Requested Removals"
 msgstr "Begärda borttagningar"
 
-#: src/red_depcomponent.py:402
+#: ../src/red_depcomponent.py:422
 msgid "Required Installations"
 msgstr "Nödvändiga installationer"
 
-#: src/red_depcomponent.py:406
+#: ../src/red_depcomponent.py:426
 msgid "Required Removals"
 msgstr "Nödvändiga borttagningar"
 
-#: src/red_depcomponent.py:432
+#: ../src/red_depcomponent.py:452
 msgid "Continue"
 msgstr "Fortsätt"
 
-#: src/red_depview.py:47 src/red_mount.py:230 src/red_packagepage_info.py:95
-#: src/red_packageview.py:367
-msgid "Channel"
+#: ../src/red_depview.py:47
+#: ../src/red_mount.py:230
+#: ../src/red_packagepage_info.py:95
+#: ../src/red_packageview.py:367
+msgid "Catalog"
 msgstr "Kanal"
 
-#: src/red_depview.py:50 src/red_history.py:304 src/red_packageview.py:423
+#: ../src/red_depview.py:50
+#: ../src/red_history.py:180
+#: ../src/red_packageview.py:423
 msgid "Package"
 msgstr "Paket"
 
-#: src/red_depview.py:53 src/red_packageview.py:462
+#: ../src/red_depview.py:53
+#: ../src/red_packageview.py:462
 msgid "Current Version"
 msgstr "Aktuell version"
 
-#: src/red_depview.py:56 src/red_history.py:306 src/red_history.py:439
-#: src/red_updates.py:94
+#: ../src/red_depview.py:56
+#: ../src/red_history.py:329
+#: ../src/red_history.py:462
+#: ../src/red_updates.py:94
 msgid "New Version"
 msgstr "Ny version"
 
-#: src/red_depview.py:59 src/red_packageview.py:498
+#: ../src/red_depview.py:59
+#: ../src/red_packageview.py:498
 msgid "Size"
 msgstr "Storlek"
 
-#: src/red_history.py:113 src/red_users.py:30
+#: ../src/red_history.py:115
+#: ../src/red_users.py:30
 msgid "All"
 msgstr "Alla"
 
-#: src/red_history.py:114
+#: ../src/red_history.py:116
 msgid "Installations"
 msgstr "Installationer"
 
-#: src/red_history.py:115
+#: ../src/red_history.py:117
 msgid "Removals"
 msgstr "Borttagningar"
 
-#: src/red_history.py:116
+#: ../src/red_history.py:118
 msgid "Upgrades"
 msgstr "Uppgraderingar"
 
-#: src/red_history.py:121
+#: ../src/red_history.py:123
 msgid "User:"
 msgstr "Användare:"
 
-#: src/red_history.py:127
+#: ../src/red_history.py:129
 msgid "Timeframe (days):"
 msgstr "Tidsperiod (dagar):"
 
-#: src/red_history.py:279
+#: ../src/red_history.py:182
+msgid "Bundle"
+msgstr "Paketering"
+
+#: ../src/red_history.py:183
+msgid "Unknown"
+msgstr "Okänd"
+
+#: ../src/red_history.py:301
 msgid "Searching..."
 msgstr "Söker..."
 
-#: src/red_history.py:301 src/red_history.py:435
+#: ../src/red_history.py:323
+#: ../src/red_history.py:458
 msgid "Time"
 msgstr "Tid"
 
-#: src/red_history.py:302 src/red_history.py:436 src/red_packageview.py:330
+#: ../src/red_history.py:324
+#: ../src/red_history.py:459
+#: ../src/red_packageview.py:330
 msgid "Action"
 msgstr "Åtgärd"
 
-#: src/red_history.py:303 src/red_history.py:437 src/red_users.py:113
+#: ../src/red_history.py:325
+#: ../src/red_history.py:460
+#: ../src/red_users.py:113
 msgid "User"
 msgstr "Användare"
 
-#: src/red_history.py:305 src/red_history.py:438
+#: ../src/red_history.py:328
+#: ../src/red_history.py:461
 msgid "Old Version"
 msgstr "Gammal version"
 
-#: src/red_history.py:336 src/red_packagepage.py:45
+#: ../src/red_history.py:359
+#: ../src/red_packagepage.py:45
 msgid "History"
 msgstr "Historik"
 
-#: src/red_history.py:339
+#: ../src/red_history.py:362
 msgid "_History"
 msgstr "_Historik"
 
-#: src/red_history.py:383
+#: ../src/red_history.py:406
 msgid "No results found."
 msgstr "Inga resultat hittades."
 
-#: src/red_installfiles.py:82 src/red_installfiles.py:142
+#: ../src/red_installfiles.py:80
+#: ../src/red_installfiles.py:149
 #, python-format
 msgid "%s is not a valid package"
 msgstr "%s är inte ett giltigt paket."
 
-#: src/red_installfiles.py:92
+#: ../src/red_installfiles.py:90
 msgid "There are no valid packages to install"
 msgstr "Det finns inga giltiga paket att installera"
 
-#: src/red_installfiles.py:102
+#: ../src/red_installfiles.py:109
 msgid "Install from File"
 msgstr "Installera från fil"
 
-#: src/red_installfiles.py:119
+#: ../src/red_installfiles.py:126
 #, python-format
 msgid "Downloading %s..."
 msgstr "Hämtar %s..."
 
-#: src/red_installfiles.py:158
+#: ../src/red_installfiles.py:165
 msgid "Install from URL"
 msgstr "Installera från URL"
 
-#: src/red_installfiles.py:163
+#: ../src/red_installfiles.py:170
 msgid "Package URL:"
 msgstr "Paket-URL:"
 
-#: src/red_main.py:108
+#: ../src/red_main.py:110
+#: ../trayicon/red_icon_main.py:211
 msgid "ERROR: You cannot specify both -h/--host and -l/--local options"
 msgstr "FEL: Du kan inte båda ange flaggorna -h/--host och -l/--local"
 
-#: src/red_main.py:139
+#: ../src/red_main.py:141
+#: ../trayicon/red_icon_main.py:242
 msgid "ERROR: You cannot specify a user to a local daemon"
 msgstr "FEL: Du kan inte ange en användare till en lokal demon"
 
-#: src/red_mirrors.py:76
+#: ../src/red_mirrors.py:76
 msgid "Mirror"
 msgstr "Spegel"
 
-#: src/red_mirrors.py:81
+#: ../src/red_mirrors.py:81
 msgid "Location"
 msgstr "Plats"
 
-#: src/red_mirrors.py:108
+#: ../src/red_mirrors.py:108
 msgid "Choose a Mirror"
 msgstr "Välj en spegel"
 
-#: src/red_mount.py:91
+#: ../src/red_mount.py:91
 #, python-format
 msgid "Unable to unmount '%s'"
 msgstr "Kan inte avmontera \"%s\""
 
-#: src/red_mount.py:117
+#: ../src/red_mount.py:117
 msgid "Browse..."
 msgstr "Bläddra..."
 
-#: src/red_mount.py:128
+#: ../src/red_mount.py:128
 msgid "Mount Directory"
 msgstr "Montera katalog"
 
-#: src/red_mount.py:141
-msgid "Mount channel"
+#: ../src/red_mount.py:141
+msgid "Mount catalog"
 msgstr "Montera kanal"
 
-#: src/red_mount.py:145
-msgid "Mount a directory as channel"
+#: ../src/red_mount.py:145
+msgid "Mount a directory as catalog"
 msgstr "Montera katalog som kanal"
 
-#: src/red_mount.py:153
-msgid "Channel Name:"
+#: ../src/red_mount.py:153
+msgid "Catalog Name:"
 msgstr "Kanalnamn:"
 
-#: src/red_mount.py:157
+#: ../src/red_mount.py:157
 msgid "Directory:"
 msgstr "Katalog:"
 
-#: src/red_mount.py:168
+#: ../src/red_mount.py:168
 msgid "Look for packages recursively"
 msgstr "Leta efter paket rekursivt"
 
-#: src/red_mount.py:193
-msgid "Please choose the path for channel."
-msgstr "Ange en sökväg för kanalen."
+#: ../src/red_mount.py:193
+msgid "Please choose the path for catalog."
+msgstr "Ange sökvägen för kanalen."
 
-#: src/red_mount.py:214
-msgid "Unmount Channel"
+#: ../src/red_mount.py:214
+msgid "Unmount Catalog"
 msgstr "Avmontera kanal"
 
-#: src/red_mount.py:243
+#: ../src/red_mount.py:243
 msgid "Unmount?"
 msgstr "Avmontera?"
 
-#: src/red_news.py:174
+#: ../src/red_news.py:174
 #, python-format
 msgid "%s News"
 msgstr "Nyheter för %s"
 
-#: src/red_option.py:24
+#: ../src/red_option.py:24
 msgid "Connect to a locally running daemon"
 msgstr "Anslut till en demon som körs lokalt"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "hostname"
 msgstr "värdnamn"
 
-#: src/red_option.py:25
+#: ../src/red_option.py:25
 msgid "Contact daemon on specified host"
 msgstr "Kontakta demon på angiven värd"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "username"
 msgstr "användarnamn"
 
-#: src/red_option.py:26
+#: ../src/red_option.py:26
 msgid "Specify user name"
 msgstr "Ange användarnamn"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "password"
 msgstr "lösenord"
 
-#: src/red_option.py:27
+#: ../src/red_option.py:27
 msgid "Specify password"
 msgstr "Ange lösenord"
 
-#: src/red_option.py:28
+#: ../src/red_option.py:28
 msgid "Print client version and exit"
 msgstr "Skriv ut klientversionsnummer och avsluta"
 
-#: src/red_option.py:29
+#: ../src/red_option.py:29
 msgid "Get usage information"
 msgstr "Hämta användningsinformation"
 
-#: src/red_option.py:120
+#: ../src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
 msgstr "Användning: %s <flaggor> ..."
 
-#: src/red_option.py:122
+#: ../src/red_option.py:122
 msgid "The following options are understood:"
 msgstr "Följande flaggor förstås:"
 
-#: src/red_packagearray.py:91
-msgid "installed"
-msgstr "installerad"
-
 #. upgrade
-#: src/red_packagearray.py:93
+#: ../src/red_packagearray.py:93
 msgid "newer"
 msgstr "nyare"
 
-#: src/red_packagearray.py:95
+#: ../src/red_packagearray.py:95
 msgid "older"
 msgstr "äldre"
 
-#: src/red_packagearray.py:97
-msgid "not installed"
-msgstr "inte installerad"
-
-#: src/red_packagearray.py:123
+#: ../src/red_packagearray.py:123
 msgid "upgrade"
 msgstr "uppgradera"
 
-#: src/red_packagearray.py:125
+#: ../src/red_packagearray.py:125
 msgid "downgrade"
 msgstr "nedgradera"
 
-#: src/red_packagearray.py:127
+#: ../src/red_packagearray.py:127
 msgid "install"
 msgstr "installera"
 
-#: src/red_packagearray.py:134
+#: ../src/red_packagearray.py:134
 msgid "remove"
 msgstr "ta bort"
 
-#: src/red_packagearray.py:614
+#: ../src/red_packagearray.py:614
 #, python-format
 msgid "Found %d matching packages"
 msgstr "Hittade %d matchande paket"
 
-#: src/red_packagearray.py:616
+#: ../src/red_packagearray.py:616
 msgid "Found 1 matching package"
 msgstr "Hittade 1 matchande paket"
 
-#: src/red_packagearray.py:618
+#: ../src/red_packagearray.py:618
 msgid "No matching packages found"
 msgstr "Inga matchande paket hittades"
 
-#: src/red_packagearray.py:776
+#: ../src/red_packagearray.py:776
 msgid "Looking for updates..."
 msgstr "Letar efter uppdateringar..."
 
 # Patch = programfix enligt Datatermgruppen
 # http://www.nada.kth.se/dataterm/rek.html#a141
-#: src/red_packagearray.py:801
+#: ../src/red_packagearray.py:801
 #, python-format
 msgid "Found %d matching patches"
 msgstr "Hittade %d matchande programfixar"
 
-#: src/red_packagearray.py:803
+#: ../src/red_packagearray.py:803
 msgid "Found 1 matching patch"
 msgstr "Hittade 1 matchande programfix"
 
-#: src/red_packagearray.py:805
+#: ../src/red_packagearray.py:805
 msgid "No matching patches found"
 msgstr "Inga matchande programfixar hittades"
 
-#: src/red_packagebook.py:44
+#: ../src/red_packagebook.py:44
 msgid "Package Information"
 msgstr "Paketinformation"
 
-#: src/red_packagepage.py:32
+#: ../src/red_packagepage.py:32
 msgid "Unnamed"
 msgstr "Namnlös"
 
-#: src/red_packagepage_deps.py:29
+#: ../src/red_packagepage_deps.py:29
 msgid "Dependencies"
 msgstr "Beroenden"
 
-#: src/red_packagepage_deps.py:67
+#: ../src/red_packagepage_deps.py:67
 msgid "Provides"
 msgstr "Tillhandahållanden"
 
-#: src/red_packagepage_deps.py:70
+#: ../src/red_packagepage_deps.py:70
 msgid "Requires"
 msgstr "Krav"
 
-#: src/red_packagepage_deps.py:73
+#: ../src/red_packagepage_deps.py:73
 msgid "Conflicts With"
 msgstr "Är i konflikt med"
 
-#: src/red_packagepage_info.py:90 src/red_services.py:112
-msgid "Name"
-msgstr "Namn"
-
-#: src/red_packagepage_info.py:91 src/red_packageview.py:452
-msgid "Version"
-msgstr "Version"
-
-#: src/red_packagepage_info.py:92
+#: ../src/red_packagepage_info.py:92
 msgid "Release"
 msgstr "Utgåva"
 
-#: src/red_packagepage_info.py:93
+#: ../src/red_packagepage_info.py:93
 msgid "Package Size"
 msgstr "Paketstorlek"
 
-#: src/red_packagepage_info.py:94
+#: ../src/red_packagepage_info.py:94
 msgid "Installed Size"
 msgstr "Installerad storlek"
 
-#: src/red_packagepage_info.py:96
+#: ../src/red_packagepage_info.py:96
 msgid "Section"
 msgstr "Sektion"
 
-#: src/red_packagepage_info.py:97
+#: ../src/red_packagepage_info.py:97
 msgid "Summary"
 msgstr "Sammanfattning"
 
-#: src/red_packagepage_info.py:98 src/red_prefs.py:413
+#: ../src/red_packagepage_info.py:98
+#: ../src/red_prefs.py:413
 msgid "Description"
 msgstr "Beskrivning"
 
-#: src/red_packagepage_info.py:152
+#: ../src/red_packagepage_info.py:152
 msgid "Info"
 msgstr "Info"
 
-#: src/red_packageview.py:301
-msgid "Status"
-msgstr "Status"
-
-#: src/red_packageview.py:472
+#: ../src/red_packageview.py:472
 msgid "Importance"
 msgstr "Viktighet"
 
-#: src/red_patches.py:35
+#: ../src/red_patches.py:35
 msgid "Patches"
 msgstr "Programfixar"
 
 # Osäker
-#: src/red_patches.py:38
+#: ../src/red_patches.py:38
 msgid "YOU Patches"
 msgstr "YOU-programfixar"
 
-#: src/red_patches.py:72
+#: ../src/red_patches.py:72
 msgid "Searching for matching patches..."
 msgstr "Söker efter matchande programfixar..."
 
-#: src/red_patches.py:111
+#: ../src/red_patches.py:111
 msgid "No matching patches found."
 msgstr "Inga matchande programfixar hittades."
 
-#: src/red_pendingview.py:347
+#: ../src/red_pendingview.py:347
 #, python-format
 msgid "%.1f%% completed"
 msgstr "%.1f%% klart"
 
-#: src/red_pendingview.py:536
+#: ../src/red_pendingview.py:536
 msgid "Updating System"
 msgstr "Uppdaterar system"
 
-#: src/red_pendingview.py:609
+#: ../src/red_pendingview.py:609
 msgid "Download cancelled"
 msgstr "Hämtning avbruten"
 
-#: src/red_pendingview.py:610
+#: ../src/red_pendingview.py:610
 msgid "Transaction cancelled"
 msgstr "Transaktion avbruten"
 
-#: src/red_pendingview.py:645
+#: ../src/red_pendingview.py:645
 msgid "Transaction Finished"
 msgstr "Transaktion slutförd"
 
-#: src/red_pendingview.py:658
+#: ../src/red_pendingview.py:658
 msgid "Downloading packages"
 msgstr "Hämtar paket"
 
-#: src/red_pendingview.py:671
+#: ../src/red_pendingview.py:671
 msgid "Download Failed"
 msgstr "Hämtning misslyckades"
 
-#: src/red_pendingview.py:672
+#: ../src/red_pendingview.py:672
 msgid "Unknown Error"
 msgstr "Okänt fel"
 
-#: src/red_pendingview.py:689
+#: ../src/red_pendingview.py:689
 msgid "Processing Transaction"
 msgstr "Bearbetar transaktion"
 
-#: src/red_pendingview.py:728
+#: ../src/red_pendingview.py:728
 msgid "The transaction has completed successfully"
 msgstr "Transaktionen har färdigställts utan problem"
 
-#: src/red_pendingview.py:733
+#: ../src/red_pendingview.py:733
 msgid "Transaction failed"
 msgstr "Transaktion misslyckades"
 
-#: src/red_pendingview.py:735
+#: ../src/red_pendingview.py:735
 msgid "Transaction Failed"
 msgstr "Transaktion misslyckades"
 
-#: src/red_prefs.py:171
-msgid "Interval to refresh channel data (in hours):"
-msgstr "Intervall för att uppdatera kanaldata (i timmar):"
+#: ../src/red_prefs.py:171
+msgid "Interval to refresh catalog data (in hours):"
+msgstr "Intervall för uppdatering av kanaldata (i timmar):"
 
 #. Packages section
-#: src/red_prefs.py:182
+#: ../src/red_prefs.py:182
 msgid "Packages"
 msgstr "Paket"
 
-#: src/red_prefs.py:191
+#: ../src/red_prefs.py:191
 msgid "Require package signatures"
 msgstr "Kräv paketsignaturer"
 
-#: src/red_prefs.py:196
+#: ../src/red_prefs.py:196
 msgid "Maximum number of packages to download at once:"
 msgstr "Maximalt antal paket som ska hämtas på en gång:"
 
-#: src/red_prefs.py:206
+#: ../src/red_prefs.py:206
 msgid "Enable package rollback"
-msgstr "Aktivera pakettillbakarullning"
+msgstr "Aktivera tillbakarullning av paket"
 
 #. Proxy section - requires superuser
-#: src/red_prefs.py:210
+#: ../src/red_prefs.py:210
 msgid "Proxy"
 msgstr "Proxyserver"
 
-#: src/red_prefs.py:219
+#: ../src/red_prefs.py:219
 msgid "Use a proxy"
 msgstr "Använd en proxyserver"
 
-#: src/red_prefs.py:223
+#: ../src/red_prefs.py:223
 msgid "Proxy URL:"
 msgstr "Proxyserver-URL:"
 
-#: src/red_prefs.py:230
+#: ../src/red_prefs.py:230
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: src/red_prefs.py:270
+#: ../src/red_prefs.py:270
 msgid "You do not have permissions to view proxy settings"
 msgstr "Du har inte rättigheter att granska proxyserverinställningarna"
 
-#: src/red_prefs.py:294
+#: ../src/red_prefs.py:294
 msgid "Cache downloaded packages and metadata"
 msgstr "Mellanlagra hämtade paket och metadata"
 
-#: src/red_prefs.py:300
+#: ../src/red_prefs.py:300
 msgid "Location of cached data:"
 msgstr "Plats för mellanlagrad data:"
 
 #. Expiration section
-#: src/red_prefs.py:308
+#: ../src/red_prefs.py:308
 msgid "Expiration"
 msgstr "Utgång"
 
-#: src/red_prefs.py:312
+#: ../src/red_prefs.py:312
 msgid "Cache expires"
 msgstr "Cachen utgår"
 
-#: src/red_prefs.py:318
+#: ../src/red_prefs.py:318
 msgid "Maximum age in days:"
 msgstr "Maximal ålder i dagar:"
 
-#: src/red_prefs.py:329
+#: ../src/red_prefs.py:329
 msgid "Maximum size in MB:"
 msgstr "Maximal storlek i MB:"
 
-#: src/red_prefs.py:340
+#: ../src/red_prefs.py:340
 msgid "Current cache size:"
 msgstr "Aktuell cachestorlek:"
 
-#: src/red_prefs.py:357
+#: ../src/red_prefs.py:357
 msgid "Are you sure you want to delete the package files in your cache?"
 msgstr "Är du säker på att du vill ta bort paketfilerna i din cache?"
 
-#: src/red_prefs.py:373
+#: ../src/red_prefs.py:373
 msgid "Empty Cache"
 msgstr "Töm cache"
 
-#: src/red_prefs.py:395
+#: ../src/red_prefs.py:395
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
-#: src/red_prefs.py:443
+#: ../src/red_prefs.py:443
 msgid "Value"
 msgstr "Värde"
 
-#: src/red_prefs.py:456
+#: ../src/red_prefs.py:456
 msgid "Loading preferences..."
 msgstr "Läser in inställningar..."
 
-#: src/red_prefs.py:520
+#: ../src/red_prefs.py:520
 #, python-format
 msgid "%s Preferences"
 msgstr "Inställningar för %s"
 
-#: src/red_search.py:35
+#: ../src/red_search.py:35
 msgid "Search"
 msgstr "Sök"
 
-#: src/red_search.py:38
+#: ../src/red_search.py:38
 msgid "S_earch Packages"
 msgstr "S_ök paket"
 
-#: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
+#: ../src/red_search.py:72
+#: ../src/red_software.py:50
+#: ../src/red_software.py:119
 msgid "Searching for matching packages..."
 msgstr "Söker efter matchande paket..."
 
-#: src/red_search.py:109
+#: ../src/red_search.py:109
 msgid "No matching packages found."
 msgstr "Inga matchande paket hittades."
 
-#: src/red_searchbox.py:146
+#: ../src/red_searchbox.py:146
 msgid "All Packages"
 msgstr "Alla paket"
 
-#: src/red_searchbox.py:147 src/red_updates.py:31
+#: ../src/red_searchbox.py:147
+#: ../src/red_updates.py:31
 msgid "Updates"
 msgstr "Uppdateringar"
 
-#: src/red_searchbox.py:148
+#: ../src/red_searchbox.py:148
 msgid "Uninstalled Packages"
 msgstr "Avinstallerade paket"
 
-#: src/red_searchbox.py:149
+#: ../src/red_searchbox.py:149
 msgid "Installed Packages"
 msgstr "Installerade paket"
 
-#: src/red_searchbox.py:174
+#: ../src/red_searchbox.py:174
 msgid "All Sections"
 msgstr "Alla sektioner"
 
-#: src/red_searchbox.py:175
+#: ../src/red_searchbox.py:175
 msgid "Productivity"
 msgstr "Produktivitet"
 
-#: src/red_searchbox.py:176
+#: ../src/red_searchbox.py:176
 msgid "Imaging"
 msgstr "Bildbehandling"
 
-#: src/red_searchbox.py:177
+#: ../src/red_searchbox.py:177
 msgid "Personal Info. Mgmt"
 msgstr "Personlig informationshantering"
 
-#: src/red_searchbox.py:178
+#: ../src/red_searchbox.py:178
 msgid "X Windows"
 msgstr "X Windows"
 
-#: src/red_searchbox.py:179
+#: ../src/red_searchbox.py:179
 msgid "Games"
 msgstr "Spel"
 
-#: src/red_searchbox.py:180
+#: ../src/red_searchbox.py:180
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: src/red_searchbox.py:181
+#: ../src/red_searchbox.py:181
 msgid "Internet"
 msgstr "Internet"
 
-#: src/red_searchbox.py:182
+#: ../src/red_searchbox.py:182
 msgid "Utilities"
 msgstr "Verktyg"
 
-#: src/red_searchbox.py:183
+#: ../src/red_searchbox.py:183
 msgid "System"
 msgstr "System"
 
-#: src/red_searchbox.py:184
+#: ../src/red_searchbox.py:184
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: src/red_searchbox.py:185
+#: ../src/red_searchbox.py:185
 msgid "Libraries"
 msgstr "Bibliotek"
 
-#: src/red_searchbox.py:186
+#: ../src/red_searchbox.py:186
 msgid "Development"
 msgstr "Utveckling"
 
-#: src/red_searchbox.py:187
+#: ../src/red_searchbox.py:187
 msgid "Development Tools"
 msgstr "Utvecklingsverktyg"
 
-#: src/red_searchbox.py:188
+#: ../src/red_searchbox.py:188
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: src/red_searchbox.py:274
+#: ../src/red_searchbox.py:274
 msgid "Search descriptions"
 msgstr "Sök i beskrivningar"
 
 #. ##
 #. ## Match radio buttons
 #. ##
-#: src/red_searchbox.py:286
+#: ../src/red_searchbox.py:286
 msgid "Match:"
 msgstr "Matcha:"
 
-#: src/red_searchbox.py:322
-msgid "Channel:"
-msgstr "Kanal:"
-
-#: src/red_serverinfo.py:46
+#: ../src/red_serverinfo.py:46
 msgid "The daemon identified itself as:"
 msgstr "Demonen identifierade sig själv som:"
 
-#: src/red_serverinfo.py:57
+#: ../src/red_serverinfo.py:57
 msgid "System type"
 msgstr "Systemtyp"
 
-#: src/red_serverinfo.py:60
+#: ../src/red_serverinfo.py:60
 msgid "Server URL"
 msgstr "Server-URL"
 
-#: src/red_serverinfo.py:63
+#: ../src/red_serverinfo.py:63
 msgid "Server supports enhanced features."
 msgstr "Servern stöder utökade funktioner."
 
-#: src/red_serverinfo.py:68
+#: ../src/red_serverinfo.py:68
 msgid "Unable to contact the daemon."
 msgstr "Kunde inte kontakta demonen."
 
-#: src/red_serverinfo.py:76
+#: ../src/red_serverinfo.py:76
 msgid "Dump daemon info to XML file"
 msgstr "Dumpa demon i XML-fil"
 
-#: src/red_serverinfo.py:94
+#: ../src/red_serverinfo.py:94
 #, python-format
 msgid "Could not open file '%s': %s"
 msgstr "Kunde inte öppna filen \"%s\": %s"
 
-#: src/red_serverinfo.py:135
+#: ../src/red_serverinfo.py:135
 msgid "Choose file to write XML to"
 msgstr "Välj fil att skriva XML till"
 
-#: src/red_services.py:88
-msgid "Edit Services"
-msgstr "Redigera tjänster"
-
-#: src/red_services.py:117
-msgid "URL"
-msgstr "URL"
-
-#: src/red_services.py:133
-msgid "_Remove service"
-msgstr "_Ta bort tjänst"
-
-#: src/red_services.py:146
-msgid "_Add service"
-msgstr "_Lägg till tjänst"
-
-#: src/red_services.py:226
+#: ../src/red_services.py:88
 msgid "Add Service"
 msgstr "Lägg till tjänst"
 
-#: src/red_services.py:231
+#: ../src/red_services.py:99
 msgid "Service URL"
 msgstr "Tjänst-URL"
 
-#: src/red_sidebar.py:61 src/red_transaction.py:133
+#: ../src/red_services.py:105
+msgid "Service type"
+msgstr "Tjänstetyp"
+
+#: ../src/red_services.py:111
+msgid "Registration key"
+msgstr "Registreringsnyckel"
+
+#: ../src/red_services.py:126
+msgid "Edit Services"
+msgstr "Redigera tjänster"
+
+#: ../src/red_services.py:155
+msgid "URL"
+msgstr "URL"
+
+#: ../src/red_services.py:171
+msgid "_Remove service"
+msgstr "_Ta bort tjänst"
+
+#: ../src/red_services.py:188
+msgid "_Add service"
+msgstr "_Lägg till tjänst"
+
+#: ../src/red_sidebar.py:61
+#: ../src/red_transaction.py:133
 msgid "Pending Actions"
 msgstr "Förestående åtgärder"
 
-#: src/red_sidebar.py:89
+#: ../src/red_sidebar.py:89
 #, python-format
 msgid "%d pending install"
 msgstr "%d förestående installation"
 
-#: src/red_sidebar.py:91
+#: ../src/red_sidebar.py:91
 #, python-format
 msgid "%d pending installs"
 msgstr "%d förestående installationer"
 
-#: src/red_sidebar.py:97
+#: ../src/red_sidebar.py:97
 #, python-format
 msgid "%d pending removal"
 msgstr "%d förestående borttagning"
 
-#: src/red_sidebar.py:99
+#: ../src/red_sidebar.py:99
 #, python-format
 msgid "%d pending removals"
 msgstr "%d förestående borttagningar"
 
-#: src/red_sidebar.py:103
+#: ../src/red_sidebar.py:103
 msgid "No pending actions"
 msgstr "Inga förestående åtgärder"
 
-#: src/red_software.py:28
+#: ../src/red_software.py:28
 msgid "Installed Software"
 msgstr "Installerad programvara"
 
-#: src/red_software.py:31
+#: ../src/red_software.py:31
 msgid "I_nstalled Software"
 msgstr "I_nstallerad programvara"
 
-#: src/red_software.py:97
+#: ../src/red_software.py:97
 msgid "Available Software"
 msgstr "Tillgängliga program"
 
-#: src/red_software.py:100
+#: ../src/red_software.py:100
 msgid "A_vailable Software"
 msgstr "T_illgängliga program"
 
-#: src/red_statusbar.py:49
+#: ../src/red_statusbar.py:50
 #, python-format
 msgid "Connected to %s"
 msgstr "Ansluten till %s"
 
-#: src/red_subscriptions.py:57
+#: ../src/red_subscriptions.py:57
 msgid "Subscribed"
 msgstr "Prenumererad"
 
-#: src/red_subscriptions.py:64
-msgid "Channel Name"
+#: ../src/red_subscriptions.py:64
+msgid "Catalog Name"
 msgstr "Kanalnamn"
 
-#: src/red_subscriptions.py:78
+#: ../src/red_subscriptions.py:78
 #, python-format
-msgid "%s Channel Subscriptions"
-msgstr "Kanalprenumerationer på kanal %s"
+msgid "%s Catalog Subscriptions"
+msgstr "%s kanalprenumerationer"
 
-#: src/red_subscriptions.py:99
-msgid ""
-"You do not have permission to subscribe or unsubscribe from channels.  You "
-"will be unable to make any changes to the subscriptions."
-msgstr ""
-"Du har inte rättighet att prenumerera eller säga upp prenumerationer på "
-"kanaler. Du kommer inte att kunna göra ändringar i prenumerationer."
+#: ../src/red_subscriptions.py:99
+msgid "You do not have permission to subscribe or unsubscribe from catalogs.  You will be unable to make any changes to the subscriptions."
+msgstr "Du har inte rättighet att prenumerera eller säga upp prenumerationer på kanaler. Du kommer inte att kunna göra ändringar i några prenumerationer."
 
-#: src/red_thrashingtreeview.py:138
+#: ../src/red_thrashingtreeview.py:138
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: src/red_transaction.py:96
+#: ../src/red_transaction.py:96
 msgid "Are you sure you want to quit?"
 msgstr "Är du säker på att du vill avsluta?"
 
-#: src/red_transaction.py:136
+#: ../src/red_transaction.py:136
 msgid "_Pending Actions"
 msgstr "_Förestående åtgärder"
 
-#: src/red_updates.py:34
+#: ../src/red_updates.py:34
 msgid "_Updates"
 msgstr "_Uppdateringar"
 
-#: src/red_updates.py:77
+#: ../src/red_updates.py:77
 msgid "_Update All"
 msgstr "_Uppdatera alla"
 
-#: src/red_updates.py:109
+#: ../src/red_updates.py:109
 msgid "The system is up-to-date."
 msgstr "Systemet är aktuellt."
 
-#: src/red_updates.py:110
-msgid "There are no software updates available in any subscribed channels."
+#: ../src/red_updates.py:110
+msgid "There are no software updates available in any subscribed catalogs."
 msgstr "Det finns inga programvaruuppdateringar i några prenumererade kanaler."
 
-#: src/red_users.py:131
+#: ../src/red_users.py:131
 msgid "Privilege"
 msgstr "Privilegium"
 
-#: src/red_users.py:148
+#: ../src/red_users.py:148
 msgid ""
-"If you remove superuser privileges from yourself, you will be unable to re-"
-"add them.\n"
+"If you remove superuser privileges from yourself, you will be unable to re-add them.\n"
 "\n"
 "Are you sure you want to do this?"
 msgstr ""
-"Om du tar bort superanvändarprivilegier från dig själv kommer du inte att "
-"kunna lägga till dem igen.\n"
+"Om du tar bort superanvändarprivilegier från dig själv kommer du inte att kunna lägga till dem igen.\n"
 "\n"
 "Är du säker på att du vill göra detta?"
 
-#: src/red_users.py:166
+#: ../src/red_users.py:166
 msgid "Enabled"
 msgstr "Aktiverad"
 
-#: src/red_users.py:181
+#: ../src/red_users.py:181
 msgid "Edit Users"
 msgstr "Redigera användare"
 
-#: src/red_users.py:196 src/red_users.py:399
+#: ../src/red_users.py:196
+#: ../src/red_users.py:399
 msgid "Confirm:"
 msgstr "Bekräfta:"
 
-#: src/red_users.py:217
+#: ../src/red_users.py:217
 msgid "Set Password"
 msgstr "Ange lösenord"
 
-#: src/red_users.py:246 src/red_users.py:422
+#: ../src/red_users.py:246
+#: ../src/red_users.py:422
 msgid "Password can not be empty."
 msgstr "Lösenord kan inte vara tomma."
 
-#: src/red_users.py:248 src/red_users.py:424
+#: ../src/red_users.py:248
+#: ../src/red_users.py:424
 msgid "Passwords do not match."
 msgstr "Lösenorden stämmer inte överens."
 
-#: src/red_users.py:268
+#: ../src/red_users.py:268
 #, python-format
 msgid "Set %s's password"
 msgstr "Ange lösenord för %s"
 
-#: src/red_users.py:289
+#: ../src/red_users.py:289
 msgid "Users"
 msgstr "Användare"
 
-#: src/red_users.py:306
+#: ../src/red_users.py:306
 msgid "Add"
 msgstr "Lägg till"
 
-#: src/red_users.py:320
+#: ../src/red_users.py:320
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Är du säker på att du vill ta bort \"%s\"?"
 
-#: src/red_users.py:326
+#: ../src/red_users.py:326
 msgid "Remove"
 msgstr "Ta bort"
 
-#: src/red_users.py:339
+#: ../src/red_users.py:339
 msgid "Privileges"
 msgstr "Privilegier"
 
-#: src/red_users.py:379
+#: ../src/red_users.py:379
 msgid "Add new user"
 msgstr "Lägg till ny användare"
 
-#: src/red_users.py:426
+#: ../src/red_users.py:426
 msgid "Invalid user name."
 msgstr "Ogiltigt användarnamn."
 
-#: src/red_users.py:428
+#: ../src/red_users.py:428
 #, python-format
 msgid "User '%s' already exists."
 msgstr "Användaren \"%s\" finns redan."
 
+#: ../trayicon/bindings/eggtrayicon.c:117
+msgid "Orientation"
+msgstr "Orientering"
+
+#: ../trayicon/bindings/eggtrayicon.c:118
+msgid "The orientation of the tray."
+msgstr "Orienteringen på lådan."
+
+#: ../trayicon/red_icon_main.py:185
+msgid "There appears to be a Red Carpet update icon already running.  Exiting."
+msgstr "Det verkar redan finnas en uppdateringsikon för Red Carpet som kör.  Avslutar."
+
+#~ msgid "Brought to you by:"
+#~ msgstr "Presenteras av:"
+#~ msgid "With love from:"
+#~ msgstr "Kramar från:"
+#~ msgid "Best wishes from:"
+#~ msgstr "Hälsningar från:"
+#~ msgid "Sincerely:"
+#~ msgstr "Med vänliga hälsningar:"
+#~ msgid "Developed by chimps:"
+#~ msgstr "Utvecklat av chimpanser:"
+#~ msgid "Group Activation"
+#~ msgstr "Gruppaktivering"
+#~ msgid "Activate"
+#~ msgstr "Aktivera"
+#~ msgid "Channels"
+#~ msgstr "Kanaler"
+#~ msgid "_Activate..."
+#~ msgstr "_Aktivera..."
+#~ msgid ""
+#~ "Activate daemon against a Red Carpet Express or Red Carpet Enterprise "
+#~ "server"
+#~ msgstr ""
+#~ "Aktivera demon mot Red Carpet Express eller Red Carpet Enterprise server"
+#~ msgid "Red Carpet Ne_ws..."
+#~ msgstr "Red Carpet-ny_heter..."
+#~ msgid "View the latest Red Carpet news"
+#~ msgstr "Visa de senaste Red Carpet-nyheterna"
+#~ msgid "Channel"
+#~ msgstr "Kanal"
+#~ msgid "Channel:"
+#~ msgstr "Kanal:"
 #~ msgid "Patch"
 #~ msgstr "Programfix"
-
 #~ msgid "Edit services..."
 #~ msgstr "Redigera tjänster..."
-
 #~ msgid "_Edit services"
 #~ msgstr "_Redigera tjänster"
-
 #~ msgid "Remove service"
 #~ msgstr "Ta bort tjänst"
-
 #~ msgid "Remove Service"
 #~ msgstr "Ta bort tjänst"
-
 #~ msgid "Add service"
 #~ msgstr "Lägg till tjänst"
-
 #~ msgid ""
 #~ "System could not be activated: Invalid activation code or email address."
 #~ msgstr ""
 #~ "Systemet kunde inte aktiveras: Ogiltig aktiveringskod eller e-postadress."
-
-#~ msgid "Services"
-#~ msgstr "Tjänster"
-
 #~ msgid "Unable to mount '%s' as a channel"
 #~ msgstr "Kan inte montera \"%s\" som en kanal"
-
 #~ msgid "Server"
 #~ msgstr "Server"
-
 #~ msgid "Server URL:"
 #~ msgstr "Server-URL:"
-
 #~ msgid "Mirrors"
 #~ msgstr "Speglar"
-
 #~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
 #~ msgstr "Aktivera Premium-tjänster (Red Carpet Express eller Enterprise)"
-
 #~ msgid "Connect..."
 #~ msgstr "Anslut..."
-
 #~ msgid "Connect to %s"
 #~ msgstr "Anslut till %s"
-
 #~ msgid "Update cancelled"
 #~ msgstr "Uppdatering avbruten"
-
 #~ msgid "Update Finished"
 #~ msgstr "Uppdatering slutförd"
-
 #~ msgid "Update Failed"
 #~ msgstr "Uppdatering misslyckades"
-
 #~ msgid "System successfully activated."
 #~ msgstr "Systemet aktiverades framgångsrikt."
-
 #~ msgid ""
 #~ "Please ensure you typed the email address and activation code correctly."
 #~ msgstr ""
 #~ "Försäkra dig om att du angav e-postadressen och aktiveringskoden korrekt."
-
 #~ msgid "Mark for Installation"
 #~ msgstr "Markera för installation"
-
 #~ msgid "Mark for Removal"
 #~ msgstr "Markera för borttagning"
-
 #~ msgid "Cancel"
 #~ msgstr "Avbryt"
-
 #~ msgid "Information"
 #~ msgstr "Information"
-
 #~ msgid ""
 #~ "Unable to show help because it was not found or because you don't have "
 #~ "any help viewers available."
 #~ msgstr ""
 #~ "Kan inte visa hjälp eftersom den inte hittades eller eftersom du inte har "
 #~ "några hjälpvisare tillgängliga."
-
 #~ msgid "Update All"
 #~ msgstr "Uppdatera alla"
-
 #~ msgid "System Packages"
 #~ msgstr "Systempaket"
-
 #~ msgid "S_ystem Packages"
 #~ msgstr "S_ystempaket"
-
 #~ msgid "Searching system for matching packages..."
 #~ msgstr "Söker efter matchande paket på systemet..."
-
 #~ msgid "Red Carpet Ne_ws"
 #~ msgstr "Red Carpet-ny_heter"
-
 #~ msgid "News"
 #~ msgstr "Nyheter"
-
 #~ msgid "My Computer"
 #~ msgstr "Den här datorn"
-
 #~ msgid "_My Computer"
 #~ msgstr "_Den här datorn"
-
 #~ msgid "Red Carpet _News"
 #~ msgstr "Red Carpet-_nyheter"
-
 #~ msgid "Installations and Removals"
 #~ msgstr "Installationer och borttagningar"
-
 #~ msgid "Update Summary"
 #~ msgstr "Uppdateringssammanfattning"
-
 #~ msgid "_Update Summary"
 #~ msgstr "_Uppdateringssammanfattning"
-
 #~ msgid "Installations and _Removals"
 #~ msgstr "Installationer och _borttagningar"
-
 #~ msgid ""
 #~ "Detected Red Carpet Daemon version %d.%d.%d.\n"
 #~ "Version %d.%d.%d (or newer) is required."
 #~ msgstr ""
 #~ "Detekterade Red Carpet-demon version %d.%d.%d.\n"
 #~ "Version %d.%d.%d (eller nyare) krävs."
-
 #~ msgid "User name"
 #~ msgstr "Användarnamn"
-
 #~ msgid "Password"
 #~ msgstr "Lösenord"
-
 #~ msgid "Username"
 #~ msgstr "Användarnamn"
-
 #~ msgid "%d KB"
 #~ msgstr "%d kB"
-
 #~ msgid "%d kB"
 #~ msgstr "%d kB"
-
 #~ msgid "Subscribe"
 #~ msgstr "Prenumerera"
-
 #~ msgid "Package Information..."
 #~ msgstr "Paketinformation..."
-
 #~ msgid "No Channel"
 #~ msgstr "Ingen kanal"
-
 #~ msgid "Unknown Channel"
 #~ msgstr "Okänd kanal"
-
 #~ msgid "Preferences"
 #~ msgstr "Inställningar"
-
 #~ msgid "_About"
 #~ msgstr "_Om"
-
 #~ msgid "About"
 #~ msgstr "Om"
-
 #~ msgid "View"
 #~ msgstr "Visa"
-
 #~ msgid "Ximian Red Carpet"
 #~ msgstr "Ximian Red Carpet"
-
 #~ msgid "_Verify Installed Packages"
 #~ msgstr "_Verifiera installerade paket"
-
 #~ msgid "_Install Local Packages..."
 #~ msgstr "_Installera lokala paket..."
-
 #~ msgid "_Refresh"
 #~ msgstr "_Uppdatera"
-
 #~ msgid "_Unsubscribe"
 #~ msgstr "_Säg upp prenumeration"
-
 #~ msgid "_Users Manual"
 #~ msgstr "_Användarhandbok"
-
 #~ msgid "Main Page"
 #~ msgstr "Huvudsida"
-
 #~ msgid "Pause"
 #~ msgstr "Pausa"
-
 #~ msgid "Download"
 #~ msgstr "Hämta"
-
 #~ msgid "OK"
 #~ msgstr "OK"
-
 #~ msgid "Error Page"
 #~ msgstr "Felsida"
-
 #~ msgid "Misc Page"
 #~ msgstr "Diversesida"
-
 #~ msgid "Executive Summary"
 #~ msgstr "Sammanfattning"
-
 #~ msgid ""
 #~ "Update packages individually (NOTE: This is an unsupported operation)"
 #~ msgstr ""
 #~ "Uppdatera paket individuellt (OBSERVERA: Denna operation stöds inte)"
-
 #~ msgid "Actual widget tag"
 #~ msgstr "Riktig widgettagg"
-
 #~ msgid "No Proxy"
 #~ msgstr "Ingen proxyserver"
-
 #~ msgid "HTTP Proxy"
 #~ msgstr "HTTP-proxyserver"
-
 #~ msgid "SOCKS 4 Proxy"
 #~ msgstr "SOCKS 4-proxyserver"
-
 #~ msgid "SOCKS 5 Proxy"
 #~ msgstr "SOCKS 5-proxyserver"
-
 #~ msgid "Host"
 #~ msgstr "Värd"
-
 #~ msgid "Port"
 #~ msgstr "Port"
-
 #~ msgid "Authenticated Proxy"
 #~ msgstr "Autentiserad proxyserver"
-
 #~ msgid "Send requests using HTTP 1.0"
 #~ msgstr "Skicka begäran med HTTP 1.0"
-
 #~ msgid "Enable caching of downloaded data"
 #~ msgstr "Använd mellanlagring av hämtad data"
-
 #~ msgid "Clear cached packages on exit"
 #~ msgstr "Töm mellanlagrade paket vid avslut"
-
 #~ msgid "Clear cached packages after a period of time"
 #~ msgstr "Töm mellanlagrade paket efter en tid"
-
 #~ msgid "Days:"
 #~ msgstr "Dagar:"
-
 #~ msgid "User Interface"
 #~ msgstr "Användargränssnitt"
-
 #~ msgid "Show more descriptive package names instead of the actual names."
 #~ msgstr "Visa mer beskrivande paketnamn istället för de riktiga paketnamnen."
-
 #~ msgid ""
 #~ "Ask before installing packages with signatures that cannot be verified."
 #~ msgstr ""
 #~ "Fråga innan installation av paket med signaturer som inte kan verifieras."
-
 #~ msgid "Red Carpet Premium Services"
 #~ msgstr "Red Carpet Premium Services"
-
 #~ msgid "Enable Premium Services"
 #~ msgstr "Använd Premium Services"
-
 #~ msgid "General"
 #~ msgstr "Allmänt"
-
 #~ msgid "Ximian Red Carpet - Search"
 #~ msgstr "Ximian Red Carpet - Sök"
-
 #~ msgid "Find text:"
 #~ msgstr "Sök text:"
-
 #~ msgid "Case sensitive"
 #~ msgstr "Gör skillnad på gemener/VERSALER"
-
 #~ msgid "Ximian Red Carpet - Please Wait"
 #~ msgstr "Ximian Red Carpet - Var vänlig vänta"
-
 #~ msgid ""
 #~ "Please wait while Red Carpet downloads channel information relevant to "
 #~ "your system."
 #~ msgstr ""
 #~ "Var vänlig vänta medan Red Carpet hämtar den kanalinformation som är "
 #~ "relevant för ditt system."
-
 #~ msgid "%P%%"
 #~ msgstr "%P%%"
-
 #~ msgid "%P%% (%V of %U)"
 #~ msgstr "%P%% (%V av %U)"
-
 #~ msgid "Ximian Red Carpet - Verification"
 #~ msgstr "Ximian Red Carpet - Verifiering"
-
 #~ msgid ""
 #~ "CAUTION: Red Carpet is unable to ensure the cryptographic integrity of "
 #~ "this package. The package might not be signed, or Red Carpet may not have "
@@ -1762,13 +1761,10 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "den nyckel som behövs för att verifiera paketet. Du kan fortsätta att "
 #~ "installera paketet, men Red Carpet kan inte garantera att det är säkert "
 #~ "eller från en säker källa."
-
 #~ msgid "Do you wish to install this package anyway?"
 #~ msgstr "Vill du ändå installera detta paket?"
-
 #~ msgid "Do not show this warning again."
 #~ msgstr "Visa inte denna varning igen."
-
 #~ msgid ""
 #~ "Warning! Removing this many packages can be dangerous\n"
 #~ "and should only be done if you know what you are doing.\n"
@@ -1780,10 +1776,8 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "\n"
 #~ "Är du säker på att du vill fortsätta med denna\n"
 #~ "transaktion?"
-
 #~ msgid "Red Carpet - Warning"
 #~ msgstr "Red Carpet - Varning"
-
 #~ msgid ""
 #~ "If you are behind a firewall and use a proxy to access web sites, you "
 #~ "should\n"
@@ -1808,10 +1802,8 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "\n"
 #~ "När du har angett din proxyinformation klickar du på OK för att\n"
 #~ "fortsätta.\n"
-
 #~ msgid "Use authentication"
 #~ msgstr "Använd autentisering"
-
 #~ msgid ""
 #~ "Hi. Thanks for testing out this beta version of Red Carpet.\n"
 #~ "This new version includes a number of improvements, including\n"
@@ -1854,16 +1846,12 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "testare är ytterst viktiga för utvecklingen.\n"
 #~ "\n"
 #~ "Red Carpet-teamet"
-
 #~ msgid "Do not show this dialog again"
 #~ msgstr "Visa inte detta dialogfönster igen."
-
 #~ msgid "Red Carpet - Password"
 #~ msgstr "Red Carpet - Lösenord"
-
 #~ msgid "The password you have entered is incorrect."
 #~ msgstr "Lösenordet du angav är felaktigt."
-
 #~ msgid ""
 #~ "For most operations, Red Carpet requires administrator privileges.\n"
 #~ "\n"
@@ -1878,7 +1866,6 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "anger ett lösenord kommer du inte att kunna uppdatera, installera eller "
 #~ "ta\n"
 #~ "bort program"
-
 #~ msgid ""
 #~ "Red Carpet will generate the dependency information required to analyze "
 #~ "this failure and email it to Ximian, Inc.\n"
@@ -1891,16 +1878,12 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "\n"
 #~ "Fyll i formuläret nedan så att du kan kontaktas ifall uppföljning är "
 #~ "nödvändig för att ytterligare diagnosera problemet."
-
 #~ msgid "Name: "
 #~ msgstr "Namn: "
-
 #~ msgid "Progress: "
 #~ msgstr "Förlopp: "
-
 #~ msgid "%P %%"
 #~ msgstr "%P%%"
-
 #~ msgid ""
 #~ "<p>If you select cancel, Red Carpet will skip this channel and it will be "
 #~ "unavailable for the rest of this session (or until you refresh the "
@@ -1909,7 +1892,6 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "<p>Om du väljer avbryt kommer Red Carpet att hoppa över denna kanal, och "
 #~ "den kommer att vara otillgänglig under resten av sessionen (eller till "
 #~ "dess du uppdaterar kanallistan)."
-
 #~ msgid ""
 #~ "<p>An error occured trying to parse channel information.</p><p>This may "
 #~ "be caused either by an old version of Red Carpet that is unable to read "
@@ -1922,7 +1904,6 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "kan läsa nya datafiler eller ett fel på servern. Om du avbryter kommer "
 #~ "Red Carpet att hoppa över denna kanal och vara otillgänglig under resten "
 #~ "av denna session (eller till dess du uppdaterar kanallistan).</p>"
-
 #~ msgid ""
 #~ "<p>An error has occurred while downloading channel data.</p><p>Red Carpet "
 #~ "was unable to fetch information for the \"%s\" channel from the server. "
@@ -1933,55 +1914,39 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "kunde inte hämta information för kanalen \"%s\" från servern. Red Carpet "
 #~ "kan fortsätta utan denna information, men du kommer inte att kunna komma "
 #~ "åt denna kanal under denna session (om du inte uppdaterar).</p>"
-
 #~ msgid "Downloading"
 #~ msgstr "Hämtar"
-
 #~ msgid "First, the requested packages are downloaded from their source"
 #~ msgstr "Först hämtas de begärda paketen från deras källa"
-
 #~ msgid "Done"
 #~ msgstr "Klart"
-
 #~ msgid "Percent Complete"
 #~ msgstr "Procent färdigt"
-
 #~ msgid "Next, packages are verified to ensure cryptographic integrity"
 #~ msgstr "Sedan verifieras paketen för att garantera kryptografisk integritet"
-
 #~ msgid "Transacting"
 #~ msgstr "Verkställer"
-
 #~ msgid "The new packages are installed and old packages are removed."
 #~ msgstr "De nya paketen installeras och gamla paket tas bort."
-
 #~ msgid "Finishing up..."
 #~ msgstr "Städar upp..."
-
 #~ msgid ""
 #~ "The packages you requested are being downloaded and installed on your "
 #~ "system."
 #~ msgstr ""
 #~ "Paketen du begärde håller på att hämtas och installeras på ditt system."
-
 #~ msgid "Total"
 #~ msgstr "Totalt"
-
 #~ msgid "The packages you selected are being removed from your system"
 #~ msgstr "Paketen du valde håller på att tas bort från ditt system"
-
 #~ msgid "Removal has finished."
 #~ msgstr "Borttagningen har slutförts."
-
 #~ msgid "The packages you selected are being removed from your system."
 #~ msgstr "Paketen du valde håller på att tas bort från ditt system."
-
 #~ msgid "Keyword not found"
 #~ msgstr "Nyckelordet hittades inte"
-
 #~ msgid "<!--html-->Failed Dependencies"
 #~ msgstr "<!--html-->Misslyckade beroenden"
-
 #~ msgid ""
 #~ "<!--html-->Red Carpet was unable to successfully locate all the necessary "
 #~ "files to complete this request. The errors and conflicts that occured are "
@@ -1990,86 +1955,63 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "<!--html-->Red Carpet kunde inte hitta alla filer som är nödvändiga för "
 #~ "att fullfölja denna begäran. Felen och konflikterna som uppstod visas här "
 #~ "tillsammans med en föreslagen åtgärd."
-
 #~ msgid "Click here to send a dependency report"
 #~ msgstr "Klicka här för att skicka en beroenderapport"
-
 #~ msgid "needed by: <b>%s</b>"
 #~ msgstr "behövd av: <b>%s</b>"
-
 #~ msgid "conflicts with: <b>%s</b>"
 #~ msgstr "är i konflikt med: <b>%s</b>"
-
 #~ msgid "depends on: <b>%s</b>"
 #~ msgstr "beror på: <b>%s</b>"
-
 #~ msgid "needed by"
 #~ msgstr "behövd av"
-
 #~ msgid "needs %s %s %s, which is being removed"
 #~ msgstr "behöver %s %s %s, som kommer att tas bort"
-
 #~ msgid "needs %s %s %s, which cannot be found"
 #~ msgstr "behöver %s %s %s, som inte kan hittas"
-
 #~ msgid "conflicts with %s %s %s"
 #~ msgstr "är i konflikt med %s %s %s"
-
 #~ msgid "<!--html-->This package will be pulled in from the %s channel."
 #~ msgstr "<!--html-->Detta paket kommer att hämtas från kanalen %s."
-
 #~ msgid ""
 #~ "<!--html-->This package will be pulled in from the <b>unsubscribed</b> %s "
 #~ "channel."
 #~ msgstr ""
 #~ "<!--html-->Detta paket kommer att hämtas från den <b>oprenumererade</b> "
 #~ "kanalen %s."
-
 #~ msgid "<!--html-->Package Dependencies"
 #~ msgstr "<!--html-->Paketberoenden"
-
 #~ msgid ""
 #~ "<!--html-->Your system's package database is valid!<br><br>Click the "
 #~ "Previous button to go back."
 #~ msgstr ""
 #~ "<!--html-->Ditt systems paketdatabas är giltig!<br><br>Klicka på knappen "
 #~ "Föregående för att gå tillbaka."
-
 #~ msgid "<b>1</b> Requested Package"
 #~ msgstr "<b>1</b> begärt paket"
-
 #~ msgid "<b>%d</b> Requested Packages"
 #~ msgstr "<b>%d</b> begärda paket"
-
 #~ msgid "<b>1</b> Necessary Removal"
 #~ msgstr "<b>1</b> nödvändig borttagning"
-
 #~ msgid "<b>%d</b> Necessary Removals"
 #~ msgstr "<b>%d</b> nödvändiga borttagningar"
-
 #~ msgid "<b>1</b> Necessary Installation"
 #~ msgstr "<b>1</b> nödvändig installation"
-
 #~ msgid "<b>%d</b> Necessary Installations"
 #~ msgstr "<b>%d</b> nödvändiga installationer"
-
 #~ msgid "<!--html--><b>%s</b> will need to be downloaded. "
 #~ msgstr "<!--html--><b>%s</b> kommer att behöva hämtas. "
-
 #~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be used."
 #~ msgstr ""
 #~ "<!--html-->Efter åtgärderna kommer <b>%s</b> diskutrymme att användas."
-
 #~ msgid "<!--html-->After operations, <b>%s</b> of disk space will be freed."
 #~ msgstr ""
 #~ "<!--html-->Efter åtgärderna kommer <b>%s</b> diskutrymme att ha frigjorts."
-
 #~ msgid ""
 #~ "<!--html-->After operations, no additional space will be freed or used."
 #~ msgstr ""
 #~ "<!--html-->Efter åtgärderna kommer inget ytterligare utrymme att frigöras "
 #~ "eller användas."
-
 #~ msgid ""
 #~ "<!--html-->You have insufficient disk space to download the requested "
 #~ "packages. You must free up some disk space before you can continue. Some "
@@ -2078,16 +2020,12 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "<!--html-->Du har inte tillräckligt med diskutrymme för att kunna hämta "
 #~ "de begärda paketen. Du måste skapa ledigt utrymme innan du kan fortsätta. "
 #~ "Det finns en del alternativ:"
-
 #~ msgid "<!--html-->Removing some packages from your system"
 #~ msgstr "<!--html-->Tar bort en del paket från ditt system"
-
 #~ msgid "Changing your <a href=\"updater:prefs_cache\">cache settings</a>."
 #~ msgstr "Ändrar dina <a href=\"updater:prefs_cache\">cacheinställningar</a>."
-
 #~ msgid "<a href=\"updater:cache_clear\">Clearing your cache</a>."
 #~ msgstr "<a href=\"updater:cache_clear\">Töm din cache</a>."
-
 #~ msgid ""
 #~ "<font color=#ff0000>Warning!</font> There may not be sufficient disk "
 #~ "space to install this package, and installation of this package may fail. "
@@ -2097,861 +2035,10 @@ msgstr "Användaren \"%s\" finns redan."
 #~ "diskutrymme för att installera detta paket, och installation av detta "
 #~ "paket kan misslyckas. Du bör skapa en del ledigt diskutrymme innan du "
 #~ "fortsätter."
-
 #~ msgid "1&nbsp;Package"
 #~ msgstr "1&nbsp;paket"
-
 #~ msgid "%d&nbsp;Packages"
 #~ msgstr "%d&nbsp;paket"
-
 #~ msgid "<td width=25%>Old Version</td>"
 #~ msgstr "<td width=25%>Gammal version</td>"
 
-# Här kommer en siffra framför
-#~ msgid "Necessary Removals"
-#~ msgstr "nödvändiga borttagningar"
-
-# Här kommer en siffra framför
-#~ msgid "Necessary Installations"
-#~ msgstr "nödvändiga installationer"
-
-#~ msgid "<html><body><b>Please wait, loading page...</b></body></html>"
-#~ msgstr ""
-#~ "<html><body><b>Var vänlig vänta, läser in sidan...</b></body></html>"
-
-#~ msgid ""
-#~ "You have no packages from this channel currently installed on your system."
-#~ msgstr ""
-#~ "Du har för närvarande inte några paket från denna kanal installerade på "
-#~ "ditt system."
-
-#~ msgid ""
-#~ "You can visit the channel's <a href=\"updater:info_page\">about page</a> "
-#~ "to get more information about what software is available, or you can go "
-#~ "directly to the <a href=\"updater:available_page\">install page</a> to "
-#~ "install software."
-#~ msgstr ""
-#~ "Du kan besöka kanalens <a href=\"updater:info_page\">om-sida</a> för att "
-#~ "få mer information om vilken programvara som är tillgänglig, eller gå "
-#~ "direkt till <a href=\"updater:available_page\">installationssidan</a> för "
-#~ "att installera program."
-
-#~ msgid "View the <a href=\"updater:info_page\">about page</a>."
-#~ msgstr "Visa <a href=\"updater:info_page\">om-sidan</a>."
-
-#~ msgid "View the <a href=\"updater:available_page\">install page</a>."
-#~ msgstr "Visa <a href=\"updater:available_page\">installationssidan</a>."
-
-#~ msgid "Return to the <a href=\"updater:summary\">Summary</a>."
-#~ msgstr "Gå tillbaka till <a href=\"updater:summary\">sammanfattningen</a>."
-
-#~ msgid ""
-#~ "You don't have any packages installed from this channel. The following "
-#~ "pre-defined sets of packages are available, or you may select individual "
-#~ "packages from the <a href=updater:available_page>Install page</a>."
-#~ msgstr ""
-#~ "Du har inga paket installerade från denna kanal. Följande fördefinierade "
-#~ "paket är tillgängliga, eller så kan du välja enstaka paket från <a "
-#~ "href=updater:available_page>installationssidan</a>."
-
-#~ msgid "All of the software from this channel is up-to-date."
-#~ msgstr "All programvara från denna kanal är aktuell."
-
-#~ msgid ""
-#~ "To install new software from this channel, visit the <a href=\"updater:"
-#~ "available_page\">install page</a>."
-#~ msgstr ""
-#~ "För att installera ny programvara går du till <a href=\"updater:"
-#~ "available_page\">installationssidan</a>."
-
-#~ msgid ""
-#~ "To remove already installed software from this channel, visit the <a href="
-#~ "\"updater:installed_page\">remove page</a>."
-#~ msgstr ""
-#~ "För att ta bort redan installerad programvara från denna kanal går du "
-#~ "till <a href=\"updater:installed_page\">borttagningssidan</a>."
-
-#~ msgid "<a href=\"updater:unsubscribe\">Unsubscribe</a> from this channel."
-#~ msgstr ""
-#~ "<a href=\"updater:unsubscribed_page\">Säg upp prenumerationen</a> på "
-#~ "denna kanal."
-
-#~ msgid ""
-#~ "There is <b>1 update</b> available in this channel, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Det finns <b>1 uppdatering</b> tillgänglig i denna kanal, som kräver att "
-#~ "<b>%s</b> data hämtas."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available in this channel, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Det finns <b>%s uppdateringar</b> tillgängliga i denna kanal, som kräver "
-#~ "att <b>%s</b> data hämtas."
-
-#~ msgid ""
-#~ "  You will not be able to update your system unless you run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "  Du kommer inte att kunna uppdatera ditt system om du inte kör Red "
-#~ "Carpet som root."
-
-#~ msgid "Essential Updates"
-#~ msgstr "Nödvändiga uppdateringar"
-
-#~ msgid "Urgent Updates"
-#~ msgstr "Brådskande uppdateringar"
-
-#~ msgid "Suggested Updates"
-#~ msgstr "Rekommenderade uppdateringar"
-
-#~ msgid "Feature Enhancements"
-#~ msgstr "Programförbättringar"
-
-#~ msgid "Minor Fixes/Updates"
-#~ msgstr "Mindre fixar/uppdateringar"
-
-#~ msgid "1 update"
-#~ msgstr "1 uppdatering"
-
-#~ msgid "%d updates"
-#~ msgstr "%d uppdateringar"
-
-#~ msgid ""
-#~ "The following packages from this channel are currently installed on your "
-#~ "system."
-#~ msgstr ""
-#~ "Följande paket från denna kanal är för närvarande installerade på ditt "
-#~ "system."
-
-#~ msgid ""
-#~ "<!--html-->  To remove packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  För att ta bort paket måste du köra Red Carpet som root."
-
-#~ msgid ""
-#~ "<p>All packages available in this channel are already installed on your "
-#~ "system.</p>"
-#~ msgstr ""
-#~ "<p>Alla paket som är tillgängliga i denna kanal är redan installerade på "
-#~ "ditt system.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:update_page\">Update page</a> to "
-#~ "view available updates for your software in this channel, or return to "
-#~ "the <a href=\"updater:summary\">Summary</a> to view all available updates."
-#~ "</p>"
-#~ msgstr ""
-#~ "<p>Du kan gå till <a href=\"updater:update_page\">uppdateringssidan</a> "
-#~ "för att se de uppdateringar till din programvara som finns i denna kanal, "
-#~ "eller gå tillbaka till <a href=\"updater:summary\">sammanfattningen</a> "
-#~ "för att se alla tillgängliga uppdateringar.</p>"
-
-#~ msgid ""
-#~ "<p>You can go to the <a href=\"updater:summary\">Summary</a> to view all "
-#~ "available updates for your system.</p>"
-#~ msgstr ""
-#~ "<p>Du kan gå till <a href=\"updater:summary\">sammanfattningen</a> för "
-#~ "att se alla uppdateringar som är tillgängliga för ditt system.</p>"
-
-#~ msgid ""
-#~ "<!--html-->The following packages from this channel are available for "
-#~ "installation."
-#~ msgstr ""
-#~ "<!--html-->Följande paket från denna kanal är tillgängliga för "
-#~ "installation."
-
-#~ msgid ""
-#~ " Package names that are in <font color=\"#777777\">gray</font> indicate "
-#~ "that a newer version of this package is already installed."
-#~ msgstr ""
-#~ " Paketnamn som är <font color=\"#777777\">grå</font> indikerar att en "
-#~ "nyare version av detta paket redan är installerat."
-
-#~ msgid ""
-#~ "<!--html-->  To install packages, you will have to run Red Carpet as root."
-#~ msgstr ""
-#~ "<!--html-->  För att installera paket måste du köra Red Carpet som root."
-
-#~ msgid "Name:"
-#~ msgstr "Namn:"
-
-#~ msgid "Installed Version:"
-#~ msgstr "Installerad version:"
-
-#~ msgid "Size:"
-#~ msgstr "Storlek:"
-
-#~ msgid "bytes"
-#~ msgstr "byte"
-
-#~ msgid "Summary:"
-#~ msgstr "Sammanfattning:"
-
-#~ msgid "or"
-#~ msgstr "eller"
-
-#~ msgid " Update Now! "
-#~ msgstr " Uppdatera nu! "
-
-#~ msgid " Update Packages "
-#~ msgstr " Uppdatera paket "
-
-#~ msgid " Remove Packages "
-#~ msgstr " Ta bort paket "
-
-#~ msgid " Unsubscribe "
-#~ msgstr " Säg upp prenumeration "
-
-#~ msgid " Subscribe "
-#~ msgstr " Prenumerera "
-
-#~ msgid "Keyword&nbsp;Search:"
-#~ msgstr "Nyckelordssökning:"
-
-#~ msgid "Credits"
-#~ msgstr "Tack"
-
-#~ msgid ""
-#~ "<p>Red Carpet is the Ximian package management system and software "
-#~ "portal, allowing you to install, upgrade, and remove packages on your "
-#~ "system. For more information, please visit the <a href=\"http://www."
-#~ "ximian.com/redcarpet/\">Red Carpet web site</a>.</p><p>We welcome your "
-#~ "feedback and bug reports, either through the <a href=\"http://bugzilla."
-#~ "ximian.com/\">Ximian Bugzilla</a>, or the Red Carpet mailing list at <a "
-#~ "href=\"http://lists.ximian.com/mailman/listinfo/red-carpet\">red-"
-#~ "carpet@ximian.com</a>.  Thank you!"
-#~ msgstr ""
-#~ "<p>Red Carpet är Ximians pakethanteringssystem och programvaruportal, och "
-#~ "låter dig installera, uppgradera och ta bort paket på ditt system. För "
-#~ "mer information får du gärna gå till <a href=\"http://www.ximian.com/"
-#~ "redcarpet/\">Red Carpets webbplats</a>.</p><p>Du får gärna komma med "
-#~ "synpunkter och felrapporter (på engelska), antingen genom <a href="
-#~ "\"http://bugzilla.ximian.com/\">Ximian Bugzilla</a> eller Red Carpet-"
-#~ "sändlistan på <a href=\"http://lists.ximian.com/mailman/listinfo/red-"
-#~ "carpet\">red-carpet@ximian.com</a>. Tack!"
-
-#~ msgid "All links will open in an external browser window."
-#~ msgstr "Alla länkar kommer att öppnas i ett externt webbläsarfönster."
-
-#~ msgid "The following channels are our featured channels!"
-#~ msgstr "Följande kanaler är våra kanaltips!"
-
-#~ msgid "You are currently subscribed to all available channels!"
-#~ msgstr "Du prenumererar för närvarande på alla tillgängliga kanaler!"
-
-#~ msgid ""
-#~ "We are constantly working on making more software available through Red "
-#~ "Carpet, so watch the <a href=\"updater:news_page\">News Page</a> and this "
-#~ "space for more channels to be added in the future!"
-#~ msgstr ""
-#~ "Vi arbetar hela tiden på att göra fler program tillgängliga genom Red "
-#~ "Carpet, så titta på <a href=\"updater:news_page\">nyhetssidan</a> och i "
-#~ "detta utrymme för information när fler kanaler läggs till i framtiden!"
-
-#~ msgid "View my <a href=\"updater:subscribed_page\">subscribed channels</a>."
-#~ msgstr ""
-#~ "Visa de <a href=\"updater:subscribed_page\">kanaler jag prenumererar på</"
-#~ "a>."
-
-#~ msgid "View the <a href=\"updater:news_page\">News Page</a>."
-#~ msgstr "Visa <a href=\"updater:news_page\">nyhetssidan</a>."
-
-#~ msgid ""
-#~ "You are currently not subscribed to any channels!<p>We suggest that you "
-#~ "subscribe to the <a href=\"updater:channel_name?Ximian GNOME "
-#~ "Desktop#updater:info_page\">Ximian GNOME Desktop channel</a> to keep your "
-#~ "Ximian GNOME desktop running smoothly.  You can also view the software "
-#~ "channels available from Ximian and our Red Carpet partners on the <a href="
-#~ "\"updater:unsubscribed_page\">unsubscribed channels page</a>."
-#~ msgstr ""
-#~ "Du prenumererar för närvarande inte på några kanaler!<p>Vi rekommenderar "
-#~ "att du prenumererar på <a href=\"updater:channel_name?Ximian GNOME "
-#~ "Desktop#updater:info_page\">Ximian GNOME-skrivbordskanalen</a> för att "
-#~ "hålla ditt Ximian GNOME-skrivbord körandes utan problem. Du kan också "
-#~ "visa de programvarukanaler som finns tillgängliga från Ximian och våra "
-#~ "Red Carpet-samarbetspartners på sidan <a href=\"updater:unsubscribed_page"
-#~ "\">oprenumererade kanaler</a>."
-
-#~ msgid ""
-#~ "View <a href=\"updater:unsubscribed_page\">unsubscribed channels</a>."
-#~ msgstr ""
-#~ "Visa <a href=\"updater:unsubscribed_page\">oprenumererade kanaler</a>."
-
-#~ msgid ""
-#~ "Return to the <a href=\"updater:summary\">introduction to Red Carpet</a>."
-#~ msgstr ""
-#~ "Gå tillbaka till <a href=\"updater:summary\">introduktionen till Red "
-#~ "Carpet</a>."
-
-#~ msgid ""
-#~ "<font size=6><b>Welcome to Red Carpet!</b></font><p>Thank you for using "
-#~ "Red Carpet. From resolving package dependencies to ensuring cryptographic "
-#~ "security, Red Carpet takes the headache out of managing your GNOME "
-#~ "desktop system. Red Carpet is also an excellent way to keep on top of the "
-#~ "latest software offerings. The software available to you is organized "
-#~ "into channels; you choose the channels you want and we'll make sure "
-#~ "they're full of great programs.</p><p><font size=4><b>Subscribing to "
-#~ "Channels</b></font></p><p>Since you've just started running Red Carpet, "
-#~ "you aren't yet subscribed to any channels. On the left of the Red Carpet "
-#~ "window is the <b>Navigation Bar</b>, which allows you to access the main "
-#~ "pages of Red Carpet.</p><p>To browse available channels which you are not "
-#~ "subscribed to, click on the <b>Unsubscribed Channels</b> icon in the "
-#~ "navigation bar. After you've done that, to subscribe to a channel, click "
-#~ "on it and click on the <b>Subscribe</b> button in the bottom right corner "
-#~ "of the main content area or select <b>Subscribe</b> from the "
-#~ "Subscriptions menu.</p><p>We welcome your feedback and bug reports, "
-#~ "either through the <a href=\"http://bugzilla.ximian.com/\">Ximian "
-#~ "Bugzilla</a>, or the Red Carpet mailing list at <a href=\"http://lists."
-#~ "ximian.com/mailman/listinfo/red-carpet\">red-carpet@ximian.com</a>.  "
-#~ "Thank you!</p>"
-#~ msgstr ""
-#~ "<font size=6><b>Välkommen till Red Carpet!</b></font><p>Tack för att du "
-#~ "använder Red Carpet. Red Carpet tar bort huvudvärken med att hantera ditt "
-#~ "GNOME-skrivbordssystem, med allt från att lösa paketberoenden till att "
-#~ "kontrollera den kryptografiska säkerheten. Red Carpet är också ett "
-#~ "utmärkt sätt att hålla sig uppdaterad med det senaste utbudet av program. "
-#~ "De program som erbjuds dig är indelat i kanaler; du väljer de kanaler du "
-#~ "vill ha, och vi ser till att de är fulla med bra program.</p><p><font "
-#~ "size=4><b>Prenumerera på kanaler</b></font></p><p>Eftersom du precis "
-#~ "började att använda Red Carpet prenumererar du inte på några kanaler än. "
-#~ "Till vänster i Red Carpet-fönstret finns <B>navigationspanelen</b> som "
-#~ "låter dig komma åt huvudsidorna i Red Carpet.</p><p>För att bläddra i "
-#~ "tillgängliga kanaler som du inte prenumererar på klickar du på ikonen "
-#~ "<b>Oprenumererade kanaler</b> i navigationspanelen. När du har gjort det "
-#~ "kan du välja att prenumerera på en kanal genom att klicka på den och "
-#~ "sedan klicka på knappen <b>Prenumerera</b> nere till höger eller välja "
-#~ "<b>Prenumerera</b> i menyn Prenumerationer.</p><p>Du får gärna komma med "
-#~ "synpunkter och felrapporter (på engelska), antingen genom <a href="
-#~ "\"http://bugzilla.ximian.com/\">Ximian Bugzilla</a> eller Red Carpet-"
-#~ "sändlistan på <a href=\"http://lists.ximian.com/mailman/listinfo/red-"
-#~ "carpet\">red-carpet@ximian.com</a>. Tack!</p>"
-
-#~ msgid ""
-#~ "There is one <b>Essential Update</b> available for your system.  To "
-#~ "ensure that Ximian Red Carpet continues to function properly, you must "
-#~ "install this update before continuing.  After installing this update, "
-#~ "Ximian Red Carpet will automatically restart."
-#~ msgstr ""
-#~ "Det finns en <b>nödvändig uppdatering</b> tillgänglig för ditt system. "
-#~ "För att försäkra dig om att Ximian Red Carpet kommer att fortsätta att "
-#~ "fungera korrekt måste du installera denna uppdatering innan du "
-#~ "fortsätter. Ximian Red Carpet kommer automatiskt att starta om efter att "
-#~ "du har installerat denna uppdatering."
-
-#~ msgid ""
-#~ "There are %s <b>Essential Updates</b> available for your system.  To "
-#~ "ensure that Ximian Red Carpet continues to function properly, you must "
-#~ "install this update before continuing.  After installing this update, "
-#~ "Ximian Red Carpet will automatically restart."
-#~ msgstr ""
-#~ "Det finns %s <b>nödvändiga uppdateringar</b> tillgängliga för ditt "
-#~ "system. För att försäkra dig om att Ximian Red Carpet kommer att "
-#~ "fortsätta att fungera korrekt måste du installera dessa uppdateringar "
-#~ "innan du fortsätter. Ximian Red Carpet kommer automatiskt att starta om "
-#~ "efter att du har installerat dessa uppdateringar."
-
-#~ msgid ""
-#~ "There is <b>one update</b> available for your system, totalling <b>%s</b> "
-#~ "of data to be downloaded."
-#~ msgstr ""
-#~ "Det finns <b>en uppdatering</b> tillgänglig för ditt system, som kräver "
-#~ "att <b>%s</b> data hämtas."
-
-#~ msgid ""
-#~ "There are <b>%s updates</b> available for your system, totalling <b>%s</"
-#~ "b> of data to be downloaded."
-#~ msgstr ""
-#~ "Det finns <b>%s uppdateringar</b> tillgängliga för ditt system, som "
-#~ "kräver att <b>%s</b> data hämtas."
-
-#~ msgid ""
-#~ "<!--html-->  To update your system, you will have to run Red Carpet as "
-#~ "root."
-#~ msgstr ""
-#~ "<!--html-->  För att uppdatera ditt system måste du köra Red Carpet som "
-#~ "root."
-
-#~ msgid " Of these updates, <b>one</b> is <b>urgent</b>."
-#~ msgstr " Utav dessa uppdateringar är <b>en brådskande</b>."
-
-#~ msgid " Of these updates, <b>%s</b> are <b>urgent</b>."
-#~ msgstr " Utav dessa uppdateringar är <b>%s brådskande</b>."
-
-#~ msgid "1 other in the %s channel..."
-#~ msgstr "1 annan i kanalen %s..."
-
-#~ msgid "%d others in the %s channel..."
-#~ msgstr "%d andra i kanalen %s..."
-
-#~ msgid "Visible debugging level, ranges from 0 (nothing) to 6 (everything)"
-#~ msgstr "Synlig felsökningsnivå, går från 0 (ingenting) till 6 (allting)"
-
-#~ msgid "Log file debugging level, ranges from 0 (nothing) to 6 (everything)"
-#~ msgstr ""
-#~ "Felsökningsnivå för loggfil, går från 0 (ingenting) till 6 (allting)"
-
-#~ msgid "The XAuthority file (usually from GDM)"
-#~ msgstr "XAuthority-filen (vanligtvis från GDM)"
-
-#~ msgid "Start up the Red Carpet client without premium services"
-#~ msgstr "Starta Red Carpet-klienten utan Premium Services"
-
-#~ msgid "(Re)configure proxy settings before starting"
-#~ msgstr "(Om)konfigurera proxyinställningar innan start"
-
-#~ msgid ""
-#~ "Could not find '%s'.\n"
-#~ "Please make sure Red Carpet was installed correctly."
-#~ msgstr ""
-#~ "Kunde inte hitta \"%s\".\n"
-#~ "Försäkra dig om att Red Carpet installerats korrekt."
-
-#~ msgid ""
-#~ "Ximian Red Carpet was unable to determine what distribution you are on or "
-#~ "you are running an unsupported distribution. If you are running a "
-#~ "supported distribution, this is usually caused by some system file being "
-#~ "modified. A list of supported distributions is located <a href=\"http://"
-#~ "www.ximian.com/products/ximian_red_carpet/download.html\">on our web "
-#~ "site</a>."
-#~ msgstr ""
-#~ "Ximian Red Carpet kunde inte avgöra vilken distribution du använder, "
-#~ "eller så använder du en distribution som inte stöds. Om kör en "
-#~ "distribution som stöds beror detta fel oftast på att en systemfil har "
-#~ "ändrats. En lista med de distributioner som stöds finns på <a href="
-#~ "\"http://www.ximian.com/products/ximian_red_carpet/download.html\">vår "
-#~ "webbplats</a>."
-
-#~ msgid ""
-#~ "Unable to access packaging subsystem:<br>%s<p>Please ensure that no other "
-#~ "package management programs are running, and try again."
-#~ msgstr ""
-#~ "Kan inte komma åt paketsystem:<br>%s<p>Försäkra dig om att inga andra "
-#~ "pakethanteringsprogram kör, och försök igen."
-
-#~ msgid "Downloading channel list..."
-#~ msgstr "Hämtar kanallista..."
-
-#~ msgid "Downloading mirror list..."
-#~ msgstr "Hämtar spegellista..."
-
-#~ msgid "Downloading channel artwork..."
-#~ msgstr "Hämtar kanalgrafik..."
-
-#~ msgid ""
-#~ "You are not running Red Carpet as root.\n"
-#~ "\n"
-#~ "You will be unable to install or remove\n"
-#~ "packages from your system and subscription\n"
-#~ "information will not be saved during this\n"
-#~ "session."
-#~ msgstr ""
-#~ "Du kör inte Red Carpet som root.\n"
-#~ "\n"
-#~ "Du kommer inte att kunna installera eller\n"
-#~ "ta bort paket på ditt system och\n"
-#~ "prenumerationsinformation kommer inte att\n"
-#~ "sparas under denna session."
-
-#~ msgid ""
-#~ "An error occurred trying to parse the channel list. You should ensure "
-#~ "that you are running a supported distribution and try again later."
-#~ msgstr ""
-#~ "Ett fel inträffade vid försök att tolka kanallistan. Du bör försäkra dig "
-#~ "om att du använder en distribution som stöds och försöka igen senare."
-
-#~ msgid "Navigation"
-#~ msgstr "Navigering"
-
-#~ msgid "Premium Services"
-#~ msgstr "Premium Services"
-
-#~ msgid "Downloading mirrors..."
-#~ msgstr "Hämtar speglar..."
-
-#~ msgid "packages"
-#~ msgstr "paket"
-
-#~ msgid "%%p%%%% (%s of %s)"
-#~ msgstr "%%p%%%% (%s av %s)"
-
-#~ msgid "%s pulled from cache"
-#~ msgstr "%s togs från cachen"
-
-#~ msgid "%s downloaded %d bytes in %d seconds (%s/s)"
-#~ msgstr "%s hämtade %d byte på %d sekunder (%s/s)"
-
-#~ msgid "%p%% (%v of %u)"
-#~ msgstr "%p%% (%v av %u)"
-
-#~ msgid "Cryptographic verification of %s (%s) has FAILED."
-#~ msgstr "Kryptografisk verifiering av %s (%s) har MISSLYCKATS."
-
-#~ msgid ""
-#~ "Red Carpet's cryptographic verification of %s (%s) has <b><font color="
-#~ "\"#ff0000\">failed</font></b>. This means that the security of this "
-#~ "package has somehow been compromised and Red Carpet will not install it. "
-#~ "The downloaded package may have been corrupted and downloading the "
-#~ "package again may fix the problem. If it doesn't, you can <a href="
-#~ "\"updater:send_bug_report\">send a problem report</a> to Ximian for "
-#~ "analysis.</p>"
-#~ msgstr ""
-#~ "Red Carpets kryptografiska verifiering av %s (%s) har <b><font color="
-#~ "\"#ff0000\">misslyckats</font></b>. Detta betyder att säkerheten för "
-#~ "detta paket på något sätt har äventyrats och Red Carpet kommer inte att "
-#~ "installera det. Det hämtade paketet kan ha skadats och att hämta paketet "
-#~ "på nytt kan lösa problemet. Om det inte gör det kan du <a href=\"updater:"
-#~ "send_bug_report\">skicka en problemrapport</a> till Ximian för analys.</p>"
-
-#~ msgid ""
-#~ "INFO:\n"
-#~ "Name: %s (%s)\n"
-#~ "Version: %s\n"
-#~ "Release: %s\n"
-#~ "Package Filename:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "INFORMATION:\n"
-#~ "Namn: %s (%s)\n"
-#~ "Version: %s\n"
-#~ "Släpp: %s\n"
-#~ "Paketfilnamn:\n"
-#~ "%s"
-
-#~ msgid "Verification of %s (%s) is inconclusive; aborting"
-#~ msgstr "Verifiering av %s (%s) är inte beviskraftig; avbryter"
-
-#~ msgid "Verification of %s (%s) is inconclusive; continuing"
-#~ msgstr "Verifiering av %s (%s) är inte beviskraftig; fortsätter"
-
-#~ msgid "%s (%s) has been verified as cryptographically secure by %s"
-#~ msgstr "%s (%s) har verifierats som kryptografiskt säker av %s"
-
-#~ msgid "The integrity of %s (%s) has been confirmed."
-#~ msgstr "Integriteten av %s (%s) har bekräftats."
-
-#~ msgid ""
-#~ "<p>A fatal error has occurred while Red Carpet was processing this "
-#~ "transaction. This is likely caused by an improperly built package.</"
-#~ "p><p>If this problem persists, please report it to the <a href=\"http://"
-#~ "bugzilla.ximian.com\">Ximian Bugzilla</a>.</p><p>Information from the "
-#~ "packaging system:<br>%s</p>"
-#~ msgstr ""
-#~ "<p>Ett ödesdigert fel har inträffat då Red Carpet behandlade denna "
-#~ "transaktion. Detta beror troligtvis på ett felaktigt byggt paket.</"
-#~ "p><p>Om detta problem kvarstår bör du rapportera det (på engelska) i <a "
-#~ "href=\"http://bugzilla.ximian.com\">Ximian Bugzilla</a>.</"
-#~ "p><p>Information från paketsystemet:<br>%s</p>"
-
-#~ msgid ""
-#~ "<p>An error has occurred while Red Carpet was processing this "
-#~ "transaction. This may be caused by an improperly built or corrupted "
-#~ "package. You may want to try the transaction again with fewer packages. "
-#~ "You can <a href=\"updater:send_bug_report\">send a problem report</a> to "
-#~ "Ximian for analysis.</p><p>Information from the packaging system:<br>%s</"
-#~ "p>"
-#~ msgstr ""
-#~ "<p>Ett fel inträffade då Red Carpet behandlade denna transaktion. Detta "
-#~ "kan bero på ett felaktigt byggt eller trasigt paket. Du kan prova att "
-#~ "genomföra transaktionen igen med färre paket. Du kan <a href=\"updater:"
-#~ "send_bug_report\">skicka en problemrapport</a> till Ximian för analys.</"
-#~ "p><p>Information från paketsystemet:<br>%s</p>"
-
-#~ msgid "Unable to create directory %s for local package storage"
-#~ msgstr "Kan inte skapa katalogen %s för lokal paketlagring"
-
-#~ msgid "Download Log"
-#~ msgstr "Hämtningslogg"
-
-#~ msgid "Verification Log"
-#~ msgstr "Verifieringslogg"
-
-#~ msgid "Premium services enabled"
-#~ msgstr "Premium Services aktiverade"
-
-#~ msgid ""
-#~ "<p>Red Carpet encountered a network error while trying to submit your "
-#~ "activation information.  Please contact Ximian support for assistance.</"
-#~ "p><p>Details:<br>URL: %s<br>HTTP Response: %d %s<br>Soup Error: %d</p>"
-#~ msgstr ""
-#~ "<p>Red Carpet råkade ut för ett nätverksfel vid försöket att skicka din "
-#~ "aktiveringsinformation. Kontakta Ximian support för stöd.</p><p>Detaljer:"
-#~ "<br>URL: %s<br>HTTP-svar: %d %s<br>Soup-fel: %d</p>"
-
-#~ msgid "Activate Premium Services"
-#~ msgstr "Aktivera Premium Services"
-
-#~ msgid ""
-#~ "Red Carpet is unable to create a necessary cookie for your machine used "
-#~ "in authenticating you when using the Red Carpet Premium Services because "
-#~ "a special \"no cookie\" file exists.  You will have to remove that file "
-#~ "before you can activate these services.  The file is /etc/ximian/no-"
-#~ "cookie."
-#~ msgstr ""
-#~ "Red Carpet kan inte skapa en nödvändig kaka för din maskin, som används "
-#~ "då du autentiseras när du använder Red Carpet Premium Services, eftersom "
-#~ "en speciell \"ingen kaka\"-fil finns. Du måste ta bort den filen innan du "
-#~ "kan aktivera dessa tjänster. Filen heter /etc/ximian/no-cookie."
-
-#~ msgid "%.2f MB"
-#~ msgstr "%.2f MB"
-
-#~ msgid "%d bytes"
-#~ msgstr "%d byte"
-
-#~ msgid "%%p%%%% (%s of %s) - %s/s"
-#~ msgstr "%%p%%%% (%s av %s) - %s/s"
-
-#~ msgid "%s - %s/s"
-#~ msgstr "%s - %s/s"
-
-#~ msgid "Downloading data..."
-#~ msgstr "Hämtar data..."
-
-#~ msgid "%%p%%%% (%s of %s) - Paused"
-#~ msgstr "%%p%%%% (%s av %s) - Gör paus"
-
-#~ msgid "%s - Paused"
-#~ msgstr "%s - Gör paus"
-
-#~ msgid ""
-#~ "<p>Your account for Red Carpet Premium Services could not be verfified.</"
-#~ "p><p>Please make sure that your premium services account is enabled.</"
-#~ "p><p>To continue using Red Carpet without premium services, <a href="
-#~ "\"updater:disable_priority\">click here</a>. You can reenable it later by "
-#~ "choosing Settings->Preferences->General and checking the box labelled "
-#~ "\"Enable RC Premium Services\"</p>"
-#~ msgstr ""
-#~ "<p>Ditt konto för Red Carpet Premium Services kunde inte verifieras.</"
-#~ "p><p>Försäkra dig om att ditt Premium Services-konto är aktiverat.</"
-#~ "p><p><a href=\"updater:disable_priority\">Klicka här</a> för att "
-#~ "fortsätta använda Red Carpet utan Premium Services. Du kan återaktivera "
-#~ "det senare genom att välja Inställningar->Inställningar->Allmänt och "
-#~ "klicka på rutan \"Aktivera RC Premium Services\""
-
-#~ msgid ""
-#~ "<p>Red Carpet was unable to complete a file transfer.</p>%s%s<p>Details:"
-#~ "<br>URL: %s<br>Error: %s</p>"
-#~ msgstr ""
-#~ "<p>Red Carpet kunde inte fullfölja en filöverföring.</p>%s%s<p>Detaljer:"
-#~ "<br>URL: %s<br>Fel: %s</p>"
-
-#~ msgid "Red Carpet encountered an error querying your system:<br>%s"
-#~ msgstr ""
-#~ "Red Carpet råkade ut för ett fel vid undersökning av ditt system:<br>%s"
-
-#~ msgid "%.2f%sMB"
-#~ msgstr "%.2f%sMB"
-
-#~ msgid "%d%sKB"
-#~ msgstr "%d%skB"
-
-#~ msgid "%d%sbytes"
-#~ msgstr "%d%sbyte"
-
-#~ msgid "zero"
-#~ msgstr "noll"
-
-#~ msgid "one"
-#~ msgstr "en"
-
-#~ msgid "two"
-#~ msgstr "två"
-
-#~ msgid "three"
-#~ msgstr "tre"
-
-#~ msgid "four"
-#~ msgstr "fyra"
-
-#~ msgid "five"
-#~ msgstr "fem"
-
-#~ msgid "six"
-#~ msgstr "sex"
-
-#~ msgid "seven"
-#~ msgstr "sju"
-
-#~ msgid "eight"
-#~ msgstr "åtta"
-
-#~ msgid "Fatal Error"
-#~ msgstr "Ödesdigert fel"
-
-#~ msgid "Error"
-#~ msgstr "Fel"
-
-#~ msgid ""
-#~ "Red Carpet has encountered an error while trying to process your request:"
-#~ msgstr ""
-#~ "Red Carpet har råkat ut för ett fel vid försöket att behandla din begäran:"
-
-#~ msgid "Possible actions:"
-#~ msgstr "Möjliga åtgärder:"
-
-#~ msgid "<li>Click <b>Quit</b> to quit."
-#~ msgstr "<li>Klicka på <b>Avsluta</b> för att avsluta."
-
-#~ msgid "<li>Click <b>Retry</b> to retry."
-#~ msgstr "<li>Klicka på <b>Försök igen</b> för att försöka igen."
-
-#~ msgid "<li>Click <b>Cancel</b> to cancel."
-#~ msgstr "<li>Klicka på <b>Avbryt</b> för att avbryta."
-
-#~ msgid "Retry"
-#~ msgstr "Försök igen"
-
-#~ msgid ""
-#~ "Red Carpet was unable to install the following packages.\n"
-#~ "Please ensure that they exist and are valid package files.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Red Carpet kunde inte installera följande paket.\n"
-#~ "Försäkra dig om att de finns och är giltiga paketfiler.\n"
-#~ "\n"
-
-#~ msgid "Load file(s)"
-#~ msgstr "Läs in fil(er)"
-
-#~ msgid "Close"
-#~ msgstr "Stäng"
-
-#~ msgid "Ximian Red Carpet will now restart."
-#~ msgstr "Ximian Red Carpet kommer nu att startas om."
-
-#~ msgid "No mirror (always use default host)"
-#~ msgstr "Ingen spegel (använd alltid standardvärd)"
-
-#~ msgid "N/A"
-#~ msgstr "-"
-
-#~ msgid "Unable to parse mirror list."
-#~ msgstr "Kan inte tolka spegellista."
-
-#~ msgid "Unable to save mirror list (%s)."
-#~ msgstr "Kan inte tolka spegellista (%s)."
-
-#~ msgid "<p>You can continue without any mirrors by pressing \"Cancel\""
-#~ msgstr ""
-#~ "<p>Du kan fortsätta utan några speglar genom att trycka på \"Avbryt\""
-
-#~ msgid ""
-#~ "<p>Your account for Red Carpet Premium Services could not be verified.</"
-#~ "p><p>Please make sure that your premium services account is enabled.</"
-#~ "p><p>To continue using Red Carpet without premium services, <a href="
-#~ "\"updater:disable_priority\">click here</a>. You can reenable it later by "
-#~ "choosing Settings->Preferences->General and checking the box labelled "
-#~ "\"Enable RC Premium Services\"</p>"
-#~ msgstr ""
-#~ "<p>Ditt konto för Red Carpet Premium Services kunde inte verifieras.</"
-#~ "p><p>Försäkra dig om att ditt Premium Services-konto är aktiverat.</"
-#~ "p><p><a href=\"updater:disable_priority\">Klicka här</a> för att "
-#~ "fortsätta använda Red Carpet utan Premium Services. Du kan återaktivera "
-#~ "det senare genom att välja Inställningar->Inställningar->Allmänt och "
-#~ "klicka på rutan \"Aktivera RC Premium Services\""
-
-#~ msgid "Allowed cache difference:"
-#~ msgstr "Tillåten cacheskillnad:"
-
-#~ msgid "seconds"
-#~ msgstr "sekunder"
-
-#~ msgid "<b>%d</b> %s"
-#~ msgstr "<b>%d</b> %s"
-
-# Här kommer en siffra framför
-#~ msgid "Requested Packages"
-#~ msgstr "begärda paket"
-
-#~ msgid "Prefs"
-#~ msgstr "Inställn"
-
-#~ msgid "User Interface Design"
-#~ msgstr "Design av användargränssnittet"
-
-#~ msgid "Artwork"
-#~ msgstr "Artister"
-
-#~ msgid "Unable to access packaging subsystem:<br>%s"
-#~ msgstr "Kan inte komma åt paketeringsundersystem:<br>%s"
-
-#~ msgid "Transfer of %s did not complete: %s"
-#~ msgstr "Överföring av %s fullföljdes inte: %s"
-
-#~ msgid ""
-#~ "<p>An error has occurred while Red Carpet was processing the dependencies "
-#~ "for this transaction. This may be caused by an error in the package or on "
-#~ "the server. You may want to try the transaction again with fewer "
-#~ "packages. You should report this problem to <a href=\"red-carpet@ximian."
-#~ "com\">red-carpet@ximian.com</a> as soon as possible. Please include "
-#~ "distribution information and the set of packages for this transaction.</"
-#~ "p><p>Information from the dependency system:<br> %s</p>"
-#~ msgstr ""
-#~ "<p>Ett fel inträffade då Red Carpet behandlade beroendena för denna "
-#~ "transaktion. Detta kan orsakas av ett fel i paketet eller på servern. Du "
-#~ "kan prova att genomföra transaktionen igen med färre paket. Du bör "
-#~ "rapportera detta problem till <a href=\"red-carpet@ximian.com\">red-"
-#~ "carpet@ximian.com</a> så snart som möjligt. Skriv på engelska och ta med "
-#~ "distributionsinformation och de paket som ingick i denna transaktion.</"
-#~ "p><p>Information från beroendesystemet:<br> %s</p>"
-
-#~ msgid ""
-#~ "<p>An error has occurred while Red Carpet was processing the dependencies "
-#~ "for this transaction. This may be caused by an error in the package or on "
-#~ "the server. You may want to try the transaction again with fewer "
-#~ "packages. You should report this problem to <a href=\"red-carpet@ximian."
-#~ "com\">red-carpet@ximian.com</a> as soon as possible. Please include "
-#~ "distribution information and the set of packages in this transaction.</"
-#~ "p><p>Information from the dependency system:<br>%s</p>"
-#~ msgstr ""
-#~ "<p>Ett fel inträffade då Red Carpet behandlade beroendena för denna "
-#~ "transaktion. Detta kan bero på ett fel i paketet eller på servern. Du kan "
-#~ "prova att genomföra transaktionen igen med färre paket. Du bör rapportera "
-#~ "detta problem till <a href=\"red-carpet@ximian.com\">red-carpet@ximian."
-#~ "com</a> så snart som möjligt. Skriv på engelska och ta med "
-#~ "distributionsinformation och de paket som ingick i denna transaktion.</"
-#~ "p><p>Information från beroendesystemet:<br>%s</p>"
-
-#~ msgid "File not found"
-#~ msgstr "Filen hittades inte"
-
-#~ msgid "IO error"
-#~ msgstr "IO-fel"
-
-#~ msgid ""
-#~ "Red Carpet Express was unable to verify your identity.<p>Please make sure "
-#~ "that your premium services account is enabled.<p>To continue using Red "
-#~ "Carpet without premium services, <a href=\"updater:disable_priority"
-#~ "\">click here</a>. You can reenable it later by choosing Settings-"
-#~ ">Preferences->General and checking the box labelled \"Enable Premium "
-#~ "Services\""
-#~ msgstr ""
-#~ "Red Carpet Express kunde inte verifiera din identitet.<p>Försäkra dig om "
-#~ "att ditt Premium Services-konto är aktiverat.<p><a href=\"updater:"
-#~ "disable_priority\">Klicka här</a> för att fortsätta använda Red Carpet "
-#~ "utan Premium Services. Du kan återaktivera det senare genom att välja "
-#~ "Inställningar->Inställningar->Allmänt och klicka på rutan \"Aktivera "
-#~ "Premium Services\""
-
-#~ msgid "Enable RC Express/Corporate Connect"
-#~ msgstr "Aktivera RC Express/Corporate Connect"
-
-#~ msgid ""
-#~ "Unable to authenticate.  This is probably due to a disabled premium "
-#~ "services account.  You can use the standard RC service by going to "
-#~ "Settings -> Preferences -> General"
-#~ msgstr ""
-#~ "Kan inte autentisera. Detta beror troligtvis på ett inaktiverat Premium "
-#~ "Services-konto. Du kan använda den vanliga Red Carpet-tjänsten genom att "
-#~ "gå till Inställningar -> Inställningar -> Allmänt"
-
-#~ msgid "User Registration"
-#~ msgstr "Användarregistrering"
-
-#~ msgid "GUI Options"
-#~ msgstr "Inställningar för användargränssnittet"
-
-#~ msgid "No description available"
-#~ msgstr "Ingen beskrivning finns tillgänglig"
