@@ -2,15 +2,15 @@
 # Copyright (C) 2001-2003 Free Software Foundation, Inc.
 # Christian Meyer <chrisime@gnome.org>, 2001, 2002.
 # Christian Neumair <chris@gnome-de.org>, 2003.
-# Hendrik Richter <hendi@gnome-de.org>, 2005.
+# Hendrik Richter <hendrikr@gnome.org>, 2005.
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Red Carpet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-13 16:52+0100\n"
-"PO-Revision-Date: 2005-07-24 14:12+0200\n"
-"Last-Translator: Hendrik Richter <hendi@gnome-de.org>\n"
+"PO-Revision-Date: 2006-06-15 17:36+0200\n"
+"Last-Translator: Hendrik Richter <hendrikr@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,7 +232,7 @@ msgstr "_Hilfe"
 
 #: src/red_appwindow.py:559
 msgid "Connect to daemon..."
-msgstr "Mit Daemon verbinden..."
+msgstr "Mit Daemon verbinden …"
 
 #: src/red_appwindow.py:560
 msgid "Connect to a remote daemon"
@@ -240,7 +240,7 @@ msgstr "Mit einem entfernten Daemon verbinden"
 
 #: src/red_appwindow.py:570
 msgid "Install from _File..."
-msgstr "Aus _Datei installieren..."
+msgstr "Aus _Datei installieren …"
 
 #: src/red_appwindow.py:571
 msgid "Install a package from a local file"
@@ -248,7 +248,7 @@ msgstr "Ein Paket aus einer lokalen Datei installieren"
 
 #: src/red_appwindow.py:580
 msgid "Install from _URL..."
-msgstr "Aus _URL installieren..."
+msgstr "Aus _URL installieren …"
 
 #: src/red_appwindow.py:581
 msgid "Install a package from a remote URL"
@@ -256,7 +256,7 @@ msgstr "Ein Paket aus einer lokalen URL installieren"
 
 #: src/red_appwindow.py:598
 msgid "_Mount Directory..."
-msgstr "Verzeichnis _einbinden..."
+msgstr "Verzeichnis _einbinden …"
 
 #: src/red_appwindow.py:599
 msgid "Mount a directory as a channel"
@@ -264,7 +264,7 @@ msgstr "Ein Verzeichnis als Kanal einbinden"
 
 #: src/red_appwindow.py:615
 msgid "U_nmount Directory..."
-msgstr "Verzeichnis _aushängen..."
+msgstr "Verzeichnis _aushängen …"
 
 #: src/red_appwindow.py:616
 msgid "Unmount a directory"
@@ -272,7 +272,7 @@ msgstr "Ein Verzeichnis aushängen"
 
 #: src/red_appwindow.py:632
 msgid "_Activate..."
-msgstr "_Aktivieren..."
+msgstr "_Aktivieren …"
 
 #: src/red_appwindow.py:633
 msgid ""
@@ -307,7 +307,7 @@ msgstr "Alle Objekte abwählen"
 
 #: src/red_appwindow.py:669
 msgid "Services..."
-msgstr "Dienste..."
+msgstr "Dienste …"
 
 #: src/red_appwindow.py:670
 msgid "Edit services"
@@ -315,7 +315,7 @@ msgstr "Dienste bearbeiten"
 
 #: src/red_appwindow.py:674
 msgid "Channel _Subscriptions..."
-msgstr "Kanal_abonnements..."
+msgstr "Kanal_abonnements …"
 
 #: src/red_appwindow.py:675
 msgid "Edit your channel subscriptions"
@@ -323,7 +323,7 @@ msgstr "Ihre Kanalabonnements bearbeiten"
 
 #: src/red_appwindow.py:680
 msgid "_Preferences..."
-msgstr "_Einstellungen..."
+msgstr "_Einstellungen …"
 
 #: src/red_appwindow.py:681
 msgid "Edit your Red Carpet preferences"
@@ -331,7 +331,7 @@ msgstr "Ihre Red Carpet-Einstellungen bearbeiten"
 
 #: src/red_appwindow.py:685
 msgid "_Users..."
-msgstr "_Benutzer..."
+msgstr "_Benutzer …"
 
 #: src/red_appwindow.py:686
 msgid "Edit user permissions for this daemon"
@@ -363,7 +363,7 @@ msgstr "Kanalnamen in Paketlisten anzeigen/verbergen"
 
 #: src/red_appwindow.py:716
 msgid "Package _Information..."
-msgstr "Paket_informationen..."
+msgstr "Paket_informationen …"
 
 #: src/red_appwindow.py:717
 msgid "View information about currently selected packages"
@@ -371,7 +371,7 @@ msgstr "Informationen zu den momentan gewählten Paketen anzeigen"
 
 #: src/red_appwindow.py:725
 msgid "_Daemon Information..."
-msgstr "_Daemon-Informationen..."
+msgstr "_Daemon-Informationen …"
 
 #: src/red_appwindow.py:726
 msgid "View information about this daemon"
@@ -379,7 +379,7 @@ msgstr "Informationen zu diesem Daemon anzeigen"
 
 #: src/red_appwindow.py:728
 msgid "Red Carpet Ne_ws..."
-msgstr "Red Carpet _aktuell..."
+msgstr "Red Carpet _aktuell …"
 
 #: src/red_appwindow.py:729
 msgid "View the latest Red Carpet news"
@@ -439,7 +439,7 @@ msgstr "Hilfe zu Red Carpet anzeigen"
 
 #: src/red_appwindow.py:822
 msgid "_About..."
-msgstr "_Info..."
+msgstr "_Info …"
 
 #: src/red_appwindow.py:823
 msgid "About Red Carpet"
@@ -491,7 +491,7 @@ msgstr ""
 
 #: src/red_connection.py:123
 msgid "Starting daemon..."
-msgstr "Daemon wird gestartet..."
+msgstr "Daemon wird gestartet …"
 
 #: src/red_connection.py:197
 msgid ""
@@ -650,7 +650,7 @@ msgstr "Zeitfenster (Tage):"
 
 #: src/red_history.py:280
 msgid "Searching..."
-msgstr "Suchvorgang..."
+msgstr "Suchvorgang …"
 
 #: src/red_history.py:302 src/red_history.py:436
 msgid "Time"
@@ -696,7 +696,7 @@ msgstr "Aus Datei installieren"
 #: src/red_installfiles.py:126
 #, python-format
 msgid "Downloading %s..."
-msgstr "%s wird heruntergeladen..."
+msgstr "%s wird heruntergeladen …"
 
 #: src/red_installfiles.py:165
 msgid "Install from URL"
@@ -736,7 +736,7 @@ msgstr "»%s« konnte nicht eingebunden werden"
 
 #: src/red_mount.py:117
 msgid "Browse..."
-msgstr "Auswählen..."
+msgstr "Auswählen …"
 
 #: src/red_mount.py:128
 msgid "Mount Directory"
@@ -819,7 +819,7 @@ msgstr "Informationen zum Aufruf abrufen"
 #: src/red_option.py:120
 #, python-format
 msgid "Usage: %s <options> ..."
-msgstr "Aufruf: %s <Optionen> ..."
+msgstr "Aufruf: %s <Optionen> …"
 
 #: src/red_option.py:122
 msgid "The following options are understood:"
@@ -874,7 +874,7 @@ msgstr "Kein zutreffendes Paket gefunden"
 
 #: src/red_packagearray.py:776
 msgid "Looking for updates..."
-msgstr "Nach Aktualisierungen suchen..."
+msgstr "Nach Aktualisierungen suchen …"
 
 #: src/red_packagearray.py:801
 #, python-format
@@ -968,7 +968,7 @@ msgstr "YOU-Patches"
 
 #: src/red_patches.py:72
 msgid "Searching for matching patches..."
-msgstr "Suche nach zutreffenden Patches..."
+msgstr "Suche nach zutreffenden Patches …"
 
 #: src/red_patches.py:111
 msgid "No matching patches found."
@@ -1118,7 +1118,7 @@ msgstr "Wert"
 
 #: src/red_prefs.py:456
 msgid "Loading preferences..."
-msgstr "Einstellungen werden geladen..."
+msgstr "Einstellungen werden geladen …"
 
 #: src/red_prefs.py:520
 #, python-format
@@ -1136,7 +1136,7 @@ msgstr "Pakete _suchen"
 
 #: src/red_search.py:72 src/red_software.py:50 src/red_software.py:119
 msgid "Searching for matching packages..."
-msgstr "Suche nach zutreffenden Paketen..."
+msgstr "Suche nach zutreffenden Paketen …"
 
 #: src/red_search.py:109
 msgid "No matching packages found."
@@ -1490,3 +1490,6 @@ msgstr "Benutzer »%s« existiert bereits."
 
 #~ msgid "Enable Premium Services (Red Carpet Express or Enterprise)"
 #~ msgstr "Premiumdienste aktivieren (Red Carpet Express oder Enterprise)"
+
+
+
