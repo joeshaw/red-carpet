@@ -1184,7 +1184,7 @@ msgstr "Trò chơi"
 # 48x48/emblems/emblem-multimedia.icon.in.h:1
 #: ../src/red_searchbox.py:180
 msgid "Multimedia"
-msgstr "Đa vật chứa"
+msgstr "Đa phương tiện"
 
 #: ../src/red_searchbox.py:181
 msgid "Internet"
