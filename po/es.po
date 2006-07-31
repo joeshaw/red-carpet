@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-screensaver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-12 01:15+0200\n"
+"POT-Creation-Date: 2006-07-31 13:43+0200\n"
 "PO-Revision-Date: 2005-10-12 01:17+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -103,10 +103,11 @@ msgid "Unable to activate"
 msgstr "No se pudo activar"
 
 #: ../src/red_activation.py:129
-msgid "Please ensure you typed the email address and registration code correctly"
+msgid ""
+"Please ensure you typed the email address and registration code correctly"
 msgstr ""
-"Asegúrese de que ha tecleado correctamente tanto la dirección de correo-e como "
-"el código de activación"
+"Asegúrese de que ha tecleado correctamente tanto la dirección de correo-e "
+"como el código de activación"
 
 #. TRANSLATORS: *Only* localize this to the language code if the
 #. Red Carpet help is localized.
@@ -123,7 +124,8 @@ msgstr ""
 "Informa de esto a su vendedor."
 
 #: ../src/red_appwindow.py:139
-msgid "Unable to show help because there are no applications available to view help."
+msgid ""
+"Unable to show help because there are no applications available to view help."
 msgstr ""
 "No se puede mostrar la ayuda porque no hay aplicaciones disponibles para ver "
 "la ayuda."
@@ -216,7 +218,7 @@ msgstr "Accio_nes"
 
 #: ../src/red_appwindow.py:551
 msgid "_Help"
-msgstr "A_yuda"
+msgstr "Ay_uda"
 
 #: ../src/red_appwindow.py:559
 msgid "Connect to daemon..."
@@ -593,7 +595,8 @@ msgid "Resolving Dependencies"
 msgstr "Resolviendo dependencias"
 
 #: ../src/red_depcomponent.py:159
-msgid "You must agree to the licenses covering this software before installing it."
+msgid ""
+"You must agree to the licenses covering this software before installing it."
 msgstr ""
 "Debe estar de acuerdo con las licencias que cubren este software antes de "
 "instalarlo."
@@ -1405,7 +1408,8 @@ msgstr "El sistema está actualizado."
 
 #: ../src/red_updates.py:110
 msgid "There are no software updates available in any subscribed catalogs."
-msgstr "No hay disponibles actualizaciones de software en ningún catálogo suscrito."
+msgstr ""
+"No hay disponibles actualizaciones de software en ningún catálogo suscrito."
 
 #: ../src/red_users.py:131
 msgid "Privilege"
@@ -1498,4 +1502,3 @@ msgid "There appears to be a Red Carpet update icon already running.  Exiting."
 msgstr ""
 "Parece que hay una actualización de Red Carpet que se está ejecutando. "
 "Saliendo."
-
